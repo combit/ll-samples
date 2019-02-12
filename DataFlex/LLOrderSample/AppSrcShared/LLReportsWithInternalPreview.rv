@@ -1,0 +1,426 @@
+Use Windows.pkg
+Use DFRptVw.pkg
+Use cListLabel.pkg
+Use llpreview.dg
+use lltableselect.dg
+Use Customer.DD
+Use SalesP.DD
+Use OrderHea.DD
+Use Vendor.DD
+Use Invt.DD
+Use OrderDtl.DD
+
+Activate_View Activate_oLLReportsWithInternalPreview for oLLReportsWithInternalPreview
+Object oLLReportsWithInternalPreview is a cListLabelReportView
+    Object oVendor_DD is a Vendor_DataDictionary
+    End_Object
+
+    Object oInvt_DD is a Invt_DataDictionary
+        Set DDO_Server to oVendor_DD
+    End_Object
+
+    Object oSalesp_DD is a SalesP_DataDictionary
+    End_Object
+
+    Object oCustomer_DD is a Customer_DataDictionary
+    End_Object
+
+    Object oOrderhea_DD is a OrderHea_DataDictionary
+        Set DDO_Server to oSalesp_DD
+        Set DDO_Server to oCustomer_DD
+    End_Object
+
+    Object oOrderdtl_DD is a OrderDtl_DataDictionary
+        Set DDO_Server to oInvt_DD
+        Set DDO_Server to oOrderhea_DD
+    End_Object
+
+    Set Main_DD to oOrderdtl_DD
+    Set Server to oOrderdtl_DD
+
+    Set Location to 6 6
+    Set Size to 56 197
+    
+    Property Integer piReportProjectType LL_PROJECT_LIST
+    
+    Procedure StartPreviewReport
+        Send StartReport "" True False
+    End_Procedure
+
+    Set Label to "List & Label Reports"
+
+    Object oReportType is a RadioGroup
+        Set Size to 27 187
+        Set Location to 6 5
+        Set Label to "Report Type"
+        Set peAnchors to anBottomLeftRight
+
+        Object oTypeList is a Radio
+            Set Label to "List"
+            Set Size to 10 39
+            Set Location to 12 10
+            Set Status_Help to "Print a List Project"
+        End_Object
+
+        Object oTypeLabel is a Radio
+            Set Label to "Label"
+            Set Size to 10 37
+            Set Location to 12 77
+            Set Status_Help to "Print a Label Project"
+        End_Object
+
+        Object oTypeCard is a Radio
+            Set Label to "Card"
+            Set Size to 10 27
+            Set Location to 12 151
+            Set Status_Help to "Print a Card Project"
+        End_Object
+        
+        Procedure Notify_Select_State Integer iToItem Integer iFromItem
+            Forward Send Notify_Select_State iToItem iFromItem
+            Case Begin
+                Case (iToItem=1) 
+                    Set piReportProjectType to LL_PROJECT_LABEL
+                    Case Break
+                Case (iToItem=2)
+                    Set piReportProjectType to LL_PROJECT_CARD
+                    Case Break
+                Case Else
+                    Set piReportProjectType to LL_PROJECT_LIST
+                    Case Break
+            Case End
+        End_Procedure        
+        
+    End_Object
+
+    Object oPrintButton is a Button
+        Set Label to "&Print"
+        Set Location to 38 34
+        Set Default_State to TRUE
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send StartReport "" False False
+        End_Procedure
+
+    End_Object
+
+    Object oLayoutButton is a Button
+        Set Label to "&Edit Layout"
+        Set Location to 38 88
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send EditLayout
+        End_Procedure
+
+    End_Object
+
+    Object oCancelButton is a Button
+        Set Label to "&Cancel"
+        Set Location to 38 142
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send Request_Cancel
+        End_Procedure
+
+    End_Object
+    
+    Object oListLabelReport is a cListLabelReport
+        // Uncomment this Line and set the Property to your personal License Code (perslic.txt located in your List & Label Folder)
+        // Set psLicensingInfo to "123456"
+        
+        // Set a Folder where the Layouts for the Reports are saved
+        If (ghoApplication<>0) Begin
+            Set psDefaultLayoutDirectory to (psHome(phoWorkspace(ghoApplication))+"Layouts")
+        End
+        
+        // Properties for the Preview-Object
+        Set piPreviewPanel to oPreviewPanel
+        Set piPreviewObject to (oPreview(oPreviewPanel))
+        // Use the Preview during Report Feature
+        Set pbIncrementalPreview to True
+        // Drilldown Reports are supported in this Report
+        Set pbUseDrilldown to True
+        // Expandable Regions are supported in this Report
+        Set pbUseExpandableRegions to False
+        // Set which Tables are shown in the Designer when editing a Drilldown-Report
+        Set piDrilldownDatabaseFiltering to LL_DRILLDOWNFILTERSTRATEGY_ALLOW_ALL_TABLES
+        // Support the Designer Preview based on real data
+        Set pbDesignerPreview to True
+        Set piDesignerPreviewStartMessage to msg_StartPreviewReport
+        // Support expandable Regions, interactive Sorting and Report Parameters
+        Set pbUseExpandableRegions to True
+        Set pbUseInteractiveSorting to True
+        Set pbUseReportParameter to True        
+        
+        // For augmentation
+        Procedure DefineAllFields
+            Integer iRet 
+            Handle hoDo
+            Boolean bRet
+            Forward Send DefineAllFields
+            // Add the Table USERDEFINVT when the current Project is "Item Label with userdefined Table.lbl"
+            If (Pos("ITEM LABEL WITH USERDEFINED TABLE.LBL",(uppercase(psCurrentProjectFile(Self))))<>0) Begin
+                Get LLDbAddTable "USERDEFINVT" "USERDEFINVT" to iRet                        // Add the Table "USERDEFINVT"
+                Get LlDbAddTableSortOrder "USERDEFINVT" 0 "First to last Record" to iRet    // Define two Sortorders for this Table
+                Get LlDbAddTableSortOrder "USERDEFINVT" 1 "Last to first Record" to iRet
+                Send DoDefineUserdefInvtValues                                              // And define the Fields for this Table
+            End
+            // Create a List & Label Dataobject from a .TTX File if the Project is Addresslabel with Data from TTX.lbl"
+            If (Pos("ADDRESSLABEL WITH DATA FROM TTX.LBL",(uppercase(psCurrentProjectFile(Self))))<>0) Begin
+                Get CreateLLDo "Label.ttx" to hoDo                                          // Create the DataObject from the TTX File
+            End
+            // Create a List & Label Dataobject if the Project is "Item Label with Dataobject.lbl"
+            If (Pos("ITEM LABEL WITH DATAOBJECT.LBL",(uppercase(psCurrentProjectFile(Self))))<>0) Begin
+                Get CreateLLDo "ItemLabel" to hoDo                                          // Create the DataObject from the TTX File
+                Get AddField of hoDo "ItemId" LL_TEXT to bRet                               // and add Fields to the DataObject
+                Get AddField of hoDo "Description" LL_TEXT to bRet
+                Get AddField of hoDo "Price" LL_NUMERIC to bRet
+                Get AddField of hoDo "Vendorname" LL_TEXT to bRet
+            End            
+        End_Procedure
+        
+        Procedure OnAddDictionary Integer hoDDo
+            // Don't add any Tables to List & Label if the selected Project is "Item Label with userdefined Table.lbl"
+            If (Pos("ITEM LABEL WITH USERDEFINED TABLE.LBL",(uppercase(psCurrentProjectFile(Self))))<>0) Begin
+                Procedure_Return False
+            End
+            // Don't add any Tables to List & Label if the selected Project is "Addresslabel with Data from TTX.lbl"
+            If (Pos("ADDRESSLABEL WITH DATA FROM TTX.LBL",(uppercase(psCurrentProjectFile(Self))))<>0) Begin
+                Procedure_Return False
+            End
+            // Don't add any Tables to List & Label if the selected Project is "Item Label with DataObject.lbl"
+            If (Pos("ITEM LABEL WITH DATAOBJECT.LBL",(uppercase(psCurrentProjectFile(Self))))<>0) Begin
+                Procedure_Return False
+            End            
+            // Otherwise add each Table
+            Procedure_Return True
+        End_Procedure        
+        
+        // Let the User see what's currently printed
+        Procedure OnAfterPrintRecord Integer hoDDo Integer hoParentDdo Integer iTableLevel String sRelation String sTableName
+            Integer iRet
+            If (hoDDo=oCustomer_DD) Begin
+                Get LLPrintSetBoxText ("Customer: "+(Trim(Customer.Name))) 0 to iRet
+            End
+            If (hoDDo=oOrderhea_DD) Begin
+                Get LLPrintSetBoxText ("Order: " + (String(OrderHea.Order_Number))) 0 to iRet
+            End
+            If (hoDDo=oInvt_DD) Begin
+                Get LLPrintSetBoxText ("Inventory Id: " + (Trim(Invt.Item_ID))) 0 to iRet
+            End
+        End_Procedure
+        
+        // Called when a new Table is about to Start
+        Procedure OnStartTable Integer hoDDo Integer hoParentDdo Integer iTableLevel String sRelation String sTableName
+            Integer iItem 
+            Variant[][] vData
+            
+            If (sTableName="Label") Begin                                           // Fill in the Data for the Label.ttx DataObject
+                Move 0 to iItem
+                Send Find to oCustomer_DD FIRST_RECORD Index.1                      // Loop through the Database
+                While (Found)
+                    Move Customer.Name to vData[iItem][0]                           // Fill in each Record into the vData Array of Type Variant[][]
+                    Move Customer.Address to vData[iItem][1]
+                    Move Customer.City to vData[iItem][2]
+                    Move Customer.State to vData[iItem][3]
+                    Move Customer.Zip to vData[iItem][4]
+                    
+                    Send Find to oCustomer_DD NEXT_RECORD Index.1
+                    Increment iItem
+                Loop
+                Send SetLLDoData hoDDo vData                                        // Set the Data of the DataObject to the Variant[][] Array, the DataObject is delivered with the hoDDoParameter
+            End
+            
+            If (sTableName="ItemLabel") Begin                                       // Fill in the Data for the ItemLabel DataObject
+                Move 0 to iItem
+                Send Find to oInvt_DD FIRST_RECORD Index.1                          // Loop through the Database
+                While (Found)
+                    Move Invt.Item_ID to vData[iItem][0]                            // Fill in each Record into the vData Array of Type Variant[][]
+                    Move Invt.Description to vData[iItem][1]
+                    Move Invt.Unit_Price to vData[iItem][2]
+                    Move Vendor.Name to vData[iItem][3]
+                    Send Find to oInvt_DD NEXT_RECORD Index.1
+                    Increment iItem
+                Loop
+                Send SetLLDoData hoDDo vData                                        // Set the Data of the DataObject to the Variant[][] Array, the DataObject is delivered with the hoDDoParameter
+            End            
+        End_Procedure
+        
+        // Called for the first needed Record in a table
+        Procedure OnFindFirstRecord Integer hoDDo Integer hoParentDDo Integer iTableLevel String sRelation Integer iIndex Integer bFromEnd String sTableName
+            
+            If ( (hoDDo=0) and (sTableName="USERDEFINVT") ) Begin                       // Whenever the Table is "USERDEFINVT" and the hoDDo is 0 (there can't be now Dictionary Object for this Table)
+                If (iIndex=1) ;
+                    Send Find to oInvt_DD LAST_RECORD Index.1                           // Find the first or last record depending on the Index
+                Else ;
+                    Send Find to oInvt_DD FIRST_RECORD Index.1
+                If (FindErr) ;
+                    Procedure_Return LL_REPORT_EOF                                      // No record found, return LL_REPORT_EOF
+                Send DoDefineUserdefInvtValues                                          // Define the Fields for the Table
+                Procedure_Return LL_REPORT_RECORDFOUND                                  // Tell the Report that a Record was found
+            End
+            Procedure_Return LL_REPORT_USEDEFAULT                                       // in all other Cases let the Class do the Job
+        End_Procedure
+        
+        // Called whenever a next record is needed
+        Procedure OnFindNextRecord Integer hoDDo Integer hoParentDDo Integer iTableLevel String sRelation Integer iFindMode Integer iIndex String sTableName
+            
+            If ( (hoDDo=0) and (sTableName="USERDEFINVT") ) Begin                       // Whenever the Table is "USERDEFINVT" and the hoDDo is 0 (there can't be now Dictionary Object for this Table)
+                If (iIndex=1) ;
+                    Send Find to oInvt_DD LT Index.1                                    // Find the next or previous record depending on the Index
+                Else ;
+                    Send Find to oInvt_DD GT Index.1
+                If (FindErr) ;
+                    Procedure_Return LL_REPORT_EOF                                      // No more records found, return LL_REPORT_EOF
+                Send DoDefineUserdefInvtValues                                          // Define the Fields for the Table
+                Procedure_Return LL_REPORT_RECORDFOUND                                  // Tell the Report that a Record was found
+            End
+            Procedure_Return LL_REPORT_USEDEFAULT                                       // in all other Cases let the Class do the Job
+            
+        End_Procedure
+        
+        // Helper Procedure for defining all Fields for the "USERDEFINVT" Table
+        Procedure DoDefineUserdefInvtValues
+            Set LLValue "USERDEFINVT.MyItemId" LL_TEXT to (trim(Invt.Item_ID))
+            Set LLValue "USERDEFINVT.MyItemDescription" LL_TEXT to (trim(Invt.Description))
+            Set LLValue "USERDEFINVT.MyItemPrice" LL_NUMERIC to (trim(Invt.Unit_Price))
+            Set LLValue "USERDEFINVT.MyVendor" LL_TEXT to (Trim(Vendor.Name))
+        End_Procedure        
+        
+    End_Object
+
+    Procedure StartReport String sFile Boolean bToPreview Boolean bExportPdf
+    	Integer iRet iDest iProjectType iOption
+        Handle hoLL hoMain hWnd
+        String sExt sExportFile 
+        
+        Move oListLabelReport to hoLL
+        // Find a Parent-Window for List & Label
+        Get SuggestedParentWindowHandle of hoLL (Self) to hWnd
+        Get LLJobOpen of hoLL to iRet
+        If (Trim(sFile)<>"") Begin
+            Move (Right(Uppercase(Trim(sFile)),4)) to sExt
+            Move LL_PROJECT_LIST to iProjectType
+            If (sExt=".CRD") ;
+                Move LL_PROJECT_CARD to iProjectType
+            If (sExt=".LBL") ;
+                Move LL_PROJECT_LABEL to iProjectType
+        End
+        Else Begin
+            // Let the User select the Layout
+            Get piReportProjectType to iProjectType
+            Get LLSelectFileDlgTitleEx of hoLL hWnd "Select Layout" iProjectType to sFile
+        End
+        If (trim(sFile)="") Begin
+            Get LLJobClose of hoLL to iRet
+            Procedure_Return
+        End
+        // Start the Report
+        Move LL_PRINT_USERSELECT to iOption
+        If (bToPreview) ;
+            Move LL_PRINT_PREVIEW to iOption
+        If (bExportPdf) ;
+            Move LL_PRINT_EXPORT to iOption
+        Get LLPrintWithBoxStart of hoLL iProjectType sFile iOption LL_BOXTYPE_EMPTYABORT hWnd "Printing Records..." to iRet
+        If (iRet<>0) Begin
+            Get LLPrintEnd of hoLL to iRet
+            Get LLJobClose of hoLL to iRet
+            Procedure_Return
+        End
+
+        // If Export is selected
+        If (bExportPdf) Begin
+            // Set PDF as Export Format (other Values can be "HTML", "RTF", "XML" "XLS"...)
+            Get LLPrintSetOptionString of hoLL LL_PRNOPTSTR_EXPORT "PDF" to iRet
+            // Set Options for the PDF Export
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Title"                        "Titel" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Subject"                      "Subject" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Keywords"                     "Keywords" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.EncryptFile"       "0" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.EnablePrinting"    "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.EnableChanging"    "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.EnableCopying"     "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.Level"             "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.OwnerPassword"                "" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.UserPassword"                 "" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.FontMode"                     "5" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.ExcludedFonts"                "" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.CompressStreamMethod"         "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.JPEGQuality"                  "2" to iRet
+            // Show the Result of the Export 
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "Export.ShowResult"                "1" to iRet
+            // Set a Filename for the Export
+            Move (trim(sFile)) to sExportFile
+            Move (Left(sExportFile,(Length(sFile)-3))) to sExportFile
+            Move (sExportFile + "PDF") to sExportFile
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "Export.File"                      sExportFile to iRet
+        End
+        // If not directly print to Preview let the User set Report Options
+        If (not(bToPreview)) Begin
+            Get LLPrintOptionsDialog of hoLL hWnd "" to iRet
+            If (iRet=LL_ERR_USER_ABORTED) Begin
+                Get LLPrintEnd of hoLL to iRet
+                Get LLJobClose of hoLL to iRet
+                Procedure_Return
+            End        
+        End
+
+        // Remember the Print Destination
+    	Get LLPrintGetOption of hoLL LL_PRNOPT_PRINTDLG_DEST to iDest
+    	// Output the Report
+        Get DoPrintList of hoLL to iRet
+        Get LLPrintEnd of hoLL to iRet
+        // If Preview show it, let the Class cleanup some stuff and delete the temporary Files
+        If (iDest=LL_DESTINATION_PRV) Begin
+            Get LLPreviewDisplay of hoLL sFile "" hWnd to iRet
+            Get LLPreviewDeleteFiles of hoLL sFile "" to iRet
+        End
+    	Get LLJobClose of hoLL to iRet        
+    End_Procedure
+    
+    Procedure EditLayout
+        Integer iRet iProjectType
+        String sFile
+        Handle hoLL hWnd hoMain
+        
+        Move oListLabelReport to hoLL
+        Get SuggestedParentWindowHandle of hoLL (Self) to hWnd
+        Get piReportProjectType to iProjectType
+        Get LLJobOpen of hoLL to iRet
+        Get LLSelectFileDlgTitleEx of hoLL hWnd "Select Layout" (iProjectType ior LL_FILE_ALSONEW) to sFile
+        If (trim(sFile)<>"") begin
+            Get LLDefineLayout of hoLL hWnd "Edit Layout" iProjectType sFile to iRet
+        End
+        Get LLJobClose of hoLL to iRet        
+    End_Procedure
+    
+    On_Key Key_Alt+Key_P Send KeyAction of oPrintButton
+    On_Key Key_Alt+Key_E Send KeyAction of oLayoutButton
+    On_Key Key_Alt+Key_C Send KeyAction of oCancelButton
+    
+    #IF (!@<140)
+    // Correct the Client Size if the View is compiled with VDF 12.0 or 12.1
+    Procedure DoCorrectClientSize 
+        Integer iSize
+        Get Size to iSize
+        Set size to (hi(iSize)+22) (low(iSize)+12)
+    End_Procedure
+    Send DoCorrectClientSize
+    #ENDIF    
+
+End_Object
+
+Procedure DoPrintReportToPreview String sFile
+    Move (psHome(phoWorkspace(ghoApplication))+"Layouts\"+sFile) to sFile
+    Send Activate_oLLReportsWithInternalPreview
+    Send StartReport to oLLReportsWithInternalPreview sFile True False
+End_Procedure
+
+Procedure DoExportReportToPdf String sFile
+    Move (psHome(phoWorkspace(ghoApplication))+"Layouts\"+sFile) to sFile
+    Send Activate_oLLReportsWithInternalPreview
+    Send StartReport to oLLReportsWithInternalPreview sFile False True
+End_Procedure

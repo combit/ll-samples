@@ -1,0 +1,20 @@
+Object
+
+    // Uncomment this Line and set the Property to your personal License Code (perslic.txt located in your List & Label Folder)
+    //Set psLicensingInfo to "123456"
+    
+    If (ghoApplication<>0) Begin
+        Set psDefaultLayoutDirectory to (psProgramPath(phoWorkspace(ghoApplication)))
+    End
+    
+    // Properties for the Preview-Object
+    Set piPreviewPanel to oPreviewPanel
+    Set piPreviewObject to (oPreview(oPreviewPanel))
+    Set pbIncrementalPreview to True
+    
+    // For augmentation
+    Procedure DefineAllFields
+        Forward Send DefineAllFields
+    End_Procedure
+
+End_Object

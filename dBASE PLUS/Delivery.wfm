@@ -1,0 +1,266 @@
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Erstellt am 03.09.2018
+//
+parameter bModal
+local f
+f = new DeliveryForm()
+if (bModal)
+   f.mdi = false // Nicht-MDI festlegen
+   f.ReadModal()
+else
+   f.Open()
+endif
+
+class DeliveryForm of FORM
+   set procedure to Orders.dmd additive
+   with (this)
+      height = 19.2
+      left = 17.1429
+      top = 1.7727
+      width = 103.1429
+      text = "Delivery note"
+      autoCenter = true
+   endwith
+
+   this.DATAMODREF1 = new DATAMODREF()
+   this.DATAMODREF1.parent = this
+   with (this.DATAMODREF1)
+      filename = "Orders.dmd"
+      dataModClass = "OrdersDATAMODULE"
+      active = true
+      left = 58.0
+      top = 4.5
+   endwith
+
+   this.GRID1 = new GRID(this)
+   with (this.GRID1)
+      onLeftDblClick = class::GRID1_ONLEFTDBLCLICK
+      dataLink = form.datamodref1.ref.orders1.rowset
+      columns["COLUMN1"] = new GRIDCOLUMN(form.GRID1)
+      columns["COLUMN1"].dataLink = form.datamodref1.ref.orders1.rowset.fields["orderid"]
+      columns["COLUMN1"].editorType = 1	// Eingabefeld
+      columns["COLUMN1"].width = 10.0
+      columns["COLUMN2"] = new GRIDCOLUMN(form.GRID1)
+      columns["COLUMN2"].dataLink = form.datamodref1.ref.customers1.rowset.fields["name"]
+      columns["COLUMN2"].editorType = 1	// Eingabefeld
+      columns["COLUMN2"].width = 30.0
+      columns["COLUMN3"] = new GRIDCOLUMN(form.GRID1)
+      columns["COLUMN3"].dataLink = form.datamodref1.ref.orders1.rowset.fields["orderdate"]
+      columns["COLUMN3"].editorType = 1	// Eingabefeld
+      columns["COLUMN3"].width = 11.0
+      columns["COLUMN4"] = new GRIDCOLUMN(form.GRID1)
+      columns["COLUMN4"].dataLink = form.datamodref1.ref.orders1.rowset.fields["ordertext"]
+      columns["COLUMN4"].editorType = 1	// Eingabefeld
+      columns["COLUMN4"].width = 30.0
+      columns["COLUMN5"] = new GRIDCOLUMN(form.GRID1)
+      columns["COLUMN5"].dataLink = form.datamodref1.ref.orders1.rowset.fields["status"]
+      columns["COLUMN5"].editorType = 1	// Eingabefeld
+      columns["COLUMN5"].width = 5.0
+      columns["COLUMN6"] = new GRIDCOLUMN(form.GRID1)
+      columns["COLUMN6"].dataLink = form.datamodref1.ref.orders1.rowset.fields["shippingdate"]
+      columns["COLUMN6"].editorType = 1	// Eingabefeld
+      columns["COLUMN6"].width = 10.0
+      with (columns["COLUMN1"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN1"].headingControl)
+         value = "Order"
+      endwith
+
+      with (columns["COLUMN2"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN2"].headingControl)
+         value = "Name"
+      endwith
+
+      with (columns["COLUMN3"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN3"].headingControl)
+         value = "OrderDate"
+      endwith
+
+      with (columns["COLUMN4"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN4"].headingControl)
+         value = "OrderText"
+      endwith
+
+      with (columns["COLUMN5"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN5"].headingControl)
+         value = "St."
+      endwith
+
+      with (columns["COLUMN6"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN6"].headingControl)
+         value = "Shipped"
+      endwith
+
+      cellHeight = 0.8
+      rowSelect = true
+      multiSelect = true
+      allowAddRows = false
+      height = 12.5
+      left = 0.0
+      top = 0.0
+      width = 103.0
+   endwith
+
+   this.GRID2 = new GRID(this)
+   with (this.GRID2)
+      dataLink = form.datamodref1.ref.orderdetails1.rowset
+      columns["COLUMN1"] = new GRIDCOLUMN(form.GRID2)
+      columns["COLUMN1"].dataLink = form.datamodref1.ref.article1.rowset.fields["articlenumber"]
+      columns["COLUMN1"].editorType = 1	// Eingabefeld
+      columns["COLUMN1"].width = 10.0
+      columns["COLUMN2"] = new GRIDCOLUMN(form.GRID2)
+      columns["COLUMN2"].dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["name"]
+      columns["COLUMN2"].editorType = 1	// Eingabefeld
+      columns["COLUMN2"].width = 56.0
+      columns["COLUMN3"] = new GRIDCOLUMN(form.GRID2)
+      columns["COLUMN3"].dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["quantity"]
+      columns["COLUMN3"].editorType = 1	// Eingabefeld
+      columns["COLUMN3"].width = 10.0
+      columns["COLUMN4"] = new GRIDCOLUMN(form.GRID2)
+      columns["COLUMN4"].dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["price"]
+      columns["COLUMN4"].editorType = 1	// Eingabefeld
+      columns["COLUMN4"].width = 10.0
+      columns["COLUMN5"] = new GRIDCOLUMN(form.GRID2)
+      columns["COLUMN5"].dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["totalprice"]
+      columns["COLUMN5"].editorType = 1	// Eingabefeld
+      columns["COLUMN5"].width = 10.0
+      with (columns["COLUMN1"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN1"].headingControl)
+         value = "Number"
+      endwith
+
+      with (columns["COLUMN2"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN2"].headingControl)
+         value = "Name"
+      endwith
+
+      with (columns["COLUMN3"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN3"].headingControl)
+         value = "Quantity"
+      endwith
+
+      with (columns["COLUMN4"].editorControl)
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN4"].headingControl)
+         value = "Price"
+      endwith
+
+      with (columns["COLUMN5"].editorControl)
+         picture = "999.99"
+         function = "J"
+         validErrorMsg = "Ungültige Eingabe "
+      endwith
+
+      with (columns["COLUMN5"].headingControl)
+         value = "Tot.Price"
+      endwith
+
+      cellHeight = 0.8
+      rowSelect = true
+      allowAddRows = false
+      height = 6.5
+      left = 0.0
+      top = 12.5
+      width = 103.0
+   endwith
+
+   this.rowset = this.datamodref1.ref.article1.rowset
+
+   FUNCTION Init(lDesign)
+   form.LLDesign=lDesign
+   DO CASE
+      CASE TYPE("_app.oInfo.Language")=="C" .AND. _app.oInfo.Language="deutsch"
+         form.text="Lieferschein"
+         form.Grid1.columns["Column1"].headingControl.value="BestellNr"
+         form.Grid1.columns["Column2"].headingControl.value="Kunde"
+         form.Grid1.columns["Column3"].headingControl.value="Best.Datum"
+         form.Grid1.columns["Column4"].headingControl.value="Text"
+         form.Grid1.columns["Column5"].headingControl.value="St."
+         form.Grid1.columns["Column6"].headingControl.value="Versandt"
+         form.Grid1.speedTip="Bitte markieren Sie einen oder mehrere Einträge. Zum Drucken bitte doppelklicken..."
+         form.Grid2.columns["Column1"].headingControl.value="Art.Nr"
+         form.Grid2.columns["Column2"].headingControl.value="Name"
+         form.Grid2.columns["Column3"].headingControl.value="Anzahl"
+         form.Grid2.columns["Column4"].headingControl.value="Preis"
+         form.Grid2.columns["Column5"].headingControl.value="Ges.Preis"
+      OTHERWISE
+         form.text="Delivery note"
+         form.Grid1.columns["Column1"].headingControl.value="Order"
+         form.Grid1.columns["Column2"].headingControl.value="Customer"
+         form.Grid1.columns["Column3"].headingControl.value="OrderDate"
+         form.Grid1.columns["Column4"].headingControl.value="OrderText"
+         form.Grid1.columns["Column5"].headingControl.value="St."
+         form.Grid1.columns["Column6"].headingControl.value="Shipped"
+         form.Grid1.speedTip="Please mark one or more items and doubleclick on the grid to print the delivery list..."
+         form.Grid2.columns["Column1"].headingControl.value="Number"
+         form.Grid2.columns["Column2"].headingControl.value="Name"
+         form.Grid2.columns["Column3"].headingControl.value="Quantity"
+         form.Grid2.columns["Column4"].headingControl.value="Price"
+         form.Grid2.columns["Column5"].headingControl.value="Tot.Price"
+   ENDCASE
+   RETURN
+
+   FUNCTION GRID1_onLeftDblClick(flags,col,row)
+   CLASS::OpenReport(BITSET(flags,3))
+   RETURN
+
+   FUNCTION OpenReport(lBugDemo)
+   LOCAL X
+   LOCAL r
+
+   //E: Add selection
+   //D: Ausgewählte Datensätze übernehmen
+   aSelected=form.Grid1.selected()
+   IF EMPTY(aSelected)
+      aSelected=new ARRAY()
+   ENDIF
+   //E: Always select current record
+   //D: Aktuellen Datensatz immer auswählen
+   aSelected.add(form.dataModRef1.ref.Orders1.rowset.bookmark())
+   IF aSelected.size>0
+      form.dataModRef1.ref.Orders1.rowset.notifyControls=false
+      SET PROCEDURE TO Delivery.REP ADDITIVE
+      r=new DeliveryReport()
+      r.dataModRef1.ref.Orders1.rowset.SelectedRecords=new ARRAY()
+      FOR X=1 TO aSelected.size
+         form.dataModRef1.ref.Orders1.rowset.goto(aSelected[X])
+         r.dataModRef1.ref.Orders1.rowset.SelectedRecords.add((form.dataModRef1.ref.Orders1.rowset.fields["OrderID"].value))
+      NEXT
+      r.Init((form.LLDesign),lBugDemo)
+      r.render()
+      form.dataModRef1.ref.Orders1.rowset.notifyControls=true
+      form.dataModRef1.ref.Orders1.rowset.goto((aSelected[1]))
+   ENDIF
+   RETURN
+
+endclass
+

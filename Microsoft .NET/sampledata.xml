@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Invoices>
+	<Invoice>
+		<ShipAddress>Untere Laube 30</ShipAddress>
+		<ShipCity>Konstanz</ShipCity>
+		<ShipPostalCode>78462</ShipPostalCode>
+		<ShipCountry>Germany</ShipCountry>
+		<CustomerID>00001</CustomerID>
+		<CustomerName>combit</CustomerName>
+		<Address>Untere Laube 30</Address>
+		<City>Konstanz</City>
+		<PostalCode>78462</PostalCode>
+		<Country>Germany</Country>
+		<OrderID>10692</OrderID>
+		<OrderDate>2014-10-03</OrderDate>
+		<ShippedDate>2014-10-04</ShippedDate>
+		<ShipperName>DHL</ShipperName>
+		<Items>
+			<ProductID>63</ProductID>
+			<ProductName>List &amp; Label Enterprise</ProductName>
+			<UnitPrice>1800</UnitPrice>
+			<Quantity>20</Quantity>
+		</Items>
+		<Items>
+			<ProductID>12</ProductID>
+			<ProductName>List &amp; Label Standard</ProductName>
+			<UnitPrice>650</UnitPrice>
+			<Quantity>10</Quantity>
+		</Items>		
+	</Invoice>
+	<Invoice>
+		<ShipAddress>Jacob-Burckhardt-Str. 35</ShipAddress>
+		<ShipCity>Konstanz</ShipCity>
+		<ShipPostalCode>78464</ShipPostalCode>
+		<ShipCountry>Germany</ShipCountry>
+		<CustomerID>43671</CustomerID>
+		<CustomerName>Max Mustermann</CustomerName>
+		<Address>Rheingutstr. 30</Address>
+		<City>Konstanz</City>
+		<PostalCode>78462</PostalCode>
+		<Country>Germany</Country>
+		<OrderID>12876</OrderID>
+		<OrderDate>2014-09-29</OrderDate>
+		<ShippedDate>2014-09-30</ShippedDate>
+		<ShipperName>Hermes</ShipperName>
+		<Items>
+			<ProductID>18</ProductID>
+			<ProductName>List &amp; Label Professional</ProductName>
+			<UnitPrice>1200</UnitPrice>
+			<Quantity>3</Quantity>
+		</Items>
+	</Invoice>
+</Invoices>

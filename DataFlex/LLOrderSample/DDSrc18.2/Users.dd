@@ -1,0 +1,42 @@
+Use  Windows.pkg           // Basic Definitions
+Use  DataDict.pkg          // DataDictionary Class Definition
+Use  DDvalTbl.pkg          // Validation Table Class Definitions
+
+Open Users
+
+
+Class Users_DataDictionary  is a DataDictionary
+
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+
+        Set Main_File To Users.File_Number
+
+        Set Foreign_Field_Option DD_KEYFIELD DD_AUTOFIND to True
+        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_INDEXFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+
+        Set Field_Option Field Users.Loginname DD_AUTOFIND to True
+        Set Field_Option Field Users.Loginname DD_CAPSLOCK to True
+
+        Set Field_Option Field Users.Password DD_CAPSLOCK to True
+
+
+        Set Field_Option Field Users.Full_Name DD_REQUIRED to True
+
+        Set Field_Option Field Users.Last_Login DD_DISPLAYONLY to True
+
+    End_Procedure    // Construct_Object
+
+
+    Procedure Field_Defaults
+        Forward Send Field_Defaults
+    End_Procedure    // Field_Defaults
+
+End_Class    // Users_DataDictionary
+

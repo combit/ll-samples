@@ -1,0 +1,8 @@
+[Properties]
+Version=17.0
+[WorkspacePaths]
+ConfigFile=.\Programs\Config17.0.ws
+[Projects]
+Project0=Order.src
+[Libraries]
+Lib2=..\LLLibrary24.0\LL24-VDF17.0.sws

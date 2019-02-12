@@ -1,0 +1,144 @@
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Revision: 03.09.2018
+//
+parameter bModal
+local f
+f = new EventsADOForm()
+if (bModal)
+   f.mdi = false // Nicht-MDI festlegen
+   f.ReadModal()
+else
+   f.Open()
+endif
+
+class EventsADOForm of FORM
+   with (this)
+      height = 4.0455
+      left = 13.5714
+      top = 1.8182
+      width = 39.1429
+      text = "Event-Kalender"
+      autoCenter = true
+   endwith
+
+   this.LINE1 = new LINE(this)
+   with (this.LINE1)
+      left = 1.0
+      right = 38.0
+      top = 2.0
+      bottom = 2.0
+      width = 1
+   endwith
+
+   this.RADIOBUTTON1 = new RADIOBUTTON(this)
+   with (this.RADIOBUTTON1)
+      height = 1.0909
+      left = 1.0
+      top = 0.5
+      width = 17.0
+      text = "Fortlaufend"
+      group = true
+      value = true
+   endwith
+
+   this.RADIOBUTTON2 = new RADIOBUTTON(this)
+   with (this.RADIOBUTTON2)
+      height = 1.0909
+      left = 21.0
+      top = 0.5
+      width = 18.0
+      text = "Monatlich"
+   endwith
+
+   this.PB_PRINT = new PUSHBUTTON(this)
+   with (this.PB_PRINT)
+      onClick = class::PB_PRINT_ONCLICK
+      height = 1.0909
+      left = 12.0
+      top = 2.5
+      width = 15.2857
+      text = "Start"
+   endwith
+
+   FUNCTION PB_PRINT_onClick
+   form.LLDesign=false
+   CLASS::OpenReport()
+   RETURN
+   FUNCTION OpenReport
+   LOCAL cSQL
+   LOCAL r
+   LOCAL cStart
+   LOCAL cEnd
+   LOCAL q
+   LOCAL dMin
+   LOCAL dMax
+
+   q=new ADOQUERY()
+   q.database=_app.MainADODatabase
+   q.sql="SELECT MAX(EndDate) MAX_EndDate, MIN(StartDate) MIN_StartDate FROM Events"
+   q.active=true
+   q.rowset.first()
+   IF q.rowset.endOfSet
+      IF _app.Language="DE"
+         MSGBOX("Keine Daten vorhanden")
+      ELSE
+         MSGBOX("Table contains no data")
+      ENDIF
+   ELSE
+      dMin=q.rowset.fields["MIN_StartDate"].value
+      dMax=q.rowset.fields["MAX_EndDate"].value
+      cSQL ="SELECT Events.StartDate, Events.EndDate, Events.Reason, Customers.Name, Events.CustomerID "
+      cSQL+=" FROM Customers"
+      cSQL+=" INNER JOIN Events"
+      cSQL+=" ON (Customers.CustomerID = Events.CustomerID)"  
+      cSQL+=" ORDER BY Customers.Name, Events.StartDate"
+      SET PROCEDURE TO ..\LL24.CC ADDITIVE
+      r=new LL24InterfaceSample()
+      r.query1=new ADOQUERY()
+      r.query1.database = _app.MainADODatabase
+      r.query1.sql=cSQL
+      r.query1.active=true
+      r.rowset=r.query1.rowset
+      r.query1.parent=r
+      //Berichtscontainer verwenden, um Gantt-Chart zu ermöglichen
+      //Use reportcontainer object to activate gantt-chart 
+      r.ReportContainer=true
+      r.Design=form.LLDesign
+      r.Extension=".LST"
+      r.UserVars.add({"C_Language",(_app.language),           "CHARACTER"})
+      r.UserVars.add({"C_Monthly", (form.Radiobutton2.value), "LOGICAL"})
+      r.UserVars.add({"C_MinDate", CLASS::GetBeginMonth(dMin),"DATE"})
+      r.UserVars.add({"C_MaxDate", CLASS::GetEndMonth(dMax),  "DATE"})
+      r.Filename="Events"
+      r.render()
+      r.query1.active=false
+   ENDIF
+   RETURN
+   
+   FUNCTION GetBeginMonth(dDate)
+   LOCAL dBegin
+   dBegin=dDate-DAY(dDate)+1
+   RETURN dBegin
+
+   FUNCTION GetEndMonth(dDate)
+   LOCAL dEnd
+   dEnd=CLASS::GetBeginMonth(CLASS::GetBeginMonth(dDate)+31)
+   RETURN dEnd
+
+   FUNCTION Init(lDesign)
+   form.LLDesign=lDesign
+   DO CASE
+      CASE TYPE("_app.oInfo.Language")=="C" .AND. _app.oInfo.Language="deutsch"
+         form.text             ="Event-Kalender"
+         form.Radiobutton1.text="Fortlaufend"
+         form.Radiobutton2.text="Monatlich"
+      OTHERWISE
+         form.text             ="Event-calendar"
+         form.Radiobutton1.text="Continued"
+         form.Radiobutton2.text="Monthly"
+   ENDCASE 
+   RETURN
+
+endclass
+

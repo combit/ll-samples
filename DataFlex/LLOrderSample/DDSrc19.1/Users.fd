@@ -1,0 +1,7 @@
+#REPLACE FILE19 Users
+#REPLACE Users.Recnum |FN19,0
+#REPLACE Users.LoginName |FS19,1
+#REPLACE Users.Password |FS19,2
+#REPLACE Users.Rights |FN19,3
+#REPLACE Users.Full_Name |FS19,4
+#REPLACE Users.Last_Login |FD19,5

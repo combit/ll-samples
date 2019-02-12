@@ -1,0 +1,27 @@
+[PROJECT]
+    DEBUG         = yes
+    VERSION       = 2.1
+    LIB           = dll
+    PROJECT.XPJ
+
+[PROJECT.XPJ]
+    ..\SIMPLE1.EXE
+
+[..\SIMPLE1.EXE]
+    COMPILE       = xpp /w /wi /wl /wu
+    COMPILE_FLAGS = /q
+    DEBUG_SAVE    = yes
+    GUI           = yes
+    LINKER        = alink
+    LINK_FLAGS    =
+    RC_COMPILE    = arc
+    RC_FLAGS      = -v
+    OBJ_DIR       = Simple1 Example\Objects
+// $START-AUTODEPEND
+    LULDEMO.obj
+    LULMENU.obj
+// $STOP-AUTODEPEND
+    dsListLabel24.lib
+    Simple1 Example\LULDEMO.PRG
+    Simple1 Example\LULMENU.PRG
+

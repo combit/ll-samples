@@ -1,0 +1,126 @@
+﻿<Window x:Class="LLViewer.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:combit.ListLabel24.Wpf;assembly=combit.ListLabel24.Wpf"
+        mc:Ignorable="d"
+        
+        Title="List &amp; Label VB.NET WPF DataBinding Sample" MinHeight="750" Height="750" MinWidth="803" Width="803" FontSize="16" FontFamily="Segoe UI Light" Icon="ll.ico">
+
+    <DockPanel>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="45" Margin="20,10,0,0" TextWrapping="Wrap" Text="List &amp; Label VB.NET WPF DataBinding Sample" VerticalAlignment="Top" Width="763" FontSize="25" Padding="10,0,0,0" DockPanel.Dock="Top"/>
+        <TabControl x:Name="tabControl" MaxHeight="140" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="14" BorderThickness="0" Margin="13,0,19,0" BorderBrush="Transparent"  Background="Transparent" DockPanel.Dock="Top" >
+            <TabItem Header="DataSet" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="40" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" FontSize="12"><Run Text="Bindet die Komponente an ein dynamisch erstelltes DataSet-Objekt mit DataRelations."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="41" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343" FontSize="12"><Run Text="Binds the component to a dynamically created DataSet containing DataRelations."/><LineBreak/><Run/></TextBlock>
+                    <Button x:Name="print_DataSet" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_DataSet_Click"/>
+                    <Button x:Name="design_DataSet" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_DataSet_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="XML" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="12"><Run Text="Bindet die Komponente an die Beispiel XML-Datei."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to the sample XML file."/><LineBreak/><Run/></TextBlock>
+                    <Button x:Name="print_XML" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_XML_Click"/>
+                    <Button x:Name="design_XML" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_XML_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="DataViewManager" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="12"><Run Text="Bindet die Komponente an ein DataViewManager-Objekt. Sie können einen Filter für den Firmennamen wählen."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="36" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334" FontSize="12"><Run Text="Binds the component to a DataView object. Choose a filter for the company name."/><LineBreak/><Run/></TextBlock>
+                    <Button x:Name="print_DataViewManager" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_DataViewManager_Click"/>
+                    <Button x:Name="design_DataViewManager" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_DataViewManager_Click"/>
+                    <ComboBox x:Name="cbCustomerNames" HorizontalAlignment="Left" Height="27" Margin="0,72.38,427,0" VerticalAlignment="Top" Width="298" RenderTransformOrigin="2,3.095"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="DataView" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="12"><Run Text="Bindet die Komponente an ein DataView-Objekt."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to a DataView object."/><LineBreak/><Run/></TextBlock>
+                    <Button x:Name="print_DataView" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_DataView_Click"/>
+                    <Button x:Name="design_DataView" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_DataView_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="DbCommand" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="12"><Run Text="Bindet die Komponente an ein OleDbCommand-Objekt."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to an OleDbCommand object."/><LineBreak/><Run/></TextBlock>
+                    <Button x:Name="print_DbCommand" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_Reader_Click"/>
+                    <Button x:Name="design_DbCommand" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_Reader_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="DataTable" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="12"><Run Text="Bindet die Komponente an ein DataTable-Objekt."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to a DataTable object."/><LineBreak/><Run/></TextBlock>
+                    <Button x:Name="print_DataTable" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_DataTable_Click"/>
+                    <Button x:Name="design_DataTable" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_DataTable_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Generic List" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="12"><Run Text="Bindet die Komponente an eine generische Liste."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to a generic list."/><LineBreak/><Run/></TextBlock>
+                    <Button x:Name="print_GenericList" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_GenericList_Click"/>
+                    <Button x:Name="design_GenericList" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_GenericList_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="SQL Server" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="33" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316" FontSize="12"><Run Text="Bindet die Komponente an einen SqlConnectionDataProvider."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to a SqlConnectionDataProvider."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,75.38,735,0" TextWrapping="Wrap" Text="Url:" VerticalAlignment="Top" Width="21" FontSize="12"/>
+                    <TextBox x:Name="tbConnectionString" TextWrapping="NoWrap" Text="Data Source=&lt;ComputerName&gt;\SQLEXPRESS;Initial Catalog=&lt;DatabaseName&gt;;Integrated Security=True" Margin="24,74.545,251,10" FontSize="12"/>
+                    <Button x:Name="print_SQL" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_SQL_Click"/>
+                    <Button x:Name="design_SQL" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_SQL_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="OData" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="12"><Run Text="Bindet die Komponente an einen ODataDataProvider."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to an ODataDataProvider."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,75.38,735,0" TextWrapping="Wrap" Text="Url:" VerticalAlignment="Top" Width="21" FontSize="12"/>
+                    <TextBox x:Name="odataUrlTb" TextWrapping="NoWrap" Text="http://services.odata.org/V3/Northwind/Northwind.svc/" Margin="24,74.545,251,10" FontSize="12"/>
+                    <Button x:Name="print_OData" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_OData_Click"/>
+                    <Button x:Name="design_OData" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_OData_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="REST" Background="Transparent">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,18.38,728,0" TextWrapping="Wrap" Text="D:" VerticalAlignment="Top" Width="19" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="34,18.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="12"><Run Text="Bindet die Komponente an einen RestDataProvider."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to a RestDataProvider."/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,75.38,735,0" TextWrapping="Wrap" Text="Url:" VerticalAlignment="Top" Width="21" FontSize="12"/>
+                    <TextBox x:Name="restUrlTb" TextWrapping="NoWrap" Text="http://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KONSTANZ/W/measurements.json?start=P30D" Margin="24,74.545,251,10" FontSize="12"/>
+                    <Button x:Name="print_REST" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="print_REST_Click"/>
+                    <Button x:Name="design_REST" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="design_REST_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <ProgressBar MaxHeight="16" Width="144" Name="progressBar1" Visibility="Hidden" DockPanel.Dock="Top" />
+        <local:EnhancedViewerControl Name="enhancedPreviewControl" DockPanel.Dock="Bottom" Margin="2"/>
+    </DockPanel>
+
+</Window>

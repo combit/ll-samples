@@ -1,0 +1,28 @@
+[PROJECT]
+    DEBUG         = yes
+    VERSION       = 2.0
+    LIB           = dll
+    PROJECT.XPJ
+
+[PROJECT.XPJ]
+    ..\xclSIMPLEArray.EXE
+
+[..\xclSIMPLEArray.EXE]
+    COMPILE       = xpp /w /wi /wl /wu
+    COMPILE_FLAGS = /q
+    DEBUG_SAVE    = yes
+    GUI           = yes
+    LINKER        = alink
+    LINK_FLAGS    =
+    RC_COMPILE    = arc
+    RC_FLAGS      = -v
+    OBJ_DIR       = xclSimpleArray Example\Objects
+// $START-AUTODEPEND
+    LULDEMO.obj
+    LULMENU.obj
+// $STOP-AUTODEPEND
+    xclListLabel24.lib
+    xclSimpleArray Example\LULDEMO.PRG
+    xclSimpleArray Example\LULMENU.PRG
+
+

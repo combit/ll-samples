@@ -1,0 +1,4 @@
+#REPLACE FILE50 FlexErrs
+#REPLACE FlexErrs.Recnum |FN50,0
+#REPLACE FlexErrs.Error_Descr |FS50,1
+#REPLACE FlexErrs.Note |FS50,2

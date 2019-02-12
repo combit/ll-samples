@@ -1,0 +1,48 @@
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Erstellt am 03.09.2013
+//
+class SubReportDATAMODULE of DATAMODULE
+   this.CATEGORIES1 = new QUERY()
+   this.CATEGORIES1.parent = this
+   with (this.CATEGORIES1)
+      left = 65.0
+      top = 261.0
+      width = 114.0
+      height = 132.0
+      sql = 'Select * from "Data\Categories"'
+      active = true
+   endwith
+   with (this.CATEGORIES1.rowset)
+      onNavigate = CLASS::CATEGORIES1_ONNAVIGATE
+   endwith
+
+   this.ARTICLE1 = new QUERY()
+   this.ARTICLE1.parent = this
+   with (this.ARTICLE1)
+      left = 254.0
+      top = 266.0
+      width = 114.0
+      height = 132.0
+      sql = 'Select * FROM "Data\Article"'
+      active = true
+   endwith
+
+   with (this.ARTICLE1.rowset)
+      indexName = "CategorieID"
+      masterRowset = form.categories1.rowset
+      masterFields = "CategorieID"
+   endwith
+
+
+   FUNCTION CATEGORIES1_onNavigate(type, nRows)
+   IF this.endOfSet
+      this.parent.parent.ARTICLE1.rowset.setRange("XXX")
+   ELSE
+      this.parent.parent.ARTICLE1.rowset.setRange((this.fields["CategorieID"].value))
+   ENDIF
+   this.parent.parent.ARTICLE1.rowset.first() 
+   RETURN
+
+endclass
+

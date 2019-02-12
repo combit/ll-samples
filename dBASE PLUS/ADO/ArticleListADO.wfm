@@ -1,0 +1,136 @@
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Revision: 03.09.2018
+//
+parameter bModal
+local f
+f = new ArticlelistADOForm()
+if (bModal)
+   f.mdi = false // Nicht-MDI festlegen
+   f.ReadModal()
+else
+   f.Open()
+endif
+
+class ArticlelistADOForm of FORM
+   with (this)
+      height = 7.0
+      left = 13.8571
+      top = 1.5909
+      width = 40.5714
+      text = "Articlelist"
+      autoCenter = true
+   endwith
+
+   this.ARTICLE = new ADOQUERY(this)
+   with (this.ARTICLE)
+      left = 26.0
+      top = 2.0
+      database = _app.MainADODatabase
+      sql = "SELECT * FROM Article"
+      active = true
+   endwith
+
+   this.LINE1 = new LINE(this)
+   with (this.LINE1)
+      left = 1.0
+      right = 39.0
+      top = 5.0
+      bottom = 5.0
+      width = 1
+   endwith
+
+   this.TEXTLABEL1 = new TEXTLABEL(this)
+   with (this.TEXTLABEL1)
+      height = 1.0
+      left = 1.0
+      top = 0.5
+      width = 38.0
+      text = ""
+   endwith
+
+   this.RADIOBUTTON1 = new RADIOBUTTON(this)
+   with (this.RADIOBUTTON1)
+      height = 1.0909
+      left = 1.0
+      top = 1.5
+      width = 20.0
+      text = "Physical order"
+      group = true
+      value = true
+   endwith
+
+   this.RADIOBUTTON2 = new RADIOBUTTON(this)
+   with (this.RADIOBUTTON2)
+      height = 1.0909
+      left = 1.0
+      top = 2.5
+      width = 20.0
+      text = "Order by name"
+   endwith
+
+   this.RADIOBUTTON3 = new RADIOBUTTON(this)
+   with (this.RADIOBUTTON3)
+      height = 1.0909
+      left = 1.0
+      top = 3.5
+      width = 20.0
+      text = "Order by number"
+   endwith
+
+   this.PB_PRINT = new PUSHBUTTON(this)
+   with (this.PB_PRINT)
+      onClick = class::PB_PRINT_ONCLICK
+      height = 1.0909
+      left = 24.0
+      top = 5.5
+      width = 15.2857
+      text = "Start"
+   endwith
+
+
+   FUNCTION PB_PRINT_onClick
+   form.LLDesign=false
+   DO CASE
+      CASE form.Radiobutton1.value
+         form.Article.rowset.sort=""
+      CASE form.Radiobutton2.value
+         form.Article.rowset.sort="Name"
+      CASE form.Radiobutton3.value
+         form.Article.rowset.sort="ArticleNumber"
+   ENDCASE
+   CLASS::OpenReport()
+   RETURN
+   
+   FUNCTION Init(lDesign)
+   form.LLDesign=lDesign
+   DO CASE
+      CASE TYPE("_app.oInfo.Language")=="C" .AND. _app.oInfo.Language="deutsch"
+         form.text             ="Artikelliste"
+         form.Textlabel1.text  ="Sortierfolge"
+         form.Radiobutton1.text="Eingabefolge"
+         form.Radiobutton2.text="Bezeichnung"
+         form.Radiobutton3.text="Artikelnummer"
+      OTHERWISE
+         form.text             ="Articlelist"
+         form.Textlabel1.text  ="Sort order"
+         form.Radiobutton1.text="Physical order"
+         form.Radiobutton2.text="Order by name"
+         form.Radiobutton3.text="Order by number"
+   ENDCASE 
+   RETURN
+   
+   FUNCTION OpenReport
+   SET PROCEDURE TO ..\LL24.CC ADDITIVE
+   r=new LL24InterfaceSample()
+   r.UserVars.add({"C_Language", (_app.language),                "CHARACTER"})
+   r.UserVars.add({"C_SortOrder",(form.Article.rowset.indexname),"CHARACTER"})
+   r.rowset=form.Article.rowset
+   r.Design=form.LLDesign
+   r.Extension=".LST"
+   r.Filename ="Article.LST"
+   r.render()
+   RETURN
+
+endclass
+

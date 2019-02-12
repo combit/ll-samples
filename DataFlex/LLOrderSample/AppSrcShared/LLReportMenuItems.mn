@@ -1,0 +1,154 @@
+Use cCJCommandBarSystem.pkg
+Register_Procedure DoPrintReportToPreview
+Register_Procedure DoExportReportToPdf
+
+Class cDynamicReportItem is a cCJMenuItem
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Property Integer piMessage 0
+        Property String  psFileName ""
+    End_Procedure
+    
+    Procedure OnExecute Variant vCommandBarControl
+        Handle hoClient
+        Integer iMsg
+        String sFile
+        Get piMessage to iMsg
+        Get psFileName to sFile
+        Get Client_Id to hoClient
+        If (iMsg<>0) Begin
+            Send iMsg of hoClient sFile
+        End
+    End_Procedure
+End_Class
+
+Object oListLabelReportsInternalMenuItem is a cCJMenuItem
+    Set psCaption to "List && Label Reports"
+    Set psTooltip to "List && Label Reports"
+
+    Procedure OnExecute Variant vCommandBarControl
+        Handle hoClient
+        Get Client_Id to hoClient
+        Send Activate_oLLReportsWithInternalPreview of hoClient
+    End_Procedure
+End_Object                
+
+Object oListLabelReportsMenuItem is a cCJMenuItem
+    Set psCaption to "List && Label Reports using external Preview-Window"
+    Set psTooltip to "List && Label Reports using external Preview-Window"
+
+    Procedure OnExecute Variant vCommandBarControl
+        Handle hoClient
+        Get Client_Id to hoClient
+        Send Activate_oLLReports of hoClient
+    End_Procedure
+End_Object
+
+Object oListLabelEmbeddedReportsMenuItem is a cCJMenuItem
+    Set psCaption to "List && Label Reports with embedded Preview"
+    Set psTooltip to "List && Label Reports with embedded Preview"
+
+    Procedure OnExecute Variant vCommandBarControl
+        Handle hoClient
+        Get Client_Id to hoClient
+        Send Activate_oLLEmbeddedPreview of hoClient
+    End_Procedure
+End_Object
+
+Object oListLabelInvoiceReportMenuItem is a cCJMenuItem
+    Set psCaption to "Print Invoices with List && Label"
+    Set psTooltip to "Print Invoices with List && Label"
+
+    Procedure OnExecute Variant vCommandBarControl
+        Handle hoClient
+        Get Client_Id to hoClient
+        Send Activate_oLLInvoice of hoClient
+    End_Procedure
+End_Object
+
+Object oSpecialListLabelReportMenuItem is a cCJMenuItem
+    Set psCaption to "Special Samples"
+    Set psToolTip to "Special Samples"
+    Set pbControlBeginGroup to True
+    Set peControlType to xtpControlPopup    
+    
+    Object ooLocalizationMenuItem is a cCJMenuItem
+        Set psCaption to "Localization"
+        Set psTooltip to "Localization"
+    
+        Procedure OnExecute Variant vCommandBarControl
+            Handle hoClient
+            Get Client_Id to hoClient
+            Send Activate_oLocalization of hoClient
+        End_Procedure
+    End_Object    
+    
+    Object oWithoutDDMenuItem is a cCJMenuItem
+        Set psCaption to "Reports without DataDictionaries"
+        Set psTooltip to "Reports without DataDictionaries"
+    
+        Procedure OnExecute Variant vCommandBarControl
+            Handle hoClient
+            Get Client_Id to hoClient
+            Send Activate_oLLWithoutDD of hoClient
+        End_Procedure
+    End_Object        
+End_Object
+
+Object oListLabelPreviewMenuItem is a cCJMenuItem
+    Property Handle[] phoChildItems
+    Set psCaption to "Print to Preview"
+    Set psTooltip to "Print to Preview"
+    Set pbControlBeginGroup to True
+    Set peControlType to xtpControlPopup
+    
+    Procedure OnPopupInit Variant vCommandBarControl Handle hCommandBarControls
+        Send DoBuildDynamicMenu (Self) hCommandBarControls msg_DoPrintReportToPreview
+    End_Procedure
+End_Object
+
+Object oListLabelExportMenuItem is a cCJMenuItem
+    Property Handle[] phoChildItems
+    Set psCaption to "Export to PDF"
+    Set psTooltip to "Export to PDF"
+    Set peControlType to xtpControlPopup
+    
+    Procedure OnPopupInit Variant vCommandBarControl Handle hCommandBarControls
+        Send DoBuildDynamicMenu (Self) hCommandBarControls msg_DoExportReportToPdf
+    End_Procedure
+End_Object
+
+Procedure DoBuildDynamicMenu Handle hoParent Handle hCommandBarControls Integer iMsg
+    Handle[] hoChildItems
+    Handle hoMenu
+    Integer iCou
+    Variant vItem
+    String sFile sExt
+    
+    Get phoChildItems of hoParent to hoChildItems
+    For iCou from 0 to (SizeOfArray(hoChildItems)-1)
+        Send Destroy to hoChildItems[iCou]
+        Move 0 to hoChildItems[iCou]
+    Loop
+    Move (ResizeArray(hoChildItems,0)) to hoChildItems
+    
+    Direct_Input ("DIR:" + (psHome(phoWorkspace(ghoApplication))+"Layouts\*.*"))
+    While (not(SeqEof))
+        Readln sFile
+        If ( (Trim(sFile)<>"") and (Left(sFile,1)<>"[") and (Uppercase(sFile)<>"INCLUDE.LST") ) Begin
+            Move (Right(Uppercase(sFile),4)) to sExt
+            If ( (sExt=".LST") or (sExt=".LBL") or (sExt=".CRD") ) Begin
+                Get Create of hoParent U_cDynamicReportItem to hoMenu
+                Set psFileName of hoMenu to sFile
+                Set piMessage of hoMenu to iMsg
+                Move (Left(sFile,(Length(sFile)-4))) to sFile
+                Set psCaption of hoMenu to sFile
+                Set psToolTip of hoMenu to sFile
+                Get AddDynamicControl of hoMenu hCommandBarControls to vItem
+                Move hoMenu to hoChildItems[(SizeOfArray(hoChildItems))]                
+            End
+        End
+    Loop
+    Close_Input
+    Set phoChildItems of hoParent to hoChildItems    
+End_Procedure

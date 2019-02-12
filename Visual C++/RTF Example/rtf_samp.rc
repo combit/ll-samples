@@ -1,0 +1,193 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\rtf_samp.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\rtf_samp.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ERROR               "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1031{\\fonttbl{\\f0\\fswiss\\fprq2\\fcharset0 Tahoma;}}\n{\\colortbl ;\\red255\\green0\\blue0;}\n{\\*\\generator Msftedit 5.41.15.1507;}\\viewkind4\\uc1\\pard\\cf1\\f0\\fs20 Error: Cannot find file ""debwin.rtf""\\par\n}\n "
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral (Sys. Default) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEUSD)
+LANGUAGE LANG_NEUTRAL, SUBLANG_SYS_DEFAULT
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_RTF_SAMP_DIALOG DIALOGEX 0, 0, 410, 238
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "List & Label RTF Sample"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Close",IDOK,354,216,49,15
+    PUSHBUTTON      "Design ...",IDC_BTN_DESIGN,7,216,49,15
+    PUSHBUTTON      "Preview ...",IDC_BTN_PRNTOPREVIEW,61,216,49,15
+    PUSHBUTTON      "Printer ...",IDC_BTN_PRNTOPRINTER,114,216,49,15
+    CONTROL         "",IDC_LLRTFCTRL1,"{C78B7BCD-03B4-412F-A25E-62DA8A4D2E0F}",WS_TABSTOP,7,7,396,194
+    CONTROL         "",IDC_LISTLABEL1,"{2213E280-16BC-101D-AFD4-040224009DF8}",WS_TABSTOP,193,211,24,20
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_RTF_SAMP_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 403
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 231
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_RTF_SAMP_DIALOG DLGINIT
+BEGIN
+    IDC_LLRTFCTRL1, 0x376, 36, 0
+0x0000, 0x0000, 0x0900, 0x0000, 0x3d64, 0x0000, 0x208e, 0x0000, 0x0003, 
+0x0000, 0x0000, 0x0003, 0x0000, 0x0000, 0x0008, 0x0002, 0x0000, 0x0000, 
+
+    IDC_LISTLABEL1, 0x376, 216, 0
+0x0026, 0x0000, 0x004c, 0x0069, 0x0063, 0x0065, 0x006e, 0x0073, 0x0065, 
+0x0064, 0x0020, 0x0043, 0x006f, 0x006e, 0x0074, 0x0072, 0x006f, 0x006c, 
+0x0020, 0x0043, 0x006f, 0x0070, 0x0079, 0x0072, 0x0069, 0x0067, 0x0068, 
+0x0074, 0x0020, 0x0063, 0x006f, 0x006d, 0x0062, 0x0069, 0x0074, 0x0020, 
+0x0032, 0x0030, 0x0031, 0x0038, 0x0001, 0x0001, 0x03b9, 0x0000, 0x0369, 
+0x0000, 0x0040, 0x0000, 0xff01, 0xffff, 0x0eff, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0100, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0100, 0x0101, 0x0001, 0x0101, 0x0001, 0x0001, 0x0000, 0x0000, 
+0x0100, 0x0100, 0x0100, 0x0000, 0x6400, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0100, 0x0000, 0xf700, 0xb600, 
+0x0100, 0x0000, 0x0100, 0x0100, 0x0004, 0x0101, 0x0b01, 0x6020, 0xa420, 
+0x0100, 0x0000, 0x0101, 0x0100, 0xfeff, 0x00ff, 0xfeff, 0x00ff, 0x0101, 
+
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_RTF_SAMP_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // Neutral (Sys. Default) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\rtf_samp.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,82 @@
+Use  Windows.pkg           // Basic Definitions
+Use  DataDict.pkg          // DataDictionary Class Definition
+Use  DDvalTbl.pkg          // Validation Table Class Definitions
+
+Open Invt
+Open OrderDtl
+Open Vendor
+
+Register_Object Invt_sl
+
+Class Invt_DataDictionary Is A DataDictionary
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+
+        Set Main_File To Invt.File_Number
+        Set Cascade_Delete_State To False
+
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+        Set Add_Client_File to OrderDtl.File_Number
+
+        Set Add_Server_File to Vendor.File_Number
+
+
+        Set Field_Label_Long Field Invt.Item_ID To "Invt. Item ID"
+        Set Field_Label_Short Field Invt.Item_ID To "Item ID"
+        Set Field_Option Field Invt.Item_ID DD_AUTOFIND to True
+        Set Field_Option Field Invt.Item_ID DD_REQUIRED to True
+        Set Field_Option Field Invt.Item_ID DD_CAPSLOCK to True
+        Set Field_Prompt_Object Field Invt.Item_ID to Invt_sl
+        Set Key_Field_State Field Invt.Item_ID To True
+        Set Status_Help Field Invt.Item_ID To "Inventory Item Id - user defined identification"
+
+        Set Field_Label_Long Field Invt.Description To "Invt. Description"
+        Set Field_Label_Short Field Invt.Description To "Description"
+        Set Field_Option Field Invt.Description DD_REQUIRED to True
+        Set Status_Help Field Invt.Description To "Inventory Part Desription"
+
+        Set Field_Option Field Invt.Vendor_ID DD_CAPSLOCK to True
+        Set Status_Help Field Invt.Vendor_ID To "Vendor Number"
+
+        Set Field_Option Field Invt.Vendor_Part_ID DD_REQUIRED to True
+        Set Status_Help Field Invt.Vendor_Part_ID To "Vendor ID name for this item"
+
+        Set Field_Mask_Type Field Invt.Unit_Price To MASK_CURRENCY_WINDOW
+        Set Field_Value_Range Field Invt.Unit_Price To 0 999999.99
+        Set Status_Help Field Invt.Unit_Price To "Retail unit price"
+
+        Set Field_Value_Range Field Invt.On_Hand To -999999 999999
+        Set Status_Help Field Invt.On_Hand To "Units currently available"
+
+    End_Procedure  //  Construct_Object
+  
+    Function Validate_Save Returns Integer
+        Integer iRetVal
+    
+        Forward Get Validate_Save to iRetVal
+        
+        If iRetVal Function_Return iRetVal
+    
+        If Invt.On_Hand Lt 0 Begin
+           Send UserError "Insufficient Inventory Stock" ""
+           Function_Return 1
+        End   
+    End_Function  // Validate_Save
+
+
+    Procedure Field_Defaults
+        Forward Send Field_Defaults
+    End_Procedure    // Field_Defaults
+    
+End_Class    //  Invt_DataDictionary
+#IFDEF Is$WebApp
+#ELSE
+
+Use Invt.sl          // Invt_sl
+
+#ENDIF
+

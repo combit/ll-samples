@@ -1,0 +1,15 @@
+# Enter your sports2000 connection here
+# if you want to change useAppserver in demo
+-db C:\OpenEdge\Databases\sports2000.db
+# 
+-inp 16000
+-tok 4000
+-rereadnolock
+-s 200
+-mmax 65534
+#
+-assemblies Assemblies
+-p sports2000demo.p
+-debugalert
+-T T:\temp
+

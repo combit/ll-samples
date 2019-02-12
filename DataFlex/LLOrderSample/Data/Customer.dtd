@@ -1,0 +1,25 @@
+<!ELEMENT CUSTOMERLIST (CUSTOMER )*>
+<!--CustomerList is the list of all customers in the data base.-->
+<!--Customer consists of a list of contacts and general customer info-->
+<!ELEMENT CUSTOMER (CONTACT* , WEBSITE , ADDRESS , SALES-REP , TELEPHONE )>
+<!ATTLIST CUSTOMER NAME CDATA #REQUIRED 
+PRODUCT CDATA #REQUIRED
+ATMOSPHERE CDATA #REQUIRED
+Rating CDATA #REQUIRED>
+<!--A Contact is the name and contact info (tel, email, & fax) of a person in the comp(#PCDATA).-->
+<!ELEMENT CONTACT (TELEPHONE? , FAX* , EMAIL* )*>
+<!ATTLIST CONTACT NAME CDATA #REQUIRED>
+<!--#USAGE:Use the telephone at the customer level when there are no contacts.-->
+<!ELEMENT TELEPHONE (#PCDATA)>
+<!ELEMENT FAX (#PCDATA)>
+<!ELEMENT EMAIL (#PCDATA)>
+<!--This is the basic website of the client.-->
+<!ELEMENT WEBSITE (#PCDATA)>
+<!ELEMENT ADDRESS ( STREET , CITY , STATE , ZIP , COUNTRY? )>
+<!ELEMENT STREET (#PCDATA)>
+<!ELEMENT CITY (#PCDATA)>
+<!ELEMENT STATE (#PCDATA)>
+<!ELEMENT ZIP (#PCDATA)>
+<!ELEMENT COUNTRY (#PCDATA)>
+<!--Sales representative that is responsible for this client.-->
+<!ELEMENT SALES-REP (#PCDATA)>

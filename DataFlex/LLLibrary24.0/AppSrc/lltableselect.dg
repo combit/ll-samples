@@ -1,0 +1,245 @@
+Use Windows.pkg
+
+Object oLLReportTableSelect is a ModalPanel
+    Set Size to 79 195
+    Set Label to "Set Table and Sort-Order"
+    Set piMinSize to 79 155
+    Set Location to 2 2
+    Set Border_Style to Border_Thick
+    Set Locate_Mode to CENTER_ON_PARENT
+    Property Integer piAssociatedLLObj 
+
+    Object oSelTable is a ComboForm
+        Set Size to 13 151
+        Set Location to 7 41
+        Set Entry_State to False
+        Set Label to "Table:"
+        Set Label_Col_Offset to 35
+        Set peAnchors to anTopLeftRight
+        Property String psCurrentTable 
+        
+        Procedure DoFillCombo
+            Integer iTable iTables
+            Handle hoTables
+            String sVal
+            
+            Send Combo_Delete_Data
+            If (piAssociatedLLObj(Self)<>0) Begin
+                Get Object_Id of (oTables(piAssociatedLLObj(Self))) to hoTables
+                If (hoTables<>0) Begin
+                    Get Item_Count of hoTables to iTables
+                    For iTable from 0 to (iTables-1)
+                        Get Value of hoTables iTable to sVal
+                        Move (Left(sVal,(Pos(";",sVal)-1))) to sVal
+                        Send Combo_add_item sVal
+                    Loop            
+                End
+            End
+        End_Procedure
+    
+        Procedure OnChange
+            String sVal
+            Get Value to sVal
+            If (Uppercase(Trim(sVal))<>(Uppercase(Trim(psCurrentTable(Self))))) Begin
+                Send DoFillCombo to oSelIndex
+                Send DoFillCombo to oSelRelation
+                Set psCurrentTable to sVal
+            End
+        End_Procedure
+    End_Object
+
+    Object oSelIndex is a ComboForm
+        Set Size to 13 151
+        Set Location to 23 41
+        Set Entry_State to False
+        Set Label to "Index:"
+        Set Label_Col_Offset to 35
+        Set peAnchors to anTopLeftRight
+        
+        Procedure DoFillCombo
+            Handle hoSortOrders
+            Integer iSortOrders iSortOrder
+            String sTable sVal sVal2
+            Send Combo_Delete_Data
+            If (piAssociatedLLObj(Self)<>0) Begin
+                Get Value of oSelTable to sTable
+                Get Object_Id of (oTableSortOrders(piAssociatedLLObj(Self))) to hoSortOrders
+                If (hoSortOrders<>0) Begin
+                    Get Item_Count of hoSortOrders to iSortOrders
+                    For iSortOrder from 0 to (iSortOrders-1)
+                        Get value of hoSortOrders iSortOrder to sVal
+                        If (uppercase(Left(sVal,(Pos(";",sVal)-1)))=(uppercase(trim(sTable)))) Begin
+                            Move (Left(sVal,(Pos(";",sVal)))) to sVal2
+                            Move (Replace(sVal2,sVal,"")) to sVal
+                            Move (Left(sVal,(Pos(";",sVal)))) to sVal2
+                            Move (Replace(sVal2,sVal,"")) to sVal
+                            Move (Replace(";",sVal2,"")) to sVal2
+                            Send Combo_add_item (sVal2 + "-" + sVal)
+                        End
+                    Loop                    
+                End
+            End
+        End_Procedure
+        Procedure DoPreselectValue String sVal
+            Integer iCou
+            String sVal2
+            Move (sVal + "-") to sVal
+            For iCou from 0 to (Combo_Item_Count(Self)-1)
+                Get Combo_Value iCou to sVal2
+                If (Left(sVal2,(Length(sVal)))=sVal) Begin
+                    Set Value to sVal2
+                    Procedure_Return
+                End
+            Loop
+        End_Procedure
+    End_Object
+
+    Object oSelRelation is a ComboForm
+        Set Size to 13 151
+        Set Location to 39 41
+        Set Entry_State to False
+        Set Label to "Relation:"
+        Set Label_Col_Offset to 35
+        Set peAnchors to anTopLeftRight
+        Procedure DoFillCombo
+            Handle hoRelations
+            Integer iRelations iRelation
+            String sTable sVal sVal2
+            Send Combo_Delete_Data
+            If (piAssociatedLLObj(Self)<>0) Begin
+                Get Value of oSelTable to sTable
+                Get Object_Id of (oTableRelations(piAssociatedLLObj(Self))) to hoRelations
+                If (hoRelations<>0) Begin
+                    Set Enabled_State to False
+                    Send Combo_Add_Item " "
+                    Get Item_Count of hoRelations to iRelations
+                    For iRelation from 0 to (iRelations-1)
+                        Get value of hoRelations iRelation to sVal
+                        If (uppercase(Left(sVal,(Pos(";",sVal)-1)))=(uppercase(trim(sTable)))) Begin
+                            Move (Left(sVal,(Pos(";",sVal)))) to sVal2
+                            Move (Replace(sVal2,sVal,"")) to sVal
+                            Move (Left(sVal,(Pos(";",sVal)))) to sVal2
+                            Move (Replace(sVal2,sVal,"")) to sVal
+                            Move (Left(sVal,(Pos(";",sVal)-1))) to sVal
+                            Send Combo_add_item sVal
+                            Set Enabled_State to True
+                        End
+                    Loop                    
+                End
+            End
+        End_Procedure        
+    End_Object
+
+    Object oOK_Btn is a Button
+        Set Label    to "OK"
+        Set Location to 63 87
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            String sTable sSort sRelation
+            If (piAssociatedLLObj(Self)<>0) Begin
+                Get Value of oSelTable to sTable
+                Get Value of oSelIndex to sSort
+                If (Trim(sSort)<>"") Begin
+                    If (Left(sSort,1)="-") Begin
+                        Move (Replace("-",sSort,"")) to sSort
+                        Move (Left(sSort,(Pos("-",sSort)-1))) to sSort
+                        Move ("-"+sSort) to sSort
+                    End
+                    Else Begin
+                        Move (Left(sSort,(Pos("-",sSort)-1))) to sSort
+                    End                
+                End
+                If (Enabled_State(oSelRelation(Self))) Begin
+                    Get Value of oSelRelation to sRelation
+                End
+                Set psPrivate.ReportTable of (piAssociatedLLObj(Self)) to sTable
+                Set psPrivate.ReportSortOrder of (piAssociatedLLObj(Self)) to sSort
+                Set psPrivate.ReportRelation of (piAssociatedLLObj(Self)) to sRelation
+                Set piPrivate.SaveTableSettings of (piAssociatedLLObj(Self)) to 1
+                Set pbPrivate.TableSelectCancelled of (piAssociatedLLObj(Self)) to False
+            End
+            Send Close_Panel
+        End_Procedure
+
+    End_Object
+
+    Object oCancel_Btn is a Button
+        Set Label    to "Cancel"
+        Set Location to 63 142
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send Close_Panel
+        End_Procedure
+
+    End_Object
+    
+    Procedure DoLocalizeWindow
+        String sMainLabel sOkBtn sCancelBtn sTable sIndex sRelation
+        Integer iLanguage iJob        
+        
+        Move "Set Table and Sort-Order" to sMainLabel
+        Move "OK" to sOkBtn
+        Move "Cancel" to sCancelBtn
+        Move "Table:" to sTable
+        Move "Index:" to sIndex
+        Move "Relation:" to sRelation        
+        
+        If (piAssociatedLLObj(Self)<>0) Begin
+            Get piJobNumber of (piAssociatedLLObj(Self)) to iJob
+            If (iJob<>0) Begin
+                Move (LlGetOptionEf(iJob,LL_OPTION_LANGUAGE)) to iLanguage
+                If (iLanguage=CMBTLANG_GERMAN) Begin
+                    Move "Tabelle und Sortierung einstellen" to sMainLabel
+                    Move "Abbrechen" to sCancelBtn
+                    Move "Tabelle:" to sTable
+                End                    
+            End        
+        End        
+        
+        Set Label to sMainLabel
+        Set Label of oOK_Btn to sOkBtn
+        Set Label of oCancel_Btn to sCancelBtn
+        Set Label of oSelTable to sTable
+        Set Label of oSelIndex to sIndex
+        Set Label of oSelRelation to sRelation
+    End_Procedure
+    
+    Procedure Add_Focus Handle hoParent Returns Integer
+        Integer iRetVal iLanguage iJob
+        String sTable sSort sRelation
+        
+        Send DoLocalizeWindow
+        
+        Forward Get msg_add_focus hoParent to iRetVal
+        If (iRetVal=0) Begin
+            Set psCurrentTable of oSelTable to ""
+            Send combo_Delete_Data to oSelTable
+            Send combo_Delete_Data to oSelIndex
+            Send combo_Delete_Data to oSelRelation
+            If (piAssociatedLLObj(Self)<>0) Begin
+                Send DoFillCombo to oSelTable
+                Get psPrivate.ReportTable of (piAssociatedLLObj(Self)) to sTable
+                Get psPrivate.ReportSortOrder of (piAssociatedLLObj(Self)) to sSort
+                Get psPrivate.ReportRelation of (piAssociatedLLObj(Self)) to sRelation
+                If (sTable<>"") Begin                
+                    Set Value of oSelTable to sTable
+                    Send DoPreselectValue to oSelIndex sSort
+                    Set Value of oSelRelation to sRelation
+                End
+                Set pbPrivate.TableSelectCancelled of (piAssociatedLLObj(Self)) to True
+            End
+        End
+        Procedure_Return iRetVal
+    End_Procedure
+    
+    #IF (!@<140)
+    Procedure DoCorrectSize
+        Integer iSize
+        Get size to iSize
+        Set size to (hi(iSize)+22) (low(iSize)+12)
+    End_Procedure
+    Send DoCorrectSize
+    #ENDIF
+End_Object

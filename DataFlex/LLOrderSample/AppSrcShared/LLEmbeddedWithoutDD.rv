@@ -1,0 +1,463 @@
+Use Windows.pkg
+Use DFRptVw.pkg
+Use cListLabel.pkg
+Use lltableselect.dg
+Use Customer.DD
+Use SalesP.DD
+Use OrderHea.DD
+Use Vendor.DD
+Use Invt.DD
+Use OrderDtl.DD
+
+Activate_View Activate_oLLWithoutDD for oLLWithoutDD
+Object oLLWithoutDD is a cListLabelReportView
+    Set Location to 3 7
+    Set Size to 287 495
+    Set Border_Style to Border_Thick
+    
+    Property Integer piReportProjectType LL_PROJECT_LIST
+
+    Set Label to "List & Label Reports"
+
+    Object oReportType is a RadioGroup
+        Set Size to 23 105
+        Set Location to 260 3
+        Set Label to "Report Type"
+        Set peAnchors to anBottomLeft
+
+        Object oTypeList is a Radio
+            Set Label to "List"
+            Set Size to 10 25
+            Set Location to 10 6
+            Set Status_Help to "Print a List Project"
+        End_Object
+
+        Object oTypeLabel is a Radio
+            Set Label to "Label"
+            Set Size to 10 31
+            Set Location to 10 37
+            Set Status_Help to "Print a Label Project"
+        End_Object
+
+        Object oTypeCard is a Radio
+            Set Label to "Card"
+            Set Size to 10 27
+            Set Location to 10 74
+            Set Status_Help to "Print a Card Project"
+        End_Object
+        
+        Procedure Notify_Select_State Integer iToItem Integer iFromItem
+            Forward Send Notify_Select_State iToItem iFromItem
+            Case Begin
+                Case (iToItem=1) 
+                    Set piReportProjectType to LL_PROJECT_LABEL
+                    Case Break
+                Case (iToItem=2)
+                    Set piReportProjectType to LL_PROJECT_CARD
+                    Case Break
+                Case Else
+                    Set piReportProjectType to LL_PROJECT_LIST
+                    Case Break
+            Case End
+        End_Procedure        
+        
+    End_Object
+
+    Object oPrintButton is a Button
+        Set Label to "&Print"
+        Set Location to 269 338
+        Set Default_State to True
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send StartReport
+        End_Procedure
+
+    End_Object
+
+    Object oLayoutButton is a Button
+        Set Label to "&Edit Layout"
+        Set Location to 269 390
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send EditLayout
+        End_Procedure
+
+    End_Object
+
+    Object oCancelButton is a Button
+        Set Label to "&Cancel"
+        Set Location to 269 442
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send Close_Panel_Or_Cancel_Report
+        End_Procedure
+    End_Object
+    
+    Object oReportPreview is a cListLabelViewer
+        Set Bitmap to ""
+        Set Size to 252 490
+        Set Location to 3 3
+        Set peAnchors to anAll
+        
+        // OnIncrementalPreviewStart: Is called when an incremental Preview is started. iLLObj is the Object-Id of the List & Label Report Object
+        Procedure OnIncrementalPreviewStart Integer iLLObj
+            Set label of oCancelButton to "&Cancel Print"
+        End_Procedure
+        
+        // OnIncrementalPreviewEnd: Is called when a Report that uses incremental Preview is finished. iLLObj is the Object-Id of the List & Label Report Object
+        Procedure OnIncrementalPreviewEnd Integer iLLObj
+            Set label of oCancelButton to "&Cancel"
+        End_Procedure        
+    End_Object
+    
+    Object oListLabelReport is a cListLabelReport
+        // Uncomment this Line and set the Property to your personal License Code (perslic.txt located in your List & Label Folder)
+        // Set psLicensingInfo to "1234"
+        
+        // Set a Folder where the Layouts for the Reports are saved
+        If (ghoApplication<>0) Begin
+            Set psDefaultLayoutDirectory to (psHome(phoWorkspace(ghoApplication))+"Layouts")
+        End
+        
+        // Use the Embedded Preview Object
+        Set piEmbeddedPreviewObject to oReportPreview
+        // Define one Button which stays active during Report. 
+        // This Button should send the Close_Panel_Or_Cancel_Report Message
+        // which cancels the Report during Print or Closes the Panel with 
+        // the Close_Panel Message when no Report is running.  
+        Set piEmbeddedPreviewCancelBtn to oCancelButton
+        // Use the Preview during Report Feature
+        Set pbIncrementalPreview to True
+        // Drilldown Reports are supported in this Report
+        Set pbUseDrilldown to True
+        // Set which Tables are shown in the Designer when editing a Drilldown-Report
+        Set piDrilldownDatabaseFiltering to LL_DRILLDOWNFILTERSTRATEGY_ALLOW_ALL_TABLES
+        // Support the Designer Preview based on real data
+        Set pbDesignerPreview to True
+        Set piDesignerPreviewStartMessage to msg_StartReport
+        // Support expandable Regions, interactive Sorting and Report Parameters
+        Set pbUseExpandableRegions to True
+        Set pbUseInteractiveSorting to True
+        Set pbUseReportParameter to True
+        
+        // For augmentation
+        Procedure DefineAllFields
+            Forward Send DefineAllFields
+            // Define the File Structure in List & Label.
+            
+            // If you define the lowest Child and set the second Parameter (bWithChildRelation) to true all Database defined Relations are 
+            // automatically defined. In this case, the following DefineFileStruct defines the complete Order-Sample Database
+            Send DefineFileStruct OrderDtl.File_Number True
+            
+            // Another Option is to define all Childs, Parents and the Relations manually. Use the "DefineRelation" Method to tell List & Label about Relations between Tables. 
+            // The DefineRelation takes two Strings containing Child- and Parent-Fields. If the Relation is build with 2 or more Fields seperate the Fields with a ";". Keep in Mind that
+            // Child- and Parent-Fields have to match.
+            // Example: Send DefineRelation "ChildTable.Field1;ChildTable.Field2;ChildTable.Field3" "ParentTable.Field1;ParentTable.Field2;ParentTable.Field3"
+            
+            // This defines the complete Order-Sample Database manually
+            //Send DefineFileStruct OrderDtl.File_Number False
+            //Send DefineFileStruct OrderHea.File_Number False
+            //Send DefineFileStruct Invt.File_Number False
+            //Send DefineFileStruct Customer.File_Number False
+            //Send DefineFileStruct Vendor.File_Number False
+            //Send DefineFileStruct SalesP.File_Number False
+            //Send DefineRelation "OrderDtl.Order_Number" "OrderHea.Order_Number"
+            //Send DefineRelation "OrderDtl.Item_ID" "Invt.Item_ID"
+            //Send DefineRelation "Invt.Vendor_ID" "Vendor.ID"
+            //Send DefineRelation "OrderHea.Customer_Number" "Customer.Customer_Number"
+            //Send DefineRelation "OrderHea.SalesPerson_ID" "SalesP.ID"
+        End_Procedure
+        
+        // Let the User see what's currently printed
+        Procedure OnAfterPrintRecord Integer hoDDo Integer hoParentDdo Integer iTableLevel String sRelation String sTableName
+            Integer iRet iFile
+            
+            Get FileNumberFromTableName sTableName to iFile
+            If (iFile=Customer.File_Number) Begin
+                Get LLPrintSetBoxText ("Customer: "+(Trim(Customer.Name))) 0 to iRet
+            End
+            If (iFile=OrderHea.File_Number) Begin
+                Get LLPrintSetBoxText ("Order: " + (String(OrderHea.Order_Number))) 0 to iRet
+            End
+            If (iFile=Invt.File_Number) Begin
+                Get LLPrintSetBoxText ("Inventory Id: " + (Trim(Invt.Item_ID))) 0 to iRet
+            End
+        End_Procedure
+        
+        // Helper Function for finding Records
+        // iFile: Filenumber of the needed File
+        // sRelation: Used to identify if a child Record is needed in the Form "Childtable->Parenttable" 
+        // iIndex: The Index-Number selected in the List & Label Designer
+        // bFirstRecord: True=First record is requested, False=Next record is requested
+        // bFromEnd: A Reverse Index (Top to down sort) was selected in the Designer
+        Function FindRecord Integer iFile String sRelation Integer iIndex Integer bFirstRecord Integer bFromEnd Returns Integer
+            Integer iFindMode iNextFindMode
+            
+            // Initialize Findmodes needed
+            If (bFirstRecord) Begin
+                // When First record find either LE or GE
+                If (bFromEnd) ;
+                    Move (LE) to iFindMode
+                Else ;
+                    Move (GE) to iFindMode
+                // If there is the need for looping through child Records that don't match the Parent use either LT or GT                
+                If (bFromEnd) ;
+                    Move (LT) to iNextFindMode
+                Else ;
+                    Move (GT) to iNextFindMode                
+            End
+            Else Begin
+                // When next records are requested use either LT or GT for finding
+                If (bFromEnd) ;
+                    Move (LT) to iFindMode
+                Else ;
+                    Move (GT) to iFindMode
+                // Also if there is the need for looping through child Records that don't match the Parent use either LT or GT                
+                If (bFromEnd) ;
+                    Move (LT) to iNextFindMode
+                Else ;
+                    Move (GT) to iNextFindMode                
+            End
+            
+            // If a Drilldown is requested the needed Parent record is to be found first. In this case the sRelation Parameter is "" and the
+            // needed Relations is hold in the psDrilldownRelationId Property. 
+            If ( (sRelation="") and (pbIsDrilldown(Self)) ) Begin
+                Get psDrilldownRelationId to sRelation
+            End
+            
+            // Find OrderHea Child Records for the Parent Customer
+            If (Uppercase(Trim(sRelation))="ORDERHEA->CUSTOMER") Begin
+                // First Record is searched, clear the File and fill the Buffer
+                If (bFirstRecord) Begin  
+                    Clear iFile
+                    Move Customer.Customer_Number to OrderHea.Customer_Number
+                End
+                // Do the Find. VFind is used because it can handle the File, Index and Findmode from Variables
+                // In this case override the selected Index to Index.2 (Customer_Number, Order_Number) 
+                Vfind iFile 2 iFindMode
+                // Return LL_REPORT_EOF when there is a Finderr
+                If (FindErr) ;
+                    Function_Return LL_REPORT_EOF
+                // If no matching record is found return EOF
+                If (OrderHea.Customer_Number<>Customer.Customer_Number) ;
+                    Function_Return LL_REPORT_EOF
+                // Find all needed Parent Records if any
+                Relate iFile
+                // Return LL_REPORT_RECORDFOUND to indicate that a valid record is found
+                Function_Return LL_REPORT_RECORDFOUND
+            End
+            // Find Orderdtl Child Records for the OrderHeader Parent, see comments above
+            If (Uppercase(Trim(sRelation))="ORDERDTL->ORDERHEA") Begin
+                If (bFirstRecord) Begin
+                    Clear iFile
+                    Move OrderHea.Order_Number to OrderDtl.Order_Number
+                End
+                Vfind iFile 1 iFindMode
+                If (FindErr) ;
+                    Function_Return LL_REPORT_EOF
+                If (OrderDtl.Order_Number<>OrderHea.Order_Number) ;
+                    Function_Return LL_REPORT_EOF
+                Relate iFile
+                Function_Return LL_REPORT_RECORDFOUND
+            End
+            // Find Orderdtl Records for Invt Parent. Because there is no matching Index it must be done by looping through Orderdtl Records
+            If (Uppercase(Trim(sRelation))="ORDERDTL->INVT") Begin
+                // If First Record clear the File
+                If (bFirstRecord) Begin
+                    Clear iFile
+                End
+                // Do the Find. VFind is used because it can handle the File, Index and Findmode from Variables
+                Vfind iFile 1 iFindMode
+                // Do as long as any record is found
+                While (Found)
+                    // If the OrderDtl.Item_Id is the same as the Invt.Item_Id we have a valid record
+                    If (Invt.Item_ID=OrderDtl.Item_ID) Begin
+                        // Find all needed Parent Records if any
+                        Relate iFile
+                        // Return LL_REPORT_RECORDFOUND to indicate that a valid record is found   
+                        Function_Return LL_REPORT_RECORDFOUND
+                    End
+                    // Find and check the next Orderdtl Record
+                    Vfind iFile 1 iNextFindMode
+                Loop
+                // No valid Record found, return EOF
+                Function_Return LL_REPORT_EOF
+            End
+            // Find Orderheader Records for Salespersons Parent. See above (ORDERDTL->INVT)
+            If (Uppercase(Trim(sRelation))="ORDERHEA->SALESP") Begin
+                If (bFirstRecord) Begin
+                    Clear iFile
+                End
+                Vfind iFile 1 iFindMode
+                While (Found)
+                    If (SalesP.ID=OrderHea.SalesPerson_ID) Begin
+                        Relate iFile
+                        Function_Return LL_REPORT_RECORDFOUND
+                    End
+                    Vfind iFile 1 iNextFindMode
+                Loop
+                Function_Return LL_REPORT_EOF
+            End
+            // Find Invt Records for Vendor Parent. See above (ORDERHEA->CUSTOMER)
+            If (Uppercase(Trim(sRelation))="INVT->VENDOR") Begin
+                If (bFirstRecord) Begin
+                    Clear iFile
+                    Move Vendor.ID to Invt.Vendor_ID
+                End
+                Vfind iFile 2 iFindMode
+                If (FindErr) ;
+                    Function_Return LL_REPORT_EOF
+                If (Invt.Vendor_ID<>Vendor.ID) ;
+                    Function_Return LL_REPORT_EOF
+                Relate iFile
+                Function_Return LL_REPORT_RECORDFOUND
+            End
+            
+            // This is for not related Records. Just do a normal find
+            If (bFirstRecord) Begin
+                // If first record clear the File
+                Clear iFile
+            End
+            // Do the Find. VFind is used because it can handle the File, Index and Findmode from Variables
+            Vfind iFile iIndex iFindMode
+            // Return LL_REPORT_EOF when there is a Finderr
+            If (FindErr) ;
+                Function_Return LL_REPORT_EOF
+            // Find all needed Parent Records if any
+            Relate iFile
+            // Return LL_REPORT_RECORDFOUND to indicate that a valid record is found   
+            Function_Return LL_REPORT_RECORDFOUND                
+        End_Function
+        
+        // Called for the first needed Record in a table
+        Procedure OnFindFirstRecord Integer hoDDo Integer hoParentDDo Integer iTableLevel String sRelation Integer iIndex Integer bFromEnd String sTableName
+            Integer iFile iReturn
+            // Get the File-Number
+            Get FileNumberFromTableName sTableName to iFile
+            // When it is a valid File
+            If (iFile<>0) Begin
+                // Call the Helper Function with File, needed Relation, selected Index, True for first record and the Reverse order Switch (bFromEnd)
+                Get FindRecord iFile sRelation iIndex True bFromEnd to iReturn
+                // Return the delivered Status (LL_REPORT_RECORDFOUND or LL_REPORT_EOF)
+                Procedure_Return iReturn
+            End
+            Procedure_Return LL_REPORT_USEDEFAULT                                       // in all other Cases let the Class do the Job
+        End_Procedure
+        
+        // Called whenever a next record is needed
+        Procedure OnFindNextRecord Integer hoDDo Integer hoParentDDo Integer iTableLevel String sRelation Integer iFindMode Integer iIndex String sTableName
+            Integer iFile iReturn
+            
+            Get FileNumberFromTableName sTableName to iFile
+            If (iFile<>0) Begin
+                // Call the Helper Function with File, needed Relation, selected Index, False for the next record and the Reverse order Switch (iFindMode=NEXT_RECORD or LT)
+                Get FindRecord iFile sRelation iIndex False (iFindMode<>NEXT_RECORD) to iReturn
+                // Return the delivered Status (LL_REPORT_RECORDFOUND or LL_REPORT_EOF)
+                Procedure_Return iReturn
+            End
+            
+            Procedure_Return LL_REPORT_USEDEFAULT                                       // in all other Cases let the Class do the Job
+        End_Procedure        
+        
+        // Called when a Drilldown Report is requested. In this case the correct Parent Record must be found and active in the Record Buffer
+        // In this Sample, there is only a Drilldown Report under the Customer Table (all Orderheaders for one Customer) and the OrderHeader Table (all Orderdetails for a OrderHeader)
+        Procedure OnStartDrilldownReport String sTableId String[] sKeyFields String[] sKeyValues String sSubreportTableId String sSubreportKeyField String sRelationId String sProjectFileName String sPreviewFileName String sTabText String sTooltipText
+            Integer iReturn 
+            // Find the needed Customer Record
+            If ( (Uppercase(Trim(sTableId))="CUSTOMER") and (SizeOfArray(sKeyValues)>0) ) Begin
+                Clear Customer
+                // The sKeyValues[] Array holds the required Fields to find the appropriate Record, in this case the Customer-Number
+                Move sKeyValues[0] to Customer.Customer_Number
+                Find eq Customer by Index.1
+                If (Found) Begin
+                    Relate Customer
+                    Procedure_Return LL_REPORT_RECORDFOUND
+                End
+            End
+            // Find the needed OrderHeader Record
+            If ( (Uppercase(Trim(sTableId))="ORDERHEA") and (SizeOfArray(sKeyValues)>0) ) Begin
+                Clear OrderHea
+                Move sKeyValues[0] to OrderHea.Order_Number
+                Find eq OrderHea by Index.1
+                If (Found) Begin
+                    Relate OrderHea
+                    Procedure_Return LL_REPORT_RECORDFOUND
+                End
+            End
+            Procedure_Return LL_REPORT_USEDEFAULT
+        End_Procedure        
+    End_Object
+
+    Procedure StartReport
+    	Integer iRet iDest iProjectType
+        String sFile 
+        Handle hoLL hoMain hWnd
+        
+        Move oListLabelReport to hoLL
+        // Find a Parent-Window for List & Label
+        Get SuggestedParentWindowHandle of hoLL (Self) to hWnd
+        Get piReportProjectType to iProjectType
+        Get LLJobOpen of hoLL to iRet
+        // Let the User select the Layout
+        Get LLSelectFileDlgTitleEx of hoLL hWnd "Select Layout" iProjectType to sFile
+        If (trim(sFile)="") Begin
+            Get LLJobClose of hoLL to iRet
+            Procedure_Return
+        End
+        // Start the Report
+        Get LLPrintWithBoxStart of hoLL iProjectType sFile LL_PRINT_PREVIEW LL_BOXTYPE_EMPTYABORT hWnd "Printing Records" to iRet
+        If (iRet<>0) Begin
+            Get LLPrintEnd of hoLL to iRet
+            Get LLJobClose of hoLL to iRet
+            Procedure_Return
+        End        
+    	Get LLPrintGetOption of hoLL LL_PRNOPT_PRINTDLG_DEST to iDest
+    	// If Labels are printed let the User select the starting Position
+    	If (iProjectType=LL_PROJECT_LABEL) Begin
+    	    Get LLPrintSelectOffsetEx of hoLL hWnd to iRet
+        End
+    	// Output the Report
+        Get DoPrintList of hoLL to iRet
+        Get LLPrintEnd of hoLL to iRet
+        
+        // Show the Preview if needed and let the Class do some Cleanup
+        If (iDest=LL_DESTINATION_PRV) Begin
+            Get LLPreviewDisplay of hoLL sFile "" hWnd to iRet
+        End
+    	Get LLJobClose of hoLL to iRet        
+    End_Procedure
+    
+    Procedure EditLayout
+        Integer iRet iProjectType
+        String sFile
+        Handle hoLL hWnd hoMain
+        
+        Move oListLabelReport to hoLL
+        Get SuggestedParentWindowHandle of hoLL (Self) to hWnd
+        Get piReportProjectType to iProjectType
+        Get LLJobOpen of hoLL to iRet
+        Get LLSelectFileDlgTitleEx of hoLL hWnd "Select Layout" (iProjectType ior LL_FILE_ALSONEW) to sFile
+        If (trim(sFile)<>"") Begin
+            Get LLDefineLayout of hoLL hWnd "Edit Layout" iProjectType sFile to iRet
+        End
+        Get LLJobClose of hoLL to iRet        
+    End_Procedure
+    
+    On_Key Key_Alt+Key_P Send KeyAction of oPrintButton
+    On_Key Key_Alt+Key_E Send KeyAction of oLayoutButton
+    On_Key Key_Alt+Key_C Send KeyAction of oCancelButton
+    
+    #IF (!@<140)
+    // Correct the Client Size if the View is compiled with VDF 12.0 or 12.1
+    Procedure DoCorrectClientSize 
+        Integer iSize
+        Get Size to iSize
+        Set size to (hi(iSize)+22) (low(iSize)+12)
+    End_Procedure
+    Send DoCorrectClientSize
+    #ENDIF    
+
+End_Object

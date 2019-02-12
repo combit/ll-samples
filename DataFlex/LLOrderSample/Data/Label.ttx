@@ -1,0 +1,5 @@
+Name	String	30	ABC HARDWARE
+Address	String	30	123 MyWay
+City	String	20	MyTown
+State	String	2	FL
+Zip	String	10	0000

@@ -1,0 +1,16 @@
+Global Const DB_BOOLEAN = 1
+Global Const DB_BYTE = 2
+Global Const DB_INTEGER = 3
+Global Const DB_LONG = 4
+Global Const DB_CURRENCY = 5
+Global Const DB_SINGLE = 6
+Global Const DB_DOUBLE = 7
+Global Const DB_DATE = 8
+Global Const DB_TEXT = 10
+Global Const DB_LONGBINARY = 11
+Global Const DB_MEMO = 12
+
+Global Const DB_READONLY = &H4
+Global Const DB_INCONSISTENT = &H10
+Global Const DB_CONSISTENT = &H20
+

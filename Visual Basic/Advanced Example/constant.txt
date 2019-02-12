@@ -1,0 +1,12 @@
+Attribute VB_Name = "CONSTANT"
+Global Const MB_OK = 0                             ' OK button only
+Global Const MB_ICONSTOP = 16              ' Critical message
+
+Global sDatabaseName As String
+
+Global dummy As Long
+Global nLanguage As Integer
+Global bUseCallbacks As Integer
+Global ObjParameters As String
+
+

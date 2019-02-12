@@ -1,0 +1,242 @@
+Use Windows.pkg
+Use DFRptVw.pkg
+Use cListLabel.pkg
+Use lltableselect.dg
+Use Vendor.DD
+Use Invt.DD
+
+Activate_View Activate_oLocalization for oLocalization
+Object oLocalization is a cListLabelReportView
+    Object oVendor_DD is a Vendor_DataDictionary
+    End_Object
+
+    Object oInvt_DD is a Invt_DataDictionary
+        Set DDO_Server to oVendor_DD
+    End_Object
+
+    Set Main_DD to oInvt_DD
+    Set Server to oInvt_DD
+
+    Set Location to 6 14
+    Set Size to 292 407
+    Set Border_Style to Border_Thick
+
+    Object oPrintLanguage is a RadioGroup
+        Set Location to 254 4
+        Set Size to 35 64
+        Set Label to "Print Language"
+        Set peAnchors to anBottomLeft
+    
+        Object oRadio1 is a Radio
+            Set Label to "English"
+            Set Size to 10 38
+            Set Location to 10 5
+        End_Object
+    
+        Object oRadio2 is a Radio
+            Set Label to "German"
+            Set Size to 10 50
+            Set Location to 22 5
+        End_Object
+    End_Object
+
+    Object oEditLabelLayout is a Button
+        Set Size to 14 65
+        Set Label to "Edit Label Layout"
+        Set Location to 275 71
+        Set Default_State to True
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send EditLayout LL_PROJECT_LABEL (psHome(phoWorkspace(ghoApplication))+"\Layouts\Special\Localized Item Label.lbl")
+        End_Procedure
+
+    End_Object
+
+    Object oEditListLayout is a Button
+        Set Size to 14 65
+        Set Label to "Edit List Layout"
+        Set Location to 275 138
+        Set Default_State to True
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send EditLayout LL_PROJECT_LIST (psHome(phoWorkspace(ghoApplication))+"\Layouts\Special\Localized Item Report.lst")
+        End_Procedure
+
+    End_Object
+    
+    Object oPrintLabels is a Button
+        Set Size to 14 65
+        Set Label to "Print Labels"
+        Set Location to 275 205
+        Set Default_State to True
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send StartReport LL_PROJECT_LABEL (psHome(phoWorkspace(ghoApplication))+"Layouts\Special\Localized Item Label.lbl")
+        End_Procedure
+
+    End_Object
+
+    Object oPrintList is a Button
+        Set Size to 14 65
+        Set Label to "Print List"
+        Set Location to 275 272
+        Set Default_State to True
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send StartReport LL_PROJECT_LIST (psHome(phoWorkspace(ghoApplication))+"Layouts\Special\Localized Item Report.lst")
+        End_Procedure
+
+    End_Object
+
+    Object oCancelButton is a Button
+        Set Size to 14 65
+        Set Label to "&Cancel"
+        Set Location to 275 339
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send Close_Panel_Or_Cancel_Report
+        End_Procedure
+    End_Object
+    
+    Object oReportPreview is a cListLabelViewer
+        Set Bitmap to ""
+        Set Size to 247 402
+        Set Location to 3 3
+        Set peAnchors to anAll
+    End_Object
+    
+    Object oListLabelReport is a cListLabelReport
+        // Uncomment this Line and set the Property to your personal License Code (perslic.txt located in your List & Label Folder)
+        //Set psLicensingInfo to ""
+        
+        If (ghoApplication<>0) Begin
+            Set psDefaultLayoutDirectory to (psProgramPath(phoWorkspace(ghoApplication)))
+        End
+        
+        // Use the Embedded Preview Object
+        Set piEmbeddedPreviewObject to oReportPreview 
+        // Define one Button which stays active during Report. 
+        // This Button should send the Close_Panel_Or_Cancel_Report Message
+        // which cancels the Report during Print or Closes the Panel with 
+        // the Close_Panel Message when no Report is running.  
+        Set piEmbeddedPreviewCancelBtn to oCancelButton
+        // Use the Preview during Report Feature
+        Set pbIncrementalPreview to True
+        Set pbDesignerPreview to True
+        // Support the Designer Preview based on real data
+        Set pbDesignerPreview to True
+        Set piDesignerPreviewStartMessage to msg_StartPreviewReport        
+        // Support expandable Regions, interactive Sorting and Report Parameters
+        Set pbUseExpandableRegions to True
+        Set pbUseInteractiveSorting to True
+        Set pbUseReportParameter to True                
+        
+        Procedure OnJobAfterOpen
+            Integer iRet
+            Forward Send OnJobAfterOpen
+            
+            // Add Languages to the Designer. The first Language added is the Base Language
+            Get LLLocAddDesignLCID LLR_LCID_ENGLISH        to iRet            
+            Get LLLocAddDesignLCID LLR_LCID_GERMAN         to iRet
+            
+            // Add Translations for each static Text needed
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Unit Price" "StÅckpreis" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Item Id" "Artikel Nr." LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "designed & printed with combit© List & Label©" "Gestaltet & gedruckt mit combit© List & Label©" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Description" "Artikeltext" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Vendor" "Lieferant" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Price" "Preis" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Items" "Artikel" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN " articels on this Page" " Artikel auf dieser Seite" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Page {0} of {1}" "Seite {0} von {1}" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Printed {0} at {1} on {2}" "Gedruckt {0} um {1} auf {2}" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN "Items (cont.)" "Artikel (Forts.)" LL_DICTIONARY_TYPE_STATIC to iRet
+            Get LlLocAddDictionaryEntry LLR_LCID_GERMAN " articels in total" " Artikel gesamt" LL_DICTIONARY_TYPE_STATIC to iRet
+        End_Procedure
+        
+        Procedure DefineAllFields
+            Integer iRet
+            Forward Send DefineAllFields
+        End_Procedure
+        Procedure DefineAllVariables
+            Forward Send DefineAllVariables
+        End_Procedure        
+    End_Object
+
+    Procedure StartReport Integer iProjectType String sFile
+    	Integer iRet 
+        Handle hoLL hoMain hWnd
+        String sVal
+        
+        Move oListLabelReport to hoLL
+        // Find a window as a parent for all List & Label Windows
+        Get SuggestedParentWindowHandle of hoLL (Self) to hWnd
+        
+        // Set the requested Language
+        If (Current_Radio(oPrintLanguage(Self))=0) Begin
+            Send DoSetPrintLanguage to hoLL LLR_LCID_ENGLISH
+        End
+        Else Begin
+            Send DoSetPrintLanguage to hoLL LLR_LCID_GERMAN
+        End
+        
+        // Open Print Job
+        Get LLJobOpen of hoLL to iRet
+        If ( (trim(sFile)="") and (not(pbDesignerPreviewRunning(hoLL))) ) Begin
+            Get LLJobClose of hoLL to iRet
+            Procedure_Return
+        End
+        
+        
+        
+        // Start the Print always in Preview (LL_PRINT_PREVIEW)
+        Get LLPrintWithBoxStart of hoLL iProjectType sFile LL_PRINT_PREVIEW LL_BOXTYPE_EMPTYABORT hWnd "Printing Records" to iRet
+        If (iRet<>0) Begin
+            Get LLPrintEnd of hoLL to iRet
+            Get LLJobClose of hoLL to iRet
+            Procedure_Return
+        End
+        
+        //Get LLPrintSetProjectParameter of hoLL "LL.PrintJobLCID" '"en"' (LL_PARAMETERTYPE_LLINTERNAL ior LL_PARAMETERFLAG_GLOBAL ior LL_PARAMETERFLAG_FORMULA ior LL_PARAMETERFLAG_PUBLIC) to iRet
+
+        // Print the whole Report
+        Get DoPrintList of hoLL to iRet
+        // End the Printjob
+        Get LLPrintEnd of hoLL to iRet
+        // Let the class do some Cleanup
+        Get LLPreviewDisplay of hoLL sFile "" hWnd to iRet
+        // Close the Job
+    	Get LLJobClose of hoLL to iRet        
+    End_Procedure
+    
+    Procedure StartPreviewReport
+        Send StartReport 0 ""
+    End_Procedure
+    
+    Procedure EditLayout Integer iProjectType String sFile
+        Integer iRet 
+        Handle hoLL hWnd hoMain
+        
+        Move oListLabelReport to hoLL
+        // Find a window as a parent for all List & Label Windows
+        Get SuggestedParentWindowHandle of hoLL (Self) to hWnd
+        // Open Job
+        Get LLJobOpen of hoLL to iRet
+        If (trim(sFile)<>"") Begin
+            // Start the Designer
+            Get LLDefineLayout of hoLL hWnd "Edit Layout" iProjectType sFile to iRet
+        End
+        // Close the Job
+        Get LLJobClose of hoLL to iRet        
+    End_Procedure
+    
+    On_Key Key_Alt+Key_C Send KeyAction of oCancelButton
+    
+
+
+End_Object

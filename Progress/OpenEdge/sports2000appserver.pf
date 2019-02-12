@@ -1,0 +1,12 @@
+# Enter your sports2000 connection here
+-db C:\OpenEdge\Databases\sports2000.db
+# 
+-inp 16000
+-tok 4000
+-rereadnolock
+-s 200
+-mmax 65534
+# Not sure about -Bt
+-Bt 2000
+#
+

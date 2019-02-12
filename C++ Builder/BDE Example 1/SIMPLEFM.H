@@ -1,0 +1,41 @@
+//---------------------------------------------------------------------------
+
+#ifndef simplefmH
+#define simplefmH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <Db.hpp>
+#include <DBTables.hpp>
+#include "L24.hpp"
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// IDE-managed Components
+        TLabel *Label1;
+        TLabel *Label2;
+        TButton *DesignButton;
+        TButton *PreviewButton;
+        TButton *PrintButton;
+        TCheckBox *DebugCheckBox;
+        TTable *DataSource;
+        TL24_ *LL;
+        void __fastcall DesignButtonClick(TObject *Sender);
+        void __fastcall FormCreate(TObject *Sender);
+        void __fastcall LLDefineVariables(TObject *Sender, int UserData,
+          bool IsDesignMode, int &Percentage, bool &IsLastRecord,
+          int &EventResult);
+        void __fastcall PreviewButtonClick(TObject *Sender);
+        void __fastcall PrintButtonClick(TObject *Sender);
+        void __fastcall DebugCheckBoxClick(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+        String CurPath, DataFilePath, DataFileName;
+        __fastcall TForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif

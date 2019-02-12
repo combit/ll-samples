@@ -1,0 +1,99 @@
+﻿
+<h3>Concepts</h3>
+<b>The Ad-hoc Designer is not a replacement for the Web Designer.</b><br />
+It is a completely browser-based application (HTML+Javascript) that allows you to design basic reports like simple tables or charts very quickly.
+It offers only the most important features of the full List &amp; Label Designer,
+but does not require an installation on the client computer like the Web Designer does.
+Furthermore it provides a simplified user interface that can be used on any modern device, operating system and browser.
+<br /><br />
+
+<b>The projects of the Ad-hoc Designer are saved in a special file format.</b><br />
+A project file that has been designed with the Ad-hoc Designer can be used like a regular List &amp; Label project for exporting or printing it.
+You can also open it in the classic Designer to customize the more advanced properties, however a project that has been created or modified with the classic Designer
+cannot be loaded in the Ad-hoc Designer.
+<br /><br />
+
+<b>There is an Ad-hoc Designer session for every instance of the Ad-hoc Designer.</b><br />
+Every time a user opens the Ad-hoc Designer in the browser, an IAdhocDesignerSession object on the server is created that manages this certain instance of the Designer.
+This session object loads the project if the Designer on the client needs it and stores the project when the client sends a project file to the server to save it.
+So usually for every browser tab that has the Ad-hoc Designer loaded, there is one Ad-hoc Designer session on the server which exists until the designer on the client is closed.<br />
+Integrating the Ad-hoc Designer into your application means connecting that session to the rest of your application to handle operations like loading and saving the project or creating the data source.
+<br /><br />
+<b>The Ad-hoc Designer is an application within your application.</b><br />
+It is based on the ASP.NET MVC framework, but has it's own routes and controllers that you don't need to take care of. Please note that it is not a component that you can embed
+on your page (or view). The Ad-hoc Designer is opened by navigating (redirecting) to a special URL, so it always uses the whole page. If you would like to show it as part of an other page,
+you need to load it in an iframe.
+
+<br /><br />
+<h3>How to Add it to Your Application (in 3 Steps)</h3>
+<b>Step 1: Add the required dependencies</b><br />
+<div>To integrate the Ad-hoc Designer in your ASP.NET project you first need to... </div>
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <div>...add the following NuGet packages:</div>
+        <ul>
+            <li>Newtonsoft.Json (6.0.4 or newer)</li>
+            <li>Microsoft.AspNet.Mvc (5.2.3 or newer)</li>
+            <li>Microsoft.AspNet.Web.Optimization (1.1.3 or newer)</li>
+            <li>RazorGenerator.Mvc (2.4.9 or newer)</li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <div>...and reference the following assemblies of List &amp; Label:</div>
+        <ul>
+            <li>combit.ListLabel24.dll</li>
+            <li>combit.ListLabel24.AdhocDesign.dll</li>
+            <li>combit.ListLabel24.AdhocDesign.Web.dll</li>
+        </ul>
+    </div>
+</div>
+<span class="label label-warning">Warning</span> The RazorGenerator.Mvc package adds a <var>RazorGeneratorMvcStart.cs</var> file to your project. Please delete this file.
+
+<br /><br />
+<b>Step 2: Do some configuration</b><br />
+The Ad-hoc Designer is based on ASP.NET MVC. When your application is starting, you need to set up the routing and some other configuration of the Ad-hoc Designer:
+<ul>
+    <li>Call <code>AdhocWebDesigner.RegisterRoutes()</code> before (!) registering your own routes (see the <var>RouteConfig.cs</var> file of this project)</li>
+    <li>
+        Call <code>AdhocWebDesigner.Setup(...)</code> during the application startup (see the <var>Application_Start()</var> method in the <var>global.asax</var> file).
+        Many options are defined per-session, but the global options can be configured with this call.
+    </li>
+</ul>
+
+<br />
+
+<b>Step 3: Open the Ad-hoc Designer</b><br />
+<div>
+    As mentioned above, there is one IAdhocDesignerSession object on the server for each active Ad-hoc Designer on a client.
+    Before the Ad-hoc Designer can be opened on the client, you need to create a new object of the IAdhocDesignerSession interface.
+    <br /><br />
+    We recommend to use one of the included Ad-hoc-Session types that handle the load &amp; save operations for you:
+</div>
+<ul>
+    <li>Call <code>AdhocDesignerSession.FromFile(...)</code> to create an Ad-hoc Designer session for a project file in the file system.</li>
+    <li>Call <code>AdhocDesignerSession.FromRepositoryItem(...)</code> to create an Ad-hoc Designer session for a project that is stored in a repository.</li>
+</ul>
+Finally you call <code>this.RedirectToAdhocDesigner(session)</code> in an action of your MVC controller to redirect the request to a new Ad-hoc Designer<br />
+(import the <var>combit.ListLabel24.AdhocDesign.Web</var> namespace to make this extension method available).
+
+See <code>HomeController.OpenNewProject()</code> in this project for an example.
+
+<br /><br />
+
+<button class="btn btn-primary" onclick="document.getElementById('TipsTricks').style.display = 'block'; this.style.display='none'">Show Tips &amp; Tricks</button>
+<div id="TipsTricks" style="display: none;">
+    <h3>Tips &amp; Tricks</h3>
+    <ul>
+        <li>
+            <b>If you need more control when creating, loading or saving a project:</b><br />
+            Create your own Ad-hoc Designer session type and let it inherit from <code>AdhocDesignerSessionBase</code>. Many methods are virtual and may be overriden, e.g. when you want to customize
+            the defaults for a new project.
+        </li>
+        <li>
+            <b>If you need more control over the lifetimes and management of the Ad-hoc Designer sessions:</b><br />
+            Create your own implementation of the <code>IAdhocDesignerSessionManager</code> interface and pass it to the <code>AdhocDesignerWeb.Setup(...)</code> method (see Step 2).
+        </li>
+    </ul>
+</div>

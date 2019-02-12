@@ -1,0 +1,164 @@
+#DEFINE SW_SHOWNORMAL 1
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Erstellt am 03.09.2018
+//
+
+parameter bModal
+local f
+f = new AboutForm()
+if (bModal)
+   f.mdi = false // Nicht-MDI festlegen
+   f.ReadModal()
+else
+   f.Open()
+endif
+
+class AboutForm of FORM
+   with (this)
+      height = 7.6818
+      left = 30.0
+      top = 12.2727
+      width = 33.8571
+      text = "Info"
+      autoCenter = true
+   endwith
+
+   this.LINE1 = new LINE(this)
+   with (this.LINE1)
+      left = 1.0
+      right = 33.0
+      top = 4.0
+      bottom = 4.0
+      width = 1
+   endwith
+
+   this.TEXTLABEL1 = new TEXTLABEL(this)
+   with (this.TEXTLABEL1)
+      height = 1.0
+      left = 1.0
+      top = 0.5
+      width = 32.0
+      text = "Programmbeispiel zur Einbindung von"
+      alignHorizontal = 1	// Zentriert
+   endwith
+
+   this.TEXTLABEL2 = new TEXTLABEL(this)
+   with (this.TEXTLABEL2)
+      height = 1.0
+      left = 1.0
+      top = 1.5
+      width = 32.0
+      text = "combit List & Label 24"
+      fontBold = true
+      alignVertical = 1	// Mitte
+      alignHorizontal = 1	// Zentriert
+      prefixEnable = false
+   endwith
+
+   this.TEXTLABEL3 = new TEXTLABEL(this)
+   with (this.TEXTLABEL3)
+      height = 1.0
+      left = 1.0
+      top = 3.0
+      width = 32.0
+      text = "in dBASE PLUS (mit BDE)"
+      alignHorizontal = 1	// Zentriert
+   endwith
+
+   this.TEXTLABEL4 = new TEXTLABEL(this)
+   with (this.TEXTLABEL4)
+      height = 1.0
+      left = 1.0
+      top = 4.5
+      width = 32.0
+      text = "Erstellt von EDV Beratung Lutz Conrad"
+   endwith
+
+   this.TEXTLABEL5 = new TEXTLABEL(this)
+   with (this.TEXTLABEL5)
+      height = 1.0
+      left = 1.0
+      top = 5.5
+      width = 7.0
+      text = "Internet:"
+   endwith
+
+   this.TEXTLABEL6 = new TEXTLABEL(this)
+   with (this.TEXTLABEL6)
+      height = 1.0
+      left = 1.0
+      top = 6.5
+      width = 7.0
+      text = "EMail:"
+   endwith
+
+   this.T_INTERNET = new TEXTLABEL(this)
+   with (this.T_INTERNET)
+      onLeftDblClick = class::T_INTERNET_ONLEFTDBLCLICK
+      height = 1.0
+      left = 9.0
+      top = 5.5
+      width = 24.0
+      text = "www.conrad-und-partner.com"
+      colorNormal = "blue/BtnFace"
+      fontUnderline = true
+   endwith
+
+   this.T_EMAIL = new TEXTLABEL(this)
+   with (this.T_EMAIL)
+      onLeftDblClick = class::T_EMAIL_ONLEFTDBLCLICK
+      height = 1.0
+      left = 9.0
+      top = 6.5
+      width = 24.0
+      text = "lutz.conrad@dbase-tools.eu"
+      colorNormal = "blue/BtnFace"
+      fontUnderline = true
+   endwith
+
+
+   FUNCTION Init
+   DO CASE
+      CASE TYPE("_app.oInfo.Language")=="C" .AND. _app.oInfo.Language="deutsch"
+         form.text           ="Über"
+         form.Textlabel1.text="Beispielanwendung zur Integration von"
+         form.Textlabel3.text="in dBASE PLUS (mit BDE)"
+         form.Textlabel4.text="Erstellt von EDV Beratung Lutz Conrad"
+      OTHERWISE
+         form.text           ="About"
+         form.Textlabel1.text="Sample application to integration of"
+         form.Textlabel3.text="with dBASE PLUS (with BDE)"
+         form.Textlabel4.text="Created by EDV Beratung Lutz Conrad"
+   ENDCASE
+   RETURN
+
+   FUNCTION T_INTERNET_onLeftDblClick(flags, col, row)
+   CLASS::ShellExe(0,"",this.text,"","")   
+   RETURN
+
+   FUNCTION T_EMAIL_onLeftDblClick(flags, col, row)
+   CLASS::ShellExe(0,"","Mailto:"+this.text,"","")  
+   RETURN
+
+   FUNCTION ShellExe(hWnd,cOperation,cFile,cParam,cDir,nShow) //  Führt eine Anweisung aus
+   LOCAL nResult
+   EXTERN CHANDLE  ShellExecute(CHANDLE,CSTRING,CSTRING,CSTRING,CSTRING,CINT) shell32  FROM "ShellExecuteA"
+   IF EMPTY(cFile)
+      nResult=0
+   ELSE
+      IF EMPTY(hWnd)
+         hWnd=1
+      ENDIF
+      IF EMPTY(cOperation)
+         cOperation="open"
+      ENDIF
+      IF EMPTY(nShow)
+         nShow=SW_SHOWNORMAL
+      ENDIF
+      nResult=ShellExecute(hWnd,cOperation,cFile,cParam,cDir,nShow)
+   ENDIF
+   RETURN (nResult>32)
+
+endclass
+

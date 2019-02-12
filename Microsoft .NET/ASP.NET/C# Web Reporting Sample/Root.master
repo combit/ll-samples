@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="combitMaster" CodeBehind="Root.master.cs" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Reporting Sample</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="Content/combit.css" rel="stylesheet" />
+    <link href="Content/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.2.4.min.js"></script>
+    <script src="Scripts/jquery.mobile-1.4.5.min.js"></script>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- *******   Beginn Bereich Logo und oberste Navigationsleiste "Startseite | Suche ..." ******* -->
+    <div data-role="page" data-theme="a">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>

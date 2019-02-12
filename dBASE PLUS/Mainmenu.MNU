@@ -1,0 +1,245 @@
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Erstellt am 03.09.2013
+//
+parameter formObj
+new MAINMENUMENU(formObj, "root")
+
+class MAINMENUMENU(formObj, name) of MENUBAR(formObj, name)
+   with (this)
+      onInitMenu = class::SETLANGUAGE
+   endwith
+
+   this.FILEMENU = new MENU(this)
+   with (this.FILEMENU)
+      text = "&File"
+   endwith
+
+   this.FILEMENU.CLOSEAPP = new MENU(this.FILEMENU)
+   with (this.FILEMENU.CLOSEAPP)
+      onClick = class::FILEMENU_CLOSEAPP_ONCLICK
+      text = "&Close"
+   endwith
+
+   this.DESIGNREPORT = new MENU(this)
+   with (this.DESIGNREPORT)
+      text = "Design"
+   endwith
+
+   this.DESIGNREPORT.LABELS = new MENU(this.DESIGNREPORT)
+   with (this.DESIGNREPORT.LABELS)
+      onClick = class::DESIGNREPORT_LABELS_ONCLICK
+      text = "Address labels"
+   endwith
+
+   this.DESIGNREPORT.ARTICLELIST = new MENU(this.DESIGNREPORT)
+   with (this.DESIGNREPORT.ARTICLELIST)
+      onClick = class::DESIGNREPORT_ARTICLELIST_ONCLICK
+      text = "Articlelist"
+   endwith
+
+   this.DESIGNREPORT.SUBREPORT = new MENU(this.DESIGNREPORT)
+   with (this.DESIGNREPORT.SUBREPORT)
+      onClick = class::DESIGNREPORT_SUBREPORT_ONCLICK
+      text = "Subreports/Crosstables"
+   endwith
+
+   this.DESIGNREPORT.DELIVERY = new MENU(this.DESIGNREPORT)
+   with (this.DESIGNREPORT.DELIVERY)
+      onClick = class::DESIGNREPORT_DELIVERY_ONCLICK
+      text = "Delivery note"
+   endwith
+
+   this.DESIGNREPORT.CHARTING = new MENU(this.DESIGNREPORT)
+   with (this.DESIGNREPORT.CHARTING)
+      onClick = class::DESIGNREPORT_CHARTING_ONCLICK
+      text = "Charting"
+   endwith
+
+   this.DESIGNREPORT.EVENTS = new MENU(this.DESIGNREPORT)
+   with (this.DESIGNREPORT.EVENTS)
+      onClick = class::DESIGNREPORT_EVENTS_ONCLICK
+      text = "Events"
+   endwith
+
+   this.PREVIEW = new MENU(this)
+   with (this.PREVIEW)
+      text = "Print"
+   endwith
+
+   this.PREVIEW.LABELS = new MENU(this.PREVIEW)
+   with (this.PREVIEW.LABELS)
+      onClick = class::PREVIEW_LABELS_ONCLICK
+      text = "Addresslabels"
+   endwith
+
+   this.PREVIEW.ARTICLELIST = new MENU(this.PREVIEW)
+   with (this.PREVIEW.ARTICLELIST)
+      onClick = class::PREVIEW_ARTICLELIST_ONCLICK
+      text = "Articlelist"
+   endwith
+
+   this.PREVIEW.SUBREPORT = new MENU(this.PREVIEW)
+   with (this.PREVIEW.SUBREPORT)
+      onClick = class::PREVIEW_SUBREPORT_ONCLICK
+      text = "Subreports/Crosstables"
+   endwith
+
+   this.PREVIEW.DELIVERY = new MENU(this.PREVIEW)
+   with (this.PREVIEW.DELIVERY)
+      onClick = class::PREVIEW_DELIVERY_ONCLICK
+      text = "Delivery note"
+   endwith
+
+   this.PREVIEW.CHARTING = new MENU(this.PREVIEW)
+   with (this.PREVIEW.CHARTING)
+      onClick = class::PREVIEW_CHARTING_ONCLICK
+      text = "Charting"
+   endwith
+
+   this.PREVIEW.EVENTS = new MENU(this.PREVIEW)
+   with (this.PREVIEW.EVENTS)
+      onClick = class::PREVIEW_EVENTS_ONCLICK
+      text = "Events"
+   endwith
+
+   this.INFO = new MENU(this)
+   with (this.INFO)
+      text = "Info"
+   endwith
+
+   this.INFO.OPTIONS = new MENU(this.INFO)
+   with (this.INFO.OPTIONS)
+      onClick = class::INFO_OPTIONS_ONCLICK
+      text = "Options"
+   endwith
+
+   this.INFO.ABOUT = new MENU(this.INFO)
+   with (this.INFO.ABOUT)
+      onClick = class::INFO_ABOUT_ONCLICK
+      text = "About"
+   endwith
+
+
+   FUNCTION FILEMENU_CLOSEAPP_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.CloseApp()
+
+   FUNCTION DESIGNREPORT_ARTICLELIST_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenArticlelist(true)
+
+   FUNCTION DESIGNREPORT_SUBREPORT_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenSubreport(true)
+
+   FUNCTION DESIGNREPORT_LABELS_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenLabels(true)
+
+   FUNCTION DESIGNREPORT_DELIVERY_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenDelivery(true)
+
+   FUNCTION DESIGNREPORT_CHARTING_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenChart(true)
+
+   FUNCTION DESIGNREPORT_EVENTS_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenEvents(true)
+
+   FUNCTION PREVIEW_ARTICLELIST_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenArticlelist(false)
+
+   FUNCTION PREVIEW_SUBREPORT_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenSubreport(false)
+
+   FUNCTION PREVIEW_LABELS_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenLabels(false)
+
+   FUNCTION PREVIEW_DELIVERY_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenDelivery(false)
+
+   FUNCTION PREVIEW_CHARTING_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenChart(false)
+
+   FUNCTION PREVIEW_EVENTS_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenEvents(false)
+
+   FUNCTION INFO_OPTIONS_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenOptions()
+
+   FUNCTION INFO_ABOUT_onClick
+   LOCAL app
+   app= this.parent.parent.parent.app
+   RETURN app.OpenAbout()
+
+   FUNCTION SetLanguage
+   DO CASE
+      CASE TYPE("_app.oInfo.Language")=="C" .AND. _app.oInfo.Language="deutsch"
+         this.Filemenu.text                ="&Datei"
+         this.Filemenu.CloseApp.text       ="&Beenden"
+         this.DesignReport.text            ="&Bearbeiten"
+         this.DesignReport.Articlelist.text="&Artikelliste"
+         this.DesignReport.Labels.text     ="&Etiketten"
+         this.DesignReport.Delivery.text   ="&Lieferschein"
+         this.DesignReport.SubReport.text  ="&Unterbericht/Kreuztabelle"
+         this.DesignReport.Charting.text   ="&Grafische Auswertung"
+         this.DesignReport.Events.text     ="&Event-Kalender"
+         this.Preview.text                 ="&Drucken"
+         this.Preview.Articlelist.text     ="&Artikelliste"
+         this.Preview.Labels.text          ="&Etiketten"
+         this.Preview.Delivery.text        ="&Lieferschein"
+         this.Preview.SubReport.text       ="&Unterbericht/Kreuztabelle"
+         this.Preview.Charting.text        ="&Grafische Auswertung"
+         this.Preview.Events.text          ="&Event-Kalender"
+         this.Info.text                    ="&Info"
+         this.Info.Options.text            ="&Optionen"
+         this.Info.About.text              ="&Über"
+      OTHERWISE
+         this.Filemenu.text                ="&File"
+         this.Filemenu.CloseApp.text       ="&Close"
+         this.DesignReport.text            ="&Design"
+         this.DesignReport.Articlelist.text="&Articlelist"
+         this.DesignReport.Labels.text     ="&Addresslabels"
+         this.DesignReport.Delivery.text   ="&Delivery note"
+         this.DesignReport.SubReport.text  ="&Subreport/Crosstable"
+         this.DesignReport.Charting.text   ="&Charting"
+         this.DesignReport.Events.text     ="&Event-Calendar"
+         this.Preview.text                 ="&Print"
+         this.Preview.Articlelist.text     ="&Articlelist"
+         this.Preview.Labels.text          ="&Addresslabels"
+         this.Preview.Delivery.text        ="&Delivery note"
+         this.Preview.SubReport.text       ="&Subreport/Crosstable"
+         this.Preview.Charting.text        ="&Charting"
+         this.Preview.Events.text          ="&Event-Calendar"
+         this.Info.text                    ="&Info"
+         this.Info.Options.text            ="&Options"
+         this.Info.About.text              ="&About"
+   ENDCASE
+   RETURN
+
+endclass
+

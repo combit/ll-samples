@@ -1,0 +1,31 @@
+CLASS DeliveryReport OF LL24InterfaceSample FROM LL24.CC
+   this.DATAMODREF1 = new DATAMODREF()
+   this.DATAMODREF1.parent = this
+   with (this.DATAMODREF1)
+      filename = "Orders.dmd"
+      dataModClass = "OrdersDATAMODULE"
+      active = true
+      left = 58.0
+      top = 4.5
+   endwith
+
+   FUNCTION Init(lDesign,lBugdemo)
+   this.BugDemo=.NOT. EMPTY(lBugdemo)
+   this.datamodRef1.ref.Orderdetails1.rowset.navigateByMaster=true
+   this.datamodRef1.ref.Orders1.rowset.canGetRow=CLASS::ROWSET_CANGETROW
+   this.UserVars.add({"C_Language",(_app.language),"CHARACTER"})
+   this.UserVars.add({"C_Number",123456789,"NUMERIC",10,0})
+   this.rowset=this.DatamodRef1.ref.Orders1.rowset
+   this.Relations.add((this.DatamodRef1.ref.OrderDetails1.rowset))
+   this.Relations.add((this.DatamodRef1.ref.Article1.rowset))
+   this.Relations.add((this.DatamodRef1.ref.Customers1.rowset))
+   this.Design=lDesign
+   this.Extension=".LST"
+   this.Filename ="Delivery.LST"
+   RETURN
+
+   FUNCTION ROWSET_canGetRow
+   LOCAL lGet
+   lGet=this.SelectedRecords.scan((this.fields["OrderID"].value))>0
+   RETURN lGet
+ENDCLASS

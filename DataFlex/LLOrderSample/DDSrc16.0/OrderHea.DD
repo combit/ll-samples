@@ -1,0 +1,134 @@
+Use  Windows.pkg           // Basic Definitions
+Use  DataDict.pkg          // DataDictionary Class Definition
+Use  DDvalTbl.pkg          // Validation Table Class Definitions
+
+Open OrderHea
+Open OrderDtl
+Open Customer
+Open SalesP
+Open OrdSys
+
+
+Register_Object Terms_table
+Register_Object Ship_Table
+
+Object Terms_table  is a DescriptionValidationTable
+
+    Procedure Fill_List
+        Forward Send Fill_List
+        Send Add_Table_Value  "NONE"  "None established"
+        Send Add_Table_Value  "COD"  "COD"
+        Send Add_Table_Value  "NET30"  "Net 30"
+        Send Add_Table_Value  "NET60"  "Net 60"
+        Send Add_Table_Value  "NET90"  "Net 90"
+        Send Add_Table_Value  "PREPAY"  "Pre-payment required"
+    End_Procedure    // Fill_List
+End_Object   // Terms_table
+
+Object Ship_Table  is a CodeValidationTable
+    Set Type_Value        To "SHIPPING"
+    Set Allow_Blank_State To True
+End_Object   // Ship_Table
+Register_Object OrderHea_sl
+
+Class OrderHea_DataDictionary Is A DataDictionary
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+
+        Set Main_File To OrderHea.File_Number
+
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+        Set Add_Client_File to OrderDtl.File_Number
+
+        Set Add_Server_File to Customer.File_Number
+        Set Add_Server_File to SalesP.File_Number
+
+        Set Add_System_File to OrdSys.File_Number DD_LOCK_ON_NEW_SAVE_DELETE
+
+        Set Field_Auto_Increment Field OrderHea.Order_Number to File_Field OrdSys.Order_Number
+
+
+        Set Field_Option Field OrderHea.Order_Number DD_AUTOFIND to True
+        Set Field_Prompt_Object Field OrderHea.Order_Number to OrderHea_SL
+        Set Key_Field_State Field OrderHea.Order_Number To True
+        Set Status_Help Field OrderHea.Order_Number To "Order Number - New orders are assigned numbers automatically"
+
+
+        Set Field_Class_Name Field OrderHea.Order_Date To "dbSpinForm"
+        Set Field_Entry_msg Field OrderHea.Order_Date To Entry_Order_Date
+        Set Field_Mask_Type Field OrderHea.Order_Date To MASK_DATE_WINDOW
+        Set Field_Prompt_Object Field OrderHea.Order_Date to OrderHea_SL
+        Set Status_Help Field OrderHea.Order_Date To "Date on which the order was placed"
+
+        Set Field_Class_Name Field OrderHea.Terms To "dbComboForm"
+        Set Field_Value_Table Field OrderHea.Terms to Terms_table
+        Set Status_Help Field OrderHea.Terms To "Payment terms"
+
+        Set Field_Class_Name Field OrderHea.Ship_Via To "dbComboForm"
+        Set Field_Value_Table Field OrderHea.Ship_Via to Ship_Table
+        Set Status_Help Field OrderHea.Ship_Via To "Shipping method"
+
+        Set Status_Help Field OrderHea.Ordered_By To "Order placed by"
+
+        Set Field_Label_Long Field OrderHea.Salesperson_ID To "Sales Person ID"
+        Set Field_Label_Short Field OrderHea.Salesperson_ID To "Sales ID"
+        Set Status_Help Field OrderHea.Salesperson_ID To "Sales Person who initiated the order"
+
+        Set Field_Mask_Type Field OrderHea.Order_Total To MASK_CURRENCY_WINDOW
+        Set Field_Option Field OrderHea.Order_Total DD_DISPLAYONLY to True
+
+
+    End_Procedure  // Construct_Object
+
+    Procedure Field_Defaults
+        Forward Send Field_Defaults
+    End_Procedure
+
+    // Add a default date if the field is blank
+    Procedure Entry_Order_Date Integer iField Date dDate
+         Integer iChanged
+         
+         Get Field_Changed_State iField To iChanged
+         If (iChanged=0 And dDate=0) Begin
+            SysDate dDate
+            Set Field_Default_Value iField To dDate
+         End
+    End_Procedure
+
+    Procedure Update
+        Forward Send Update
+        Send Adjust_Balances OrderHea.Order_Total
+    End_Procedure
+
+    Procedure Backout
+        Forward Send Backout
+        Send Adjust_Balances (-OrderHea.Order_Total)
+    End_Procedure
+
+    Procedure Adjust_Balances Number Amt
+        Add Amt To Customer.Purchases
+        Add Amt To Customer.Balance
+    End_Procedure
+
+    Procedure Deleting
+        Forward Send Deleting
+        // see if we can decrement the order number in sys file...can only do
+        // this if this is the newest order.
+        If (OrderHea.Order_Number=OrdSys.Order_Number) Begin // if this is
+           Decrement OrdSys.Order_Number          // the last number,
+           Saverecord OrdSys                      // decrement and save.
+        End
+    End_Procedure
+
+End_Class    //  OrderHea_DataDictionary
+#IFDEF Is$WebApp
+#ELSE
+
+Use OrderHea.sl      // OrderHea_sl
+
+#ENDIF
+

@@ -1,0 +1,8 @@
+[Properties]
+Version=19.0
+[WorkspacePaths]
+ConfigFile=.\Programs\Config19.0.ws
+[Projects]
+Project0=Order.src
+[Libraries]
+Lib2=..\LLLibrary24.0\LL24-VDF19.0.sws

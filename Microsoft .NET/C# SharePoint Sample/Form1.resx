@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="lblServer.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblServer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 123</value>
+  </data>
+  <data name="lblServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 14</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblServer.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="lblServer.Text" xml:space="preserve">
+    <value>Server: </value>
+  </data>
+  <data name="&gt;&gt;lblServer.Name" xml:space="preserve">
+    <value>lblServer</value>
+  </data>
+  <data name="&gt;&gt;lblServer.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblServer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblServer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="lblDocBib.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="lblDocBib.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 233</value>
+  </data>
+  <data name="lblDocBib.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 14</value>
+  </data>
+  <data name="lblDocBib.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="lblDocBib.Text" xml:space="preserve">
+    <value>Document libraries:</value>
+  </data>
+  <data name="&gt;&gt;lblDocBib.Name" xml:space="preserve">
+    <value>lblDocBib</value>
+  </data>
+  <data name="&gt;&gt;lblDocBib.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblDocBib.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblDocBib.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 19</value>
+  </data>
+  <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 20</value>
+  </data>
+  <data name="txtName.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtName.Name" xml:space="preserve">
+    <value>txtName</value>
+  </data>
+  <data name="&gt;&gt;txtName.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtName.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;txtName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkOverwriteFile.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkOverwriteFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 68</value>
+  </data>
+  <data name="chkOverwriteFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 15</value>
+  </data>
+  <data name="chkOverwriteFile.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkOverwriteFile.Text" xml:space="preserve">
+    <value>Overwrite existing file</value>
+  </data>
+  <data name="&gt;&gt;chkOverwriteFile.Name" xml:space="preserve">
+    <value>chkOverwriteFile</value>
+  </data>
+  <data name="&gt;&gt;chkOverwriteFile.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkOverwriteFile.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;chkOverwriteFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 6</value>
+  </data>
+  <data name="lblInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 48</value>
+  </data>
+  <data name="lblInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="lblInfo.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="lblInfo.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblInfo.Name" xml:space="preserve">
+    <value>lblInfo</value>
+  </data>
+  <data name="&gt;&gt;lblInfo.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblInfo.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;lblInfo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblFileName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 45</value>
+  </data>
+  <data name="lblFileName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 14</value>
+  </data>
+  <data name="lblFileName.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="lblFileName.Text" xml:space="preserve">
+    <value>Filename:</value>
+  </data>
+  <data name="&gt;&gt;lblFileName.Name" xml:space="preserve">
+    <value>lblFileName</value>
+  </data>
+  <data name="&gt;&gt;lblFileName.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblFileName.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;lblFileName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 45</value>
+  </data>
+  <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 20</value>
+  </data>
+  <data name="txtPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPassword.Name" xml:space="preserve">
+    <value>txtPassword</value>
+  </data>
+  <data name="&gt;&gt;txtPassword.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtPassword.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;txtPassword.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 48</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="pictureBox1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 388</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 62</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxFormat.ItemHeight" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="comboBoxFormat.Items" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="comboBoxFormat.Items1" xml:space="preserve">
+    <value>XLS</value>
+  </data>
+  <data name="comboBoxFormat.Items2" xml:space="preserve">
+    <value>XLSX</value>
+  </data>
+  <data name="comboBoxFormat.Items3" xml:space="preserve">
+    <value>RTF</value>
+  </data>
+  <data name="comboBoxFormat.Items4" xml:space="preserve">
+    <value>Multi-TIFF</value>
+  </data>
+  <data name="comboBoxFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 14</value>
+  </data>
+  <data name="comboBoxFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 25</value>
+  </data>
+  <data name="comboBoxFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFormat.Name" xml:space="preserve">
+    <value>comboBoxFormat</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFormat.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFormat.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFormat.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtFileName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 42</value>
+  </data>
+  <data name="txtFileName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 20</value>
+  </data>
+  <data name="txtFileName.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtFileName.Name" xml:space="preserve">
+    <value>txtFileName</value>
+  </data>
+  <data name="&gt;&gt;txtFileName.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtFileName.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtFileName.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnExport.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 359</value>
+  </data>
+  <data name="btnExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 23</value>
+  </data>
+  <data name="btnExport.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnExport.Text" xml:space="preserve">
+    <value>Create and export file...</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
+    <value>btnExport</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnExport.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="lblFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 14</value>
+  </data>
+  <data name="lblFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="lblFormat.Text" xml:space="preserve">
+    <value>Format:</value>
+  </data>
+  <data name="&gt;&gt;lblFormat.Name" xml:space="preserve">
+    <value>lblFormat</value>
+  </data>
+  <data name="&gt;&gt;lblFormat.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblFormat.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;lblFormat.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 260</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 93</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnRefresh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 230</value>
+  </data>
+  <data name="btnRefresh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 25</value>
+  </data>
+  <data name="btnRefresh.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnRefresh.Text" xml:space="preserve">
+    <value>Refresh...</value>
+  </data>
+  <data name="&gt;&gt;btnRefresh.Name" xml:space="preserve">
+    <value>btnRefresh</value>
+  </data>
+  <data name="&gt;&gt;btnRefresh.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnRefresh.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnRefresh.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 22</value>
+  </data>
+  <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 16</value>
+  </data>
+  <data name="lblName.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Loginname: </value>
+  </data>
+  <data name="&gt;&gt;lblName.Name" xml:space="preserve">
+    <value>lblName</value>
+  </data>
+  <data name="&gt;&gt;lblName.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblName.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;lblName.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 48</value>
+  </data>
+  <data name="lblPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 14</value>
+  </data>
+  <data name="lblPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="lblPassword.Text" xml:space="preserve">
+    <value>Password: </value>
+  </data>
+  <data name="&gt;&gt;lblPassword.Name" xml:space="preserve">
+    <value>lblPassword</value>
+  </data>
+  <data name="&gt;&gt;lblPassword.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblPassword.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;lblPassword.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 149</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 72</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Authentication (optional)</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="comboBoxBib.ItemHeight" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="comboBoxBib.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 230</value>
+  </data>
+  <data name="comboBoxBib.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 25</value>
+  </data>
+  <data name="comboBoxBib.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBib.Name" xml:space="preserve">
+    <value>comboBoxBib</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBib.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBib.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBib.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="txtServer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 120</value>
+  </data>
+  <data name="txtServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>305, 20</value>
+  </data>
+  <data name="txtServer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtServer.Name" xml:space="preserve">
+    <value>txtServer</value>
+  </data>
+  <data name="&gt;&gt;txtServer.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtServer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtServer.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 9</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>309, 40</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Please download and install the SharePoint Foundation 2010 Client Object Model Redistributables.</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 15</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 23</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Download...</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 60</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 54</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>446, 470</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAQAMDAAAAEAIACoJQAARgAAACAgAAABACAAqBAAAO4lAAAYGAAAAQAgAIgJAACWNgAAEBAAAAEA
+        IABoBAAAHkAAACgAAAAwAAAAYAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf//////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf//////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf//////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf//////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        /////////////2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2Zm
+        Zv///////////2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2Zm
+        Zv////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        /////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2Zm
+        Zv9mZmb/ZmZm/2ZmZv///////////2ZmZv//////////////////////////////////////////////
+        /////////////2ZmZv////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf///////////////////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2Zm
+        Zv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv///////////2ZmZv//////////////////////////////
+        /////////////////////////////2ZmZv////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf///////////////////////////////////////////2ZmZv9mZmb/ZmZm/2Zm
+        Zv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv///////////2ZmZv///////////2Zm
+        Zv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf///////////////////////////////////////////2Zm
+        Zv9mZmb/ZmZm/2ZmZv///////////////////////////////////////////////////////////2Zm
+        Zv///////////2ZmZv//////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        /////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////////////////////
+        /////////////2ZmZv///////////2ZmZv//////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        /////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////
+        /////////////////////////////2ZmZv///////////2ZmZv//////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf///////////////////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////
+        /////////////////////////////////////////////2ZmZv///////////2ZmZv//////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf///////////////////////////////////////////2ZmZv9mZmb/ZmZm/2Zm
+        Zv///////////////////////////////////////////////////////////2ZmZv///////////2Zm
+        Zv//////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf///////////////////////////////////////////2Zm
+        Zv9mZmb/ZmZm/2ZmZv///////////////////////////////////////////////////////////2Zm
+        Zv///////////2ZmZv//////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        /////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////////////////////
+        /////////////2ZmZv///////////2ZmZv//////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        /////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////
+        /////////////////////////////2ZmZv///////////2ZmZv//////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf///////////////////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////
+        /////////////////////////////////////////////2ZmZv///////////2ZmZv//////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf///////////////////////////////////////////2ZmZv9mZmb/ZmZm/2Zm
+        Zv///////////////////////////////////////////////////////////2ZmZv///////////2Zm
+        Zv//////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf///////////////////////////////////////////2Zm
+        Zv9mZmb/ZmZm/2ZmZv///////////////////////////////////////////////////////////2Zm
+        Zv///////////2ZmZv//////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        /////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////////////////////
+        /////////////2ZmZv///////////2ZmZv//////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        /////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////
+        /////////////////////////////2ZmZv///////////2ZmZv//////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf///////////////////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////
+        /////////////////////////////////////////////2ZmZv///////////2ZmZv//////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf///////////////////////////////////////////2ZmZv9mZmb/ZmZm/2Zm
+        Zv///////////////////////////////////////////////////////////2ZmZv///////////2Zm
+        Zv//////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf///////////////////////////////////////////2Zm
+        Zv9mZmb/ZmZm/2ZmZv///////////////////////////////////////////////////////////2Zm
+        Zv///////////2ZmZv//////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        /////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////////////////////
+        /////////////2ZmZv///////////2ZmZv//////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        /////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////
+        /////////////////////////////2ZmZv9mZmb/ZmZm/2ZmZv//////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf//////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf//////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf//////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf//////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf//////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAIAAAAEAA
+        AAABACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/////////
+        ////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////7iCTf+4gk3/uIJN/7iC
+        Tf//////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////uIJN/7iC
+        Tf+4gk3/uIJN////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        /////////////7iCTf+4gk3/uIJN/7iCTf//////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////uIJN/7iCTf+4gk3/uIJN////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////////////
+        //9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv//////ZmZm/2ZmZv9mZmb/ZmZm/2Zm
+        Zv9mZmb/ZmZm/2ZmZv9mZmb//////////////////////7iCTf+4gk3/uIJN/7iCTf//////////////
+        /////////////2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm//////9mZmb/////////
+        /////////////////////////////2ZmZv//////////////////////uIJN/7iCTf+4gk3/uIJN////
+        ////////////////////////ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb//////2Zm
+        Zv//////ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm//////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3///////////////////////////9mZmb/ZmZm/2ZmZv//////////////////////////////
+        ////////ZmZm//////9mZmb//////////////////////////////////////////////////////7iC
+        Tf+4gk3/uIJN/7iCTf///////////////////////////2ZmZv9mZmb/ZmZm////////////////////
+        //////////////////9mZmb//////2ZmZv//////////////////////////////////////////////
+        ////////uIJN/7iCTf+4gk3/uIJN////////////////////////////ZmZm/2ZmZv9mZmb/////////
+        /////////////////////////////2ZmZv//////ZmZm////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3///////////////////////////9mZmb/ZmZm/2Zm
+        Zv//////////////////////////////////////ZmZm//////9mZmb/////////////////////////
+        /////////////////////////////7iCTf+4gk3/uIJN/7iCTf///////////////////////////2Zm
+        Zv9mZmb/ZmZm//////////////////////////////////////9mZmb//////2ZmZv//////////////
+        ////////////////////////////////////////uIJN/7iCTf+4gk3/uIJN////////////////////
+        ////////ZmZm/2ZmZv9mZmb//////////////////////////////////////2ZmZv//////ZmZm////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////
+        //////////////////9mZmb/ZmZm/2ZmZv//////////////////////////////////////ZmZm////
+        //9mZmb//////////////////////////////////////////////////////7iCTf+4gk3/uIJN/7iC
+        Tf///////////////////////////2ZmZv9mZmb/ZmZm////////////////////////////////////
+        //9mZmb//////2ZmZv//////////////////////////////////////////////////////uIJN/7iC
+        Tf+4gk3/uIJN////////////////////////////ZmZm/2ZmZv9mZmb/////////////////////////
+        /////////////2ZmZv//////ZmZm////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3///////////////////////////9mZmb/ZmZm/2ZmZv//////////////
+        ////////////////////////ZmZm//////9mZmb/////////////////////////////////////////
+        /////////////7iCTf+4gk3/uIJN/7iCTf///////////////////////////2ZmZv9mZmb/ZmZm////
+        //////////////////////////////////9mZmb//////2ZmZv//////////////////////////////
+        ////////////////////////uIJN/7iCTf+4gk3/uIJN////////////////////////////ZmZm/2Zm
+        Zv9mZmb//////////////////////////////////////2ZmZv//////ZmZm////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////////////
+        //9mZmb/ZmZm/2ZmZv//////////////////////////////////////ZmZm/2ZmZv9mZmb/////////
+        /////////////////////////////////////////////7iCTf+4gk3/uIJN/7iCTf//////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////uIJN/7iCTf+4gk3/uIJN////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////7iC
+        Tf+4gk3/uIJN/7iCTf//////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////uIJN/7iCTf+4gk3/uIJN////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAABgA
+        AAAwAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALiCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/////////////////ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm////
+        //9mZmb/ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb///////////+4gk3/uIJN/7iCTf+4gk3/////////
+        ////////ZmZm/2ZmZv9mZmb/ZmZm/2ZmZv9mZmb/ZmZm//////9mZmb/////////////////////////
+        //9mZmb///////////+4gk3/uIJN/7iCTf+4gk3/////////////////ZmZm/2ZmZv9mZmb/ZmZm/2Zm
+        Zv9mZmb/ZmZm//////9mZmb//////2ZmZv9mZmb/ZmZm/2ZmZv9mZmb///////////+4gk3/uIJN/7iC
+        Tf+4gk3/////////////////ZmZm/2ZmZv9mZmb///////////////////////////9mZmb//////2Zm
+        Zv////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////ZmZm/2Zm
+        Zv9mZmb///////////////////////////9mZmb//////2ZmZv//////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/////////////////ZmZm/2ZmZv9mZmb/////////////////////////
+        //9mZmb//////2ZmZv////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////
+        ////////ZmZm/2ZmZv9mZmb///////////////////////////9mZmb//////2ZmZv//////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////ZmZm/2ZmZv9mZmb/////////
+        //////////////////9mZmb//////2ZmZv////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/////////////////ZmZm/2ZmZv9mZmb///////////////////////////9mZmb//////2Zm
+        Zv////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////ZmZm/2Zm
+        Zv9mZmb///////////////////////////9mZmb//////2ZmZv//////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/////////////////ZmZm/2ZmZv9mZmb/////////////////////////
+        //9mZmb//////2ZmZv////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////
+        ////////ZmZm/2ZmZv9mZmb///////////////////////////9mZmb/ZmZm/2ZmZv//////////////
+        //////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////+4gk3/uIJN/7iC
+        Tf+4gk3/////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN/7iCTf+4gk3/////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAC4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/uIJN////////////////////////////////////////////////////
+        ////////////////////////uIJN/7iCTf//////////////////////////////////////////////
+        /////////////////////////////7iCTf+4gk3/////////////////////////////////////////
+        //////////////////////////////////+4gk3/uIJN/////////////////2ZmZv9mZmb/ZmZm/2Zm
+        Zv//////mZmZ/5mZmf+ZmZn/mZmZ////////////uIJN/7iCTf////////////////9mZmb/ZmZm/2Zm
+        Zv9mZmb//////5mZmf+ZmZn/mZmZ/5mZmf///////////7iCTf+4gk3/////////////////ZmZm/2Zm
+        Zv////////////////+ZmZn/mZmZ//////////////////////+4gk3/uIJN/////////////////2Zm
+        Zv9mZmb/////////////////mZmZ/5mZmf//////////////////////uIJN/7iCTf//////////////
+        //9mZmb/ZmZm/////////////////5mZmf+ZmZn//////////////////////7iCTf+4gk3/////////
+        ////////ZmZm/2ZmZv////////////////+ZmZn/mZmZ//////////////////////+4gk3/uIJN////
+        /////////////2ZmZv9mZmb/////////////////mZmZ/5mZmf//////////////////////uIJN/7iC
+        Tf////////////////9mZmb/ZmZm/////////////////5mZmf+ZmZn//////////////////////7iC
+        Tf+4gk3/////////////////////////////////////////////////////////////////////////
+        //+4gk3/uIJN////////////////////////////////////////////////////////////////////
+        ////////uIJN/7iCTf//////////////////////////////////////////////////////////////
+        /////////////7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iCTf+4gk3/uIJN/7iC
+        Tf+4gk3/uIJN/7iCTf+4gk3/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>List &amp; Label C# SharePoint Sample</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+</root>

@@ -1,0 +1,28 @@
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Revision: 01.09.2017
+//
+class SubReportADODATAMODULE of DATAMODULE
+   this.CATEGORIES1 = new ADOQUERY(this)
+   with (this.CATEGORIES1)
+      database = _app.MainADODatabase
+      sql = "Select CategorieID, Name from Categories"
+      active = true
+   endwith
+   with (this.CATEGORIES1.rowset)
+      onNavigate = CLASS::CATEGORIES1_ONNAVIGATE
+   endwith
+
+   this.ARTICLE1 = new ADOQUERY(this)
+   with (this.ARTICLE1)
+      database = _app.MainADODatabase
+      sql = "Select ArticleNumber, Name, Price, QuantityPerUnit, TradeUnit, UnitsInStock FROM Article WHERE CategorieID=:CategorieID"
+      masterSource = form.categories1.rowset
+      active = true
+   endwith
+   
+   FUNCTION CATEGORIES1_onNavigate
+   this.parent.parent.Article1.requery()
+   RETURN
+endclass
+

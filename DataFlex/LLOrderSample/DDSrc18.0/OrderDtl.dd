@@ -1,0 +1,121 @@
+Use  Windows.pkg           // Basic Definitions
+Use  DataDict.pkg          // DataDictionary Class Definition
+Use  DDvalTbl.pkg          // Validation Table Class Definitions
+
+Open OrderDtl
+Open OrderHea
+Open Invt
+
+
+Class OrderDtl_DataDictionary Is A DataDictionary
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+
+        Set Main_File To OrderDtl.File_Number
+        Set Cascade_Delete_State To False
+
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+        Set Add_Server_File to OrderHea.File_Number
+        Set Add_Server_File to Invt.File_Number
+
+        Set Field_Auto_Increment Field OrderDtl.Detail_Number to File_Field OrderHea.Last_Detail_Num
+
+
+        Set Field_Option Field OrderDtl.Order_Number DD_NOPUT to True
+
+        Set Field_Option Field OrderDtl.Detail_Number DD_NOPUT to True
+
+
+        Set Field_Exit_msg Field OrderDtl.Qty_Ordered To Adjust_Display_Total
+        Set Field_Label_Long Field OrderDtl.Qty_Ordered To "Quantity Ordered"
+        Set Field_Label_Short Field OrderDtl.Qty_Ordered To "Quantity"
+        Set Field_Mask_Type Field OrderDtl.Qty_Ordered To MASK_NUMERIC_WINDOW
+        Set Status_Help Field OrderDtl.Qty_Ordered To "Number of items ordered"
+
+        Set Field_Entry_msg Field OrderDtl.Price To Entering_Price
+        Set Field_Exit_msg Field OrderDtl.Price To Adjust_Display_Total
+        Set Field_Label_Long Field OrderDtl.Price To "Price per Unit"
+        Set Field_Label_Short Field OrderDtl.Price To "Price"
+        Set Field_Mask_Type Field OrderDtl.Price To MASK_CURRENCY_WINDOW
+        Set Status_Help Field OrderDtl.Price To "Price per Unit"
+
+        Set Field_Label_Long Field OrderDtl.Extended_Price To "Extended Price"
+        Set Field_Label_Short Field OrderDtl.Extended_Price To "Total"
+        Set Field_Mask_Type Field OrderDtl.Extended_Price To MASK_CURRENCY_WINDOW
+        Set Field_Option Field OrderDtl.Extended_Price DD_DISPLAYONLY to True
+        Set Status_Help Field OrderDtl.Extended_Price To "Total extended price"
+
+    End_Procedure  //  Construct_Object
+
+    // Update and Backout need to adjust the Invt.On_Hand quantity,
+    // the dtl line's extended price and the OrderHea total. We will call
+    // the same procedure (Adjust_Balances) to insure that backout and
+    // update are inverses of each other.
+    // Note that Backout does not need to change the extended_price. This
+    // only gets changed as part of update.
+    Procedure Update
+        Forward Send Update
+        Move (OrderDtl.Price * OrderDtl.Qty_Ordered) To OrderDtl.Extended_Price
+        Send Adjust_Balances OrderDtl.Qty_Ordered OrderDtl.Extended_Price
+    End_Procedure
+    
+    Procedure Backout
+        Forward Send Backout
+        Send Adjust_Balances (-OrderDtl.Qty_Ordered) (-OrderDtl.Extended_Price)
+    End_Procedure
+
+    // Called by Backout and Update passing the quantity
+    // and the extended price. 
+    // Subtract quantity from Invt on-hand and
+    // add extended amnt to order total.
+    Procedure Adjust_Balances Number Qty Number Amt
+        Subtract Qty From Invt.On_Hand
+        Add      Amt To   OrderHea.Order_Total
+    End_Procedure
+
+    // when entering the price field we may wish to update the
+    // current field value with the standard unit price from the
+    // Invt file. Only do this if the current amount is zero and an item was actually picked. If non-
+    // zero or no item picked, we assume the field is being edited (and we make no assumptions). 
+    Procedure Entering_Price Integer Field# Number nAmnt
+        Handle hoInvtDD
+        Boolean bHasRecord
+
+        Get Data_Set Invt.File_Number to hoInvtDD
+
+        If (hoInvtDD) Begin
+            Get HasRecord of hoInvtDD to bHasRecord
+        
+            If (nAmnt=0 and bHasRecord) Begin
+               Get File_Field_Current_Value File_Field Invt.Unit_Price to nAmnt
+               Set Field_Changed_Value Field# to nAmnt
+               Send Adjust_Display_Total
+            End
+        End
+        
+    End_Procedure
+
+    // This updates the extended price field, which will update any 
+    // display balances. This is only done for display purposes. The actual
+    // amount is updated to the field during the save.
+    Procedure Adjust_Display_total Integer iField String sValue
+        Integer iQty
+        Number  nAmnt
+        
+        Get Field_Current_Value Field OrderDtl.Qty_Ordered    To iQty
+        Get Field_Current_Value Field OrderDtl.Price          To nAmnt
+        Set Field_Current_Value Field OrderDtl.Extended_Price To (nAmnt * iQty)
+        // note we set value, but not changed state!
+    End_Procedure
+
+
+    Procedure Field_Defaults
+        Forward Send Field_Defaults
+    End_Procedure    // Field_Defaults
+    
+End_Class    //  OrderDtl_DataDictionary
+

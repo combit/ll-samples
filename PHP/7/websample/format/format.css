@@ -1,0 +1,68 @@
+h1,h2,h3,p,a,table,tr,td
+{
+	FONT-SIZE: 11px;
+	COLOR: #000000;
+	FONT-FAMILY: tahoma,arial,helvetica,sans-serif
+}
+
+h1
+{
+	FONT-SIZE: 16px;
+}
+
+p.small
+{
+	FONT-SIZE: 10px;
+}
+
+.rRow2
+{
+	min-width: 800px;
+	height: 821px;
+	overflow:hidden;
+}
+
+/* menue linke  seite */
+a.navilinks
+{
+	color:#143d8f;
+	text-decoration:none;
+	font-family:verdana, sans-serif; 
+	font-size: 8pt; 
+}
+
+a.navilinks:hover
+{
+	color:white;
+	font-family:verdana, sans-serif; 
+	font-size: 8pt; 
+}
+
+
+a.navioben
+{
+	color:white;
+	text-decoration:none;
+	font-family:verdana, sans-serif; 
+	font-size: 8pt; 
+}
+
+a.navioben:hover
+{
+	color:white;
+	text-decoration:underline;
+	font-family:verdana, sans-serif; 
+	font-size: 8pt; 
+}
+
+
+img
+{
+	border: 0;
+}
+
+#button-submit .ui-btn
+{
+	margin-top: .31em;
+	margin-bottom: .31em;
+}

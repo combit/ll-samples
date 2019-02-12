@@ -1,0 +1,5 @@
+#REPLACE FILE253 CodeType
+#REPLACE CodeType.Recnum |FN253,0
+#REPLACE CodeType.Type |FS253,1
+#REPLACE CodeType.Description |FS253,2
+#REPLACE CodeType.Comment |FS253,3

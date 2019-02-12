@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<WSAD xmlns="urn:schemas-progress-com:WSAD:0011" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AppObject>
+    <PGVersion>
+      <PXGVersion>03</PXGVersion>
+    </PGVersion>
+    <PGGenInfo isSessionFree="true">
+      <Author>Thomas Wurl</Author>
+      <VersionString />
+      <VersionNumber>1</VersionNumber>
+      <Package />
+      <Service>OpenEdgeProxy</Service>
+      <WorkDir>T:\LL23\LLWS\LLPRO\ProxyGen\</WorkDir>
+      <VerboseLogging>true</VerboseLogging>
+      <LeaveProxyFiles>true</LeaveProxyFiles>
+      <SaveBeforeGen>true</SaveBeforeGen>
+      <DotNetClient>true</DotNetClient>
+      <JavaClient>false</JavaClient>
+      <WebServicesClient>false</WebServicesClient>
+      <ESBClient>false</ESBClient>
+      <ESBClient2>false</ESBClient2>
+      <SilverlightClient>false</SilverlightClient>
+      <RESTClient>false</RESTClient>
+      <UserDefinedAppService>false</UserDefinedAppService>
+      <JavaCompilerType>1</JavaCompilerType>
+      <JavaCompiler>&lt;Install Dir&gt;\jdk\bin\javac</JavaCompiler>
+      <JavaSwitches />
+      <JavaClasspathSwitch>-classpath</JavaClasspathSwitch>
+      <JavaClasspath>&lt;Proxy Dir&gt;;&lt;Install Dir&gt;\java\progress.jar;&lt;Install Dir&gt;\java\messages.jar;;&lt;Default classes.zip&gt;</JavaClasspath>
+      <DotNetCompilerType>4</DotNetCompilerType>
+      <DotNetCompiler>csc</DotNetCompiler>
+      <DotNetSwitches />
+      <DotNetXSDGenerator>xsd</DotNetXSDGenerator>
+      <DotNetNamespace>TasteITConsulting.ListLabel</DotNetNamespace>
+      <DotNetTitle>ListLabel OpenEdgeProxy</DotNetTitle>
+      <DotNetVersion>1.0</DotNetVersion>
+      <DotNetDesc>.Net Proxy for List &amp; Label</DotNetDesc>
+      <DotNetCompany>Taste IT Consulting</DotNetCompany>
+      <DotNetProduct>OpenEdgeDataProvider </DotNetProduct>
+      <DotNetPublicKey />
+      <DotNetDelaySign>false</DotNetDelaySign>
+      <DotNetRuntime>digitally signed</DotNetRuntime>
+      <DotNetDataSetNamespace>TasteITConsulting.ListLabel.StrongTypesNS</DotNetDataSetNamespace>
+      <DNUseDefaultDSNamespace>true</DNUseDefaultDSNamespace>
+      <DNUseNamespaceAsDirs>true</DNUseNamespaceAsDirs>
+      <DotNetUseNullableTypes>true</DotNetUseNullableTypes>
+      <SilverlightDomainServiceNamespace>TasteITConsulting.ListLabel.Web.Services</SilverlightDomainServiceNamespace>
+      <SilverlightUseDefaultDomainServiceNamespace>true</SilverlightUseDefaultDomainServiceNamespace>
+      <SilverlightEntityNamespace>TasteITConsulting.ListLabel.Web</SilverlightEntityNamespace>
+      <SilverlightUseDefaultEntityNamespace>true</SilverlightUseDefaultEntityNamespace>
+    </PGGenInfo>
+    <DeploymentWizard>
+      <CurrentEncoding>3</CurrentEncoding>
+      <SoapEndpointURL>http://www.tempuri.org/wsa/wsa1</SoapEndpointURL>
+      <WebServiceNamespace userDefined="true">urn:tempuri-org</WebServiceNamespace>
+      <SoapAction appendToSoapAction="false" />
+      <ConnectReturnString userDefined="false" />
+      <TestWSDL bGen="true" RPCEncoded="false" RPCLiteral="false" DocLiteral="true" />
+      <ESBEncoding>3</ESBEncoding>
+      <EntryEndpoint useDefault="true" />
+      <FaultEndpoint useDefault="true" />
+      <RejectedEndpoint useDefault="true" />
+      <Container />
+      <AppserverURL>AppServerDC://localhost:3091</AppserverURL>
+      <FileName overWrite="false">OpenEdgeProxy</FileName>
+      <ResourceDirectory>/Resources/OpenEdgeServices</ResourceDirectory>
+      <SonicAppService useFileSystem="false" deployToDS="false" createXAR="false">
+        <ResourceDirectory overWrite="false" />
+        <XARName />
+      </SonicAppService>
+      <SonicConnectionInfo>
+        <SonicURL>tcp://localhost:2506</SonicURL>
+        <SonicDomain>Domain1</SonicDomain>
+        <User>Administrator</User>
+        <Password />
+      </SonicConnectionInfo>
+    </DeploymentWizard>
+    <Name>OpenEdgeProxy</Name>
+    <ProPath>T:\LL23\LLWS\LLPRO\</ProPath>
+    <HelpString />
+    <ODLHelpString />
+    <ObjectType>false</ObjectType>
+    <AllowUnknown>false</AllowUnknown>
+    <IsTTResultSet>false</IsTTResultSet>
+    <WriteDatasetBeforeImage>false</WriteDatasetBeforeImage>
+    <Procedure isPersistent="false" useFullName="false">
+      <Name>OpenEdgeGateway</Name>
+      <ProcPath>ListLabel\OpenEdgeAdapter\</ProcPath>
+      <ProPath>T:\LL23\LLWS\LLPRO\</ProPath>
+    </Procedure>
+  </AppObject>
+</WSAD>

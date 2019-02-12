@@ -1,0 +1,259 @@
+﻿[File Card description]
+[Description]
+ Text=List & Label Report
+ FileVersion=15
+ RootTable=
+ Units=SCM-Units
+ Metric=0
+ TextQuote.Start=1
+ TextQuote.End=1
+ RepresentationCode.CondStart=171
+ RepresentationCode.CondSep=166
+ RepresentationCode.CondEnd=187
+ RepresentationCode.Tab=247
+ RepresentationCode.Ret=182
+ RepresentationCode.PhantomSpace=2
+ RepresentationCode.LockNextChar=3
+ RepresentationCode.ExprSep=164
+ LCID=1031
+ UserVars.ManualSortOrder=1
+ CreatedByCallFrom=vb6.exe
+[Layout]
+ P1.Template=
+ xGrid=1000
+ yGrid=1000
+ GridShow=FALSE
+ GridSnap=FALSE
+ EnhancedExpressions=TRUE
+ EnhancedOldExpressions=FALSE
+ Decimals=2
+ RealDataPreviewPageLimit=-2
+ DefFont={(0,0,0),12.000000,-16,0,0,0,400,0,0,0,0,4,0,0,0,Arial}
+ HelpLines.Horizontal=
+ HelpLines.Vertical=
+ PDF.MaxOutlineDepth=2
+ PDF.MaxOutlineDepth.IDX=3
+ DefaultSize.Objecttype10=(0,0,188100,62200)
+ DefaultSize.Objecttype11=(0,0,188100,44100)
+ ObjectCount=3
+[UserSection]
+ 
+[SumVariables]
+[Layer]
+ Name=Basis
+ Condition=
+ WorkspaceColor=(102,102,102)
+ Visible=TRUE
+ LayerID=0
+[Layer]
+ Name=Erste Seite
+ Condition=Page() = 1
+ WorkspaceColor=(197,207,10)
+ Visible=TRUE
+ LayerID=1
+[Layer]
+ Name=Folgeseiten
+ Condition=Page() <> 1
+ WorkspaceColor=(161,203,243)
+ Visible=TRUE
+ LayerID=2
+[ProjectTemplates]
+ [@ProjectTemplates]
+  {
+  [ProjectTemplates]
+   {
+   }
+  }
+[Object]
+ ObjectID=11
+ ObjectName=MYOBJECT
+ Locked=FALSE
+ LinkUUID={4BFB1F98-41C4-44BE-8E83-5CDA64995721}
+ LinkMode=32
+ LayerID=0
+ LayerCond=
+ GroupUUID=
+ Identifier=Object1
+ Condition=True
+ UserLocked=False
+ WrapBefore=False
+ ExportAsPicture=False
+ Position/Left=5300
+ Position/Top=9500
+ Position/Width=188100
+ Position/Height=44100
+ Direction=0
+ Frame/Layout=0
+ Frame/Left/Spacing=0
+ Frame/Left/Line=False
+ Frame/Top/Spacing=0
+ Frame/Top/Line=False
+ Frame/Right/Spacing=0
+ Frame/Right/Line=False
+ Frame/Bottom/Spacing=0
+ Frame/Bottom/Line=False
+ PDFLevel=0
+ PDFText=
+ IndexPDFLevel=0
+ IndexPDFText=
+ IssueCondition=True
+ Link.URL=
+ Animation=""
+ FormulaFilter=True
+ LLXType=MYOBJECT
+ Parameters=aW1hZ2VmaWxlPDx+IX4+PmxvZ28uYm1wPDx+P34+PkhlYWRlclRleHQ8PH4hfj4+TXkgY3VzdG9tIGRlc2lnbmVyIG9iamVjdAAA
+[Object]
+ ObjectID=10
+ ObjectName=Formatierter Text
+ Locked=FALSE
+ LinkUUID={233F6037-6E9D-4F79-B86A-9EC5D8877AA8}
+ LinkMode=32
+ LayerID=0
+ LayerCond=
+ GroupUUID=
+ Identifier=Object2
+ Condition=True
+ UserLocked=False
+ WrapBefore=False
+ bAllowPageBreak=True
+ ExportAsPicture=False
+ Position/Left=4200
+ Position/Top=57500
+ Position/Width=188100
+ Position/Height=57000
+ Direction=0
+ Frame/Layout=0
+ Frame/Left/Spacing=0
+ Frame/Left/Line=False
+ Frame/Top/Spacing=0
+ Frame/Top/Line=False
+ Frame/Right/Spacing=0
+ Frame/Right/Line=False
+ Frame/Bottom/Spacing=0
+ Frame/Bottom/Line=False
+ PDFLevel=0
+ PDFText=
+ IndexPDFLevel=0
+ IndexPDFText=
+ IssueCondition=True
+ Link.URL=
+ Animation=""
+ bFormatFromVar=FALSE
+ Contents={\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Verdana;}{\f1\fnil\fcharset0 Arial;}}{}{\*\generator Riched20 10.0.10240}\viewkind4\uc1 {}\pard\f0\fs36 This sample demonstrates the extensibility of the List & Label designer using the OCX component. A simple drawing object is added to the "Objects" toolbar and an additional "ADD" function is available:\par{}\par{}ADD(2.1, 3.5) = \uc1\u171\'abFstr$(Add(2.1, 3.5),"?&.##")\u187\'bb\f1\fs24\par{}}{}
+ bWYSIWYGDialog=TRUE
+[Object]
+ ObjectID=10
+ ObjectName=Formatierter Text
+ Locked=FALSE
+ LinkUUID={EA09E7E6-81CC-45FD-BB1B-036A0983AFD8}
+ LinkMode=32
+ LayerID=0
+ LayerCond=
+ GroupUUID=
+ Identifier=Object3
+ Condition=True
+ UserLocked=False
+ WrapBefore=False
+ bAllowPageBreak=True
+ ExportAsPicture=False
+ Position/Left=4300
+ Position/Top=119300
+ Position/Width=188100
+ Position/Height=62200
+ Direction=0
+ Frame/Layout=0
+ Frame/Left/Spacing=0
+ Frame/Left/Line=False
+ Frame/Top/Spacing=0
+ Frame/Top/Line=False
+ Frame/Right/Spacing=0
+ Frame/Right/Line=False
+ Frame/Bottom/Spacing=0
+ Frame/Bottom/Line=False
+ PDFLevel=0
+ PDFText=
+ IndexPDFLevel=0
+ IndexPDFText=
+ IssueCondition=True
+ Link.URL=
+ Animation=""
+ bFormatFromVar=FALSE
+ Contents={\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Verdana;}{\f1\fnil\fcharset0 Arial;}}{}{\*\generator Riched20 10.0.10240}\viewkind4\uc1 {}\pard\f0\fs36 Dieses Beispiel zeigt die Erweiterbarkeit des List & Label Designers mit der OCX Komponente. In der "Objekte"-Toolbar ist ein zus\uc1\u228\'e4tzliches einfaches Zeichnungsobjekt verf\u252\'fcgbar, bei den Funktionen steht eine zus\u228\'e4tzliche ADD-Funktion zur Verf\u252\'fcgung:\par{}\par{}ADD(2.1, 3.5) = \u171\'abFstr$(Add(2.1, 3.5),"?&.##")\u187\'bb\f1\fs24\par{}}{}
+ bWYSIWYGDialog=TRUE
+[UserVariables]
+[Parameters]
+ [@Parameters]
+  {
+  [Parameters]
+   {
+   LL.ProjectDescription=List & Label Report
+   }
+  }
+[UsedIdentifiers]
+ Variables=
+ Fields=
+ ChartFields=
+[PageLayouts]
+ [@PageLayouts]
+  {
+  [PageLayouts]
+   {
+   [PageLayout]
+	{
+	DisplayName=
+	Condition=True
+	SourceTray=0
+	ForcePaperFormat=True
+	UsePhysicalPaper=False
+	PaperFormat=9
+	PaperFormat.cx=210000
+	PaperFormat.cy=296900
+	PaperFormat.Orientation=1
+	Copies=1
+	Duplex=0
+	Collate=0
+	FitPage=False
+	Layout.Size.cx=198000
+	Layout.Size.cy=288500
+	Layout.Distance.cx=0
+	Layout.Distance.cy=0
+	Layout.Count.x=1
+	Layout.Count.y=1
+	Layout.Offset.x=0
+	Layout.Offset.y=0
+	LayoutPrintOrder=0
+	ShowInPrintDialog=True
+	}
+   }
+  }
+[ExtendedInfo]
+ [@ExtendedInfos]
+  {
+  [UserDefinedDesignScheme]
+   {
+   [Foreground]
+	{
+	Color=(173,215,227)
+	Color=(167,195,209)
+	Color=(165,170,199)
+	Color=(155,122,153)
+	Color=(135,95,119)
+	Color=(255,230,179)
+	Color=(238,190,93)
+	Color=(242,167,17)
+	Color=(166,178,102)
+	Color=(102,204,199)
+	}
+   [Background]
+	{
+	Color=(240,249,255)
+	Color=(255,230,179)
+	Color=(173,215,227)
+	Color=(167,195,209)
+	FillMode=1
+	}
+   }
+  [UIDescriptions]
+   {
+   }
+  }

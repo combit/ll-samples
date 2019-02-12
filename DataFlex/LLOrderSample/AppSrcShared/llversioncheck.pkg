@@ -1,0 +1,43 @@
+// Identifies the latest installed List & Label Version
+Use cVersionInfo.pkg
+#IFNDEF USELLVERSION
+Procedure DoIdentifyLatestLLVersion
+    Handle hoVersionInfo
+    
+    Get Create U_cVersionInfo to hoVersionInfo
+    Send DoCreate to hoVersionInfo "cmll20.dll"
+    If (pbIncluded(hoVersionInfo)) Begin
+        Define USELLVERSION for 20
+    End
+    Else Begin
+        Send DoCreate to hoVersionInfo "cmll19.dll"
+        If (pbIncluded(hoVersionInfo)) Begin
+            Define USELLVERSION for 19
+        End
+        Else Begin
+            Send DoCreate to hoVersionInfo "cmll18.dll"
+            If (pbIncluded(hoVersionInfo)) Begin
+                Define USELLVERSION for 18
+            End
+            Else Begin
+                Send DoCreate to hoVersionInfo "cmll17.dll"
+                If (pbIncluded(hoVersionInfo)) Begin
+                    Define USELLVERSION for 17
+                End
+                Else Begin
+                    Send DoCreate to hoVersionInfo "cmll16.dll"
+                    If (pbIncluded(hoVersionInfo)) Begin
+                        Define USELLVERSION for 16
+                    End
+                    Else Begin
+                        Define USELLVERSION for 15
+                    End
+                End
+            End
+        End
+    End
+    Send Destroy to hoVersionInfo
+End_Procedure
+
+Send DoIdentifyLatestLLVersion
+#ENDIF

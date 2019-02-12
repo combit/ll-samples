@@ -1,0 +1,27 @@
+[PROJECT]
+    DEBUG         = yes
+    VERSION       = 2.0
+    LIB           = dll
+    PROJECT.XPJ
+
+[PROJECT.XPJ]
+    ..\xclSIMPLE1.EXE
+
+[..\xclSIMPLE1.EXE]
+    COMPILE       = xpp /w /wi /wl /wu
+    COMPILE_FLAGS = /q
+    DEBUG_SAVE    = yes
+    GUI           = yes
+    LINKER        = alink
+    LINK_FLAGS    =
+    RC_COMPILE    = arc
+    RC_FLAGS      = -v
+    OBJ_DIR       = xclSimple1 Example\Objects
+// $START-AUTODEPEND
+    LULDEMO.obj
+    LULMENU.obj
+// $STOP-AUTODEPEND
+	 xclass.lib
+    xclListLabel24.lib
+    xclSimple1 Example\LULDEMO.PRG
+    xclSimple1 Example\LULMENU.PRG

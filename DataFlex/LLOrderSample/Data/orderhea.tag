@@ -1,0 +1,9 @@
+Order_Number
+Customer_Number
+Order_Date
+Terms
+Ship_Via
+Ordered_By
+SalesPerson_ID
+Order_Total
+Last_Detail_Num

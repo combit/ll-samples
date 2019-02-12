@@ -1,0 +1,224 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Storage.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_LL_ICON             ICON    DISCARDABLE     "res\\Storage.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Info about List & Label Storage Sample"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_LL_ICON,IDC_STATIC,11,17,20,20
+    LTEXT           "List & Label Sample Application",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) combit GmbH",IDC_STATIC,40,25,
+                    157,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_LLSTORAGESAMPLE_DIALOG DIALOGEX 0, 0, 388, 282
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION " List & Label Storage Sample"
+MENU IDR_MENU
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "<",IDC_BACK,253,261,20,14,WS_DISABLED
+    PUSHBUTTON      ">",IDC_FORWARD,284,261,19,14,WS_DISABLED
+    LTEXT           "",IDC_LL_STATIC,12,34,226,234,NOT WS_VISIBLE,
+                    WS_EX_TRANSPARENT
+    RTEXT           "Static",IDC_LL_PAGECOUNT,348,105,27,11
+    RTEXT           "Static",IDC_JOBS,348,118,27,11
+    LTEXT           "Pages:",IDC_STATIC,253,105,27,11
+    LTEXT           "Jobs:",IDC_STATIC,253,118,28,12
+    GROUPBOX        " Preview",IDC_STATIC,6,22,238,252,WS_GROUP
+    EDITTEXT        IDC_LLFILE,6,8,376,12,ES_READONLY | NOT WS_BORDER | NOT 
+                    WS_TABSTOP,WS_EX_STATICEDGE
+    LTEXT           "Page",IDC_STATIC,255,244,27,10
+    EDITTEXT        IDC_PAGES,280,244,25,12,ES_CENTER | ES_READONLY | NOT 
+                    WS_BORDER | WS_GROUP | NOT WS_TABSTOP
+    LTEXT           "Project file:",IDC_STATIC,253,42,41,11
+    LTEXT           "Printer:",IDC_STATIC,253,73,41,11
+    LTEXT           "Copies:",IDC_STATIC,253,155,41,11
+    RTEXT           "Static",IDC_STATIC_COPY_COUNT,338,155,37,11
+    LTEXT           "Creation:",IDC_STATIC,253,58,41,11
+    LTEXT           "Jobname:",IDC_STATIC,253,131,40,12
+    RTEXT           "Static",IDC_STATIC_JOBNAME,298,131,77,20
+    RTEXT           "Static",IDC_STATIC_PRINTER,291,73,84,25
+    RTEXT           "Static",IDC_STATIC_CREATE,293,58,82,10
+    RTEXT           "Static",IDC_STATIC_PROJECTFILE,299,42,76,11
+    GROUPBOX        "Information",IDC_STATIC,247,22,136,160
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO MOVEABLE PURE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_LLSTORAGESAMPLE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 381
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 275
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...",                    ID_FILE_OPEN
+        MENUITEM "&Append...",                  ID_FILE_APPEND, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit",                       IDCANCEL
+    END
+    POPUP "&?"
+    BEGIN
+        MENUITEM "&Info",                       IDS_ABOUTBOX
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "Info about Storage..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDCANCEL                "Exit the sample application..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_APPEND          "Append LL file..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_OPEN            "Open the LL file for preview..."
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Storage.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.deu\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

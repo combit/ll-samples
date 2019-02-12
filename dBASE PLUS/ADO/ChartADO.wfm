@@ -1,0 +1,112 @@
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Revision: 03.09.2018
+//
+parameter bModal
+local f
+f = new ChartADOForm()
+if (bModal)
+   f.mdi = false // Nicht-MDI festlegen
+   f.ReadModal()
+else
+   f.Open()
+endif
+
+class ChartADOForm of FORM
+   with (this)
+      height = 4.0455
+      left = 30.5714
+      top = 4.5909
+      width = 39.1429
+      text = "Umsatz nach Lieferanten"
+      autoCenter = true
+   endwith
+
+   this.LINE1 = new LINE(this)
+   with (this.LINE1)
+      left = 1.0
+      right = 38.0
+      top = 2.0
+      bottom = 2.0
+      width = 1
+   endwith
+
+   this.RADIOBUTTON1 = new RADIOBUTTON(this)
+   with (this.RADIOBUTTON1)
+      height = 1.0909
+      left = 1.0
+      top = 0.5
+      width = 17.0
+      text = "Tortendiagramm"
+      group = true
+      value = true
+   endwith
+
+   this.RADIOBUTTON2 = new RADIOBUTTON(this)
+   with (this.RADIOBUTTON2)
+      height = 1.0909
+      left = 21.0
+      top = 0.5
+      width = 18.0
+      text = "Säulendiagramm"
+   endwith
+
+   this.PB_PRINT = new PUSHBUTTON(this)
+   with (this.PB_PRINT)
+      onClick = class::PB_PRINT_ONCLICK
+      height = 1.0909
+      left = 12.0
+      top = 2.5
+      width = 15.2857
+      text = "Start"
+   endwith
+
+
+   FUNCTION PB_PRINT_onClick
+   form.LLDesign=false
+   CLASS::OpenReport()
+   RETURN
+   
+   FUNCTION OpenReport
+   LOCAL cSQL
+   LOCAL r
+
+   cSQL ="SELECT Customers.Name, SUM(Orderdetails.Quantity*Orderdetails.Price) turnover"
+   cSQL+="  FROM Customers"
+   cSQL+="  INNER JOIN Orders"
+   cSQL+="     ON (Customers.CustomerID=Orders.CustomerID)"
+   cSQL+="  INNER JOIN Orderdetails"
+   cSQL+="     ON (Orders.OrderID=Orderdetails.OrderID)"
+   cSQL+="  GROUP BY Customers.Name"
+   cSQL+="  ORDER BY turnover DESC"
+   SET PROCEDURE TO ..\LL24.CC ADDITIVE
+   r=new LL24InterfaceSample()
+   r.query1=new ADOQUERY()
+   r.query1.sql=cSQL
+   r.query1.database=_app.MainADODatabase
+   r.query1.active=true
+   r.rowset=r.query1.rowset
+   r.Design=form.LLDesign
+   r.Extension=".LST"
+   r.UserVars.add({"C_Language", (_app.language),"CHARACTER"})
+   r.Filename=IIF(form.Radiobutton1.value,"Piechart","Barchart")
+   r.render()
+   r.query1.active=false
+   RETURN
+   
+   FUNCTION Init(lDesign)
+   form.LLDesign=lDesign
+   DO CASE
+      CASE TYPE("_app.oInfo.Language")=="C" .AND. _app.oInfo.Language="deutsch"
+         form.text             ="Umsatz nach Kunden"
+         form.Radiobutton1.text="Tortendiagramm"
+         form.Radiobutton2.text="Säulendiagramm"
+      OTHERWISE
+         form.text             ="Turnover by customer"
+         form.Radiobutton1.text="Piechart"
+         form.Radiobutton2.text="Barchart"
+   ENDCASE 
+   RETURN
+
+endclass
+

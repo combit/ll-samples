@@ -1,0 +1,13 @@
+Attribute VB_Name = "USERAPI"
+#If Win16 Then
+Declare Function GetSysColor Lib "User" (ByVal nIndex As Integer) As Long
+Declare Function GetTickCount Lib "User" () As Long
+Declare Function EnableWindow Lib "User" (ByVal hWnd As Integer, ByVal BOOL As Integer) As Integer
+Declare Function IsWindowEnabled Lib "User" (ByVal hWnd As Integer) As Integer
+#Else
+Declare Function GetSysColor Lib "user32" (ByVal nIndex As Long) As Long
+Declare Function GetTickCount Lib "user32" () As Long
+Declare Function EnableWindow Lib "user32" (ByVal hWnd As Long, ByVal BOOL As Long) As Long
+Declare Function IsWindowEnabled Lib "user32" (ByVal hWnd As Long) As Long
+Declare Function SetParent Lib "user32" (ByVal hWndChild As Long, ByVal hWndNewParent As Long) As Long
+#End If

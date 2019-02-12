@@ -1,0 +1,544 @@
+Use Windows.pkg
+Use DFRptVw.pkg
+Use cListLabel.pkg
+Use llpreview.dg
+use lltableselect.dg
+Use Customer.DD
+Use SalesP.DD
+Use OrderHea.DD
+Use Vendor.DD
+Use Invt.DD
+Use OrderDtl.DD
+
+Activate_View Activate_oLLInvoice for oLLInvoice
+Object oLLInvoice is a cListLabelReportView
+    Object oVendor_DD is a Vendor_DataDictionary
+    End_Object
+
+    Object oInvt_DD is a Invt_DataDictionary
+        Set DDO_Server to oVendor_DD
+    End_Object
+
+    Object oSalesp_DD is a SalesP_DataDictionary
+    End_Object
+
+    Object oCustomer_DD is a Customer_DataDictionary
+    End_Object
+
+    Object oOrderhea_DD is a OrderHea_DataDictionary
+        Property Integer piOrderFrom
+        Property Integer piOrderTo
+        Procedure OnConstrain
+            If (piOrderFrom(Self)<>0) ;
+                Constrain OrderHea.Order_Number ge (piOrderFrom(Self))
+            If (piOrderTo(Self)<>0) ;
+                Constrain OrderHea.Order_Number le (piOrderTo(Self))
+        End_Procedure        
+        Set DDO_Server to oSalesp_DD
+        Set DDO_Server to oCustomer_DD
+    End_Object
+
+    Object oOrderdtl_DD is a OrderDtl_DataDictionary
+        Set DDO_Server to oInvt_DD
+        Set DDO_Server to oOrderhea_DD
+    End_Object
+
+    Set Main_DD to oOrderHea_DD
+    Set Server to oOrderHea_DD
+
+    Property Integer piSingleInvoiceNumber 0
+    Set Location to 38 44
+    Set Size to 114 207
+    Set Label to "List & Label Invoice Report"
+
+    Object oPrintTarget is a RadioGroup
+        Set Location to 4 9
+        Set Size to 50 51
+        Set Label to "Print to"
+    
+        Object oRadio1 is a Radio
+            Set Label to "Preview"
+            Set Size to 10 43
+            Set Location to 10 5
+        End_Object
+    
+        Object oRadio2 is a Radio
+            Set Label to "Printer"
+            Set Size to 10 39
+            Set Location to 23 5
+        End_Object
+    
+        Object oRadio3 is a Radio
+            Set Label to "Export"
+            Set Size to 10 45
+            Set Location to 36 5
+        End_Object
+    End_Object
+
+    Object oUseMasterTable is a CheckBox
+        Set Size to 10 50
+        Set Location to 8 66
+        Set Label to "Use Mastertable"
+    
+        Procedure OnChange
+            Boolean bChecked
+        
+            Get Checked_State to bChecked
+            Set Enabled_State of oOrderTo to (not(bChecked))
+            If (bChecked) Begin
+                Set Label of oOrderFrom to "Order No.:"
+            End
+            Else Begin
+                Set Label of oOrderFrom to "From Order:"
+            End
+        End_Procedure
+    
+    End_Object
+
+    Object oAskOptions is a CheckBox
+        Set Size to 10 50
+        Set Location to 22 66
+        Set Label to "Popup List && Label Options"
+    End_Object
+
+    Object oSetupPrinter is a Button
+        Set Size to 14 59
+        Set Label to "Setup Printer"
+        Set Location to 40 66
+        Set peAnchors to anNone
+
+        Procedure OnClick
+            Send DoSetupPrinter
+        End_Procedure
+
+    End_Object
+
+    Object oEditDom is a Button
+        Set Size to 14 76
+        Set Label to "Edit Layout with DOM"
+        Set Location to 40 128
+        Set peAnchors to anNone
+
+        Procedure OnClick
+            Send DoEditWithDom
+        End_Procedure
+
+    End_Object
+
+    Object oHeader is a Form
+        Set Size to 13 137
+        Set Location to 60 67
+        Set Label to "Header:"
+        Set Label_Col_Offset to 50
+        Set Value to "Invoice"
+            
+    End_Object
+    
+    Object oOrderFrom is a Form
+        Set Size to 13 48
+        Set Location to 77 67
+        Set Form_Datatype to 0
+        Set Prompt_Button_Mode to PB_PromptOn
+        Set Label to "From Order:"
+        Set Label_Col_Offset to 50
+        
+        
+        
+        Procedure Prompt_Callback Integer hoPrompt
+            #IF (!@>=160)        
+            Set peUpdateMode of hoPrompt to umPromptValue
+            Set piUpdateColumn of hoPrompt to 0
+            #ELSE
+            Set Auto_Column_State of hoPrompt to False
+            Set Initial_Column of hoPrompt to 0
+            Set Export_column of hoPrompt to 0
+            #ENDIF
+        End_Procedure
+        
+        
+        Procedure Prompt
+            Send Popup to OrderHea_sl
+        End_Procedure
+    End_Object
+
+    Object oOrderTo is a Form
+        Set Size to 13 48
+        Set Location to 77 156
+        Set Form_Datatype to 0
+        Set Prompt_Button_Mode to PB_PromptOn
+        Set Label to "To Order:"
+        Set Label_Col_Offset to 0
+        Set Label_Justification_Mode to JMode_Right
+        
+        Procedure Prompt_Callback Integer hoPrompt
+            #IF (!@>=160)        
+            Set peUpdateMode of hoPrompt to umPromptValue
+            Set piUpdateColumn of hoPrompt to 0
+            #ELSE
+            Set Auto_Column_State of hoPrompt to False
+            Set Initial_Column of hoPrompt to 0
+            Set Export_column of hoPrompt to 0
+            #ENDIF
+        End_Procedure
+        
+        Procedure Prompt
+            Send Popup to OrderHea_sl
+        End_Procedure
+    End_Object        
+
+    Object oPrintButton is a Button
+        Set Label to "&Print"
+        Set Location to 96 46
+        Set Default_State to TRUE
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send StartReport
+        End_Procedure
+
+    End_Object
+
+    Object oLayoutButton is a Button
+        Set Label to "&Edit Layout"
+        Set Location to 96 100
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send EditLayout
+        End_Procedure
+
+    End_Object
+
+    Object oCancelButton is a Button
+        Set Label to "&Cancel"
+        Set Location to 96 154
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Send Request_Cancel
+        End_Procedure
+
+    End_Object
+    
+    Object oListLabelReport is a cListLabelReport
+        
+        // This Property is used to hold a Header Text for the Report
+        Property String psReportHeader 
+        
+        // Uncomment this Line and set the Property to your personal License Code (perslic.txt located in your List & Label Folder)
+        //Set psLicensingInfo to "123456"
+        // Set a Folder where the Layouts for the Reports are saved
+        If (ghoApplication<>0) Begin
+            Set psDefaultLayoutDirectory to (psHome(phoWorkspace(ghoApplication))+"Layouts")
+        End
+        
+        Set piDebugMode to (LL_DEBUG_CMBTLL ior LL_DEBUG_CMBTLS ior LL_DEBUG_PRNINFO)
+        
+        // Properties for the Preview-Object
+        Set piPreviewPanel to oPreviewPanel
+        Set piPreviewObject to (oPreview(oPreviewPanel))
+        Set pbIncrementalPreview to True
+        
+        // Support the Designer Preview based on real data
+        Set pbDesignerPreview to True
+        Set piDesignerPreviewStartMessage to msg_StartReport
+        
+        // Support expandable Regions, interactive Sorting and Report Parameters
+        Set pbUseExpandableRegions to True
+        Set pbUseInteractiveSorting to True
+        Set pbUseReportParameter to True                
+        
+        // For augmentation
+        Procedure DefineAllFields
+            // If the MasterTable should be used, define the MasterDD and additionally the Customer Database as Variables for the Report Header
+            If (Checked_State(oUseMasterTable)) Begin
+                Set phoMasterDD to oOrderhea_DD
+                DefineLLVariable customer
+            End
+            // otherwise define OrderHea and Customer as Variables for the Report Headers
+            Else Begin
+                Set phoMasterDD to 0
+                DefineLLVariable OrderHea
+                DefineLLVariable customer
+            End            
+            Forward Send DefineAllFields
+        End_Procedure
+        
+        Procedure DefineAllVariables
+            // Make the Property psReportHeader available in List & Label as Variable "Reportheader"
+            DefineLLVariable psReportHeader "Reportheader" LL_TEXT
+        End_Procedure
+        
+        // Select other File-Extensions for this Type of Report
+        Procedure OnJobAfterOpen
+            Integer iRet
+            Forward Send OnJobAfterOpen
+            Get LLSetFileExtensions LL_PROJECT_LIST "BLG" "BLP" "BLV" to iRet
+        End_Procedure
+        
+        // This event is used to Reset the Project State after one Invoice has been finished.
+        // This has to be done for the "Page x of y" to be correct when more then one Invoice is printed.
+        Procedure OnFindNextRecord Integer hoDDo Integer hoParentDDo Integer iTableLevel String sRelation Integer iFindMode Integer iIndex String sTableName
+            Integer iRet
+            // Only if the next Orderhea Record is to be printed
+            If (hoDDo=oOrderhea_DD) Begin
+                // Finish the last Invoice
+                While (LLPrintFieldsEnd(Self)=LL_WRN_REPEAT_DATA)
+                Loop                  
+                // Find the next Orderhea Record manually 
+                Send Find to hoDDo iFindMode iIndex
+                // No more Records found, Report is finished
+                If (not(Found)) ;
+                    Procedure_Return LL_REPORT_EOF
+                // Reset the Project State
+                Get LLPrintResetProjectState to iRet
+                // Start the Printing of the next Invoice
+                While (LLPrint(Self)=LL_WRN_REPEAT_DATA)
+                End
+                // Return 0 to tell the Report, that you have done the find yourself
+                Procedure_Return 0                
+            End
+            // In all other cases, let the Report do the Job
+            Procedure_Return LL_REPORT_USEDEFAULT
+        End_Procedure        
+        
+    End_Object
+
+    Procedure StartReport
+    	Integer iRet iDest iProjectType iOrderNumber
+        String sFile 
+        Handle hoLL hoMain hWnd
+        
+        // Set the constraints according to the Selection in the Report View or the direct call from within the Order Entry Window
+        If (piSingleInvoiceNumber(Self)<>0) Begin
+            Set piOrderFrom of oOrderhea_DD to (piSingleInvoiceNumber(Self))
+            Set piOrderTo of oOrderhea_DD to (piSingleInvoiceNumber(Self)) 
+        End
+        Else Begin
+            Get Value of oOrderFrom to iOrderNumber
+            Set piOrderFrom of oOrderhea_DD to iOrderNumber
+            If (Checked_State(oUseMasterTable)) Begin
+                Set piOrderTo of oOrderhea_DD to iOrderNumber
+            End
+            Else Begin
+                Get Value of oOrderTo to iOrderNumber
+                Set piOrderTo of oOrderhea_DD to iOrderNumber
+            End
+        End
+        Send Rebuild_Constraints to oOrderhea_DD
+        
+        Move oListLabelReport to hoLL
+        // Find a Parent-Window for List & Label
+        Get SuggestedParentWindowHandle of hoLL (Self) to hWnd
+        Set psReportHeader of hoLL to (Value(oHeader))
+        
+        // Get the Report Target
+        Get Current_Radio of oPrintTarget to iDest
+        Case Begin
+            Case (iDest=1)
+                Move LL_PRINT_NORMAL to iDest
+                Case Break
+            Case (iDest=2) 
+                Move LL_PRINT_EXPORT to iDest
+                Case Break
+            Case Else
+                Move LL_PRINT_PREVIEW to iDest
+                Case Break
+        Case End
+        Move LL_PROJECT_LIST to iProjectType
+        Get LLJobOpen of hoLL to iRet
+        If (Checked_State(oUseMasterTable)) Begin
+            Move (psDefaultLayoutDirectory(hoLL)+"\Invoice with Mastertable.blg") to sFile
+        End
+        Else Begin
+            Move (psDefaultLayoutDirectory(hoLL)+"\Invoice.blg") to sFile
+        End
+        // Start the Report
+        Get LLPrintWithBoxStart of hoLL iProjectType sFile iDest LL_BOXTYPE_EMPTYABORT hWnd "Printing Records" to iRet
+        If (iRet<>0) Begin
+            Get LLPrintEnd of hoLL to iRet
+            Get LLJobClose of hoLL to iRet
+            Procedure_Return
+        End        
+        // If Export, preselect PDF Export and set some PDF-Options 
+        If (iDest=LL_PRINT_EXPORT) Begin
+            Get LLPrintSetOptionString of hoLL LL_PRNOPTSTR_EXPORT "PDF" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Title"                        "Titel" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Subject"                      "Subject" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Keywords"                     "Keywords" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.EncryptFile"       "0" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.EnablePrinting"    "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.EnableChanging"    "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.EnableCopying"     "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.Level"             "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.OwnerPassword"                "" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.UserPassword"                 "" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.FontMode"                     "5" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.ExcludedFonts"                "" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.CompressStreamMethod"         "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.JPEGQuality"                  "2" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "Export.ShowResult"                "1" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "Export.File"                      "export.pdf" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "Export.Path"                      (psDefaultLayoutDirectory(hoLL)+"\") to iRet
+            // When no Options should popup make a quiet Export            
+            If (not(Checked_State(oAskOptions))) Begin
+                Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "Export.Quiet"                     "1" to iRet
+            End
+        End
+        
+        If (Checked_State(oAskOptions)) Begin
+            // Let the User set Report Options
+            Get LLPrintOptionsDialog of hoLL hWnd "" to iRet
+            If (iRet=LL_ERR_USER_ABORTED) Begin
+                Get LLPrintEnd of hoLL to iRet
+                Get LLJobClose of hoLL to iRet
+                Procedure_Return
+            End                
+        End
+    	// Output the Report
+        Get DoPrintList of hoLL to iRet
+        Get LLPrintEnd of hoLL to iRet
+        // If Preview show it, let the Class cleanup some stuff and delete the temporary Files
+        If (iDest=LL_PRINT_PREVIEW) Begin
+            Get LLPreviewDisplay of hoLL sFile "" hWnd to iRet
+            Get LLPreviewDeleteFiles of hoLL sFile "" to iRet
+        End
+    	Get LLJobClose of hoLL to iRet        
+    End_Procedure
+    
+    Procedure EditLayout
+        Integer iRet iProjectType
+        String sFile
+        Handle hoLL hWnd hoMain
+        
+        Move oListLabelReport to hoLL
+        Get SuggestedParentWindowHandle of hoLL (Self) to hWnd
+        Move LL_PROJECT_LIST to iProjectType
+        Get LLJobOpen of hoLL to iRet
+        If (Checked_State(oUseMasterTable)) Begin
+            Move (psDefaultLayoutDirectory(hoLL)+"\Invoice with Mastertable.blg") to sFile
+        End
+        Else Begin
+            Move (psDefaultLayoutDirectory(hoLL)+"\Invoice.blg") to sFile
+        End
+        Get LLDefineLayout of hoLL hWnd "Edit Layout" iProjectType sFile to iRet
+        Get LLJobClose of hoLL to iRet        
+    End_Procedure
+    
+    Procedure DoSetupPrinter
+        Handle hoLL
+        Integer iRet iProjectType
+        String sFile
+        
+        Move oListLabelReport to hoLL
+        
+        Move LL_PROJECT_LIST to iProjectType
+        If (Checked_State(oUseMasterTable)) Begin
+            Move (psDefaultLayoutDirectory(hoLL)+"\Invoice with Mastertable.blg") to sFile
+        End
+        Else Begin
+            Move (psDefaultLayoutDirectory(hoLL)+"\Invoice.blg") to sFile
+        End
+        
+        Get LLJobOpen of hoLL to iRet
+        Get LLPrinterSetup of hoLL (SuggestedParentWindowHandle(hoLL,(Self))) iProjectType sFile to iRet
+        Get LLJobClose of hoLL to iRet
+    End_Procedure
+    
+    Procedure DoEditWithDom
+        Handle hoLL
+        Integer iType iRet hProj hObjs hObj iObjs iObj iHeight iLeft iTop iWidth hParagraphs hParagraph iObjPos
+        String sType sFile sVal sMsg
+        Boolean bHasFrame
+        
+        Send Info_Box "This routine is a Sample of editing Layout-Definitions programmatically. The following tasks are done:\n\n* Search an Object 'frame around invoice data' in the Layout\n* Search the Object 'ObjectAdded with Dom'\n* If DOM Object is found it will be deleted\n* Otherwise it is added at the Bottom of the first searched Object"
+        
+        // For easier handling put the Object-Reference to a variable
+        Move oListLabelReport to hoLL
+        Move LL_PROJECT_LIST to iType
+        
+        Get LLJobOpen of hoLL to iRet                                                           // Open the Job
+        If (Checked_State(oUseMasterTable)) Begin
+            Move (psDefaultLayoutDirectory(hoLL)+"\Invoice with Mastertable.blg") to sFile
+        End
+        Else Begin
+            Move (psDefaultLayoutDirectory(hoLL)+"\Invoice.blg") to sFile
+        End        
+        
+        Move -1 to iObjPos
+        Get LLProjectOpen of hoLL iType sFile LL_PRJOPEN_AM_READWRITE to iRet // Open the Project File
+        If (iRet<>0) Begin                                                    // There was an error in opening the Project
+            Error 999 (LLGetErrorText(hoLL,iRet))                             // Display Error
+            Get LLJobClose of hoLL to iRet                                    // Close the job
+            Procedure_Return            
+        End
+        
+        Get LLDomGetProject of hoLL to hProj                                  // Get the DOM Object
+        If (hProj>0) Begin
+            Get LLDomGetObject of hoLL hProj "Objects" to hObjs               // Get the List of all Objects
+            Get LLDomGetSubobjectCount of hoLL hObjs to iObjs                 // How many Objects are in the List?
+            If (iObjs>0) Begin
+                For iObj from 0 to (iObjs-1)
+                    Get LLDomGetSubobject of hoLL hObjs iObj to hObj          // Get the desired Object out of the List
+                    Get LLDomGetProperty of hoLL hObj "Name" to sVal          // Get the Property "Name" of the Object
+                    If (sVal="ObjectAddedWithDom") ;
+                        Move iObj to iObjPos                                  // If it is the "ObjectAddedWithDom" Object remember the Position in the Object List
+                    If (sVal="frame around invoice data") Begin               // If it is the "frame around invoice data" Object remember Size and Position of this Object
+                        Move (True) to bHasFrame
+                        Move (LLDomGetProperty(hoLL,hObj,"Position.Height"))  to iHeight
+                        Move (LLDomGetProperty(hoLL,hObj,"Position.Left"))    to iLeft
+                        Move (LLDomGetProperty(hoLL,hObj,"Position.Top"))     to iTop
+                        Move (LLDomGetProperty(hoLL,hObj,"Position.Width"))   to iWidth
+                    End
+                Loop
+                If (bHasFrame) Begin                                            // An Object "frame around invoice data" was found
+                    If (iObjPos=-1) Begin
+                        Move (LLDomCreateSubObject(hoLL,hObjs,0,"Text")) to hObj                  // Add a Text-Object
+                        Move (LLDomSetProperty(hoLL,hObj,"Name","ObjectAddedWithDom")) to iRet    // Set the Properties for Name, Size and Location
+                        Move (LLDomSetProperty(hoLL,hObj,"Position.Height",10000)) to iRet
+                        Move (LLDomSetProperty(hoLL,hObj,"Position.Left",iLeft)) to iRet
+                        Move (LLDomSetProperty(hoLL,hObj,"Position.Top",(iTop+iHeight))) to iRet
+                        Move (LLDomSetProperty(hoLL,hObj,"Position.Width",iWidth)) to iRet
+                        Move (LLDomGetObject(hoLL,hObj,"Paragraphs")) to hParagraphs              // Get the paragraph List
+                        Move (LLDomCreateSubObject(hoLL,hParagraphs,0,"Paragraph")) to hParagraph // Add a new Paragraph to the Text-Object
+                        Move (LLDomSetProperty(hoLL,hParagraph,"Contents",'"This Text was added by Code"')) to iRet  // Set the Content of the created Paragraph.
+                        Move (LLDomSetProperty(hoLL,hParagraph,"Alignment",'1')) to iRet                             // Center the Text
+                        Move "Textobject added to Project." to sMsg
+                    End
+                    Else Begin                                                     // The "ProgramDefinedText" Object was found in the Project, now delete it.
+                        Move (LLDomDeleteSubobject(hoLL,hObjs,iObjPos)) to iRet  // Delete the "ProgramDefinedText" Object out of the Object-List at the remembered Position in the List
+                        Move "Textobject deleted from Project." to sMsg
+                    End
+                    Get LLProjectSave of hoLL "" to iRet                         // Save Changes
+                    Send info_box (sMsg + "\n\nChanges saved!")
+                End    
+                Else Begin                                                         // No Object "frame around invoice data" found, nothing is changed
+                    Send info_box "Object 'frame around invoice data' not found.\n\nNo changes made to the Project."
+                End
+            End
+        End
+        Get LLProjectClose of hoLL to iRet        // Close the Project File
+        Get LLJobClose of hoLL to iRet            // Close the Job        
+    End_Procedure
+    
+    Procedure PrintOrder Integer iOrderNum
+        Set piSingleInvoiceNumber to iOrderNum
+        Send StartReport
+        Set piSingleInvoiceNumber to 0
+    End_Procedure    
+    
+    On_Key Key_Alt+Key_P Send KeyAction of oPrintButton
+    On_Key Key_Alt+Key_E Send KeyAction of oLayoutButton
+    On_Key Key_Alt+Key_C Send KeyAction of oCancelButton
+    
+    #IF (!@<140)
+    // Correct the Client Size if the View is compiled with VDF 12.0 or 12.1
+    Procedure DoCorrectClientSize 
+        Integer iSize
+        Get Size to iSize
+        Set size to (hi(iSize)+22) (low(iSize)+12)
+    End_Procedure
+    Send DoCorrectClientSize
+    #ENDIF    
+
+End_Object

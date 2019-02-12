@@ -1,0 +1,163 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\DOM.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\DOM.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DOM_DIALOG DIALOGEX 0, 0, 274, 276
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "List & Label DOM Demo"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Dieses Beispiel demonstriert die dynamische Erstellung eines Reports über eine eigene Druckschleife ",
+                    IDC_STATIC,27,7,235,19
+    LTEXT           "D:",IDC_STATIC,7,7,11,9
+    LTEXT           "US:",IDC_STATIC,7,30,11,9
+    LTEXT           "This example demonstrates the dynamic creation of one report by using a custom print loop",
+                    IDC_STATIC,27,30,235,19
+    PUSHBUTTON      "&Design...",IDC_BUTTON_CREATE_REPORT,123,249,70,19
+    GROUPBOX        " Project Layout ",IDC_STATIC,7,60,260,181
+    PUSHBUTTON      "Preview...",IDC_BUTTON_PREVIEW,197,249,70,19
+    LTEXT           "Available Fields:",IDC_STATIC,16,73,101,11
+    LTEXT           "Selected Fields:",IDC_STATIC,158,73,101,11
+    PUSHBUTTON      ">",IDC_BUTTON_SELECT,130,111,15,15
+    PUSHBUTTON      "<",IDC_BUTTON_DESELECT,130,128,15,15
+    LTEXT           "Title:",IDC_STATIC,16,182,101,8
+    EDITTEXT        IDC_EDIT_PROJECT_TITLE,16,194,242,12,ES_AUTOHSCROLL
+    LTEXT           "Logo:",IDC_STATIC,16,211,101,8
+    EDITTEXT        IDC_EDIT_LOGO_PATH,16,222,224,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_SELECT_FILE,243,221,15,15
+    CONTROL         " Enable Debug",IDC_CHECK_DEBUG,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,249,74,19
+    CONTROL         "List2",IDC_LIST_AVAILABLE_VARS,"SysListView32",LVS_LIST | 
+                    LVS_SINGLESEL | LVS_SORTASCENDING | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,16,84,105,93
+    CONTROL         "List2",IDC_LIST_SELECTED_VARS,"SysListView32",LVS_LIST | 
+                    LVS_SINGLESEL | LVS_SORTASCENDING | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,153,84,105,93
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DOM_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 267
+        VERTGUIDE, 16
+        VERTGUIDE, 27
+        VERTGUIDE, 130
+        VERTGUIDE, 258
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 268
+        HORZGUIDE, 84
+        HORZGUIDE, 177
+        HORZGUIDE, 241
+        HORZGUIDE, 249
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\DOM.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.deu\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

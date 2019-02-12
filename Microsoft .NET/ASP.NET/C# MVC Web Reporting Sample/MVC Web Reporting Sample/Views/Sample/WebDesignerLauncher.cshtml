@@ -1,0 +1,21 @@
+﻿@using combit.ListLabel24.Web.WebDesigner.Server
+
+@model WebDesignerOptions
+
+
+@*
+    D:  Html.ListLabelMvcWebDesigner() rendert eine Seite, die den Start der Web Designer-Anwendung auf dem Client auslöst oder die Designer-Installation anbietet.
+    US: Html.ListLabelMvcWebDesigner() will render a page that launches the Web Designer application on the client or offers to install it.
+*@
+
+@Html.ListLabelMvcWebDesigner(Model)
+
+<script type="text/javascript">
+    // D:   Bei Bedarf können Sie selbst auf einen erfolgreichen oder fehlgeschlagenen Start des Web Designers reagieren. Für 'window.document' wird dazu das Event 'WebDesignerLaunched' registriert.
+    // US:  Optionally you can react to a successful or failed Web Designer launch by handling the 'WebDesignerLaunched' event on 'window.document'.
+    $(document).ready(function () {
+        $(window).on('WebDesignerLaunched', function (e) {
+            console.log('Web Designer was launched! Success: ' + e.detail.success);
+        });
+    });
+</script>

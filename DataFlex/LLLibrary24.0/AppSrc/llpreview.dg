@@ -1,0 +1,120 @@
+Use dfClient.pkg
+Use Windows.pkg
+Use cListLabel.pkg
+
+#IFNDEF _struct_tWinPoint
+Struct tWinPoint
+    DWord x
+    DWord y
+End_Struct
+#ENDIF
+
+#IFNDEF _struct_tWinRect
+Struct tWinRect
+    DWord left
+    DWord top
+    DWord right
+    DWord bottom
+End_Struct
+#ENDIF
+
+#IFNDEF _struct_tWinWindowPlacement
+Struct tWinWindowPlacement
+    DWord length
+    DWord flags
+    DWord showCmd
+    tWinPoint MinPosition
+    tWinPoint MaxPosition
+    tWinRect NormalPosition
+End_Struct
+#ENDIF
+
+Activate_View Activate_oPreviewPanel for oPreviewPanel
+
+Object oPreviewPanel is a dbView
+    Property Integer pbIsSized False
+    Set locate_mode to NO_LOCATE
+    Set view_mode to viewmode_normal
+    Set Label to "List & Label Preview"
+    Set Size to 222 371
+    Set Border_Style to Border_Thick
+    Set Minimize_Icon to False
+
+    Object oCancel_Button is a Button
+        Set Label to "&Close"
+        Set Location to 206 319
+        Set peAnchors to anBottomRight
+
+        Procedure OnClick
+            Integer hoLL iJob iRet
+            If (pbPreviewRunning(oPreview(Self))) Begin
+                Get piAssociatedLLObj of (oPreview(Self)) to hoLL    
+                If (hoLL<>0) Begin
+                    Get piJobNumber of hoLL to iJob
+                    If (iJob<>0) Begin
+                        Get LLPrintAbort of hoLL to iRet
+                    End
+                End
+                Procedure_Return
+            End
+            Send Close_Panel
+        End_Procedure 
+        
+    End_Object
+
+    Object oPreview is a cListLabelViewer
+        Set Bitmap to ""
+        Set Size to 203 367
+        Set Location to 2 2
+        Set peAnchors to anAll
+                                                                                                
+        Procedure OnExitBtnPressed
+            Send Close_Panel
+        End_Procedure
+        
+        // OnIncrementalPreviewStart: Is called when an incremental Preview is started. iLLObj is the Object-Id of the List & Label Report Object
+        Procedure OnIncrementalPreviewStart Integer iLLObj
+            Set label of oCancel_Button to "&Cancel Print"
+        End_Procedure
+        
+        // OnIncrementalPreviewEnd: Is called when a Report that uses incremental Preview is finished. iLLObj is the Object-Id of the List & Label Report Object
+        Procedure OnIncrementalPreviewEnd Integer iLLObj
+            Set label of oCancel_Button to "&Close"
+        End_Procedure        
+
+    End_Object 
+                    
+    Function Verify_Exit_Application Returns Integer
+        If (active_state(Self)) begin
+            Send close_panel
+            Function_Return 1
+        End
+        Function_Return 0
+    End_Function
+    
+    Procedure Add_Focus Handle hoParent Returns Integer
+        Integer iRetval iSize iRet
+        tWinRect sRect
+        tWinWindowPlacement sPlacement
+        
+        Forward Get msg_add_focus hoParent to iRetval
+        
+        Move (GetClientRect(Window_Handle(hoParent),AddressOf(sRect))) to iRet
+        Move (SizeOfType(tWinWindowPlacement)) to sPlacement.length
+        Move SW_SHOWNORMAL to sPlacement.showCmd
+        Move (sRect.bottom-sRect.top) to sPlacement.NormalPosition.bottom
+        Move (sRect.right-sRect.left) to sPlacement.NormalPosition.right
+        Move 0 to sPlacement.NormalPosition.top
+        Move 0 to sPlacement.NormalPosition.left
+        Move (SetWindowPlacement(Window_Handle(Self),AddressOf(sPlacement))) to iRet
+        
+        Procedure_Return iRetval
+    End_Procedure
+    
+    #IF (!@<140)
+    Procedure DoCorrectClientAreaSizing
+        Set Size of oPreview to 182 365
+    End_Procedure
+    Send DoCorrectClientAreaSizing
+    #ENDIF
+End_Object 

@@ -1,0 +1,72 @@
+// Revision: 03.09.2018
+CLASS DeliveryADOReport OF LL24InterfaceSample FROM ..\LL24.CC
+   this.ORDERDETAILS1 = new ADOQUERY(this)
+   with (this.ORDERDETAILS1)
+      left = 126.0
+      top = 99.0
+      database = _app.MainADODatabase
+   endwith
+
+   this.ORDERS1 = new ADOQUERY(this)
+   with (this.ORDERS1)
+      left = 196.0
+      top = 22.0
+      database = _app.MainADODatabase
+      sql = "SELECT * FROM ORDERS WHERE ORDERID=:ORDERID"
+      masterSource = this.ORDERDETAILS1.rowset
+   endwith
+
+   this.CUSTOMERS1 = new ADOQUERY(this)
+   with (this.CUSTOMERS1)
+      left = 49.0
+      top = 77.0
+      database = _app.MainADODatabase
+      sql = "SELECT * FROM CUSTOMERS WHERE CUSTOMERID=:CUSTOMERID"
+      masterSource = this.orders1.rowset
+   endwith
+
+   this.ARTICLE1 = new ADOQUERY(this)
+   with (this.ARTICLE1)
+      left = 224.0
+      top = 88.0
+      database = _app.MainADODatabase
+      sql = "SELECT * FROM ARTICLE WHERE ARTICLEID=:ARTICLEID"
+      masterSource = this.orderdetails1.rowset
+   endwith
+
+   this.rowset = this.orderdetails1.rowset
+
+   FUNCTION Init(lDesign,cSelection)
+   this.ORDERDETAILS1.sql="SELECT * FROM ORDERDETAILS WHERE ORDERID IN ("+cSelection+") ORDER BY ORDERID, NAME"
+   this.ORDERDETAILS1.active=true
+   this.ORDERS1.active=true
+   this.CUSTOMERS1.active=true
+   this.ARTICLE1.active=true
+   this.ORDERDETAILS1.rowset.CurrentOrder=""
+   this.ORDERS1.rowset.onNavigate=CLASS::ORDERS1_onNavigate
+   this.ORDERDETAILS1.rowset.onNavigate=CLASS::ORDERDETAILS1_onNavigate
+   this.UserVars.add({"C_Language",(_app.language),"CHARACTER"})
+   this.UserVars.add({"C_Number",123456789,"NUMERIC",10,0})
+   this.Relations.add(this.ORDERS1.rowset)
+   this.Relations.add(this.ARTICLE1.rowset)
+   this.Relations.add(this.CUSTOMERS1.rowset)
+   this.Design=lDesign
+   this.Extension=".LST"
+   this.Filename ="Delivery.LST"
+   RETURN
+   
+   FUNCTION ORDERS1_onNavigate
+   this.parent.parent.CUSTOMERS1.requery()
+   RETURN
+   
+   FUNCTION ORDERDETAILS1_onNavigate
+   IF .NOT. this.endofSet
+      this.parent.parent.ARTICLE1.requery()
+      IF this.CurrentOrder#this.fields["OrderID"].value
+         this.parent.parent.ORDERS1.requery()
+         this.CurrentOrder=this.fields["OrderID"].value
+      ENDIF
+   ENDIF
+   RETURN
+   
+ENDCLASS

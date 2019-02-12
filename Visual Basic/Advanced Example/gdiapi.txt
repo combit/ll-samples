@@ -1,0 +1,51 @@
+Attribute VB_Name = "GDIAPI"
+#If Win16 Then
+Declare Function GetStockObject Lib "GDI" (ByVal nIndex As Integer) As Integer
+Declare Function SelectObject Lib "GDI" (ByVal hDC As Integer, ByVal hObject As Integer) As Integer
+Declare Function MoveTo Lib "GDI" (ByVal hDC As Integer, ByVal x As Integer, ByVal y As Integer) As Long
+Declare Function LineTo Lib "GDI" (ByVal hDC As Integer, ByVal x As Integer, ByVal y As Integer) As Integer
+Declare Function MulDiv Lib "GDI" (ByVal nNumber As Integer, ByVal nNumerator As Integer, ByVal nDenominator As Integer) As Integer
+Declare Function CreateSolidBrush Lib "GDI" (ByVal crColor As Long) As Integer
+Declare Function DeleteObject Lib "GDI" (ByVal hObject As Integer) As Integer
+Declare Function GetTextExtent Lib "GDI" (ByVal hDC As Integer, ByVal lpString As String, ByVal nCount As Integer) As Long
+Declare Function SetTextAlign Lib "GDI" (ByVal hDC As Integer, ByVal wFlags As Integer) As Integer
+Declare Function TextOut Lib "GDI" (ByVal hDC As Integer, ByVal x As Integer, ByVal y As Integer, ByVal lpString As String, ByVal nCount As Integer) As Integer
+Declare Function OffsetWindowOrg Lib "GDI" (ByVal hDC As Integer, ByVal x As Integer, ByVal y As Integer) As Long
+Declare Function Rectangle Lib "GDI" (ByVal hDC As Integer, ByVal X1 As Integer, ByVal Y1 As Integer, ByVal X2 As Integer, ByVal Y2 As Integer) As Integer
+#Else
+Type POINTAPI
+        x As Long
+        y As Long
+End Type
+Type SIZE
+        cx As Long
+        cy As Long
+End Type
+
+
+Declare Function GetStockObject Lib "GDI32" (ByVal nIndex As Long) As Long
+Declare Function SelectObject Lib "GDI32" (ByVal hDC As Long, ByVal hObject As Long) As Long
+Declare Function MoveToEx Lib "GDI32" (ByVal hDC As Long, ByVal x As Long, ByVal y As Long, lpPoint As POINTAPI) As Long
+Declare Function LineTo Lib "GDI32" (ByVal hDC As Long, ByVal x As Long, ByVal y As Long) As Long
+Declare Function MulDiv Lib "kernel32" (ByVal nNumber As Long, ByVal nNumerator As Long, ByVal nDenominator As Long) As Long
+Declare Function CreateSolidBrush Lib "GDI32" (ByVal crColor As Long) As Long
+Declare Function DeleteObject Lib "GDI32" (ByVal hObject As Long) As Long
+Declare Function GetTextExtentPoint Lib "GDI32" Alias "GetTextExtentPointA" (ByVal hDC As Long, ByVal lpszString As String, ByVal cbString As Long, lpSize As SIZE) As Long
+Declare Function SetTextAlign Lib "GDI32" (ByVal hDC As Long, ByVal wFlags As Long) As Long
+Declare Function TextOut Lib "GDI32" Alias "TextOutA" (ByVal hDC As Long, ByVal x As Long, ByVal y As Long, ByVal lpString As String, ByVal nCount As Long) As Long
+Declare Function OffsetWindowOrgEx Lib "GDI32" (ByVal hDC As Long, ByVal x As Long, ByVal y As Long, lpoint As POINTAPI) As Long
+Declare Function Rectangle Lib "GDI32" (ByVal hDC As Long, ByVal X1 As Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Long
+#End If
+Global Const NULL_PEN = 8
+Global Const BLACK_PEN = 7
+
+Global Const TA_LEFT = 0
+Global Const TA_RIGHT = 2
+Global Const TA_CENTER = 6
+Global Const TA_TOP = 0
+Global Const TA_BOTTOM = 8
+Global Const TA_BASELINE = 24
+
+
+
+

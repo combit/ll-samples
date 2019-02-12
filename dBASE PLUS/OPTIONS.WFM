@@ -1,0 +1,181 @@
+** END HEADER -- Diese Zeile nicht entfernen
+//
+// Revision: 03.09.2018
+//
+parameter bModal
+local f
+f = new OptionsForm()
+if (bModal)
+   f.mdi = false // Nicht-MDI festlegen
+   f.ReadModal()
+else
+   f.Open()
+endif
+
+class OptionsForm of FORM
+   with (this)
+      height = 9.8182
+      left = 76.4286
+      top = 4.3636
+      width = 36.7143
+      text = ""
+      topMost = true
+      autoCenter = true
+      mdi = false
+      sizeable = false
+      maximize = false
+      minimize = false
+   endwith
+
+   this.LINE1 = new LINE(this)
+   with (this.LINE1)
+      left = 1.0
+      right = 35.0
+      top = 6.0
+      bottom = 6.0
+      width = 1
+   endwith
+
+   this.LINE2 = new LINE(this)
+   with (this.LINE2)
+      left = 1.0
+      right = 35.0
+      top = 8.0
+      bottom = 8.0
+      width = 1
+   endwith
+
+   this.T_LANGUAGE = new TEXTLABEL(this)
+   with (this.T_LANGUAGE)
+      height = 1.0
+      left = 1.0
+      top = 0.5
+      width = 8.0
+      text = "Sprache"
+      alignVertical = 1	// Mitte
+   endwith
+
+   this.CB_LANGUAGE = new COMBOBOX(this)
+   with (this.CB_LANGUAGE)
+      onChange = class::CB_LANGUAGE_ONCHANGE
+      height = 1.0
+      left = 15.0
+      top = 0.5
+      width = 20.0
+      dataSource = 'array {"English","Deutsch"}'
+      style = 2	// Dropdown-Liste
+   endwith
+
+   this.T_COMBIT_KEY = new TEXTLABEL(this)
+   with (this.T_COMBIT_KEY)
+      height = 1.0
+      left = 1.0
+      top = 2.0
+      width = 21.0
+      text = "combit Lizenzschlüssel"
+      alignVertical = 1	// Mitte
+   endwith
+
+   this.E_COMBIT_KEY = new ENTRYFIELD(this)
+   with (this.E_COMBIT_KEY)
+      height = 1.0
+      left = 22.0
+      top = 2.0
+      width = 13.0
+      value = ""
+      validErrorMsg = "Ungültige Eingabe "
+   endwith
+
+   this.O_RIBBON = new CHECKBOX(this)
+   with (this.O_RIBBON)
+      height = 1.0909
+      left = 1.0
+      top = 3.5
+      width = 34.0
+      text = "Menüband im Designer verwenden"
+   endwith
+
+   this.O_RIBBON2 = new CHECKBOX(this)
+   with (this.O_RIBBON2)
+      height = 1.0909
+      left = 1.0
+      top = 4.5
+      width = 34.0
+      text = "Menüband in Vorschau verwenden"
+   endwith
+
+   this.O_START = new CHECKBOX(this)
+   with (this.O_START)
+      height = 1.0909
+      left = 1.0
+      top = 6.5
+      width = 34.0
+      text = "Diesen Dialog beim Starten anzeigen"
+   endwith
+
+   this.PB_SAVE = new PUSHBUTTON(this)
+   with (this.PB_SAVE)
+      onClick = class::PB_SAVE_ONCLICK
+      height = 1.0909
+      left = 20.0
+      top = 8.5
+      width = 15.2857
+      text = "Speichern"
+   endwith
+
+
+   FUNCTION Init
+   form.CB_Language.value =PROPER(_app.oInfo.Language)
+   form.O_Ribbon.value    =_app.oInfo.RibbonDesigner
+   form.O_Ribbon2.value   =_app.oInfo.RibbonViewer
+   form.O_Start.value     =_app.oInfo.StartDialog
+   form.E_COMBIT_KEY.value=_app.oInfo.LizenzInfo
+   CLASS::SetLanguage()
+   RETURN
+
+   FUNCTION SetLanguage
+   DO CASE
+      CASE _app.oInfo.Language="deutsch"
+         form.text             ="Optionen"
+         form.T_LANGUAGE.text  ="Sprache"
+         form.T_COMBIT_KEY.text="combit Lizenzschlüssel"
+         form.O_RIBBON.text    ="Menüband im Designer verwenden"
+         form.O_RIBBON2.text   ="Menüband in der Vorschau verwenden"
+         form.O_START.text     ="Diesen Dialog beim Starten anzeigen"
+         form.PB_SAVE.text     ="Speichern"
+      OTHERWISE
+         form.text             ="Options"
+         form.T_LANGUAGE.text  ="Language"
+         form.T_COMBIT_KEY.text="combit licensing key"
+         form.O_RIBBON.text    ="Use ribbon in designer"
+         form.O_RIBBON2.text   ="Use ribbon in preview"
+         form.O_START.text     ="Show this dialog by starting"
+         form.PB_SAVE.text     ="Save"
+   ENDCASE 
+   RETURN
+
+   FUNCTION CB_LANGUAGE_onChange
+   _app.oInfo.Language=LOWER(form.CB_Language.value)
+   CLASS::SetLanguage()
+   RETURN
+
+   FUNCTION PB_SAVE_ONCLICK
+   IF FILE("LLSample.TXT")
+      DELETE FILE("LLSample.TXT")
+   ENDIF
+   nHandle=FCREATE("LLSample.TXT")
+   _app.oInfo.Language   =form.CB_Language.value
+   _app.oInfo.LizenzInfo =TRIM(LTRIM(form.E_Combit_Key.value))
+   _app.oInfo.RibbonDesigner=form.O_Ribbon.value
+   _app.oInfo.RibbonViewer  =form.O_Ribbon2.value
+   FPUTS(nHandle,"Sprache="+_app.oInfo.Language)
+   FPUTS(nHandle,"LizenzInfo="+_app.oInfo.LizenzInfo)
+   FPUTS(nHandle,"StartDialog="+IIF(form.O_Start.value,"ON","OFF"))
+   FPUTS(nHandle,"RibbonDesigner="+IIF(form.O_Ribbon.value,"ON","OFF"))
+   FPUTS(nHandle,"RibbonViewer  ="+IIF(form.O_Ribbon2.value,"ON","OFF"))
+   FCLOSE(nHandle)
+   form.close(true)
+   RETURN
+
+endclass
+

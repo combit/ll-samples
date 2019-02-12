@@ -1,0 +1,213 @@
+﻿[List description]
+[Description]
+ Text=This template is not an print template and is only included by other print templates!
+ FileVersion=15
+ RootTable=
+ Units=SCM-Units
+ Metric=3
+ TextQuote.Start=1
+ TextQuote.End=1
+ RepresentationCode.CondStart=171
+ RepresentationCode.CondSep=166
+ RepresentationCode.CondEnd=187
+ RepresentationCode.Tab=247
+ RepresentationCode.Ret=182
+ RepresentationCode.PhantomSpace=8203
+ RepresentationCode.LockNextChar=8288
+ RepresentationCode.ExprSep=164
+ LCID=7
+ UserVars.ManualSortOrder=1
+ CreatedByCallFrom=atlthunk.dll
+ [@DatabaseStructure]
+  {
+  [DatabaseStructures]
+   {
+   [DatabaseStructure]
+	{
+	}
+   }
+  }
+[Layout]
+ P1.Template=
+ xGrid=1000
+ yGrid=1000
+ GridShow=FALSE
+ GridSnap=FALSE
+ EnhancedExpressions=TRUE
+ EnhancedOldExpressions=FALSE
+ Decimals=2
+ DefaultMedium=PRV
+ RealDataPreviewPageLimit=-2
+ DefFont={(0,0,0),12.000000,-16,0,0,0,400,0,0,0,0,4,0,0,0,Arial}
+ HelpLines.Horizontal=
+ HelpLines.Vertical=
+ PDF.MaxOutlineDepth=2
+ PDF.MaxOutlineDepth.IDX=3
+ DefaultSize.Objecttype1=(0,0,38990,9910)
+ DefaultSize.Objecttype5=(0,0,73160,13160)
+ ObjectCount=2
+[UserSection]
+ 
+[SumVariables]
+[Layer]
+ Name=Basis
+ Condition=
+ WorkspaceColor=(102,102,102)
+ Visible=TRUE
+ LayerID=0
+[ProjectTemplates]
+ [@ProjectTemplates]
+  {
+  [ProjectTemplates]
+   {
+   }
+  }
+[Object]
+ ObjectID=2
+ ObjectName=Rechteck
+ Locked=FALSE
+ LinkUUID={DD333993-FF74-4715-AB78-D57ACB86C06E}
+ LinkMode=32
+ LayerID=0
+ LayerCond=
+ GroupUUID=
+ Identifier=Background
+ Condition=True
+ UserLocked=False
+ WrapBefore=False
+ ExportAsPicture=False
+ Position/Left=0
+ Position/Top=0
+ Position/Width=#LL.Device.Page.Size.cx
+ Position/Height=#LL.Device.Page.Size.cy
+ Direction=0
+ PDFLevel=0
+ PDFText=
+ IndexPDFLevel=0
+ IndexPDFText=
+ IssueCondition=True
+ Link.URL=
+ Animation=""
+ bFrame=0
+ bFill=1
+ Raster=1
+ BkColor=@RGB_Green
+ bShadow=0
+ Rounding=0
+[Object]
+ ObjectID=5
+ ObjectName=Bild
+ Locked=FALSE
+ LinkUUID={CBCB8ADB-D653-4F72-B3B2-AEC6AABF0013}
+ LinkMode=32
+ LayerID=0
+ LayerCond=
+ GroupUUID=
+ Identifier=
+ Condition=True
+ UserLocked=False
+ WrapBefore=False
+ ExportAsPicture=False
+ Position/Left=#LL.Device.Page.Size.cx-85
+ Position/Top=10000
+ Position/Width=75000
+ Position/Height=15000
+ Direction=0
+ Frame/Layout=0
+ Frame/Left/Spacing=0
+ Frame/Left/Line=False
+ Frame/Top/Spacing=0
+ Frame/Top/Line=False
+ Frame/Right/Spacing=0
+ Frame/Right/Line=False
+ Frame/Bottom/Spacing=0
+ Frame/Bottom/Line=False
+ PDFLevel=0
+ PDFText=
+ IndexPDFLevel=0
+ IndexPDFText=
+ IssueCondition=True
+ Link.URL=
+ Animation=""
+ HTMLAnimation=""
+ Mode=0
+ Filename=ll.gif
+ bRelPath=True
+ DwgSaveAsJPEG=0
+ Embedded=False
+ OriginalSize=False
+ bIsotropic=True
+ Alignment=0
+[UserVariables]
+ User1=@RGB_Blue;RGB (176,221,244)
+ User2=@RGB_Green;RGB (197,207,10)
+ User3=@RGB_LightBlue;RGB (224,241,250)
+ User4=@RGB_Red;RGB (226,0,48)
+[Parameters]
+ [@Parameters]
+  {
+  [Parameters]
+   {
+   LL.ProjectDescription=This template is not an print template and is only included by other print templates!
+   }
+  }
+[UsedIdentifiers]
+ Variables=
+ Fields=
+ ChartFields=
+[PageLayouts]
+ [@PageLayouts]
+  {
+  [PageLayouts]
+   {
+   [PageLayout]
+	{
+	DisplayName=
+	Condition=True
+	SourceTray=0
+	ForcePaperFormat=True
+	UsePhysicalPaper=True
+	PaperFormat=9
+	PaperFormat.cx=210000
+	PaperFormat.cy=297000
+	PaperFormat.Orientation=1
+	Copies=1
+	Duplex=0
+	Collate=0
+	FitPage=False
+	ShowInPrintDialog=True
+	}
+   }
+  }
+[ExtendedInfo]
+ [@ExtendedInfos]
+  {
+  [UserDefinedDesignScheme]
+   {
+   [Foreground]
+	{
+	Color=(255,230,179)
+	Color=(173,215,227)
+	Color=(167,195,209)
+	Color=(238,190,93)
+	Color=(102,204,199)
+	Color=(165,170,199)
+	Color=(242,167,17)
+	Color=(166,178,102)
+	Color=(155,122,153)
+	Color=(135,95,119)
+	}
+   [Background]
+	{
+	Color=(240,249,255)
+	Color=(255,230,179)
+	Color=(173,215,227)
+	Color=(167,195,209)
+	FillMode=1
+	}
+   }
+  [UIDescriptions]
+   {
+   0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Special\Include.lst
+   }
+  }
