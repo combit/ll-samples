@@ -186,7 +186,7 @@ namespace WebReporting.Controllers
                 // US:  Save the uploaded data to a temporary file.
                 using (var stream = new FileStream(filePath1, FileMode.Create))
                 {
-                    model.File1.CopyToAsync(stream);
+                    model.File1.CopyTo(stream);
                 }
 
                 // D:   Für Dateien vom Type Shapefile muss die dazugehörende Datenbank (File2) mit dem Shapefile (File1) zusammen hochgeladen werden.
@@ -197,7 +197,7 @@ namespace WebReporting.Controllers
                     {
                         using (var stream = new FileStream(filePath2, FileMode.Create))
                         {
-                            model.File2.CopyToAsync(stream);
+                            model.File2.CopyTo(stream);
                         }
 
                     }
