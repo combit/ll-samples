@@ -1,6 +1,7 @@
 <%@ Page Language="c#" Inherits="WebReporting.HTML5Viewer" CodeBehind="HTML5Viewer.aspx.cs" %>
 
 <%@ Register TagPrefix="combit" Namespace="combit.ListLabel24.Web" Assembly="combit.ListLabel24.Web" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>
