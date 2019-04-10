@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Http;
 
 namespace WebReporting.ViewModels
 {
@@ -14,9 +14,9 @@ namespace WebReporting.ViewModels
         [Required]
         public string ProjectType { get; set; }
 
-        public FormFile File1 { get; set; }
+        public IFormFile File1 { get; set; }
 
-        public FormFile File2 { get; set; }
+        public IFormFile File2 { get; set; }
 
         public bool ShowInToolbar { get; set; }
 

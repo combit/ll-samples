@@ -38,10 +38,10 @@ namespace TXTextDesignerObject
         ExpressionEvaluator _expressionEvaluator = null;
         TXTextControl.ServerTextControl _serverTXTextControl = null;
 
-        #endregion
+        #endregion // Declarations
 
         #region Construction
-        
+
         public TXDesignerObject()
             : this(null, null, null, null)
         {
@@ -91,26 +91,26 @@ namespace TXTextDesignerObject
             _textControlScaleFactorDpiX = (int)(1440 / _textControlGraphics.DpiX);
         }
 
-        #endregion
-        
+        #endregion // Construction
+
         #region Properties
-		
-		/// <summary>
-		/// Decide, if table layouts of the RTF content should be adapted if the space is to small.
-		/// </summary>
-		/// <remarks>
-		/// Per default tables in RTF content try to represent the layout 1:1. But if the object is smaller than the original table respectively the RTF document, 
-		/// clipping effects may occur. This property 'RecalcTableLayout' forces compensating the table to the smaller space. If this option is active it 
-		/// could have an impact on the performance because of the recalculation of the layout is computationally intensive and can modify the resulting table layout.
-		/// </remarks>
+
+        /// <summary>
+        /// Decide, if table layouts of the RTF content should be adapted if the space is to small.
+        /// </summary>
+        /// <remarks>
+        /// Per default tables in RTF content try to represent the layout 1:1. But if the object is smaller than the original table respectively the RTF document, 
+        /// clipping effects may occur. This property 'RecalcTableLayout' forces compensating the table to the smaller space. If this option is active it 
+        /// could have an impact on the performance because of the recalculation of the layout is computationally intensive and can modify the resulting table layout.
+        /// </remarks>
         [System.ComponentModel.DefaultValue(false)]
         public bool RecalcTableLayout
         {
             get;
             set;
         }
-        
-        #endregion
+
+        #endregion // Properties
 
         #region DesignerObject
 
@@ -139,7 +139,6 @@ namespace TXTextDesignerObject
         protected override void OnResetPrintState(EventArgs e)
         {
             String FileContents = DocumentRTFContent;
-            String evaluatedFileContent = FileContents;
             if (
                 IsPrinting
                 || !_contentStillEvaluatedInDesigner
@@ -148,43 +147,10 @@ namespace TXTextDesignerObject
                 bool bRTFContentContainsLLFormulas = RTFContentContainsLLFormulas(ref FileContents);
                 if (bRTFContentContainsLLFormulas)
                 {
-                    // Create the expression evaluator
-                    if (_expressionEvaluator == null)
-                        _expressionEvaluator = new ExpressionEvaluator(Parent);
-
-                    // Activate the extended mode of the expression parser to use chevrons
-                    Parent.Core.LlSetOption(14 /* LL_OPTION_EXTENDEDEVALUATION */, 1);
-
-                    // Evaluate the file content - maybe twice, because any content can also hold its own formula
-                    try
-                    {
-                        evaluatedFileContent = _expressionEvaluator.Evaluate(FileContents).ToString();
-                        if (RTFContentContainsLLFormulas(ref evaluatedFileContent))
-                        {
-                            evaluatedFileContent = _expressionEvaluator.Evaluate(evaluatedFileContent).ToString();
-                        }
-                    }
-                    catch (Exception ecx)
-                    {
-                        // reset content
-                        evaluatedFileContent = DocumentRTFContent;
-
-                        // show/display error
-                        MessageBox.Show(ecx.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                        // canceling current "print" to avoid further actions with this object
-                        Parent.Core.LlPrintAbort();
-                    }
-                    
-                    // 
-                    if (!IsPrinting)
-                        _contentStillEvaluatedInDesigner = true;
-
-                    // Deactivate the extended mode of the expression parser to use chevrons
-                    Parent.Core.LlSetOption(0 /* LL_OPTION_NEWEXPRESSIONS */, 1);
+                    EvaluateRTFContent(ref FileContents);
                 }
             }
-            LoadRTFContent(evaluatedFileContent);
+            LoadRTFContent(FileContents);
 
             // PageMargins must be set to 0 so that it fits neatly into the printable area
             _serverTXTextControl.PageMargins = new PageMargins(0, 0, 0, 0);
@@ -211,11 +177,11 @@ namespace TXTextDesignerObject
                 return;
             }
 
-            // Fallback to height of 297mm (DIN A4), because in edit mode it is possible to show a scrollbar 
+            // Fallback to height of 1189mm (DIN A0) to avoid overflows, because in edit mode it is possible to show a scrollbar 
             // in the report-container and we get an endless height
             int usedHeight = e.AvailableSpace.Height;
-            if (e.AvailableSpace.Height >= Int32.MaxValue)
-                usedHeight = Convert.ToInt32(ConvertTXUnitsToLLUnits(UnitSystem, (29700 / 10 / 2.54))); // DIN A4
+            if (e.AvailableSpace.Height >= Int32.MaxValue || !IsPrinting)
+                usedHeight = Convert.ToInt32(ConvertTXUnitsToLLUnits(UnitSystem, (118900 / 10 / 2.54))); // DIN A0
 
             PageSize newPageSize = new PageSize();
             newPageSize.Height = ConvertLLUnitsToTXUnits(UnitSystem, usedHeight) + 1;
@@ -292,7 +258,7 @@ namespace TXTextDesignerObject
             // Calculate the section size - this have to be done also in table-mode (even it is done in OnGetFieldHeightInformation, because of footer lines)
             if (IsInTableCell)
             {
-                if (_calculatedHeightInTable > e.ClipRectangle.Height || _rtfPageNumber == 0)
+                if (_calculatedHeightInTable > e.ClipRectangle.Height || _rtfPageNumber == 0 || e.IsDesignMode)
                 {
                     if (_rtfPageNumber == 0)
                         _rtfPageNumber = 1;
@@ -372,7 +338,7 @@ namespace TXTextDesignerObject
 
             //System.Diagnostics.Debug.WriteLine(string.Format("<<OnDrawDesignerObject.ClipRectangle.Height: {0} - OnDrawDesignerObject.PrintFinished: {1}", e.ClipRectangle.Height, e.PrintFinished));
         }
-
+        
         // This event is triggered by List & Label if a Designer object is copied. There would be the possibility to copy specific properties (e.g. the data source) of the Designer object.
         // The event is e.g. needed to allow List & Label to revert the last operations in the Designer (Edit > Undo) or if an object is copied by the user within the Designer.
         // It is also called for internal administration purposes - e.g. when the Designer is started. Or if the real data preview or the export is executed.
@@ -380,7 +346,11 @@ namespace TXTextDesignerObject
         {
             TXDesignerObject clone = (TXDesignerObject)e.Clone;
             clone._rtfPageNumber = 0;
-            clone.Parent = Parent;
+            
+			// init Parent ListLabel property explicitly to force creating new one later if needed
+            clone.Parent = null;
+            clone._ownsParent = false;
+			
             clone._expressionEvaluator = null;
             clone._contentStillEvaluatedInDesigner = false;
 
@@ -390,6 +360,11 @@ namespace TXTextDesignerObject
 
             clone._textControlGraphics = Graphics.FromHwnd(IntPtr.Zero);
             clone._textControlScaleFactorDpiX = (int)(1440 / clone._textControlGraphics.DpiX);
+
+            // We need to now when the object properties for the designer object are fully loaded to
+            // be able to evaluate the contents if it contains formulas for updating the containing variables
+            // in the used identifiers
+            clone.ObjectPropertiesLoaded += clone.TXDesignerObject_ObjectPropertiesLoaded;
         }
 
         // This event is triggered, when the user double clicks on the newly added object or selects the item "Properties" from the context menu. 
@@ -439,7 +414,27 @@ namespace TXTextDesignerObject
             }
         }
 
-        #endregion
+        /// <summary>
+        /// This event is fired if the object properties of the designer objects are collected
+        /// </summary>
+        private void TXDesignerObject_ObjectPropertiesLoaded(object sender, EventArgs e)
+        {
+            // If properties are loaded we need to evaluate the expression first to ensure the used identifiers are updated as expected
+            if (ObjectProperties.Count > 0)
+            {
+                if (IsPrinting)
+                {
+                    String FileContents = DocumentRTFContent;
+                    bool bRTFContentContainsLLFormulas = RTFContentContainsLLFormulas(ref FileContents);
+                    if (bRTFContentContainsLLFormulas)
+                    {
+                        EvaluateRTFContent(ref FileContents);
+                    }
+                }
+            }
+        }
+
+        #endregion // DesignerObject
 
         #region Helpers
 
@@ -480,6 +475,47 @@ namespace TXTextDesignerObject
             }
 
             lstIdentifiers.Add(Parent.Core.LoadString(35)); // "(Freier Text)"
+        }
+
+        private void EvaluateRTFContent(ref string sContents)
+        {
+            // evaluate...
+            if (!_contentStillEvaluatedInDesigner)
+            {
+                // Create the expression evaluator
+                if (_expressionEvaluator == null)
+                    _expressionEvaluator = new ExpressionEvaluator(Parent);
+
+                // Activate the extended mode of the expression parser to use chevrons
+                Parent.Core.LlSetOption(14 /* LL_OPTION_EXTENDEDEVALUATION */, 1);
+
+                // Evaluate the file content - maybe twice, because any content can also hold its own formula
+                try
+                {
+                    sContents = _expressionEvaluator.Evaluate(sContents).ToString();
+                    if (RTFContentContainsLLFormulas(ref sContents))
+                    {
+                        sContents = _expressionEvaluator.Evaluate(sContents).ToString();
+                    }
+                }
+                catch (Exception ecx)
+                {
+                    // reset content
+                    sContents = DocumentRTFContent;
+
+                    // show/display error
+                    MessageBox.Show(ecx.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    // canceling current "print" to avoid further actions with this object
+                    Parent.Core.LlPrintAbort();
+                }
+
+                if (!IsPrinting)
+                    _contentStillEvaluatedInDesigner = true;
+
+                // Deactivate the extended mode of the expression parser to use chevrons
+                Parent.Core.LlSetOption(0 /* LL_OPTION_NEWEXPRESSIONS */, 1);
+            }
         }
 
         private bool RTFContentContainsLLFormulas(ref string sContents, bool bReplace = true)
@@ -900,7 +936,7 @@ namespace TXTextDesignerObject
             }
         }
 
-        #endregion
+        #endregion // Helpers
 
         // Dispose pattern to "clean-up" resources
         private bool disposed = false; // To detect redundant calls

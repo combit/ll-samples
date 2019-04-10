@@ -29,6 +29,7 @@ namespace combit.ListLabel24.Samples
         private int _linesToSkip;
         private List<ITable> _tables = new List<ITable>(1);
         private Stream _csvStream;
+        internal Stream CsvStream => _csvStream;
 
         #endregion
 
@@ -524,9 +525,12 @@ namespace combit.ListLabel24.Samples
             get
             {
                 StreamReader reader = _provider.GetStreamReaderOnDataPosition();
+                long position = _provider.CsvStream.Position;
                 while (reader.Peek() >= 0)
                 {
+                    _provider.CsvStream.Position = position;
                     string line = reader.ReadLine();
+                    position = _provider.CsvStream.Position;
                     if (String.IsNullOrEmpty(line))  // skip empty lines
                         continue;
 

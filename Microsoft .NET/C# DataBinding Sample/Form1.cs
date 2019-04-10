@@ -237,7 +237,7 @@ namespace DataBinding
 
         private void ResetFileExtensions()
         {
-            //D:Dateiendungen wieder zuruecksetzen
+            //D: Dateiendungen wieder zuruecksetzen
             //US: set the file extension back
             if (_isNotPrinting)
             {
@@ -288,11 +288,11 @@ namespace DataBinding
 
             try
             {
-                //D:Dateiendung je nach Sprach setzen
-                //US:set the file extension for used CultureInfo
+                //D:Dateiendung je nach Sprache setzen
+                //US: set the file extension for used CultureInfo
                 SetFileExtensions();
 
-                //D: An die provideColletion binden
+                //D: An die providerColletion binden
                 //US: now bind to the providerCollection
                 LL.DataMember = string.Empty;
                 LL.DataSource = providerCollection;
@@ -317,7 +317,7 @@ namespace DataBinding
             }
             finally
             {
-                //D:Dateiendungen wieder zuruecksetzen
+                //D: Dateiendungen wieder zuruecksetzen
                 //US: set the file extension back
                 ResetFileExtensions();
             }
@@ -332,11 +332,11 @@ namespace DataBinding
             DataProviderCollection providerCollection = CreateProviderCollection(false);
             try
             {
-                //D:Dateiendung je nach Sprach setzen
-                //US:set the file extension for used CultureInfo
+                //D: Dateiendung je nach Sprache setzen
+                //US: set the file extension for used CultureInfo
                 SetFileExtensions();
 
-                //D: An die provideColletion binden
+                //D: An die provideCollection binden
                 //US: now bind to the providerCollection
                 LL.DataMember = string.Empty;
                 LL.DataSource = providerCollection;
@@ -366,7 +366,7 @@ namespace DataBinding
             }
             finally
             {
-                //D:Dateiendungen wieder zuruecksetzen
+                //D: Dateiendungen wieder zuruecksetzen
                 //US: set the file extension back
                 ResetFileExtensions();
 
@@ -786,11 +786,11 @@ namespace DataBinding
 
             try
             {
-                //D:Dateiendung je nach Sprach setzen
-                //US:set the file extension for used CultureInfo
+                //D: Dateiendung je nach Sprache setzen
+                //US: set the file extension for used CultureInfo
                 SetFileExtensions();
 
-                //D: An die provideColletion binden
+                //D: An die provideCollection binden
                 //US: now bind to the providerCollection
                 LL.DataMember = string.Empty;
                 LL.DataSource = providerCollection;
@@ -819,7 +819,7 @@ namespace DataBinding
             }
             finally
             {
-                //D:Dateiendungen wieder zuruecksetzen
+                //D: Dateiendungen wieder zuruecksetzen
                 //US: set the file extension back
                 ResetFileExtensions();
 
@@ -840,11 +840,11 @@ namespace DataBinding
             DataProviderCollection providerCollection = CreateProviderCollection(true);
             try
             {
-                //D:Dateiendung je nach Sprach setzen
-                //US:set the file extension for used CultureInfo
+                //D: Dateiendung je nach Sprache setzen
+                //US: set the file extension for used CultureInfo
                 SetFileExtensions();
 
-                //D: An die provideColletion binden
+                //D: An die provideCollection binden
                 //US: now bind to the providerCollection
                 LL.DataMember = string.Empty;
                 LL.DataSource = providerCollection;
@@ -868,7 +868,7 @@ namespace DataBinding
             }
             finally
             {
-                //D:Dateiendungen wieder zuruecksetzen
+                //D: Dateiendungen wieder zuruecksetzen
                 //US: set the file extension back
                 ResetFileExtensions();
             }
