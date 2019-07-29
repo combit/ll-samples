@@ -528,7 +528,7 @@ namespace TXTextDesignerObject
             {
                 // we have detected a List & Label formula inside of the given rtf-stream
                 bRTFContentContainsLLFormulas = true;
-
+				
                 if (bReplace)
                 {
                     sContents = sContents.Replace("\\u171\\'ab", "«"); // neccessary for the LL RTF-Ctrl (uses Microsoft RTF-Control!)
@@ -540,7 +540,7 @@ namespace TXTextDesignerObject
                     sContents = sContents.Replace("\\loch\\af1\\dbch\\af1\\hich\\f1\\'bb", "»");
                     sContents = sContents.Replace("\\'bb", "»");
 					
-					// if we are an LL formula we also need to decode special characters like german Umlaute
+					// if we are an LL formula we also need to decode special characters like german Umlaute, new line or something similar
                     sContents = sContents.Replace("\\'e4", "ä");
                     sContents = sContents.Replace("\\'f6", "ö");
                     sContents = sContents.Replace("\\'fc", "ü");
@@ -548,6 +548,7 @@ namespace TXTextDesignerObject
                     sContents = sContents.Replace("\\'c4", "Ä");
                     sContents = sContents.Replace("\\'d6", "Ö");
                     sContents = sContents.Replace("\\'dc", "Ü");
+					sContents = sContents.Replace("\\u182\\'b6", "\\par "); // new line (neccessary for the LL RTF-Ctrl (uses Microsoft RTF-Control!))
                 }
             }
 
