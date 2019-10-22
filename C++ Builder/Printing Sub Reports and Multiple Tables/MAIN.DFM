@@ -97,7 +97,7 @@ object FrmMultipleTables: TFrmMultipleTables
       end
     end
   end
-  object LL: Tl24_
+  object LL: Tl25_
     DebugMode = 1
     SortVariables = Yes
     UnitSystem = usHiInch

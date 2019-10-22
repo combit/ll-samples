@@ -107,7 +107,7 @@ object Form1: TForm1
   end
   object FDConnectionNorthwind: TFDConnection
     Params.Strings = (
-      'Database=C:\Program Files (x86)\combit\LL24\Beispiele\NWIND.MDB'
+      'Database=C:\Program Files (x86)\combit\LL25\Beispiele\NWIND.MDB'
       'DriverID=MSAcc')
     FetchOptions.AssignedValues = [evCursorKind]
     FetchOptions.CursorKind = ckStatic
@@ -166,7 +166,7 @@ object Form1: TForm1
     Left = 416
     Top = 176
   end
-  object ListLabel: TListLabel24
+  object ListLabel: TListLabel25
     Debug = []
     DataController.DataSource = DataSourceOrders
     DataController.DetailSources = <

@@ -224,6 +224,10 @@
 	[DataLines]
 	 {
 	 bKeepTogether=True
+	 [bKeepTogether]
+	  {
+	  IndexedGroups=False
+	  }
 	 bSuppress=False
 	 bForceSumCalculation=True
 	 }
@@ -284,6 +288,7 @@
 	UseSepTicks=True
 	ColumnCount=0
 	ColumnCount.Distance=1000
+	FillPrioHorizonal=False
 	ColumnBreakCondition=False
 	ColumnBreakBefore=False
 	bFooterOnBottom=False
@@ -781,6 +786,7 @@
 		 Bottom=0
 		 }
 		LCondition=True
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -1548,6 +1554,7 @@
 		 Bottom=0
 		 }
 		LCondition=LastFooterThisTable()
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -1921,6 +1928,7 @@
 		 Bottom=0
 		 }
 		LCondition=LastFooterThisTable()
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -2294,6 +2302,7 @@
 		 Bottom=0
 		 }
 		LCondition=not LastFooterThisTable()
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -2411,6 +2420,7 @@
 		 Bottom=0
 		 }
 		LCondition=LastFooterThisTable()
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -3002,7 +3012,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
+ Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
  Condition=True
  UserLocked=False
  WrapBefore=False

@@ -65,7 +65,7 @@ object Form1: TForm1
     TabOrder = 1
     OnClick = PrintButtonClick
   end
-  object AddNumber: TLL24XFunction
+  object AddNumber: TLL25XFunction
     MinimumParameters = 2
     MaximumParameters = 2
     ResultType = ptDouble
@@ -85,7 +85,7 @@ object Form1: TForm1
     Left = 272
     Top = 107
   end
-  object LL: Tl24_
+  object LL: Tl25_
     SortVariables = Yes
     UnitSystem = usHiInch
     CompressStorage = Yes

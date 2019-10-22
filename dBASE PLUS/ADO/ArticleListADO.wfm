@@ -1,6 +1,6 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Revision: 03.09.2018
+// Revision: 03.09.2019
 //
 parameter bModal
 local f
@@ -121,8 +121,8 @@ class ArticlelistADOForm of FORM
    RETURN
    
    FUNCTION OpenReport
-   SET PROCEDURE TO ..\LL24.CC ADDITIVE
-   r=new LL24InterfaceSample()
+   SET PROCEDURE TO ..\LL25.CC ADDITIVE
+   r=new LL25InterfaceSample()
    r.UserVars.add({"C_Language", (_app.language),                "CHARACTER"})
    r.UserVars.add({"C_SortOrder",(form.Article.rowset.indexname),"CHARACTER"})
    r.rowset=form.Article.rowset

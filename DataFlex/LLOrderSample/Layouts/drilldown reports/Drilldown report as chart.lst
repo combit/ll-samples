@@ -17,7 +17,7 @@
  RepresentationCode.ExprSep=164
  LCID=3079
  UserVars.ManualSortOrder=1
- CreatedByCallFrom=atlthunk.dll
+ CreatedByCallFrom=vdfvm19.dll
  [@DatabaseStructure]
   {
   [DatabaseStructures]
@@ -349,6 +349,7 @@
 	Height=100000
 	ColumnCount=0
 	ColumnCount.Distance=1000
+	FillPrioHorizonal=False
 	ColumnBreakCondition=False
 	ColumnBreakBefore=False
 	Identifier=
@@ -379,6 +380,7 @@
 	  zAxisSecondaryAssignment=0
 	  Isotropic=False
 	  Orientation=1
+	  LabelAlignment=2
 	  UseLightEffect=True
 	  Perspective=0
 	  RotZ=30
@@ -395,6 +397,16 @@
 	   }
 	  [xAxis]
 	   {
+	   FormulaMin=True
+	   [FormulaMin]
+		{
+		Value=0
+		}
+	   FormulaMax=True
+	   [FormulaMax]
+		{
+		Value=1.0
+		}
 	   FormulaValue=OrderHea.Order_Date
 	   FormulaFilter=True
 	   SamplesForDesigner=10
@@ -465,6 +477,7 @@
 		}
 	   RelativePartOfAtAxisText=30
 	   RelativePartOfLegendText=0
+	   LegendAutowrap=-1
 	   TickmarkColor=RGB(180,180,180)
 	   CountOfIntermediateTicks=0
 	   [AreaList]
@@ -486,6 +499,7 @@
 		{
 		Value=1.0
 		}
+	   Distortion=0
 	   FilterZeroes=False
 	   HandleNullValue=0
 	   FormulaValue=Sum(OrderHea.Order_Total)
@@ -538,7 +552,6 @@
 		Color=@RGB_LightBlue
 		}
 	   BarWidthPercentage=60
-	   Distortion=0
 	   PostProcessing=0
 	   [PostProcessing]
 		{
@@ -625,6 +638,7 @@
 		}
 	   RelativePartOfAtAxisText=30
 	   RelativePartOfLegendText=0
+	   LegendAutowrap=-1
 	   TickmarkColor=RGB(180,180,180)
 	   CountOfIntermediateTicks=0
 	   [AreaList]
@@ -782,7 +796,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
+ Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
  Condition=True
  UserLocked=False
  WrapBefore=False

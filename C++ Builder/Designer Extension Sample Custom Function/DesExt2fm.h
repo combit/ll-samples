@@ -7,7 +7,7 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include "L24.hpp"
+#include "L25.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -16,8 +16,8 @@ __published:	// IDE-managed Components
 		TLabel *Label2;
 		TButton *DesignButton;
 		TButton *PrintButton;
-		TLl24XFunction *AddNumber;
-		TL24_ *LL;
+		TLl25XFunction *AddNumber;
+		TL25_ *LL;
 		void __fastcall DesignButtonClick(TObject *Sender);
 		void __fastcall PrintButtonClick(TObject *Sender);
 		void __fastcall LLDefineVariables(TObject *Sender, int UserData,
@@ -26,7 +26,7 @@ __published:	// IDE-managed Components
 		void __fastcall AddNumberParameterAutoComplete(TObject *Sender,
 		  int ParameterIndex, TStringList *&Values);
 		void __fastcall AddNumberEvaluateFunction(TObject *Sender,
-		  TLl24XFunctionParameterType &ResultType, OleVariant &ResultValue,
+		  TLl25XFunctionParameterType &ResultType, OleVariant &ResultValue,
 		  int &DecimalPositions, const int ParameterCount,
 		  const OleVariant &Parameter1, const OleVariant &Parameter2,
 		  const OleVariant &Parameter3, const OleVariant &Parameter4);

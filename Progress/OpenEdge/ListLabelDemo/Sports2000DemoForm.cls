@@ -22,18 +22,18 @@
 USING Progress.Lang.*.
 USING Progress.Windows.Form.
 /*USING combit.ListLabel22.*.*/
-USING combit.ListLabel24.DataProviders.IDataProvider FROM ASSEMBLY.
-USING TasteITConsulting.ListLabel24.OpenEdgeDataProvider FROM ASSEMBLY.
+USING combit.ListLabel25.DataProviders.IDataProvider FROM ASSEMBLY.
+USING TasteITConsulting.ListLabel25.OpenEdgeDataProvider FROM ASSEMBLY.
 USING ListLabelDemo.Sports2000ServiceAdapter FROM PROPATH.
 USING ListLabelDemo.Sports2000Service FROM PROPATH.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeSchema FROM PROPATH.
-USING combit.ListLabel24.LlCore FROM ASSEMBLY.
-USING combit.ListLabel24.LlVersion FROM ASSEMBLY.
-USING combit.ListLabel24.ListLabel FROM ASSEMBLY.
-USING combit.ListLabel24.LlProject FROM ASSEMBLY.
-USING combit.ListLabel24.LlAutoMasterMode FROM ASSEMBLY.
-USING combit.ListLabel24.ListLabelException FROM ASSEMBLY.
-USING combit.ListLabel24.LlLanguage FROM ASSEMBLY.
+USING combit.ListLabel25.LlCore FROM ASSEMBLY.
+USING combit.ListLabel25.LlVersion FROM ASSEMBLY.
+USING combit.ListLabel25.ListLabel FROM ASSEMBLY.
+USING combit.ListLabel25.LlProject FROM ASSEMBLY.
+USING combit.ListLabel25.LlAutoMasterMode FROM ASSEMBLY.
+USING combit.ListLabel25.ListLabelException FROM ASSEMBLY.
+USING combit.ListLabel25.LlLanguage FROM ASSEMBLY.
 
 ROUTINE-LEVEL ON ERROR UNDO, THROW.
 
@@ -377,7 +377,7 @@ CLASS ListLabelDemo.Sports2000DemoForm INHERITS Form:
         oProvider:Initialize().
 
         oLL = NEW ListLabel().
-        oLL:Language = LlLanguage:English.
+        /*oLL:Language = LlLanguage:English.*/
         oLL:ForceSingleThread = TRUE. /* :-( */
         oLL:DataSource = oProvider. 
         

@@ -1,10 +1,11 @@
+<?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2018-04-25T19:04:52</VDFLibraryTimeStamp>
+	<VDFLibraryTimeStamp>2018-04-26T01:06:18</VDFLibraryTimeStamp>
 	<libraries>
 		<library>
-			<libraryPath>..\LLLibrary24.0\LL24-VDF19.1.sws</libraryPath>
-			<libraryTimeStamp>2018-01-30T15:41:36</libraryTimeStamp>
-			<libraryID>Lib2</libraryID>
+			<libraryPath>..\LLLibrary25.0\LL25-VDF19.1.sws</libraryPath>
+			<libraryTimeStamp>2018-10-01T20:28:33</libraryTimeStamp>
+			<libraryID>Lib1</libraryID>
 		</library>
 	</libraries>
 	<classes>
@@ -982,25 +983,25 @@
 			<libraryID>0</libraryID>
 		</class>
 		<class>
+			<className>cWebListExpandPanel</className>
+			<image>cWebListExpandPanel.ico</image>
+			<package>cWebListExpandPanel.pkg</package>
+			<groupName>Web Containers</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
 			<className>cListLabelReport</className>
 			<image>ll.ico</image>
 			<package>cListLabel.pkg</package>
 			<groupName>List &amp;&amp; Label</groupName>
-			<libraryID>Lib2</libraryID>
+			<libraryID>Lib1</libraryID>
 		</class>
 		<class>
 			<className>cListLabelViewer</className>
 			<image>ControlCrystalViewer.ico</image>
 			<package>cListLabel.pkg</package>
 			<groupName>List &amp;&amp; Label</groupName>
-			<libraryID>Lib2</libraryID>
-		</class>
-		<class>
-			<className>cWebListExpandPanel</className>
-			<image>cWebListExpandPanel.ico</image>
-			<package>cWebListExpandPanel.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
+			<libraryID>Lib1</libraryID>
 		</class>
 	</classes>
 </classList>

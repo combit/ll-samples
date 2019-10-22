@@ -20,7 +20,7 @@
 // $START-AUTODEPEND
 // $STOP-AUTODEPEND
 	 xclass.lib
-    xclListLabel24.lib
+    xclListLabel25.lib
     xclSimple2 Example\LULDEMO.PRG
     xclSimple2 Example\LULMENU.PRG
 

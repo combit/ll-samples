@@ -1,4 +1,4 @@
-/*============================================================================
+																																																																																																																																																																																																																																																																																																																																								/*============================================================================
  File Name:	   dsListLabel.prg
  Author:	 Marcus Herz
  Description:
@@ -27,7 +27,7 @@
 #define __ALIAS		5
 #define __STUFE		6
 
-static scVersion	:= "24"
+static scVersion	:= "25"
 
 #if XPPVER >= 2000840
 	// ab dieser version mit Xbase EXTERN
@@ -90,18 +90,17 @@ CLASS dsListLabel FROM dsDbContainer
 CLASS dsListLabel
 #endif
 PROTECTED:
-	CLASS VAR __aDefaultVar				SHARED							//
 	CLASS VAR __aConfig					SHARED							//
+	CLASS VAR __aDefaultVar				SHARED							//
 	CLASS VAR __aPrepare					SHARED							//
 	CLASS VAR __aRecht					SHARED							//
 	CLASS VAR __cDefaultPath			SHARED							//
+	CLASS VAR __cEmailProvider			SHARED							//
 	CLASS VAR __cExport					SHARED							//
 	CLASS VAR __cIgnoreField			SHARED							//
 	CLASS VAR __cLicence					SHARED							//
-	CLASS VAR __cEmailProvider			SHARED							//
-	CLASS VAR __onError					SHARED							//
+	CLASS VAR __cPrinter					SHARED							//
 	CLASS VAR __cSmtpIPAddress			SHARED							//
-	CLASS VAR __nSmtpIPPort				SHARED							//
 	CLASS VAR __cSmtpPassword			SHARED							//
 	CLASS VAR __cSmtpSenderAddress	SHARED							//
 	CLASS VAR __cSmtpSenderName   	SHARED							//
@@ -110,7 +109,9 @@ PROTECTED:
 	CLASS VAR __nBoxType					SHARED							//
 	CLASS VAR __nDebug					SHARED							//
 	CLASS VAR __nLanguage				SHARED							//
+	CLASS VAR __nSmtpIPPort				SHARED							//
 	CLASS VAR __nZoom						SHARED							//
+	CLASS VAR __onError					SHARED							//
 
    VAR cOutFile                                                //
    VAR cOutPut                                                 //
@@ -187,7 +188,6 @@ EXPORTED:
 	METHOD DataSetVariable
 	METHOD DbReleaseAll
 	METHOD DbRequestAll
-	METHOD DefaultPrinter
 	METHOD DefineField
 	METHOD DefineVariable
 	METHOD Design
@@ -203,6 +203,7 @@ EXPORTED:
 	METHOD ResetMenue
 	METHOD SaveAsPDF
 	METHOD SendAsMail
+	METHOD SetDefaultPrinter
 	METHOD SetMenuId
 	METHOD SetProperty
 
@@ -339,7 +340,7 @@ EXPORTED:
 #ifdef _XCLASS
      		::_bSkipBlock   := {|o, c| c:skip()}					  	// default
 #else
-     		::_bSkipBlock   := {|o, c| (c)->(dbskip())}				// default
+     		::_bSkipBlock   := {|o, c| if(IsObject(c), c:skip(), (c)->(dbskip()))}				// default
 #endif
     	endif
     	RETURN ::_bSkipBlock
@@ -352,7 +353,7 @@ EXPORTED:
 #ifdef _XCLASS
   			::_bTopBlock   := {|o, c| c:gotop()}                  // default
 #else
-  			::_bTopBlock   := {|o, c| (c)->(dbgotop())}           // default
+  			::_bTopBlock   := {|o, c| if(IsObject(c), c:gotop(), (c)->(dbgotop()))}           // default
 #endif
 			RETURN self
  		endif
@@ -397,6 +398,7 @@ EXPORTED:
 	INLINE CLASS Method DefaultIgnoreFieldMask(xSet)   ;::__cIgnoreField			:= xSet				;RETURN self
 	INLINE CLASS Method DefaultLanguage(xSet)				;::__nLanguage				:= xSet				;RETURN self
 	INLINE CLASS Method DefaultMenuDisabled(xSet)		;::__aRecht					:= aclone(xSet)	;RETURN self
+	INLINE CLASS Method DefaultPrinter(xSet)	     		;::__cPrinter				:= xSet				;RETURN self
 	INLINE CLASS Method DefaultSmtpIPAddress(xSet)		;::__cSmtpIPAddress 		:= xSet				;RETURN self
 	INLINE CLASS Method DefaultSmtpIPPort(xSet)			;::__nSmtpIPPort    		:= xSet				;RETURN self
 	INLINE CLASS Method DefaultSmtpPassword(xSet)		;::__cSmtpPassword  		:= xSet				;RETURN self
@@ -595,7 +597,7 @@ METHOD dsListLabel:Init( oParent, lRtf )
 	endif
 
 	::hJob	 := LlJobOpen(::__nLanguage)
-	if ::hJob < 0
+	if empty(::hJob) .or. ::hJob < 0
 		::_nError   := ::hJob
 		::_nStatus  := XBP_STAT_FAILURE
 		::hJob		:= 0
@@ -729,13 +731,13 @@ METHOD dsListLabel:Print(bPrint)
 	endif
 
 #else
-	bEof		:= {|n| (n)->(eof())}
-	bRecno   := {|n| (n)->(recno())}
+	bEof		:= {|c| if(IsObject(c), c:eof(),(c)->(eof()))}
+	bRecno   := {|c| if(IsObject(c), c:recno(),(c)->(recno()))}
 	if empty( ::_bSkipBlock)
-		::_bSkipBlock	:= {|o, n| (n)->(dbskip())}
+		::_bSkipBlock	:= {|o,c| if(IsObject(c), c:skip(),(c)->(dbskip()))}
 	endif
 	if empty( ::_bTopBlock)
-		::_bTopBlock	:= {|o, n| (n)->(dbgotop())}
+		::_bTopBlock	:= {|o,c| if(IsObject(c), c:gotop(),(c)->(dbgotop()))}
 	endif
 
 #endif
@@ -759,7 +761,7 @@ METHOD dsListLabel:Print(bPrint)
 		::_bTopBlock	:= {|o, n| NIL}
 
 	elseif IsNumber(::nSelect) .and. ::nSelect > 0
-		_nLastRec   := (::nSelect)->(lastrec())
+		_nLastRec   := if(IsObject(::nSelect), ::nSelect:lastrec(), (::nSelect)->(lastrec()))
 		eval(::_bTopBlock, self, ::nSelect )
 	endif
 
@@ -767,6 +769,10 @@ METHOD dsListLabel:Print(bPrint)
 	::datalink(1, 1 )											 // erstinit variablen
 	if ::_nProject == LL_PROJECT_LIST
 		::datalink(0,1, -1 )										// erstinit felder
+	endif
+
+	if empty( ::_cPrinter ) .and. !empty(::__cPrinter)
+		::_cPrinter	:= ::__cPrinter
 	endif
 
 	if !empty( ::_cPrinter )
@@ -1069,30 +1075,10 @@ METHOD dsListLabel:Print(bPrint)
 				LlPrintResetProjectState(::hJob)
 			next
 
-		elseif IsObject(::nSelect )									    // CRD oder LBL
+		elseif (IsNumber(::nSelect) .and. ::nSelect > 0) .or. IsObject(::nSelect )									    // CRD oder LBL
 			eval(::_bTopBlock, self, ::nSelect )
-			do while nError == 0 .and. (!::nSelect:eof() .or. ::_lPrintAtEof) .and. nRec <> ::nSelect:recno() .and. (::_nPages == 0 .or. nPage <= ::_nPages)
-				nRec   := ::nSelect:recno()
-				::_lPrintAtEof   := false
-				::datalink(1)
-				for _nQuantity := 1 to ::_nQuantity
-					do while (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA	;enddo
-				next
-				nPage		:= LlPrintGetCurrentPage(::hJob)
-				eval( ::_bSkipBlock, self, ::nSelect)
-				LlPrintSetBoxText(::hJob, "Printing", ++nPrint / _nLastRec * 100 )
-#ifdef _DESIGNERPREVIEW
-				if !_PrintRuns(,.t.)
-					LlPrintAbort(::hJob)
-					exit
-				endif
-#endif
-			enddo
-
-		elseif IsNumber(::nSelect) .and. ::nSelect > 0									    // CRD oder LBL
-			eval(::_bTopBlock, self, ::nSelect )
-			do while nError == 0 .and. (!(::nSelect)->(eof()) .or. ::_lPrintAtEof) .and. nRec <> (::nSelect)->(recno()) .and. (::_nPages == 0 .or. nPage <= ::_nPages)
-				nRec   := (::nSelect)->(recno())
+			do while nError == 0 .and. (! eval(bEof, ::nSelect) .or. ::_lPrintAtEof) .and. nRec <> eval(bRecno, ::nSelect) .and. (::_nPages == 0 .or. nPage <= ::_nPages)
+				nRec   := eval(bRecno, ::nSelect )
 				::_lPrintAtEof   := false
 				::datalink(1)
 				for _nQuantity := 1 to ::_nQuantity
@@ -1239,7 +1225,7 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 #else
 	LOCAL bKey
 	LOCAL cKey
-	LOCAL bEof	:= {|n| (n)->(eof())}
+	LOCAL bEof	:= {|c| if(IsObject(c), c:eof(), (c)->(eof()))}
 #endif
 
 	if cChild == "LLStaticTable"
@@ -1281,7 +1267,7 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 			_nLastRec   := max(1, nSelect:lastrec())
 		endif
 #else
-		_nLastRec   := max(1, (nSelect)->(lastrec()))
+		_nLastRec   := max(1, if(IsObject(nSelect), nSelect:lastrec(),(nSelect)->(lastrec())))
 #endif
 		do while !eval(bEof, nSelect) .and. nError <> LL_ERR_USER_ABORTED .and. (::_nPages == 0 .or. nPage <= ::_nPages)
 			::datalink(0, ,nRek )
@@ -1356,7 +1342,7 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 		if left(cRelation,2 ) = "&"
 			bKey	:= &("{|o,p,c| " + subs(cRelation,2) +"}")
 			cKey	:= eval( bKey, self, cParent, cChild )
-			if cKey != NIL
+			if cKey != NIL .and. !IsObject(nSelect)
 				(nSelect)->(dbSetScope(SCOPE_BOTH, cKey))
 				lScope	:= true
 			endif
@@ -1371,8 +1357,8 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 		if IsBlock(::_bTableChange)
 			eval(::_bTableChange, self, true, cChild, cParent )
 		endif
-		(nSelect)->(dbgotop())
-		do while !(nSelect)->(eof()) .and. nError <> LL_ERR_USER_ABORTED .and. (::_nPages == 0 .or. nPage <= ::_nPages)
+		eval(::RopBlock, nSelect)
+		do while !eval(bEof, nSelect) .and. nError <> LL_ERR_USER_ABORTED .and. (::_nPages == 0 .or. nPage <= ::_nPages)
 			::datalink(0, ,nRek )
 			do while (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
 				do while LlPrint(::hJob) == LL_WRN_REPEAT_DATA
@@ -1711,7 +1697,7 @@ RETURN ::_cPrinter
  $See Also:
  $Example:
 ==============================================================================*/
-METHOD dsListLabel:DefaultPrinter()
+METHOD dsListLabel:SetDefaultPrinter()
 	if !empty(::hJob)
 		LlSetPrinterToDefault(::hJob, ::_nProject, ::cReport)
 	endif
@@ -1961,7 +1947,7 @@ METHOD dsListLabel:_datalink(nMode, nSelect, cDesigner, aField, nRecno )
 #ifdef _XCLASS
 		aField	:= nSelect:struct()
 #else
-		aField	:= (nSelect)->(dbstruct())
+		aField	:= if(IsObject(nSelect), nSelect:dbstruct(),(nSelect)->(dbstruct()))
 #endif
 	endif
 
@@ -1984,7 +1970,7 @@ METHOD dsListLabel:_datalink(nMode, nSelect, cDesigner, aField, nRecno )
 #ifdef _XCLASS
 			xRet	:= nSelect:fieldget(i)
 #else
-			xRet	:= (nSelect)->(fieldget(i))
+			xRet	:= if(IsObject(nSelect), nSelect:fieldget(i),(nSelect)->(fieldget(i)))
 #endif
 		else
 			if !IsArray(aField[i])
@@ -1995,8 +1981,12 @@ METHOD dsListLabel:_datalink(nMode, nSelect, cDesigner, aField, nRecno )
 #ifdef _XCLASS
 					xRet	:= nSelect:fieldget(aField[i])
 #else
-					nPos	:= (nSelect)->(fieldpos(aField[i]))
-					xRet	:= (nSelect)->(fieldget(nPos))
+					if IsObject(nSelect)
+						xRet	:= nSelect:fieldget(aField[i])
+					else
+						nPos	:= (nSelect)->(fieldpos(aField[i]))
+						xRet	:= (nSelect)->(fieldget(nPos))
+					endif
 #endif
 				endif
 
@@ -2009,8 +1999,12 @@ METHOD dsListLabel:_datalink(nMode, nSelect, cDesigner, aField, nRecno )
 #ifdef _XCLASS
 				xRet	:= nSelect:fieldget(aField[i,2])
 #else
-				nPos	:= (nSelect)->(fieldpos(aField[i,2]))
-				xRet	:= (nSelect)->(fieldget(nPos))
+				if IsObject(nSelect)
+					xRet	:= nSelect:fieldget(aField[i,2])
+				else
+					nPos	:= (nSelect)->(fieldpos(aField[i,2]))
+					xRet	:= (nSelect)->(fieldget(nPos))
+				endif
 #endif
 			endif
 		endif
@@ -2204,8 +2198,14 @@ METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 		aadd( ::_aTable, {nSelect, upper(cSymbol), cDesigner ,;
 			coalesce(aField, nSelect:struct()), nSelect:alias })
 #else
-		aadd( ::_aTable, {nSelect, upper(cSymbol), cDesigner ,;
-			coalesce(aField, (nSelect)->(dbstruct())), alias(nSelect)})
+		if IsObject(nSelect)
+			aadd( ::_aTable, {nSelect, upper(cSymbol), cDesigner ,;
+				coalesce(aField, nSelect:dbstruct()), nSelect:alias()})
+		else
+			aadd( ::_aTable, {nSelect, upper(cSymbol), cDesigner ,;
+				coalesce(aField, (nSelect)->(dbstruct())), alias(nSelect)})
+		endif
+
 #endif
 	elseif nPos > 0
 		if nSelect == NIL
@@ -2218,8 +2218,13 @@ METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 			::_aTable[nPos,__STRUCT]	:= coalesce(aField, nSelect:struct())
 			::_aTable[nPos,__ALIAS ]	:= nSelect:alias
 #else
-			::_aTable[nPos,__STRUCT]	:= coalesce(aField, (nSelect)->(dbstruct()))
-			::_aTable[nPos,__ALIAS ]	:= alias(nSelect)
+			if IsObject(nSelect)
+				::_aTable[nPos,__STRUCT]	:= coalesce(aField, nSelect:dbstruct())
+				::_aTable[nPos,__ALIAS ]	:= nSelect:alias()
+			else
+				::_aTable[nPos,__STRUCT]	:= coalesce(aField, (nSelect)->(dbstruct()))
+				::_aTable[nPos,__ALIAS ]	:= alias(nSelect)
+			endif
 #endif
 		endif
 	endif
@@ -2282,8 +2287,13 @@ METHOD dsListLabel:DataSetField(nSelect, cSymbol, cDesigner ,aField, nRekursiv )
 			aadd( ::_aList, {nSelect, upper(cSymbol), cDesigner ,;
 				coalesce(aField, nSelect:struct()), nSelect:alias, nRekursiv })
 #else
-			aadd( ::_aList, {nSelect, upper(cSymbol), cDesigner,;
-				coalesce(aField, (nSelect)->(dbstruct())), alias(nSelect), nRekursiv})
+			if IsObject(nSelect)
+				aadd( ::_aList, {nSelect, upper(cSymbol), cDesigner,;
+					coalesce(aField, nSelect:dbstruct()), nSelect:alias(), nRekursiv})
+			else
+				aadd( ::_aList, {nSelect, upper(cSymbol), cDesigner,;
+					coalesce(aField, (nSelect)->(dbstruct())), alias(nSelect), nRekursiv})
+			endif
 #endif
 		endif
 	elseif nPos > 0
@@ -2300,6 +2310,9 @@ METHOD dsListLabel:DataSetField(nSelect, cSymbol, cDesigner ,aField, nRekursiv )
 				aeval( aField, {|a| a := a[1]},,,.t.)
 				::_aList[nPos,__STRUCT]	:= aField
 			endif
+		elseif IsObject(nSelect)
+			::_aList[nPos,__STRUCT]	:= coalesce(aField, nSelect:dbstruct())
+			::_aList[nPos,__ALIAS ]	:= nSelect:alias()
 		else
 			::_aList[nPos,__STRUCT]	:= coalesce(aField, (nSelect)->(dbstruct()))
 			::_aList[nPos,__ALIAS ]	:= alias(nSelect)
@@ -2453,18 +2466,23 @@ METHOD dsListLabel:ExportFile(cFile)
 RETURN self
 
 /*============================================================================
- $Method:	SaveAsPdf(cFile, lQuiet, bPrint )
+ $Method:	SaveAsPdf(cFile, lQuiet, bPrint, bConfig  )
  $Author:	Marcus Herz
  $Topic:
  $Description:
  $Argument:    cFile
  $Argument:     lQuiet
  $Argument:     bPrint
+ $Argument:     bConfig 	{|o| ;
+	LlXSetParameter(o:hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.Encryption.EncryptFile", "1"),;
+	LlXSetParameter(o:hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.Encryption.EnableChanging", "1"),;
+	}
+
  $Return:	::_nError == 0
  $See Also:
  $Example:
 ==============================================================================*/
-METHOD dsListLabel:SaveAsPdf(cFile, lQuiet, bPrint )
+METHOD dsListLabel:SaveAsPdf(cFile, lQuiet, bPrint, bConfig )
 	LOCAL _nPrintOption  := ::_nPrintOption
 	LOCAL nBoxType  := ::_nBoxType
 	LOCAL cExport   := ::cExportFormat
@@ -2480,8 +2498,15 @@ METHOD dsListLabel:SaveAsPdf(cFile, lQuiet, bPrint )
 	if IsLogical(lQuiet )
 		::ShowExport(!lQuiet)
 	endif
+	if IsBlock(bConfig)
+		::Configblock	:= bConfig
+	endif
 
 	::_nError := ::Print(bPrint)
+
+	if IsBlock(bConfig)
+		::Configblock	:= NIL
+	endif
 
 	::_nPrintOption 	:= _nPrintOption
 	::_nBoxType			:= nBoxType

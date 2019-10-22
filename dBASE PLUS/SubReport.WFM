@@ -1,8 +1,7 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Erstellt am 03.09.2018
+// Erstellt am 28.08.2019
 //
-
 parameter bModal
 local f
 f = new SubReportForm()
@@ -17,21 +16,22 @@ class SubReportForm of FORM
    set procedure to SubReport.DMD additive
    with (this)
       height = 6.7273
-      left = 38.2857
-      top = 3.4545
+      left = 72.4286
+      top = 4.2727
       width = 40.5714
       text = "SubReports"
       autoCenter = true
    endwith
 
-   this.DATAMODREF1 = new DATAMODREF()
-   this.DATAMODREF1.parent = this
+   this.DATAMODREF1 = new DATAMODREF(this)
    with (this.DATAMODREF1)
       filename = "SubReport.DMD"
       dataModClass = "SubReportDATAMODULE"
       active = true
       left = 22.0
-      top = 1.5
+      top = 1.0
+      width = 9.0
+      height = 2.0
    endwith
 
    this.LINE1 = new LINE(this)
@@ -125,8 +125,8 @@ class SubReportForm of FORM
    RETURN
 
    FUNCTION OpenReport
-   SET PROCEDURE TO LL24.CC ADDITIVE
-   r=new LL24InterfaceSample()
+   SET PROCEDURE TO LL25.CC ADDITIVE
+   r=new LL25InterfaceSample()
    r.UserVars.add({"C_Language", (_app.language),                                 "CHARACTER"})
    r.UserVars.add({"C_SortOrder",(form.datamodRef1.ref.Article1.rowset.indexname),"CHARACTER"})
    r.rowset=form.DatamodRef1.ref.Categories1.rowset

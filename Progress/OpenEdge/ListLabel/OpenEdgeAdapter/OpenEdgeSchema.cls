@@ -163,14 +163,14 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
             registerTable(hBuffer,cLLTableName).
         END.
 		
-		/* We register only active relations - is this ok? 
-		   We don't register many-many relations.
+		/* We don't register many-many relations.
 		   We don't register recursive-relations (yet?). A dataset itself doesn't really support this.
 		   It's just the flag and we have to have another buffer. I don't know how to do that dynamically.
+		   20181108 - We now register also inactive relations.
 		*/
 		DO iRelation = 1 TO phDataset:NUM-RELATIONS:
 		    hRelation = phDataset:GET-RELATION (iRelation).
-		    IF hRelation:ACTIVE = FALSE OR hRelation:RECURSIVE = TRUE THEN 
+		    IF /*hRelation:ACTIVE = FALSE OR*/ hRelation:RECURSIVE = TRUE THEN 
 		       NEXT.
 		    cRelationType   = relationType(hRelation).
 		    cRelationFields = hRelation:RELATION-FIELDS.
@@ -184,7 +184,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
 		    IF cRelationType = "one-one" THEN 
 		    DO:
                 registerRelation (hRelation:PARENT-BUFFER,hRelation:CHILD-BUFFER,cRelationFields,hRelation:NAME ).
-                registerRelation (hRelation:CHILD-BUFFER,hRelation:PARENT-BUFFER,cRelationFieldsReverse,hRelation:NAME ).
+                registerRelation (hRelation:CHILD-BUFFER,hRelation:PARENT-BUFFER,cRelationFieldsReverse,hRelation:NAME + "Revers").
 		    END.
 		    ELSE IF cRelationType = "one-many" THEN 
 		    DO:

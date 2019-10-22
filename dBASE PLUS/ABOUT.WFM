@@ -1,9 +1,8 @@
 #DEFINE SW_SHOWNORMAL 1
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Erstellt am 03.09.2018
+// Erstellt am 28.08.2019
 //
-
 parameter bModal
 local f
 f = new AboutForm()
@@ -17,8 +16,8 @@ endif
 class AboutForm of FORM
    with (this)
       height = 7.6818
-      left = 30.0
-      top = 12.2727
+      left = 86.0
+      top = 12.2273
       width = 33.8571
       text = "Info"
       autoCenter = true
@@ -49,7 +48,7 @@ class AboutForm of FORM
       left = 1.0
       top = 1.5
       width = 32.0
-      text = "combit List & Label 24"
+      text = "combit List & Label 25"
       fontBold = true
       alignVertical = 1	// Mitte
       alignHorizontal = 1	// Zentriert

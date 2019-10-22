@@ -1,5 +1,5 @@
-// erzeugt DLL für List & Label 24 und Alaska Xbase++
-// create  DLL for List & Label 24 and Alaska Xbase++
+// erzeugt DLL für List & Label 25 und Alaska Xbase++
+// create  DLL for List & Label 25 and Alaska Xbase++
 
 [PROJECT]
 	COMPILE       	= xpp
@@ -13,28 +13,28 @@
 	PROJECT.XPJ
 
 [PROJECT.XPJ]
-	dsListLabel24.DLL
-	dsListLabel24RDP.DLL
+	dsListLabel25.DLL
+	dsListLabel25RDP.DLL
 
-[dsListLabel24.DLL]
+[dsListLabel25.DLL]
 	DEBUG         = no
-	COMPILE_FLAGS = /q /ga /wi /wl /wu /q /w /D__LL=24 /D_CALLBACK
+	COMPILE_FLAGS = /q /ga /wi /wl /wu /q /w /D__LL=25 /D_CALLBACK
 	INTERMEDIATE_RELEASE	 = OBJ\
 //	OBJ_DIR       = OBJR\
 
 	dsListLabel.arc
 	dsListLabel.prg
-	cmbtll24.prg
+	cmbtll25.prg
 	callback.obj
 
-[dsListLabel24RDP.DLL]
+[dsListLabel25RDP.DLL]
 	DEBUG         = no
-	COMPILE_FLAGS = /q /ga /wi /wl /wu /q /w /D__LL=24 /D_DESIGNERPREVIEW
+	COMPILE_FLAGS = /q /ga /wi /wl /wu /q /w /D__LL=25 /D_DESIGNERPREVIEW
 	INTERMEDIATE_RELEASE	 = OBJRDP\
-//	OBJ_DIR       = OBJR\RDP24
+//	OBJ_DIR       = OBJR\RDP25
 
 	dsListLabelrdp.arc
 	dsListLabel.prg
-	cmbtll24.prg
+	cmbtll25.prg
 	callback.obj
 

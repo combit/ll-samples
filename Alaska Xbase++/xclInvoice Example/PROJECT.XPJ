@@ -22,7 +22,7 @@
     LULMENU.obj
 // $STOP-AUTODEPEND
 	 xclass.lib
-    xclListLabel24.lib
+    xclListLabel25.lib
     xclInvoice Example\LULDEMO.PRG
     xclInvoice Example\LULMENU.PRG
 

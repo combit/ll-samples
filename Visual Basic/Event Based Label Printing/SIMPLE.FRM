@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C17}#24.0#0"; "cmll24o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C19}#25.0#0"; "cmll25o.ocx"
 Begin VB.Form Form1 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "List & Label  -  Simple Label Sample"
@@ -283,7 +283,7 @@ Private Sub Form_Load()
 ' Copyright (C) combit GmbH
 '
 '--------------------------------------------------------------------------------------
-' File   : simble.vbp, simple.frm, cmll24.bas
+' File   : simble.vbp, simple.frm, cmll25.bas
 ' Module : simple label sample
 ' Descr. : D:   Dieses Beispiel demonstriert das Designen und Drucken von Etiketten.
 '          US: This example demonstrates how to design and print labels.

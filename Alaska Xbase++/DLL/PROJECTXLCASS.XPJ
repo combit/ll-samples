@@ -1,5 +1,5 @@
-// erzeugt DLL für List & Label Vers. 24 und XClass++
-// create  DLL für List & Label Vers. 24 and XClass++
+// erzeugt DLL für List & Label Vers. 25 und XClass++
+// create  DLL für List & Label Vers. 25 and XClass++
 // XClass++ must be installed
 // OT4XB must be installed
 
@@ -15,28 +15,28 @@
 	PROJECT.XPJ
 
 [PROJECT.XPJ]
-	xclListLabel24.DLL
-	xclListLabel24RDP.DLL
+	xclListLabel25.DLL
+	xclListLabel25RDP.DLL
 
-[xclListLabel24.DLL]
+[xclListLabel25.DLL]
 	DEBUG         = no
-	COMPILE_FLAGS = /ga /wi /wl /wu /q /w /D__LL=24  /D_XCLASS /D_CALLBACK
+	COMPILE_FLAGS = /ga /wi /wl /wu /q /w /D__LL=25  /D_XCLASS /D_CALLBACK
 	INTERMEDIATE_RELEASE	 = OBJXCL\
 
 	xclass.lib
 	xclListLabel.arc
 	dsListLabel.prg
-	cmbtll24.prg
+	cmbtll25.prg
 	callback.obj
 
-[xclListLabel24RDP.DLL]
+[xclListLabel25RDP.DLL]
 	DEBUG         = no
-	COMPILE_FLAGS = /ga /wi /wl /wu /q /w /D__LL=24 /D_DESIGNERPREVIEW  /D_XCLASS
+	COMPILE_FLAGS = /ga /wi /wl /wu /q /w /D__LL=25 /D_DESIGNERPREVIEW  /D_XCLASS
 	INTERMEDIATE_RELEASE	 = OBJXCLRDP\
 
 	xclass.lib
 	xclListLabelrdp.arc
 	dsListLabel.prg
-	cmbtll24.prg
+	cmbtll25.prg
 	callback.obj
 

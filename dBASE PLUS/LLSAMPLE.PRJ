@@ -1,14 +1,14 @@
-Project File generated 03.09.2018 17:13:52
+Project File generated 03.09.2019 11:16:21
 
 [Project]
-Name=LL24Sample
+Name=LL25Sample
 DefaultDir=.
 MainProjectFileName=LLSamples.prg
 Parameters=
 Author=Lutz Conrad
 Description=
 Preprocessor=
-LogFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\24\LLSAMPLE.log
+LogFileName=LLSAMPLE.log
 PrefPathFormat=R
 TargetFileName=llsample.exe
 IconFileName=
@@ -33,20 +33,20 @@ Orders.dmd,0,0,0,
 Delivery.wfm,0,0,0, 
 Delivery.REP,0,0,0, 
 Chart.wfm,0,0,0, 
-cmbtLL24.h,0,0,0, 
 OPTIONS.WFM,0,0,0, 
 LLRibbons.cc,0,0,0, 
-LL24.CC,0,0,0, 
 Events.wfm,0,0,0, 
+cmbtLL25.h,0,0,0, 
+LL25.CC,0,0,0, 
 
 [DEO]
 
 [INNO]
-ProjectExeFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\24\llsample.exe
+ProjectExeFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25\llsample.exe
 ProjectMainFileName=
-ProjectdBaseVersion=dBASE PLUS 12.10  b2580 (06/25/2018-DE180625)
+ProjectdBaseVersion=dBASE PLUS 12.31  b2591 (10/15/2018-DE181015)
 DefaultDirName={pf}\{#AppName}
-AppName=llsample
+AppName=LL25Sample
 AppVersion=1.0.0.0
 SM_dBASERuntime=false
 dBPlus=true
@@ -54,24 +54,24 @@ dBSeparat=false
 Resource=false
 dBASELang=DE
 dBaseRuntimeInstDir=
-dBaseRuntimeDir=C:\Program Files (x86)\dBASE\Plus10\Runtime
+dBaseRuntimeDir=C:\Program Files (x86)\dBASE\Plus12\Runtime
 INNO_RBoption=3
 bdeonlyinstall=false
 bdeinstallfile=
 XPLook=false
-dBaseBuild=2504
-dBaseVersion=1030
+dBaseBuild=2591
+dBaseVersion=1231
 SetupLang=de
-SepDestDir=false
+SepDestDir={app}
 BDEGroupEntries=false
 dBProgressbar=false
 dBProgressbox=false
 dBSilent=false
 dBDestRuntime=
 dBDestBDE=
-SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\24
+SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25
 InnoScriptname=
-LastDBVersion=1030
+LastDBVersion=1231
 LastDBLanguage=DE
 LastCreateDate=
 IncDispGroup=true
@@ -106,7 +106,7 @@ NLLicense=
 NLBefore=
 NLAfter=
 UninsHS=true
-UninsHSAppName=
+UninsHSAppName=LL25Sample
 UninsHSAppId=
 UninsHSLanguages=All
 BDEUseSettings=false
@@ -127,4 +127,4 @@ CURRENTVSF=windows
 IMAGETOPRIGHT=
 IMAGESIDE=
 Icon1={group}\{#AppName} >> {app}\llsample.exe
-Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\24\llsample.exe >> DestDir: {app}
+Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25\llsample.exe >> DestDir: {app}

@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
 	<assemblyIdentity version="1.0.0.0" processorArchitecture="X86" name="DAW.DataFlex.Order.src" type="win32"></assemblyIdentity>
 	<description>Order.src</description>

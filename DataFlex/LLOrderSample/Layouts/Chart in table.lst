@@ -16,7 +16,7 @@
  RepresentationCode.ExprSep=164
  LCID=3079
  UserVars.ManualSortOrder=1
- CreatedByCallFrom=atlthunk.dll
+ CreatedByCallFrom=vdfvm19.dll
  [@DatabaseStructure]
   {
   [DatabaseStructures]
@@ -373,6 +373,7 @@
 	Height=100000
 	ColumnCount=0
 	ColumnCount.Distance=1000
+	FillPrioHorizonal=False
 	ColumnBreakCondition=False
 	ColumnBreakBefore=False
 	Identifier=Chart: OrderHea
@@ -403,6 +404,7 @@
 	  zAxisSecondaryAssignment=1
 	  Isotropic=False
 	  Orientation=1
+	  LabelAlignment=2
 	  UseLightEffect=True
 	  Perspective=0
 	  RotZ=30
@@ -490,6 +492,7 @@
 		}
 	   RelativePartOfAtAxisText=30
 	   RelativePartOfLegendText=0
+	   LegendAutowrap=-1
 	   TickmarkColor=RGB(180,180,180)
 	   CountOfIntermediateTicks=0
 	   [AreaList]
@@ -571,6 +574,7 @@
 		}
 	   RelativePartOfAtAxisText=30
 	   RelativePartOfLegendText=0
+	   LegendAutowrap=-1
 	   TickmarkColor=RGB(180,180,180)
 	   CountOfIntermediateTicks=0
 	   [AreaList]
@@ -592,6 +596,7 @@
 		{
 		Value=1.0
 		}
+	   Distortion=0
 	   FilterZeroes=False
 	   HandleNullValue=0
 	   FormulaValue=Sum(OrderHea.Order_Total)
@@ -639,7 +644,6 @@
 	   CoordGridLinesWidth=0
 	   CoordGridZebraPattern=0
 	   BarWidthPercentage=60
-	   Distortion=0
 	   PostProcessing=0
 	   [PostProcessing]
 		{
@@ -710,6 +714,7 @@
 		}
 	   RelativePartOfAtAxisText=30
 	   RelativePartOfLegendText=0
+	   LegendAutowrap=-1
 	   TickmarkColor=RGB(180,180,180)
 	   CountOfIntermediateTicks=2
 	   [AreaList]
@@ -799,6 +804,10 @@
 	[DataLines]
 	 {
 	 bKeepTogether=True
+	 [bKeepTogether]
+	  {
+	  IndexedGroups=False
+	  }
 	 bSuppress=True
 	 bForceSumCalculation=True
 	 }
@@ -835,6 +844,7 @@
 	UseSepTicks=True
 	ColumnCount=0
 	ColumnCount.Distance=1000
+	FillPrioHorizonal=False
 	ColumnBreakCondition=False
 	ColumnBreakBefore=False
 	bFooterOnBottom=False
@@ -999,6 +1009,7 @@
 		 Bottom=0
 		 }
 		LCondition=True
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -1097,6 +1108,7 @@
 		 Bottom=0
 		 }
 		LCondition=True
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -1237,6 +1249,10 @@
 	  [DataLines]
 	   {
 	   bKeepTogether=True
+	   [bKeepTogether]
+		{
+		IndexedGroups=False
+		}
 	   bSuppress=True
 	   bForceSumCalculation=True
 	   }
@@ -1271,6 +1287,8 @@
 		}
 	   }
 	  UseSepTicks=True
+	  ColumnCount=0
+	  ColumnCount.Distance=1000
 	  Identifier=
 	  Condition=True
 	  DistanceTop=0
@@ -1329,6 +1347,7 @@
 		   Bottom=0
 		   }
 		  LCondition=True
+		  IndexedGroups=0
 		  Anchor=0
 		  Anchor.ToTop=True
 		  }
@@ -1427,6 +1446,7 @@
 		   Bottom=0
 		   }
 		  LCondition=True
+		  IndexedGroups=0
 		  Anchor=0
 		  Anchor.ToTop=True
 		  }
@@ -2395,6 +2415,7 @@
 			   }
 			  RelativePartOfAtAxisText=30
 			  RelativePartOfLegendText=0
+			  LegendAutowrap=-1
 			  [AreaList]
 			   {
 			   [ItemList]
@@ -2564,6 +2585,10 @@
 		[DataLines]
 		 {
 		 bKeepTogether=True
+		 [bKeepTogether]
+		  {
+		  IndexedGroups=False
+		  }
 		 bSuppress=True
 		 bForceSumCalculation=True
 		 }
@@ -2622,6 +2647,8 @@
 		  }
 		 }
 		UseSepTicks=True
+		ColumnCount=0
+		ColumnCount.Distance=1000
 		Identifier=
 		Condition=True
 		DistanceTop=0
@@ -2781,6 +2808,7 @@
 			 Bottom=0
 			 }
 			LCondition=True
+			IndexedGroups=0
 			Anchor=0
 			Anchor.ToTop=True
 			}
@@ -2879,6 +2907,7 @@
 			 Bottom=0
 			 }
 			LCondition=True
+			IndexedGroups=0
 			Anchor=0
 			Anchor.ToTop=True
 			}
@@ -3095,7 +3124,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
+ Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
  Condition=True
  UserLocked=False
  WrapBefore=False

@@ -1,0 +1,121 @@
+﻿@page
+@model ASPDOMSample.IndexModel
+@{
+}
+
+<head>
+    <title>List &amp; Label ASP.NET DOM Sample</title>
+    <style type="text/css">
+        * {
+            font-family: Tahoma;
+        }
+
+        h1 {
+            font-size: 16pt;
+            text-align: center;
+        }
+
+        p {
+            font-size: 10pt;
+            padding: 0;
+            margin: 0;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        .fs {
+            width: 50%;
+            padding: 10px 20px 10px 20px;
+            margin-left: 40px;
+            border-radius: 10px;
+        }
+
+        legend {
+            color: Blue;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" method="post" enctype="multipart/form-data" action="/?handler=create">
+        @Html.AntiForgeryToken()
+        <div>
+            <h1>
+                List & Label ASP.NET Core DOM Sample
+            </h1>
+            <p style="margin-left: 28%; margin-bottom: 10px;">
+                D: Dieses Beispiel zeigt die dynamische Erstellung von List & Label Projekten
+            </p>
+            <p style="margin-left: 28%; margin-bottom: 10px;">
+                US: This sample shows the dynamic creation of List & Label projects
+            </p>
+        </div>
+        <div style="margin-left: 25%;">
+            <fieldset class="fs">
+                <legend>Project Layout</legend>
+                <p>
+                    Table:
+                </p>
+                <!-- table dropdown -->
+                @Html.DropDownListFor(m => m.Table, Model.Tables, new { @onchange = "DoPostBack();", @id = "tables" })
+
+                <!-- field table -->
+                <table style="width: 100%; margin-top: 10px;">
+                    <tr>
+                        <td style="width: 45%; font-weight: bold; font-size: 10pt;">
+                            Available Fields
+                        </td>
+                        <td style="width: 10%;"></td>
+                        <td style="width: 45%; font-weight: bold; font-size: 10pt;">
+                            Selected Fields
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.ListBoxFor(m => m.AvailableField, Model.AvailableFields)
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="button" ID="btnSelect" style="margin-bottom: 10px;" value=">" OnClick="DoPostBack();" />
+                            <input type="button" ID="btnDeselect" value="<" OnClick="DoPostBack();" />
+                        </td>
+                        <td>
+                            @Html.ListBoxFor(m => m.SelectedField, Model.SelectedFields)
+                        </td>
+                    </tr>
+                </table>
+                <!-- title -->
+                <p style="margin-top: 10px;">
+                    Title:
+                </p>
+                @Html.TextBoxFor(m => m.Title)
+                <!-- Logo -->
+                <p style="margin-top: 10px;">
+                    Logo:
+                </p>
+                <input type="file" id="FilePath" name="FilePath">
+            </fieldset>
+            <fieldset class="fs">
+                <legend>Export Options</legend>
+                <!-- Filename -->
+                <p>
+                    Filename:
+                </p>
+                @Html.TextBoxFor(m => m.FileName)
+                <!-- Format -->
+                <p style="margin-top: 10px;">
+                    Format:
+                </p>
+                @Html.DropDownListFor(m => m.Format, Model.Formats)
+            </fieldset>
+            <!-- Create and open buttons -->
+            <input type="submit" ID="btnCreateReport" Style="margin-left: 48%; margin-top: 5px; width: 100px;" value="Create & open" />
+        </div>
+    </form>
+</body>
+<script>
+    function DoPostBack() {
+        document.getElementById('form1').setAttribute("action", "/");
+        document.getElementById('form1').submit();
+    }
+</script>

@@ -1,14 +1,14 @@
-Project File generated 03.09.2018 17:14:47
+Project File generated 03.09.2019 11:16:52
 
 [Project]
-Name=LL24SampleADO
+Name=LL25SampleADO
 DefaultDir=.
 MainProjectFileName=ADO\LLSamplesADO.prg
 Parameters=
 Author=Lutz Conrad
 Description=
 Preprocessor=
-LogFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\24\LLSAMPLEADO.log
+LogFileName=LLSAMPLEADO.log
 PrefPathFormat=R
 TargetFileName=llsampleADO.exe
 IconFileName=
@@ -32,20 +32,20 @@ ADO\SubReportADO.DMD,0,0,0,
 ADO\DeliveryADO.wfm,0,0,0, 
 ADO\DeliveryADO.REP,0,0,0, 
 ADO\ChartADO.wfm,0,0,0, 
-cmbtLL24.h,0,0,0, 
 OPTIONS.WFM,0,0,0, 
 LLRibbons.cc,0,0,0, 
-LL24.CC,0,0,0, 
 ADO\EventsADO.wfm,0,0,0, 
+cmbtLL25.h,0,0,0, 
+LL25.CC,0,0,0, 
 
 [DEO]
 
 [INNO]
-ProjectExeFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\24\llsampleADO.exe
+ProjectExeFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25\llsampleADO.exe
 ProjectMainFileName=
-ProjectdBaseVersion=dBASE PLUS 12.10  b2580 (06/25/2018-DE180625)
+ProjectdBaseVersion=dBASE PLUS 12.31  b2591 (10/15/2018-DE181015)
 DefaultDirName={pf}\{#AppName}
-AppName=llsampleADO
+AppName=LL25SampleADO
 AppVersion=1.0.0.0
 SM_dBASERuntime=false
 dBPlus=true
@@ -58,19 +58,19 @@ INNO_RBoption=3
 bdeonlyinstall=false
 bdeinstallfile=
 XPLook=false
-dBaseBuild=2504
-dBaseVersion=1030
+dBaseBuild=2591
+dBaseVersion=1231
 SetupLang=de
-SepDestDir=false
+SepDestDir={app}
 BDEGroupEntries=false
 dBProgressbar=false
 dBProgressbox=false
 dBSilent=false
 dBDestRuntime=
 dBDestBDE=
-SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\24\ADO
+SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25\ADO
 InnoScriptname=
-LastDBVersion=1030
+LastDBVersion=1231
 LastDBLanguage=DE
 LastCreateDate=
 IncDispGroup=true
@@ -105,7 +105,7 @@ NLLicense=
 NLBefore=
 NLAfter=
 UninsHS=true
-UninsHSAppName=
+UninsHSAppName=LL25SampleADO
 UninsHSAppId=
 UninsHSLanguages=All
 BDEUseSettings=false
@@ -126,5 +126,4 @@ CURRENTVSF=windows
 IMAGETOPRIGHT=
 IMAGESIDE=
 Icon1={group}\{#AppName} >> {app}\llsampleADO.exe
-Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\24\llsampleADO.exe >> DestDir: {app}
-Files2=G:\QUELLEN\PROJEKTE\LISTANDLABEL\24\llsampleADO.exe >> DestDir: {app}
+Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25\llsampleADO.exe >> DestDir: {app}

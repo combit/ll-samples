@@ -107,7 +107,7 @@ object Form1: TForm1
     Left = 384
     Top = 48
   end
-  object LL: Tl24_
+  object LL: Tl25_
     SortVariables = Yes
     UnitSystem = usHiInch
     Buttons3D = Yes

@@ -90,6 +90,8 @@
     FIELD RelationName              AS CHARACTER
     INDEX pk IS UNIQUE RelationId
     INDEX ak IS UNIQUE ParentTableId ChildTableId OERelationFields
+    /* 20181128 - The relation name is unique in LL. So, we ensure this here now. */
+    INDEX akRelation OERelationName
     INDEX ie ChildTableId 
     INDEX ie2 ServiceId ParentTableName
     .    

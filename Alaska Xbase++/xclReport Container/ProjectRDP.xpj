@@ -22,7 +22,7 @@
     main.obj
 // $STOP-AUTODEPEND
 	 xclass.lib
-    xclListLabel24RDP.lib
+    xclListLabel25RDP.lib
     xclReport Container\dialog.prg
     xclReport Container\main.PRG
 

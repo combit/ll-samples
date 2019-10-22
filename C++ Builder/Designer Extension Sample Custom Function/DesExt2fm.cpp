@@ -6,7 +6,7 @@
 #include "DesExt2fm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "L24"
+#pragma link "L25"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -61,7 +61,7 @@ void __fastcall TForm1::AddNumberParameterAutoComplete(TObject* /*Sender*/,
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::AddNumberEvaluateFunction(TObject* /*Sender*/,
-	  TLl24XFunctionParameterType& /*ResultType*/, OleVariant &ResultValue,
+	  TLl25XFunctionParameterType& /*ResultType*/, OleVariant &ResultValue,
 	  int& /*DecimalPositions*/, const int /*ParameterCount*/,
 	  const OleVariant& Parameter1, const OleVariant& Parameter2,
 	  const OleVariant& /*Parameter3*/, const OleVariant& /*Parameter4*/)

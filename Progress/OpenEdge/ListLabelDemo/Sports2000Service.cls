@@ -36,6 +36,12 @@ CLASS ListLabelDemo.Sports2000Service INHERITS OpenEdgeService:
         FIELD SalesAmount AS DECIMAL
         INDEX pix IS PRIMARY UNIQUE CustNum SalesYear.
 
+    DEFINE TEMP-TABLE calcSalesYear NO-UNDO
+        FIELD SalesYear   AS INTEGER
+        FIELD StartDate   AS DATE 
+        FIELD EndDate     AS DATE 
+        INDEX pix IS PRIMARY UNIQUE SalesYear.
+
 	CONSTRUCTOR PUBLIC Sports2000Service (  ):
 		SUPER ().
 	END CONSTRUCTOR.
@@ -51,6 +57,9 @@ CLASS ListLabelDemo.Sports2000Service INHERITS OpenEdgeService:
         /* Add a calculated Temp-Table and a relation to the parent */
         ServiceSchema:registerCalculatedTable(TEMP-TABLE calcCustomerSales:DEFAULT-BUFFER-HANDLE).
         ServiceSchema:registerRelation(BUFFER Customer:HANDLE , TEMP-TABLE calcCustomerSales:DEFAULT-BUFFER-HANDLE, "CustNum,CustNum", "CustomerSales").
+        
+        /* Add a calculated table with no direct relation. May be used as a parent for the new LL25 filter based relation */ 
+        ServiceSchema:registerCalculatedTable(TEMP-TABLE calcSalesYear:DEFAULT-BUFFER-HANDLE).
         
         /*
         ServiceSchema:registerFileRelation("Customer", "calcCustomerSales", "CustNum,CustNum", "CustomerSales").
@@ -97,10 +106,12 @@ CLASS ListLabelDemo.Sports2000Service INHERITS OpenEdgeService:
            Not sure what the problem is.
         */
         DEFINE BUFFER calcCustomerSales FOR calcCustomerSales.
-        EMPTY TEMP-TABLE calcCustomerSales.
+        
+        DEFINE BUFFER calcSalesYear FOR calcSalesYear.
         
         IF poArgs:OETableName = "calcCustomerSales" THEN 
         DO:
+            EMPTY TEMP-TABLE calcCustomerSales.
             poArgs:OETableBufferHandle = TEMP-TABLE calcCustomerSales:DEFAULT-BUFFER-HANDLE.
             
             /* Find the parent. */
@@ -127,6 +138,32 @@ CLASS ListLabelDemo.Sports2000Service INHERITS OpenEdgeService:
                 END.
             END.
          END. 
+
+        IF poArgs:OETableName = "calcSalesYear" THEN 
+        DO:
+            EMPTY TEMP-TABLE calcSalesYear.
+            
+            poArgs:OETableBufferHandle = TEMP-TABLE calcSalesYear:DEFAULT-BUFFER-HANDLE.
+            
+            DEFINE VARIABLE iFirstYear AS INTEGER NO-UNDO.
+            DEFINE VARIABLE iLastYear  AS INTEGER NO-UNDO.
+            DEFINE VARIABLE iYear      AS INTEGER NO-UNDO.
+            
+            FIND FIRST Order USE-INDEX orderdate NO-LOCK NO-ERROR.
+            IF AVAILABLE Order THEN 
+            DO:
+                iFirstYear = YEAR(Order.OrderDate).
+                FIND LAST Order USE-INDEX orderdate NO-LOCK.
+                iLastYear  = YEAR(Order.OrderDate).
+                
+                DO iYear = iFirstYear TO iLastYear:
+                    CREATE calcSalesYear.
+                    ASSIGN calcSalesYear.SalesYear = iYear
+                           calcSalesYear.StartDate = DATE(1,1,iYear)
+                           calcSalesYear.EndDate   = DATE(12,31,iYear).
+                END.
+            END.
+        END. 
  
     END METHOD.
 

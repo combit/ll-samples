@@ -1,6 +1,6 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Erstellt am 03.09.2018
+// Erstellt am 28.08.2019
 //
 parameter bModal
 local f
@@ -15,22 +15,23 @@ endif
 class DeliveryForm of FORM
    set procedure to Orders.dmd additive
    with (this)
-      height = 19.2
-      left = 17.1429
-      top = 1.7727
+      height = 19.1818
+      left = 62.8571
+      top = 2.5455
       width = 103.1429
       text = "Delivery note"
       autoCenter = true
    endwith
 
-   this.DATAMODREF1 = new DATAMODREF()
-   this.DATAMODREF1.parent = this
+   this.DATAMODREF1 = new DATAMODREF(this)
    with (this.DATAMODREF1)
       filename = "Orders.dmd"
       dataModClass = "OrdersDATAMODULE"
       active = true
       left = 58.0
-      top = 4.5
+      top = 4.0
+      width = 9.0
+      height = 2.0
    endwith
 
    this.GRID1 = new GRID(this)
@@ -38,29 +39,41 @@ class DeliveryForm of FORM
       onLeftDblClick = class::GRID1_ONLEFTDBLCLICK
       dataLink = form.datamodref1.ref.orders1.rowset
       columns["COLUMN1"] = new GRIDCOLUMN(form.GRID1)
-      columns["COLUMN1"].dataLink = form.datamodref1.ref.orders1.rowset.fields["orderid"]
-      columns["COLUMN1"].editorType = 1	// Eingabefeld
-      columns["COLUMN1"].width = 10.0
+      with (columns["COLUMN1"])
+         dataLink = form.datamodref1.ref.orders1.rowset.fields["orderid"]
+         editorType = 1	// Eingabefeld
+         width = 10.0
+      endwith
       columns["COLUMN2"] = new GRIDCOLUMN(form.GRID1)
-      columns["COLUMN2"].dataLink = form.datamodref1.ref.customers1.rowset.fields["name"]
-      columns["COLUMN2"].editorType = 1	// Eingabefeld
-      columns["COLUMN2"].width = 30.0
+      with (columns["COLUMN2"])
+         dataLink = form.datamodref1.ref.customers1.rowset.fields["name"]
+         editorType = 1	// Eingabefeld
+         width = 30.0
+      endwith
       columns["COLUMN3"] = new GRIDCOLUMN(form.GRID1)
-      columns["COLUMN3"].dataLink = form.datamodref1.ref.orders1.rowset.fields["orderdate"]
-      columns["COLUMN3"].editorType = 1	// Eingabefeld
-      columns["COLUMN3"].width = 11.0
+      with (columns["COLUMN3"])
+         dataLink = form.datamodref1.ref.orders1.rowset.fields["orderdate"]
+         editorType = 1	// Eingabefeld
+         width = 11.0
+      endwith
       columns["COLUMN4"] = new GRIDCOLUMN(form.GRID1)
-      columns["COLUMN4"].dataLink = form.datamodref1.ref.orders1.rowset.fields["ordertext"]
-      columns["COLUMN4"].editorType = 1	// Eingabefeld
-      columns["COLUMN4"].width = 30.0
+      with (columns["COLUMN4"])
+         dataLink = form.datamodref1.ref.orders1.rowset.fields["ordertext"]
+         editorType = 1	// Eingabefeld
+         width = 30.0
+      endwith
       columns["COLUMN5"] = new GRIDCOLUMN(form.GRID1)
-      columns["COLUMN5"].dataLink = form.datamodref1.ref.orders1.rowset.fields["status"]
-      columns["COLUMN5"].editorType = 1	// Eingabefeld
-      columns["COLUMN5"].width = 5.0
+      with (columns["COLUMN5"])
+         dataLink = form.datamodref1.ref.orders1.rowset.fields["status"]
+         editorType = 1	// Eingabefeld
+         width = 5.0
+      endwith
       columns["COLUMN6"] = new GRIDCOLUMN(form.GRID1)
-      columns["COLUMN6"].dataLink = form.datamodref1.ref.orders1.rowset.fields["shippingdate"]
-      columns["COLUMN6"].editorType = 1	// Eingabefeld
-      columns["COLUMN6"].width = 10.0
+      with (columns["COLUMN6"])
+         dataLink = form.datamodref1.ref.orders1.rowset.fields["shippingdate"]
+         editorType = 1	// Eingabefeld
+         width = 10.0
+      endwith
       with (columns["COLUMN1"].editorControl)
          validErrorMsg = "Ungültige Eingabe "
       endwith
@@ -123,25 +136,35 @@ class DeliveryForm of FORM
    with (this.GRID2)
       dataLink = form.datamodref1.ref.orderdetails1.rowset
       columns["COLUMN1"] = new GRIDCOLUMN(form.GRID2)
-      columns["COLUMN1"].dataLink = form.datamodref1.ref.article1.rowset.fields["articlenumber"]
-      columns["COLUMN1"].editorType = 1	// Eingabefeld
-      columns["COLUMN1"].width = 10.0
+      with (columns["COLUMN1"])
+         dataLink = form.datamodref1.ref.article1.rowset.fields["articlenumber"]
+         editorType = 1	// Eingabefeld
+         width = 10.0
+      endwith
       columns["COLUMN2"] = new GRIDCOLUMN(form.GRID2)
-      columns["COLUMN2"].dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["name"]
-      columns["COLUMN2"].editorType = 1	// Eingabefeld
-      columns["COLUMN2"].width = 56.0
+      with (columns["COLUMN2"])
+         dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["name"]
+         editorType = 1	// Eingabefeld
+         width = 56.0
+      endwith
       columns["COLUMN3"] = new GRIDCOLUMN(form.GRID2)
-      columns["COLUMN3"].dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["quantity"]
-      columns["COLUMN3"].editorType = 1	// Eingabefeld
-      columns["COLUMN3"].width = 10.0
+      with (columns["COLUMN3"])
+         dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["quantity"]
+         editorType = 1	// Eingabefeld
+         width = 10.0
+      endwith
       columns["COLUMN4"] = new GRIDCOLUMN(form.GRID2)
-      columns["COLUMN4"].dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["price"]
-      columns["COLUMN4"].editorType = 1	// Eingabefeld
-      columns["COLUMN4"].width = 10.0
+      with (columns["COLUMN4"])
+         dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["price"]
+         editorType = 1	// Eingabefeld
+         width = 10.0
+      endwith
       columns["COLUMN5"] = new GRIDCOLUMN(form.GRID2)
-      columns["COLUMN5"].dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["totalprice"]
-      columns["COLUMN5"].editorType = 1	// Eingabefeld
-      columns["COLUMN5"].width = 10.0
+      with (columns["COLUMN5"])
+         dataLink = form.datamodref1.ref.orderdetails1.rowset.fields["totalprice"]
+         editorType = 1	// Eingabefeld
+         width = 10.0
+      endwith
       with (columns["COLUMN1"].editorControl)
          validErrorMsg = "Ungültige Eingabe "
       endwith

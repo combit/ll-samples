@@ -1,8 +1,7 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Erstellt am 03.09.2018
+// Erstellt am 28.08.2019
 //
-
 parameter bModal
 local f
 f = new ArticlelistForm()
@@ -16,18 +15,19 @@ endif
 class ArticlelistForm of FORM
    with (this)
       height = 6.7273
-      left = 40.1429
-      top = 9.0
+      left = 127.1429
+      top = 11.3182
       width = 40.5714
       text = "Articlelist"
       autoCenter = true
    endwith
 
-   this.ARTICLE = new QUERY()
-   this.ARTICLE.parent = this
+   this.ARTICLE = new QUERY(this)
    with (this.ARTICLE)
       left = 39.0
       top = 3.0
+      width = 5.0
+      height = 1.0
       sql = "SELECT * FROM Data\Article"
       active = true
    endwith
@@ -122,8 +122,8 @@ class ArticlelistForm of FORM
    RETURN
 
    FUNCTION OpenReport
-   SET PROCEDURE TO LL24.CC ADDITIVE
-   r=new LL24InterfaceSample()
+   SET PROCEDURE TO LL25.CC ADDITIVE
+   r=new LL25InterfaceSample()
    r.UserVars.add({"C_Language", (_app.language),                "CHARACTER"})
    r.UserVars.add({"C_SortOrder",(form.Article.rowset.indexname),"CHARACTER"})
    r.rowset=form.Article.rowset

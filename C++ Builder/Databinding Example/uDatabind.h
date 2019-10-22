@@ -10,8 +10,8 @@
 #include <ADODB.hpp>
 #include <DB.hpp>
 #include <Registry.hpp>
-#include "L24.hpp"
-#include "L24db.hpp"
+#include "L25.hpp"
+#include "L25db.hpp"
 //---------------------------------------------------------------------------
 class TfrmDatbind : public TForm
 {
@@ -24,8 +24,8 @@ __published:	// IDE-managed Components
 	TDataSource *dsCustomers;
 	TDataSource *dsOrders;
 	TDataSource *dsOrderDetails;
-	TDBL24_ *DBL24_1;
-	TDBL24_ *DBL24_2;
+	TDBL25_ *DBL25_1;
+	TDBL25_ *DBL25_2;
 	TGroupBox *GroupBox1;
 	TButton *btnDesignIL;
 	TButton *btnPrintIL;

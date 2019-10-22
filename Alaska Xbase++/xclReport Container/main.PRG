@@ -61,7 +61,7 @@ PROCEDURE PrintReport(nPrintingTarget, lDesign)
 	// D: Fehler beim Laden der Library
 	// US: Library loading error
 	If oListLabel:Status() <> XBP_STAT_INIT
-		ConfirmBox(SetAppWindow(),"Error loading CMLL24.DLL !."+chr(13)+;
+		ConfirmBox(SetAppWindow(),"Error loading CMLL25.DLL !."+chr(13)+;
 			"OS error#"+Alltrim(Str(DosError()))+Chr(13)+;                             //
 			DosErrorMessage(DosError())+chr(13)+;
 			Chr(13)+;

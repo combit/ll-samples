@@ -1,9 +1,9 @@
 Type=Exe
 Form=Devmode.Frm
-Module=ListLabel24; ..\cmll24.bas
+Module=ListLabel25; ..\cmll25.bas
 Module=DevModeModule; Devmode.bas
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\WINDOWS\system32\stdole2.tlb#Standard OLE Types
-Object={2213E283-16BC-101D-AFD4-040224009C18}#24.0#0; cmll24o.ocx
+Object={2213E283-16BC-101D-AFD4-040224009C19}#25.0#0; cmll25o.ocx
 IconForm="Form1"
 Startup="Form1"
 HelpFile=""

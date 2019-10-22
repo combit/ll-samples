@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{E35C7E00-75CA-4B81-AABC-1FF3A0E535EE}#1.0#0"; "cmll24r.ocx"
-Object = "{2213E283-16BC-101D-AFD4-040224009C17}#24.0#0"; "cmll24o.ocx"
+Object = "{E35C7E00-75CA-4B81-AABC-1FF3A0E535EF}#1.0#0"; "cmll25r.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C19}#25.0#0"; "cmll25o.ocx"
 Begin VB.Form Form1 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "List & Label  -  RTF Sample"
@@ -82,7 +82,7 @@ Begin VB.Form Form1
       IncrementalPreview=   -1  'True
       Dummy5          =   -1  'True
    End
-   Begin CMLL24RLib.LlRtfCtrl LlRtfCtrl1 
+   Begin CMLL25RLib.LlRtfCtrl LlRtfCtrl1 
       Height          =   3495
       Left            =   120
       OleObjectBlob   =   "RTF.frx":000C
@@ -268,7 +268,7 @@ Private Sub Form_Load()
 ' Copyright (C) combit GmbH
 '
 '--------------------------------------------------------------------------------------
-' File   : rtf.vbp, rtf.frm, cmll24.bas
+' File   : rtf.vbp, rtf.frm, cmll25.bas
 ' Module : rtf sample
 ' Descr. : D:   Dieses Beispiel demonstriert die Verwendung von RTF-Variablen
 '          US: This example demonstrates the usage of RTF-variables

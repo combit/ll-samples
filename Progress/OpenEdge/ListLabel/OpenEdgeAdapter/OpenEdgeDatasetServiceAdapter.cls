@@ -21,8 +21,8 @@
   ----------------------------------------------------------------------*/
 
 USING Progress.Lang.*.
-USING TasteITConsulting.ListLabel24.IServiceAdapter    FROM ASSEMBLY.
-USING TasteITConsulting.ListLabel24.OELongchar         FROM ASSEMBLY.
+USING TasteITConsulting.ListLabel25.IServiceAdapter    FROM ASSEMBLY.
+USING TasteITConsulting.ListLabel25.OELongchar         FROM ASSEMBLY.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeDatasetService FROM PROPATH.
 
 BLOCK-LEVEL ON ERROR UNDO, THROW.
@@ -78,19 +78,30 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeDatasetServiceAdapter IMPLEMENTS IServic
     END METHOD.
 
     /* Service Adapter - Client Event */
-    METHOD PUBLIC LOGICAL ClientEvent( INPUT  ServiceName      AS CHARACTER, 
-                                       INPUT  JsonParameter    AS OELongchar,
-                                       INPUT  JsonDataRequest  AS OELongchar,
-                                       OUTPUT JsonDataResponse AS OELongchar ):
+    METHOD PUBLIC LOGICAL ClientEvent( INPUT  ServiceName          AS CHARACTER, 
+                                       INPUT  JsonServiceParameter AS OELongchar,
+                                       INPUT  JsonDataRequest      AS OELongchar,
+                                       OUTPUT JsonDataResponse     AS OELongchar ):
+        
+        DEFINE VARIABLE lcParameter AS LONGCHAR NO-UNDO.
+        DEFINE VARIABLE lcRequest   AS LONGCHAR NO-UNDO.
+        DEFINE VARIABLE lcResponse  AS LONGCHAR NO-UNDO.
+        
+        lcParameter = JsonServiceParameter:Data.
+        lcRequest   = JsonDataRequest:Data.
+        
+        lcResponse = moService:ClientEvent ( lcParameter, lcRequest ).
         JsonDataResponse = NEW OELongchar().
+        JsonDataResponse:Data = lcResponse.
         RETURN TRUE.
     END METHOD.
-
+    
+/*
     METHOD PUBLIC LOGICAL ClientEvent( INPUT ServiceName AS CHARACTER, 
                                        INPUT JsonServiceParameter   AS OELongchar, 
                                        INPUT EventName AS CHARACTER ):
                                            
         RETURN TRUE.
     END METHOD.
-
+*/
 END CLASS.

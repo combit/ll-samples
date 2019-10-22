@@ -9,7 +9,7 @@
 #include <Forms.hpp>
 #include <Db.hpp>
 #include <DBTables.hpp>
-#include "L24.hpp"
+#include "L25.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -22,7 +22,7 @@ __published:	// IDE-managed Components
         TButton *PrintButton;
         TCheckBox *DebugCheckBox;
         TTable *DataSource;
-        TL24_ *LL;
+        TL25_ *LL;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall DesignButtonClick(TObject *Sender);
         void __fastcall PreviewButtonClick(TObject *Sender);

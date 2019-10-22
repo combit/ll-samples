@@ -1,7 +1,7 @@
 #DEFINE SW_SHOWNORMAL 1
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Erstellt am 03.09.2018
+// Erstellt am 03.09.2019
 //
 parameter bModal
 local f
@@ -48,7 +48,7 @@ class AboutADOForm of FORM
       left = 1.0
       top = 1.5
       width = 32.0
-      text = "combit List & Label 24"
+      text = "combit List & Label 25"
       fontBold = true
       alignVertical = 1	// Mitte
       alignHorizontal = 1	// Zentriert
@@ -61,7 +61,7 @@ class AboutADOForm of FORM
       left = 1.0
       top = 3.0
       width = 32.0
-      text = "in dBASE PLUS 10.x"
+      text = "in dBASE PLUS"
       alignHorizontal = 1	// Zentriert
    endwith
 
@@ -142,7 +142,7 @@ class AboutADOForm of FORM
       CASE TYPE("_app.oInfo.Language")=="C" .AND. _app.oInfo.Language="deutsch"
          form.text           ="Über"
          form.Textlabel1.text="Beispielanwendung zur Integration von"
-         form.Textlabel3.text="in dBASE PLUS 10.x"
+         form.Textlabel3.text="in dBASE PLUS"
          form.Textlabel4.text="ADO Version mit Firebird-Datenquelle"
          form.Textlabel5.text="Erstellt von EDV Beratung Lutz Conrad"
          IF _app.MainADODatabase.active
@@ -153,7 +153,7 @@ class AboutADOForm of FORM
       OTHERWISE
          form.text           ="About"
          form.Textlabel1.text="Sample application to integration of"
-         form.Textlabel3.text="with dBASE PLUS 10.x"
+         form.Textlabel3.text="with dBASE PLUS"
          form.Textlabel4.text="ADO version with Firebird datasource"
          form.Textlabel5.text="Created by EDV Beratung Lutz Conrad"
          IF _app.MainADODatabase.active

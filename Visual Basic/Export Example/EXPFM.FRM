@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C17}#24.0#0"; "cmll24o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C19}#25.0#0"; "cmll25o.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form Form1 
    Caption         =   "List & Label Quiet Export Sample"
@@ -229,7 +229,7 @@ Private Sub Form_Load()
 ' Copyright (C) combit GmbH
 '
 '--------------------------------------------------------------------------------------
-' File   : export.vbp, expfm.frm, cmll24.bas
+' File   : export.vbp, expfm.frm, cmll25.bas
 ' Module : export sample
 ' Descr. : D: Dieses Beispiel demonstriert den Export ohne Benutzerinteraktion.
 '          US: This example demonstrates an export without user interaction.

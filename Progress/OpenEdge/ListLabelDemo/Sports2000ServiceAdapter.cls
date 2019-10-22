@@ -20,8 +20,8 @@
   ----------------------------------------------------------------------*/
 
 USING Progress.Lang.*.
-USING TasteITConsulting.ListLabel24.IServiceAdapter FROM ASSEMBLY.
-USING TasteITConsulting.ListLabel24.OELongchar FROM ASSEMBLY.
+USING TasteITConsulting.ListLabel25.IServiceAdapter FROM ASSEMBLY.
+USING TasteITConsulting.ListLabel25.OELongchar FROM ASSEMBLY.
 USING ListLabel.OpenEdgeAdapter.IOpenEdgeService FROM PROPATH.
 
 BLOCK-LEVEL ON ERROR UNDO, THROW.
@@ -38,6 +38,11 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
     DEFINE VARIABLE mcAppserverConnection AS CHARACTER 
            INIT "-AppService listlabel -H localhost -S 5162".
     
+    DEFINE PUBLIC PROPERTY AppserverHandle AS HANDLE NO-UNDO 
+    GET:
+        RETURN mhAppserver.
+    END GET.    
+
     /*------------------------------------------------------------------------------
 	 Purpose:
 	 Notes:
@@ -91,7 +96,6 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
         RUN ListLabel/OpenEdgeAdapter/OpenEdgeGateway.p ON SERVER mhAppserver 
               (INPUT ServiceName, INPUT "GetData", INPUT lcParameter, INPUT lcRequest, OUTPUT lcResponse ).
         JsonDataResponse:Data = lcResponse.
-        writeLog (STRING(lcResponse)).
         
         RETURN TRUE.
 	END METHOD.

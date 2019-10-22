@@ -25,8 +25,8 @@
 
 BLOCK-LEVEL ON ERROR UNDO, THROW.
 
-USING combit.ListLabel24.ListLabel FROM ASSEMBLY.
-USING TasteITConsulting.ListLabel24.OpenEdgeDataProvider FROM ASSEMBLY.
+USING combit.ListLabel25.ListLabel FROM ASSEMBLY.
+USING TasteITConsulting.ListLabel25.OpenEdgeDataProvider FROM ASSEMBLY.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeDatasetService   FROM PROPATH.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeDatasetServiceAdapter FROM PROPATH.
 

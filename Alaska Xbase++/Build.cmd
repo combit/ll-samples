@@ -3,9 +3,9 @@
 @echo.
 @echo.
 
-@echo Batchfile to create basic List & Label samples, without Real Data Preview
+@echo Batchfile to create basic samples, without Real Data Preview
 @echo.
-@echo Batchdatei erstellt Demoprogramme für List & Label, ohne Echtdatenvorschau
+@echo Batchdatei erstellt Demoprogramme, ohne Echtdatenvorschau
 @echo.
 @echo.
 

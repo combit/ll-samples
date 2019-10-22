@@ -17,8 +17,8 @@
 #include "uCrosstab.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "L24"
-#pragma link "L24db"
+#pragma link "L25"
+#pragma link "L25db"
 #pragma resource "*.dfm"
 TfrmCrosstab *frmCrosstab;
 //---------------------------------------------------------------------------
@@ -29,12 +29,12 @@ __fastcall TfrmCrosstab::TfrmCrosstab(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TfrmCrosstab::btnDesignILClick(TObject* /*Sender*/)
 {
-	DBL24_1->AutoDesign("Sales Report");
+	DBL25_1->AutoDesign("Sales Report");
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmCrosstab::btnPrintILClick(TObject* /*Sender*/)
 {
-	DBL24_1->AutoPrint("Sales Report", "");
+	DBL25_1->AutoPrint("Sales Report", "");
 }
 //-------------------------------------------------------------------------
 void __fastcall TfrmCrosstab::FormCreate(TObject* /*Sender*/)

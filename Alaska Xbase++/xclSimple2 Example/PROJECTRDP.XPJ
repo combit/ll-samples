@@ -22,6 +22,6 @@
     LULMENU.obj
 // $STOP-AUTODEPEND
 	 xclass.lib
-    xclListLabel24RDP.lib
+    xclListLabel25RDP.lib
     xclSimple2 Example\LULDEMO.PRG
     xclSimple2 Example\LULMENU.PRG

@@ -60,7 +60,7 @@ ELSE
    lOpen=true
 ENDIF
 SET PROCEDURE TO PROGRAM(0)
-SET PROCEDURE TO LL24.CC ADDITIVE
+SET PROCEDURE TO LL25.CC ADDITIVE
 oApp=new MDIApp()  //Anwendungsobjekt anlegen
 SET PROCEDURE TO LLRibbons.CC ADDITIVE
 oRibbons=new LLRibbons()
@@ -69,9 +69,9 @@ RELEASE OBJECT oRibbons
 oApp.OldText=_app.frameWin.text
 DO CASE
    CASE _app.oInfo.Language="deutsch"
-      _app.frameWin.text="Beispielanwendung zur Integration von combit List & Label 24 in dBASE PLUS"
+      _app.frameWin.text="Beispielanwendung zur Integration von combit List & Label 25 in dBASE PLUS"
    OTHERWISE
-      _app.frameWin.text="Sample application to integration of combit List & Label 24 with dBASE PLUS"
+      _app.frameWin.text="Sample application to integration of combit List & Label 25 with dBASE PLUS"
 ENDCASE
 _app.speedbar =false
 _app.statusbar=true

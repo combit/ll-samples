@@ -10,9 +10,9 @@
 #include <ADODB.hpp>
 #include <DB.hpp>
 #include <Registry.hpp>
-#include "L24.hpp"
-#include "L24db.hpp"
-#include "L24dom.hpp"
+#include "L25.hpp"
+#include "L25db.hpp"
+#include "L25dom.hpp"
 #include <Dialogs.hpp>
 //---------------------------------------------------------------------------
 class TfrmDOMSimple : public TForm
@@ -21,7 +21,7 @@ __published:	// IDE-managed Components
 	TADOConnection *ADOConnection1;
 	TADOTable *ADOTable1;
 	TDataSource *DataSource1;
-	TDBL24_ *LL;
+	TDBL25_ *LL;
 	TGroupBox *GroupBox3;
 	TComboBox *CmBxTables;
 	TListBox *LstBxAvFields;

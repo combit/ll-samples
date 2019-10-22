@@ -4,7 +4,7 @@ Version=19.1
 ConfigFile=.\Programs\Config19.1.ws
 [Projects]
 Project0=Order.src
-[Libraries]
-Lib2=..\LLLibrary24.0\LL24-VDF19.1.sws
 [Conditionals]
 Is$WebApp=False
+[Libraries]
+Lib1=..\LLLibrary25.0\LL25-VDF19.1.sws

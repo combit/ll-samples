@@ -17,7 +17,7 @@
  RepresentationCode.ExprSep=164
  LCID=3079
  UserVars.ManualSortOrder=1
- CreatedByCallFrom=atlthunk.dll
+ CreatedByCallFrom=vdfvm19.dll
  [@DatabaseStructure]
   {
   [DatabaseStructures]

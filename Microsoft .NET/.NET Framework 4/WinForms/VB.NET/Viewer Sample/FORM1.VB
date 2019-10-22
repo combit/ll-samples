@@ -1,0 +1,45 @@
+Imports System.IO
+Imports System.Windows.Forms
+
+Public Partial Class Form1
+    Inherits Form
+    Public Sub New()
+		InitializeComponent()
+
+		'
+		' TODO: Add any constructor code after InitializeComponent call
+		'
+		If Not File.Exists("invoice.ll") Then
+			Directory.SetCurrentDirectory("..\..\")
+		End If
+
+		' Preload initial file
+		PreviewControl.FileName = InlineAssignHelper(statusBarPanel1.Text, Directory.GetCurrentDirectory() & "\invoice.ll")
+	End Sub
+
+    ''' <summary>
+    ''' The main entry point for the application.
+    ''' </summary>
+    <STAThread>
+    Friend Shared Sub Main()
+        SetProcessDPIAware()
+        Application.EnableVisualStyles()
+        Application.Run(New Form1())
+    End Sub
+    <System.Runtime.InteropServices.DllImport("user32.dll")>
+    Private Shared Function SetProcessDPIAware() As Boolean
+    End Function
+
+    Private Sub PreviewControl_PageChanged(sender As Object, e As combit.ListLabel25.ListLabelPreviewControl.PageChangedEventArgs) Handles PreviewControl.PageChanged
+        ' refresh status text
+        statusBarPanel2.Text = [String].Format("Page {0}/{1}", e.NewIndex + 1, PreviewControl.PageCount)
+    End Sub
+
+    Private Sub Form1_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
+        e.Cancel = Not PreviewControl.CanClose()
+    End Sub
+	Private Shared Function InlineAssignHelper(Of T)(ByRef target As T, value As T) As T
+		target = value
+		Return value
+	End Function
+End Class

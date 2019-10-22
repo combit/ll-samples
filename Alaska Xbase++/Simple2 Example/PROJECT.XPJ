@@ -21,7 +21,7 @@
     LULDEMO.obj
     LULMENU.obj
 // $STOP-AUTODEPEND
-    dsListLabel24.lib
+    dsListLabel25.lib
     Simple2 Example\LULDEMO.PRG
     Simple2 Example\LULMENU.PRG
 

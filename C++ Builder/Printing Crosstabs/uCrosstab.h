@@ -10,8 +10,8 @@
 #include <ADODB.hpp>
 #include <DB.hpp>
 #include <Registry.hpp>
-#include "L24.hpp"
-#include "L24db.hpp"
+#include "L25.hpp"
+#include "L25db.hpp"
 //---------------------------------------------------------------------------
 class TfrmCrosstab : public TForm
 {
@@ -22,7 +22,7 @@ __published:	// IDE-managed Components
 	TADOTable *ADOTblOrderDetails;
 	TDataSource *dsCustomers;
 	TDataSource *dsOrders;
-	TDBL24_ *DBL24_1;
+	TDBL25_ *DBL25_1;
 	TLabel *Label1;
 	TLabel *Label2;
 	TLabel *Label3;

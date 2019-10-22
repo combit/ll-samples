@@ -17,7 +17,7 @@
  RepresentationCode.ExprSep=164
  LCID=3079
  UserVars.ManualSortOrder=1
- CreatedByCallFrom=atlthunk.dll
+ CreatedByCallFrom=vdfvm19.dll
  [@DatabaseStructure]
   {
   [DatabaseStructures]
@@ -390,7 +390,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
+ Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -534,6 +534,10 @@
 	[DataLines]
 	 {
 	 bKeepTogether=True
+	 [bKeepTogether]
+	  {
+	  IndexedGroups=False
+	  }
 	 bSuppress=False
 	 bForceSumCalculation=False
 	 }
@@ -593,6 +597,7 @@
 	UseSepTicks=True
 	ColumnCount=0
 	ColumnCount.Distance=1000
+	FillPrioHorizonal=False
 	ColumnBreakCondition=False
 	ColumnBreakBefore=False
 	bFooterOnBottom=False
@@ -1058,6 +1063,7 @@
 		 Bottom=0
 		 }
 		LCondition=True
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -1988,6 +1994,7 @@
 		 Bottom=0
 		 }
 		LCondition=True
+		IndexedGroups=0
 		Anchor=0
 		Anchor.ToTop=True
 		}
@@ -2202,6 +2209,7 @@
 	AllowNULL=False
 	AllowMultipleValues=False
 	ParentID=
+	Tag=
 	}
    }
   [UIDescriptions]

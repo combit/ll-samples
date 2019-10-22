@@ -9,7 +9,7 @@
 #include <ADODb.hpp>
 #include <Forms.hpp>
 #include <Menus.hpp>
-#include "L24.hpp"
+#include "L25.hpp"
 
 class TMyTableMap : public TObject
 {
@@ -42,7 +42,7 @@ __published:	// IDE-managed Components
         TMenuItem *Report1;
         TMenuItem *Print1;
         TMenuItem *Report2;
-        TL24_ *LL;
+        TL25_ *LL;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall Report1Click(TObject *Sender);

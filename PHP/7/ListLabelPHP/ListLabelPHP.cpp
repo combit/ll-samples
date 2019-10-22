@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#define _NO_CMLL24APIDEFINES
-#include "..\..\Visual C++\cmbtll24.h"
+#define _NO_CMLL25APIDEFINES
+#include "..\..\Visual C++\cmbtll25.h"
 #define PHP_MAXSTRLEN 	128000
 // Hier werden alle Funktionen deklariert,
 // die später in PHP verfügbar sein sollen
@@ -828,7 +828,6 @@ ZEND_MINIT_FUNCTION(ListLabelPHPModule)
     REGISTER_LONG_CONSTANT("LL_ERR_UNKNOWNSORTORDER",                                LL_ERR_UNKNOWNSORTORDER,                                CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_ERR_NOPRINTERCFG",                                    LL_ERR_NOPRINTERCFG,                                    CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_ERR_SAVEPRINTERCFG",                                  LL_ERR_SAVEPRINTERCFG,                                  CONST_CS | CONST_PERSISTENT);
-    REGISTER_LONG_CONSTANT("LL_ERR_RESERVED",                                        LL_ERR_RESERVED,                                        CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_ERR_NOVALIDPAGES",                                    LL_ERR_NOVALIDPAGES,                                    CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_ERR_NOTINHOSTPRINTERMODE",                            LL_ERR_NOTINHOSTPRINTERMODE,                            CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_ERR_NOTFINISHED",                                     LL_ERR_NOTFINISHED,                                     CONST_CS | CONST_PERSISTENT);

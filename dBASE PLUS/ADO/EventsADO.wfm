@@ -1,6 +1,6 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Revision: 03.09.2018
+// Revision: 03.09.2019
 //
 parameter bModal
 local f
@@ -65,6 +65,7 @@ class EventsADOForm of FORM
    form.LLDesign=false
    CLASS::OpenReport()
    RETURN
+	
    FUNCTION OpenReport
    LOCAL cSQL
    LOCAL r
@@ -93,8 +94,8 @@ class EventsADOForm of FORM
       cSQL+=" INNER JOIN Events"
       cSQL+=" ON (Customers.CustomerID = Events.CustomerID)"  
       cSQL+=" ORDER BY Customers.Name, Events.StartDate"
-      SET PROCEDURE TO ..\LL24.CC ADDITIVE
-      r=new LL24InterfaceSample()
+      SET PROCEDURE TO ..\LL25.CC ADDITIVE
+      r=new LL25InterfaceSample()
       r.query1=new ADOQUERY()
       r.query1.database = _app.MainADODatabase
       r.query1.sql=cSQL

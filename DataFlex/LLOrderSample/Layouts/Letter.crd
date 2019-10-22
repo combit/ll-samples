@@ -17,7 +17,7 @@
  RepresentationCode.ExprSep=164
  LCID=3079
  UserVars.ManualSortOrder=1
- CreatedByCallFrom=atlthunk.dll
+ CreatedByCallFrom=vdfvm19.dll
 [Layout]
  P1.Template=
  xGrid=1000
@@ -423,7 +423,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
+ Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
  Condition=True
  UserLocked=False
  WrapBefore=False

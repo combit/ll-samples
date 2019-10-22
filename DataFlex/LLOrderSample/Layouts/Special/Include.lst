@@ -15,9 +15,9 @@
  RepresentationCode.PhantomSpace=8203
  RepresentationCode.LockNextChar=8288
  RepresentationCode.ExprSep=164
- LCID=7
+ LCID=3079
  UserVars.ManualSortOrder=1
- CreatedByCallFrom=atlthunk.dll
+ CreatedByCallFrom=vdfvm19.dll
  [@DatabaseStructure]
   {
   [DatabaseStructures]

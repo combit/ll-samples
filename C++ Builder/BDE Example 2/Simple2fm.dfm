@@ -87,7 +87,7 @@ object Form1: TForm1
   object DataSource: TTable
     Left = 408
   end
-  object LL: Tl24_
+  object LL: Tl25_
     SortVariables = Yes
     UnitSystem = usHiInch
     Buttons3D = Yes

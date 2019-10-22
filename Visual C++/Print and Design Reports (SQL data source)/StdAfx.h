@@ -19,7 +19,7 @@
 #include <afxcmn.h>			// MFC support for Windows Common Controls
 #endif // _AFX_NO_AFXCMN_SUPPORT
 
-#include "..\cmbtll24.h"
+#include "..\cmbtll25.h"
 #define DATABASENAME L"Chinook.db"
 
 // D:   XTRACE Makro einfach wahlweise auf TRACE oder Debwin4 umbiegen

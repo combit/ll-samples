@@ -1,8 +1,7 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Erstellt am 03.09.2018
+// Erstellt am 28.08.2019
 //
-
 parameter bModal
 local f
 f = new ChartForm()
@@ -16,8 +15,8 @@ endif
 class ChartForm of FORM
    with (this)
       height = 4.0455
-      left = 3.7143
-      top = 18.0
+      left = 77.5714
+      top = 15.1818
       width = 39.1429
       text = "Umsatz nach Lieferanten"
       autoCenter = true
@@ -80,8 +79,8 @@ class ChartForm of FORM
    cSQL+="     ON (Orders.OrderID=Orderdetails.OrderID)"
    cSQL+="  GROUP BY Customers.Name"
    cSQL+="  ORDER BY turnover DESC"
-   SET PROCEDURE TO LL24.CC ADDITIVE
-   r=new LL24InterfaceSample()
+   SET PROCEDURE TO LL25.CC ADDITIVE
+   r=new LL25InterfaceSample()
    r.query1=new QUERY()
    r.query1.sql=cSQL
    r.query1.active=true

@@ -29,16 +29,16 @@ import System.Data.OleDb.OleDbConnection;
 import System.Drawing.SystemColors;
 import System.Windows.Forms.DockStyle;
 
-import combit.ListLabel24.LL_User_Aborted_Exception;
-import combit.ListLabel24.ListLabelActivation;
-import combit.ListLabel24.ListLabelException;
-import combit.ListLabel24.LlButtonState;
-import combit.ListLabel24.LlPreviewControlCloseMode;
-import combit.ListLabel24.ListLabelPreviewControl.*;
-import combit.ListLabel24.LlProject;
-import combit.ListLabel24.DataProviders.DbCommandSetDataProvider.*;
-import combit.ListLabel24.DataProviders.DbCommandSetDataProvider.ExecuteDbCommandEventArgs.DbCommand;
-import combit.ListLabel24.Events.*;
+import combit.ListLabel25.LL_User_Aborted_Exception;
+import combit.ListLabel25.ListLabelActivation;
+import combit.ListLabel25.ListLabelException;
+import combit.ListLabel25.LlButtonState;
+import combit.ListLabel25.LlPreviewControlCloseMode;
+import combit.ListLabel25.ListLabelPreviewControl.*;
+import combit.ListLabel25.LlProject;
+import combit.ListLabel25.DataProviders.DbCommandSetDataProvider.*;
+import combit.ListLabel25.DataProviders.DbCommandSetDataProvider.ExecuteDbCommandEventArgs.DbCommand;
+import combit.ListLabel25.Events.*;
 /**
  * This example demonstrate the usage of the List & Label .NET component
  * (https://www.combit.net/en/reporting-tool) in Java with the third party
@@ -49,15 +49,15 @@ import combit.ListLabel24.Events.*;
  * - printing into the List & Label preview control on the dialog and respond to an button click event of the preview control
  * - exporting into any kind of provided formats from List & Label
  * 
- * Requirements: You need to have copy the .NET assembly combit.ListLabel24.dll
+ * Requirements: You need to have copy the .NET assembly combit.ListLabel25.dll
  * in the sample folder. Also you have to get the javonet-[?].jar and license key from Javonet. 
  * To get the sample working, add your licensing information for using Javonet in 
  * call to ListLabelActivation.setLicense(...) method in Form1.main(..).
  * 
- * This sample is using strongly-typed wrapper combit.ListLabel24 for Java which exposes
+ * This sample is using strongly-typed wrapper combit.ListLabel25 for Java which exposes
  * part of the List&Label API. The source code of the wrapper is included in this repository,
  * if you need to access any uncovered feature of combit List&Label, you can extend the wrapper
- * and recompile the combit.ListLabel24.jar.
+ * and recompile the combit.ListLabel25.jar.
  * 
  * To re-compile the Jar after changes run the ANT build script:
  * From Eclipse: Right Click "build_script.xml" > Run As Ant Build
@@ -65,7 +65,7 @@ import combit.ListLabel24.Events.*;
 
 public class Form1 extends JFrame implements ButtonPressCommandDelegate, AutoDefineFieldDelegate, ExecuteDbCommandDelegate {
 
-	private combit.ListLabel24.ListLabel LL;
+	private combit.ListLabel25.ListLabel LL;
 	private ListLabelPreviewControl LLPreviewControl;
 	private String _databasePath;
 	private JButton print_Reader;
@@ -281,16 +281,16 @@ public class Form1 extends JFrame implements ButtonPressCommandDelegate, AutoDef
 		//
 		// LL
 		//
-		this.LL = new combit.ListLabel24.ListLabel();
+		this.LL = new combit.ListLabel25.ListLabel();
 		this.LL.setAutoPrinterSettingsStream(null);
 		this.LL.setAutoProjectStream(null);
-		this.LL.setDataBindingMode(combit.ListLabel24.DataBindingMode.DelayLoad);
+		this.LL.setDataBindingMode(combit.ListLabel25.DataBindingMode.DelayLoad);
 		this.LL.setDrilldownAvailable(true);
 		this.LL.setEMFResolution(100);
 		this.LL.setLockNextChar(8288);
 		this.LL.setMaxRTFVersion(65280);
 		this.LL.setPhantomSpace(8203);
-		this.LL.setUnit(combit.ListLabel24.LlUnits.Millimeter_1_100);
+		this.LL.setUnit(combit.ListLabel25.LlUnits.Millimeter_1_100);
 		this.LL.setUseHardwareCopiesForLabels(false);
 		this.LL.setUseTableSchemaForDesignMode(false);
 		//
@@ -367,9 +367,9 @@ public class Form1 extends JFrame implements ButtonPressCommandDelegate, AutoDef
 	}
 	
 	private void ButtonDesign_Click() {
-		combit.ListLabel24.ListLabel workingLL = null;
+		combit.ListLabel25.ListLabel workingLL = null;
 		try {
-			workingLL = new combit.ListLabel24.ListLabel();
+			workingLL = new combit.ListLabel25.ListLabel();
 			
 			// attach event for firing for each assigned field with data binding
 			AutoDefineField autoDefineField = new AutoDefineField(this); 
@@ -402,9 +402,9 @@ public class Form1 extends JFrame implements ButtonPressCommandDelegate, AutoDef
 	}
 
 	private void ButtonPrint_Click() {
-		combit.ListLabel24.ListLabel workingLL = null;
+		combit.ListLabel25.ListLabel workingLL = null;
 		try {
-			workingLL = new combit.ListLabel24.ListLabel();
+			workingLL = new combit.ListLabel25.ListLabel();
 			
 			// attach the preview control
 			workingLL.setPreviewControl(this.LLPreviewControl);
@@ -444,7 +444,7 @@ public class Form1 extends JFrame implements ButtonPressCommandDelegate, AutoDef
 		// e.g. ListLabelActivation.setLicense("<Your eMail address>", "<Your Javonet licensing key>");
 		// You can obtain your own Javonet free trial license key at: https://my.javonet.com/signup/?type=free
 		
-		//TODO: 1) Copy combit.ListLabel24.dll to project root folder
+		//TODO: 1) Copy combit.ListLabel25.dll to project root folder
 		//TODO: 2) Copy javonet-1.5.jar or newer to project root folder
 		//TODO: 3) update your Javonet license details below
 		ListLabelActivation.setLicense("your@mail.com", "your-license-key");

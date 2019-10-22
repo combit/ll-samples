@@ -22,8 +22,8 @@
     Notes       :
   ----------------------------------------------------------------------*/
 
-USING TasteITConsulting.ListLabel24.OpenEdgeDataProvider FROM ASSEMBLY.
-USING combit.ListLabel24.ListLabel FROM ASSEMBLY.
+USING TasteITConsulting.ListLabel25.OpenEdgeDataProvider FROM ASSEMBLY.
+USING combit.ListLabel25.ListLabel FROM ASSEMBLY.
 USING ListLabelDemo.Sports2000ServiceAdapter FROM PROPATH.
 
 DEFINE VARIABLE oProvider       AS OpenEdgeDataProvider     NO-UNDO.

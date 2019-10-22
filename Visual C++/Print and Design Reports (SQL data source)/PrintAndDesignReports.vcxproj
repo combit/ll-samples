@@ -84,7 +84,7 @@
       <Culture>0x0407</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>..\cmll24.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\cmll25.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ProgramDatabaseFile>.\Release/PRTDATAPROV.pdb</ProgramDatabaseFile>
@@ -129,7 +129,7 @@
       <Culture>0x0407</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>..\cmll24.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\cmll25.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>

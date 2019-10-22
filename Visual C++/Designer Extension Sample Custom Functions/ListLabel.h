@@ -1,11 +1,11 @@
 // D:
-// Produkt:	combit List & Label 24
+// Produkt:	combit List & Label 25
 // Beschreibung: List & Label C++ DesignerExtension
 // Funktion: Zeigt das Hinzufügen von eigenen Funktionen zu List & Label
 // Copyright: Copyright (C) combit GmbH
 
 // US:
-// Product: combit List & Label 24
+// Product: combit List & Label 25
 // Description: List & Label C++ DesignerExtension
 // Function: Shows how to add your own functions to List & Label
 // Copyright: Copyright (C) combit GmbH
