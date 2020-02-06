@@ -169,9 +169,9 @@ namespace TXTextDesignerObject
             //System.Diagnostics.Debug.WriteLine(string.Format(">>OnGetFieldHeightInformation.AvailableSpace.Height: {0}", e.AvailableSpace.Height));
             
             _rtfPageNumber += 1;
-            
-            // Get the page to print
-            if (_serverTXTextControl.GetPages() == null || _serverTXTextControl.GetPages()[1] == null || _serverTXTextControl.Text == string.Empty) // No more pages/data to print
+
+            // do we have something to render?
+            if (!ContentExists(1, ContentCheckTypes.Page | ContentCheckTypes.Text | ContentCheckTypes.Graphics))
             {
                 e.IdealHeight = e.MinimalHeight = 0;
                 return;
@@ -248,8 +248,8 @@ namespace TXTextDesignerObject
                     _rtfPageNumber += 1;
             }
 
-            // Get the page to print
-            if (_serverTXTextControl.GetPages() == null || _serverTXTextControl.GetPages()[1] == null || _serverTXTextControl.Text == string.Empty) // No more pages/data to print
+            // do we have something to render?
+            if (!ContentExists(1, ContentCheckTypes.Page | ContentCheckTypes.Text | ContentCheckTypes.Graphics))
             {
                 e.PrintFinished = true;
                 return;
@@ -318,8 +318,8 @@ namespace TXTextDesignerObject
             // try to remove the printed page
             RemovePageFromDocument(1);
 
-            // do we have something more to render?
-            if (_serverTXTextControl.GetPages() == null ||_serverTXTextControl.GetPages()[1] == null || _serverTXTextControl.Text == string.Empty) // No more pages/data to print
+            // do we have something to render?
+            if (!ContentExists(1, ContentCheckTypes.Page | ContentCheckTypes.Text)) // no not check graphics here, because they are still exists in document
             {
                 // No more pages/content to print
                 e.PrintFinished = true;
@@ -446,6 +446,14 @@ namespace TXTextDesignerObject
             }
         }
 
+        private bool SuppressLoadErrorMessages
+        {
+            get
+            {
+                return ((int)Parent.Core.LlGetOption(LlOption.SuppressLoadErrorMessages /* 223 */) == 1) ? true : false;
+            }
+        }
+
         private void CollectRTFIdentifiers(ref List<string> lstIdentifiers)
         {
             string name = string.Empty, value = string.Empty;
@@ -500,14 +508,18 @@ namespace TXTextDesignerObject
                 }
                 catch (Exception ecx)
                 {
-                    // reset content
-                    sContents = DocumentRTFContent;
+                    // if the display of errors is activated in List & Label or is it suppressed - e.g. DOM access and ignoreErrors=true
+                    if (!SuppressLoadErrorMessages)
+                    {
+                        // reset content
+                        sContents = DocumentRTFContent;
 
-                    // show/display error
-                    MessageBox.Show(ecx.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // show/display error
+                        MessageBox.Show(ecx.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    // canceling current "print" to avoid further actions with this object
-                    Parent.Core.LlPrintAbort();
+                        // canceling current "print" to avoid further actions with this object
+                        Parent.Core.LlPrintAbort();
+                    }
                 }
 
                 if (!IsPrinting)
@@ -935,6 +947,54 @@ namespace TXTextDesignerObject
                     }
                    }
             }
+        }
+
+        // checks, if more data to print exists
+
+        private enum ContentCheckTypes
+        {
+            None = 0,
+            Page = 1,
+            Text = 2,
+            Graphics = 4
+        }
+        bool ContentExists(int nPageNo, ContentCheckTypes contentTypeToCheck = ContentCheckTypes.Page | ContentCheckTypes.Text | ContentCheckTypes.Graphics)
+        {
+            bool contentExists = true;
+
+            // page-check: exists more pages with data?
+            if (
+                contentTypeToCheck.HasFlag(ContentCheckTypes.Page)
+                && (_serverTXTextControl.GetPages() == null 
+                || _serverTXTextControl.GetPages()[nPageNo] == null))
+            {
+                // no more pages exists - skip content-check
+                contentExists = false;
+            }
+
+            if (contentExists)
+            {
+                // pages exists - check content
+                if (
+                    contentTypeToCheck.HasFlag(ContentCheckTypes.Text)
+                    && _serverTXTextControl.Text == string.Empty
+                    )
+                {
+                    contentExists = false;
+
+                    // this could be e.g. if the document only has got graphics without any text!
+                    if (contentTypeToCheck.HasFlag(ContentCheckTypes.Graphics))
+                    {
+                        if(_serverTXTextControl.Images.Count > 0
+                            || _serverTXTextControl.Drawings.Count > 0)
+                        {
+                            contentExists = true;
+                        }
+                    }
+                }
+            }
+
+            return contentExists;
         }
 
         #endregion // Helpers

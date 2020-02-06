@@ -46,6 +46,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chkSetReportParameters = new System.Windows.Forms.CheckBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.loadedFromTemplateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,12 +179,15 @@
             this.lvReportParameters.FullRowSelect = true;
             this.lvReportParameters.GridLines = true;
             this.lvReportParameters.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvReportParameters.HideSelection = false;
             this.lvReportParameters.Location = new System.Drawing.Point(12, 192);
             this.lvReportParameters.Name = "lvReportParameters";
             this.lvReportParameters.Size = new System.Drawing.Size(487, 108);
             this.lvReportParameters.TabIndex = 11;
             this.lvReportParameters.UseCompatibleStateImageBehavior = false;
             this.lvReportParameters.View = System.Windows.Forms.View.Details;
+            this.lvReportParameters.ItemActivate += new System.EventHandler(this.lvReportParameters_ItemActivate);
+            this.lvReportParameters.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvReportParameters_KeyDown);
             // 
             // NameColumn
             // 
@@ -215,6 +219,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // loadedFromTemplateLabel
+            // 
+            this.loadedFromTemplateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadedFromTemplateLabel.AutoSize = true;
+            this.loadedFromTemplateLabel.Location = new System.Drawing.Point(300, 170);
+            this.loadedFromTemplateLabel.Name = "loadedFromTemplateLabel";
+            this.loadedFromTemplateLabel.Size = new System.Drawing.Size(199, 13);
+            this.loadedFromTemplateLabel.TabIndex = 14;
+            this.loadedFromTemplateLabel.Text = "Parameters are loaded from template.";
+            this.loadedFromTemplateLabel.Visible = false;
+            // 
             // EditTaskDialog
             // 
             this.AcceptButton = this.btnOK;
@@ -222,6 +237,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(511, 469);
+            this.Controls.Add(this.loadedFromTemplateLabel);
             this.Controls.Add(this.chkSetReportParameters);
             this.Controls.Add(this.btnAddParameter);
             this.Controls.Add(this.lvReportParameters);
@@ -268,5 +284,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.CheckBox chkSetReportParameters;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label loadedFromTemplateLabel;
     }
 }

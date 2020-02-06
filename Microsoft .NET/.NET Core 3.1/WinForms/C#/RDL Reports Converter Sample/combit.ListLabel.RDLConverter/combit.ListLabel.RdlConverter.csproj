@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Deterministic>false</Deterministic>
+	<ApplicationIcon />
+	<StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="combit.ListLabel25">
+      <HintPath>..\..\..\..\Assemblies\combit.ListLabel25.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

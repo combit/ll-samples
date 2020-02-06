@@ -40,7 +40,6 @@
             this.lvReportParameters = new System.Windows.Forms.ListView();
             this.NameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ValueColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAddParameter = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.lblStatus = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -73,7 +72,7 @@
             this.cbReportTemplate.Name = "cbReportTemplate";
             this.cbReportTemplate.Size = new System.Drawing.Size(510, 21);
             this.cbReportTemplate.TabIndex = 2;
-            this.cbReportTemplate.SelectedIndexChanged += new System.EventHandler(this.cbReportTemplates_SelectedIndexChanged);
+            this.cbReportTemplate.SelectedIndexChanged += new System.EventHandler(this.cbReportTemplates_SelectedIndexChangedAsync);
             // 
             // cbExportProfile
             // 
@@ -132,9 +131,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 120);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(283, 13);
+            this.label4.Size = new System.Drawing.Size(341, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Specify report parameters that the export might need:";
+            this.label4.Text = "Specify the existing report parameters that the export should use";
             // 
             // lvReportParameters
             // 
@@ -146,12 +145,14 @@
             this.lvReportParameters.FullRowSelect = true;
             this.lvReportParameters.GridLines = true;
             this.lvReportParameters.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvReportParameters.HideSelection = false;
             this.lvReportParameters.Location = new System.Drawing.Point(15, 136);
             this.lvReportParameters.Name = "lvReportParameters";
             this.lvReportParameters.Size = new System.Drawing.Size(510, 108);
             this.lvReportParameters.TabIndex = 9;
             this.lvReportParameters.UseCompatibleStateImageBehavior = false;
             this.lvReportParameters.View = System.Windows.Forms.View.Details;
+            this.lvReportParameters.ItemActivate += new System.EventHandler(this.lvReportParameters_ItemActivate);
             // 
             // NameColumn
             // 
@@ -162,17 +163,6 @@
             // 
             this.ValueColumn.Text = "Value";
             this.ValueColumn.Width = 290;
-            // 
-            // btnAddParameter
-            // 
-            this.btnAddParameter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddParameter.Location = new System.Drawing.Point(405, 250);
-            this.btnAddParameter.Name = "btnAddParameter";
-            this.btnAddParameter.Size = new System.Drawing.Size(120, 28);
-            this.btnAddParameter.TabIndex = 10;
-            this.btnAddParameter.Text = "Add Parameter";
-            this.btnAddParameter.UseVisualStyleBackColor = true;
-            this.btnAddParameter.Click += new System.EventHandler(this.btnAddParameter_Click);
             // 
             // lblStatus
             // 
@@ -201,7 +191,6 @@
             this.ClientSize = new System.Drawing.Size(537, 403);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.btnAddParameter);
             this.Controls.Add(this.lvReportParameters);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancel);
@@ -237,7 +226,6 @@
         private System.Windows.Forms.ListView lvReportParameters;
         private System.Windows.Forms.ColumnHeader NameColumn;
         private System.Windows.Forms.ColumnHeader ValueColumn;
-        private System.Windows.Forms.Button btnAddParameter;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         protected System.Windows.Forms.ComboBox cbExportProfile;
         protected System.Windows.Forms.Button btnExportOrPrint;

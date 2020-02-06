@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace ClientApiExample.Dialogs
 {
@@ -15,11 +16,13 @@ namespace ClientApiExample.Dialogs
 
         private readonly IReportServerClient _rsClient;
         private ReportTemplate _selectedTemplate;
+        private readonly List<string> _requiredParameters;
 
         public ExportReportDialog(IReportServerClient rsClient, ReportTemplate selectedTemplate = null)
         {
             _rsClient = rsClient;
             _selectedTemplate = selectedTemplate;
+            _requiredParameters = new List<string>();
 
             InitializeComponent();
             lblStatus.Text = "Status: Ready";
@@ -79,13 +82,33 @@ namespace ClientApiExample.Dialogs
                 PreparedReport preparedExport = _rsClient.Exporter.PrepareExport(reportTemplateId, exportProfileId);
                 preparedExport.DisableCaching = chkDisableCache.Checked;
 
+                List<string> satisfiedParameters = new List<string>();
+
                 // Copy the rows of the report parameter listview to the report parameter list of the export:
                 foreach (ListViewItem listViewItem in lvReportParameters.Items)
                 {
                     string parameterName = listViewItem.Text;
                     object paramterValue = listViewItem.Tag;
 
+                    if (_requiredParameters.Contains(parameterName))
+                    {
+                        if (paramterValue is string s) {
+                            if (!string.IsNullOrEmpty(s)) {
+                                satisfiedParameters.Add(parameterName);
+                            }
+                        } else if (paramterValue != null) {
+                            satisfiedParameters.Add(parameterName);
+                        }
+                    }
+
                     preparedExport.ReportParameters.Add(parameterName, paramterValue);
+                }
+
+                // Check if all required parameters are set before trying to export
+                IEnumerable<string> notSetParameters = _requiredParameters.Except(satisfiedParameters);
+                if (notSetParameters.Count() != 0)
+                {
+                    throw new Exception("Parameter '" + string.Join("', '", notSetParameters) + "' may not be empty.");
                 }
 
                 // Now we need to check what kind of export profile was selected:
@@ -138,18 +161,6 @@ namespace ClientApiExample.Dialogs
             MessageBox.Show("The report has been printed successfully.");
         }
 
-        private void btnAddParameter_Click(object sender, EventArgs e)
-        {
-            DefineReportParameterDialog defParamDialog = new DefineReportParameterDialog();
-            if (defParamDialog.ShowDialog() == DialogResult.OK)
-            {
-                ListViewItem listViewRow = new ListViewItem(defParamDialog.ParameterName);
-                listViewRow.SubItems.Add(defParamDialog.ParameterValue.ToString());
-                listViewRow.Tag = defParamDialog.ParameterValue;
-                lvReportParameters.Items.Add(listViewRow);
-            }
-        }
-
         // We have export profiles for file export and for printing in the combobox, so set the correct text for the export/print button
         private void cbExportProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -165,17 +176,76 @@ namespace ClientApiExample.Dialogs
 
 
         // When the report template has no report parameters to specify, disable the corresponding controls
-        private void cbReportTemplates_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cbReportTemplates_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
             ReportTemplate reportTemplate = cbReportTemplate.SelectedItem as ReportTemplate;
             bool hasReportParameters = false;
             if (reportTemplate != null)
             {
                 hasReportParameters = reportTemplate.HasParameters;
+                lvReportParameters.Items.Clear();
+                _requiredParameters.Clear();
+
+                if (hasReportParameters)
+                {
+                    cbReportTemplate.Enabled = false;
+
+                    try
+                    {
+                        lvReportParameters.Enabled = false;
+                        lvReportParameters.Items.Add(new ListViewItem() { Text = "Loading..." });
+
+                        PreparedReport preparedExport = _rsClient.Exporter.PrepareExport(reportTemplate.Id, reportTemplate.DefaultExportProfileId);
+                        IEnumerable<ReportDataParameter> parameters = await preparedExport.FetchReportParameters();
+                        // Remove Loading... Item from ListView 
+                        lvReportParameters.Items.Clear();
+
+                        foreach (ReportDataParameter param in parameters)
+                        {
+                            // Remember which parameters are required
+                            if (!param.MayBeNull)
+                            {
+                                _requiredParameters.Add(param.Name);
+                            }
+
+                            if (param.Choices.Count() != 0 && param.SelectMultiple) {
+                                param.Value = param.Choices.Select(choice => choice.Value).ToArray();
+                            }
+
+                            ListViewItem listViewRow = new ListViewItem(param.Name);
+                            listViewRow.SubItems.Add(param.Value != null ? param.Value.ToString() : string.Empty);
+                            listViewRow.Tag = param.Value ?? string.Empty;
+                            lvReportParameters.Items.Add(listViewRow);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Error while fetching report parameters for template.");
+                        lvReportParameters.Items.Clear();
+                    }
+
+                    cbReportTemplate.Enabled = true;
+                }
             }
 
-             lvReportParameters.Enabled = btnAddParameter.Enabled = hasReportParameters;
+            lvReportParameters.Enabled = hasReportParameters;
         }
 
+        private void lvReportParameters_ItemActivate(object sender, EventArgs e)
+        {
+            if (lvReportParameters.SelectedItems[0] is ListViewItem item)
+            {
+                DefineReportParameterDialog defParamDialog = new DefineReportParameterDialog(item.Text, item.Tag);
+                if (defParamDialog.ShowDialog() == DialogResult.OK)
+                {
+                    item.SubItems.Clear();
+                    item.Name = defParamDialog.ParameterName;
+                    item.Text = defParamDialog.ParameterName;
+                    item.SubItems.Add(defParamDialog.ParameterValue.ToString());
+                    item.Tag = defParamDialog.ParameterValue;
+
+                }
+            }
+        }
     }
 }

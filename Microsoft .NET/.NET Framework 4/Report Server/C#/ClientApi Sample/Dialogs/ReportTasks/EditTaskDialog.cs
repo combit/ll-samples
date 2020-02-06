@@ -2,6 +2,7 @@
 using combit.ReportServer.ClientApi.Objects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ClientApiExample.Dialogs
@@ -170,14 +171,89 @@ namespace ClientApiExample.Dialogs
         private void cbReportTemplates_SelectedIndexChanged(object sender, EventArgs e)
         {
             // When the report template has no report parameters to specify, disable the corresponding controls
-            ReportTemplate reportTemplate = cbReportTemplates.SelectedItem as ReportTemplate;
             bool hasReportParameters = false;
-            if (reportTemplate != null)
+            if (cbReportTemplates.SelectedItem is ReportTemplate reportTemplate)
             {
                 hasReportParameters = reportTemplate.HasParameters;
             }
 
-            chkSetReportParameters.Enabled = lvReportParameters.Enabled = btnAddParameter.Enabled = hasReportParameters;
+            LoadParameterListAsync();
+            loadedFromTemplateLabel.Visible = false;
+            chkSetReportParameters.Enabled = hasReportParameters;
+        }
+
+        private async void LoadParameterListAsync()
+        {
+            lvReportParameters.Items.Clear();
+            if (cbReportTemplates.SelectedItem is ReportTemplate template)
+            {
+                if (template.HasParameters)
+                {
+                    chkSetReportParameters.Enabled = true;
+                    lvReportParameters.Items.Add("Loading...");
+
+                    IEnumerable<ReportDataParameter> parameters = new List<ReportDataParameter>();
+
+                    if (_selectedTask != null && _selectedTask.ReportTemplateId == template.Id)
+                    {
+                        // Load Parameters from Task. !They may be different from the templates parameters!
+                        parameters = await _selectedTask.GetParametersAsync();
+                    }
+                    else
+                    {
+                        // Parameters are loaded from template.
+                        PreparedReport preparedExport = _rsClient.Exporter.PrepareExport(template.Id, template.DefaultExportProfileId);
+                        parameters = await preparedExport.FetchReportParameters();
+                        loadedFromTemplateLabel.Visible = true;
+                    }
+
+                    // Remove Loading... Item from ListView 
+                    lvReportParameters.Items.Clear();
+
+                    foreach (ReportDataParameter param in parameters)
+                    {
+                        if (param.Choices.Count() != 0 && param.SelectMultiple)
+                        {
+                            param.Value = param.Choices.Select(choice => choice.Value).ToArray();
+                        }
+
+                        ListViewItem listViewRow = new ListViewItem(param.Name);
+                        listViewRow.SubItems.Add(param.Value != null ? param.Value.ToString() : string.Empty);
+                        bool shouldUseDefault = param == null || (param.Value is string s && String.IsNullOrEmpty(s));
+                        listViewRow.SubItems.Add(shouldUseDefault.ToString());
+                        listViewRow.Tag = param.Value ?? string.Empty;
+                        lvReportParameters.Items.Add(listViewRow);
+                    }
+                }
+            }
+        }
+
+        private void lvReportParameters_ItemActivate(object sender, EventArgs e)
+        {
+            if (lvReportParameters.SelectedItems[0] is ListViewItem item)
+            {
+                DefineReportParameterDialog defParamDialog = new DefineReportParameterDialog(item.Text, item.Tag, true);
+                if (defParamDialog.ShowDialog() == DialogResult.OK)
+                {
+                    item.SubItems.Clear();
+                    item.Name = defParamDialog.ParameterName;
+                    item.Text = defParamDialog.ParameterName;
+                    item.SubItems.Add((defParamDialog.ParameterValue ?? "<Default>").ToString());
+                    item.SubItems.Add(defParamDialog.ParameterUseDefaultValue.ToString());
+                    item.Tag = defParamDialog.ParameterValue;
+                }
+            }
+        }
+
+        private void lvReportParameters_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                foreach (ListViewItem item in lvReportParameters.SelectedItems)
+                {
+                    lvReportParameters.Items.Remove(item);
+                }
+            }
         }
     }
 }

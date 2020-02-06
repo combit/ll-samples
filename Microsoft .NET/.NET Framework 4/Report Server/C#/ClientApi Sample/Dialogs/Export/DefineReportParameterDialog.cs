@@ -24,6 +24,30 @@ namespace ClientApiExample.Dialogs
             }
         }
 
+        // Constructor for editing existing Parameter 
+        public DefineReportParameterDialog(string ParameterName, object ParameterValue, bool allowDefaultValue = false) : this(allowDefaultValue)
+        {
+            this.ParameterName = ParameterName;
+            txtName.Text = ParameterName;
+            this.ParameterValue = ParameterValue;
+
+            if (ParameterValue is DateTime d)
+            {
+                tabControl1.SelectedTab = tabUseDateValue;
+                dateTimePicker.Value = d;
+            }
+            else if (ParameterValue is string[] a)
+            {
+                tabControl1.SelectedTab = tabUseMultipleValues;
+                txtMultiValue.Text = String.Join("\r\n", a);
+            }
+            else
+            {
+                tabControl1.SelectedTab = tabUseSingleValue;
+                txtSingleValue.Text = ParameterValue != null ? ParameterValue.ToString() : string.Empty;
+            }
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtName.Text))
@@ -37,7 +61,7 @@ namespace ClientApiExample.Dialogs
             {
                 if (String.IsNullOrEmpty(txtSingleValue.Text))
                 {
-                    MessageBox.Show("Please enter a isngle value.");
+                    MessageBox.Show("Please enter a single value.");
                     return;
                 }
                 ParameterValue = txtSingleValue.Text;
@@ -49,13 +73,13 @@ namespace ClientApiExample.Dialogs
                     MessageBox.Show("Please enter at least one value.");
                     return;
                 }
-                ParameterValue = txtSingleValue.Text.Split('\n');   // parameter value type is string[]!
+                ParameterValue = txtMultiValue.Text.Split('\n');   // parameter value type is string[]!
             }
             else if (tabControl1.SelectedTab == tabUseDateValue)  // Date Value
             {
-                if (String.IsNullOrEmpty(txtSingleValue.Text))
+                if (dateTimePicker.Value == null)
                 {
-                    MessageBox.Show("Please enter a isngle value.");
+                    MessageBox.Show("Please enter a date value.");
                     return;
                 }
                 ParameterValue = dateTimePicker.Value;

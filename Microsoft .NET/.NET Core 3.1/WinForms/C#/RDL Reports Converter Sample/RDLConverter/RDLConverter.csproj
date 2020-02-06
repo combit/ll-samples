@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\combit.ListLabel.RdlConverter\combit.ListLabel.RdlConverter.csproj">
+      <Private>true</Private>
+      <Aliases>global</Aliases>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="combit.ListLabel25">
+      <HintPath>..\..\..\..\Assemblies\combit.ListLabel25.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+ <ItemGroup>
+   <Compile Update="Form1Ressources.Designer.cs">
+     <DesignTime>True</DesignTime>
+     <AutoGen>True</AutoGen>
+     <DependentUpon>Form1Ressources.resx</DependentUpon>
+   </Compile>
+ </ItemGroup>
+
+ <ItemGroup>
+   <EmbeddedResource Update="Form1Ressources.resx">
+     <Generator>PublicResXFileCodeGenerator</Generator>
+     <LastGenOutput>Form1Ressources.Designer.cs</LastGenOutput>
+   </EmbeddedResource>
+ </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GMap.NET.Windows" Version="1.9.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
+  </ItemGroup>
+
+<ItemGroup>
+ <Reference Include="combit.ListLabel25">
+   <HintPath>..\..\..\..\Assemblies\combit.ListLabel25.dll</HintPath>
+ </Reference>
+ <Reference Include="GMap.NET.Core">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7.1\lib\net20\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7.1\lib\net20\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
+</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MapsDesignerObject\MapsDesignerObject.csproj" />
+  </ItemGroup>
+</Project>
