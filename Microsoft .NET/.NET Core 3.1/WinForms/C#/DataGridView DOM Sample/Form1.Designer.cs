@@ -147,6 +147,7 @@
             // 
             // label3
             // 
+			this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(44, 21);
             this.label3.Name = "label3";
@@ -166,6 +167,7 @@
             // 
             // label6
             // 
+			this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Location = new System.Drawing.Point(44, 41);
             this.label6.Name = "label6";
@@ -196,7 +198,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(333, 13);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Information: right click on the columnname to enable/disable columns";
+            this.label7.Text = "Right click on the columnname to enable/disable columns";
             // 
             // Form1
             // 

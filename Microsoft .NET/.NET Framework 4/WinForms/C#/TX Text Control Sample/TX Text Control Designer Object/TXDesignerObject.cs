@@ -224,7 +224,7 @@ namespace TXTextDesignerObject
                 usedHeight = e.AvailableSpace.Height;
             }
             
-            e.IdealHeight = _calculatedHeightInTable = usedHeight;
+            e.IdealHeight = _calculatedHeightInTable = Math.Max(usedHeight, e.MinimalHeight);
 
             //System.Diagnostics.Debug.WriteLine(string.Format("<<OnGetFieldHeightInformation.MinimalHeight: {0} - OnGetFieldHeightInformation.IdealHeight: {1}", e.MinimalHeight, e.IdealHeight));
         }

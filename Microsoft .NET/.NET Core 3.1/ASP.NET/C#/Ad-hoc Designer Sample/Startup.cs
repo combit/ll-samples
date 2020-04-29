@@ -48,7 +48,7 @@ namespace AdhocDesignerSample
                 options.AllowSynchronousIO = true;
             });
 
-            services.AddAdhocDesigner(c => { });
+            services.AddAdhocDesigner();
 
             services.AddMvc().AddNewtonsoftJson();
 
@@ -93,7 +93,7 @@ namespace AdhocDesignerSample
 
             app.UseAuthorization();
 
-            app.UseAdhocDesigner();
+            app.UseAdhocDesigner(c => { });
 
             app.UseEndpoints(endpoints =>
             {

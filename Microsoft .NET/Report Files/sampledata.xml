@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Invoices>
 	<Invoice>
-		<ShipAddress>Untere Laube 30</ShipAddress>
+		<ShipAddress>B&#252;cklestr. 3-5</ShipAddress>
 		<ShipCity>Konstanz</ShipCity>
-		<ShipPostalCode>78462</ShipPostalCode>
+		<ShipPostalCode>78467</ShipPostalCode>
 		<ShipCountry>Germany</ShipCountry>
 		<CustomerID>00001</CustomerID>
 		<CustomerName>combit</CustomerName>
-		<Address>Untere Laube 30</Address>
+		<Address>B&#252;cklestr. 3-5</Address>
 		<City>Konstanz</City>
-		<PostalCode>78462</PostalCode>
+		<PostalCode>78467</PostalCode>
 		<Country>Germany</Country>
 		<OrderID>10692</OrderID>
 		<OrderDate>2014-10-03</OrderDate>

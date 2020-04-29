@@ -107,7 +107,7 @@ object Form1: TForm1
   end
   object FDConnectionNorthwind: TFDConnection
     Params.Strings = (
-      'Database=C:\Program Files (x86)\combit\LL25\Beispiele\NWIND.MDB'
+      'Database=..\..\..\..\NWIND.MDB'
       'DriverID=MSAcc')
     FetchOptions.AssignedValues = [evCursorKind]
     FetchOptions.CursorKind = ckStatic
