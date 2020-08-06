@@ -81,10 +81,10 @@ begin
       tmp := registry.ReadString('LL' + IntToStr(LL.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
       if (tmp[Length(tmp)] = '\') then
       begin
-        workingPath := tmp + 'Delphi\';
+        workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';
       end
       else
-        workingPath := tmp + '\Delphi\';
+        workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\';
 
         registry.CloseKey();
 

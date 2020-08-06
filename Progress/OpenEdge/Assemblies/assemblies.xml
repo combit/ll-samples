@@ -23,6 +23,6 @@
 <assembly name="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
 <assembly name="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
 <assembly name="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
-<assembly name="combit.ListLabel25, Version=25.2.7418.20890, Culture=neutral, PublicKeyToken=a7a30592cb4a94be"/>
+<assembly name="combit.ListLabel25, Version=25.3.7515.24133, Culture=neutral, PublicKeyToken=a7a30592cb4a94be"/>
 <assembly name="TasteITConsulting.ListLabel25, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
 </references>

@@ -92,11 +92,11 @@ begin
 			tmp := registry.ReadString('LL25SampleDir');
 			if (tmp[Length(tmp)] = '\') then
 				begin
-					tmp := tmp + 'Delphi\Viewer Example\';
+					tmp := tmp + 'Delphi\BDE (Legacy)\Samples\Viewer Example\';
 				end
 			else
-					tmp := tmp + '\Delphi\Viewer Example\';
-		  
+					tmp := tmp + '\Delphi\BDE (Legacy)\Samples\Viewer Example\';
+
 			registry.CloseKey();
 
 		end;
