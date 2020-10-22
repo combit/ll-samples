@@ -16,7 +16,7 @@ IF !FILE('llform.scx')
 ENDIF
 
 DO api.prg
-DO cmbtll25.prg
+DO cmbtll26.prg
 USE ARTICLE
 GO TOP
 

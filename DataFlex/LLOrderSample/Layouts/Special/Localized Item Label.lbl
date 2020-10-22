@@ -1,7 +1,7 @@
 ﻿[Label description]
 [Description]
  Text=Item label with picture
- FileVersion=15
+ FileVersion=16
  RootTable=
  Units=SCM-Units
  Metric=3
@@ -15,7 +15,7 @@
  RepresentationCode.PhantomSpace=8203
  RepresentationCode.LockNextChar=8288
  RepresentationCode.ExprSep=164
- LCID=3079
+ LCID=1031
  UserVars.ManualSortOrder=1
  CreatedByCallFrom=vdfvm19.dll
 [Layout]
@@ -229,7 +229,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -508,6 +508,9 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
+   LL.PrintJobLCID=PrintLanguage
    LL.ProjectDescription=Item label with picture
    VDF.Report.Relation=                                                                                                                                                                                                                                                               
    VDF.Report.SortOrder=1
@@ -515,7 +518,7 @@
    }
   }
 [UsedIdentifiers]
- Variables=Invt.Description;Invt.Item_ID;Invt.Unit_Price
+ Variables=Invt.Description;Invt.Item_ID;Invt.Unit_Price;PrintLanguage
  Fields=
  ChartFields=
 [PageLayouts]
@@ -581,5 +584,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Special\Localized Item Label.lbl
+   }
+  [Subreports]
+   {
    }
   }

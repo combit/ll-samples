@@ -1,5 +1,5 @@
-﻿Imports combit.ListLabel25
-Imports combit.ListLabel25.Repository
+﻿Imports combit.Reporting
+Imports combit.Reporting.Repository
 
 Namespace WebReporting
     ' D:   Liefert eine Seite mit einer HTML/Javascript-Komponente, die den Start des Web Designers auf dem Client auslöst.
@@ -35,7 +35,7 @@ Namespace WebReporting
 
                     Me.DesignerControl1.ParentComponent = LL
                 End If
-            Catch ex As combit.ListLabel25.ListLabelException
+            Catch ex As combit.Reporting.ListLabelException
                 Response.Write(ex.Message)
                 LL.Dispose()
             End Try

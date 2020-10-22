@@ -1,7 +1,7 @@
 Imports System.Collections
 Imports System.Windows.Forms
-Imports combit.ListLabel25.Dom
-Imports combit.ListLabel25
+Imports combit.Reporting.Dom
+Imports combit.Reporting
 Imports System.IO
 Imports System.ComponentModel
 Imports System.Collections.Generic
@@ -140,7 +140,7 @@ Public Class ListLabelDomTreeView
                 Next
 
             End If
-        ElseIf propertyType.IsSubclassOf(GetType(CollectionBase)) Then
+        ElseIf (GetType(IEnumerable(Of DomItem)).IsAssignableFrom(propertyType)) Then
             Dim propertyValue As Object = pd.GetValue(parentNode.Tag)
 
             Dim collection As ICollection = TryCast(propertyValue, ICollection)
@@ -158,7 +158,7 @@ Public Class ListLabelDomTreeView
                     For Each [property] As PropertyDescriptor In Me.GetProperties(obj)
                         Me.AddNode([property], objNode)
                     Next
-                ElseIf obj.[GetType]().IsSubclassOf(GetType(CollectionBase)) Then
+                ElseIf obj.[GetType]().IsSubclassOf(GetType(IEnumerable(Of DomItem))) Then
                     Dim childCollection As ICollection = TryCast(obj, ICollection)
 
                     For Each childObj As Object In childCollection

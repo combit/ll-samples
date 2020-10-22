@@ -20,9 +20,9 @@ Partial Class Form1
     ''' </summary>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.listLabel1 = New combit.ListLabel25.ListLabel(Me.components)
+        Me.listLabel1 = new combit.Reporting.ListLabel(Me.components)
         Me.ofd = New System.Windows.Forms.OpenFileDialog()
-        Me.listLabelRTFControl1 = New combit.ListLabel25.ListLabelRTFControl(Me.components)
+        Me.listLabelRTFControl1 = new combit.Reporting.ListLabelRTFControl(Me.components)
         Me.button1 = New System.Windows.Forms.Button()
         Me.button3 = New System.Windows.Forms.Button()
         Me.button2 = New System.Windows.Forms.Button()
@@ -32,7 +32,7 @@ Partial Class Form1
         '
         Me.listLabel1.AutoPrinterSettingsStream = Nothing
         Me.listLabel1.AutoProjectStream = Nothing
-        Me.listLabel1.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
+        Me.listLabel1.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
         Me.listLabel1.DrilldownAvailable = True
         Me.listLabel1.EMFResolution = 100
         Me.listLabel1.FileRepository = Nothing
@@ -41,7 +41,7 @@ Partial Class Form1
         Me.listLabel1.MaxRTFVersion = 1280
         Me.listLabel1.PhantomSpace = 8203
         Me.listLabel1.PreviewControl = Nothing
-        Me.listLabel1.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100
+        Me.listLabel1.Unit = combit.Reporting.LlUnits.Millimeter_1_100
         Me.listLabel1.UseHardwareCopiesForLabels = False
         Me.listLabel1.UseTableSchemaForDesignMode = False
         '
@@ -106,8 +106,8 @@ Partial Class Form1
 
     End Sub
     Private WithEvents ofd As System.Windows.Forms.OpenFileDialog
-    Private WithEvents listLabelRTFControl1 As combit.ListLabel25.ListLabelRTFControl
-    Private WithEvents listLabel1 As combit.ListLabel25.ListLabel
+    Private WithEvents listLabelRTFControl1 As combit.Reporting.ListLabelRTFControl
+    Private WithEvents listLabel1 As combit.Reporting.ListLabel
     Private WithEvents button1 As System.Windows.Forms.Button
     Private WithEvents button3 As System.Windows.Forms.Button
     Private WithEvents button2 As System.Windows.Forms.Button

@@ -8,8 +8,8 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using System.Xml;
-using combit.ListLabel25;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting;
+using combit.Reporting.DataProviders;
 using DataBind.GenericList;
 using Microsoft.Win32;
 
@@ -508,6 +508,7 @@ namespace DataBinding
             OleDbCommand cmd = CreateOleDbCommand();
 
             DbCommandSetDataProvider provider = new DbCommandSetDataProvider();
+			provider.MinimalSelect = false;
             provider.AddCommand(cmd, "Products");
 
             try
@@ -547,6 +548,7 @@ namespace DataBinding
 
             OleDbCommand cmd = CreateOleDbCommand();
             DbCommandSetDataProvider provider = new DbCommandSetDataProvider();
+			provider.MinimalSelect = false;
             provider.AddCommand(cmd, "Products");
 
             try

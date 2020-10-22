@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting.DataProviders;
 using System.IO;
 using System.Runtime.Serialization;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace combit.ListLabel25.Samples
+namespace combit.Reporting.Samples
 {
     // US:  This sample class implements a simple data provider for CSV files (comma separated values).
     //      It can be used as template for custom IDataProvider implementations. In order to keep the

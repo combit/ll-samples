@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace combit.ListLabel25.Samples
+namespace combit.Reporting.Samples
 {
     static class Program
     {

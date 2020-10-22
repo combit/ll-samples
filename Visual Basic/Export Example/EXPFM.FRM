@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C19}#25.0#0"; "cmll25o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C1A}#26.0#0"; "cmll26o.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form Form1 
    Caption         =   "List & Label Quiet Export Sample"
@@ -229,7 +229,7 @@ Private Sub Form_Load()
 ' Copyright (C) combit GmbH
 '
 '--------------------------------------------------------------------------------------
-' File   : export.vbp, expfm.frm, cmll25.bas
+' File   : export.vbp, expfm.frm, cmll26.bas
 ' Module : export sample
 ' Descr. : D: Dieses Beispiel demonstriert den Export ohne Benutzerinteraktion.
 '          US: This example demonstrates an export without user interaction.
@@ -277,32 +277,28 @@ Case 1:
           FileFilter = "*.MHT"
           FileName = "export.mht"
           ExporterName = "MHTML"
-Case 2:
-          FileFilter = "*.HTM"
-          FileName = "export.htm"
-          ExporterName = "HTML"
         
-Case 3:
+Case 2:
           FileFilter = "*.RTF"
           FileName = "export.rtf"
           ExporterName = "RTF"
         
-Case 4:
+Case 3:
           FileFilter = "*.XML"
           FileName = "export.xml"
           ExporterName = "XML"
         
-Case 5:
+Case 4:
           FileFilter = "*.TIF"
           FileName = "export.tif"
           ExporterName = "PICTURE_MULTITIFF"
         
-Case 6:
+Case 5:
           FileFilter = "*.TXT"
           FileName = "export.txt"
           ExporterName = "TXT"
         
-Case 7:
+Case 6:
           FileFilter = "*.XLS"
           FileName = "export.xls"
           ExporterName = "XLS"

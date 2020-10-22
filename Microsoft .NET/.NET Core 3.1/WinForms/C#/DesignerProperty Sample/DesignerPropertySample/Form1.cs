@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using combit.ListLabel25;
+using combit.Reporting;
 using System.Text.RegularExpressions;
 using System.Collections.ObjectModel;
 using combit.ListLabel.DesignerExtensions;

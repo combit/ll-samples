@@ -4,7 +4,7 @@ Imports System.Linq
 Imports System.Web
 Imports System.Web.Security
 Imports System.Web.SessionState
-Imports combit.ListLabel25
+Imports combit.Reporting
 
 Namespace ASP.NET_Web_Services
     Public Class [Global]

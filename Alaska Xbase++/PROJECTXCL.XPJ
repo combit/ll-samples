@@ -1,0 +1,63 @@
+[PROJECT]
+	DEBUG         = yes
+	VERSION       = 2.0
+	LIB           = dll
+	INTERMEDIATE_DEBUG       = .debug
+	INTERMEDIATE_RELEASE     = .release
+   COMPILE       = xpp
+	COMPILE_FLAGS = /ga /wi /wl /wu /q /w /idll
+	DEBUG_SAVE    = yes
+	GUI           = yes
+	LINKER        = alink
+	LINK_FLAGS    = dll\xclListLabel26.lib xclass.lib
+	RC_COMPILE    = arc
+	RC_FLAGS      = -v
+	PROJECT.XPJ
+
+[PROJECT.XPJ]
+   xclINVOICE.EXE
+   xclREPORTCONTAINER.exe
+   xclSIMPLE1.EXE
+   xclSIMPLE2.EXE
+   xclSIMPLEArray.EXE
+
+[xclINVOICE.EXE]
+// $START-AUTODEPEND
+    LULDEMO.obj
+    LULMENU.obj
+// $STOP-AUTODEPEND
+    xclInvoice Example\LULDEMO.PRG
+    xclInvoice Example\LULMENU.PRG
+
+[xclREPORTCONTAINER.EXE]
+// $START-AUTODEPEND
+    dialog.obj
+    main.obj
+// $STOP-AUTODEPEND
+    xclReport Container\dialog.prg
+    xclReport Container\main.PRG
+
+[xclSIMPLE1.EXE]
+// $START-AUTODEPEND
+    LULDEMO.obj
+    LULMENU.obj
+// $STOP-AUTODEPEND
+    xclSimple1 Example\LULDEMO.PRG
+    xclSimple1 Example\LULMENU.PRG
+
+[xclSIMPLE2.EXE]
+// $START-AUTODEPEND
+    LULDEMO.obj
+    LULMENU.obj
+// $STOP-AUTODEPEND
+    xclSimple2 Example\LULDEMO.PRG
+    xclSimple2 Example\LULMENU.PRG
+
+[xclSIMPLEArray.EXE]
+// $START-AUTODEPEND
+    LULDEMO.obj
+    LULMENU.obj
+// $STOP-AUTODEPEND
+    xclSimpleArray Example\LULDEMO.PRG
+    xclSimpleArray Example\LULMENU.PRG
+

@@ -1,12 +1,12 @@
 using System;
-using combit.ListLabel25;
-using combit.ListLabel25.Web;
+using combit.Reporting;
+using combit.Reporting.Web;
 using System.Web.Routing;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
-using combit.ListLabel25.Web.WebDesigner.Server;
+using combit.Reporting.Web.WindowsClientWebDesigner.Server;
 
 namespace WebReporting
 {
@@ -33,21 +33,21 @@ namespace WebReporting
             //D: WebAPI des Html5Viewers registrieren. 
             //US: Register the viewer API
             Html5ViewerConfig.RegisterRoutes(RouteTable.Routes);
-            WebDesignerConfig.RegisterRoutes(RouteTable.Routes);
+            WindowsClientWebDesignerConfig.RegisterRoutes(RouteTable.Routes);
 
             // D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
             // US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WebDesignerConfig.WebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL25WebDesignerSetup.exe");
+            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL26WebDesignerSetup.exe");
 
             // D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
-            //      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
+            //      WindowsClientWebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
             // US:  For Forms- and Windows authentication, the Web Designer can automatically grab the required information (e.g. login cookies).
-            //      WebDesignerAuthenticationModes.None allows to use no authentication at all.
-            WebDesignerConfig.AuthenticationMode = WebDesignerAuthenticationModes.Automatic;
+            //      WindowsClientWebDesignerAuthenticationModes.None allows to use no authentication at all.
+            WindowsClientWebDesignerConfig.AuthenticationMode = WindowsClientWebDesignerAuthenticationModes.Automatic;
 
             // D: Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
             // US: Set license key for List & Label (client + server). If not set, a license error will be displayed on non-development machines.
-            // WebDesignerConfig.LicensingInfo = "insert license here";
+            // WindowsClientWebDesignerConfig.LicensingInfo = "insert license here";
 
             _reportsPath = Server.MapPath("~/reports/");
 

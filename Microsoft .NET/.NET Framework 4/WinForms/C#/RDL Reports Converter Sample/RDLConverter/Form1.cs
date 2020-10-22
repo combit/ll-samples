@@ -3,10 +3,10 @@ using System.Data.OleDb;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
-using combit.ListLabel25;
-using combit.ListLabel25.Converters;
+using combit.Reporting;
+using combit.Reporting.Converters;
 using Microsoft.Win32;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting.DataProviders;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
 
             installKey = Registry.CurrentUser.CreateSubKey(@"Software\combit\cmbtll");
             if (installKey != null)
-                sampleDir = (string)installKey.GetValue("LL25SampleDir", string.Empty);
+                sampleDir = (string)installKey.GetValue("LL26SampleDir", string.Empty);
 
             if (!sampleDir.EndsWith("\\"))
                 sampleDir += "\\";

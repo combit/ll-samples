@@ -1,5 +1,5 @@
-using combit.ListLabel25;
-using combit.ListLabel25.Dom;
+using combit.Reporting;
+using combit.Reporting.Dom;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -109,13 +109,13 @@ namespace CodeDomSample
             //D: Visual Studio Kommentare für List & Label laden
             //US: Load Visual Studio comments
 
-            if (!System.IO.File.Exists(@"..\..\..\Assemblies\combit.ListLabel25.xml"))
+            if (!System.IO.File.Exists(@"..\..\..\Assemblies\combit.Reporting.xml"))
             {
                 return;
             }
 
             XmlDocument helpDoc = new XmlDocument();
-            helpDoc.Load(@"..\..\..\Assemblies\combit.ListLabel25.xml");
+            helpDoc.Load(@"..\..\..\Assemblies\combit.Reporting.xml");
 
             XmlNodeList nodeList = helpDoc.SelectNodes("/doc/members/member");
 
@@ -160,8 +160,8 @@ namespace CodeDomSample
             }
 
             this.llDomTreeView.Select();
-            this.GenerateCodeToolStrip.Enabled = (_selectedNode.Tag is DomItem | _selectedNode.Tag is DomCollectionBase);
-            this.GenerateCodeToolStrip2.Enabled = (_selectedNode.Tag is DomItem | _selectedNode.Tag is DomCollectionBase);
+            this.GenerateCodeToolStrip.Enabled = (_selectedNode.Tag != null) && (_selectedNode.Tag is DomItem | typeof(IEnumerable<DomItem>).IsAssignableFrom(_selectedNode.Tag.GetType()));
+            this.GenerateCodeToolStrip2.Enabled = GenerateCodeToolStrip.Enabled;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -211,7 +211,7 @@ namespace CodeDomSample
 
         private void GenerateCode(object item)
         {
-            if ((item is DomItem) | (item is DomCollectionBase))
+            if ((item is DomItem) | (typeof(IEnumerable<DomItem>).IsAssignableFrom(item.GetType())))
             {
                 try
                 {

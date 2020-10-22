@@ -21,7 +21,7 @@
 
 // D:   Laden des Header-Files fuer die Deklaration
 // US: load	the header file for declaration
-#include "..\cmbtls25.hx"
+#include "..\cmbtls26.hx"
 
 
 /////////////////////////////////////////////////////////////////////////////

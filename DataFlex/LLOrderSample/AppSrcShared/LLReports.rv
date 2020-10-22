@@ -150,7 +150,7 @@ Object oLLReports is a cListLabelReportView
         // Support expandable Regions, interactive Sorting and Report Parameters
         Set pbUseExpandableRegions to True
         Set pbUseInteractiveSorting to True
-        Set pbUseReportParameter to True        
+        Set pbUseReportParameter to True
         
         // For augmentation
         Procedure DefineAllFields
@@ -343,7 +343,6 @@ Object oLLReports is a cListLabelReportView
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.Level"             "1" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.OwnerPassword"                "" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.UserPassword"                 "" to iRet
-            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.FontMode"                     "5" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.ExcludedFonts"                "" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.CompressStreamMethod"         "1" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.JPEGQuality"                  "2" to iRet

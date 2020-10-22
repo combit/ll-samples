@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
-using combit.ListLabel25;
+using combit.Reporting;
 
 namespace unicode
 {

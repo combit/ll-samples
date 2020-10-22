@@ -21,7 +21,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.saveFileDialog = New System.Windows.Forms.SaveFileDialog()
-        Me.LL = New combit.ListLabel25.ListLabel(Me.components)
+        Me.LL = new combit.Reporting.ListLabel(Me.components)
         Me.label5 = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
         Me.formatCb = New System.Windows.Forms.ComboBox()
@@ -47,7 +47,7 @@ Partial Class Form1
         Me.LL.AutoProjectStream = Nothing
         Me.LL.AutoShowSelectFile = False
         Me.LL.CompressStorage = True
-        Me.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
+        Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
         Me.LL.DrilldownAvailable = True
         Me.LL.EMFResolution = 100
         Me.LL.FileRepository = Nothing
@@ -56,7 +56,7 @@ Partial Class Form1
         Me.LL.MaxRTFVersion = 256
         Me.LL.PhantomSpace = 8203
         Me.LL.PreviewControl = Nothing
-        Me.LL.Unit = combit.ListLabel25.LlUnits.Inch_1_1000
+        Me.LL.Unit = combit.Reporting.LlUnits.Inch_1_1000
         Me.LL.UseHardwareCopiesForLabels = False
         Me.LL.UseTableSchemaForDesignMode = False
         '
@@ -88,7 +88,7 @@ Partial Class Form1
         Me.formatCb.DropDownHeight = 160
         Me.formatCb.IntegralHeight = False
         Me.formatCb.ItemHeight = 13
-        Me.formatCb.Items.AddRange(New Object() {"PDF", "MHTML", "HTML", "RTF", "XML", "Multi-TIFF", "Text", "XLS", "XLSX", "XHTML", "Preview", "DOCX"})
+        Me.formatCb.Items.AddRange(New Object() {"PDF", "MHTML", "RTF", "XML", "Multi-TIFF", "Text", "XLS", "XLSX", "XHTML", "Preview", "DOCX"})
         Me.formatCb.Location = New System.Drawing.Point(69, 19)
         Me.formatCb.Name = "formatCb"
         Me.formatCb.Size = New System.Drawing.Size(327, 21)
@@ -186,7 +186,7 @@ Partial Class Form1
 
     End Sub
     Private WithEvents saveFileDialog As System.Windows.Forms.SaveFileDialog
-    Private WithEvents LL As combit.ListLabel25.ListLabel
+    Private WithEvents LL As combit.Reporting.ListLabel
     Private WithEvents label5 As System.Windows.Forms.Label
     Private WithEvents groupBox1 As System.Windows.Forms.GroupBox
     Private WithEvents formatCb As System.Windows.Forms.ComboBox

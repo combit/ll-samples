@@ -1,4 +1,4 @@
-﻿using combit.ListLabel25.AdhocDesign.Web;
+﻿using combit.Reporting.AdhocDesign.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -17,7 +17,7 @@ namespace AdhocDesignerSample
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] { "AdhocDesignerTest.Controllers", "combit.ListLabel25.AdhocDesign.Web.Controllers" }
+                namespaces: new string[] { "AdhocDesignerTest.Controllers", "combit.Reporting.AdhocDesign.Web.Controllers" }
             );
         }
     }

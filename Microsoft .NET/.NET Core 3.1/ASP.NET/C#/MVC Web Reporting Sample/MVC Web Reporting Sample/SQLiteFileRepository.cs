@@ -1,4 +1,4 @@
-﻿using combit.ListLabel25.Repository;
+﻿using combit.Reporting.Repository;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;

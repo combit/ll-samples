@@ -1,8 +1,8 @@
 Imports System.Data.OleDb
 Imports System.IO
 Imports System.Windows.Forms
-Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
+Imports combit.Reporting
+Imports combit.Reporting.DataProviders
 Imports Microsoft.Win32
 
 Public Partial Class Form1
@@ -122,21 +122,13 @@ Public Partial Class Form1
 
             Case 2
                 If True Then
-                    _fileFilter = "HTML Files|*.HTM"
-                    _exporterTarget = LlExportTarget.Html
-                    _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) & ".htm"
-                    Exit Select
-                End If
-
-            Case 3
-                If True Then
                     _fileFilter = "RTF Files|*.RTF"
                     _exporterTarget = LlExportTarget.Rtf
                     _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) & ".rtf"
                     Exit Select
                 End If
 
-            Case 4
+            Case 3
                 If True Then
                     _fileFilter = "XML Files|*.XML"
                     _exporterTarget = LlExportTarget.Xml
@@ -144,7 +136,7 @@ Public Partial Class Form1
                     Exit Select
                 End If
 
-            Case 5
+            Case 4
                 If True Then
                     _fileFilter = "Tiff Files|*.TIF"
                     _exporterTarget = LlExportTarget.MultiTiff
@@ -152,7 +144,7 @@ Public Partial Class Form1
                     Exit Select
                 End If
 
-            Case 6
+            Case 5
                 If True Then
                     _fileFilter = "Text Files|*.TXT"
                     _exporterTarget = LlExportTarget.Text
@@ -160,35 +152,35 @@ Public Partial Class Form1
                     Exit Select
                 End If
 
-            Case 7
+            Case 6
                 If True Then
                     _fileFilter = "Excel Files|*.XLS"
                     _exporterTarget = LlExportTarget.Xls
                     _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) & ".xls"
                     Exit Select
                 End If
-            Case 8
+            Case 7
                 If True Then
                     _fileFilter = "Excel Files|*.XLSX"
                     _exporterTarget = LlExportTarget.Xlsx
                     _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) & ".xlsx"
                     Exit Select
                 End If
-            Case 9
+            Case 8
                 If True Then
                     _fileFilter = "HTML Files|*.HTM"
                     _exporterTarget = LlExportTarget.Xhtml
                     _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) & ".htm"
                     Exit Select
                 End If
-            Case 10
+            Case 9
                 If True Then
                     _fileFilter = "Preview Files|*.LL"
                     _exporterTarget = LlExportTarget.Preview
                     _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) & ".ll"
                     Exit Select
                 End If
-            Case 11
+            Case 10
                 If True Then
                     _fileFilter = "Word Files|*.DOCX"
                     _exporterTarget = LlExportTarget.Docx

@@ -1,8 +1,8 @@
 ﻿Imports System.Data.OleDb
 Imports System.Web.Routing
-Imports combit.ListLabel25
-Imports combit.ListLabel25.Web
-Imports combit.ListLabel25.DataProviders
+Imports combit.Reporting
+Imports combit.Reporting.Web
+Imports combit.Reporting.DataProviders
 Imports System.IO
 
 

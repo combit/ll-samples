@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 
-using combit.ListLabel25;
+using combit.Reporting;
 using TXTextControl;
 using System.IO;
 

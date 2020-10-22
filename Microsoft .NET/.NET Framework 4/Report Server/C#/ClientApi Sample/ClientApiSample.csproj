@@ -13,7 +13,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ClientApiExample</RootNamespace>
     <AssemblyName>ClientApiExample</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -40,15 +40,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel25">
+    <Reference Include="combit.ListLabel26">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.dll</HintPath>
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel25.ReportServerIntegration">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.ReportServerIntegration.dll</HintPath>
+    <Reference Include="combit.ListLabel26.ReportServerIntegration">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.ReportServerIntegration.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ReportServer25.ClientApi">
-      <HintPath>..\..\..\Assemblies\combit.ReportServer25.ClientApi.dll</HintPath>
+    <Reference Include="combit.ReportServer26.ClientApi">
+      <HintPath>..\..\..\Assemblies\combit.ReportServer26.ClientApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>

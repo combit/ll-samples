@@ -6,7 +6,7 @@
 #include "uPrtloop.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "L25"
+#pragma link "L26"
 #pragma resource "*.dfm"
 TfrmPrtloop *frmPrtloop;
 //---------------------------------------------------------------------------

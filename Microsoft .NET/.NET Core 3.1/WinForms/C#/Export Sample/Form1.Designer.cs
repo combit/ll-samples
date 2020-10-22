@@ -38,7 +38,7 @@
             this.formatCb = new System.Windows.Forms.ComboBox();
             this.createButton = new System.Windows.Forms.Button();
             this.selectButton = new System.Windows.Forms.Button();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
+            this.LL = new combit.Reporting.ListLabel(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -120,7 +120,6 @@
             this.formatCb.Items.AddRange(new object[] {
             "PDF",
             "MHTML",
-            "HTML",
             "RTF",
             "XML",
             "Multi-TIFF",
@@ -160,7 +159,7 @@
             this.LL.AutoProjectStream = null;
             this.LL.AutoShowSelectFile = false;
             this.LL.CompressStorage = true;
-            this.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+            this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
             this.LL.DrilldownAvailable = true;
             this.LL.EMFResolution = 100;
             this.LL.FileRepository = null;
@@ -169,7 +168,7 @@
             this.LL.MaxRTFVersion = 256;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Inch_1_1000;
+            this.LL.Unit = combit.Reporting.LlUnits.Inch_1_1000;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
             // 
@@ -218,7 +217,7 @@
         private System.Windows.Forms.ComboBox formatCb;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Button selectButton;
-        private combit.ListLabel25.ListLabel LL;
+        private combit.Reporting.ListLabel LL;
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
     }

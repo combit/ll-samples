@@ -9,4 +9,7 @@
 # Not sure about -Bt
 -Bt 2000
 #
+# if LL runs on the appserver also
+#-assemblies T:\LL26\LLWS\LLPRO\Assemblies
+
 

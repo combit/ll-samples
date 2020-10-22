@@ -2,9 +2,9 @@
 VERSION
 	"CompanyName"      = "DS-Datasoft GmbH && Co.KG"
 	"ProductName"      = "dsListLabel: Xbase++ Connector with Real Data Preview"
-	"ProductVersion"   = "1.0"
-	"FileVersion"      = "1.0.3.008"
+	"ProductVersion"   = "26.0"
+	"FileVersion"      = "26.0.3.008"
 	"FileDescription"  = "dsListLabel: Xbase++ Connector with Real Data Preview"
 	"InternalName"     = "dsListLabel.DLL"
-	"LegalCopyright"   = "Copyright © DS-Datasoft GmbH & Co.KG 2019"
-	"OriginalFilename" = "dsListLabel25RDP.DLL"
+	"LegalCopyright"   = "Copyright © DS-Datasoft GmbH & Co.KG 2020"
+	"OriginalFilename" = "dsListLabel26RDP.DLL"

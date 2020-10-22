@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=Article-list with grouping
- FileVersion=15
+ FileVersion=16
  RootTable=Invt
  Units=SCM-Units
  Metric=3
@@ -376,7 +376,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -507,6 +507,7 @@
 	TableType=List
 	TableID=Invt
 	RelationID=
+	LinkUUID={4D961676-5296-4FA2-913B-9DDFB6767EF0}
 	[GroupHeaderLines]
 	 {
 	 bConcatDataLines=True
@@ -588,10 +589,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	SortOrderID="1"
 	PDFLevel=0
@@ -602,6 +599,7 @@
 	FormulaFilter=True
 	DesignScheme="PROJECT"
 	Animation=""
+	Subreport=False
 	[Body]
 	 {
 	 [Lines]
@@ -2187,10 +2185,6 @@
 		GroupCondition=Left$(Invt.Item_ID,1)
 		ResetSums=
 		OnNewPage=False
-		[OnNewPage]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		PrintRightAfterHeader=False
 		KeepTogether.Group=False
 		LCondition=True
@@ -2395,10 +2389,6 @@
 		GroupCondition=Left$(Invt.Item_ID,3)
 		ResetSums=
 		OnNewPage=False
-		[OnNewPage]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		PrintRightAfterHeader=False
 		KeepTogether.Group=False
 		LCondition=True
@@ -3334,6 +3324,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=Article-list with grouping
    }
   }
@@ -3395,5 +3387,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Item report with grouping.lst
+   }
+  [Subreports]
+   {
    }
   }

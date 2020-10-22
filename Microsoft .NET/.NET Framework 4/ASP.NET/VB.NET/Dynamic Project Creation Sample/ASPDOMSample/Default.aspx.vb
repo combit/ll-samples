@@ -1,8 +1,8 @@
 ﻿Imports System.Data.OleDb
 Imports System.Drawing
 Imports System.IO
-Imports combit.ListLabel25
-Imports combit.ListLabel25.Dom
+Imports combit.Reporting
+Imports combit.Reporting.Dom
 
 Partial Public Class _Default
     Inherits System.Web.UI.Page

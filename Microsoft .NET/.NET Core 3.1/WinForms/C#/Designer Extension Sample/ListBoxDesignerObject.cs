@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-namespace combit.ListLabel25.CSharpSample.DesignerExtensionsSample
+namespace combit.Reporting.CSharpSample.DesignerExtensionsSample
 {
     class ListBoxDesignerObject : DesignerObject
     {

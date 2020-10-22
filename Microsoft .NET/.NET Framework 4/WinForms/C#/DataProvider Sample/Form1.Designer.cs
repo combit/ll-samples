@@ -1,4 +1,4 @@
-﻿namespace combit.ListLabel25.Samples
+﻿namespace combit.Reporting.Samples
 {
     partial class Form1
     {

@@ -1,4 +1,4 @@
-﻿Imports combit.ListLabel25.DataProviders
+﻿Imports combit.Reporting.DataProviders
 
 Namespace WebReporting
     Public Class RepositoryHelper

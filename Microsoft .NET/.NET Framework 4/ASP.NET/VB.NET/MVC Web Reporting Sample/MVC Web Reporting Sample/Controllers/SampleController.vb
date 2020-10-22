@@ -1,7 +1,7 @@
-﻿Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
-Imports combit.ListLabel25.Repository
-Imports combit.ListLabel25.Web.WebDesigner.Server
+﻿Imports combit.Reporting
+Imports combit.Reporting.DataProviders
+Imports combit.Reporting.Repository
+Imports combit.Reporting.Web.WindowsClientWebDesigner.Server
 Imports System.IO
 Imports System.Linq
 Imports System.Net
@@ -315,7 +315,7 @@ Namespace WebReporting.Controllers
 
         ' D:   Wenn keine Instanz dieser Controller-Klasse für den folgenden Code benötigt wird, sollte dieses Event statisch sein.
         ' US:  When no instance of this Controller class is requried for the following code, make this event static.
-        Private Shared Sub Html5Viewer_OnListLabelRequest(sender As Object, e As combit.ListLabel25.Web.ListLabelRequestEventArgs)
+        Private Shared Sub Html5Viewer_OnListLabelRequest(sender As Object, e As combit.Reporting.Web.ListLabelRequestEventArgs)
             Dim repositoryIdOfProject As String = e.ReportName
             Dim LL As New ListLabel()
 
@@ -355,7 +355,7 @@ Namespace WebReporting.Controllers
                 Return Content("The selected project does not exist")
             End If
 
-            Dim options = New WebDesignerOptions()
+            Dim options = New WindowsClientWebDesignerOptions()
 
             ' D:   Lade die zum Report passende Datenquelle.
             '      Der zweite Parameter (forDesign) kann dazu benutzt werden, einen eigenen Provider (z.B. mit der Eig. MinimalSelect = false) für den Designer zu verwenden.

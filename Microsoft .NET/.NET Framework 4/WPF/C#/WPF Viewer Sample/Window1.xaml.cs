@@ -20,7 +20,7 @@ using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.ComponentModel;
-using combit.ListLabel25.Wpf;
+using combit.Reporting.Wpf;
 
 namespace LLViewer
 {

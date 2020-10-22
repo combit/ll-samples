@@ -8,12 +8,12 @@
     <ProjectGuid>{6C13F057-A441-46B0-B926-D3A1F53A38EF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>combit.ListLabel25.Samples</RootNamespace>
+    <RootNamespace>combit.Reporting.Samples</RootNamespace>
     <AssemblyName>CustomDataProvider</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <StartupObject>combit.ListLabel25.Samples.Program</StartupObject>
+    <StartupObject>combit.Reporting.Samples.Program</StartupObject>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <OldToolsVersion>3.5</OldToolsVersion>
   </PropertyGroup>
@@ -43,9 +43,9 @@
     <Import Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel25">
+    <Reference Include="combit.ListLabel26">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.dll</HintPath>
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

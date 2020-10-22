@@ -1,4 +1,4 @@
-﻿using combit.ListLabel25.AdhocDesign.Web;
+﻿using combit.Reporting.AdhocDesign.Web;
 using System.Web.Routing;
 
 namespace AdhocDesignerSample

@@ -34,7 +34,7 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxIdentifiers = new System.Windows.Forms.ComboBox();
-            this.listLabelEditRTFControl = new combit.ListLabel25.ListLabelRTFControl(this.components);
+            this.listLabelEditRTFControl = new combit.Reporting.ListLabelRTFControl(this.components);
             this.serverTextControl1 = new TXTextControl.ServerTextControl();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -125,7 +125,7 @@
         
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
-        private combit.ListLabel25.ListLabelRTFControl listLabelEditRTFControl;
+        private combit.Reporting.ListLabelRTFControl listLabelEditRTFControl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxIdentifiers;
 

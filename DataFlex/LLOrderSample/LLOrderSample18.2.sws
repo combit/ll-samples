@@ -5,4 +5,4 @@ ConfigFile=.\Programs\Config18.2.ws
 [Projects]
 Project0=Order.src
 [Libraries]
-Lib2=..\LLLibrary25.0\LL25-VDF18.2.sws
+Lib2=..\LLLibrary26.0\LL26-VDF18.2.sws

@@ -1,4 +1,4 @@
-﻿using combit.ListLabel25.DataProviders;
+﻿using combit.Reporting.DataProviders;
 using System.Data.OleDb;
 
 namespace AdhocDesignerSample

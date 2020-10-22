@@ -1,4 +1,4 @@
-﻿using combit.ListLabel25.Web;
+﻿using combit.Reporting.Web;
 
 namespace WebReporting.ViewModels
 {

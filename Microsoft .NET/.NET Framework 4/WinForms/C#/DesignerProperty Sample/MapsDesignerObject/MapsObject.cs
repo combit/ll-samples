@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using combit.ListLabel25;
+using combit.Reporting;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using System.Drawing;
@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.ComponentModel;
 using GMap.NET.WindowsForms.Markers;
-using combit.ListLabel25.DesignerExtensions;
+using combit.Reporting.DesignerExtensions;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using System.Runtime.Serialization;

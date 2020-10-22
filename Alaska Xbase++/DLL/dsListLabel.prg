@@ -1,4 +1,4 @@
-																																																																																																																																																																																																																																																																																																																																								/*============================================================================
+/*============================================================================
  File Name:	   dsListLabel.prg
  Author:	 Marcus Herz
  Description:
@@ -27,7 +27,7 @@
 #define __ALIAS		5
 #define __STUFE		6
 
-static scVersion	:= "25"
+static scVersion	:= "26"
 
 #if XPPVER >= 2000840
 	// ab dieser version mit Xbase EXTERN
@@ -1357,7 +1357,7 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 		if IsBlock(::_bTableChange)
 			eval(::_bTableChange, self, true, cChild, cParent )
 		endif
-		eval(::RopBlock, nSelect)
+		eval(::TopBlock, self, nSelect)
 		do while !eval(bEof, nSelect) .and. nError <> LL_ERR_USER_ABORTED .and. (::_nPages == 0 .or. nPage <= ::_nPages)
 			::datalink(0, ,nRek )
 			do while (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA

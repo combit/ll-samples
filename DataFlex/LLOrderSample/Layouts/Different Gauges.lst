@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=Different Gauge types
- FileVersion=15
+ FileVersion=16
  RootTable=LLStaticTable
  Units=SCM-Units
  Metric=3
@@ -303,6 +303,7 @@
 	TableType=List
 	TableID=LLStaticTable
 	RelationID=
+	LinkUUID={3116D2C2-7A96-4E4D-B18B-1D976DC140E9}
 	[DataLines]
 	 {
 	 bKeepTogether=True
@@ -352,10 +353,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	PDFLevel=0
 	PDFText=
@@ -365,6 +362,7 @@
 	FormulaFilter=True
 	DesignScheme="PROJECT"
 	Animation=""
+	Subreport=False
 	[Body]
 	 {
 	 [Lines]
@@ -1793,7 +1791,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -1872,6 +1870,8 @@
   [Parameters]
    {
    LL.ActiveLayout=Standard-Layout
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=Different Gauge types
    }
   }
@@ -1933,5 +1933,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Different Gauges.lst
+   }
+  [Subreports]
+   {
    }
   }

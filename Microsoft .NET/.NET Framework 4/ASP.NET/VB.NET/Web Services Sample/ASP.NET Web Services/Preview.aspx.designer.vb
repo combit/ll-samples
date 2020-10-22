@@ -29,5 +29,5 @@ Partial Public Class Preview
     '''Automatisch generiertes Feld
     '''Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
     '''</remarks>
-    Protected WithEvents Html5ViewerControl1 As Global.combit.ListLabel25.Web.Html5ViewerControl
+    Protected WithEvents Html5ViewerControl1 As Global.combit.Reporting.Web.Html5ViewerControl
 End Class

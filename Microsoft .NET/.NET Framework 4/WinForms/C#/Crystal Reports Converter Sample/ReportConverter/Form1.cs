@@ -3,10 +3,10 @@ using System.Data.OleDb;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
-using combit.ListLabel25;
-using combit.ListLabel25.Converters;
+using combit.Reporting;
+using combit.Reporting.Converters;
 using Microsoft.Win32;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting.DataProviders;
 
 namespace WindowsFormsApplication1
 {

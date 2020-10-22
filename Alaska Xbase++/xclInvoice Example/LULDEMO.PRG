@@ -54,7 +54,7 @@ PROCEDURE CreateMainWindow()
    Local oButton
 
    oDlg := XbpDialog():new()
-   oDlg:title    := "List & Label 25 Xbase++ - Demo"
+   oDlg:title    := "List & Label 26 Xbase++ - Demo"
    oDlg:border   := XBPDLG_DLGBORDER
    oDlg:taskList := .T.
    oDlg:maxButton:= .F.
@@ -127,7 +127,7 @@ STATIC PROCEDURE MenuCreate( oMenuBar )
 RETURN
 
 STATIC Procedure AboutBox()
- ConfirmBox(SetAppWindow() , "List & Label 25 Xbase++ Demo (c) 2019 combit GmbH", "About", XBPMB_OK , XBPMB_INFORMATION+XBPMB_APPMODAL+XBPMB_MOVEABLE )
+ ConfirmBox(SetAppWindow() , "List & Label 26 Xbase++ Demo (c) 2020 combit GmbH", "About", XBPMB_OK , XBPMB_INFORMATION+XBPMB_APPMODAL+XBPMB_MOVEABLE )
 
 
 RETURN

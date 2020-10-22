@@ -30,7 +30,7 @@ Namespace WebReporting
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents Html5ViewerControl1 As Global.combit.ListLabel25.Web.Html5ViewerControl
+        Protected WithEvents Html5ViewerControl1 As Global.combit.Reporting.Web.Html5ViewerControl
         
         '''<summary>
         '''LabelError control.

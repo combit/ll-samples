@@ -2,7 +2,7 @@
 Imports System
 Imports System.Collections.Generic
 Imports System.Text
-Imports combit.ListLabel25
+Imports combit.Reporting
 Imports System.Drawing
 Imports System.Windows.Forms
 Imports System.Drawing.Imaging

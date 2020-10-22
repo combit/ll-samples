@@ -21,15 +21,15 @@ Partial Class DesignerChildForm
     ''' 
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.LL = New combit.ListLabel25.ListLabel(Me.components)
-        Me.designerControl1 = New combit.ListLabel25.DesignerControl()
+        Me.LL = new combit.Reporting.ListLabel(Me.components)
+        Me.designerControl1 = new combit.Reporting.DesignerControl()
         Me.SuspendLayout()
         '
         'LL
         '
         Me.LL.AutoPrinterSettingsStream = Nothing
         Me.LL.AutoProjectStream = Nothing
-        Me.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
+        Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
         Me.LL.DrilldownAvailable = True
         Me.LL.EMFResolution = 100
         Me.LL.FileRepository = Nothing
@@ -38,7 +38,7 @@ Partial Class DesignerChildForm
         Me.LL.MaxRTFVersion = 65280
         Me.LL.PhantomSpace = 8203
         Me.LL.PreviewControl = Nothing
-        Me.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100
+        Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
         Me.LL.UseHardwareCopiesForLabels = False
         Me.LL.UseTableSchemaForDesignMode = False
         '
@@ -62,6 +62,6 @@ Partial Class DesignerChildForm
 
     End Sub
 #End Region
-    Private WithEvents LL As combit.ListLabel25.ListLabel
-    Private WithEvents designerControl1 As combit.ListLabel25.DesignerControl
+    Private WithEvents LL As combit.Reporting.ListLabel
+    Private WithEvents designerControl1 As combit.Reporting.DesignerControl
 End Class

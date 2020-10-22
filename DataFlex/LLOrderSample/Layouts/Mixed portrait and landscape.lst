@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=List & Label Projektdatei
- FileVersion=15
+ FileVersion=16
  RootTable=SalesP
  Units=SCM-Units
  Metric=3
@@ -367,6 +367,7 @@
 	TableType=List
 	TableID=SalesP
 	RelationID=
+	LinkUUID={D5A836C7-223D-4CA6-A1D6-078A1BB5B55A}
 	[GroupHeaderLines]
 	 {
 	 bConcatDataLines=True
@@ -454,10 +455,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	SortOrderID="2"
 	PDFLevel=0
@@ -468,6 +465,7 @@
 	FormulaFilter=True
 	DesignScheme="PROJECT"
 	Animation=""
+	Subreport=False
 	[Body]
 	 {
 	 [Lines]
@@ -740,10 +738,6 @@
 		GroupCondition=
 		ResetSums=
 		OnNewPage=False
-		[OnNewPage]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		PrintRightAfterHeader=False
 		KeepTogether.Group=False
 		LCondition=True
@@ -814,6 +808,7 @@
 	  TableType=List
 	  TableID=OrderHea
 	  RelationID=OrderHea->SalesP
+	  LinkUUID={2C98B876-1270-497A-97DC-08A93531B425}
 	  [GroupHeaderLines]
 	   {
 	   bConcatDataLines=True
@@ -896,10 +891,6 @@
 	  DistanceTop=0
 	  DistanceBottom=0
 	  WrapBefore=False
-	  [WrapBefore]
-	   {
-	   ResetPageNumberOption=0
-	   }
 	  ShowInContextUI=True
 	  SortOrderID="3"
 	  PDFLevel=0
@@ -909,6 +900,7 @@
 	  Expandable=False
 	  FormulaFilter=True
 	  DesignScheme="PROJECT"
+	  Subreport=False
 	  [Body]
 	   {
 	   [Lines]
@@ -1478,10 +1470,6 @@
 		  GroupCondition=
 		  ResetSums=
 		  OnNewPage=False
-		  [OnNewPage]
-		   {
-		   ResetPageNumberOption=0
-		   }
 		  PrintRightAfterHeader=False
 		  KeepTogether.Group=False
 		  LCondition=True
@@ -1727,6 +1715,7 @@
 		TableType=List
 		TableID=OrderDtl
 		RelationID=OrderDtl->OrderHea
+		LinkUUID={3B9FD558-8A05-4894-9B82-656E01CB15CE}
 		[GroupHeaderLines]
 		 {
 		 bConcatDataLines=True
@@ -1809,10 +1798,6 @@
 		DistanceTop=0
 		DistanceBottom=0
 		WrapBefore=False
-		[WrapBefore]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		ShowInContextUI=True
 		SortOrderID=""
 		PDFLevel=0
@@ -1822,6 +1807,7 @@
 		Expandable=False
 		FormulaFilter=True
 		DesignScheme="PROJECT"
+		Subreport=False
 		[Body]
 		 {
 		 [Lines]
@@ -2372,10 +2358,6 @@
 			GroupCondition=
 			ResetSums=
 			OnNewPage=False
-			[OnNewPage]
-			 {
-			 ResetPageNumberOption=0
-			 }
 			PrintRightAfterHeader=False
 			KeepTogether.Group=False
 			LCondition=True
@@ -2449,6 +2431,7 @@
 	TableType=Chart
 	TableID=SalesP
 	RelationID=
+	LinkUUID={1CC9D93C-53A3-40FA-8518-50ACCB842B2B}
 	[DistanceFromPrintBorder]
 	 {
 	 Left=0
@@ -2494,6 +2477,7 @@
 	FormulaFilter=True
 	Animation=""
 	HTMLAnimation=""
+	Subreport=False
 	[LLXParameters]
 	 {
 	 [Engine]
@@ -2599,6 +2583,7 @@
 	   RelativePartOfLegendText=0
 	   LegendAutowrap=-1
 	   TickmarkColor=RGB(180,180,180)
+	   CountOfMainTicksMax=0
 	   CountOfIntermediateTicks=0
 	   [AreaList]
 		{
@@ -2657,6 +2642,7 @@
 		}
 	   Visual=1
 	   LineTypeOverride=0
+	   LineSmoothing=0
 	   VisualSym=-1
 	   CoordGridLines=True
 	   [CoordGridLines]
@@ -2677,6 +2663,7 @@
 		{
 		Count=3
 		}
+	   Link.URL=
 	   FormulaCoord=LL.ChartObject.AxisCoordinate
 	   [FormulaCoord.Font]
 		{
@@ -2902,7 +2889,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -2981,6 +2968,8 @@
   [Parameters]
    {
    LL.ActiveLayout=Standard layout
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=List & Label Projektdatei
    }
   }
@@ -3059,5 +3048,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Mixed portrait and landscape.lst
+   }
+  [Subreports]
+   {
    }
   }

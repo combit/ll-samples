@@ -12,7 +12,7 @@
     <AssemblyName>SharePointSample</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -45,12 +45,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel25">
+    <Reference Include="combit.ListLabel26">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.dll</HintPath>
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel25.SharePointExtensions">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.SharePointExtensions.dll</HintPath>
+    <Reference Include="combit.ListLabel26.SharePointExtensions">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.SharePointExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SharePoint.Client, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SharePoint.Client.14.0.4762.1000\lib\Microsoft.SharePoint.Client.dll</HintPath>

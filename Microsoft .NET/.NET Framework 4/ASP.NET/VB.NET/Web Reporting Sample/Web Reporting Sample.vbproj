@@ -12,7 +12,7 @@
     <RootNamespace>
     </RootNamespace>
     <AssemblyName>Web Reporting Sample</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -64,13 +64,13 @@
     <Import Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel25">
+    <Reference Include="combit.ListLabel26">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.dll</HintPath>
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel25.Web">
+    <Reference Include="combit.ListLabel26.Web">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.Web.dll</HintPath>
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.Web.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>

@@ -6,11 +6,11 @@ Imports System.Drawing
 Imports System.Linq
 Imports System.Text
 Imports System.Windows.Forms
-Imports combit.ListLabel25.DesignerExtensions
+Imports combit.Reporting.DesignerExtensions
 Imports GMap.NET.WindowsForms
 Imports GMap.NET.WindowsForms.Markers
 Imports GMap.NET
-Imports combit.ListLabel25
+Imports combit.Reporting
 Imports System.Text.RegularExpressions
 Imports System.Collections.ObjectModel
 Imports combit.ListLabel

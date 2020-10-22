@@ -8,8 +8,8 @@ using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using combit.ListLabel25;
-using combit.ListLabel25.Dom;
+using combit.Reporting;
+using combit.Reporting.Dom;
 
 namespace ASPDOMSample
 {

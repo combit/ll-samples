@@ -56,10 +56,10 @@ public:
 /////////////////////////////////////////////////////////////////////////////
 // D:  Waehlen Sie hier die List & Label Sprache für den Designer und die
 //     Dialoge aus :
-//    (Die entsprechenden Sprachkonstanten entnehmen Sie der Datei cmll25.h)
+//    (Die entsprechenden Sprachkonstanten entnehmen Sie der Datei cmll26.h)
 
 // US: choose your LuL-Language for all designer, dialogs, etc... here:
-//    (see cmll25.h for other language-constants)
+//    (see cmll26.h for other language-constants)
 
 const int LUL_LANGUAGE = CMBTLANG_DEFAULT;
 
@@ -1706,12 +1706,12 @@ void CDesignerPreviewDlg::DoPrintReport(HANDLE hEventPrinting/* = 0*/
 		INT nPrintStartRet = 0;
 		if(bToPreviewNoBox)
 		{
+			::LlSetOptionString(hJob, LL_OPTIONSTR_ORIGINALPROJECTFILENAME, m_sOriginalProjectFileName);
+			
 			nPrintStartRet = ::LlPrintWithBoxStart(hJob, LL_PROJECT_LIST
 								, sFileName
 								, LL_PRINT_EXPORT
 								, LL_BOXTYPE_NONE, m_hWnd, _T("Printing..."));
-			
-			::LlSetOptionString(hJob, LL_OPTIONSTR_ORIGINALPROJECTFILENAME, m_sOriginalProjectFileName);
 		}
 		else
 		{

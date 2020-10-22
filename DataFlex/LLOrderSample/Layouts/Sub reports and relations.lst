@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=Subreport/Crosstabs
- FileVersion=15
+ FileVersion=16
  RootTable=Customer
  Units=SCM-Units
  Metric=3
@@ -374,6 +374,7 @@
 	TableType=List
 	TableID=Customer
 	RelationID=
+	LinkUUID={AEC6731A-3E68-4A23-8043-36214256C578}
 	[GroupHeaderLines]
 	 {
 	 bConcatDataLines=True
@@ -461,10 +462,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	SortOrderID="1"
 	PDFLevel=0
@@ -475,6 +472,7 @@
 	FormulaFilter=(IsNull(@CustomerIDFrom) or  (Int(Customer.Customer_Number) >= (int(@CustomerIDFrom)))) and¤(IsNull(@CustomerIDTo) or (Int(Customer.Customer_Number) <=(int(@CustomerIDTo))))¤
 	DesignScheme="PROJECT"
 	Animation=""
+	Subreport=False
 	[Body]
 	 {
 	 [Lines]
@@ -2334,10 +2332,6 @@
 		GroupCondition=
 		ResetSums=
 		OnNewPage=False
-		[OnNewPage]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		PrintRightAfterHeader=False
 		KeepTogether.Group=False
 		LCondition=True
@@ -2408,6 +2402,7 @@
 	  TableType=List
 	  TableID=OrderHea
 	  RelationID=OrderHea->Customer
+	  LinkUUID={4EA75055-68DB-4122-9D33-487CB332E78B}
 	  [GroupHeaderLines]
 	   {
 	   bConcatDataLines=True
@@ -2490,10 +2485,6 @@
 	  DistanceTop=0
 	  DistanceBottom=0
 	  WrapBefore=False
-	  [WrapBefore]
-	   {
-	   ResetPageNumberOption=0
-	   }
 	  ShowInContextUI=True
 	  SortOrderID=""
 	  PDFLevel=0
@@ -2503,6 +2494,7 @@
 	  Expandable=False
 	  FormulaFilter=True
 	  DesignScheme="PROJECT"
+	  Subreport=False
 	  [Body]
 	   {
 	   [Lines]
@@ -4507,10 +4499,6 @@
 		  GroupCondition=
 		  ResetSums=
 		  OnNewPage=False
-		  [OnNewPage]
-		   {
-		   ResetPageNumberOption=0
-		   }
 		  PrintRightAfterHeader=False
 		  KeepTogether.Group=False
 		  LCondition=True
@@ -4581,6 +4569,7 @@
 		TableType=List
 		TableID=OrderDtl
 		RelationID=Orderdtl->OrderHea
+		LinkUUID={EFB5ED0C-8498-4170-8736-1C119841F01D}
 		[GroupHeaderLines]
 		 {
 		 bConcatDataLines=True
@@ -4667,10 +4656,6 @@
 		DistanceTop=0
 		DistanceBottom=0
 		WrapBefore=False
-		[WrapBefore]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		ShowInContextUI=True
 		SortOrderID=""
 		PDFLevel=0
@@ -4680,6 +4665,7 @@
 		Expandable=False
 		FormulaFilter=True
 		DesignScheme="PROJECT"
+		Subreport=False
 		[Body]
 		 {
 		 [Lines]
@@ -6084,10 +6070,6 @@
 			GroupCondition=
 			ResetSums=
 			OnNewPage=False
-			[OnNewPage]
-			 {
-			 ResetPageNumberOption=0
-			 }
 			PrintRightAfterHeader=False
 			KeepTogether.Group=False
 			LCondition=True
@@ -6809,7 +6791,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -6887,6 +6869,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=Subreport/Crosstabs
    }
   }
@@ -7003,5 +6987,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Sub reports and relations.lst
+   }
+  [Subreports]
+   {
    }
   }

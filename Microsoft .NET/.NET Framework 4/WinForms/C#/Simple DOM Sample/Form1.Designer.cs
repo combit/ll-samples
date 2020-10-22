@@ -30,7 +30,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
-			this.LL = new combit.ListLabel25.ListLabel(this.components);
+			this.LL = new combit.Reporting.ListLabel(this.components);
 			this.comboBoxTable = new System.Windows.Forms.ComboBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -89,12 +89,12 @@
 			// 
 			// LL
 			// 
-			this.LL.AutoDestination = combit.ListLabel25.LlPrintMode.Preview;
+			this.LL.AutoDestination = combit.Reporting.LlPrintMode.Preview;
 			this.LL.AutoPrinterSettingsStream = null;
 			this.LL.AutoProjectStream = null;
 			this.LL.AutoShowPrintOptions = false;
 			this.LL.AutoShowSelectFile = false;
-			this.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+			this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
 			this.LL.DrilldownAvailable = true;
 			this.LL.EMFResolution = 100;
 			this.LL.FileRepository = null;
@@ -103,7 +103,7 @@
 			this.LL.MaxRTFVersion = 65280;
 			this.LL.PhantomSpace = 8203;
 			this.LL.PreviewControl = null;
-			this.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_10;
+			this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_10;
 			this.LL.UseHardwareCopiesForLabels = false;
 			this.LL.UseTableSchemaForDesignMode = false;
 			// 
@@ -303,7 +303,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private combit.ListLabel25.ListLabel LL;
+        private combit.Reporting.ListLabel LL;
         private System.Windows.Forms.ComboBox comboBoxTable;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label7;

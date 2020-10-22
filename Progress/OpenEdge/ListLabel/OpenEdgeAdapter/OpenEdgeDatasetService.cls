@@ -31,7 +31,7 @@
 
 USING Progress.Lang.*.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeService     FROM PROPATH.
-USING TasteITConsulting.ListLabel25.IServiceAdapter FROM ASSEMBLY.
+USING TasteITConsulting.Reporting.IServiceAdapter FROM ASSEMBLY.
 
 BLOCK-LEVEL ON ERROR UNDO, THROW.
 

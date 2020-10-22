@@ -1,7 +1,7 @@
 #DEFINE SW_SHOWNORMAL 1
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Erstellt am 03.09.2019
+// Erstellt am 30.08.2020
 //
 parameter bModal
 local f
@@ -48,7 +48,7 @@ class AboutADOForm of FORM
       left = 1.0
       top = 1.5
       width = 32.0
-      text = "combit List & Label 25"
+      text = "combit List & Label 26"
       fontBold = true
       alignVertical = 1	// Mitte
       alignHorizontal = 1	// Zentriert

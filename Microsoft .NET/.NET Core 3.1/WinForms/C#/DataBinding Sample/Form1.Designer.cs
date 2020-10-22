@@ -1,4 +1,4 @@
-﻿using combit.ListLabel25;
+﻿using combit.Reporting;
 using System.Globalization;
 namespace DataBinding
 {
@@ -28,7 +28,7 @@ namespace DataBinding
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
+            this.LL = new combit.Reporting.ListLabel(this.components);
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpDataSet = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -118,7 +118,7 @@ namespace DataBinding
             this.label203 = new System.Windows.Forms.Label();
             this.restUrlTb = new System.Windows.Forms.TextBox();
             this.statusBar1 = new System.Windows.Forms.StatusBar();
-            this.LLPreviewControl = new combit.ListLabel25.ListLabelPreviewControl(this.components);
+            this.LLPreviewControl = new combit.Reporting.ListLabelPreviewControl(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -162,11 +162,11 @@ namespace DataBinding
             this.LL.MaxRTFVersion = 65280;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100;
+            this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
-            this.LL.AutoDefineField += new combit.ListLabel25.AutoDefineElementHandler(this.LL_AutoDefineField);
-            this.LL.NotifyProgress += new combit.ListLabel25.NotifyProgressHandler(this.LL_NotifyProgress);
+            this.LL.AutoDefineField += new combit.Reporting.AutoDefineElementHandler(this.LL_AutoDefineField);
+            this.LL.NotifyProgress += new combit.Reporting.NotifyProgressHandler(this.LL_NotifyProgress);
             // 
             // tabControl
             // 
@@ -1118,7 +1118,7 @@ namespace DataBinding
             // 
             this.LLPreviewControl.AllowRbuttonUsage = true;
             this.LLPreviewControl.BackColor = System.Drawing.SystemColors.Window;
-            this.LLPreviewControl.CloseMode = combit.ListLabel25.LlPreviewControlCloseMode.DeleteFile;
+            this.LLPreviewControl.CloseMode = combit.Reporting.LlPreviewControlCloseMode.DeleteFile;
             this.LLPreviewControl.CurrentPage = 0;
             this.LLPreviewControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LLPreviewControl.ForceReadOnly = false;
@@ -1128,28 +1128,28 @@ namespace DataBinding
             this.LLPreviewControl.SlideshowMode = false;
             this.LLPreviewControl.TabIndex = 14;
             this.LLPreviewControl.Text = "listLabelPreviewControl1";
-            this.LLPreviewControl.ToolbarButtons.Exit = combit.ListLabel25.LlButtonState.Invisible;
-            this.LLPreviewControl.ToolbarButtons.GotoFirst = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.GotoLast = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.GotoNext = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.GotoPrev = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.NextFile = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.PageRange = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.PreviousFile = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.PrintAllPages = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.PrintCurrentPage = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.PrintToFax = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.SaveAs = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.SearchNext = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.SearchOptions = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.SearchStart = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.SearchText = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.SendTo = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.SlideshowMode = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.ZoomCombo = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.ZoomReset = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.ZoomRevert = combit.ListLabel25.LlButtonState.Default;
-            this.LLPreviewControl.ToolbarButtons.ZoomTimes2 = combit.ListLabel25.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.Exit = combit.Reporting.LlButtonState.Invisible;
+            this.LLPreviewControl.ToolbarButtons.GotoFirst = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.GotoLast = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.GotoNext = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.GotoPrev = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.NextFile = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.PageRange = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.PreviousFile = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.PrintAllPages = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.PrintCurrentPage = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.PrintToFax = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.SaveAs = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.SearchNext = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.SearchOptions = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.SearchStart = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.SearchText = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.SendTo = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.SlideshowMode = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.ZoomCombo = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.ZoomReset = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.ZoomRevert = combit.Reporting.LlButtonState.Default;
+            this.LLPreviewControl.ToolbarButtons.ZoomTimes2 = combit.Reporting.LlButtonState.Default;
             // 
             // progressBar1
             // 

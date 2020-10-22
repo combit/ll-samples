@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Globalization;
 
-namespace combit.ListLabel25.Converters
+namespace combit.Reporting.Converters
 {
     internal static class ExtensionMethods
     {

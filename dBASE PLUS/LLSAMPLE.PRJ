@@ -1,7 +1,7 @@
-Project File generated 03.09.2019 11:16:21
+Project File generated 30.08.2020 18:10:21
 
 [Project]
-Name=LL25Sample
+Name=LL26Sample
 DefaultDir=.
 MainProjectFileName=LLSamples.prg
 Parameters=
@@ -36,17 +36,17 @@ Chart.wfm,0,0,0,
 OPTIONS.WFM,0,0,0, 
 LLRibbons.cc,0,0,0, 
 Events.wfm,0,0,0, 
-cmbtLL25.h,0,0,0, 
-LL25.CC,0,0,0, 
+cmbtLL26.h,0,0,0, 
+LL26.CC,0,0,0, 
 
 [DEO]
 
 [INNO]
-ProjectExeFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25\llsample.exe
+ProjectExeFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\26\llsample.exe
 ProjectMainFileName=
-ProjectdBaseVersion=dBASE PLUS 12.31  b2591 (10/15/2018-DE181015)
+ProjectdBaseVersion=dBASE 2019 13.20  b2618 (11/26/2019-DE191126)
 DefaultDirName={pf}\{#AppName}
-AppName=LL25Sample
+AppName=LL26Sample
 AppVersion=1.0.0.0
 SM_dBASERuntime=false
 dBPlus=true
@@ -62,14 +62,14 @@ XPLook=false
 dBaseBuild=2591
 dBaseVersion=1231
 SetupLang=de
-SepDestDir={app}
+SepDestDir=false
 BDEGroupEntries=false
 dBProgressbar=false
 dBProgressbox=false
 dBSilent=false
 dBDestRuntime=
 dBDestBDE=
-SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25
+SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\26
 InnoScriptname=
 LastDBVersion=1231
 LastDBLanguage=DE
@@ -106,7 +106,7 @@ NLLicense=
 NLBefore=
 NLAfter=
 UninsHS=true
-UninsHSAppName=LL25Sample
+UninsHSAppName=
 UninsHSAppId=
 UninsHSLanguages=All
 BDEUseSettings=false
@@ -127,4 +127,4 @@ CURRENTVSF=windows
 IMAGETOPRIGHT=
 IMAGESIDE=
 Icon1={group}\{#AppName} >> {app}\llsample.exe
-Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\25\llsample.exe >> DestDir: {app}
+Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\26\llsample.exe >> DestDir: {app}

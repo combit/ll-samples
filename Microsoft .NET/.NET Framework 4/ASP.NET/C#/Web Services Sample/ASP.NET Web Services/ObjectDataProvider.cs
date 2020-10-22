@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using combit.ListLabel25;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting;
+using combit.Reporting.DataProviders;
 
 namespace combit.Services
 {

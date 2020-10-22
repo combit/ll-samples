@@ -11,15 +11,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting.DataProviders;
 using Microsoft.Win32;
 using System.Data.OleDb;
-using combit.ListLabel25;
+using combit.Reporting;
 using System.Globalization;
 using Microsoft.SharePoint.Client;
 using System.Net;
 using System.IO;
-using combit.ListLabel25.SharePointExtensions;
+using combit.Reporting.SharePointExtensions;
 using System.Diagnostics;
 
 namespace SharePointSample

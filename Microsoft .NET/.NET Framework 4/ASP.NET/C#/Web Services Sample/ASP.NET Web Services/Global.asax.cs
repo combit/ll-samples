@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.Web.Routing;
-using combit.ListLabel25;
-using combit.ListLabel25.Web;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting;
+using combit.Reporting.Web;
+using combit.Reporting.DataProviders;
 using System.IO;
 
 namespace ASP.NET_Web_Services

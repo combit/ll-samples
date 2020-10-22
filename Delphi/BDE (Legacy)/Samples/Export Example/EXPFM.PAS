@@ -15,7 +15,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, L25, DB, DBTables,cmbtll25, Registry, ADODB
+  StdCtrls, L26, DB, DBTables,cmbtll26, Registry, ADODB
   {$IFDEF ver280} // XE7
   , System.UITypes
   {$ENDIF}
@@ -24,7 +24,7 @@ uses
 type
   TForm1 = class(TForm)
     Label1: TLabel;
-    LL: TL25_;
+    LL: TL26_;
     Label2: TLabel;
     FormatCombo: TComboBox;
     Label3: TLabel;
@@ -193,36 +193,31 @@ begin
           ExporterName := 'MHTML';
         end;
      2: begin
-          FileFilter := 'HTML Format|*.htm';
-          FileName := 'export.htm';
-          ExporterName := 'HTML';
-        end;
-     3: begin
           FileFilter := 'Rich Text Format (RTF)*.rtf';
           FileName := 'export.rtf';
           ExporterName := 'RTF';
         end;
-     4: begin
+     3: begin
           FileFilter := 'XML Format|*.xml';
           FileName := 'export.xml';
           ExporterName := 'XML';
         end;
-     5: begin
+     4: begin
           FileFilter := 'TIFF Picture|*.tif';
           FileName := 'export.tif';
           ExporterName := 'PICTURE_MULTITIFF';
         end;
-     6: begin
+     5: begin
           FileFilter := 'Text Format|*.txt';
           FileName := 'export.txt';
           ExporterName := 'TXT';
         end;
-     7: begin
+     6: begin
           FileFilter := 'Microsoft Excel Format|*.xls';
           FileName := 'export.xls';
           ExporterName := 'XLS';
         end;
-     8: begin
+     7: begin
           FileFilter := 'List & Label Preview Format|*.ll';
           FileName := 'export.ll';
           ExporterName := 'PRV';

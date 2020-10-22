@@ -3,8 +3,8 @@ Imports System.ComponentModel
 Imports System.IO
 Imports System.Windows.Forms
 Imports System.Xml
-Imports combit.ListLabel25
-Imports combit.ListLabel25.Dom
+Imports combit.Reporting
+Imports combit.Reporting.Dom
 
 Public Partial Class Form1
     Inherits Form
@@ -91,12 +91,12 @@ Public Partial Class Form1
 		'D: Visual Studio Kommentare für List & Label laden
 		'US: Load Visual Studio comments
 
-		If Not System.IO.File.Exists("..\..\..\Assemblies\combit.ListLabel25.xml") Then
+		If Not System.IO.File.Exists("..\..\..\Assemblies\combit.Reporting.xml") Then
 			Return
 		End If
 
 		Dim helpDoc As New XmlDocument()
-		helpDoc.Load("..\..\..\Assemblies\combit.ListLabel25.xml")
+		helpDoc.Load("..\..\..\Assemblies\combit.Reporting.xml")
 
 		Dim nodeList As XmlNodeList = helpDoc.SelectNodes("/doc/members/member")
 
@@ -135,8 +135,8 @@ Public Partial Class Form1
         End If
 
         Me.TreeView1.[Select]()
-        Me.GenerateCodeToolStrip.Enabled = (TypeOf _selectedNode.Tag Is DomItem Or TypeOf _selectedNode.Tag Is DomCollectionBase)
-        Me.GenerateCodeToolStrip2.Enabled = (TypeOf _selectedNode.Tag Is DomItem Or TypeOf _selectedNode.Tag Is DomCollectionBase)
+        Me.GenerateCodeToolStrip.Enabled = (_selectedNode.Tag IsNot Nothing) And (TypeOf _selectedNode.Tag Is DomItem Or GetType(IEnumerable(Of DomItem)).IsAssignableFrom(_selectedNode.Tag.[GetType]()))
+        Me.GenerateCodeToolStrip2.Enabled = Me.GenerateCodeToolStrip.Enabled
 
     End Sub
 
@@ -181,30 +181,30 @@ Public Partial Class Form1
 
 	Private Sub GenerateCode(item As Object)
 
-		If (TypeOf item Is DomItem) Or (TypeOf item Is DomCollectionBase) Then
-			Try
+        If (TypeOf item Is DomItem) Or (GetType(IEnumerable(Of DomItem)).IsAssignableFrom(item.GetType)) Then
+            Try
 
-				Dim serializer As New ListLabelCodeDomSerializer()
+                Dim serializer As New ListLabelCodeDomSerializer()
 
-				'D: CodeDomProvider auswählen
-				'US: Select CodeDomProvider
+                'D: CodeDomProvider auswählen
+                'US: Select CodeDomProvider
 
-				If Me.CodeLanguageToolStripCombo.Text = "C#" Then
-					serializer.Provider = System.CodeDom.Compiler.CodeDomProvider.CreateProvider("C#")
-				Else
-					serializer.Provider = System.CodeDom.Compiler.CodeDomProvider.CreateProvider("VB")
-				End If
+                If Me.CodeLanguageToolStripCombo.Text = "C#" Then
+                    serializer.Provider = System.CodeDom.Compiler.CodeDomProvider.CreateProvider("C#")
+                Else
+                    serializer.Provider = System.CodeDom.Compiler.CodeDomProvider.CreateProvider("VB")
+                End If
 
-				Dim code As Object = serializer.Serialize(Nothing, item)
+                Dim code As Object = serializer.Serialize(Nothing, item)
 
-				Me.rtbCode.Text = Convert.ToString(code)
+                Me.rtbCode.Text = Convert.ToString(code)
 
-				Me.SaveCodeToolStrip.Enabled = True
-			Catch ex As Exception
-				MessageBox.Show(ex.Message)
-			End Try
-		End If
-	End Sub
+                Me.SaveCodeToolStrip.Enabled = True
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+        End If
+    End Sub
 
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As CancelEventArgs) Handles contextMenuStrip1.Opening
         If Me.TreeView1.SelectedNode Is Nothing Then

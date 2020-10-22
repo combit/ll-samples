@@ -1,7 +1,7 @@
 ﻿Imports System.Web.UI
 Imports System.Web.UI.WebControls
 Imports System.Collections.Generic
-Imports combit.ListLabel25.Repository
+Imports combit.Reporting.Repository
 Imports System.Linq
 
 Namespace WebReporting

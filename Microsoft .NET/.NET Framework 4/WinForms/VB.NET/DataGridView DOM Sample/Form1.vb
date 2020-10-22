@@ -4,9 +4,9 @@ Imports System.Data.OleDb
 Imports System.Drawing
 Imports System.IO
 Imports System.Windows.Forms
-Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
-Imports combit.ListLabel25.Dom
+Imports combit.Reporting
+Imports combit.Reporting.DataProviders
+Imports combit.Reporting.Dom
 Imports Microsoft.Win32
 
 Public Partial Class Form1

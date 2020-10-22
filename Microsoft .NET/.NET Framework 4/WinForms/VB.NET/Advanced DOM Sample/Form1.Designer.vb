@@ -23,7 +23,7 @@ Partial Class Form1
 		Me.components = New System.ComponentModel.Container()
 		Me.label13 = New System.Windows.Forms.Label()
 		Me.fontDialog1 = New System.Windows.Forms.FontDialog()
-		Me.LL = New combit.ListLabel25.ListLabel(Me.components)
+		Me.LL = new combit.Reporting.ListLabel(Me.components)
 		Me.label1 = New System.Windows.Forms.Label()
 		Me.label5 = New System.Windows.Forms.Label()
 		Me.label4 = New System.Windows.Forms.Label()
@@ -117,13 +117,13 @@ Partial Class Form1
 		'
 		'LL
 		'
-		Me.LL.AutoBoxType = combit.ListLabel25.LlBoxType.Normalwait
-		Me.LL.AutoDestination = combit.ListLabel25.LlPrintMode.Preview
+		Me.LL.AutoBoxType = combit.Reporting.LlBoxType.Normalwait
+		Me.LL.AutoDestination = combit.Reporting.LlPrintMode.Preview
 		Me.LL.AutoPrinterSettingsStream = Nothing
 		Me.LL.AutoProjectStream = Nothing
 		Me.LL.AutoShowPrintOptions = False
 		Me.LL.AutoShowSelectFile = False
-		Me.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
+		Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
 		Me.LL.DrilldownAvailable = True
 		Me.LL.EMFResolution = 100
 		Me.LL.FileRepository = Nothing
@@ -132,7 +132,7 @@ Partial Class Form1
 		Me.LL.MaxRTFVersion = 65280
 		Me.LL.PhantomSpace = 8203
 		Me.LL.PreviewControl = Nothing
-		Me.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_10
+		Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_10
 		Me.LL.UseHardwareCopiesForLabels = False
 		Me.LL.UseTableSchemaForDesignMode = False
 		'
@@ -842,7 +842,7 @@ Partial Class Form1
 		Me.ResumeLayout(False)
 
 	End Sub
-	Private WithEvents LL As combit.ListLabel25.ListLabel
+	Private WithEvents LL As combit.Reporting.ListLabel
     Private WithEvents label13 As System.Windows.Forms.Label
     Private WithEvents fontDialog1 As System.Windows.Forms.FontDialog
     Private WithEvents label1 As System.Windows.Forms.Label

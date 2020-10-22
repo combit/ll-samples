@@ -30,7 +30,7 @@ Namespace WebReporting
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents DesignerControl1 As Global.combit.ListLabel25.Web.DesignerControl
+        Protected WithEvents DesignerControl1 As Global.combit.Reporting.Web.DesignerControl
         
         '''<summary>
         '''ErrorLabel control.

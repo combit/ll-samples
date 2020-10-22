@@ -1,5 +1,5 @@
-﻿Imports combit.ListLabel25.DataProviders
-Imports combit.ListLabel25
+﻿Imports combit.Reporting.DataProviders
+Imports combit.Reporting
 Imports System.Data.OleDb
 Imports System.Linq
 Imports System.Collections.Generic

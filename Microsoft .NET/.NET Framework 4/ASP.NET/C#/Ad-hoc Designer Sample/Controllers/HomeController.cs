@@ -1,8 +1,8 @@
 ﻿using AdhocDesignerSample.ViewModels;
-using combit.ListLabel25.AdhocDesign;
-using combit.ListLabel25.AdhocDesign.SessionHandling;
-using combit.ListLabel25.AdhocDesign.Web;
-using combit.ListLabel25.Repository;
+using combit.Reporting.AdhocDesign;
+using combit.Reporting.AdhocDesign.SessionHandling;
+using combit.Reporting.AdhocDesign.Web;
+using combit.Reporting.Repository;
 using System;
 using System.IO;
 using System.Linq;

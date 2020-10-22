@@ -8,8 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using combit.ListLabel25;
-using combit.ListLabel25.Dom;
+using combit.Reporting;
+using combit.Reporting.Dom;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -114,24 +114,9 @@ namespace ASPDOMSample
             //D: Setze Datenquelle
             //US: Set datasource
             _ll.DataSource = _ds;
-
-            _ll.AutoDefineField += _ll_AutoDefineField;
-
-
             //D: Erstelle Projektdateinamen
             //US: create project filename
             _projFile = "dynamic_" + "temp" + ".lst";
-        }
-
-        private void _ll_AutoDefineField(object sender, AutoDefineElementEventArgs e)
-        {
-            // These fields are Base64 encoded byte[]
-            if (e.Name.Contains("Picture") || e.Name.Contains("Photo"))
-            {
-                byte[] imageBytes = Convert.FromBase64String(e.Value.ToString());
-                (sender as ListLabel).Fields.Add(e.Name, imageBytes);
-                e.Suppress = true;
-            }
         }
 
         // Init Data Set to access northwind_full.xml

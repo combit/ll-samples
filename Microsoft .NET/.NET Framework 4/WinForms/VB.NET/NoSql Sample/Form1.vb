@@ -2,9 +2,9 @@
 Imports System.Drawing
 Imports System.IO
 Imports System.Windows.Forms
-Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
-Imports combit.ListLabel25.Dom
+Imports combit.Reporting
+Imports combit.Reporting.DataProviders
+Imports combit.Reporting.Dom
 Imports System.Text.RegularExpressions
 Partial Public Class Form1
     Inherits Form

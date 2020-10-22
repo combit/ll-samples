@@ -1,6 +1,6 @@
 Imports System.Collections.Generic
 Imports System.Text
-Imports combit.ListLabel25.DataProviders
+Imports combit.Reporting.DataProviders
 Imports System.IO
 
 ' US:  This sample class implements a simple data provider for CSV files (comma separated values).

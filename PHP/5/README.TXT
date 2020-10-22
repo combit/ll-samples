@@ -231,7 +231,7 @@ PHP Konfiguration
 - WICHTIG: Die PHP Version Ihres Webservers muss mit der Version der kompilierten DLL übereinstimmen.
 - Verschieben Sie die erstellte .dll-Datei in den Ordner "ext" in Ihrem PHP5-Verzeichnis.
 - Suchen Sie die für Ihre PHP-Konfiguration verwendete "php.ini".
-- Fügen Sie der php.ini folgenden Befehl hinzu: "extension=php_listlabel25.dll" oder den Namen den Sie für Ihre DLL gewählt haben.
+- Fügen Sie der php.ini folgenden Befehl hinzu: "extension=php_listlabel26.dll" oder den Namen den Sie für Ihre DLL gewählt haben.
 
 Nun müssen Sie in der Datei "frame.php" in Zeile 45 im Ordner "websample" Ihren persönlichen Lizenzschlüssel setzen. Zu finden ist dieser in der Datei "PersonalLicense.txt" im List & Label Installationsverzeichnis.
 
@@ -475,7 +475,7 @@ Configure PHP
 - IMPORTANT: The PHP version of your web server needs to match the version used for compiling the DLL.
 - Move the generated DLL to the "ext" folder of your PHP5 directory.
 - Locate the "php.ini" used by your PHP configuration.
-- Add the following command: "extension=php_listlabel25.dll;" or the name you've chosen for the DLL.
+- Add the following command: "extension=php_listlabel26.dll;" or the name you've chosen for the DLL.
 
 Now locate line 45 in "frame.php in your "websample" folder and add your personal license key. You can find it in the file "PersonalLicense.txt" in the List & Label installation directory.
 

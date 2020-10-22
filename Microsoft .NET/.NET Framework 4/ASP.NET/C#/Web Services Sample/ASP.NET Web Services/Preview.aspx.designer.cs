@@ -28,6 +28,6 @@ namespace ASP.NET_Web_Services {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::combit.ListLabel25.Web.Html5ViewerControl Html5ViewerControl1;
+        protected global::combit.Reporting.Web.Html5ViewerControl Html5ViewerControl1;
     }
 }

@@ -20,7 +20,7 @@ Partial Class LocalizationForm
     ''' </summary>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.LL = New combit.ListLabel25.ListLabel(Me.components)
+        Me.LL = new combit.Reporting.ListLabel(Me.components)
         Me.printButton = New System.Windows.Forms.Button()
         Me.designButton = New System.Windows.Forms.Button()
         Me.label1 = New System.Windows.Forms.Label()
@@ -34,7 +34,7 @@ Partial Class LocalizationForm
         Me.LL.AutoPrinterSettingsStream = Nothing
         Me.LL.AutoProjectStream = Nothing
         Me.LL.CompressStorage = True
-        Me.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
+        Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
         Me.LL.DrilldownAvailable = True
         Me.LL.EMFResolution = 100
         Me.LL.FileRepository = Nothing
@@ -43,7 +43,7 @@ Partial Class LocalizationForm
         Me.LL.MaxRTFVersion = 65280
         Me.LL.PhantomSpace = 8203
         Me.LL.PreviewControl = Nothing
-        Me.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100
+        Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
         Me.LL.UseHardwareCopiesForLabels = False
         Me.LL.UseTableSchemaForDesignMode = False
         '
@@ -116,7 +116,7 @@ Partial Class LocalizationForm
         Me.ResumeLayout(False)
 
     End Sub
-    Private WithEvents LL As combit.ListLabel25.ListLabel
+    Private WithEvents LL As combit.Reporting.ListLabel
     Private WithEvents printButton As System.Windows.Forms.Button
     Private WithEvents designButton As System.Windows.Forms.Button
     Private WithEvents label1 As System.Windows.Forms.Label

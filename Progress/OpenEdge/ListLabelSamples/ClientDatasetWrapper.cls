@@ -22,10 +22,10 @@
   ----------------------------------------------------------------------*/
 
 USING Progress.Lang.*.
-USING TasteITConsulting.ListLabel25.OpenEdgeDataProvider FROM ASSEMBLY.
+USING TasteITConsulting.Reporting.OpenEdgeDataProvider FROM ASSEMBLY.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeDatasetService   FROM PROPATH.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeDatasetServiceAdapter FROM PROPATH.
-USING combit.ListLabel25.ListLabel FROM ASSEMBLY.
+USING combit.Reporting.ListLabel FROM ASSEMBLY.
 
 BLOCK-LEVEL ON ERROR UNDO, THROW.
 

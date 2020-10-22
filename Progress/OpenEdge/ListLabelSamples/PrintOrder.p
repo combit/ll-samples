@@ -27,10 +27,10 @@
 
 BLOCK-LEVEL ON ERROR UNDO, THROW.
 
-USING TasteITConsulting.ListLabel25.OpenEdgeDataProvider FROM ASSEMBLY.
-USING combit.ListLabel25.ListLabel FROM ASSEMBLY.
+USING TasteITConsulting.Reporting.OpenEdgeDataProvider FROM ASSEMBLY.
+USING combit.Reporting.ListLabel FROM ASSEMBLY.
 USING ListLabelDemo.Sports2000ServiceAdapter FROM PROPATH.
-USING combit.ListLabel25.LlAutoMasterMode FROM ASSEMBLY.
+USING combit.Reporting.LlAutoMasterMode FROM ASSEMBLY.
 
 DEFINE VARIABLE oProvider       AS OpenEdgeDataProvider     NO-UNDO.
 DEFINE VARIABLE oLL             AS ListLabel                NO-UNDO.

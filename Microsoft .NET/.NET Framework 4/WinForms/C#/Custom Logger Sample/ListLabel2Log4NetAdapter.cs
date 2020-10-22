@@ -1,4 +1,4 @@
-﻿using combit.ListLabel25;
+﻿using combit.Reporting;
 using log4net;
 
 namespace Custom_Logger_Sample

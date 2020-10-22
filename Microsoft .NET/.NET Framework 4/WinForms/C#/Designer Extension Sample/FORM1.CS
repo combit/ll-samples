@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using combit.ListLabel25;
-using combit.ListLabel25.CSharpSample.DesignerExtensionsSample;
-using combit.ListLabel25.Dom;
+using combit.Reporting;
+using combit.Reporting.CSharpSample.DesignerExtensionsSample;
+using combit.Reporting.Dom;
 using Microsoft.Win32;
 using Microsoft.VisualBasic;
 
@@ -60,7 +60,7 @@ namespace C_
 
         //  D: Die hier spezifizierten Parameter Werte (1 - 20), werden beim Eintippen der Formel im Designer vorgeschlagen
         // US: The specified parameter values (1 - 20), are suggested while typeing the formula in the designer 
-        private void DesignerFunction1_ParameterAutoComplete(object sender, combit.ListLabel25.ParameterAutoCompleteEventArgs e)
+        private void DesignerFunction1_ParameterAutoComplete(object sender, combit.Reporting.ParameterAutoCompleteEventArgs e)
         {
             for (int i = 1; i <= 20; i++)
                 e.Values.Add(i.ToString());
@@ -68,7 +68,7 @@ namespace C_
 
         //  D: Implementierung eines Designer Objektes, welches ein Bild beinhaltet
         // US: Implementation of a designer object, which contains an image
-        private void DesignerObject1_DrawDesignerObject(object sender, combit.ListLabel25.DrawDesignerObjectEventArgs e)
+        private void DesignerObject1_DrawDesignerObject(object sender, combit.Reporting.DrawDesignerObjectEventArgs e)
         {
             DesignerObject desobj = (DesignerObject)sender;
             if (desobj.ObjectProperties.Contains("imagefile"))
@@ -80,7 +80,7 @@ namespace C_
 
         //  D: Implementierung der Bearbeiten-Funktion, des neuen Objektes
         // US: Implementation of the new edit function for the new object
-        private void DesignerObject1_EditDesignerObject(object sender, combit.ListLabel25.EditDesignerObjectEventArgs e)
+        private void DesignerObject1_EditDesignerObject(object sender, combit.Reporting.EditDesignerObjectEventArgs e)
         {
             DesignerObject desobj = (DesignerObject)sender;
 
@@ -99,7 +99,7 @@ namespace C_
 
         //  D: Das standard Verhalten eines dem Report neu hinzugefügten Objekts festlegen
         // US: Define the default behaviour of a new added object to a report
-        private void DesignerObject1_CreateDesignerObject(object sender, combit.ListLabel25.CreateDesignerObjectEventArgs e)
+        private void DesignerObject1_CreateDesignerObject(object sender, combit.Reporting.CreateDesignerObjectEventArgs e)
         {
             DesignerObject desobj = (DesignerObject)sender;
             desobj.ObjectProperties["imagefile"] = _pictureFileName;

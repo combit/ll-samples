@@ -81,6 +81,40 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
 	END METHOD.
 
     /*------------------------------------------------------------------------------
+     Purpose: Sample Value for the LL Designer
+     Notes:   Since LL24
+    ------------------------------------------------------------------------------*/
+    METHOD PUBLIC CHARACTER LLSampleValue( pcDataType AS CHARACTER ):
+
+        DEFINE VARIABLE cSampleValue AS CHARACTER NO-UNDO.
+        DEFINE VARIABLE dtDate       AS DATE NO-UNDO INIT TODAY.
+        DEFINE VARIABLE dtDateTime   AS DATETIME NO-UNDO INIT NOW.
+        DEFINE VARIABLE dtDateTimeTZ AS DATETIME-TZ NO-UNDO INIT NOW.
+
+        CASE pcDataType:
+            WHEN "INTEGER" OR WHEN "INT64" THEN 
+                RETURN "123".
+            WHEN "DECIMAL" THEN 
+                RETURN "123.45".
+            WHEN "LOGICAL" THEN 
+                RETURN "true".
+            WHEN "CHARACTER" THEN 
+                RETURN "Abc".
+            WHEN "LONGCHAR" THEN
+                RETURN "Abcdef".
+            WHEN "DATE" THEN 
+                RETURN ISO-DATE(dtDate).
+            WHEN "DATETIME" THEN 
+                RETURN ISO-DATE(dtDateTime).
+            WHEN "DATETIME-TZ" THEN 
+                RETURN ISO-DATE(dtDateTimeTZ).
+        END.
+
+        RETURN "".
+
+    END METHOD.
+
+    /*------------------------------------------------------------------------------
      Purpose:
      Notes:
     ------------------------------------------------------------------------------*/
@@ -242,9 +276,10 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                                        plCalculatedTable AS LOGICAL,
                                        plCachedTable     AS LOGICAL ):
 		
-		DEFINE VARIABLE iField AS INTEGER NO-UNDO.
-		DEFINE VARIABLE iIndex AS INTEGER NO-UNDO.
-		DEFINE VARIABLE hField AS HANDLE  NO-UNDO.
+		DEFINE VARIABLE iField       AS INTEGER   NO-UNDO.
+		DEFINE VARIABLE iIndex       AS INTEGER   NO-UNDO.
+		DEFINE VARIABLE hField       AS HANDLE    NO-UNDO.
+		DEFINE VARIABLE cSampleValue AS CHARACTER NO-UNDO.
 		
 		FIND OpenEdgeService WHERE OpenEdgeService.ServiceName = ServiceName.
 		
@@ -268,7 +303,8 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
     		DO iField = 1 TO phBuffer:NUM-FIELDS:
 
                 hField = phBuffer:BUFFER-FIELD (iField).
-    		    
+                cSampleValue = LLSampleValue( hField:DATA-TYPE ).
+
     		    IF hField:EXTENT = 0 THEN 
     		    DO:
         		    CREATE OpenEdgeTableColumn.
@@ -280,6 +316,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                            OpenEdgeTableColumn.OEColumnFormat   = hField:FORMAT
                            OpenEdgeTableColumn.OEColumnDecimals = hField:DECIMALS
                            OpenEdgeTableColumn.ColumnName       = OpenEdgeTableColumn.OEColumnName
+                           OpenEdgeTableColumn.OESampleValue    = cSampleValue.
            		           .
            		END. 
            		ELSE DO iIndex = 1 TO hField:EXTENT:
@@ -292,6 +329,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                            OpenEdgeTableColumn.OEColumnFormat   = hField:FORMAT
                            OpenEdgeTableColumn.OEColumnDecimals = hField:DECIMALS
                            OpenEdgeTableColumn.ColumnName       = SUBSTITUTE("&1_&2",OpenEdgeTableColumn.OEColumnName,iIndex)
+                           OpenEdgeTableColumn.OESampleValue    = cSampleValue.
                            .
            		END.         
     	    END.	    
@@ -451,6 +489,10 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
 	                                                 OEDataType    AS CHARACTER,
 	                                                 OEMimeType    AS CHARACTER):
 	          
+	    DEFINE VARIABLE cSampleValue AS CHARACTER NO-UNDO.
+
+        cSampleValue = LLSampleValue( OEDataType ).
+	          
         FIND OpenEdgeService WHERE OpenEdgeService.ServiceName = ServiceName NO-ERROR.
         IF NOT AVAILABLE OpenEdgeService THEN 
             RETURN FALSE.
@@ -470,7 +512,8 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                OpenEdgeTableColumn.OEColumnDataType   = OEDataType
                OpenEdgeTableColumn.OECalculatedColumn = TRUE 
                OpenEdgeTableColumn.ColumnName         = OEColumnName
-               OpenEdgeTableColumn.OEMimeType         = OEMimeType.
+               OpenEdgeTableColumn.OEMimeType         = OEMimeType
+               OpenEdgeTableColumn.OESampleValue      = cSampleValue.
                
         RETURN TRUE.       
 
@@ -713,5 +756,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
         END.
         RETURN FALSE.
     END METHOD.
+
+
 
 END CLASS.

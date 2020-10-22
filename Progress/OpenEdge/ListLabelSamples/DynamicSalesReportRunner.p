@@ -22,8 +22,8 @@
     Notes       :
   ----------------------------------------------------------------------*/
 
-USING TasteITConsulting.ListLabel25.OpenEdgeDataProvider FROM ASSEMBLY.
-USING combit.ListLabel25.ListLabel FROM ASSEMBLY.
+USING TasteITConsulting.Reporting.OpenEdgeDataProvider FROM ASSEMBLY.
+USING combit.Reporting.ListLabel FROM ASSEMBLY.
 USING ListLabelDemo.Sports2000ServiceAdapter FROM PROPATH.
 USING ListLabelSamples.DynamicSalesReport FROM PROPATH.
 

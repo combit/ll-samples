@@ -12,7 +12,7 @@
 #include <DBTables.hpp>
 #include <ADODB.hpp>
 #include <Registry.hpp>
-#include "L25.hpp"
+#include "L26.hpp"
 //---------------------------------------------------------------------------
 class TfrmPrtloop : public TForm
 {
@@ -33,7 +33,7 @@ __published:	// IDE-managed Components
         TMenuItem *Report2;
         TADOConnection *ADOConnection1;
         TADOTable *ADOTblCustomers;
-        TL25_ *LL;
+        TL26_ *LL;
         void __fastcall Label5Click(TObject *Sender);
         void __fastcall DebugCheckBoxClick(TObject *Sender);
         void __fastcall Label6Click(TObject *Sender);

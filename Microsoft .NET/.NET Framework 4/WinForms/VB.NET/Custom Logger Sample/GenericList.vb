@@ -1,8 +1,8 @@
 ﻿
 Imports System.Collections.Generic
 Imports System.ComponentModel
-Imports combit.ListLabel25.DataProviders
-Imports combit.ListLabel25
+Imports combit.Reporting.DataProviders
+Imports combit.Reporting
 
 Namespace Custom_Logger_Sample
     Class GenericList

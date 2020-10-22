@@ -1,11 +1,11 @@
-Imports combit.ListLabel25
-Imports combit.ListLabel25.Web
+Imports combit.Reporting
+Imports combit.Reporting.Web
 Imports System.Web.Routing
 Imports System.IO
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Runtime.Caching
-Imports combit.ListLabel25.Web.WebDesigner.Server
+Imports combit.Reporting.Web.WindowsClientWebDesigner.Server
 
 Namespace WebReporting
     'D:  Bitte beachten Sie die Hinweise zu den benötigten Verweisen und NuGet-Packages in der readme.txt im ASP.NET-Beispielverzeichnis.
@@ -46,17 +46,17 @@ Namespace WebReporting
             'D: WebAPI des Html5Viewers registrieren. 
             'US: Register the viewer API
             Html5ViewerConfig.RegisterRoutes(RouteTable.Routes)
-            WebDesignerConfig.RegisterRoutes(RouteTable.Routes)
+            WindowsClientWebDesignerConfig.RegisterRoutes(RouteTable.Routes)
 
             ' D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
             ' US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WebDesignerConfig.WebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL25WebDesignerSetup.exe")
+            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL26WebDesignerSetup.exe")
 
             ' D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
             '      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
             ' US:  For Forms- and Windows authentication, the Web Designer can automatically grab the required information (e.g. login cookies).
             '      WebDesignerAuthenticationModes.None allows to use no authentication at all.
-            WebDesignerConfig.AuthenticationMode = WebDesignerAuthenticationModes.Automatic
+            WindowsClientWebDesignerConfig.AuthenticationMode = WindowsClientWebDesignerAuthenticationModes.Automatic
 
             ' D: Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
             ' US: Set license key for List & Label (client + server). If not set, a license error will be displayed on non-development machines.

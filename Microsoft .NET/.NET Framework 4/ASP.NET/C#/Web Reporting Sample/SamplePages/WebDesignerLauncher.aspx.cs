@@ -1,6 +1,6 @@
 ﻿using System;
-using combit.ListLabel25;
-using combit.ListLabel25.Repository;
+using combit.Reporting;
+using combit.Reporting.Repository;
 
 namespace WebReporting
 {
@@ -45,7 +45,7 @@ namespace WebReporting
                     this.DesignerControl1.ParentComponent = LL;
                 }
             }
-            catch (combit.ListLabel25.ListLabelException ex)
+            catch (combit.Reporting.ListLabelException ex)
             {
                 Response.Write(ex.Message);
                 LL.Dispose();

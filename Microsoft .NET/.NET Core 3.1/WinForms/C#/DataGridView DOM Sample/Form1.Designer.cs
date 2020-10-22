@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnDesign = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
+            this.LL = new combit.Reporting.ListLabel(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -99,12 +99,12 @@
             // 
             // LL
             // 
-            this.LL.AutoDestination = combit.ListLabel25.LlPrintMode.MultipleJobs;
+            this.LL.AutoDestination = combit.Reporting.LlPrintMode.MultipleJobs;
             this.LL.AutoPrinterSettingsStream = null;
             this.LL.AutoProjectStream = null;
             this.LL.AutoShowPrintOptions = false;
             this.LL.AutoShowSelectFile = false;
-            this.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+            this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
             this.LL.DrilldownAvailable = true;
             this.LL.EMFResolution = 100;
             this.LL.FileRepository = null;
@@ -113,7 +113,7 @@
             this.LL.MaxRTFVersion = 65280;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_10;
+            this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_10;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
             // 
@@ -147,7 +147,6 @@
             // 
             // label3
             // 
-			this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(44, 21);
             this.label3.Name = "label3";
@@ -167,7 +166,6 @@
             // 
             // label6
             // 
-			this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Location = new System.Drawing.Point(44, 41);
             this.label6.Name = "label6";
@@ -198,7 +196,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(333, 13);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Right click on the columnname to enable/disable columns";
+            this.label7.Text = "Information: right click on the columnname to enable/disable columns";
             // 
             // Form1
             // 
@@ -230,7 +228,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDesign;
         private System.Windows.Forms.Button btnPrint;
-        private combit.ListLabel25.ListLabel LL;
+        private combit.Reporting.ListLabel LL;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbTable;
         private System.Windows.Forms.Label label5;

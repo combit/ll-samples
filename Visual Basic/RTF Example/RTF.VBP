@@ -1,8 +1,8 @@
 Type=Exe
 Form=RTF.FRM
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
-Object={E35C7E00-75CA-4B81-AABC-1FF3A0E535EF}#1.0#0; cmll25r.ocx
-Object={2213E283-16BC-101D-AFD4-040224009C19}#25.0#0; cmll25o.ocx
+Object={E35C7E00-75CA-4B81-AABC-1FF3A0E535F0}#1.0#0; cmll26r.ocx
+Object={2213E283-16BC-101D-AFD4-040224009C1A}#26.0#0; cmll26o.ocx
 IconForm="Form1"
 Startup="Form1"
 Command32=""

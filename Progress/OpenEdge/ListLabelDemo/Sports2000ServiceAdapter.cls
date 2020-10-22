@@ -20,8 +20,8 @@
   ----------------------------------------------------------------------*/
 
 USING Progress.Lang.*.
-USING TasteITConsulting.ListLabel25.IServiceAdapter FROM ASSEMBLY.
-USING TasteITConsulting.ListLabel25.OELongchar FROM ASSEMBLY.
+USING TasteITConsulting.Reporting.IServiceAdapter FROM ASSEMBLY.
+USING TasteITConsulting.Reporting.OELongchar FROM ASSEMBLY.
 USING ListLabel.OpenEdgeAdapter.IOpenEdgeService FROM PROPATH.
 
 BLOCK-LEVEL ON ERROR UNDO, THROW.
@@ -33,7 +33,8 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
     
     DEFINE STREAM s.
     
-    DEFINE VARIABLE mhAppserver AS HANDLE NO-UNDO.
+    DEFINE VARIABLE mhAppserver       AS HANDLE NO-UNDO.
+    DEFINE VARIABLE mhAppserverHandle AS HANDLE NO-UNDO.
     
     DEFINE VARIABLE mcAppserverConnection AS CHARACTER 
            INIT "-AppService listlabel -H localhost -S 5162".
@@ -52,21 +53,23 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
 		mhAppserver = SESSION.
 		mcLogfile = SESSION:TEMP-DIRECTORY + "Sports2000ServiceAdapter.log".
 		writeLog("CLEAR").
-		writeLog("LL24").
+		writeLog("LL26").
 	END CONSTRUCTOR.
 
     CONSTRUCTOR PUBLIC Sports2000ServiceAdapter ( plUseAppserver AS LOGICAL ):
         SUPER ().
         mcLogfile = SESSION:TEMP-DIRECTORY + "Sports2000ServiceAdapter.log".
         writeLog("CLEAR").
-        IF plUseAppserver = FALSE THEN 
+        writeLog("LL26").
+        IF plUseAppserver = FALSE THEN
             mhAppserver = SESSION.
         ELSE DO:
-            IF NOT VALID-HANDLE (mhAppserver) OR mhAppserver = SESSION THEN 
+            IF NOT VALID-HANDLE (mhAppserverHandle) THEN 
             DO:
-                CREATE SERVER mhAppserver.
-                mhAppserver:CONNECT (mcAppserverConnection).
-            END.    
+                CREATE SERVER mhAppserverHandle.
+                mhAppserverHandle:CONNECT (mcAppserverConnection).
+            END. 
+            mhAppserver = mhAppserverHandle.
             WriteLog(SUBSTITUTE("Appserver: &1 &2",mcAppserverConnection)).
         END.
             
@@ -95,6 +98,7 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
         JsonDataResponse = NEW OELongchar().
         RUN ListLabel/OpenEdgeAdapter/OpenEdgeGateway.p ON SERVER mhAppserver 
               (INPUT ServiceName, INPUT "GetData", INPUT lcParameter, INPUT lcRequest, OUTPUT lcResponse ).
+      
         JsonDataResponse:Data = lcResponse.
         
         RETURN TRUE.
@@ -120,26 +124,6 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
      Purpose:
      Notes:
     ------------------------------------------------------------------------------*/
-/*    
-    METHOD PUBLIC LOGICAL ClientEvent( INPUT ServiceName AS CHARACTER, 
-                                       INPUT JsonServiceParameter AS OELongchar, 
-                                       INPUT EventName AS CHARACTER ):
-
-        DEFINE VARIABLE lcParameter AS LONGCHAR NO-UNDO.
-        DEFINE VARIABLE lcResponse  AS LONGCHAR NO-UNDO.
-
-        writeLog ( SUBSTITUTE ("ServiceName: &1 ClientEvent: &2", ServiceName,EventName)).
-        
-        lcParameter = JsonServiceParameter:Data.
-        writeLog (STRING(lcParameter)).
-    
-        RUN ListLabel/OpenEdgeAdapter/OpenEdgeGateway.p ON SERVER mhAppserver 
-            (INPUT ServiceName, "ClientEvent", INPUT lcParameter, INPUT EventName, OUTPUT lcResponse ).
-            
-        RETURN TRUE.
-        
-    END METHOD.
-*/
     METHOD PUBLIC LOGICAL ClientEvent( INPUT  ServiceName       AS CHARACTER, 
                                        INPUT  JsonParameter     AS OELongchar,
                                        INPUT  JsonDataRequest   AS OELongchar,

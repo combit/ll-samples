@@ -12,6 +12,6 @@
 
         ' set the options
         Me.Html5ViewerControl1.Options.ShowToolbarExportButton = False
-        Me.Html5ViewerControl1.Options.UseCDNType = Global.combit.ListLabel25.Web.CDNType.JQuery
+        Me.Html5ViewerControl1.Options.UseCDNType = Global.combit.Reporting.Web.CDNType.JQuery
     End Sub
 End Class

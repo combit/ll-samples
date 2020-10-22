@@ -19,7 +19,7 @@
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.LL = New combit.ListLabel25.ListLabel(Me.components)
+        Me.LL = new combit.Reporting.ListLabel(Me.components)
         Me.label6 = New System.Windows.Forms.Label()
         Me.label2 = New System.Windows.Forms.Label()
         Me.selectTargetFile = New System.Windows.Forms.Button()
@@ -36,12 +36,12 @@
         '
         'LL
         '
-        Me.LL.AutoDestination = combit.ListLabel25.LlPrintMode.Preview
+        Me.LL.AutoDestination = combit.Reporting.LlPrintMode.Preview
         Me.LL.AutoPrinterSettingsStream = Nothing
         Me.LL.AutoProjectStream = Nothing
         Me.LL.AutoShowPrintOptions = False
         Me.LL.AutoShowSelectFile = False
-        Me.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
+        Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
         Me.LL.DrilldownAvailable = True
         Me.LL.EMFResolution = 100
         Me.LL.FileRepository = Nothing
@@ -50,7 +50,7 @@
         Me.LL.MaxRTFVersion = 65280
         Me.LL.PhantomSpace = 8203
         Me.LL.PreviewControl = Nothing
-        Me.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100
+        Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
         Me.LL.UseHardwareCopiesForLabels = False
         Me.LL.UseTableSchemaForDesignMode = False
         '
@@ -173,7 +173,7 @@
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents LL As combit.ListLabel25.ListLabel
+    Friend WithEvents LL As combit.Reporting.ListLabel
     Private WithEvents label6 As System.Windows.Forms.Label
     Private WithEvents label2 As System.Windows.Forms.Label
     Private WithEvents selectTargetFile As System.Windows.Forms.Button

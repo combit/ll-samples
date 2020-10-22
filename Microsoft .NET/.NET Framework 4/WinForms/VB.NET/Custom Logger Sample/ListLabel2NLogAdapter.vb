@@ -1,4 +1,4 @@
-﻿Imports combit.ListLabel25
+﻿Imports combit.Reporting
 Imports NLog
 
 Namespace Custom_Logger_Sample

@@ -14,12 +14,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Registry, DB, ADODB, L25dom, cmbtll25, LlReport_Types,
+  Dialogs, StdCtrls, Registry, DB, ADODB, L26dom, cmbtll26, LlReport_Types,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
   FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MSAcc, FireDAC.Phys.MSAccDef,
   FireDAC.VCLUI.Wait, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
-  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, ListLabel25, StrUtils
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, ListLabel26, StrUtils
   {$IFDEF ver280} // XE7
   , System.UITypes
   {$ENDIF}
@@ -48,7 +48,7 @@ type
     dtLogo: TEdit;
     btnLogo: TButton;
     OpenDialog1: TOpenDialog;
-    LL: TListLabel25;
+    LL: TListLabel26;
     FDConnectionNorthwind: TFDConnection;
     DataSource1: TDataSource;
     FDTable: TFDTable;

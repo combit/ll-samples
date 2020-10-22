@@ -6,15 +6,15 @@ Imports System.Drawing
 Imports System.Linq
 Imports System.Text
 Imports System.Windows.Forms
-Imports combit.ListLabel25.DataProviders
+Imports combit.Reporting.DataProviders
 Imports Microsoft.Win32
 Imports System.Data.OleDb
-Imports combit.ListLabel25
+Imports combit.Reporting
 Imports System.Globalization
 Imports Microsoft.SharePoint.Client
 Imports System.Net
 Imports System.IO
-Imports combit.ListLabel25.SharePointExtensions
+Imports combit.Reporting.SharePointExtensions
 Imports SharePointSample
 
 Partial Public Class Form1

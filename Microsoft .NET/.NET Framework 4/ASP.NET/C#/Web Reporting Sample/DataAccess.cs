@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting.DataProviders;
 using System.Data.OleDb;
 using System.Data;
 using System.Web.Configuration;
-using combit.ListLabel25;
+using combit.Reporting;
 using System.Runtime.Caching;
 
 namespace DataAccess

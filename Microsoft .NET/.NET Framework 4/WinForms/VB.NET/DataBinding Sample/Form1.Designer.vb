@@ -1,4 +1,4 @@
-Imports combit.ListLabel25
+Imports combit.Reporting
 Imports System.Globalization
 Partial Class Form1
     ''' <summary>
@@ -22,9 +22,9 @@ Partial Class Form1
     ''' </summary>
     Private Sub InitializeComponent()
 		Me.components = New System.ComponentModel.Container()
-		Me.LL = New combit.ListLabel25.ListLabel(Me.components)
+		Me.LL = new combit.Reporting.ListLabel(Me.components)
 		Me.statusBar1 = New System.Windows.Forms.StatusBar()
-		Me.LLPreviewControl = New combit.ListLabel25.ListLabelPreviewControl(Me.components)
+		Me.LLPreviewControl = new combit.Reporting.ListLabelPreviewControl(Me.components)
 		Me.progressBar1 = New System.Windows.Forms.ProgressBar()
 		Me.tabControl = New System.Windows.Forms.TabControl()
 		Me.tpDataSet = New System.Windows.Forms.TabPage()
@@ -141,7 +141,7 @@ Partial Class Form1
 		'
 		Me.LL.AutoPrinterSettingsStream = Nothing
 		Me.LL.AutoProjectStream = Nothing
-		Me.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
+		Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
 		Me.LL.DrilldownAvailable = True
 		Me.LL.EMFResolution = 100
 		Me.LL.FileRepository = Nothing
@@ -150,7 +150,7 @@ Partial Class Form1
 		Me.LL.MaxRTFVersion = 65280
 		Me.LL.PhantomSpace = 8203
 		Me.LL.PreviewControl = Nothing
-		Me.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100
+		Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
 		Me.LL.UseHardwareCopiesForLabels = False
 		Me.LL.UseTableSchemaForDesignMode = False
 		'
@@ -168,7 +168,7 @@ Partial Class Form1
 			Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.LLPreviewControl.BackColor = System.Drawing.SystemColors.Window
-		Me.LLPreviewControl.CloseMode = combit.ListLabel25.LlPreviewControlCloseMode.DeleteFile
+		Me.LLPreviewControl.CloseMode = combit.Reporting.LlPreviewControlCloseMode.DeleteFile
 		Me.LLPreviewControl.CurrentPage = 0
 		Me.LLPreviewControl.ForceReadOnly = False
 		Me.LLPreviewControl.Location = New System.Drawing.Point(10, 134)
@@ -177,30 +177,30 @@ Partial Class Form1
 		Me.LLPreviewControl.SlideshowMode = False
 		Me.LLPreviewControl.TabIndex = 14
 		Me.LLPreviewControl.Text = "listLabelPreviewControl1"
-		Me.LLPreviewControl.ToolbarButtons.Exit = combit.ListLabel25.LlButtonState.Invisible
-		Me.LLPreviewControl.ToolbarButtons.GotoFirst = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.GotoLast = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.GotoNext = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.GotoPrev = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.MouseModeMove = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.MouseModeZoom = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.NextFile = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.PageRange = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.PreviousFile = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.PrintAllPages = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.PrintCurrentPage = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.PrintToFax = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.SaveAs = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.SearchNext = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.SearchOptions = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.SearchStart = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.SearchText = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.SendTo = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.SlideshowMode = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.ZoomCombo = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.ZoomReset = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.ZoomRevert = combit.ListLabel25.LlButtonState.[Default]
-		Me.LLPreviewControl.ToolbarButtons.ZoomTimes2 = combit.ListLabel25.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.Exit = combit.Reporting.LlButtonState.Invisible
+		Me.LLPreviewControl.ToolbarButtons.GotoFirst = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.GotoLast = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.GotoNext = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.GotoPrev = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.MouseModeMove = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.MouseModeZoom = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.NextFile = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.PageRange = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.PreviousFile = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.PrintAllPages = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.PrintCurrentPage = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.PrintToFax = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.SaveAs = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.SearchNext = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.SearchOptions = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.SearchStart = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.SearchText = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.SendTo = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.SlideshowMode = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.ZoomCombo = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.ZoomReset = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.ZoomRevert = combit.Reporting.LlButtonState.[Default]
+		Me.LLPreviewControl.ToolbarButtons.ZoomTimes2 = combit.Reporting.LlButtonState.[Default]
 		'
 		'progressBar1
 		'

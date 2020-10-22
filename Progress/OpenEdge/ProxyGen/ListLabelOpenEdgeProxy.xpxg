@@ -10,7 +10,7 @@
       <VersionNumber>1</VersionNumber>
       <Package />
       <Service>OpenEdgeProxy</Service>
-      <WorkDir>T:\LL23\LLWS\LLPRO\ProxyGen\</WorkDir>
+      <WorkDir>T:\LL26\LLWS\LLPRO\ProxyGen\</WorkDir>
       <VerboseLogging>true</VerboseLogging>
       <LeaveProxyFiles>true</LeaveProxyFiles>
       <SaveBeforeGen>true</SaveBeforeGen>
@@ -31,7 +31,7 @@
       <DotNetCompiler>csc</DotNetCompiler>
       <DotNetSwitches />
       <DotNetXSDGenerator>xsd</DotNetXSDGenerator>
-      <DotNetNamespace>TasteITConsulting.ListLabel</DotNetNamespace>
+      <DotNetNamespace>TasteITConsulting.Reporting</DotNetNamespace>
       <DotNetTitle>ListLabel OpenEdgeProxy</DotNetTitle>
       <DotNetVersion>1.0</DotNetVersion>
       <DotNetDesc>.Net Proxy for List &amp; Label</DotNetDesc>
@@ -40,13 +40,13 @@
       <DotNetPublicKey />
       <DotNetDelaySign>false</DotNetDelaySign>
       <DotNetRuntime>digitally signed</DotNetRuntime>
-      <DotNetDataSetNamespace>TasteITConsulting.ListLabel.StrongTypesNS</DotNetDataSetNamespace>
+      <DotNetDataSetNamespace>TasteITConsulting.Reporting.StrongTypesNS</DotNetDataSetNamespace>
       <DNUseDefaultDSNamespace>true</DNUseDefaultDSNamespace>
       <DNUseNamespaceAsDirs>true</DNUseNamespaceAsDirs>
       <DotNetUseNullableTypes>true</DotNetUseNullableTypes>
-      <SilverlightDomainServiceNamespace>TasteITConsulting.ListLabel.Web.Services</SilverlightDomainServiceNamespace>
+      <SilverlightDomainServiceNamespace>TasteITConsulting.Reporting.Web.Services</SilverlightDomainServiceNamespace>
       <SilverlightUseDefaultDomainServiceNamespace>true</SilverlightUseDefaultDomainServiceNamespace>
-      <SilverlightEntityNamespace>TasteITConsulting.ListLabel.Web</SilverlightEntityNamespace>
+      <SilverlightEntityNamespace>TasteITConsulting.Reporting.Web</SilverlightEntityNamespace>
       <SilverlightUseDefaultEntityNamespace>true</SilverlightUseDefaultEntityNamespace>
     </PGGenInfo>
     <DeploymentWizard>
@@ -76,7 +76,7 @@
       </SonicConnectionInfo>
     </DeploymentWizard>
     <Name>OpenEdgeProxy</Name>
-    <ProPath>T:\LL23\LLWS\LLPRO\</ProPath>
+    <ProPath>T:\LL26\LLWS\LLPRO\</ProPath>
     <HelpString />
     <ODLHelpString />
     <ObjectType>false</ObjectType>
@@ -86,7 +86,7 @@
     <Procedure isPersistent="false" useFullName="false">
       <Name>OpenEdgeGateway</Name>
       <ProcPath>ListLabel\OpenEdgeAdapter\</ProcPath>
-      <ProPath>T:\LL23\LLWS\LLPRO\</ProPath>
+      <ProPath>T:\LL26\LLWS\LLPRO\</ProPath>
     </Procedure>
   </AppObject>
 </WSAD>

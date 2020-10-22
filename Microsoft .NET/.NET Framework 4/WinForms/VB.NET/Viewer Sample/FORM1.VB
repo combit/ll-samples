@@ -6,15 +6,13 @@ Public Partial Class Form1
     Public Sub New()
 		InitializeComponent()
 
-		'
-		' TODO: Add any constructor code after InitializeComponent call
-		'
-		If Not File.Exists("invoice.ll") Then
-			Directory.SetCurrentDirectory("..\..\")
-		End If
+        '
+        ' TODO: Add any constructor code after InitializeComponent call
+        '
+        Directory.SetCurrentDirectory("..\..\..\..\..\..\Report Files")
 
-		' Preload initial file
-		PreviewControl.FileName = InlineAssignHelper(statusBarPanel1.Text, Directory.GetCurrentDirectory() & "\invoice.ll")
+        ' Preload initial file
+        PreviewControl.FileName = InlineAssignHelper(statusBarPanel1.Text, Directory.GetCurrentDirectory() & "\invoice.ll")
 	End Sub
 
     ''' <summary>
@@ -30,7 +28,7 @@ Public Partial Class Form1
     Private Shared Function SetProcessDPIAware() As Boolean
     End Function
 
-    Private Sub PreviewControl_PageChanged(sender As Object, e As combit.ListLabel25.ListLabelPreviewControl.PageChangedEventArgs) Handles PreviewControl.PageChanged
+    Private Sub PreviewControl_PageChanged(sender As Object, e As combit.Reporting.ListLabelPreviewControl.PageChangedEventArgs) Handles PreviewControl.PageChanged
         ' refresh status text
         statusBarPanel2.Text = [String].Format("Page {0}/{1}", e.NewIndex + 1, PreviewControl.PageCount)
     End Sub

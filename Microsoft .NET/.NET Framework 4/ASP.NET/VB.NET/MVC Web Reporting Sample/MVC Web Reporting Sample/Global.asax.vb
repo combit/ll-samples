@@ -1,5 +1,5 @@
-﻿Imports combit.ListLabel25.Web
-Imports combit.ListLabel25.Web.WebDesigner.Server
+﻿Imports combit.Reporting.Web
+Imports combit.Reporting.Web.WindowsClientWebDesigner.Server
 Imports System.IO
 Imports System.Web.Mvc
 Imports System.Web.Routing
@@ -35,13 +35,13 @@ Namespace WebReporting
 
             ' D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
             ' US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WebDesignerConfig.WebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL25WebDesignerSetup.exe")
+            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL26WebDesignerSetup.exe")
 
             ' D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
             '      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
             ' US:  For Forms- and Windows authentication, the Web Designer can automatically grab the required information (e.g. login cookies).
             '      WebDesignerAuthenticationModes.None allows to use no authentication at all.
-            WebDesignerConfig.AuthenticationMode = WebDesignerAuthenticationModes.Automatic
+            WindowsClientWebDesignerConfig.AuthenticationMode = WindowsClientWebDesignerAuthenticationModes.Automatic
         End Sub
 
         Public Sub RegisterRoutes(routes As RouteCollection)
@@ -50,7 +50,7 @@ Namespace WebReporting
             'D: WebAPI/MVC-Routen von Html5Viewer und Web Designer registrieren. 
             'US: Register the WebAPI/MVC routes of the Html5Viewer and Web Designer.
             Html5ViewerConfig.RegisterRoutes(routes)
-            WebDesignerConfig.RegisterRoutes(routes)
+            WindowsClientWebDesignerConfig.RegisterRoutes(routes)
 
             routes.MapRoute(name:="Default", url:="{controller}/{action}/{id}", defaults:=New With {
                 Key .controller = "Sample",

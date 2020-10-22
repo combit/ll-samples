@@ -10,16 +10,10 @@
 	#define __DSLISTLABEL_INCLUDE__CH_
 
 #ifndef __LL
-	#define __LL			"25"
+	#define __LL			"26"
 #endif
 
-#if __LL = "25"
-	#include "cmbtll25.ch"
-#else
-	#if __LL = "24"
-		#include "cmbtll24.ch"
-	#endif
-#endif
+#include "cmbtll26.ch"
 
 // weitere Menu IDs siehe ...\combit\LL*\dokumentation\menuid.txt
 // additional Menu IDs see ...\combit\LL*\documentation\menuid.txt

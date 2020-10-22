@@ -1,6 +1,6 @@
-﻿@using combit.ListLabel25.Web.WebDesigner.Server
+﻿@using combit.Reporting.Web.WindowsClientWebDesigner.Server
 
-@model WebDesignerOptions
+@model WindowsClientWebDesignerOptions
 
 
 @*
@@ -8,7 +8,7 @@
     US: Html.ListLabelMvcWebDesigner() will render a page that launches the Web Designer application on the client or offers to install it.
 *@
 
-@Html.ListLabelMvcWebDesigner(Model)
+@Html.ListLabelMvcWindowsClientWebDesigner(Model)
 
 <script type="text/javascript">
     // D:   Bei Bedarf können Sie selbst auf einen erfolgreichen oder fehlgeschlagenen Start des Web Designers reagieren. Für 'window.document' wird dazu das Event 'WebDesignerLaunched' registriert.

@@ -26,9 +26,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listLabel1 = new combit.ListLabel25.ListLabel(this.components);
+            this.listLabel1 = new combit.Reporting.ListLabel(this.components);
             this.ofd = new System.Windows.Forms.OpenFileDialog();
-            this.listLabelRTFControl1 = new combit.ListLabel25.ListLabelRTFControl(this.components);
+            this.listLabelRTFControl1 = new combit.Reporting.ListLabelRTFControl(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -38,7 +38,7 @@
             // 
             this.listLabel1.AutoPrinterSettingsStream = null;
             this.listLabel1.AutoProjectStream = null;
-            this.listLabel1.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+            this.listLabel1.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
             this.listLabel1.DrilldownAvailable = true;
             this.listLabel1.EMFResolution = 100;
             this.listLabel1.FileRepository = null;
@@ -47,7 +47,7 @@
             this.listLabel1.MaxRTFVersion = 1280;
             this.listLabel1.PhantomSpace = 8203;
             this.listLabel1.PreviewControl = null;
-            this.listLabel1.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100;
+            this.listLabel1.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
             this.listLabel1.UseHardwareCopiesForLabels = false;
             this.listLabel1.UseTableSchemaForDesignMode = false;
             // 
@@ -115,8 +115,8 @@
 
         }
         private System.Windows.Forms.OpenFileDialog ofd;
-        private combit.ListLabel25.ListLabelRTFControl listLabelRTFControl1;
-        private combit.ListLabel25.ListLabel listLabel1;
+        private combit.Reporting.ListLabelRTFControl listLabelRTFControl1;
+        private combit.Reporting.ListLabel listLabel1;
         #endregion
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

@@ -32,7 +32,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.designButton = new System.Windows.Forms.Button();
             this.printButton = new System.Windows.Forms.Button();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
+            this.LL = new combit.Reporting.ListLabel(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -93,7 +93,7 @@
             this.LL.AutoPrinterSettingsStream = null;
             this.LL.AutoProjectStream = null;
             this.LL.CompressStorage = true;
-            this.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+            this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
             this.LL.DrilldownAvailable = true;
             this.LL.EMFResolution = 100;
             this.LL.FileRepository = null;
@@ -102,7 +102,7 @@
             this.LL.MaxRTFVersion = 65280;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100;
+            this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
             // 
@@ -124,7 +124,7 @@
             this.ResumeLayout(false);
 
         }
-        private combit.ListLabel25.ListLabel LL;
+        private combit.Reporting.ListLabel LL;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

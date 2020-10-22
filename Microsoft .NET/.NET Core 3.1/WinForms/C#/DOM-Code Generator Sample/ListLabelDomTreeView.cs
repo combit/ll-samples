@@ -3,8 +3,8 @@ using System.Collections;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
-using combit.ListLabel25.Dom;
-using combit.ListLabel25;
+using combit.Reporting.Dom;
+using combit.Reporting;
 using System.IO;
 using System.ComponentModel;
 using System.Reflection;
@@ -291,7 +291,7 @@ namespace CodeDomSample
                 }
 
             }
-            else if (propertyType.IsSubclassOf(typeof(CollectionBase)))
+            else if (typeof(IEnumerable<DomItem>).IsAssignableFrom(propertyType))
             {
                 object propertyValue = pd.GetValue(parentNode.Tag);
 

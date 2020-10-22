@@ -15,7 +15,7 @@ interface
 
 uses
   SysUtils, Registry, WinTypes, WinProcs, Messages, Classes, Graphics, Controls,
-  Forms, Dialogs, StdCtrls, Menus, DB, DBTables, Prop, L25, cmbtll25,
+  Forms, Dialogs, StdCtrls, Menus, DB, DBTables, Prop, L26, cmbtll26,
   ADODB
   {$IFDEF ver280} // XE7
   , System.UITypes
@@ -40,7 +40,7 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    LL: TL25_;
+    LL: TL26_;
     ADOConnection1: TADOConnection;
     ADOTableArticle: TADOTable;
     procedure FormCreate(Sender: TObject);

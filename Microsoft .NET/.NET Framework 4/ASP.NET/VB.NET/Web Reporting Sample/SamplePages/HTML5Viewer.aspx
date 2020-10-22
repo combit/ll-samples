@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="vb" CodeBehind="HTML5Viewer.aspx.vb" Inherits="WebReporting.HTML5Viewer" %>
 
-<%@ Register TagPrefix="combit" Namespace="combit.ListLabel25.Web" Assembly="combit.ListLabel25.Web" %>
+<%@ Register TagPrefix="combit" Namespace="combit.Reporting.Web" Assembly="combit.ListLabel26.Web" %>
 <html>
 <head>
     <title>

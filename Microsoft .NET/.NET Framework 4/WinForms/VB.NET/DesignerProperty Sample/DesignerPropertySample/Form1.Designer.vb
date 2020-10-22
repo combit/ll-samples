@@ -21,7 +21,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.LL = New combit.ListLabel25.ListLabel(Me.components)
+        Me.LL = new combit.Reporting.ListLabel(Me.components)
         Me.label24 = New System.Windows.Forms.Label()
         Me.label23 = New System.Windows.Forms.Label()
         Me.label22 = New System.Windows.Forms.Label()
@@ -76,7 +76,7 @@ Partial Class Form1
         '
         Me.LL.AutoPrinterSettingsStream = Nothing
         Me.LL.AutoProjectStream = Nothing
-        Me.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
+        Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
         Me.LL.DrilldownAvailable = True
         Me.LL.EMFResolution = 100
         Me.LL.FileRepository = Nothing
@@ -85,7 +85,7 @@ Partial Class Form1
         Me.LL.MaxRTFVersion = 65280
         Me.LL.PhantomSpace = 8203
         Me.LL.PreviewControl = Nothing
-        Me.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100
+        Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
         Me.LL.UseHardwareCopiesForLabels = False
         Me.LL.UseTableSchemaForDesignMode = False
         '
@@ -545,7 +545,7 @@ Partial Class Form1
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents LL As combit.ListLabel25.ListLabel
+    Friend WithEvents LL As combit.Reporting.ListLabel
     Private WithEvents label24 As System.Windows.Forms.Label
     Private WithEvents label23 As System.Windows.Forms.Label
     Private WithEvents label22 As System.Windows.Forms.Label

@@ -5,7 +5,7 @@ Imports System.Linq
 Imports System.Web
 Imports System.Web.UI.WebControls
 Imports System.Threading
-Imports combit.ListLabel25.Repository
+Imports combit.Reporting.Repository
 
 Namespace WebReporting
     Partial Public Class StartPage
@@ -15,7 +15,7 @@ Namespace WebReporting
                 Dim repoItemId As String = Request.QueryString("reportRepositoryID")
                 If repoItemId IsNot Nothing Then
                     repoItemId = HttpUtility.UrlDecode(repoItemId)
-                    If combit.ListLabel25.Repository.RepositoryItem.IsValidItemId(repoItemId) Then
+                    If combit.Reporting.Repository.RepositoryItem.IsValidItemId(repoItemId) Then
                         RepositoryHelper.GetCurrentRepository().DeleteItem(repoItemId)
                     End If
                 End If
@@ -23,7 +23,7 @@ Namespace WebReporting
                 Dim repoItemId As String = Request.QueryString("reportRepositoryID")
                 If repoItemId IsNot Nothing Then
                     repoItemId = HttpUtility.UrlDecode(repoItemId)
-                    If combit.ListLabel25.Repository.RepositoryItem.IsValidItemId(repoItemId) Then
+                    If combit.Reporting.Repository.RepositoryItem.IsValidItemId(repoItemId) Then
                         Dim repository = RepositoryHelper.GetCurrentRepository()
                         Dim itemToDownload = DirectCast(repository.GetItem(repoItemId), CustomizedRepostoryItem)
 

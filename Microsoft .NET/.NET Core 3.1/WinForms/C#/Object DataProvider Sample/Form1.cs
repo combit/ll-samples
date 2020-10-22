@@ -5,10 +5,10 @@ using System.Data.OleDb;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting.DataProviders;
 using Microsoft.Win32;
 
-namespace combit.ListLabel25.CSharpSample.ObjectDataProviderSample
+namespace combit.Reporting.CSharpSample.ObjectDataProviderSample
 {
     public partial class Form1 : Form
     {

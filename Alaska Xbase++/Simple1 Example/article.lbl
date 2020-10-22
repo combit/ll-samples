@@ -438,7 +438,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright-Hinweis /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright-Hinweis /LINK:http://www.combit.net/de/products/ll
  Condition=True
  UserLocked=False
  WrapBefore=False

@@ -7,8 +7,8 @@ Imports System.IO
 Imports System.Net
 Imports System.Windows.Forms
 Imports System.Xml
-Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
+Imports combit.Reporting
+Imports combit.Reporting.DataProviders
 Imports Microsoft.Win32
 Imports DataBinding.DataBind.GenericList
 
@@ -449,6 +449,7 @@ Partial Public Class Form1
         Dim cmd As OleDbCommand = CreateOleDbCommand()
 
         Dim provider As New DbCommandSetDataProvider()
+		provider.MinimalSelect = False
         provider.AddCommand(cmd, "Products")
 
         Try
@@ -482,6 +483,7 @@ Partial Public Class Form1
 
         Dim cmd As OleDbCommand = CreateOleDbCommand()
         Dim provider As New DbCommandSetDataProvider()
+		provider.MinimalSelect = False
         provider.AddCommand(cmd, "Products")
 
         Try
@@ -770,7 +772,7 @@ Partial Public Class Form1
             Dim myArray(1) As Object
             myArray(0) = sender
             myArray(1) = e
-            Me.BeginInvoke(New combit.ListLabel25.NotifyProgressHandler(AddressOf LL_NotifyProgress), myArray)
+            Me.BeginInvoke(New combit.Reporting.NotifyProgressHandler(AddressOf LL_NotifyProgress), myArray)
         Else
             If e.Percentage = 100 Then
                 progressBar1.Visible = False

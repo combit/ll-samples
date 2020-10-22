@@ -25,7 +25,6 @@ Object oOrderEntryView is a dbView
     Set piMinSize to 174 383
     Set pbAutoActivate to True
     
-
     Object Vendor_DD is a Vendor_DataDictionary
     End_Object    // Vendor_DD
 

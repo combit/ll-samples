@@ -1,12 +1,12 @@
 <?xml version="1.0" standalone="yes"?>
 <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="false">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Categories" >
+        <xs:element name="Categories">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="CategoryID" msdata:AutoIncrement="true" type="xs:int"/>
+              <xs:element name="CategoryID" msdata:AutoIncrement="true" type="xs:int" />
               <xs:element name="CategoryName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -21,7 +21,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Picture" type="xs:base64Binary" minOccurs="0"/>
+              <xs:element name="Picture" type="xs:base64Binary" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -85,7 +85,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Order_x0020_Details">
+        <xs:element name="Order_x0020_Details" msdata:Locale="de-DE">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="OrderID" type="xs:int" minOccurs="0" />
@@ -124,7 +124,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Shippers">
+        <xs:element name="Shippers" msdata:Locale="de-DE">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ShipperID" type="xs:int" minOccurs="0" />

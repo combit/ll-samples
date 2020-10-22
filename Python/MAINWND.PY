@@ -6,7 +6,7 @@ from tkinter import *
 from ctypes import *
 import sqlite3
 
-LL = windll.cmll25
+LL = windll.cmll26
 
 # connect to database
 SQLCon = sqlite3.connect("simple.db3")

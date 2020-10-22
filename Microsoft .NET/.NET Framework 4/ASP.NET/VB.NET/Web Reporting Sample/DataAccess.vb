@@ -1,10 +1,10 @@
 Imports System.Collections.Generic
 Imports System.Linq
-Imports combit.ListLabel25.DataProviders
+Imports combit.Reporting.DataProviders
 Imports System.Data.OleDb
 Imports System.Data
 Imports System.Web.Configuration
-Imports combit.ListLabel25
+Imports combit.Reporting
 Imports System.Runtime.Caching
 
 Namespace DataAccess

@@ -2,9 +2,9 @@
 Imports System.IO
 Imports System.Web.Script.Services
 Imports System.Web.Services
-Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
-Imports combit.ListLabel25.Dom
+Imports combit.Reporting
+Imports combit.Reporting.DataProviders
+Imports combit.Reporting.Dom
 
 Namespace combit.Services
 
@@ -85,7 +85,7 @@ Namespace combit.Services
                         dataMember = "Companies"
                         Exit Select
                     Case "JSON"
-                        provider = New Global.combit.ListLabel25.DataProviders.JsonDataProvider(File.ReadAllText(Path.Combine(Server.MapPath("~/App_Data"), "data.json")))
+                        provider = New Global.combit.Reporting.DataProviders.JsonDataProvider(File.ReadAllText(Path.Combine(Server.MapPath("~/App_Data"), "data.json")))
                         Exit Select
                     Case "OBJECT"
                         provider = New ObjectDataProvider(GenericList.GetGenericList())
@@ -149,7 +149,6 @@ Namespace combit.Services
                     Dim outputFile As String = System.IO.Path.GetTempPath() + reportresult
 
                     ll.ExportOptions.Clear()
-                    ll.ExportOptions.Add(LlExportOption.PdfFontMode, "6")
 
                     ' D: Export starten
                     ' US: Start export

@@ -1,4 +1,4 @@
-﻿Imports combit.ListLabel25
+﻿Imports combit.Reporting
 Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.Data

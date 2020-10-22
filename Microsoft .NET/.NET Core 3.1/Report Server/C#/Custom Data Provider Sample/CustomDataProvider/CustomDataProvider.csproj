@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Deterministic>false</Deterministic>
+	<Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="combit.ListLabel26">
+      <HintPath>..\..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+    </Reference>
+    <Reference Include="combit.ReportServer26.SharedTypes">
+      <HintPath>..\..\..\..\Assemblies\combit.ReportServer26.SharedTypes.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

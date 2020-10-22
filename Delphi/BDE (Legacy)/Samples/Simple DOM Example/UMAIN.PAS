@@ -14,8 +14,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, L25, Registry, DB, ADODB, L25dom, cmbtll25,
-  L25db
+  Dialogs, StdCtrls, L26, Registry, DB, ADODB, L26dom, cmbtll26,
+  L26db
   {$IFDEF ver280} // XE7
   , System.UITypes
   {$ENDIF}
@@ -43,7 +43,7 @@ type
     Label9: TLabel;
     dtTitle: TEdit;
     dtLogo: TEdit;
-    LL: TDBL25_;
+    LL: TDBL26_;
     btnLogo: TButton;
     OpenDialog1: TOpenDialog;
     DataSource1: TDataSource;

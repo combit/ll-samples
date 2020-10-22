@@ -1,6 +1,6 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Revision am 03.09.2019
+// Revision am 30.08.2020
 //
 class SubReportDATAMODULE of DATAMODULE
    this.CATEGORIES1 = new QUERY()

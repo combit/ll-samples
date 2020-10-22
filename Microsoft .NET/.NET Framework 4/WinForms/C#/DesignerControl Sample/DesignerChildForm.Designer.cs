@@ -31,8 +31,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
-            this.designerControl1 = new combit.ListLabel25.DesignerControl();
+            this.LL = new combit.Reporting.ListLabel(this.components);
+            this.designerControl1 = new combit.Reporting.DesignerControl();
             this.SuspendLayout();
             // 
             // LL
@@ -45,7 +45,7 @@
             this.LL.MaxRTFVersion = 65280;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100;
+            this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
             // 
@@ -76,7 +76,7 @@
 
         #endregion
 
-        private combit.ListLabel25.ListLabel LL;
-        private combit.ListLabel25.DesignerControl designerControl1;       
+        private combit.Reporting.ListLabel LL;
+        private combit.Reporting.DesignerControl designerControl1;       
     }
 }

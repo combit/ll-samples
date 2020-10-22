@@ -13,16 +13,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.OleDb" Version="4.6.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
+    <PackageReference Include="System.Data.OleDb" Version="4.7.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel25">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.dll</HintPath>
+    <Reference Include="combit.ListLabel26">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel25.SqlConnectionDataProvider">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel25.SqlConnectionDataProvider.dll</HintPath>
+    <Reference Include="combit.ListLabel26.SqlConnectionDataProvider">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel26.SqlConnectionDataProvider.dll</HintPath>
     </Reference>
   </ItemGroup>
 

@@ -13,16 +13,12 @@ namespace csharpviewer
             //
             // TODO: Add any constructor code after InitializeComponent call
             //
-            if (!File.Exists("invoice.ll"))
-            {
-                Directory.SetCurrentDirectory(@"..\..\");
-            }
-
+            Directory.SetCurrentDirectory(@"..\..\..\..\..\..\..\Report Files");
             // Preload initial file
             PreviewControl.FileName = statusBarPanel1.Text = Directory.GetCurrentDirectory() + "\\invoice.ll";
         }
 
-        private void PreviewControl_PageChanged(object sender, combit.ListLabel25.ListLabelPreviewControl.PageChangedEventArgs e)
+        private void PreviewControl_PageChanged(object sender, combit.Reporting.ListLabelPreviewControl.PageChangedEventArgs e)
         {
             // refresh status text
             statusBarPanel2.Text = String.Format("Page {0}/{1}", e.NewIndex + 1, PreviewControl.PageCount);

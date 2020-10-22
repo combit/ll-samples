@@ -1,4 +1,4 @@
-﻿Imports combit.ListLabel25
+﻿Imports combit.Reporting
 Imports System.ComponentModel.DataAnnotations
 Imports System.Web
 

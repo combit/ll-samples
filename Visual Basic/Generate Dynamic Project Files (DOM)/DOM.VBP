@@ -1,7 +1,7 @@
 Type=Exe
 Form=Form1.frm
-Object={2213E283-16BC-101D-AFD4-040224009C19}#25.0#0; cmll25o.ocx
-Module=Module1; ..\cmll25.bas
+Object={2213E283-16BC-101D-AFD4-040224009C1A}#26.0#0; cmll26o.ocx
+Module=Module1; ..\cmll26.bas
 IconForm="Form1"
 Startup="Form1"
 Command32=""

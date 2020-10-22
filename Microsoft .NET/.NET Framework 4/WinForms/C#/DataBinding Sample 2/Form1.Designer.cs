@@ -36,7 +36,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
+            this.LL = new combit.Reporting.ListLabel(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +138,7 @@
             this.LL.AutoPrinterSettingsStream = null;
             this.LL.AutoProjectStream = null;
             this.LL.CompressStorage = true;
-            this.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+            this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
             this.LL.DrilldownAvailable = true;
             this.LL.EMFResolution = 100;
             this.LL.FileRepository = null;
@@ -147,7 +147,7 @@
             this.LL.MaxRTFVersion = 65280;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100;
+            this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
             // 
@@ -184,7 +184,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private combit.ListLabel25.ListLabel LL;
+        private combit.Reporting.ListLabel LL;
         #endregion
     }
 }

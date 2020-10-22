@@ -33,10 +33,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
-            this.designerAction1 = new combit.ListLabel25.DesignerAction();
-            this.designerFunction1 = new combit.ListLabel25.DesignerFunction();
-            this.designerObject1 = new combit.ListLabel25.DesignerObject();
+            this.LL = new combit.Reporting.ListLabel(this.components);
+            this.designerAction1 = new combit.Reporting.DesignerAction();
+            this.designerFunction1 = new combit.Reporting.DesignerFunction();
+            this.designerObject1 = new combit.Reporting.DesignerObject();
             this.SuspendLayout();
             // 
             // label3
@@ -96,12 +96,12 @@
             // 
             this.LL.AutoPrinterSettingsStream = null;
             this.LL.AutoProjectStream = null;
-            this.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
-            this.LL.DesignerActions.AddRange(new combit.ListLabel25.DesignerAction[] {
+            this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
+            this.LL.DesignerActions.AddRange(new combit.Reporting.DesignerAction[] {
             this.designerAction1});
-            this.LL.DesignerFunctions.AddRange(new combit.ListLabel25.DesignerExtensions.IDesignerFunction[] {
+            this.LL.DesignerFunctions.AddRange(new combit.Reporting.DesignerExtensions.IDesignerFunction[] {
             this.designerFunction1});
-            this.LL.DesignerObjects.AddRange(new combit.ListLabel25.DesignerObject[] {
+            this.LL.DesignerObjects.AddRange(new combit.Reporting.DesignerObject[] {
             this.designerObject1});
             this.LL.DrilldownAvailable = true;
             this.LL.EMFResolution = 100;
@@ -111,7 +111,7 @@
             this.LL.MaxRTFVersion = 65280;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Inch_1_100;
+            this.LL.Unit = combit.Reporting.LlUnits.Inch_1_100;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
             // 
@@ -122,7 +122,7 @@
             this.designerAction1.MenuText = "Find object";
             this.designerAction1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.designerAction1.TooltipText = "Find object";
-            this.designerAction1.ExecuteAction += new combit.ListLabel25.DesignerAction.ExecuteActionHandler(this.DesignerAction1_ExecuteAction);
+            this.designerAction1.ExecuteAction += new combit.Reporting.DesignerAction.ExecuteActionHandler(this.DesignerAction1_ExecuteAction);
             // 
             // designerFunction1
             // 
@@ -132,14 +132,14 @@
             this.designerFunction1.MaximumParameters = 2;
             this.designerFunction1.MinimalParameters = 2;
             this.designerFunction1.Parameter1.Description = "First Value";
-            this.designerFunction1.Parameter1.Type = combit.ListLabel25.LlParamType.Double;
+            this.designerFunction1.Parameter1.Type = combit.Reporting.LlParamType.Double;
             this.designerFunction1.Parameter2.Description = "Second Value";
-            this.designerFunction1.Parameter2.Type = combit.ListLabel25.LlParamType.Double;
+            this.designerFunction1.Parameter2.Type = combit.Reporting.LlParamType.Double;
             this.designerFunction1.Parameter3.Description = "Parameter 3";
             this.designerFunction1.Parameter4.Description = "Parameter 4";
-            this.designerFunction1.ResultType = combit.ListLabel25.LlParamType.Double;
-            this.designerFunction1.EvaluateFunction += new combit.ListLabel25.EvaluateFunctionHandler(this.DesignerFunction1_EvaluateFunction);
-            this.designerFunction1.ParameterAutoComplete += new combit.ListLabel25.ParameterAutoCompleteHandler(this.DesignerFunction1_ParameterAutoComplete);
+            this.designerFunction1.ResultType = combit.Reporting.LlParamType.Double;
+            this.designerFunction1.EvaluateFunction += new combit.Reporting.EvaluateFunctionHandler(this.DesignerFunction1_EvaluateFunction);
+            this.designerFunction1.ParameterAutoComplete += new combit.Reporting.ParameterAutoCompleteHandler(this.DesignerFunction1_ParameterAutoComplete);
             // 
             // designerObject1
             // 
@@ -149,9 +149,9 @@
             this.designerObject1.ObjectName = "SampleObject";
             this.designerObject1.SupportsContentDialog = true;
             this.designerObject1.TooltipDescription = null;
-            this.designerObject1.DrawDesignerObject += new combit.ListLabel25.DrawDesignerObjectHandler(this.DesignerObject1_DrawDesignerObject);
-            this.designerObject1.EditDesignerObject += new combit.ListLabel25.EditDesignerObjectHandler(this.DesignerObject1_EditDesignerObject);
-            this.designerObject1.CreateDesignerObject += new combit.ListLabel25.CreateDesignerObjectHandler(this.DesignerObject1_CreateDesignerObject);
+            this.designerObject1.DrawDesignerObject += new combit.Reporting.DrawDesignerObjectHandler(this.DesignerObject1_DrawDesignerObject);
+            this.designerObject1.EditDesignerObject += new combit.Reporting.EditDesignerObjectHandler(this.DesignerObject1_EditDesignerObject);
+            this.designerObject1.CreateDesignerObject += new combit.Reporting.CreateDesignerObjectHandler(this.DesignerObject1_CreateDesignerObject);
             // 
             // Form1
             // 
@@ -175,12 +175,12 @@
         }
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private combit.ListLabel25.ListLabel LL;
+        private combit.Reporting.ListLabel LL;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private combit.ListLabel25.DesignerFunction designerFunction1;
-        private combit.ListLabel25.DesignerObject designerObject1;
-        private combit.ListLabel25.DesignerAction designerAction1;
+        private combit.Reporting.DesignerFunction designerFunction1;
+        private combit.Reporting.DesignerObject designerObject1;
+        private combit.Reporting.DesignerAction designerAction1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button2;
         #endregion

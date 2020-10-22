@@ -2,7 +2,7 @@ Imports System.Data
 Imports System.Data.OleDb
 Imports System.IO
 Imports System.Windows.Forms
-Imports combit.ListLabel25
+Imports combit.Reporting
 Imports Microsoft.Win32
 
 Public Partial Class DesignerChildForm

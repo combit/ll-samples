@@ -3,13 +3,13 @@ Imports System
 Imports System.Drawing
 Imports System.IO
 Imports System.Windows.Forms
-Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
-Imports combit.ListLabel25.Dom
+Imports combit.Reporting
+Imports combit.Reporting.DataProviders
+Imports combit.Reporting.Dom
 Imports System.Text.RegularExpressions
 Imports Microsoft.Win32
 Imports System.Globalization
-Imports combit.ListLabel25.Converters
+Imports combit.Reporting.Converters
 Imports System.Data.SqlClient
 
 Partial Public Class Form1
@@ -52,7 +52,7 @@ Partial Public Class Form1
         InitializeComponent()
         installKey = Registry.CurrentUser.CreateSubKey("Software\combit\cmbtll")
         If installKey IsNot Nothing Then
-            sampleDir = DirectCast(installKey.GetValue("LL25SampleDir", String.Empty), String)
+            sampleDir = DirectCast(installKey.GetValue("LL26SampleDir", String.Empty), String)
         End If
 
         If Not sampleDir.EndsWith("\") Then

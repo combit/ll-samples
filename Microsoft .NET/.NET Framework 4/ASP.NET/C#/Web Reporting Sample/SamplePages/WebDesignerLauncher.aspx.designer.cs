@@ -28,7 +28,7 @@ namespace WebReporting {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::combit.ListLabel25.Web.DesignerControl DesignerControl1;
+        protected global::combit.Reporting.Web.DesignerControl DesignerControl1;
         
         /// <summary>
         /// ErrorLabel control.

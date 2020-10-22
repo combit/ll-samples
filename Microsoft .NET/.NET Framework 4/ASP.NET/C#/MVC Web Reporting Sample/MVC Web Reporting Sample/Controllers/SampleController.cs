@@ -1,7 +1,7 @@
-﻿using combit.ListLabel25;
-using combit.ListLabel25.DataProviders;
-using combit.ListLabel25.Repository;
-using combit.ListLabel25.Web.WebDesigner.Server;
+﻿using combit.Reporting;
+using combit.Reporting.DataProviders;
+using combit.Reporting.Repository;
+using combit.Reporting.Web.WindowsClientWebDesigner.Server;
 using System;
 using System.IO;
 using System.Linq;
@@ -332,7 +332,7 @@ namespace WebReporting.Controllers
 
         // D:   Wenn keine Instanz dieser Controller-Klasse für den folgenden Code benötigt wird, sollte dieses Event statisch sein.
         // US:  When no instance of this Controller class is requried for the following code, make this event static.
-        private static void Html5Viewer_OnListLabelRequest(object sender, combit.ListLabel25.Web.ListLabelRequestEventArgs e)
+        private static void Html5Viewer_OnListLabelRequest(object sender, combit.Reporting.Web.ListLabelRequestEventArgs e)
         {
             string repositoryIdOfProject = e.ReportName;
             ListLabel LL = new ListLabel
@@ -374,7 +374,7 @@ namespace WebReporting.Controllers
             if (!GetCurrentRepository().ContainsItem(reportRepositoryID))
                 return Content("The selected project does not exist");
 
-            var options = new WebDesignerOptions
+            var options = new WindowsClientWebDesignerOptions
             {
 
                 // D:   Lade die zum Report passende Datenquelle.

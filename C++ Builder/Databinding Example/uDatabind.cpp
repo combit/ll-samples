@@ -17,8 +17,8 @@
 #include "uDatabind.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "L25"
-#pragma link "L25db"
+#pragma link "L26"
+#pragma link "L26db"
 #pragma resource "*.dfm"
 TfrmDatbind *frmDatbind;
 //---------------------------------------------------------------------------
@@ -29,22 +29,22 @@ __fastcall TfrmDatbind::TfrmDatbind(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TfrmDatbind::btnDesignILClick(TObject* /*Sender*/)
 {
-	DBL25_1->AutoDesign("Invoice List");	
+	DBL26_1->AutoDesign("Invoice List");	
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmDatbind::btnPrintILClick(TObject* /*Sender*/)
 {
-	DBL25_1->AutoPrint("Invoice List", "");	
+	DBL26_1->AutoPrint("Invoice List", "");	
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmDatbind::btnDesignIILClick(TObject* /*Sender*/)
 {
-	DBL25_2->AutoDesign("Invoice/Item List");	
+	DBL26_2->AutoDesign("Invoice/Item List");	
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmDatbind::btnPrintIILClick(TObject* /*Sender*/)
 {
-	DBL25_2->AutoPrint("Invoice/Item List", "");	
+	DBL26_2->AutoPrint("Invoice/Item List", "");	
 }
 //-------------------------------------------------------------------------
 void __fastcall TfrmDatbind::FormCreate(TObject* /*Sender*/)

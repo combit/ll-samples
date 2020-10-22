@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using combit.ListLabel25.Dom;
+using combit.Reporting.Dom;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 
-namespace combit.ListLabel25.Converters
+namespace combit.Reporting.Converters
 {
     internal static class StaticHelper
     {

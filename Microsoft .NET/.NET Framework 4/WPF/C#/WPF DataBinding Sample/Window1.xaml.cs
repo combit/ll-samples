@@ -1,5 +1,5 @@
-﻿using combit.ListLabel25;
-using combit.ListLabel25.DataProviders;
+﻿using combit.Reporting;
+using combit.Reporting.DataProviders;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -393,7 +393,7 @@ namespace LLViewer
 
                     //D: Erstelle ein XmlDataProvider Objekt
                     //US: create a XmlDataProvider object
-                    combit.ListLabel25.DataProviders.XmlDataProvider provider = new combit.ListLabel25.DataProviders.XmlDataProvider(xmlDocument);
+                    combit.Reporting.DataProviders.XmlDataProvider provider = new combit.Reporting.DataProviders.XmlDataProvider(xmlDocument);
 
                     //D: An das XmlDataProvider Objekt binden
                     //US: now bind to the XmlDataProvider
@@ -446,7 +446,7 @@ namespace LLViewer
 
                     //D: Erstelle ein XmlDataProvider Objekt
                     //US: create a XmlDataProvider object
-                    combit.ListLabel25.DataProviders.XmlDataProvider provider = new combit.ListLabel25.DataProviders.XmlDataProvider(xmlDocument);
+                    combit.Reporting.DataProviders.XmlDataProvider provider = new combit.Reporting.DataProviders.XmlDataProvider(xmlDocument);
 
                     //D: An das XmlDataProvider Objekt binden
                     //US: now bind to the XmlDataProvider

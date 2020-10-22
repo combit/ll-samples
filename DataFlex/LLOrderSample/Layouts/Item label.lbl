@@ -1,7 +1,7 @@
 ﻿[Label description]
 [Description]
  Text=Item label with picture
- FileVersion=15
+ FileVersion=16
  RootTable=
  Units=SCM-Units
  Metric=3
@@ -229,7 +229,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -473,6 +473,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=Item label with picture
    VDF.Report.Relation=                                                                                                                                                                                                                                                               
    VDF.Report.SortOrder=1
@@ -546,5 +548,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Item label.lbl
+   }
+  [Subreports]
+   {
    }
   }

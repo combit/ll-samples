@@ -41,8 +41,8 @@
             this.menuPrintPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.listLabel = new combit.ListLabel25.ListLabel(this.components);
-            this.listLabelRTFControl = new combit.ListLabel25.ListLabelRTFControl(this.components);
+            this.listLabel = new combit.Reporting.ListLabel(this.components);
+            this.listLabelRTFControl = new combit.Reporting.ListLabelRTFControl(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -156,7 +156,7 @@
             // 
             this.listLabel.AutoPrinterSettingsStream = null;
             this.listLabel.AutoProjectStream = null;
-            this.listLabel.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+            this.listLabel.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
             this.listLabel.DrilldownAvailable = true;
             this.listLabel.EMFResolution = 100;
             this.listLabel.FileRepository = null;
@@ -165,7 +165,7 @@
             this.listLabel.MaxRTFVersion = 65280;
             this.listLabel.PhantomSpace = 8203;
             this.listLabel.PreviewControl = null;
-            this.listLabel.Unit = combit.ListLabel25.LlUnits.Millimeter_1_1000;
+            this.listLabel.Unit = combit.Reporting.LlUnits.Millimeter_1_1000;
             this.listLabel.UseHardwareCopiesForLabels = false;
             this.listLabel.UseTableSchemaForDesignMode = false;
             // 
@@ -221,11 +221,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private combit.ListLabel25.ListLabel listLabel;
+        private combit.Reporting.ListLabel listLabel;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuFileOptionsRecalcTableLayout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private combit.ListLabel25.ListLabelRTFControl listLabelRTFControl;
+        private combit.Reporting.ListLabelRTFControl listLabelRTFControl;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -1,4 +1,4 @@
-﻿using combit.ListLabel25.Repository;
+﻿using combit.Reporting.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -173,15 +173,11 @@ namespace WebReporting
         // See Interface
         public void LoadItem(string itemID, Stream destinationStream, CancellationToken cancelToken)
         {
-            object content = _db.CreateCommand(
+            byte[] content = (byte[])_db.CreateCommand(
                  "SELECT FileContent FROM RepoItems WHERE ItemID = @ItemID")
                     .SetParameter("ItemID", itemID).ExecuteScalar();
 
-            if (content != System.DBNull.Value)
-            {
-                byte[] contentBytes = (byte[])content;
-                destinationStream.Write(contentBytes, 0, contentBytes.Length);
-            }
+            destinationStream.Write(content, 0, content.Length);
         }
 
         // See Interface

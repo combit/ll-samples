@@ -1,5 +1,5 @@
-﻿using combit.ListLabel25;
-using combit.ListLabel25.Repository;
+﻿using combit.Reporting;
+using combit.Reporting.Repository;
 using System;
 using System.IO;
 using System.Web;

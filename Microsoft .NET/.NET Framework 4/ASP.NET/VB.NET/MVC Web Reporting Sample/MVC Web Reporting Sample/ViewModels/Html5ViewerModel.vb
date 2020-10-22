@@ -1,4 +1,4 @@
-﻿Imports combit.ListLabel25.Web
+﻿Imports combit.Reporting.Web
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Web

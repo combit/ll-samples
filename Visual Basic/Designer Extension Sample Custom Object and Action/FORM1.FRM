@@ -1,8 +1,8 @@
 VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{2213E283-16BC-101D-AFD4-040224009C19}#25.0#0"; "cmll25o.ocx"
-Object = "{2B7D38A0-4385-47BE-9345-29F96556FB45}#1.0#0"; "cmll25fx.ocx"
-Object = "{B25593B9-D834-48DC-83A3-E5FD148BCC2C}#1.0#0"; "cmll25ox.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C1A}#26.0#0"; "cmll26o.ocx"
+Object = "{2B7D38A0-4385-47BE-9345-29F96556FB46}#1.0#0"; "cmll26fx.ocx"
+Object = "{B25593B9-D834-48DC-83A3-E5FD148BCC2D}#1.0#0"; "cmll26ox.ocx"
 Begin VB.Form Form1 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "List & Label Designer Extensions Sample"
@@ -113,7 +113,7 @@ Begin VB.Form Form1
       Top             =   1560
       Width           =   1335
    End
-   Begin CMLL25OXLibCtl.DesignerObject DesObj_Picture 
+   Begin CMLL26OXLibCtl.DesignerObject DesObj_Picture 
       Left            =   3600
       Top             =   1560
       _cx             =   661
@@ -122,7 +122,7 @@ Begin VB.Form Form1
       Description     =   "MYOBJECT"
 	  Icon            =   "FORM1.frx":0000
    End
-   Begin CMLL25FXLibCtl.DesignerFunctions DesFunc_Add 
+   Begin CMLL26FXLibCtl.DesignerFunctions DesFunc_Add 
       Left            =   3240
       Top             =   1560
       _cx             =   661
@@ -305,7 +305,7 @@ End Sub
 ' D:    Dieser Event dient zur Berechnung der Funktion
 ' US:   This event is triggered to evaluate the function
 '======================================================
-Private Sub DesFunc_Add_EvaluateFunction(ResultValue As Variant, ResultType As CMLL25FXLibCtl.LlParamType, DecimalPositions As Long, ByVal Parameters As Long, ByVal Parameter1 As Variant, ByVal Parameter2 As Variant, ByVal Parameter3 As Variant, ByVal Parameter4 As Variant)
+Private Sub DesFunc_Add_EvaluateFunction(ResultValue As Variant, ResultType As CMLL26FXLibCtl.LlParamType, DecimalPositions As Long, ByVal Parameters As Long, ByVal Parameter1 As Variant, ByVal Parameter2 As Variant, ByVal Parameter3 As Variant, ByVal Parameter4 As Variant)
 '======================================================
 
     ResultValue = CDbl(Parameter1) + CDbl(Parameter2)
@@ -340,7 +340,7 @@ End Sub
 '       Implementieren Sie hier Ihre Zeichnungsroutine.
 ' US:   This event is triggered to draw the object. Implement your own draw code here.
 '======================================================
-Private Sub DesObj_Picture_DrawDesignerObject(ByVal propertiesObject As CMLL25OXLibCtl.propertiesObject, ByVal hDC As Long, ByVal x As Long, ByVal y As Long, ByVal x2 As Long, ByVal y2 As Long)
+Private Sub DesObj_Picture_DrawDesignerObject(ByVal propertiesObject As CMLL26OXLibCtl.propertiesObject, ByVal hDC As Long, ByVal x As Long, ByVal y As Long, ByVal x2 As Long, ByVal y2 As Long)
 '======================================================
 
     Dim imagefile As String
@@ -386,7 +386,7 @@ End Sub
 '       eigene Objekt-Eigenschaften in einem Dialog setzen lassen.
 ' US:   This event is triggered e.g. by a double click on the object. You may offer a dialog to set custom object properties here.
 '======================================================
-Private Sub DesObj_Picture_EditDesignerObject(ByVal propertiesObject As CMLL25OXLibCtl.propertiesObject, ByVal DesignerWindow As Long, HasChanged As Boolean)
+Private Sub DesObj_Picture_EditDesignerObject(ByVal propertiesObject As CMLL26OXLibCtl.propertiesObject, ByVal DesignerWindow As Long, HasChanged As Boolean)
 '======================================================
 
     If propertiesObject.ContainsKey("imagefile") Then

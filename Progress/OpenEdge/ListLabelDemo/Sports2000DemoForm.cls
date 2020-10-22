@@ -21,19 +21,18 @@
 
 USING Progress.Lang.*.
 USING Progress.Windows.Form.
-/*USING combit.ListLabel22.*.*/
-USING combit.ListLabel25.DataProviders.IDataProvider FROM ASSEMBLY.
-USING TasteITConsulting.ListLabel25.OpenEdgeDataProvider FROM ASSEMBLY.
+USING combit.Reporting.DataProviders.IDataProvider FROM ASSEMBLY.
+USING TasteITConsulting.Reporting.OpenEdgeDataProvider FROM ASSEMBLY.
 USING ListLabelDemo.Sports2000ServiceAdapter FROM PROPATH.
 USING ListLabelDemo.Sports2000Service FROM PROPATH.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeSchema FROM PROPATH.
-USING combit.ListLabel25.LlCore FROM ASSEMBLY.
-USING combit.ListLabel25.LlVersion FROM ASSEMBLY.
-USING combit.ListLabel25.ListLabel FROM ASSEMBLY.
-USING combit.ListLabel25.LlProject FROM ASSEMBLY.
-USING combit.ListLabel25.LlAutoMasterMode FROM ASSEMBLY.
-USING combit.ListLabel25.ListLabelException FROM ASSEMBLY.
-USING combit.ListLabel25.LlLanguage FROM ASSEMBLY.
+USING combit.Reporting.LlCore FROM ASSEMBLY.
+USING combit.Reporting.LlVersion FROM ASSEMBLY.
+USING combit.Reporting.ListLabel FROM ASSEMBLY.
+USING combit.Reporting.LlProject FROM ASSEMBLY.
+USING combit.Reporting.LlAutoMasterMode FROM ASSEMBLY.
+USING combit.Reporting.ListLabelException FROM ASSEMBLY.
+USING combit.Reporting.LlLanguage FROM ASSEMBLY.
 
 ROUTINE-LEVEL ON ERROR UNDO, THROW.
 
@@ -377,6 +376,7 @@ CLASS ListLabelDemo.Sports2000DemoForm INHERITS Form:
         oProvider:Initialize().
 
         oLL = NEW ListLabel().
+        
         /*oLL:Language = LlLanguage:English.*/
         oLL:ForceSingleThread = TRUE. /* :-( */
         oLL:DataSource = oProvider. 
@@ -640,7 +640,7 @@ CLASS ListLabelDemo.Sports2000DemoForm INHERITS Form:
         /*  */
         /* txtMaxRows */
         /*  */
-        THIS-OBJECT:txtMaxRows:Location = NEW System.Drawing.Point(275, 258).
+        THIS-OBJECT:txtMaxRows:Location = NEW System.Drawing.Point(275, 264).
         THIS-OBJECT:txtMaxRows:Mask = "999".
         THIS-OBJECT:txtMaxRows:Name = "txtMaxRows".
         THIS-OBJECT:txtMaxRows:PromptChar = ' '.

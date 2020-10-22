@@ -1,4 +1,4 @@
-﻿Imports combit.ListLabel25
+﻿Imports combit.Reporting
 Imports System.Windows.Forms
 
 Namespace Custom_Logger_Sample
@@ -85,12 +85,11 @@ Namespace Custom_Logger_Sample
                 formattedMessage = [String].Format(message, formatArgs)
             End If
 
-            _listView.Invoke(New Action(Function()
+            _listView.Invoke(New Action(Sub()
                                             ' subItems: 
                                             ' imageIndex: 
                                             _listView.Items.Add(New ListViewItem(New String() {[String].Empty, categoryName, formattedMessage}, imageIndex))
-
-                                        End Function))
+                                        End Sub))
         End Sub
 
 

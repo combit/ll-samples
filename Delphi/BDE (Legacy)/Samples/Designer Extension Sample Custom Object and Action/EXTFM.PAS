@@ -14,7 +14,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, L25, L25dom, Menus, DB, ADODB, Registry, L25db
+  Dialogs, StdCtrls, L26, L26dom, Menus, DB, ADODB, Registry, L26db
   {$IFDEF ver280} // XE7
   , System.UITypes
   {$ENDIF}
@@ -22,7 +22,7 @@ uses
 
 type
   TDesExtForm = class(TForm)
-    GradientFillObject: TLL25XObject;
+    GradientFillObject: TLL26XObject;
     DesignButton: TButton;
     Label1: TLabel;
     Label2: TLabel;
@@ -30,7 +30,7 @@ type
     ColorDialog1: TColorDialog;
     EditColor11: TMenuItem;
     EditColor21: TMenuItem;
-    RomanNumber: TLL25XFunction;
+    RomanNumber: TLL26XFunction;
     Label3: TLabel;
     Label4: TLabel;
     chckBxDebug: TCheckBox;
@@ -39,14 +39,14 @@ type
     OrderDetails: TADOTable;
     dsCustomers: TDataSource;
     dsOrders: TDataSource;
-    LL: TDBL25_;
+    LL: TDBL26_;
     Customers: TADOTable;
     CustomersCustomerID: TWideStringField;
     CustomersContactName: TWideStringField;
     CustomersAddress: TWideStringField;
     CustomersCity: TWideStringField;
     CustomersPhone: TWideStringField;
-    LL25XAction4: TLL25XAction;
+    LL26XAction4: TLL26XAction;
     procedure DesignButtonClick(Sender: TObject);
     procedure LLDefineVariables(Sender: TObject; UserData: Integer;
       IsDesignMode: Boolean; var Percentage: Integer;
@@ -59,18 +59,18 @@ type
       ParentHandle: Cardinal);
     procedure EditColor1Click(Sender: TObject);
     procedure EditColor2Click(Sender: TObject);
-    procedure LL25XAction1ExecuteAction;
+    procedure LL26XAction1ExecuteAction;
     procedure chckBxDebugClick(Sender: TObject);
     procedure RomanNumberEvaluateFunction(Sender: TObject;
-      var ResultType: TLL25XFunctionParameterType;
+      var ResultType: TLL26XFunctionParameterType;
       var ResultValue: OleVariant; var DecimalPositions: Integer;
       const ParameterCount: Integer; const Parameter1, Parameter2,
       Parameter3, Parameter4: OleVariant);
     procedure RomanNumberParameterAutoComplete(Sender: TObject;
       ParameterIndex: Integer; var Values: TStringList);
     procedure FormCreate(Sender: TObject);
-    procedure LL25XAction3ExecuteAction;
-    procedure LL25XAction4ExecuteAction;
+    procedure LL26XAction3ExecuteAction;
+    procedure LL26XAction4ExecuteAction;
   private
     workingPath: String;
     procedure DeleteAllObjects();
@@ -88,7 +88,7 @@ var
 implementation
 
 uses
- cmbtll25, gdi, clrSel, uquest, roman;
+ cmbtll26, gdi, clrSel, uquest, roman;
 
 {$R *.dfm}
 
@@ -117,7 +117,7 @@ var
   color1Str, color2Str: string;
   code: integer;
 begin
-    with Sender as TLL25XObject do
+    with Sender as TLL26XObject do
     begin
         Properties.GetValue('Color1',color1Str);
         Properties.GetValue('Color2',color2Str);
@@ -141,7 +141,7 @@ begin
     // US: Edit object
 
     HasChanged:=False;
-    with Sender as TLL25XObject do
+    with Sender as TLL26XObject do
     begin
         // D:  Dialog initialisieren
         // US: Initialize dialog
@@ -172,7 +172,7 @@ end;
 procedure TDesExtForm.GradientFillObjectInitialCreation(Sender: TObject;
   ParentHandle: Cardinal);
 begin
-    with Sender as TLL25XObject do
+    with Sender as TLL26XObject do
     begin
         // D:  Objekt initialisieren
         // US: Initialize object
@@ -189,7 +189,7 @@ var
 begin
     // D:  Kontextmenuehandler für Farbe 1
     // US: Handler for "Color 1" context menu
-    with (Sender as TLL25XObject) do
+    with (Sender as TLL26XObject) do
     begin
       Properties.GetValue('Color1',colorStr);
       val(colorStr,CurrentColor,code);
@@ -213,7 +213,7 @@ var
 begin
     // D:  Kontextmenuehandler für Farbe 2
     // US: Handler for "Color 2" context menu
-    with (Sender as TLL25XObject) do
+    with (Sender as TLL26XObject) do
     begin
       Properties.GetValue('Color2',colorStr);
       val(colorStr,CurrentColor,code);
@@ -229,7 +229,7 @@ begin
     end;
 end;
 
-procedure TDesExtForm.LL25XAction1ExecuteAction;
+procedure TDesExtForm.LL26XAction1ExecuteAction;
 var
   proj: TLlDOMProjectList;
   found: boolean;
@@ -278,7 +278,7 @@ begin
 end;
 
 procedure TDesExtForm.RomanNumberEvaluateFunction(Sender: TObject;
-  var ResultType: TLL25XFunctionParameterType; var ResultValue: OleVariant;
+  var ResultType: TLL26XFunctionParameterType; var ResultValue: OleVariant;
   var DecimalPositions: Integer; const ParameterCount: Integer;
   const Parameter1, Parameter2, Parameter3, Parameter4: OleVariant);
 begin
@@ -484,7 +484,7 @@ begin
       lldomproj.Free;	
 end;
 
-procedure TDesExtForm.LL25XAction3ExecuteAction;
+procedure TDesExtForm.LL26XAction3ExecuteAction;
 
 var proj: TLlDomProjectList;
 
@@ -632,7 +632,7 @@ begin
   curr.CountOfDecimals := '2';
 end;
 
-procedure TDesExtForm.LL25XAction4ExecuteAction;
+procedure TDesExtForm.LL26XAction4ExecuteAction;
 
 var proj: TLlDomProjectList;
 

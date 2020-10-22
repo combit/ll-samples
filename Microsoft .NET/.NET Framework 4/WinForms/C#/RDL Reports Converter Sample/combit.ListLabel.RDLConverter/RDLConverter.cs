@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using combit.ListLabel25.Dom;
+using combit.Reporting.Dom;
 using System.Xml.Serialization;
 using System.Xml;
 using System.Drawing.Printing;
@@ -14,7 +14,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace combit.ListLabel25.Converters
+namespace combit.Reporting.Converters
 {
     public class RdlConverter : IDisposable
     {
@@ -164,7 +164,7 @@ namespace combit.ListLabel25.Converters
 
         private void ConvertPrintOptions(XmlElement page)
         {
-            combit.ListLabel25.Dom.Region baseRegion = Project.Regions[0];
+            combit.Reporting.Dom.Region baseRegion = Project.Regions[0];
 
             PrinterSettings settings = new PrinterSettings();
             // device name

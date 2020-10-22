@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=Article-list
- FileVersion=15
+ FileVersion=16
  RootTable=Invt
  Units=SCM-Units
  Metric=3
@@ -17,7 +17,7 @@
  RepresentationCode.ExprSep=164
  LCID=3079
  UserVars.ManualSortOrder=1
- CreatedByCallFrom=vdfvm19.dll
+ CreatedByCallFrom=atlthunk.dll
  [@DatabaseStructure]
   {
   [DatabaseStructures]
@@ -411,7 +411,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -542,6 +542,7 @@
 	TableType=List
 	TableID=Invt
 	RelationID=
+	LinkUUID={C9062DFC-2460-4313-AF2C-9434563983F0}
 	[GroupHeaderLines]
 	 {
 	 bConcatDataLines=True
@@ -628,10 +629,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	SortOrderID="1"
 	PDFLevel=0
@@ -642,6 +639,7 @@
 	FormulaFilter=True
 	DesignScheme="PROJECT"
 	Animation=""
+	Subreport=False
 	[Body]
 	 {
 	 [Lines]
@@ -2069,10 +2067,6 @@
 		GroupCondition=
 		ResetSums=
 		OnNewPage=False
-		[OnNewPage]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		PrintRightAfterHeader=False
 		KeepTogether.Group=False
 		LCondition=True
@@ -2146,11 +2140,14 @@
   [Parameters]
    {
    LL.ActiveLayout=Standard-Layout
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
+   LL.PrintJobLCID=PrintLanguage
    LL.ProjectDescription=Article-list
    }
   }
 [UsedIdentifiers]
- Variables=
+ Variables=PrintLanguage
  Fields=Invt.Description;Invt.Item_ID;Invt.Unit_Price;Vendor.Name
  ChartFields=
 [PageLayouts]
@@ -2207,5 +2204,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Special\Localized Item Report.lst
+   }
+  [Subreports]
+   {
    }
   }

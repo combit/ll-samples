@@ -1,6 +1,6 @@
-﻿Imports combit.ListLabel25
-Imports combit.ListLabel25.Repository
-Imports combit.ListLabel25.Web
+﻿Imports combit.Reporting
+Imports combit.Reporting.Repository
+Imports combit.Reporting.Web
 Imports System.IO
 Imports System.Web
 

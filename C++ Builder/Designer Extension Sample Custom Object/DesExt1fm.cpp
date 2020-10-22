@@ -7,7 +7,7 @@
 #include "clrselfm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "L25"
+#pragma link "L26"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -27,7 +27,7 @@ void __fastcall TForm1::DesignButtonClick(TObject* /*Sender*/)
 void __fastcall TForm1::SplitColorRectInitialCreation(TObject* Sender,
 	  DWORD /*ParentHandle*/)
 {
-		TLl25XObject *pObj = dynamic_cast <TLl25XObject*>(Sender);
+		TLl26XObject *pObj = dynamic_cast <TLl26XObject*>(Sender);
 
         // D:  Objekt initialisieren
         // US: Initialize object
@@ -46,7 +46,7 @@ void __fastcall TForm1::SplitColorRectEdit(TObject* Sender,
         // US: Edit object
 
         HasChanged=false;
-		TLl25XObject *pObj = dynamic_cast<TLl25XObject*> (Sender);
+		TLl26XObject *pObj = dynamic_cast<TLl26XObject*> (Sender);
 
         // D:  Dialog initialisieren
         // US: Initialize dialog
@@ -104,7 +104,7 @@ void __fastcall TForm1::EditColor1Click(TObject* Sender)
 
         // D:  Kontextmenuehandler für Farbe 1
         // US: Handler for "Color 1" context menu
-		TLl25XObject *pObj  = dynamic_cast<TLl25XObject*> (Sender);
+		TLl26XObject *pObj  = dynamic_cast<TLl26XObject*> (Sender);
 
         pObj->Properties->GetValue("Color1",colorStr);
 
@@ -128,7 +128,7 @@ void __fastcall TForm1::EditColor21Click(TObject* Sender)
 
         // D:  Kontextmenuehandler für Farbe 1
         // US: Handler for "Color 1" context menu
-		TLl25XObject *pObj  = dynamic_cast<TLl25XObject*> (Sender);
+		TLl26XObject *pObj  = dynamic_cast<TLl26XObject*> (Sender);
 
         pObj->Properties->GetValue("Color2",colorStr);
 
@@ -149,7 +149,7 @@ void __fastcall TForm1::SplitColorRectDraw(TObject* Sender,
         TColor color1, color2;
         String color1Str, color2Str;
 
-		TLl25XObject *pObj  = dynamic_cast<TLl25XObject*> (Sender);
+		TLl26XObject *pObj  = dynamic_cast<TLl26XObject*> (Sender);
 
         pObj->Properties->GetValue("Color1",color1Str);
         pObj->Properties->GetValue("Color2",color2Str);

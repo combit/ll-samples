@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using combit.ListLabel25.Dom;
+using combit.Reporting.Dom;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 
-namespace combit.ListLabel25.Converters
+namespace combit.Reporting.Converters
 {
     [CLSCompliant(true)]
     public class RptConverter : IDisposable

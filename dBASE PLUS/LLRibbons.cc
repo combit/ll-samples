@@ -1,4 +1,4 @@
-// Revision: 01.09.2019
+// Revision: 30.08.2020
 #INCLUDE "WINDEF.H"
 #INCLUDE "WINREG.H"
 #DEFINE REG_PATH  "Software\Combit\CMBTLL\PlusRun\"

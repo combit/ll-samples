@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.PreviewControl = new combit.ListLabel25.ListLabelPreviewControl(this.components);
+            this.PreviewControl = new combit.Reporting.ListLabelPreviewControl(this.components);
             this.statusBar = new System.Windows.Forms.StatusBar();
             this.statusBarPanel1 = new System.Windows.Forms.StatusBarPanel();
             this.statusBarPanel2 = new System.Windows.Forms.StatusBarPanel();
@@ -49,29 +49,29 @@
             this.PreviewControl.Size = new System.Drawing.Size(760, 654);
             this.PreviewControl.SlideshowMode = false;
             this.PreviewControl.TabIndex = 0;
-            this.PreviewControl.ToolbarButtons.Exit = combit.ListLabel25.LlButtonState.Invisible;
-            this.PreviewControl.ToolbarButtons.GotoFirst = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.GotoLast = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.GotoNext = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.GotoPrev = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.NextFile = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.PageRange = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.PreviousFile = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.PrintAllPages = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.PrintCurrentPage = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.PrintToFax = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.SaveAs = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.SearchNext = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.SearchOptions = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.SearchStart = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.SearchText = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.SendTo = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.SlideshowMode = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.ZoomCombo = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.ZoomReset = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.ZoomRevert = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.ToolbarButtons.ZoomTimes2 = combit.ListLabel25.LlButtonState.Default;
-            this.PreviewControl.PageChanged += new combit.ListLabel25.ListLabelPreviewControl.PageChangedHandler(this.PreviewControl_PageChanged);
+            this.PreviewControl.ToolbarButtons.Exit = combit.Reporting.LlButtonState.Invisible;
+            this.PreviewControl.ToolbarButtons.GotoFirst = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.GotoLast = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.GotoNext = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.GotoPrev = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.NextFile = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.PageRange = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.PreviousFile = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.PrintAllPages = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.PrintCurrentPage = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.PrintToFax = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.SaveAs = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.SearchNext = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.SearchOptions = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.SearchStart = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.SearchText = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.SendTo = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.SlideshowMode = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.ZoomCombo = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.ZoomReset = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.ZoomRevert = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.ToolbarButtons.ZoomTimes2 = combit.Reporting.LlButtonState.Default;
+            this.PreviewControl.PageChanged += new combit.Reporting.ListLabelPreviewControl.PageChangedHandler(this.PreviewControl_PageChanged);
             // 
             // statusBar
             // 
@@ -111,7 +111,7 @@
             this.ResumeLayout(false);
 
         }
-        private combit.ListLabel25.ListLabelPreviewControl PreviewControl;
+        private combit.Reporting.ListLabelPreviewControl PreviewControl;
         private System.Windows.Forms.StatusBarPanel statusBarPanel1;
         private System.Windows.Forms.StatusBarPanel statusBarPanel2;
         private System.Windows.Forms.StatusBar statusBar;

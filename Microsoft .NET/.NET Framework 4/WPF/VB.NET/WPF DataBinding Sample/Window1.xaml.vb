@@ -1,6 +1,6 @@
 ﻿
-Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
+Imports combit.Reporting
+Imports combit.Reporting.DataProviders
 Imports Microsoft.Win32
 Imports System.Collections
 Imports System.Collections.Generic
@@ -355,7 +355,7 @@ Namespace LLViewer
 
                     'D: Erstelle ein XmlDataProvider Objekt
                     'US: create a XmlDataProvider object
-                    Dim provider As New combit.ListLabel25.DataProviders.XmlDataProvider(xmlDocument)
+                    Dim provider As New combit.Reporting.DataProviders.XmlDataProvider(xmlDocument)
 
                     'D: An das XmlDataProvider Objekt binden
                     'US: now bind to the XmlDataProvider
@@ -399,7 +399,7 @@ Namespace LLViewer
 
                     'D: Erstelle ein XmlDataProvider Objekt
                     'US: create a XmlDataProvider object
-                    Dim provider As New combit.ListLabel25.DataProviders.XmlDataProvider(xmlDocument)
+                    Dim provider As New combit.Reporting.DataProviders.XmlDataProvider(xmlDocument)
 
                     'D: An das XmlDataProvider Objekt binden
                     'US: now bind to the XmlDataProvider

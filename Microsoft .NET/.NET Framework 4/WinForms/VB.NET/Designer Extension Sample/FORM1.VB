@@ -5,15 +5,15 @@ Imports System.Windows.Forms
 Imports System.Data
 Imports System.Data.OleDb
 Imports System.IO
-Imports combit.ListLabel25
-Imports combit.ListLabel25.Dom
+Imports combit.Reporting
+Imports combit.Reporting.Dom
 Imports Microsoft.Win32
 Imports System.Collections.Generic
 'Namespace VBSample.DesignerExtensionsSample
 Public Class Form1
     Inherits Form
     Private MyDataReader As OleDbDataReader
-    Friend WithEvents DesignerAction1 As combit.ListLabel25.DesignerAction
+    Friend WithEvents DesignerAction1 As combit.Reporting.DesignerAction
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
     Dim resourcePath As [String]
     Dim pictureFileName As [String]
@@ -64,16 +64,16 @@ Public Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    Friend WithEvents DesignerFunction1 As combit.ListLabel25.DesignerFunction
-    Friend WithEvents DesignerObject1 As combit.ListLabel25.DesignerObject
-    Friend WithEvents LL As combit.ListLabel25.ListLabel
+    Friend WithEvents DesignerFunction1 As combit.Reporting.DesignerFunction
+    Friend WithEvents DesignerObject1 As combit.Reporting.DesignerObject
+    Friend WithEvents LL As combit.Reporting.ListLabel
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.DesignerFunction1 = New combit.ListLabel25.DesignerFunction()
-        Me.DesignerObject1 = New combit.ListLabel25.DesignerObject()
-        Me.LL = New combit.ListLabel25.ListLabel(Me.components)
-        Me.DesignerAction1 = New combit.ListLabel25.DesignerAction()
+        Me.DesignerFunction1 = new combit.Reporting.DesignerFunction()
+        Me.DesignerObject1 = new combit.Reporting.DesignerObject()
+        Me.LL = new combit.Reporting.ListLabel(Me.components)
+        Me.DesignerAction1 = new combit.Reporting.DesignerAction()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -90,12 +90,12 @@ Public Class Form1
         Me.DesignerFunction1.MaximumParameters = 2
         Me.DesignerFunction1.MinimalParameters = 2
         Me.DesignerFunction1.Parameter1.Description = "First Value"
-        Me.DesignerFunction1.Parameter1.Type = combit.ListLabel25.LlParamType.[Double]
+        Me.DesignerFunction1.Parameter1.Type = combit.Reporting.LlParamType.[Double]
         Me.DesignerFunction1.Parameter2.Description = "Second Value"
-        Me.DesignerFunction1.Parameter2.Type = combit.ListLabel25.LlParamType.[Double]
+        Me.DesignerFunction1.Parameter2.Type = combit.Reporting.LlParamType.[Double]
         Me.DesignerFunction1.Parameter3.Description = "Parameter 3"
         Me.DesignerFunction1.Parameter4.Description = "Parameter 4"
-        Me.DesignerFunction1.ResultType = combit.ListLabel25.LlParamType.[Double]
+        Me.DesignerFunction1.ResultType = combit.Reporting.LlParamType.[Double]
         '
         'DesignerObject1
         '
@@ -111,10 +111,10 @@ Public Class Form1
         Me.LL.AutoPrinterSettingsStream = Nothing
         Me.LL.AutoProjectStream = Nothing
         Me.LL.CompressStorage = True
-        Me.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad
-        Me.LL.DesignerActions.AddRange(New combit.ListLabel25.DesignerAction() {Me.DesignerAction1})
-        Me.LL.DesignerFunctions.AddRange(New combit.ListLabel25.DesignerExtensions.IDesignerFunction() {Me.DesignerFunction1})
-        Me.LL.DesignerObjects.AddRange(New combit.ListLabel25.DesignerObject() {Me.DesignerObject1})
+        Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
+        Me.LL.DesignerActions.AddRange(New combit.Reporting.DesignerAction() {Me.DesignerAction1})
+        Me.LL.DesignerFunctions.AddRange(New combit.Reporting.DesignerExtensions.IDesignerFunction() {Me.DesignerFunction1})
+        Me.LL.DesignerObjects.AddRange(New combit.Reporting.DesignerObject() {Me.DesignerObject1})
         Me.LL.DrilldownAvailable = True
         Me.LL.EMFResolution = 100
         Me.LL.FileRepository = Nothing
@@ -123,7 +123,7 @@ Public Class Form1
         Me.LL.MaxRTFVersion = 65280
         Me.LL.PhantomSpace = 8203
         Me.LL.PreviewControl = Nothing
-        Me.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100
+        Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
         Me.LL.UseHardwareCopiesForLabels = False
         Me.LL.UseTableSchemaForDesignMode = False
         '
@@ -215,12 +215,12 @@ Public Class Form1
     End Function
     ' D: Implementierung der neuen Designer Add-Funktion
     'US: Implementation of the new designer add-function
-    Private Sub DesignerFunction1_EvaluateFunction(ByVal sender As System.Object, ByVal e As combit.ListLabel25.EvaluateFunctionEventArgs) Handles DesignerFunction1.EvaluateFunction
+    Private Sub DesignerFunction1_EvaluateFunction(ByVal sender As System.Object, ByVal e As combit.Reporting.EvaluateFunctionEventArgs) Handles DesignerFunction1.EvaluateFunction
         e.ResultValue = (Double.Parse(e.Parameter1.ToString()) + Double.Parse(e.Parameter2.ToString()))
     End Sub
     ' D: Die hier spezifizierten Parameter Werte (1 - 20), werden beim Eintippen der Formel im Designer vorgeschlagen
     'US: The specified parameter values (1 - 20), are suggested while typeing the formula in the designer 
-    Private Sub DesignerFunction1_ParameterAutoComplete(ByVal sender As Object, ByVal e As combit.ListLabel25.ParameterAutoCompleteEventArgs) Handles DesignerFunction1.ParameterAutoComplete
+    Private Sub DesignerFunction1_ParameterAutoComplete(ByVal sender As Object, ByVal e As combit.Reporting.ParameterAutoCompleteEventArgs) Handles DesignerFunction1.ParameterAutoComplete
         Dim i As Int16
         For i = 1 To 20
             e.Values.Add(i.ToString())
@@ -228,7 +228,7 @@ Public Class Form1
     End Sub
     ' D: Implementierung eines Designer Objektes, welches ein Bild beinhaltet
     'US: Implementation of a designer object, which contains an image
-    Private Sub DesignerObject1_DrawDesignerObject(ByVal sender As System.Object, ByVal e As combit.ListLabel25.DrawDesignerObjectEventArgs) Handles DesignerObject1.DrawDesignerObject
+    Private Sub DesignerObject1_DrawDesignerObject(ByVal sender As System.Object, ByVal e As combit.Reporting.DrawDesignerObjectEventArgs) Handles DesignerObject1.DrawDesignerObject
         Dim desobj As DesignerObject
         Dim imagefile As String
         Dim bm As Bitmap
@@ -242,7 +242,7 @@ Public Class Form1
     End Sub
     ' D: Implementierung der Bearbeiten-Funktion, des neuen Objektes
     'US: Implementation of the new edit function for the new object
-    Private Sub DesignerObject1_EditDesignerObject(ByVal sender As Object, ByVal e As combit.ListLabel25.EditDesignerObjectEventArgs) Handles DesignerObject1.EditDesignerObject
+    Private Sub DesignerObject1_EditDesignerObject(ByVal sender As Object, ByVal e As combit.Reporting.EditDesignerObjectEventArgs) Handles DesignerObject1.EditDesignerObject
         Dim desobj As DesignerObject
         Dim dialog As OpenFileDialog
         desobj = sender
@@ -258,7 +258,7 @@ Public Class Form1
     End Sub
     ' D: Das standard Verhalten eines dem Report neu hinzugefügten Objekts festlegen
     'US: Define the default behaviour of a new added object to a report
-    Private Sub DesignerObject1_CreateDesignerObject(ByVal sender As Object, ByVal e As combit.ListLabel25.CreateDesignerObjectEventArgs) Handles DesignerObject1.CreateDesignerObject
+    Private Sub DesignerObject1_CreateDesignerObject(ByVal sender As Object, ByVal e As combit.Reporting.CreateDesignerObjectEventArgs) Handles DesignerObject1.CreateDesignerObject
         Dim desobj As DesignerObject
         desobj = sender
         desobj.ObjectProperties("imagefile") = "logo.bmp"

@@ -34,6 +34,25 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
     {ListLabel/OpenEdgeAdapter/dsOpenEdgeDataRequest.i}
     {ListLabel/OpenEdgeAdapter/dsOpenEdgeSchema.i}
     {ListLabel/OpenEdgeAdapter/dsOpenEdgeFunctionResponse.i}
+    
+    DEFINE PRIVATE TEMP-TABLE ttForeignKeyBuffer NO-UNDO
+        FIELD ForeignKeyBufferNumber AS INTEGER 
+        FIELD ForeignKeyTableName    AS CHARACTER
+        FIELD RelationFields         AS CHARACTER
+        FIELD BufferHandle           AS HANDLE
+        FIELD BufferName             AS CHARACTER
+        FIELD BufferWhere            AS CHARACTER
+        FIELD ForeignKeyColumnNames  AS CHARACTER
+        FIELD SortColumnNames        AS CHARACTER
+        INDEX pk IS PRIMARY UNIQUE ForeignKeyBufferNumber
+        INDEX ak IS UNIQUE ForeignKeyTableName RelationFields. 
+        
+    DEFINE PRIVATE TEMP-TABLE ttForeignKeyColumn NO-UNDO
+        FIELD ForeignKeyBufferNumber AS INTEGER
+        FIELD ForeignKeyColumnName   AS CHARACTER 
+        FIELD SortColumnName         AS CHARACTER  
+        INDEX pk IS PRIMARY UNIQUE ForeignKeyBufferNumber ForeignKeyColumnName.        
+       
 
 	DEFINE PUBLIC  PROPERTY ServiceName         AS CHARACTER NO-UNDO 
 	GET.
@@ -62,6 +81,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
 		ServiceSchema = NEW OpenEdgeSchema(ServiceName).
 
 	END CONSTRUCTOR.
+
 
     /*------------------------------------------------------------------------------
      Purpose: Needs to be implemented by the Service.
@@ -170,6 +190,30 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         FOR EACH OEDataTable:
              
             iBuffer = iBuffer + 1.
+            
+            IF iBuffer = 1 THEN 
+            DO:
+                IF TRIM (OEDataTable.OETableSortBy) BEGINS "BY " THEN 
+                DO:
+                    /* Since LL26 - Foreign Key Sort */
+                    IF OEDataTable.OETableSortBy MATCHES "*@*" THEN 
+                    DO:
+                        DEFINE VARIABLE cNewSort AS CHARACTER NO-UNDO.
+                        cNewSort = buildForeignKeySort( OEDataTable.OETableName, OEDataTable.OETableSortBy ).
+                        /*
+                        MESSAGE "LL:" OEDataTable.OETableSortBy SKIP
+                                "New:" cNewSort
+                        VIEW-AS ALERT-BOX.
+                        */
+                        cSortBy[iBuffer] = cNewSort.
+                    END.
+                    ELSE DO:
+                        cSortBy[iBuffer] = OEDataTable.OETableSortBy.
+                    END.
+                END.
+            END.  
+            ELSE 
+                ASSIGN cSortBy[iBuffer] = OEDataTable.OETableSortBy.
 
             /* Since LL24 - Support for calculated temp-tables */
             IF OEDataTable.OECalculatedTable = TRUE THEN 
@@ -205,6 +249,53 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             DO iColumn = 1 TO NUM-ENTRIES(OEDataTable.OECalculatedColumns):
                 cColumnNameAndType = ENTRY(iColumn,OEDataTable.OECalculatedColumns).
                 hTempTable[iBuffer]:ADD-NEW-FIELD (ENTRY(1,cColumnNameAndType,"|"),ENTRY(2,cColumnNameAndType,"|")).
+            END.
+            
+            DEFINE VARIABLE cFKMapping AS CHARACTER NO-UNDO.
+                       
+            IF iBuffer = 1 THEN 
+            DO:
+                FOR EACH ttForeignKeyBuffer:
+                    IF VALID-HANDLE(SourceDatasetHandle) THEN 
+                       CREATE BUFFER ttForeignKeyBuffer.BufferHandle FOR TABLE SourceDatasetHandle:GET-BUFFER-HANDLE(ttForeignKeyBuffer.ForeignKeyTableName)
+                              BUFFER-NAME ttForeignKeyBuffer.BufferName .
+                    ELSE 
+                       /* TODO: dbPrefix for the table */
+                       CREATE BUFFER ttForeignKeyBuffer.BufferHandle FOR TABLE (ttForeignKeyBuffer.ForeignKeyTableName)
+                           BUFFER-NAME ttForeignKeyBuffer.BufferName.
+
+                    DEFINE VARIABLE cParentColumn AS CHARACTER NO-UNDO.
+                    DEFINE VARIABLE cChildColumn  AS CHARACTER NO-UNDO.
+                    DEFINE VARIABLE cJoin         AS CHARACTER NO-UNDO.
+
+                    cJoin = "".       
+                    DO iPair = 1 TO NUM-ENTRIES(ttForeignKeyBuffer.RelationFields) BY 2:
+                        cParentColumn = TRIM(ENTRY(iPair,ttForeignKeyBuffer.RelationFields)).
+                        cChildColumn  = TRIM(ENTRY(iPair + 1,ttForeignKeyBuffer.RelationFields)).
+                        cJoin = cJoin + (IF cJoin > "" THEN " AND " ELSE "")
+                              + SUBSTITUTE("&1.&2 = &3.&4",
+                                ttForeignKeyBuffer.BufferName,
+                                cParentColumn,
+                                hSourceBuffer[iBuffer]:NAME,
+                                cChildColumn).
+                    END.
+                    ttForeignKeyBuffer.BufferWhere = cJoin.  
+                    
+                    FOR EACH ttForeignKeyColumn WHERE ttForeignKeyColumn.ForeignKeyBufferNumber =  ttForeignKeyBuffer.ForeignKeyBufferNumber:
+                        
+                        /* Add FK Sort Columns to the temp-table */
+                        hTempTable[iBuffer]:ADD-NEW-FIELD (ttForeignKeyColumn.SortColumnName,ttForeignKeyBuffer.BufferHandle:BUFFER-FIELD(ttForeignKeyColumn.ForeignKeyColumnName):DATA-TYPE).
+
+                        /* TempTable.Field,Source.Field, .... */
+                        cFKMapping = cFKMapping + (IF cFKMapping > "" THEN "," ELSE "")
+                                   + SUBSTITUTE("&1.&2,&3.&4",
+                                     OEDataTable.OETableName,
+                                     ttForeignKeyColumn.SortColumnName,
+                                     ttForeignKeyBuffer.BufferName, 
+                                     ttForeignKeyColumn.ForeignKeyColumnName).
+                    END.    
+                        
+                END.
             END.
             
             hTempTable[iBuffer]:TEMP-TABLE-PREPARE(OEDataTable.OETableName).
@@ -244,10 +335,17 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             END.
             
             /* Add Sort order for Json later */
+            /*
             IF TRIM (OEDataTable.OETableSortBy) BEGINS "BY " THEN 
             DO:
+                /* TO @BY -> FK Sort */
                 cSortBy[iBuffer] = OEDataTable.OETableSortBy.
-            END.   
+                
+                MESSAGE OEDataTable.OETableSortBy
+                VIEW-AS ALERT-BOX.
+                
+            END.  
+            */ 
         END.    
         
         /* Create data relations for the dataset */
@@ -269,28 +367,47 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         DO iBuffer = 1 TO hDataset:NUM-BUFFERS:
             hBuffer = hDataset:GET-BUFFER-HANDLE(iBuffer).
             CREATE DATA-SOURCE hDataSource[iBuffer].
+            
             IF hBuffer:PARENT-RELATION = ? THEN 
             DO:
                CREATE QUERY hSourceQuery[iBuffer].
                hSourceQuery[iBuffer]:SET-BUFFERS (hSourceBuffer[iBuffer]).
-               hDataSource[iBuffer]:QUERY = hSourceQuery[iBuffer].
-               hBuffer:ATTACH-DATA-SOURCE (hDataSource[iBuffer]).
                cWhere = "".
                IF cWhereClause[iBuffer] > "" THEN cWhere = "WHERE " + cWhereClause[iBuffer].
-               /* If we have a limit then we have to sort the data source query to get the right records 
-                  But this doesn't help because the max rows are applied to the query and the result will be
-                  sorted later.              
-               cSourceSortBy = "".
-               IF iMaxRows > 0 THEN
-               DO: 
-                   IF cSortBy[iBuffer] > "" THEN 
-                      ASSIGN cSourceSortBy = cSortBy[iBuffer].
+
+               /* Data Table */
+               cPrepare = SUBSTITUTE("FOR EACH &1 &2 NO-LOCK",hSourceBuffer[iBuffer]:NAME,cWhere).
+               
+               /* Joined FK for sorting if any. Only for the main table */
+               IF iBuffer = 1 THEN 
+               DO:
+                   FOR EACH ttForeignKeyBuffer:
+                       hSourceQuery[iBuffer]:ADD-BUFFER(ttForeignKeyBuffer.BufferHandle).
+                       cPrepare = cPrepare + SUBSTITUTE (", FIRST &1 WHERE &2 NO-LOCK OUTER-JOIN", ttForeignKeyBuffer.BufferName, ttForeignKeyBuffer.BufferWhere).                 
+                   END.
+                   hDataSource[iBuffer]:QUERY = hSourceQuery[iBuffer].
+                   IF cFKMapping > "" THEN 
+                       hBuffer:ATTACH-DATA-SOURCE (hDataSource[iBuffer],cFKMapping).
                    ELSE 
-                      ASSIGN cSourceSortBy = PrimeIndexSortBy(hSourceBuffer[iBuffer]).
-               END.     
-               hSourceQuery[iBuffer]:QUERY-PREPARE(SUBSTITUTE("FOR EACH &1 &2 NO-LOCK &3 &4",hSourceBuffer[iBuffer]:NAME,cWhere,cSourceSortBy,cLimit)).
+                       hBuffer:ATTACH-DATA-SOURCE (hDataSource[iBuffer]).
+               END.
+               ELSE DO:
+                   hDataSource[iBuffer]:QUERY = hSourceQuery[iBuffer].
+                   hBuffer:ATTACH-DATA-SOURCE (hDataSource[iBuffer]).
+               END.
+               
+               IF cLimit > "" THEN 
+                 cPrepare = cPrepare + " " + cLimit.    
+                   
+               hSourceQuery[iBuffer]:QUERY-PREPARE(cPrepare).
+               /*
+               MESSAGE "Buffer" iBuffer SKIP 
+                   "Prepare:"  cPrepare   SKIP
+                   "FKMapping:" cFKMapping SKIP(1)  
+                   hBuffer:DATA-SOURCE-COMPLETE-MAP
+               VIEW-AS ALERT-BOX.
                */
-               hSourceQuery[iBuffer]:QUERY-PREPARE(SUBSTITUTE("FOR EACH &1 &2 NO-LOCK &3",hSourceBuffer[iBuffer]:NAME,cWhere,cLimit)).
+               
             END.
             ELSE DO:
                hDataSource[iBuffer]:ADD-SOURCE-BUFFER(hSourceBuffer[iBuffer],?).
@@ -303,7 +420,9 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         END.    
           
         hDataset:FILL().
-         
+        /*
+        hDataset:WRITE-JSON("FILE", "T:\temp\ds.json").
+        */ 
         /* Detach the data sources */
         DO iBuffer = 1 TO hDataset:NUM-BUFFERS:
             hDataset:GET-BUFFER-HANDLE (iBuffer):DETACH-DATA-SOURCE ().
@@ -365,6 +484,11 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             END.   
             DELETE OBJECT hQuery   NO-ERROR.
             DELETE OBJECT hDataset NO-ERROR.
+            
+            FOR EACH ttForeignKeyBuffer:
+                DELETE OBJECT ttForeignKeyBuffer.BufferHandle NO-ERROR.
+            END.     
+            
             IF VALID-HANDLE(hExportDataset) THEN 
             DO:
                 DO iBuffer = 1 TO hExportDataset:NUM-BUFFERS:
@@ -500,6 +624,89 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         RETURN cFilter.
     END METHOD.
 	
+    /*------------------------------------------------------------------------------
+     Purpose: ForeignKey Sort
+     Notes:   Since LL26
+    ------------------------------------------------------------------------------*/
+    METHOD PUBLIC CHARACTER buildForeignKeySort( pcOETableName AS CHARACTER, pcOETableSortBy AS CHARACTER):
+        
+        EMPTY TEMP-TABLE ttForeignKeyBuffer.
+        EMPTY TEMP-TABLE ttForeignKeyColumn.
+        
+        DEFINE VARIABLE cSort   AS CHARACTER NO-UNDO.
+        DEFINE VARIABLE iEntry  AS INTEGER   NO-UNDO.
+        DEFINE VARIABLE cEntry  AS CHARACTER NO-UNDO.
+        DEFINE VARIABLE iFKSort AS INTEGER   NO-UNDO.
+        
+        DEFINE VARIABLE cFKTable        AS CHARACTER NO-UNDO.
+        DEFINE VARIABLE cRelationFields AS CHARACTER NO-UNDO.
+        DEFINE VARIABLE cFKColumn       AS CHARACTER NO-UNDO.
+        DEFINE VARIABLE cSortDirection  AS CHARACTER NO-UNDO.
+        
+        DEFINE VARIABLE iForeignKeyBufferNumber AS INTEGER   NO-UNDO.
+        DEFINE VARIABLE iSortKeyNumber          AS INTEGER   NO-UNDO.
+        DEFINE VARIABLE cSortKeyName            AS CHARACTER NO-UNDO.
+        
+        pcOETableSortBy = " " + TRIM(pcOETableSortBy).
+        pcOETableSortBy = REPLACE (pcOETableSortBy, " BY ","|").
+        pcOETableSortBy = TRIM(pcOETableSortBy,"|").
+
+        DO iEntry = 1 TO NUM-ENTRIES(pcOETableSortBy,"|"):
+            cEntry = TRIM(ENTRY(iEntry, pcOETableSortBy,"|")).
+            IF cEntry BEGINS("@") THEN 
+            DO:
+                cEntry = SUBSTRING(cEntry,2).
+                IF NUM-ENTRIES(cEntry,":") <> 3 THEN 
+                    NEXT.
+                cFKTable        = TRIM(ENTRY(1,cEntry,":")).
+                cRelationFields = TRIM(ENTRY(2,cEntry,":")).
+                cFKColumn       = TRIM(ENTRY(3,cEntry,":")).
+                cSortDirection  = "".
+                
+                IF NUM-ENTRIES(cFKColumn," ") > 1 THEN
+                   ASSIGN cSortDirection = TRIM(ENTRY(2,cFKColumn," "))
+                          cFKColumn      = TRIM(ENTRY(1,cFKColumn," "))
+                          .
+
+                iSortKeyNumber = iSortKeyNumber + 1.
+                cSortKeyName = SUBSTITUTE("FKSortKey#&1",iSortKeyNumber).
+                
+                FIND ttForeignKeyBuffer WHERE ttForeignKeyBuffer.ForeignKeyTableName = cFKTable
+                                        AND   ttForeignKeyBuffer.RelationFields      = cRelationFields NO-ERROR.
+                IF NOT AVAILABLE ttForeignKeyBuffer THEN 
+                DO:
+                    iForeignKeyBufferNumber = iForeignKeyBufferNumber + 1.
+                    CREATE ttForeignKeyBuffer.
+                    ASSIGN ttForeignKeyBuffer.ForeignKeyBufferNumber = iForeignKeyBufferNumber
+                           ttForeignKeyBuffer.ForeignKeyTableName    = cFKTable
+                           ttForeignKeyBuffer.RelationFields         = cRelationFields
+                           /* Names are limited to 32 chars. Querys are limited to 9 Buffers */
+                           ttForeignKeyBuffer.ForeignKeyTableName    = cFKTable
+                           ttForeignKeyBuffer.BufferName             = SUBSTITUTE("FKBuffer#&1", iForeignKeyBufferNumber).
+                           
+                END.
+
+                /* Just in case that we have the same column twice. That means trouble later in data source mapping */
+                FIND ttForeignKeyColumn WHERE ttForeignKeyColumn.ForeignKeyBufferNumber = ttForeignKeyBuffer.ForeignKeyBufferNumber
+                                        AND   ttForeignKeyColumn.ForeignKeyColumnName   = cFKColumn NO-ERROR.
+                IF AVAILABLE ttForeignKeyColumn THEN 
+                    NEXT.
+                    
+                CREATE ttForeignKeyColumn.
+                ASSIGN 
+                    ttForeignKeyColumn.ForeignKeyBufferNumber = ttForeignKeyBuffer.ForeignKeyBufferNumber
+                    ttForeignKeyColumn.ForeignKeyColumnName   = cFKColumn
+                    ttForeignKeyColumn.SortColumnName         = cSortKeyName.
+                cSort = cSort + " BY " + TRIM(SUBSTITUTE("&1 &2", cSortKeyName, cSortDirection)).                                       
+            END.
+            ELSE DO:
+                cSort = cSort + " BY " + SUBSTITUTE("&1", cEntry).
+            END.    
+        END.
+        
+        RETURN TRIM(cSort).
+
+    END METHOD.
 	
 	/*------------------------------------------------------------------------------
 	 Purpose:
@@ -520,6 +727,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         DEFINE VARIABLE iEntry      AS INTEGER   NO-UNDO.
         DEFINE VARIABLE cIndex      AS CHARACTER NO-UNDO.
         DEFINE VARIABLE cIndexFields AS CHARACTER NO-UNDO.
+        DEFINE VARIABLE hField       AS HANDLE NO-UNDO.
         
         CREATE DATASET hDataset.
                 
@@ -565,8 +773,15 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             END.
 
             hTempTable:TEMP-TABLE-PREPARE ("cpy" + hBuffer:NAME).
-            
             hTempTable:SERIALIZE-NAME = hBuffer:NAME.
+            
+            IF iBuffer = 1 THEN 
+            FOR EACH ttForeignKeyColumn:
+                hField = hTempTable:DEFAULT-BUFFER-HANDLE:BUFFER-FIELD (ttForeignKeyColumn.SortColumnName) NO-ERROR.
+                IF VALID-HANDLE(hField) THEN 
+                    ASSIGN hField:SERIALIZE-HIDDEN = TRUE.
+            END.
+            
             hTempTable:COPY-TEMP-TABLE (hBuffer:TABLE-HANDLE,?,?,TRUE,"cpy").
             hDataset:ADD-BUFFER (hTempTable:DEFAULT-BUFFER-HANDLE).
         END.
@@ -684,8 +899,6 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
                                         plcRequestJson          AS LONGCHAR):
         RETURN "".
     END METHOD.
-
-
 
     /*------------------------------------------------------------------------------
      Purpose: Needs to be overwritten by the Service.

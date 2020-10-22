@@ -139,7 +139,7 @@ object frmPrtloop: TfrmPrtloop
     Left = 88
     Top = 88
   end
-  object LL: Tl25_
+  object LL: Tl26_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No

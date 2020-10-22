@@ -1,4 +1,4 @@
-namespace combit.ListLabel25.CSharpSample.ObjectDataProviderSample
+namespace combit.Reporting.CSharpSample.ObjectDataProviderSample
 {
     partial class Form1
     {
@@ -26,7 +26,7 @@ namespace combit.ListLabel25.CSharpSample.ObjectDataProviderSample
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
+            this.LL = new combit.Reporting.ListLabel(this.components);
             this.buttonDesign = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label_DE = new System.Windows.Forms.Label();
@@ -41,7 +41,7 @@ namespace combit.ListLabel25.CSharpSample.ObjectDataProviderSample
             this.LL.AutoPrinterSettingsStream = null;
             this.LL.AutoProjectStream = null;
             this.LL.CompressStorage = true;
-            this.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+            this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
             this.LL.DrilldownAvailable = true;
             this.LL.EMFResolution = 100;
             this.LL.FileRepository = null;
@@ -50,7 +50,7 @@ namespace combit.ListLabel25.CSharpSample.ObjectDataProviderSample
             this.LL.MaxRTFVersion = 65280;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_100;
+            this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
             // 
@@ -137,7 +137,7 @@ namespace combit.ListLabel25.CSharpSample.ObjectDataProviderSample
 
         }
         #endregion
-        private combit.ListLabel25.ListLabel LL;
+        private combit.Reporting.ListLabel LL;
         private System.Windows.Forms.Button buttonDesign;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_DE;

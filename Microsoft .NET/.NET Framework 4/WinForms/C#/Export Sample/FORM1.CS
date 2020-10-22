@@ -2,8 +2,8 @@
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
-using combit.ListLabel25;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting;
+using combit.Reporting.DataProviders;
 using Microsoft.Win32;
 
 namespace Export
@@ -129,21 +129,13 @@ namespace Export
 
                 case 2:
                     {
-                        _fileFilter = "HTML Files|*.HTM";
-                        _exporterTarget = LlExportTarget.Html;
-                        _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) + ".htm";
-                        break;
-                    }
-
-                case 3:
-                    {
                         _fileFilter = "RTF Files|*.RTF";
                         _exporterTarget = LlExportTarget.Rtf;
                         _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) + ".rtf";
                         break;
                     }
 
-                case 4:
+                case 3:
                     {
                         _fileFilter = "XML Files|*.XML";
                         _exporterTarget = LlExportTarget.Xml;
@@ -151,7 +143,7 @@ namespace Export
                         break;
                     }
 
-                case 5:
+                case 4:
                     {
                         _fileFilter = "Tiff Files|*.TIF";
                         _exporterTarget = LlExportTarget.MultiTiff;
@@ -159,7 +151,7 @@ namespace Export
                         break;
                     }
 
-                case 6:
+                case 5:
                     {
                         _fileFilter = "Text Files|*.TXT";
                         _exporterTarget = LlExportTarget.Text;
@@ -167,35 +159,35 @@ namespace Export
                         break;
                     }
 
-                case 7:
+                case 6:
                     {
                         _fileFilter = "Excel Files|*.XLS";
                         _exporterTarget = LlExportTarget.Xls;
                         _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) + ".xls";
                         break;
                     }
-                case 8:
+                case 7:
                     {
                         _fileFilter = "Excel Files|*.XLSX";
                         _exporterTarget = LlExportTarget.Xlsx;
                         _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) + ".xlsx";
                         break;
                     }
-                case 9:
+                case 8:
                     {
                         _fileFilter = "HTML Files|*.HTM";
                         _exporterTarget = LlExportTarget.Xhtml;
                         _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) + ".htm";
                         break;
                     }
-                case 10:
+                case 9:
                     {
                         _fileFilter = "Preview Files|*.LL";
                         _exporterTarget = LlExportTarget.Preview;
                         _exportBase = Path.GetFileNameWithoutExtension(fileNameTb.Text) + ".ll";
                         break;
                     }
-                case 11:
+                case 10:
                     {
                         _fileFilter = "Word Files|*.DOCX";
                         _exporterTarget = LlExportTarget.Docx;

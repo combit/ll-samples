@@ -4,7 +4,7 @@ using System.Data.OleDb;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
-using combit.ListLabel25;
+using combit.Reporting;
 using Microsoft.Win32;
 
 namespace LocalizationSample

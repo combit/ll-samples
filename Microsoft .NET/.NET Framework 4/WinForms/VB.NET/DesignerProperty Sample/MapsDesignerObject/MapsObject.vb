@@ -2,7 +2,7 @@
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
-Imports combit.ListLabel25
+Imports combit.Reporting
 Imports GMap.NET
 Imports GMap.NET.WindowsForms
 Imports System.Drawing
@@ -11,7 +11,7 @@ Imports System.Windows.Forms
 Imports System.Threading
 Imports System.ComponentModel
 Imports GMap.NET.WindowsForms.Markers
-Imports combit.ListLabel25.DesignerExtensions
+Imports combit.Reporting.DesignerExtensions
 Imports System.Text.RegularExpressions
 Imports System.Globalization
 Imports System.Runtime.Serialization

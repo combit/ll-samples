@@ -1,4 +1,4 @@
-﻿Imports combit.ListLabel25
+﻿Imports combit.Reporting
 Imports log4net
 
 Namespace Custom_Logger_Sample

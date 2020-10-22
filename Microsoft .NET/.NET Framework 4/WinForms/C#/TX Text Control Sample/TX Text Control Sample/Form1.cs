@@ -4,7 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.IO;
 
-using combit.ListLabel25;
+using combit.Reporting;
 using TXTextDesignerObject;
 
 

@@ -1,6 +1,6 @@
 ﻿Imports System.ComponentModel
-Imports combit.ListLabel25
-Imports combit.ListLabel25.DataProviders
+Imports combit.Reporting
+Imports combit.Reporting.DataProviders
 
 Namespace combit.Services
     Public NotInheritable Class GenericList

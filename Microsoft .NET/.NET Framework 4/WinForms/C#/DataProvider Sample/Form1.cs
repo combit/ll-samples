@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace combit.ListLabel25.Samples
+namespace combit.Reporting.Samples
 {
     public partial class Form1 : Form
     {

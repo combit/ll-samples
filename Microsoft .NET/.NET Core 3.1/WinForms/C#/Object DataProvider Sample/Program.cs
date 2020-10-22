@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace combit.ListLabel25.CSharpSample.ObjectDataProviderSample
+namespace combit.Reporting.CSharpSample.ObjectDataProviderSample
 {
     static class Program
     {

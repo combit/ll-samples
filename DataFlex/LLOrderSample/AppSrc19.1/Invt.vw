@@ -4,7 +4,7 @@ Use dfEntry.pkg
 Use Vendor.DD
 Use Invt.DD
 
-DEFERRED_VIEW Activate_oInventoryView FOR ;
+Deferred_View Activate_oInventoryView for ;
 ;
 Object oInventoryView is a dbView
     Set Border_Style to Border_Thick
@@ -23,7 +23,7 @@ Object oInventoryView is a dbView
 
     Set Main_DD to Invt_DD
     Set Server to Invt_DD
-
+    
     Object oDbCont is a dbContainer3d
         Set Size to 140 295
         Set Location to 5 4
@@ -113,4 +113,4 @@ Object oInventoryView is a dbView
 
     End_Object    // oDbCont
 
-CD_End_Object    // oInventoryView
+Cd_End_Object    // oInventoryView

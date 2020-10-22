@@ -97,7 +97,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.LL = new combit.ListLabel25.ListLabel(this.components);
+            this.LL = new combit.Reporting.ListLabel(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -815,13 +815,13 @@
             // 
             // LL
             // 
-            this.LL.AutoBoxType = combit.ListLabel25.LlBoxType.Normalwait;
-            this.LL.AutoDestination = combit.ListLabel25.LlPrintMode.Preview;
+            this.LL.AutoBoxType = combit.Reporting.LlBoxType.Normalwait;
+            this.LL.AutoDestination = combit.Reporting.LlPrintMode.Preview;
             this.LL.AutoPrinterSettingsStream = null;
             this.LL.AutoProjectStream = null;
             this.LL.AutoShowPrintOptions = false;
             this.LL.AutoShowSelectFile = false;
-            this.LL.DataBindingMode = combit.ListLabel25.DataBindingMode.DelayLoad;
+            this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
             this.LL.DrilldownAvailable = true;
             this.LL.EMFResolution = 100;
             this.LL.FileRepository = null;
@@ -830,7 +830,7 @@
             this.LL.MaxRTFVersion = 65280;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
-            this.LL.Unit = combit.ListLabel25.LlUnits.Millimeter_1_10;
+            this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_10;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;
             // 
@@ -876,7 +876,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private combit.ListLabel25.ListLabel LL;
+        private combit.Reporting.ListLabel LL;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

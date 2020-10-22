@@ -67,7 +67,6 @@ object Form1: TForm1
     Items.Strings = (
       'PDF'
       'MHTML'
-      'HTML'
       'RTF'
       'XML'
       'Multi-TIFF'
@@ -109,7 +108,7 @@ object Form1: TForm1
     Caption = 'Show File after Creation'
     TabOrder = 4
   end
-  object LL: TL25_
+  object LL: TL26_
     SortVariables = Yes
     UnitSystem = usHiInch
     CompressStorage = Yes

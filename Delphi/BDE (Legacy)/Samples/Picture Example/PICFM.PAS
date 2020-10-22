@@ -18,7 +18,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, clipbrd, Graphics, Controls, Forms, Dialogs,
-  ExtCtrls, StdCtrls, OleCtrls, Menus, L25, cmbtll25, Registry;
+  ExtCtrls, StdCtrls, OleCtrls, Menus, L26, cmbtll26, Registry;
 
 type
   TPictureForm = class(TForm)
@@ -34,7 +34,7 @@ type
     BitmapButton: TButton;
     Label5: TLabel;
     Button1: TButton;
-    LL: TL25_;
+    LL: TL26_;
     procedure PrintLabel;
     procedure FormCreate(Sender: TObject);
     procedure DesignButtonClick(Sender: TObject);
@@ -81,10 +81,10 @@ begin
       tmp := registry.ReadString('LL' + IntToStr(LL.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
       if (tmp[Length(tmp)] = '\') then
       begin
-        workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';
+        workingPath := tmp + 'Delphi\';
       end
       else
-        workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\';
+        workingPath := tmp + '\Delphi\';
 
         registry.CloseKey();
 

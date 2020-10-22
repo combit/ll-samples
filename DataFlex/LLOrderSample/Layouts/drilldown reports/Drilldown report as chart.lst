@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=Drilldown report for orders as chart
- FileVersion=15
+ FileVersion=16
  RootTable=OrderHea
  Units=SCM-Units
  Metric=3
@@ -17,7 +17,7 @@
  RepresentationCode.ExprSep=164
  LCID=3079
  UserVars.ManualSortOrder=1
- CreatedByCallFrom=vdfvm19.dll
+ CreatedByCallFrom=atcuf32.dll
  [@DatabaseStructure]
   {
   [DatabaseStructures]
@@ -339,6 +339,7 @@
 	TableType=Chart
 	TableID=OrderHea
 	RelationID=
+	LinkUUID={A32D634D-E17A-4AEC-BD3A-517B07A2C69E}
 	[DistanceFromPrintBorder]
 	 {
 	 Left=0
@@ -357,10 +358,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	SortOrderID=""
 	CombineWithNextStaticTable=False
@@ -371,6 +368,7 @@
 	FormulaFilter=True
 	Animation=""
 	HTMLAnimation=""
+	Subreport=False
 	[LLXParameters]
 	 {
 	 [Engine]
@@ -479,6 +477,7 @@
 	   RelativePartOfLegendText=0
 	   LegendAutowrap=-1
 	   TickmarkColor=RGB(180,180,180)
+	   CountOfMainTicksMax=0
 	   CountOfIntermediateTicks=0
 	   [AreaList]
 		{
@@ -537,6 +536,7 @@
 		}
 	   Visual=1
 	   LineTypeOverride=0
+	   LineSmoothing=0
 	   VisualSym=-1
 	   CoordGridLines=True
 	   [CoordGridLines]
@@ -557,6 +557,7 @@
 		{
 		Count=3
 		}
+	   Link.URL=
 	   FormulaCoord=LL.ChartObject.AxisCoordinate
 	   [FormulaCoord.Font]
 		{
@@ -796,7 +797,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -874,6 +875,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=Drilldown report for orders as chart
    }
   }
@@ -935,5 +938,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\drilldown reports\Drilldown report as chart.lst
+   }
+  [Subreports]
+   {
    }
   }

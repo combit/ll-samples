@@ -20,7 +20,7 @@ Imports Microsoft.Win32
 Imports System.Runtime.InteropServices
 Imports System.Windows.Interop
 Imports System.ComponentModel
-Imports combit.ListLabel25.Wpf
+Imports combit.Reporting.Wpf
 
 Namespace LLViewer
 	''' <summary>

@@ -1,5 +1,5 @@
-﻿using combit.ListLabel25.Web;
-using combit.ListLabel25.Web.WebDesigner.Server;
+﻿using combit.Reporting.Web;
+using combit.Reporting.Web.WindowsClientWebDesigner.Server;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -69,13 +69,13 @@ namespace WebReporting
 
             // D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
             // US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WebDesignerConfig.WebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL25WebDesignerSetup.exe");
+            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL26WebDesignerSetup.exe");
 
             // D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
             //      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
             // US:  For Forms- and Windows authentication, the Web Designer can automatically grab the required information (e.g. login cookies).
             //      WebDesignerAuthenticationModes.None allows to use no authentication at all.
-            WebDesignerConfig.AuthenticationMode = WebDesignerAuthenticationModes.Automatic;
+            WindowsClientWebDesignerConfig.AuthenticationMode = WindowsClientWebDesignerAuthenticationModes.Automatic;
 
             app.UseAuthentication();
             app.UseStaticFiles();
@@ -93,7 +93,7 @@ namespace WebReporting
             routes.MapRoute("Default", "{controller=Sample}/{action=Index}/{id?}");
 
             Html5ViewerConfig.RegisterRoutes(routes);
-            WebDesignerConfig.RegisterRoutes(routes);
+            WindowsClientWebDesignerConfig.RegisterRoutes(routes);
         }
     }
 }

@@ -2,8 +2,8 @@
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
-using combit.ListLabel25;
-using combit.ListLabel25.DataProviders;
+using combit.Reporting;
+using combit.Reporting.DataProviders;
 using Microsoft.Win32;
 
 namespace unicode

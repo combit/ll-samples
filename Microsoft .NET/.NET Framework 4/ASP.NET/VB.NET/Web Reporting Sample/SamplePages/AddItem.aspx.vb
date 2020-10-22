@@ -1,6 +1,6 @@
 ﻿Option Infer On
-Imports combit.ListLabel25
-Imports combit.ListLabel25.Repository
+Imports combit.Reporting
+Imports combit.Reporting.Repository
 Imports System.IO
 Imports System.Web.UI
 Imports System.Web.UI.WebControls

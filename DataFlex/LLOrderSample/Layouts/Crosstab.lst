@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=Sales report per customer and vendor
- FileVersion=15
+ FileVersion=16
  RootTable=Customer
  Units=SCM-Units
  Metric=3
@@ -276,6 +276,7 @@
 	TableType=Crosstab
 	TableID=Customer
 	RelationID=
+	LinkUUID={7FE887ED-B665-4053-9223-B3E1C286CE98}
 	[DistanceFromPrintBorder]
 	 {
 	 Left=0
@@ -293,10 +294,6 @@
 	DistanceTop=5000
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	[SourceTablePath]
 	 {
@@ -317,6 +314,7 @@
 	IndexPDFText=
 	FormulaFilter=True
 	Animation=""
+	Subreport=False
 	[LLXParameters]
 	 {
 	 [Properties]
@@ -1777,6 +1775,7 @@
 	TableType=Crosstab
 	TableID=Customer
 	RelationID=
+	LinkUUID={B477BE0C-9CD7-4729-A758-231754046D63}
 	[DistanceFromPrintBorder]
 	 {
 	 Left=0
@@ -1794,10 +1793,6 @@
 	DistanceTop=10000
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	[SourceTablePath]
 	 {
@@ -1818,6 +1813,7 @@
 	IndexPDFText=
 	FormulaFilter=True
 	Animation=""
+	Subreport=False
 	[LLXParameters]
 	 {
 	 [Properties]
@@ -3019,7 +3015,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -3097,6 +3093,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=Sales report per customer and vendor
    }
   }
@@ -3158,5 +3156,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Crosstab.lst
+   }
+  [Subreports]
+   {
    }
   }

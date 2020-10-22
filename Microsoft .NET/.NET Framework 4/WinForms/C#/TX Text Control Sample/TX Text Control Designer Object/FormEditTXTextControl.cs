@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using combit.ListLabel25;
+using combit.Reporting;
 
 namespace TXTextDesignerObject
 {

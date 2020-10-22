@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=Analysis by Salesperson
- FileVersion=15
+ FileVersion=16
  Units=SCM-Units
  Metric=3
  TextQuote.Start=1
@@ -363,6 +363,7 @@
 	TableType=Chart
 	TableID=OrderHea
 	RelationID=
+	LinkUUID={529F1E5A-9B6A-4DCC-920D-227252DDE385}
 	[DistanceFromPrintBorder]
 	 {
 	 Left=0
@@ -381,10 +382,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	SortOrderID=""
 	CombineWithNextStaticTable=False
@@ -395,6 +392,7 @@
 	FormulaFilter=True
 	Animation=""
 	HTMLAnimation=""
+	Subreport=False
 	[LLXParameters]
 	 {
 	 [Engine]
@@ -494,6 +492,7 @@
 	   RelativePartOfLegendText=0
 	   LegendAutowrap=-1
 	   TickmarkColor=RGB(180,180,180)
+	   CountOfMainTicksMax=0
 	   CountOfIntermediateTicks=0
 	   [AreaList]
 		{
@@ -634,6 +633,7 @@
 		}
 	   Visual=9
 	   LineTypeOverride=0
+	   LineSmoothing=0
 	   VisualSym=-1
 	   CoordGridLines=True
 	   [CoordGridLines]
@@ -649,6 +649,7 @@
 		{
 		Count=3
 		}
+	   Link.URL=
 	   FormulaCoord=LL.ChartObject.AxisCoordinate
 	   [FormulaCoord.Font]
 		{
@@ -791,6 +792,7 @@
 	TableType=List
 	TableID=Customer
 	RelationID=
+	LinkUUID={183B54C8-9284-4025-8F7C-6390DF73AC25}
 	[GroupHeaderLines]
 	 {
 	 bConcatDataLines=True
@@ -854,10 +856,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	SortOrderID="1"
 	PDFLevel=0
@@ -868,6 +866,7 @@
 	FormulaFilter=True
 	DesignScheme="PROJECT"
 	Animation=""
+	Subreport=False
 	[Body]
 	 {
 	 [Lines]
@@ -1162,10 +1161,6 @@
 		GroupCondition=
 		ResetSums=
 		OnNewPage=False
-		[OnNewPage]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		PrintRightAfterHeader=False
 		KeepTogether.Group=False
 		LCondition=True
@@ -1236,6 +1231,7 @@
 	  TableType=List
 	  TableID=OrderHea
 	  RelationID=OrderHea->Customer
+	  LinkUUID={51F3194C-08EA-426D-B5CB-312DEB4D6598}
 	  [GroupHeaderLines]
 	   {
 	   bConcatDataLines=True
@@ -1294,10 +1290,6 @@
 	  DistanceTop=0
 	  DistanceBottom=0
 	  WrapBefore=False
-	  [WrapBefore]
-	   {
-	   ResetPageNumberOption=0
-	   }
 	  ShowInContextUI=True
 	  SortOrderID="2"
 	  PDFLevel=0
@@ -1307,6 +1299,7 @@
 	  Expandable=False
 	  FormulaFilter=True
 	  DesignScheme="PROJECT"
+	  Subreport=False
 	  [Body]
 	   {
 	   [Lines]
@@ -1603,10 +1596,6 @@
 		  GroupCondition=Customer.Name
 		  ResetSums=
 		  OnNewPage=False
-		  [OnNewPage]
-		   {
-		   ResetPageNumberOption=0
-		   }
 		  PrintRightAfterHeader=True
 		  KeepTogether.Group=False
 		  LCondition=True
@@ -2455,6 +2444,7 @@
 			   }
 			  BarWidthPercentage=60
 			  ExplosionOffsetPercentage=10
+			  Link.URL=
 			  [AreaList]
 			   {
 			   [ItemList]
@@ -2572,6 +2562,7 @@
 		TableType=List
 		TableID=OrderDtl
 		RelationID=OrderDtl->OrderHea
+		LinkUUID={24408D8E-F65B-4870-980E-BB4EFCA3B785}
 		[GroupHeaderLines]
 		 {
 		 bConcatDataLines=True
@@ -2654,10 +2645,6 @@
 		DistanceTop=0
 		DistanceBottom=0
 		WrapBefore=False
-		[WrapBefore]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		ShowInContextUI=True
 		SortOrderID=""
 		PDFLevel=0
@@ -2667,6 +2654,7 @@
 		Expandable=False
 		FormulaFilter=True
 		DesignScheme="PROJECT"
+		Subreport=False
 		[Body]
 		 {
 		 [Lines]
@@ -2961,10 +2949,6 @@
 			GroupCondition=
 			ResetSums=
 			OnNewPage=False
-			[OnNewPage]
-			 {
-			 ResetPageNumberOption=0
-			 }
 			PrintRightAfterHeader=False
 			KeepTogether.Group=False
 			LCondition=True
@@ -3124,7 +3108,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -3202,6 +3186,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=Analysis by Salesperson
    }
   }
@@ -3263,5 +3249,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Chart in table.lst
+   }
+  [Subreports]
+   {
    }
   }

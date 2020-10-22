@@ -2,7 +2,7 @@ using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
-using combit.ListLabel25.Repository;
+using combit.Reporting.Repository;
 using System.Linq;
 
 namespace WebReporting

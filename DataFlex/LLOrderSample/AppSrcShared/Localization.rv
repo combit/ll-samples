@@ -164,7 +164,9 @@ Object oLocalization is a cListLabelReportView
             Forward Send DefineAllFields
         End_Procedure
         Procedure DefineAllVariables
+            Integer iRet
             Forward Send DefineAllVariables
+            DefineLLVariable psPrintLanguage "PrintLanguage" LL_TEXT
         End_Procedure        
     End_Object
 
@@ -172,6 +174,9 @@ Object oLocalization is a cListLabelReportView
     	Integer iRet 
         Handle hoLL hoMain hWnd
         String sVal
+        
+        // Clear the Preview and release last Report
+        Send DoClearPreview to oReportPreview
         
         Move oListLabelReport to hoLL
         // Find a window as a parent for all List & Label Windows
@@ -192,8 +197,6 @@ Object oLocalization is a cListLabelReportView
             Procedure_Return
         End
         
-        
-        
         // Start the Print always in Preview (LL_PRINT_PREVIEW)
         Get LLPrintWithBoxStart of hoLL iProjectType sFile LL_PRINT_PREVIEW LL_BOXTYPE_EMPTYABORT hWnd "Printing Records" to iRet
         If (iRet<>0) Begin
@@ -202,8 +205,6 @@ Object oLocalization is a cListLabelReportView
             Procedure_Return
         End
         
-        //Get LLPrintSetProjectParameter of hoLL "LL.PrintJobLCID" '"en"' (LL_PARAMETERTYPE_LLINTERNAL ior LL_PARAMETERFLAG_GLOBAL ior LL_PARAMETERFLAG_FORMULA ior LL_PARAMETERFLAG_PUBLIC) to iRet
-
         // Print the whole Report
         Get DoPrintList of hoLL to iRet
         // End the Printjob

@@ -1,6 +1,6 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Revision: 01.09.2019
+// Revision: 30.08.2020
 //
 class SubReportADODATAMODULE of DATAMODULE
    this.CATEGORIES1 = new ADOQUERY(this)

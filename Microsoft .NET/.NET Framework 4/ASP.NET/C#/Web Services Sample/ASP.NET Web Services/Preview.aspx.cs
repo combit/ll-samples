@@ -15,7 +15,7 @@ namespace ASP.NET_Web_Services
 
             // set the options
             this.Html5ViewerControl1.Options.ShowToolbarExportButton = false;
-            this.Html5ViewerControl1.Options.UseCDNType = combit.ListLabel25.Web.CDNType.JQuery;
+            this.Html5ViewerControl1.Options.UseCDNType = combit.Reporting.Web.CDNType.JQuery;
         }
     }
 }

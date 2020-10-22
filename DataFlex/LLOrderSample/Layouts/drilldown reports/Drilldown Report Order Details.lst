@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=Drilldown report for orders as list
- FileVersion=15
+ FileVersion=16
  RootTable=OrderDtl
  Units=SCM-Units
  Metric=3
@@ -339,6 +339,7 @@
 	TableType=List
 	TableID=OrderDtl
 	RelationID=
+	LinkUUID={DF6F6779-9EA5-4872-BB56-BD16085C1CC2}
 	[GroupHeaderLines]
 	 {
 	 bConcatDataLines=True
@@ -426,10 +427,6 @@
 	DistanceTop=0
 	DistanceBottom=0
 	WrapBefore=False
-	[WrapBefore]
-	 {
-	 ResetPageNumberOption=0
-	 }
 	ShowInContextUI=True
 	SortOrderID=""
 	PDFLevel=0
@@ -440,6 +437,7 @@
 	FormulaFilter=True
 	DesignScheme="PROJECT"
 	Animation=""
+	Subreport=False
 	[Body]
 	 {
 	 [Lines]
@@ -1844,10 +1842,6 @@
 		GroupCondition=
 		ResetSums=
 		OnNewPage=False
-		[OnNewPage]
-		 {
-		 ResetPageNumberOption=0
-		 }
 		PrintRightAfterHeader=False
 		KeepTogether.Group=False
 		LCondition=True
@@ -2565,7 +2559,7 @@
  LayerID=0
  LayerCond=
  GroupUUID=
- Identifier=Copyright /LINK:https://www.combit.net/reporting-tool/
+ Identifier=Copyright /LINK:http://www.combit.net/en/ListLabel.aspx
  Condition=True
  UserLocked=False
  WrapBefore=False
@@ -2643,6 +2637,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=Drilldown report for orders as list
    }
   }
@@ -2704,5 +2700,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\drilldown reports\Drilldown Report Order Details.lst
+   }
+  [Subreports]
+   {
    }
   }

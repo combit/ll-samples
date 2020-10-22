@@ -25,8 +25,8 @@
 
 BLOCK-LEVEL ON ERROR UNDO, THROW.
 
-USING combit.ListLabel25.ListLabel FROM ASSEMBLY.
-USING TasteITConsulting.ListLabel25.OpenEdgeDataProvider FROM ASSEMBLY.
+USING combit.Reporting.ListLabel FROM ASSEMBLY.
+USING TasteITConsulting.Reporting.OpenEdgeDataProvider FROM ASSEMBLY.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeDatasetService   FROM PROPATH.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeDatasetServiceAdapter FROM PROPATH.
 
@@ -51,6 +51,10 @@ DO TRANSACTION:
     ASSIGN ttCustomer.CustNum  = 1
            ttCustomer.CustName = "combit".
            
+    CREATE ttCustomer.
+    ASSIGN ttCustomer.CustNum  = 2
+           ttCustomer.CustName = "Taste".
+           
     CREATE ttOrder.
     ASSIGN ttOrder.OrderNum      = 1
            ttOrder.CustNum       = 1
@@ -65,6 +69,26 @@ DO TRANSACTION:
     ASSIGN ttOrder.OrderNum      = 3
            ttOrder.CustNum       = 1
            ttOrder.OrderTotal = 3000.
+           
+    CREATE ttOrder.
+    ASSIGN 
+        ttOrder.OrderNum   = 4
+        ttOrder.CustNum    = 2
+        ttOrder.OrderTotal = 4000.
+
+    CREATE ttOrder.
+    ASSIGN 
+        ttOrder.OrderNum   = 5
+        ttOrder.CustNum    = 2
+        ttOrder.OrderTotal = 5000.
+
+    CREATE ttOrder.
+    ASSIGN 
+        ttOrder.OrderNum   = 6
+        ttOrder.CustNum    = 2
+        ttOrder.OrderTotal = 6000.
+
+           
 END.        
 
 DEFINE VARIABLE iRow AS INTEGER NO-UNDO.

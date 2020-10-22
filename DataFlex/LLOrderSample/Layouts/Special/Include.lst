@@ -1,7 +1,7 @@
 ﻿[List description]
 [Description]
  Text=This template is not an print template and is only included by other print templates!
- FileVersion=15
+ FileVersion=16
  RootTable=
  Units=SCM-Units
  Metric=3
@@ -148,6 +148,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=This template is not an print template and is only included by other print templates!
    }
   }
@@ -209,5 +211,8 @@
   [UIDescriptions]
    {
    0=X:\Visual DataFlex Projects\LLLibraryLaufend\LLOrderSample\Layouts\Special\Include.lst
+   }
+  [Subreports]
+   {
    }
   }

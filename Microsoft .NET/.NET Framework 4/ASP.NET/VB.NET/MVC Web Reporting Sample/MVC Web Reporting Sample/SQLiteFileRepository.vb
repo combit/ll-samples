@@ -1,4 +1,4 @@
-﻿Imports combit.ListLabel25.Repository
+﻿Imports combit.Reporting.Repository
 Imports System.Collections.Generic
 Imports System.Data
 Imports System.Data.SQLite

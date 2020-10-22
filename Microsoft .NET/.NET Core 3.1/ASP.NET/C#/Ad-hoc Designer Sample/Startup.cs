@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using combit.ListLabel25.AdhocDesign.Web;
+using combit.Reporting.AdhocDesign.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,7 +16,7 @@ using System.Runtime.Loader;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.FileProviders;
-using combit.ListLabel25.AdhocDesign.Web.Controllers;
+using combit.Reporting.AdhocDesign.Web.Controllers;
 
 namespace AdhocDesignerSample
 {

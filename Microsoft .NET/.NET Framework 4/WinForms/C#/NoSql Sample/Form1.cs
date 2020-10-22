@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using combit.ListLabel25;
-using combit.ListLabel25.DataProviders;
-using combit.ListLabel25.Dom;
+using combit.Reporting;
+using combit.Reporting.DataProviders;
+using combit.Reporting.Dom;
 using System.Text.RegularExpressions;
 
 namespace DataProvidersWithoutSolidStructure

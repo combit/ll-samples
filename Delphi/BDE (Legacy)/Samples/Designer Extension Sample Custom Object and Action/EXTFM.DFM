@@ -92,7 +92,7 @@ object DesExtForm: TDesExtForm
     TabOrder = 1
     OnClick = chckBxDebugClick
   end
-  object GradientFillObject: TLL25XObject
+  object GradientFillObject: TLL26XObject
     Description = 'GradientFill'
     ParentComponent = LL
     PopupMenu = PopupMenu1
@@ -148,7 +148,7 @@ object DesExtForm: TDesExtForm
     Left = 48
     Top = 88
   end
-  object RomanNumber: TLL25XFunction
+  object RomanNumber: TLL26XFunction
     MinimumParameters = 1
     MaximumParameters = 1
     ResultType = ptString
@@ -167,7 +167,7 @@ object DesExtForm: TDesExtForm
     Left = 152
     Top = 88
   end
-  object LL25XAction1: TLL25XAction
+  object LL26XAction1: TLL26XAction
     AddToToolbar = True
     IconId = 642
     InsertionType = itAppend
@@ -176,7 +176,7 @@ object DesExtForm: TDesExtForm
     ParentComponent = LL
     ShortCut = 16454
     TooltipText = 'Find object'
-    OnExecuteAction = LL25XAction1ExecuteAction
+    OnExecuteAction = LL26XAction1ExecuteAction
     Left = 184
     Top = 88
   end
@@ -217,7 +217,7 @@ object DesExtForm: TDesExtForm
     Left = 352
     Top = 48
   end
-  object LL: TDBL25_
+  object LL: TDBL26_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No
@@ -234,7 +234,7 @@ object DesExtForm: TDesExtForm
     Left = 88
     Top = 88
   end
-  object LL25XAction3: TLL25XAction
+  object LL26XAction3: TLL26XAction
     AddToToolbar = True
     IconId = 185
     InsertionType = itAppend
@@ -243,7 +243,7 @@ object DesExtForm: TDesExtForm
     ParentComponent = LL
     ShortCut = 16457
     TooltipText = 'Generates an customer list template'
-    OnExecuteAction = LL25XAction3ExecuteAction
+    OnExecuteAction = LL26XAction3ExecuteAction
     Left = 216
     Top = 88
   end
@@ -274,7 +274,7 @@ object DesExtForm: TDesExtForm
       Size = 24
     end
   end
-  object LL25XAction4: TLL25XAction
+  object LL26XAction4: TLL26XAction
     AddToToolbar = True
     IconId = 186
     InsertionType = itAppend
@@ -283,7 +283,7 @@ object DesExtForm: TDesExtForm
     ParentComponent = LL
     ShortCut = 16467
     TooltipText = 'Generates a statistic template'
-    OnExecuteAction = LL25XAction4ExecuteAction
+    OnExecuteAction = LL26XAction4ExecuteAction
     Left = 248
     Top = 88
   end
