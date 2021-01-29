@@ -63,6 +63,8 @@ Partial Class MdiParentForm
         '
         'MdiParentForm
         '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0F, 13.0F)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(780, 580)
         Me.Controls.Add(Me.menuStrip1)

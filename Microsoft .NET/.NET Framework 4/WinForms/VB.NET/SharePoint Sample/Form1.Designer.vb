@@ -222,6 +222,8 @@ Partial Public Class Form1
         '
         'Form1
         '
+		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0F, 13.0F)
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         resources.ApplyResources(Me, "$this")
         Me.Controls.Add(Me.panel2)
         Me.Controls.Add(lblServer)

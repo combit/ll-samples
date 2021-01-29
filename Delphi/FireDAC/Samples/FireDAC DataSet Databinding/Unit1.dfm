@@ -107,11 +107,9 @@ object Form1: TForm1
   end
   object FDConnectionNorthwind: TFDConnection
     Params.Strings = (
-      'Database=..\..\..\..\NWIND.MDB'
       'DriverID=MSAcc')
     FetchOptions.AssignedValues = [evCursorKind]
     FetchOptions.CursorKind = ckStatic
-    Connected = True
     LoginPrompt = False
     Left = 168
     Top = 176
@@ -171,19 +169,17 @@ object Form1: TForm1
     DataController.DataSource = DataSourceOrders
     DataController.DetailSources = <
       item
-        Tag = 0
         Name = 'Orders'
         DataSource = DataSourceOrders
         PrimaryKeyField = 'OrderID'
-      end
-      item
-        Tag = 0
-        Name = 'Order Details'
-        DataSource = DataSourceOrderDetails
-        PrimaryKeyField = 'OrderID'
-        DetailKeyField = 'OrderID'
-        MasterKeyField = 'OrderID'
-        ParentName = 'Orders'
+        InternalOwnItems = <
+          item
+            Name = 'Order Details'
+            DataSource = DataSourceOrderDetails
+            PrimaryKeyField = 'OrderID'
+            DetailKeyField = 'OrderID'
+            MasterKeyField = 'OrderID'
+          end>
       end>
     Left = 16
     Top = 184

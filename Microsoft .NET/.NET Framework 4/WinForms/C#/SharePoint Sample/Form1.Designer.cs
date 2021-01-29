@@ -214,7 +214,9 @@
             this.button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
             // Form1
-            // 
+            //
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel2);
             this.Controls.Add(lblServer);

@@ -79,6 +79,8 @@ Partial Class Form1
         '
         'Form1
         '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0F, 13.0F)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(508, 124)
         Me.Controls.Add(Me.printBtn)
         Me.Controls.Add(Me.label1)

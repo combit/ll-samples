@@ -151,6 +151,8 @@
         '
         'Form1
         '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0F, 13.0F)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(530, 152)
         Me.Controls.Add(Me.label6)
         Me.Controls.Add(Me.label2)

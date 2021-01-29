@@ -118,7 +118,9 @@ namespace combit.Reporting.CSharpSample.ObjectDataProviderSample
             this.comboSelection.SelectedIndexChanged += new System.EventHandler(this.ComboSelection_SelectedIndexChanged);
             // 
             // Form1
-            // 
+            //
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 150);
             this.Controls.Add(this.comboSelection);
             this.Controls.Add(this.buttonPrint);
