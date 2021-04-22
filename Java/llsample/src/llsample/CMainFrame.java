@@ -985,7 +985,7 @@ public
     }
     
     //Get the project's DOM object
-    int handleProject = -1;
+    long handleProject = -1;
     handleProject = Ll.LlDomGetProject(nLLJob_, 0 /*reserved*/);
     if(handleProject <= 0)
     {
@@ -1001,16 +1001,16 @@ public
     Ll.LlDomSetProperty(handleProject, "ProjectParameters.LL.ProjectDescription.Contents", "New Project-Description");
     
     //Get the object list object
-    int handleObjectList = Ll.LlDomGetObject(handleProject, "Objects", 0 /*reserved*/);
+    long handleObjectList = Ll.LlDomGetObject(handleProject, "Objects", 0 /*reserved*/);
     
     //Create an empty text object
-    int handleTextObject = Ll.LlDomCreateSubobject(handleObjectList, 0, "Text", 0 /*reserved*/);
+    long handleTextObject = Ll.LlDomCreateSubobject(handleObjectList, 0, "Text", 0 /*reserved*/);
     Ll.LlDomSetProperty(handleTextObject, "Name", "My new Textobject");
     
     //Get the page coordinates for the first page
     StringBuffer sHorizontalBuffer = new StringBuffer("");
-    int handleRegionList = Ll.LlDomGetObject(handleProject, "Regions", 0 /*reserved*/);
-    int handleRegion = Ll.LlDomCreateSubobject(handleRegionList, 0, "Region", 0 /*reserved*/);
+    long handleRegionList = Ll.LlDomGetObject(handleProject, "Regions", 0 /*reserved*/);
+    long handleRegion = Ll.LlDomCreateSubobject(handleRegionList, 0, "Region", 0 /*reserved*/);
     Ll.LlDomGetProperty(handleRegion, "Paper.Extent.Horizontal", sHorizontalBuffer);
 
     long nHorizontal = Long.parseLong(sHorizontalBuffer.toString().trim()) - 105000;
@@ -1026,14 +1026,14 @@ public
     Ll.LlDomSetProperty(handleTextObject, "LayerID", "1");
     
     //Add a paragraph to the text object and set some properties
-    int handleParagraphList = Ll.LlDomGetObject(handleTextObject, "Paragraphs", 0 /*reserved*/);
-    int handleParagraph = Ll.LlDomCreateSubobject(handleParagraphList, 0, "Paragraph", 0 /*reserved*/);
+    long handleParagraphList = Ll.LlDomGetObject(handleTextObject, "Paragraphs", 0 /*reserved*/);
+    long handleParagraph = Ll.LlDomCreateSubobject(handleParagraphList, 0, "Paragraph", 0 /*reserved*/);
     Ll.LlDomSetProperty(handleParagraph, "Contents", "'New Project-Description'");
     Ll.LlDomSetProperty(handleParagraph, "Font.Bold", "True");
     Ll.LlDomSetProperty(handleParagraph, "Font.Size", "16.0");
     
     //Add a drawing object
-    int handleDrawingObject = Ll.LlDomCreateSubobject(handleObjectList, 0, "Drawing", 0 /*reserved*/);
+    long handleDrawingObject = Ll.LlDomCreateSubobject(handleObjectList, 0, "Drawing", 0 /*reserved*/);
     Ll.LlDomSetProperty(handleDrawingObject, "Source.FileInfo.Filename", "sunshine.gif");
     Ll.LlDomSetProperty(handleDrawingObject, "Position.Left", "120000");
     Ll.LlDomSetProperty(handleDrawingObject, "Position.Top", "9700");
@@ -1047,7 +1047,7 @@ public
     // "Text", "RTFText", "Drawing", "Barcode", "LLX:LLHTMLObject"
     
     //Add a report container and set some properties
-    int handleReportContainer = Ll.LlDomCreateSubobject(handleObjectList, 0, "ReportContainer", 0 /*reserved*/);
+    long handleReportContainer = Ll.LlDomCreateSubobject(handleObjectList, 0, "ReportContainer", 0 /*reserved*/);
     Ll.LlDomSetProperty(handleReportContainer, "Position.Left", "14000");
     Ll.LlDomSetProperty(handleReportContainer, "Position.Top", "70000");
     Ll.LlDomSetProperty(handleReportContainer, "Position.Width", "177000");
@@ -1065,14 +1065,14 @@ public
     Ll.LlDomSetProperty(handleReportContainer, "LinkMode", sLinkMode);
     
     //Add a table to the report container
-    int handleSubItems = Ll.LlDomGetObject(handleReportContainer, "SubItems", 0 /*reserved*/);
-    int handleTable = Ll.LlDomCreateSubobject(handleSubItems, 0, "Table", 0 /*reserved*/);
+    long handleSubItems = Ll.LlDomGetObject(handleReportContainer, "SubItems", 0 /*reserved*/);
+    long handleTable = Ll.LlDomCreateSubobject(handleSubItems, 0, "Table", 0 /*reserved*/);
     
     //Add a new data line
-    int handleTableLines = Ll.LlDomGetObject(handleTable, "Lines", 0 /*reserved*/);
-    int handleTableData = Ll.LlDomGetObject(handleTableLines, "Data", 0 /*reserved*/);
+    long handleTableLines = Ll.LlDomGetObject(handleTable, "Lines", 0 /*reserved*/);
+    long handleTableData = Ll.LlDomGetObject(handleTableLines, "Data", 0 /*reserved*/);
 
-    int handleDataLine = Ll.LlDomCreateSubobject(handleTableData, 0, "Line", 0 /*reserved*/);
+    long handleDataLine = Ll.LlDomCreateSubobject(handleTableData, 0, "Line", 0 /*reserved*/);
     Ll.LlDomSetProperty(handleDataLine, "Name", "My new table line");
 
     StringBuffer sContainerPositionWidth = new StringBuffer("");
@@ -1080,15 +1080,15 @@ public
     int nContainerPositionWidth = Integer.parseInt(sContainerPositionWidth.toString().trim());
     
     //Add header line
-    int handleTableHeader = Ll.LlDomGetObject(handleTableLines, "Header", 0 /*reserved*/);
-    int handleHeaderLine = Ll.LlDomCreateSubobject(handleTableHeader, 0, "Line", 0 /*reserved*/);
+    long handleTableHeader = Ll.LlDomGetObject(handleTableLines, "Header", 0 /*reserved*/);
+    long handleHeaderLine = Ll.LlDomCreateSubobject(handleTableHeader, 0, "Line", 0 /*reserved*/);
     
     //Add the selected fields to the header and data line
     String sVarName = "", sFieldWidth = "";
     int nItemCount = 6;
 
-    int handleHeaderFields = Ll.LlDomGetObject(handleHeaderLine, "Fields", 0 /*reserved*/);
-    int handleTableLinesFields = Ll.LlDomGetObject(handleDataLine, "Fields", 0 /*reserved*/);
+    long handleHeaderFields = Ll.LlDomGetObject(handleHeaderLine, "Fields", 0 /*reserved*/);
+    long handleTableLinesFields = Ll.LlDomGetObject(handleDataLine, "Fields", 0 /*reserved*/);
 
     int nFieldWidth = nContainerPositionWidth / nItemCount;
     for (int i = 1; i < nItemCount; i++)
@@ -1097,7 +1097,7 @@ public
       sFieldWidth = String.valueOf(nFieldWidth);
       
       //Define header line
-      int handleTableHeaderField = Ll.LlDomCreateSubobject(handleHeaderFields, i, "Text", 0 /*reserved*/);
+      long handleTableHeaderField = Ll.LlDomCreateSubobject(handleHeaderFields, i, "Text", 0 /*reserved*/);
 
       Ll.LlDomSetProperty(handleTableHeaderField, "Contents", "'" + sVarName + "'");
       Ll.LlDomSetProperty(handleTableHeaderField, "Filling.Style", "1");
@@ -1106,7 +1106,7 @@ public
       Ll.LlDomSetProperty(handleTableHeaderField, "Width", sFieldWidth);
       
       //Define data line
-      int handleTableLine = Ll.LlDomCreateSubobject(handleTableLinesFields, 0, "Text", 0 /*reserved*/);
+      long handleTableLine = Ll.LlDomCreateSubobject(handleTableLinesFields, 0, "Text", 0 /*reserved*/);
       Ll.LlDomSetProperty(handleTableLine, "Contents", sVarName);
       Ll.LlDomSetProperty(handleTableLine, "Width", sFieldWidth);
     }
