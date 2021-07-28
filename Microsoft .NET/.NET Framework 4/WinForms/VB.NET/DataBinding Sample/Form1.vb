@@ -80,9 +80,12 @@ Partial Public Class Form1
             For Each tabPage As TabPage In TryCast(control, TabControl).Controls
                 ' get all controls of the sub page
                 For Each controlInTabControl As Control In tabPage.Controls
-                    If TypeOf controlInTabControl Is Button Then
-                        TryCast(controlInTabControl, Button).Enabled = enableButtons__1
-                    End If
+                    ' get all buttons of the sub page
+                    For Each innerControlInTabControl As Control In controlInTabControl.Controls
+                        If TypeOf innerControlInTabControl Is Button Then
+                            TryCast(innerControlInTabControl, Button).Enabled = enableButtons__1
+                        End If
+                    Next
                 Next
             Next
         Next

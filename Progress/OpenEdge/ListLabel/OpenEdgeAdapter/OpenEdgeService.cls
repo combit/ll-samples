@@ -148,11 +148,17 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         DEFINE VARIABLE iColumn        AS INTEGER   NO-UNDO.
         DEFINE VARIABLE cColumnNameAndType AS CHARACTER NO-UNDO.
         DEFINE VARIABLE cSourceSortBy  AS CHARACTER NO-UNDO.
+        DEFINE VARIABLE cTempTableName AS CHARACTER NO-UNDO.
         
         DEFINE VARIABLE oCalculatedTableArgs AS OpenEdgeCalculatedTableArgs NO-UNDO.
 
         DEFINE BUFFER OEChildDataTable   FOR OEDataTable.
         DEFINE BUFFER OpenEdgeChildTable FOR OpenEdgeTable.
+
+        /* This never happend for Client Dataset Services which stay in memory. 
+           So this was a problem for the designer.*/
+        EMPTY TEMP-TABLE ttForeignKeyBuffer.
+        EMPTY TEMP-TABLE ttForeignKeyColumn.
 
         /* Parse request and return data in dataset */
         ServiceParameter = NEW OpenEdgeServiceParameter(plcServiceParameterJson).
@@ -160,10 +166,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         iMaxRows = ServiceParameter:MaxRows.
         IF iMaxRows > 0 THEN 
             cLimit = SUBSTITUTE (" MAX-ROWS &1",iMaxRows).
-        /*
-        MESSAGE STRING (plcRequestJson)
-        VIEW-AS ALERT-BOX.
-        */
+
         oRequest = NEW OpenEdgeDataRequest(plcRequestJson).
         oRequest:getDataset(OUTPUT DATASET dsOpenEdgeDataRequest).
                 
@@ -200,11 +203,6 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
                     DO:
                         DEFINE VARIABLE cNewSort AS CHARACTER NO-UNDO.
                         cNewSort = buildForeignKeySort( OEDataTable.OETableName, OEDataTable.OETableSortBy ).
-                        /*
-                        MESSAGE "LL:" OEDataTable.OETableSortBy SKIP
-                                "New:" cNewSort
-                        VIEW-AS ALERT-BOX.
-                        */
                         cSortBy[iBuffer] = cNewSort.
                     END.
                     ELSE DO:
@@ -231,8 +229,18 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
                 END.
             END.
             /* Buffer for a dataset temp-table */
-            ELSE IF VALID-HANDLE(SourceDatasetHandle) THEN 
-                CREATE BUFFER hSourceBuffer[iBuffer] FOR TABLE SourceDatasetHandle:GET-BUFFER-HANDLE(OEDataTable.OETableName).
+            ELSE IF VALID-HANDLE(SourceDatasetHandle) THEN
+            DO: 
+                cTempTableName = REPLACE(OEDataTable.OEDbTableName,"PROGRESST.","").
+                /* If this buffer is part of the dataset */
+                IF cTempTableName = OEDataTable.OETableName THEN 
+                    CREATE BUFFER hSourceBuffer[iBuffer] FOR TABLE SourceDatasetHandle:GET-BUFFER-HANDLE(OEDataTable.OETableName).
+                /* If we need another buffer for a dataset temp-table that is not part of the dataset */
+                ELSE DO:
+                    CREATE BUFFER hSourceBuffer[iBuffer] FOR TABLE SourceDatasetHandle:GET-BUFFER-HANDLE(cTempTableName)
+                        BUFFER-NAME OEDataTable.OETableName.
+                END.
+            END.    
             /* Buffer for an OpenEdge table */
             ELSE 
                 CREATE BUFFER hSourceBuffer[iBuffer] FOR TABLE SUBSTITUTE (OEDataTable.OEDbTableName).
@@ -400,14 +408,6 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
                  cPrepare = cPrepare + " " + cLimit.    
                    
                hSourceQuery[iBuffer]:QUERY-PREPARE(cPrepare).
-               /*
-               MESSAGE "Buffer" iBuffer SKIP 
-                   "Prepare:"  cPrepare   SKIP
-                   "FKMapping:" cFKMapping SKIP(1)  
-                   hBuffer:DATA-SOURCE-COMPLETE-MAP
-               VIEW-AS ALERT-BOX.
-               */
-               
             END.
             ELSE DO:
                hDataSource[iBuffer]:ADD-SOURCE-BUFFER(hSourceBuffer[iBuffer],?).
@@ -420,9 +420,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         END.    
           
         hDataset:FILL().
-        /*
-        hDataset:WRITE-JSON("FILE", "T:\temp\ds.json").
-        */ 
+        
         /* Detach the data sources */
         DO iBuffer = 1 TO hDataset:NUM-BUFFERS:
             hDataset:GET-BUFFER-HANDLE (iBuffer):DETACH-DATA-SOURCE ().
@@ -487,7 +485,10 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             
             FOR EACH ttForeignKeyBuffer:
                 DELETE OBJECT ttForeignKeyBuffer.BufferHandle NO-ERROR.
-            END.     
+            END.   
+            
+            EMPTY TEMP-TABLE ttForeignKeyBuffer.
+            EMPTY TEMP-TABLE ttForeignKeyColumn.
             
             IF VALID-HANDLE(hExportDataset) THEN 
             DO:

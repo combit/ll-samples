@@ -83,6 +83,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
     /*------------------------------------------------------------------------------
      Purpose: Sample Value for the LL Designer
      Notes:   Since LL24
+              20201118 Fix for decimal - without decimal point      
     ------------------------------------------------------------------------------*/
     METHOD PUBLIC CHARACTER LLSampleValue( pcDataType AS CHARACTER ):
 
@@ -92,10 +93,8 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
         DEFINE VARIABLE dtDateTimeTZ AS DATETIME-TZ NO-UNDO INIT NOW.
 
         CASE pcDataType:
-            WHEN "INTEGER" OR WHEN "INT64" THEN 
+            WHEN "INTEGER" OR WHEN "INT64" OR WHEN "DECIMAL" THEN 
                 RETURN "123".
-            WHEN "DECIMAL" THEN 
-                RETURN "123.45".
             WHEN "LOGICAL" THEN 
                 RETURN "true".
             WHEN "CHARACTER" THEN 
@@ -297,8 +296,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                    OpenEdgeTable.OECalculatedTable = plCalculatedTable
                    OpenEdgeTable.OECachedTable     = plCachedTable.
                    
-            IF phBuffer:DBNAME <> "PROGRESST" THEN  
-               ASSIGN OpenEdgeTable.OEDbTableName  = SUBSTITUTE("&1.&2",phBuffer:DBNAME,phBuffer:TABLE).
+            ASSIGN OpenEdgeTable.OEDbTableName  = SUBSTITUTE("&1.&2",phBuffer:DBNAME,phBuffer:TABLE).
 		    
     		DO iField = 1 TO phBuffer:NUM-FIELDS:
 
@@ -315,6 +313,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                            OpenEdgeTableColumn.OEColumnDataType = hField:DATA-TYPE
                            OpenEdgeTableColumn.OEColumnFormat   = hField:FORMAT
                            OpenEdgeTableColumn.OEColumnDecimals = hField:DECIMALS
+                           OpenEdgeTableColumn.OECaseSensitive  = hField:CASE-SENSITIVE
                            OpenEdgeTableColumn.ColumnName       = OpenEdgeTableColumn.OEColumnName
                            OpenEdgeTableColumn.OESampleValue    = cSampleValue.
            		           .
@@ -328,6 +327,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                            OpenEdgeTableColumn.OEColumnDataType = hField:DATA-TYPE
                            OpenEdgeTableColumn.OEColumnFormat   = hField:FORMAT
                            OpenEdgeTableColumn.OEColumnDecimals = hField:DECIMALS
+                           OpenEdgeTableColumn.OECaseSensitive  = hField:CASE-SENSITIVE
                            OpenEdgeTableColumn.ColumnName       = SUBSTITUTE("&1_&2",OpenEdgeTableColumn.OEColumnName,iIndex)
                            OpenEdgeTableColumn.OESampleValue    = cSampleValue.
                            .

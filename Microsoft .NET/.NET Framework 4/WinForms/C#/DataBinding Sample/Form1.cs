@@ -86,9 +86,13 @@ namespace DataBinding
                     // get all controls of the sub page
                     foreach (Control controlInTabControl in tabPage.Controls)
                     {
-                        if (controlInTabControl is Button)
+                        // get all buttons of the sub page
+                        foreach (Control innerControlInTabControl in controlInTabControl.Controls)
                         {
-                            (controlInTabControl as Button).Enabled = enableButtons;
+                            if (innerControlInTabControl is Button)
+                            {
+                                (innerControlInTabControl as Button).Enabled = enableButtons;
+                            }
                         }
                     }
                 }

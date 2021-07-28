@@ -70,6 +70,7 @@
     FIELD OESampleValue      AS CHARACTER
     FIELD OEMimeType         AS CHARACTER
     FIELD OECalculatedColumn AS LOGICAL
+    FIELD OECaseSensitive    AS LOGICAL 
     FIELD ColumnName         AS CHARACTER   
     FIELD DataType           AS CHARACTER
     FIELD LlFieldType        AS CHARACTER

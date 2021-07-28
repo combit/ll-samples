@@ -62,6 +62,7 @@ CLASS ListLabelSamples.ClientDatasetWrapper:
         ELSE 
             oLL:Print().
         
+        oProvider:Dispose().
         oLL:Dispose().
 		
 		RETURN.
