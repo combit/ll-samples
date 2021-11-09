@@ -35,7 +35,10 @@ namespace TXTextDesignerObject
         int _rtfPageNumber = 0;
         int _calculatedHeightInTable = 0;
         Graphics _textControlGraphics = null;
+
         ExpressionEvaluator _expressionEvaluator = null;
+        ExpressionEvaluator _expressionEvaluatorForUsedIdentifiers = null;
+
         TXTextControl.ServerTextControl _serverTXTextControl = null;
 
         #endregion // Declarations
@@ -352,6 +355,7 @@ namespace TXTextDesignerObject
             clone._ownsParent = false;
 			
             clone._expressionEvaluator = null;
+            clone._expressionEvaluatorForUsedIdentifiers = null;
             clone._contentStillEvaluatedInDesigner = false;
 
             clone._serverTXTextControl = new ServerTextControl();
@@ -632,6 +636,9 @@ namespace TXTextDesignerObject
             set
             {
                 ObjectProperties["DataSourceType.SolidContent"] = value;
+
+                // reset this flag to force evaluation because of changes
+                _contentStillEvaluatedInDesigner = false;
             }
         }
 
@@ -649,6 +656,9 @@ namespace TXTextDesignerObject
             set
             {
                 ObjectProperties["DataSourceType.Variable"] = value;
+
+                // reset this flag to force evaluation because of changes
+                _contentStillEvaluatedInDesigner = false;
             }
         }
 
@@ -668,17 +678,15 @@ namespace TXTextDesignerObject
 
                     case DataSource.Identifier:
                         {
+                            // we need the evaluated content
                             result = Formula;
 
-                            // we need the evaluated content
-                            if (IsInTableCell)
-                            {
-                                result = Parent.Core.LlGetFieldContents(result);
-                            }
-                            else
-                            {
-                                result = Parent.Core.LlGetVariableContents(result);
-                            }
+                            // Create the expression evaluator
+                            if (_expressionEvaluatorForUsedIdentifiers == null)
+                                _expressionEvaluatorForUsedIdentifiers = new ExpressionEvaluator(Parent);
+
+                            // Evaluate the file content - necessary to use this expression evaluator because of saving the expression and the used identifiers in project, if it contains fields/vars
+                            result = _expressionEvaluatorForUsedIdentifiers.Evaluate(result).ToString();
                         }
                         break;
 
@@ -1013,6 +1021,9 @@ namespace TXTextDesignerObject
 
                 if (_expressionEvaluator != null)
                     _expressionEvaluator.Dispose();
+
+                if (_expressionEvaluatorForUsedIdentifiers != null)
+                    _expressionEvaluatorForUsedIdentifiers.Dispose();
 
                 if (_ownsParent)
                     _parentListLabel.Dispose();
