@@ -62,8 +62,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="php5ts.lib &quot;cmll26.lib&quot;"
-				OutputFile="$(OutDir)\php_listlabel26.dll"
+				AdditionalDependencies="php5ts.lib &quot;cmll27.lib&quot;"
+				OutputFile="$(OutDir)\php_listlabel27.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\dev"
 				GenerateDebugInformation="true"
@@ -138,7 +138,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="php5ts.lib &quot;cmLL24.lib&quot;"
+				AdditionalDependencies="php5ts.lib &quot;cmll27.lib&quot;"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\dev"
 				GenerateDebugInformation="true"

@@ -1,0 +1,14 @@
+﻿@using System.Web.Optimization
+@using combit.Reporting.Web
+@{
+    Layout = null;
+    string repositoryId = Request.QueryString["reportRepositoryID"];
+    if (!String.IsNullOrEmpty(repositoryId))
+    {
+        repositoryId = repositoryId.Replace("repository://{", "").Replace("}", "");
+    }
+}
+
+<!DOCTYPE html>
+
+@Html.WebReportViewer("Web Report Viewer", repositoryId)

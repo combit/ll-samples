@@ -73,7 +73,7 @@ IDR_MAINFRAME           ICON                    "res\\rtf_samp.ico"
 
 STRINGTABLE
 BEGIN
-    IDS_ERROR               "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1031{\\fonttbl{\\f0\\fswiss\\fprq2\\fcharset0 Tahoma;}}\n{\\colortbl ;\\red255\\green0\\blue0;}\n{\\*\\generator Msftedit 5.41.15.1507;}\\viewkind4\\uc1\\pard\\cf1\\f0\\fs20 Error: Cannot find file ""debwin.rtf""\\par\n}\n "
+    IDS_ERROR               "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1031{\\fonttbl{\\f0\\fswiss\\fprq2\\fcharset0 Tahoma;}}\n{\\colortbl ;\\red255\\green0\\blue0;}\n{\\*\\generator Msftedit 5.41.15.1507;}\\viewkind4\\uc1\\pard\\cf1\\f0\\fs20 Error: Cannot find file ""Sample.rtf""\\par\n}\n "
 END
 
 #endif    // German (Germany) resources
@@ -103,7 +103,7 @@ BEGIN
     PUSHBUTTON      "Preview ...",IDC_BTN_PRNTOPREVIEW,61,216,49,15
     PUSHBUTTON      "Printer ...",IDC_BTN_PRNTOPRINTER,114,216,49,15
     CONTROL         "",IDC_LLRTFCTRL1,"{C78B7BCD-03B4-412F-A25E-62DA8A4D2E11}",WS_TABSTOP,7,7,396,194
-    CONTROL         "",IDC_LISTLABEL1,"{2213E280-16BC-101D-AFD4-040224009C1A}",WS_TABSTOP,193,211,24,20
+    CONTROL         "",IDC_LISTLABEL1,"{2213E280-16BC-101D-AFD4-040224009C1B}",WS_TABSTOP,193,211,24,20
 END
 
 

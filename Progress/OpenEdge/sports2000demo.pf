@@ -11,5 +11,5 @@
 -assemblies Assemblies
 -p sports2000demo.p
 -debugalert
-
+-T T:\temp
 

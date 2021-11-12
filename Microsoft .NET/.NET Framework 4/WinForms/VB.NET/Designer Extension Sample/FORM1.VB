@@ -317,19 +317,20 @@ Public Class Form1
         ' Define the default color of the brush as black.
         Dim itemBrush As New SolidBrush(Color.Black)
         Dim itemFont As Font = ListBox1.Font
+        e.ItemHeight = itemFont.Height
         ' Determine the color of the brush to draw each item based on the index of the item to draw.
         If ((e.Index + 1) Mod 10) = 0 Then
-            e.ItemHeight = 20
-            itemBrush = New SolidBrush(Color.Red)
             itemFont = New Font("Tahoma", 12)
+            e.ItemHeight = itemFont.Height
+            itemBrush = New SolidBrush(Color.Red)
         ElseIf ((e.Index + 12) Mod 10) = 0 Then
-            e.ItemHeight = 22
-            itemBrush = New SolidBrush(Color.Orange)
             itemFont = New Font("Tahoma", 14)
+            e.ItemHeight = itemFont.Height
+            itemBrush = New SolidBrush(Color.Orange)
         ElseIf ((e.Index + 13) Mod 10) = 0 Then
-            e.ItemHeight = 24
-            itemBrush = New SolidBrush(Color.Purple)
             itemFont = New Font("Tahoma", 16)
+            e.ItemHeight = itemFont.Height
+            itemBrush = New SolidBrush(Color.Purple)
         End If
         ' create item and add it to list
         Dim listBoxItem As New ListBoxItem(ListBox1.Items(e.Index).ToString(), itemFont, itemBrush, New Rectangle(0, 0, e.ItemWidth, e.ItemHeight))

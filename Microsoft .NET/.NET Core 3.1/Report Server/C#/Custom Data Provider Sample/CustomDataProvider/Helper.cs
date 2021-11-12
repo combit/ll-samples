@@ -127,7 +127,6 @@ namespace combit.Reporting.Samples
         /// Changes the Windows identity of this thread. Make sure to always call Leave() at the end.
         /// </summary>
         /// <exception cref="Win32Exception">Thrown when user credentials are invalid.</exception>
-        [PermissionSetAttribute(SecurityAction.Demand, Name = "FullTrust")]
         public void Enter()
         {
             if (String.IsNullOrWhiteSpace(_username))
@@ -142,7 +141,6 @@ namespace combit.Reporting.Samples
             }
         }
 
-        [PermissionSetAttribute(SecurityAction.Demand, Name = "FullTrust")]
         public void Leave()
         {
             if (_token != IntPtr.Zero)
@@ -153,9 +151,12 @@ namespace combit.Reporting.Samples
 
         public void RunImpersonated(Action action)
         {
-            using (SafeAccessTokenHandle token = new SafeAccessTokenHandle(_token))
+            if (OperatingSystem.IsWindows())
             {
-                WindowsIdentity.RunImpersonated(token, action);
+                using (SafeAccessTokenHandle token = new SafeAccessTokenHandle(_token))
+                {
+                    WindowsIdentity.RunImpersonated(token, action);
+                }
             }
         }
 

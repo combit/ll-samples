@@ -346,6 +346,7 @@ Object oLLReportsWithInternalPreview is a cListLabelReportView
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.Encryption.Level"             "1" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.OwnerPassword"                "" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.UserPassword"                 "" to iRet
+            Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.FontMode"                     "5" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.ExcludedFonts"                "" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.CompressStreamMethod"         "1" to iRet
             Get LLXSetParameter of hoLL LL_LLX_EXTENSIONTYPE_EXPORT "PDF" "PDF.JPEGQuality"                  "2" to iRet

@@ -33,7 +33,7 @@
  HelpLines.Vertical=
  PDF.MaxOutlineDepth=2
  PDF.MaxOutlineDepth.IDX=3
- DefaultSize.Objecttype1=(0,0,45400,2700)
+ DefaultSize.Objecttype1=(0,0,91200,5300)
  ObjectCount=6
 [UserSection]
  
@@ -100,7 +100,8 @@
  IssueCondition=True
  Link.URL=
  Animation=""
- bBottomAligned=False
+ HTMLAnimation=""
+ bBottomAligned=0
  [@Lines]
   {
   [Lines]
@@ -110,17 +111,17 @@
 	[Font]
 	 {
 	 Default=True
-	 FaceName=NULL()
-	 GdiCharSet=NULL()
-	 Size=NULL()
-	 Width=#NULL()
-	 Bold=NULL()
-	 Italic=NULL()
-	 Underline=NULL()
-	 Strikeout=NULL()
-	 Color=NULL()
-	 PitchAndFamily=NULL()
-	 OutPrecision=NULL()
+	 FaceName=Null()
+	 GdiCharSet=Null()
+	 Size=Null()
+	 Width=#Null()
+	 Bold=Null()
+	 Italic=Null()
+	 Underline=Null()
+	 Strikeout=Null()
+	 Color=Null()
+	 PitchAndFamily=Null()
+	 OutPrecision=Null()
 	 }
 	Align=0
 	Adjusted=False
@@ -257,7 +258,8 @@
  IssueCondition=True
  Link.URL=
  Animation=""
- bBottomAligned=False
+ HTMLAnimation=""
+ bBottomAligned=0
  [@Lines]
   {
   [Lines]
@@ -267,17 +269,17 @@
 	[Font]
 	 {
 	 Default=True
-	 FaceName=NULL()
-	 GdiCharSet=NULL()
-	 Size=NULL()
-	 Width=#NULL()
-	 Bold=NULL()
-	 Italic=NULL()
-	 Underline=NULL()
-	 Strikeout=NULL()
-	 Color=NULL()
-	 PitchAndFamily=NULL()
-	 OutPrecision=NULL()
+	 FaceName=Null()
+	 GdiCharSet=Null()
+	 Size=Null()
+	 Width=#Null()
+	 Bold=Null()
+	 Italic=Null()
+	 Underline=Null()
+	 Strikeout=Null()
+	 Color=Null()
+	 PitchAndFamily=Null()
+	 OutPrecision=Null()
 	 }
 	Align=1
 	Adjusted=False
@@ -352,7 +354,8 @@
  IssueCondition=True
  Link.URL=
  Animation=""
- bBottomAligned=False
+ HTMLAnimation=""
+ bBottomAligned=0
  [@Lines]
   {
   [Lines]
@@ -466,7 +469,8 @@
  IssueCondition=True
  Link.URL=
  Animation=""
- bBottomAligned=False
+ HTMLAnimation=""
+ bBottomAligned=0
  bWYSIWYGDialog=FALSE
  [@Lines]
   {
@@ -565,6 +569,8 @@
   {
   [Parameters]
    {
+   LL.MultiPassCondition=PrintPassIndex()=PrintPassCount()
+   LL.MultiPassCount=1
    LL.ProjectDescription=article label
    }
   }
@@ -633,6 +639,9 @@
 	}
    }
   [UIDescriptions]
+   {
+   }
+  [Subreports]
    {
    }
   }

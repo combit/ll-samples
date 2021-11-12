@@ -1,5 +1,7 @@
 ﻿using combit.Reporting.Web;
 using combit.Reporting.Web.WindowsClientWebDesigner.Server;
+using combit.Reporting.Web.WebReportDesigner.Server;
+using combit.Reporting.Web.WebReportViewer;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,10 +26,9 @@ namespace WebReporting
                 options.AddPolicy("AuthorizationMode", policy => policy.Requirements.Add(new AuthenticationModeRequirement()));
             });
 
-            var assembly = typeof(Html5ViewerController).GetTypeInfo().Assembly;
             // AddWebApiConventions() for old WebApi, HttpResponseMessage, etc. support
             // AddApplicationPart() to enable routing for external LL assembly. IMPORTANT
-            services.AddMvc().AddApplicationPart(assembly);
+            services.AddCors();
 			services.AddMvc(options =>
             {
                  options.EnableEndpointRouting = false;
@@ -45,6 +46,7 @@ namespace WebReporting
 
             services.AddHttpContextAccessor();
             services.AddMemoryCache();
+            services.AddWebReportDesigner();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,12 @@ namespace WebReporting
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             // Configure internal Singletons
             HostingEnvironment.Configure(app.ApplicationServices.GetRequiredService<IWebHostEnvironment>());
@@ -67,9 +75,10 @@ namespace WebReporting
             Program.NorthwindSmallDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_small.xml");
             Program.NorthwindSmallDatabaseWithEmployeeListXmlFile = Server.MapPath("~/App_Data/northwind_small_WithEmployeeList.xml");
 
+
             // D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
             // US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL26WebDesignerSetup.exe");
+            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL27WebDesignerSetup.exe");
 
             // D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
             //      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
@@ -77,23 +86,32 @@ namespace WebReporting
             //      WebDesignerAuthenticationModes.None allows to use no authentication at all.
             WindowsClientWebDesignerConfig.AuthenticationMode = WindowsClientWebDesignerAuthenticationModes.Automatic;
 
+            WebReportDesignerConfig.TempDirectory = Server.MapPath("~/App_Data/TempFiles");
+
+            app.UseCors(c => c
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials()
+            );
             app.UseAuthentication();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseWebReportDesigner();
+            app.UseWebReportViewer();
             app.UseMvc(RegisterRoutes);
         }
 
         private void RegisterRoutes(IRouteBuilder routes)
         {
-            //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            //D: WebAPI/MVC-Routen von Html5Viewer und Web Designer registrieren. 
-            //US: Register the WebAPI/MVC routes of the Html5Viewer and Web Designer.
-
-            routes.MapRoute("Default", "{controller=Sample}/{action=Index}/{id?}");
-
-            Html5ViewerConfig.RegisterRoutes(routes);
+            //D: WebAPI/MVC-Routen von Web Designer registrieren.  
+            //US: Register the WebAPI/MVC routes of the Web Designer.
             WindowsClientWebDesignerConfig.RegisterRoutes(routes);
+            routes.MapRoute("Default", "{controller=Sample}/{action=Index}/{id?}");
+            routes.MapRoute("DefaultApi", "api/{controller}/{id?}"); 
+             
+
+             
         }
     }
 }

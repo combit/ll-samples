@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 16
+# Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC Web Reporting Sample", "MVC Web Reporting Sample\MVC Web Reporting Sample.csproj", "{DAEDE61F-64A9-49FD-809B-B63028FE4A73}"
@@ -29,4 +29,3 @@ Global
 		SolutionGuid = {62EFCD5B-A690-4508-BC2F-EC6DD7396425}
 	EndGlobalSection
 EndGlobal
-Global

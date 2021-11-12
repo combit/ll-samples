@@ -58,9 +58,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel26">
+    <Reference Include="combit.ListLabel27">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

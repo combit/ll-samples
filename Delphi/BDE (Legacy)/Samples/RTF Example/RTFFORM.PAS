@@ -15,7 +15,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, ComCtrls, L26, cmbtll26, Registry;
+  StdCtrls, ComCtrls, L27, cmbtll27, Registry;
 
 type
   TForm1 = class(TForm)
@@ -26,8 +26,8 @@ type
     OpenDialog1: TOpenDialog;
     Label1: TLabel;
     Label2: TLabel;
-    LL: TL26_;
-    RTF: TLL26RTFObject;
+    LL: TL27_;
+    RTF: TLL27RTFObject;
     procedure LoadButtonClick(Sender: TObject);
     procedure DesignButtonClick(Sender: TObject);
     procedure PreviewButtonClick(Sender: TObject);
@@ -116,10 +116,10 @@ begin
       tmp := registry.ReadString('LL' + IntToStr(LL.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
       if (tmp[Length(tmp)] = '\') then
       begin
-        workingPath := tmp + 'Delphi\RTF Example\';
+        workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\RTF Example\';
       end
       else
-        workingPath := tmp + '\Delphi\RTF Example\';
+        workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\RTF Example\';
 
       registry.CloseKey();
     end;

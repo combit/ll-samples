@@ -52,7 +52,7 @@ Partial Public Class Form1
         InitializeComponent()
         installKey = Registry.CurrentUser.CreateSubKey("Software\combit\cmbtll")
         If installKey IsNot Nothing Then
-            sampleDir = DirectCast(installKey.GetValue("LL26SampleDir", String.Empty), String)
+            sampleDir = DirectCast(installKey.GetValue("LL27SampleDir", String.Empty), String)
         End If
 
         If Not sampleDir.EndsWith("\") Then

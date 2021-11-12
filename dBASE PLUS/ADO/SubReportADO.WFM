@@ -1,6 +1,6 @@
 ** END HEADER -- Diese Zeile nicht entfernen
 //
-// Revision: 30.08.2020
+// Revision: 27.08.2021
 //
 
 parameter bModal
@@ -125,8 +125,8 @@ class SubReportADOForm of FORM
    RETURN
 
    FUNCTION OpenReport
-   SET PROCEDURE TO ..\LL26.CC ADDITIVE
-   r=new LL26InterfaceSample()
+   SET PROCEDURE TO ..\LL27.CC ADDITIVE
+   r=new LL27InterfaceSample()
    r.UserVars.add({"C_Language", (_app.language),                                 "CHARACTER"})
    r.UserVars.add({"C_SortOrder",(form.datamodRef1.ref.Article1.rowset.sort),"CHARACTER"})
    r.rowset=form.DatamodRef1.ref.Categories1.rowset

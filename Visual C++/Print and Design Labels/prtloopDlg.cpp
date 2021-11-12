@@ -16,7 +16,7 @@
 #include "stdafx.h"
 #include "prtloop.h"
 #include "prtloopDlg.h"
-#include "..\cmbtll26.h"
+#include "..\cmbtll27.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

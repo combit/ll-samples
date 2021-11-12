@@ -4,7 +4,7 @@
 
 
 
-<select id="ReportRepositoryID" onchange="refreshHtml5Viewer()" class="btn btn-light"> 
+<select id="ReportRepositoryID" onchange="webReportViewer()" style="text-align:left" class="btn btn-light"> 
     @foreach (var reportName in reportNameList)
     {
         <option value=@reportName.Item1>@reportName.Item2</option>

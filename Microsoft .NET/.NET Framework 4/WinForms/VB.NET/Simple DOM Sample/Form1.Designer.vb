@@ -179,7 +179,7 @@ Partial Class Form1
 		'
 		'listBox2
 		'
-		Me.listBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+		Me.listBox2.DrawMode = System.Windows.Forms.DrawMode.Normal
 		Me.listBox2.Location = New System.Drawing.Point(267, 88)
 		Me.listBox2.Name = "listBox2"
 		Me.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple
@@ -189,7 +189,7 @@ Partial Class Form1
 		'
 		'listBox1
 		'
-		Me.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+		Me.listBox1.DrawMode = System.Windows.Forms.DrawMode.Normal
 		Me.listBox1.Location = New System.Drawing.Point(6, 88)
 		Me.listBox1.Name = "listBox1"
 		Me.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple

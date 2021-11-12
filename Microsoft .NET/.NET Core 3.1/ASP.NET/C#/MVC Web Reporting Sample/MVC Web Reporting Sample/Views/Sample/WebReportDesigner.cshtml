@@ -1,0 +1,13 @@
+﻿@using combit.Reporting.Web 
+@{
+    Layout = null;
+    string repositoryId = Context.Request.Query["reportRepositoryID"].ToString(); 
+    if (!String.IsNullOrEmpty(repositoryId))
+    { 
+        repositoryId = repositoryId.Replace("repository://{", "").Replace("}", "");
+    }
+}
+
+<!DOCTYPE html>
+
+@Html.WebReportDesigner("Web Report Designer", repositoryId);

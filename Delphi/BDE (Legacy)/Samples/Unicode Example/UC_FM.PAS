@@ -18,7 +18,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, Menus, L26, cmbtll26, ADODB, DB, Registry
+  StdCtrls, Menus, L27, cmbtll27, ADODB, DB, Registry
   {$IFDEF ver280} // XE7
   , System.UITypes
   {$ENDIF}
@@ -41,7 +41,7 @@ type
     Label4: TLabel;
     Label3: TLabel;
     DataSource: TADOTable;
-    LL: TL26_;
+    LL: TL27_;
     procedure Exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DefineCurrentRecord(AsField: boolean);
@@ -86,10 +86,10 @@ begin
       tmp := registry.ReadString('LL' + IntToStr(LL.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
       if (tmp[Length(tmp)] = '\') then
       begin
-        workingPath := tmp + 'Delphi\';
-      end
-      else
-        workingPath := tmp + '\Delphi\';
+		  workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';
+		end
+	  else
+		  workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\';
 
       registry.CloseKey();
 

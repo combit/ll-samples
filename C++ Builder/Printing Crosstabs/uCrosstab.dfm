@@ -150,7 +150,7 @@ object frmCrosstab: TfrmCrosstab
     Left = 416
     Top = 72
   end
-  object DBl26_1: TDBl26_
+  object DBl27_1: TDBl27_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No

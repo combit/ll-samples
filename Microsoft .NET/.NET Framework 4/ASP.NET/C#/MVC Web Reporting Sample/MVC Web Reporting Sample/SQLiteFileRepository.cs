@@ -173,11 +173,18 @@ namespace WebReporting
         // See Interface
         public void LoadItem(string itemID, Stream destinationStream, CancellationToken cancelToken)
         {
-            byte[] content = (byte[])_db.CreateCommand(
-                 "SELECT FileContent FROM RepoItems WHERE ItemID = @ItemID")
+            byte[] content = null;
+            try
+            {
+                content = (byte[])_db.CreateCommand(
+                    "SELECT FileContent FROM RepoItems WHERE ItemID = @ItemID")
                     .SetParameter("ItemID", itemID).ExecuteScalar();
-
-            destinationStream.Write(content, 0, content.Length);
+            }
+            catch { }
+            if (content != null)
+            {
+                destinationStream.Write(content, 0, content.Length);
+            }
         }
 
         // See Interface

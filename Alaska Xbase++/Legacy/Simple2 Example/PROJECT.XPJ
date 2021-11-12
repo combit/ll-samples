@@ -1,0 +1,43 @@
+[PROJECT]
+    DEBUG         = yes
+    VERSION       = 2.0
+    OPENFILES     = LULMENU.PRG
+    PROJECT.XPJ
+
+[PROJECT.XPJ]
+    SIMPLE2.EXE
+
+[SIMPLE2.EXE]
+    COMPILE       = xpp /w /wi /wl /wu
+    COMPILE_FLAGS = /q
+    DEBUG_SAVE    = yes
+    GUI           = yes
+    LINKER        = alink
+    LINK_FLAGS    =
+    RC_COMPILE    = arc
+    RC_FLAGS      = -v
+    OBJ_DIR       = Objects
+// $START-AUTODEPEND
+    STD.CH
+    SET.CH
+    NATMSG.CH
+    GET.CH
+    PROMPT.CH
+    MEMVAR.CH
+    COLLAT.CH
+    DLL.CH
+    XBP.CH
+    COMMON.CH
+    ..\cmbtll27.CH
+    GRA.CH
+    APPEVENT.CH
+    cmbtll27.obj
+    LLCOMMON.obj
+    LULDEMO.obj
+    LULMENU.obj
+// $STOP-AUTODEPEND
+    ..\cmbtll27.PRG
+    ..\LLCOMMON.PRG
+    LULDEMO.PRG
+    LULMENU.PRG
+

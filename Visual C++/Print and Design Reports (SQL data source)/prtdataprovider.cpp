@@ -1160,6 +1160,7 @@ void CPrintManager::RDPThreadEnd()
     WaitForSingleObject(_RDP._evThreadEvent.getAbi(), INFINITE);
     ASSERT(CPM::LockedRead(_RDP._bThreadRunning, _RDP._CritSec) == false);
   }
+  ResetEvent(_RDP._evThreadEvent.getAbi());
   CPM::LockedWrite(_RDP._bThreadRunning, false, _RDP._CritSec);
   CPM::LockedWrite(_RDP._bProcessing, false, _RDP._CritSec);
   _RDP._Thread.close();

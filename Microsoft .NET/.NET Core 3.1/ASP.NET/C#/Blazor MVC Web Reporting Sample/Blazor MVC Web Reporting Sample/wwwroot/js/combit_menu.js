@@ -1,12 +1,18 @@
-﻿    function refreshHtml5Viewer() {
+﻿function webReportViewer() {
         var selectedReportID = $('#ReportRepositoryID').val();
-        var html5viewerLink = '/sample/Sample/Html5Viewer?reportRepositoryID=' + encodeURIComponent(selectedReportID);
+        var html5viewerLink = '/Sample/Viewer?reportRepositoryID=' + encodeURIComponent(selectedReportID);
         $('#ContentContainer').attr('src', html5viewerLink);
-    }
+}
+
+function webReportDesigner() {
+    var selectedReportID = $('#ReportRepositoryID').val();
+    var html5viewerLink = '/Sample/WebReportDesigner?reportRepositoryID=' + encodeURIComponent(selectedReportID);
+    $('#ContentContainer').attr('src', html5viewerLink);
+}
 
     function startWebDesigner() {
         var selectedReportID = $('#ReportRepositoryID').val();
-        var launchWebDesignerLink = '/sample/Sample/WebDesignerLauncher?reportRepositoryID=' + encodeURIComponent(selectedReportID);
+        var launchWebDesignerLink = '/Sample/WebDesignerLauncher?reportRepositoryID=' + encodeURIComponent(selectedReportID);
         $('#ContentContainer').attr('src', launchWebDesignerLink);
     }
 

@@ -928,7 +928,7 @@ object frmMain: TfrmMain
     Left = 520
     Top = 22
   end
-  object LL: TDBL26_
+  object LL: TDBL27_
     OnlyOneTable = True
     SortVariables = Yes
     CompressStorage = Yes

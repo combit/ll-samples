@@ -1,4 +1,0 @@
-#REPLACE FILE27 SalesP
-#REPLACE SalesP.Recnum |FN27,0
-#REPLACE SalesP.ID |FS27,1
-#REPLACE SalesP.Name |FS27,2

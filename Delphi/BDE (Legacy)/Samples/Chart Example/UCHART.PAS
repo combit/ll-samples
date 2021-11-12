@@ -15,7 +15,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, DB,
-  Registry, DBTables, ADODB, L26, StdCtrls, cmbtll26,  L26db;
+  Registry, DBTables, ADODB, L27, StdCtrls, cmbtll27,  L27db;
 
 type
   TForm1 = class(TForm)
@@ -23,7 +23,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    LL: TDBL26_;
+    LL: TDBL27_;
     dsOrders: TDataSource;
     dsCustomers: TDataSource;
     dsOrderDetails: TDataSource;
@@ -101,10 +101,10 @@ begin
 	  tmp := registry.ReadString('LL' + IntToStr(LL.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
 	  if (tmp[Length(tmp)] = '\') then
 		begin
-		  workingPath := tmp + 'Delphi\';
+		  workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';
 		end
 	  else
-		  workingPath := tmp + '\Delphi\';
+		  workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\';
 	  
       registry.CloseKey();
 

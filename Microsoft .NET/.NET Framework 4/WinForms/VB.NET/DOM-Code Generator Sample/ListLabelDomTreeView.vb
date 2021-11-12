@@ -65,10 +65,10 @@ Public Class ListLabelDomTreeView
                 End If
             End While
 
-            _project.ParentComponent.Core.LlDbAddTable("")
+            _ll.Core.LlDbAddTable("")
 
             If containsDatabaseStructure Then
-                _project.ParentComponent.DataSource = New List(Of String)()
+                _ll.DataSource = New List(Of String)()
             End If
         End Using
 

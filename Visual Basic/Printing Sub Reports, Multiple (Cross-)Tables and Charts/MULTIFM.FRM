@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
-Object = "{2213E283-16BC-101D-AFD4-040224009C1A}#26.0#0"; "cmll26o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C1B}#27.0#0"; "cmll27o.ocx"
 Begin VB.Form Form1 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "List & Label Subreport Demo"

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C11}#26.0#0"; "cmll26o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C11}#27.0#0"; "cmll27o.ocx"
 Begin VB.UserControl ListLabelVB 
    CanGetFocus     =   0   'False
    ClientHeight    =   1680
@@ -83,7 +83,7 @@ Begin VB.UserControl ListLabelVB
    Begin VB.Label Label4 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "D: Hilfe siehe cmll26o.hlp"
+      Caption         =   "D: Hilfe siehe cmll27o.hlp"
       Height          =   195
       Left            =   960
       TabIndex        =   3
@@ -94,7 +94,7 @@ Begin VB.UserControl ListLabelVB
    Begin VB.Label Label3 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "US: For help see cmll26o.hlp"
+      Caption         =   "US: For help see cmll27o.hlp"
       Height          =   195
       Left            =   960
       TabIndex        =   2
@@ -138,7 +138,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 '=========================================================================
-' Product:      List & Label 26
+' Product:      List & Label 27
 ' Component:    Visual Basic Data Binding Control for List & Label
 ' Description:  Enhances List & Label with data binding possibilities
 ' Author:       combit GmbH
@@ -1918,7 +1918,7 @@ Public Sub Deb(ByVal Out As String)
         Set DebWin2 = CreateObject("DEBWIN2.Automation")
     End If
     If Not DebWin2 Is Nothing Then
-        DebWin2.WriteLine "cmll26VB: " & Out
+        DebWin2.WriteLine "cmll27VB: " & Out
     End If
 End Sub
 

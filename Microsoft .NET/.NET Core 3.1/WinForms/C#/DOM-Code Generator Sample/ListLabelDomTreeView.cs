@@ -88,11 +88,11 @@ namespace CodeDomSample
                     }
                 }
 
-                _project.ParentComponent.Core.LlDbAddTable("");
+                _ll.Core.LlDbAddTable("");
 
                 if (containsDatabaseStructure)
                 {
-                    _project.ParentComponent.DataSource = new List<string>();
+                    _ll.DataSource = new List<string>();
                 }
             }
 

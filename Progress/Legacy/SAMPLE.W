@@ -93,9 +93,9 @@ DEFINE FRAME Dialog-Frame
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CUSTOM _INCLUDED-LIB Dialog-Frame 
 /* ************************* Included-Libraries *********************** */
 
-&GLOBAL-DEFINE cmll26_PERSISTENT PERSISTENT
-&GLOBAL-DEFINE cmll26_DLLNAME cmll26.dll
-{cmll26.i}
+&GLOBAL-DEFINE cmll27_PERSISTENT PERSISTENT
+&GLOBAL-DEFINE cmll27_DLLNAME cmll27.dll
+{cmll27.i}
 
 /* _UIB-CODE-BLOCK-END */
 &ANALYZE-RESUME

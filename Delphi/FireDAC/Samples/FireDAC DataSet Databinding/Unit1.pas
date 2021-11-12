@@ -11,7 +11,7 @@ uses
   FireDAC.VCLUI.Wait, Vcl.StdCtrls, Data.DB,
   FireDAC.Comp.Client,  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Phys.MySQLDef, FireDAC.Phys.MySQL, FireDAC.Phys.MSAcc, FireDAC.Phys.MSAccDef,
-  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, ListLabel26, FireDAC.Phys.MSSQL,
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, ListLabel27, FireDAC.Phys.MSSQL,
   FireDAC.Phys.MSSQLDef;
 
 type
@@ -31,7 +31,7 @@ type
     DataSourceOrders: TDataSource;
     FDQueryOrderDetails: TFDQuery;
     DataSourceOrderDetails: TDataSource;
-    ListLabel: TListLabel26;
+    ListLabel: TListLabel27;
     procedure FormCreate(Sender: TObject);
     procedure btnDesignInvoiceAndItemsListClick(Sender: TObject);
     procedure btnPrintInvoiceAndItemsListClick(Sender: TObject);

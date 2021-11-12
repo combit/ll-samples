@@ -17,9 +17,9 @@
 #include "uDOMSimple.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "L26"
-#pragma link "L26db"
-#pragma link "L26dom"
+#pragma link "L27"
+#pragma link "L27db"
+#pragma link "L27dom"
 #pragma resource "*.dfm"
 TfrmDOMSimple *frmDOMSimple;
 //---------------------------------------------------------------------------
@@ -96,7 +96,7 @@ int __fastcall TfrmDOMSimple::GenerateLLProject()
 
 	  //D: Ein neues Listen Projekt mit dem Namen 'dynamic.lst' erstellen
 	  //US: Create a new listproject called 'dynamic.lst'
-	  int result = lldomproj->Open(String(ExtractFilePath(Application->ExeName) + "dynamic.lst"), L26dom::fmCreate, amReadWrite);
+	  int result = lldomproj->Open(String(ExtractFilePath(Application->ExeName) + "dynamic.lst"), L27dom::fmCreate, amReadWrite);
 	  if (result != 0)
 		  return result;
 

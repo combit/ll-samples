@@ -14,8 +14,8 @@
   </ItemGroup>
 
 <ItemGroup>
- <Reference Include="combit.ListLabel26">
-   <HintPath>..\..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+ <Reference Include="combit.ListLabel27">
+   <HintPath>..\..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
  </Reference>
 </ItemGroup>
 

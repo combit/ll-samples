@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<Deterministic>false</Deterministic>
@@ -14,11 +14,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel26">
-      <HintPath>..\..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+    <Reference Include="combit.ListLabel27">
+      <HintPath>..\..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ReportServer26.SharedTypes">
-      <HintPath>..\..\..\..\Assemblies\combit.ReportServer26.SharedTypes.dll</HintPath>
+    <Reference Include="combit.ReportServer27.SharedTypes">
+      <HintPath>..\..\..\..\..\.NET 5\Assemblies\combit.ReportServer27.SharedTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
 

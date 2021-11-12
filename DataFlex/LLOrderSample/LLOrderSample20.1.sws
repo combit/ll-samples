@@ -1,0 +1,11 @@
+[Properties]
+Version=20.1
+[WorkspacePaths]
+ConfigFile=.\Programs\Config20.1.ws
+[Projects]
+Project0=Order.src
+[Conditionals]
+Is$WebApp=False
+Is$Win64=True
+[Libraries]
+Lib1=..\LLLibrary27.0\LL27-VDF20.1.sws

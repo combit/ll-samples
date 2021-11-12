@@ -9,7 +9,7 @@
 #include <Forms.hpp>
 #include <Dialogs.hpp>
 #include <Menus.hpp>
-#include "L26.hpp"
+#include "L27.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -19,12 +19,12 @@ __published:	// IDE-managed Components
         TLabel *Label2;
         TButton *DesignButton;
         TButton *PrintButton;
-		TLl26XObject *SplitColorRect;
+		TLl27XObject *SplitColorRect;
         TPopupMenu *PopupMenu1;
         TMenuItem *EditColor1;
         TMenuItem *EditColor21;
         TColorDialog *ColorDialog1;
-        TL26_ *LL;
+        TL27_ *LL;
         void __fastcall DesignButtonClick(TObject *Sender);
         void __fastcall SplitColorRectInitialCreation(TObject *Sender,
           DWORD ParentHandle);

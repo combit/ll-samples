@@ -53,14 +53,14 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
 		mhAppserver = SESSION.
 		mcLogfile = SESSION:TEMP-DIRECTORY + "Sports2000ServiceAdapter.log".
 		writeLog("CLEAR").
-		writeLog("LL26").
+		writeLog("LL27").
 	END CONSTRUCTOR.
 
     CONSTRUCTOR PUBLIC Sports2000ServiceAdapter ( plUseAppserver AS LOGICAL ):
         SUPER ().
         mcLogfile = SESSION:TEMP-DIRECTORY + "Sports2000ServiceAdapter.log".
         writeLog("CLEAR").
-        writeLog("LL26").
+        writeLog("LL27").
         IF plUseAppserver = FALSE THEN
             mhAppserver = SESSION.
         ELSE DO:
@@ -98,9 +98,7 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
         JsonDataResponse = NEW OELongchar().
         RUN ListLabel/OpenEdgeAdapter/OpenEdgeGateway.p ON SERVER mhAppserver 
               (INPUT ServiceName, INPUT "GetData", INPUT lcParameter, INPUT lcRequest, OUTPUT lcResponse ).
-      
         JsonDataResponse:Data = lcResponse.
-        
         RETURN TRUE.
 	END METHOD.
 
@@ -115,7 +113,6 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
         JsonSchema = NEW OELongchar().
         RUN ListLabel/OpenEdgeAdapter/OpenEdgeGateway.p ON SERVER mhAppserver 
               (INPUT ServiceName, INPUT "GetSchema", INPUT lcParameter, INPUT "", OUTPUT lcResponse ).
-
         JsonSchema:Data = lcResponse.
 		RETURN TRUE.
 	END METHOD.
@@ -140,6 +137,7 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
         JsonDataResponse = NEW OELongchar().
         RUN ListLabel/OpenEdgeAdapter/OpenEdgeGateway.p ON SERVER mhAppserver 
             (INPUT ServiceName, INPUT "ClientEvent", INPUT lcParameter, INPUT lcRequest, OUTPUT lcResponse ).
+
         JsonDataResponse:Data = lcResponse.
         RETURN TRUE.
     END METHOD.
@@ -150,7 +148,7 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
      Notes:
     ------------------------------------------------------------------------------*/
 	METHOD PUBLIC VOID WriteLog( INPUT pcMessage AS CHARACTER ):
-	    
+	    /*
 	    IF pcMessage = "CLEAR" THEN 
 	    DO:
             OUTPUT STREAM s TO VALUE (mcLogfile).
@@ -161,7 +159,7 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
 	    OUTPUT STREAM s TO VALUE (mcLogfile) APPEND.
 	    PUT STREAM s UNFORMATTED pcMessage SKIP.
         OUTPUT STREAM s CLOSE.
-        
+        */
 	END METHOD.
 
 

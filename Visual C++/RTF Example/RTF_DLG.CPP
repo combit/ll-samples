@@ -18,12 +18,12 @@
 #include "rtf_dlg.h"
 
 // D:  	Wenn Sie das List & Label OCX Control verwenden, sollten Sie vor
-//      dem #include der Headerdatei _NO_CMLL26APIDEFINES definieren      
+//      dem #include der Headerdatei _NO_CMLL27APIDEFINES definieren      
 // US:	If you use the List & Label OCX Control, you should define 
-//		_NO_CMLL26APIDEFINES before you include the List & Label header
+//		_NO_CMLL27APIDEFINES before you include the List & Label header
 
-#define _NO_CMLL26APIDEFINES
-#include "..\cmbtll26.h"
+#define _NO_CMLL27APIDEFINES
+#include "..\cmbtll27.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -98,7 +98,7 @@ BOOL CRtf_sampDlg::OnInitDialog()
 	}
 
 	CFile file;
-	if(file.Open(TEXT("debwin.rtf"), CFile::modeRead))
+	if(file.Open(TEXT("Sample.rtf"), CFile::modeRead))
 	{
 		
 		UINT nChars = (UINT)file.GetLength();

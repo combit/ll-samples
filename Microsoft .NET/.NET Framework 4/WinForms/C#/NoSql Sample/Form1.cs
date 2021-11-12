@@ -601,33 +601,6 @@ namespace DataProvidersWithoutSolidStructure
             }
         }
 
-        private void ListBoxAvailableFields_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            ChangeListBoxHighlightColor(listBoxAvailableFields, e);
-        }
-
-        private void ListBoxSelectedFields_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            ChangeListBoxHighlightColor(listBoxSelectedFields, e);
-        }
-
-        private void ChangeListBoxHighlightColor(ListBox listBox, DrawItemEventArgs e)
-        {
-            if (e.Index < 0) return;
-            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-                e = new DrawItemEventArgs(e.Graphics,
-                                          e.Font,
-                                          e.Bounds,
-                                          e.Index,
-                                          e.State ^ DrawItemState.Selected,
-                                          e.ForeColor,
-                                          Color.FromArgb(0, 174, 219));
-
-            e.DrawBackground();
-            e.Graphics.DrawString(listBox.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
-            e.DrawFocusRectangle();
-        }
-
 		private string CleanUpString(string input)
 		{
 			Regex regex = new Regex("[\\s+-.,!@#$%^&*();\\/|<>\"']");

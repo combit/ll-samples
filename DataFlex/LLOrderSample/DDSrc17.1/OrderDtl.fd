@@ -1,8 +1,0 @@
-#REPLACE FILE31 OrderDtl
-#REPLACE OrderDtl.Recnum |FN31,0
-#REPLACE OrderDtl.Order_Number |FN31,1
-#REPLACE OrderDtl.Detail_Number |FN31,2
-#REPLACE OrderDtl.Item_ID |FS31,3
-#REPLACE OrderDtl.Qty_Ordered |FN31,4
-#REPLACE OrderDtl.Price |FN31,5
-#REPLACE OrderDtl.Extended_Price |FN31,6

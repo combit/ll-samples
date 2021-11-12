@@ -27,34 +27,35 @@
     <Content Include="App_Data\repository.db" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="bootstrap" Version="4.3.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.111" />
-    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
-    <PackageReference Include="System.Runtime.Caching" Version="4.6.0" />
+    <PackageReference Include="bootstrap" Version="5.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.18" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.9" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    <PackageReference Include="System.Runtime.Caching" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.18" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel26">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+    <Reference Include="combit.ListLabel27">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel26.AdhocDesign">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.AdhocDesign.dll</HintPath>
+    <Reference Include="combit.ListLabel27.AdhocDesign">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.AdhocDesign.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel26.AdhocDesign.Web">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.AdhocDesign.Web.dll</HintPath>
+    <Reference Include="combit.ListLabel27.AdhocDesign.Web">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.AdhocDesign.Web.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel26.AdhocDesign.Web.Views">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.AdhocDesign.Web.Views.dll</HintPath>
+    <Reference Include="combit.ListLabel27.AdhocDesign.Web.Views">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.AdhocDesign.Web.Views.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel26.Web">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.Web.dll</HintPath>
+    <Reference Include="combit.ListLabel27.Web">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

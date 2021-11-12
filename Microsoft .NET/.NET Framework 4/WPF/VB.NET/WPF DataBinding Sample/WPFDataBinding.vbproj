@@ -64,35 +64,13 @@
     <PlatformTarget>x86</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
-    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
-    <Optimize>true</Optimize>
-    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
-    <PlatformTarget>x86</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel26">
+    <Reference Include="combit.ListLabel27">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel26.Wpf">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.Wpf.dll</HintPath>
+    <Reference Include="combit.ListLabel27.Wpf">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>

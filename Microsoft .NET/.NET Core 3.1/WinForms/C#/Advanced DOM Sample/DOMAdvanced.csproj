@@ -11,15 +11,19 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.OleDb" Version="4.6.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
+    <PackageReference Include="System.Data.OleDb" Version="5.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel26">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+    <Reference Include="combit.ListLabel27">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

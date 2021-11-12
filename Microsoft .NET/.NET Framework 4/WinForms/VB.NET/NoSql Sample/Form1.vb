@@ -468,27 +468,6 @@ Partial Public Class Form1
         End If
     End Sub
 
-    Private Sub ListBoxAvailableFields_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ListBoxAvailableFields.DrawItem
-        ChangeListBoxHighlightColor(ListBoxAvailableFields, e)
-    End Sub
-
-    Private Sub ListBoxSelectedFields_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ListBoxSelectedFields.DrawItem
-        ChangeListBoxHighlightColor(ListBoxSelectedFields, e)
-    End Sub
-
-    Private Sub ChangeListBoxHighlightColor(listBox As ListBox, e As DrawItemEventArgs)
-        If e.Index < 0 Then
-            Return
-        End If
-        If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
-            e = New DrawItemEventArgs(e.Graphics, e.Font, e.Bounds, e.Index, e.State Xor DrawItemState.Selected, e.ForeColor,
-                Color.FromArgb(0, 174, 219))
-        End If
-        e.DrawBackground()
-        e.Graphics.DrawString(listBox.Items(e.Index).ToString(), e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault)
-        e.DrawFocusRectangle()
-    End Sub
-
     Private Function CleanUpString(input As String) As String
 
         Dim regex As New Regex("[\s+-.,!@#$%^&*();\/|<>""']")

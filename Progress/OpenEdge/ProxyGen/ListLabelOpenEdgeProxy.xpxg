@@ -10,7 +10,7 @@
       <VersionNumber>1</VersionNumber>
       <Package />
       <Service>OpenEdgeProxy</Service>
-      <WorkDir>T:\LL26\LLWS\LLPRO\ProxyGen\</WorkDir>
+      <WorkDir>T:\LL27\LLWS\LLPRO\ProxyGen\</WorkDir>
       <VerboseLogging>true</VerboseLogging>
       <LeaveProxyFiles>true</LeaveProxyFiles>
       <SaveBeforeGen>true</SaveBeforeGen>
@@ -76,7 +76,7 @@
       </SonicConnectionInfo>
     </DeploymentWizard>
     <Name>OpenEdgeProxy</Name>
-    <ProPath>T:\LL26\LLWS\LLPRO\</ProPath>
+    <ProPath>T:\LL27\LLWS\LLPRO\</ProPath>
     <HelpString />
     <ODLHelpString />
     <ObjectType>false</ObjectType>
@@ -86,7 +86,7 @@
     <Procedure isPersistent="false" useFullName="false">
       <Name>OpenEdgeGateway</Name>
       <ProcPath>ListLabel\OpenEdgeAdapter\</ProcPath>
-      <ProPath>T:\LL26\LLWS\LLPRO\</ProPath>
+      <ProPath>T:\LL27\LLWS\LLPRO\</ProPath>
     </Procedure>
   </AppObject>
 </WSAD>

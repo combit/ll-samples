@@ -15,7 +15,6 @@ Namespace WebReporting.Controllers
     <Authorize>
     Public Class SampleController
         Inherits Controller
-        Private Shared _fileRepository As SQLiteFileRepository
 
         Public Function Index() As ActionResult
             ' D:   Liste alle Einträge im Repository auf. Da das Beispiel-Repository eine erweiterte RepositoryItem-Klasse verwendet, werden die Einträge in den erweiterten Typ gecastet
@@ -37,13 +36,7 @@ Namespace WebReporting.Controllers
 
 
         Private Shared Function GetCurrentRepository() As SQLiteFileRepository
-            If _fileRepository Is Nothing Then
-			    ' D:   Stellen Sie hier die Sprache für die Berichte ein. Wechseln Sie auf "de" für Deutsch. Vergessen Sie nicht, ".srt" in ".lsr" in der Funktion GetDataSourceForProject in dieser Datei zu ändern.
-                ' US:  Set the language for the reports here. Change to "de" for German. Don't forget to change ".srt" to ".lsr" in the GetDataSourceForProject function in this file.
-                _fileRepository = New SQLiteFileRepository(SampleWebReportingApplication.RepositoryDatabaseFile, "en")
-            End If
-
-            Return _fileRepository
+            Return DefaultSettings.GetBaseRepository()
         End Function
 
         Public Function DeleteRepositoryItem(repoItemId As String) As ActionResult
@@ -281,66 +274,13 @@ Namespace WebReporting.Controllers
 
 #End Region
 
-
-#Region "Html5Viewer"
-
-        ' D:   Öffnet den Html5Viewer für das Projekt mit der angegebenen Repository-ID
-        ' US:  Loads the Html5Viewer for the project with with specified repository ID.
-        Public Function Html5Viewer(reportRepositoryId As String) As ActionResult
-            If Not RepositoryItem.IsValidItemId(reportRepositoryId) Then
-                Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
-            End If
-
-            If Not GetCurrentRepository().ContainsItem(reportRepositoryId) Then
-                Return Content("The selected project does not exist")
-            End If
-
-            If GetCurrentRepository().GetItem(reportRepositoryId).IsEmpty Then
-                Return Content("The selected project is empty. Please run the Designer first.")
-            End If
-
-
-            Dim model As New Html5ViewerModel()
-            model.ViewerOptions.UseUIMiniStyle = True
-            AddHandler model.ViewerOptions.OnListLabelRequest, AddressOf Html5Viewer_OnListLabelRequest
-
-            ' D:   'ReportName' wird im OnListLabelRequest-Event wieder zurückgeliefert, wo der Pfad zur Projektdatei gesetzt werden muss.
-            '      Anstelle des lokalen Dateipfads wird bei Verwendung von Repositories die ID der Datei im Repository verwendet.
-            ' US:  The report name is returned in the OnListLabelRequest Event, where we need to set the project file.
-            '      When using a repository, the ID of the repository item has to be set instead of the local file path.
-            model.ReportName = reportRepositoryId
-
-            Return View("Html5Viewer", model)
+        Public Function Designer() As ActionResult
+            Return View("WebReportDesigner")
         End Function
 
-        ' D:   Wenn keine Instanz dieser Controller-Klasse für den folgenden Code benötigt wird, sollte dieses Event statisch sein.
-        ' US:  When no instance of this Controller class is requried for the following code, make this event static.
-        Private Shared Sub Html5Viewer_OnListLabelRequest(sender As Object, e As combit.Reporting.Web.ListLabelRequestEventArgs)
-            Dim repositoryIdOfProject As String = e.ReportName
-            Dim LL As New ListLabel()
-
-            ' D:   Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
-            ' US:  Set license key for List & Label (client + server). If not set, a license error will be displayed on non-development machines.
-            ' LL.LicensingInfo = "insert license here";
-
-            ' D:   Die Referenz auf das Repository muss an List & Label übergeben werden, damit die Repository-ID des Projekts für 'AutoProjectFile' akzeptiert wird.
-            ' US:  The repository reference must be passed to List & Label to make the repository ID of the project a valid value for the 'AutoProjectFile' property.
-            LL.FileRepository = GetCurrentRepository()
-            LL.AutoProjectFile = repositoryIdOfProject
-
-            ' D:   Lade die zum Report passende Datenquelle.
-            ' US:  Get the corresponding data source for the report.
-            LL.DataSource = GetDataSourceForProject(repositoryIdOfProject, False)
-
-            ' D:   Der Html5Viewer benötigt ein Verzeichnis für temporäre Dateien. Diese werden einige Minuten nach Schließen eines Html5Viewers automatisch gelöscht.
-            ' US:  The Html5Viewer requires a directory for temporary files. Some minutes after a Html5Viewer is closed, these files will be deleted automatically.
-            e.ExportPath = Path.Combine(SampleWebReportingApplication.TempDirectory, Guid.NewGuid().ToString("D"))
-
-            e.NewInstance = LL
-        End Sub
-
-#End Region
-
+        Public Function Viewer() As ActionResult
+            Return View("WebReportViewer")
+        End Function
 
 #Region "Web Designer"
 
@@ -371,7 +311,7 @@ Namespace WebReporting.Controllers
             ' US:  When using a repository, the ID of the repository item has to be set instead of the local file path.
             options.ProjectFile = reportRepositoryID
             options.ProjectType = RepositoryItemType.ToLlProject(GetCurrentRepository().GetItem(reportRepositoryID).Type)
-			
+            
             ' D:   Optional können Handler-Funktionen hinterlegt werden, die die Variablen oder Wörterbücher für den Web Designer initialisieren. (Zugriff auf ListLabel.Variables / ListLabel.Dictionary)
             ' US:  Optionally you can define handler methods which initialize the variables or dictionaries for the Web Designer.  (Access to ListLabel.Variables / ListLabel.Dictionary)
 
@@ -383,7 +323,7 @@ Namespace WebReporting.Controllers
             '      {
             '          dictionary.Tables.Add("Customers", "Kunden");
             '      });
-			
+            
 
             Return View("WebDesignerLauncher", options)
         End Function
@@ -432,9 +372,10 @@ Namespace WebReporting.Controllers
         ' US:  Returns the corresponding repository item type for a file extensions.
         Private Function GetRepositoryItemTypeForFileExtension(extension As String) As RepositoryItemType
             Select Case extension
-                Case ".wmf", ".emf", ".bmp", ".rle", ".dib", ".pcx",
-                    ".scr", ".tif", ".tiff", ".gif", ".jpg", ".pcd",
-                    ".png", ".icp", ".wdp", ".hdp"
+                Case ".bmp", ".dib", ".emf", ".gif", ".hdp", ".heic", 
+                    ".heif", ".ico", ".jpeg", ".jpg", ".jxr", ".pcd", 
+                    ".pcx", ".png", ".rle", ".scr", ".svg", ".svgz", 
+                    ".tif", ".tiff", ".wdp", ".webp", ".wmf"
                     Return RepositoryItemType.Image
 
                 Case ".pdf"

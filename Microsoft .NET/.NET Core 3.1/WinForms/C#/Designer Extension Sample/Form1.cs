@@ -174,25 +174,25 @@ namespace C_
             // Define the default color of the brush as black.
             SolidBrush itemBrush = new SolidBrush(Color.Black);
             Font itemFont = listBox1.Font;
-
+            e.ItemHeight = itemFont.Height;
             // Determine the color of the brush to draw each item based on the index of the item to draw.
             if (((e.Index + 1) % 10) == 0)
             {
-                e.ItemHeight = 20;
-                itemBrush = new SolidBrush(Color.Red);
                 itemFont = new Font("Tahoma", 12);
+                e.ItemHeight = itemFont.Height;
+                itemBrush = new SolidBrush(Color.Red);
             }
             else if (((e.Index + 12) % 10) == 0)
             {
-                e.ItemHeight = 22;
-                itemBrush = new SolidBrush(Color.Orange);
                 itemFont = new Font("Tahoma", 14);
+                e.ItemHeight = itemFont.Height;
+                itemBrush = new SolidBrush(Color.Orange);
             }
             else if (((e.Index + 13) % 10) == 0)
             {
-                e.ItemHeight = 24;
-                itemBrush = new SolidBrush(Color.Purple);
                 itemFont = new Font("Tahoma", 16);
+                e.ItemHeight = itemFont.Height;
+                itemBrush = new SolidBrush(Color.Purple);
             }
 
             // create item and add it to list

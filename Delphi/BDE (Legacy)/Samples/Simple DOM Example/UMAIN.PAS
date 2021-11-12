@@ -14,8 +14,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, L26, Registry, DB, ADODB, L26dom, cmbtll26,
-  L26db
+  Dialogs, StdCtrls, L27, Registry, DB, ADODB, L27dom, cmbtll27,
+  L27db
   {$IFDEF ver280} // XE7
   , System.UITypes
   {$ENDIF}
@@ -43,7 +43,7 @@ type
     Label9: TLabel;
     dtTitle: TEdit;
     dtLogo: TEdit;
-    LL: TDBL26_;
+    LL: TDBL27_;
     btnLogo: TButton;
     OpenDialog1: TOpenDialog;
     DataSource1: TDataSource;
@@ -100,10 +100,10 @@ begin
 	  tmp := registry.ReadString('LL' + IntToStr(LL.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
 	  if (tmp[Length(tmp)] = '\') then
 		begin
-		  workingPath := tmp + 'Delphi\';
+		  workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';
 		end
 	  else
-		  workingPath := tmp + '\Delphi\';
+		  workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\';
 		  
       registry.CloseKey();
 

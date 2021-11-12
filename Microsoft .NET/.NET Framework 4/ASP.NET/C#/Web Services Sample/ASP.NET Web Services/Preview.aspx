@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Preview.aspx.cs" Inherits="ASP.NET_Web_Services.Preview" %>
 
-<%@ Register assembly="combit.ListLabel26.Web" namespace="combit.Reporting.Web" tagprefix="combit" %>
+<%@ Register assembly="combit.ListLabel27.Web" namespace="combit.Reporting.Web" tagprefix="combit" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

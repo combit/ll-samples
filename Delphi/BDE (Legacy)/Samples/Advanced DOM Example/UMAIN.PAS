@@ -14,7 +14,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Registry,
-  Dialogs, L26, L26db, cmbtll26, L26dom, DB, ADODB, ExtCtrls, StdCtrls, ComCtrls, ActnList
+  Dialogs, L27, L27db, cmbtll27, L27dom, DB, ADODB, ExtCtrls, StdCtrls, ComCtrls, ActnList,
+  System.Actions
   {$IFDEF ver280} // XE7
   , System.UITypes, System.Actions
   {$ENDIF}
@@ -56,7 +57,7 @@ type
     FontDialog1: TFontDialog;
     ColorDialog1: TColorDialog;
     ADOConnection1: TADOConnection;
-    LL: TDBL26_;
+    LL: TDBL27_;
     btnColorCell1: TButton;
     lblColorCell1: TLabel;
     lblColorCell2: TLabel;
@@ -262,10 +263,10 @@ begin
 	  tmp := registry.ReadString('LL' + IntToStr(LL.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
 	  if (tmp[Length(tmp)] = '\') then
 		begin
-		  workingPath := tmp + 'Delphi\';
+		  workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';
 		end
 	  else
-		  workingPath := tmp + '\Delphi\';
+		  workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\';
 		  
       registry.CloseKey();
 

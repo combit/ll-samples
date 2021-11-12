@@ -7,7 +7,7 @@
 #include "DataModule.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "L26"
+#pragma link "L27"
 #pragma resource "*.dfm"
 TFrmMultipleTables *FrmMultipleTables;
 

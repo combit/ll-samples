@@ -252,26 +252,24 @@
             // 
             // listBoxSelectedFields
             // 
-            this.listBoxSelectedFields.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBoxSelectedFields.DrawMode = System.Windows.Forms.DrawMode.Normal;
             this.listBoxSelectedFields.Location = new System.Drawing.Point(331, 96);
             this.listBoxSelectedFields.Name = "listBoxSelectedFields";
             this.listBoxSelectedFields.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxSelectedFields.Size = new System.Drawing.Size(277, 121);
             this.listBoxSelectedFields.Sorted = true;
             this.listBoxSelectedFields.TabIndex = 14;
-            this.listBoxSelectedFields.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ListBoxSelectedFields_DrawItem);
             this.listBoxSelectedFields.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBoxSelectedFields_MouseDoubleClick);
             // 
             // listBoxAvailableFields
             // 
-            this.listBoxAvailableFields.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBoxAvailableFields.DrawMode = System.Windows.Forms.DrawMode.Normal;
             this.listBoxAvailableFields.Location = new System.Drawing.Point(6, 96);
             this.listBoxAvailableFields.Name = "listBoxAvailableFields";
             this.listBoxAvailableFields.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxAvailableFields.Size = new System.Drawing.Size(278, 121);
             this.listBoxAvailableFields.Sorted = true;
             this.listBoxAvailableFields.TabIndex = 12;
-            this.listBoxAvailableFields.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ListBoxAvailableFields_DrawItem);
             this.listBoxAvailableFields.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBoxAvailableFields_MouseDoubleClick);
             // 
             // labelSelectedFields

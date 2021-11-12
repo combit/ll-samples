@@ -14,7 +14,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ADODB, DB, L26, cmbtll26, StdCtrls, Buttons, Menus, uObject, uDataModule,
+  Dialogs, ADODB, DB, L27, cmbtll27, StdCtrls, Buttons, Menus, uObject, uDataModule,
   Grids, DBGrids, Registry
   {$IFDEF ver280} // XE7
   , System.UITypes
@@ -33,7 +33,7 @@ type
     Report1: TMenuItem;
     Print1: TMenuItem;
     Report2: TMenuItem;
-    LL: TL26_;
+    LL: TL27_;
     File1: TMenuItem;
     Exit1: TMenuItem;
     procedure FormCreate(Sender: TObject);
@@ -157,10 +157,10 @@ begin
     tmp := registry.ReadString('LL' + IntToStr(LL.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
     if (tmp[Length(tmp)] = '\') then
     begin
-      workingPath := tmp + 'Delphi\';
-    end
-    else
-      workingPath := tmp + '\Delphi\';
+		  workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';
+		end
+	  else
+		  workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\';
 
       registry.CloseKey();
 

@@ -2,9 +2,8 @@
 <h3>Concepts</h3>
 <b>The Ad-hoc Designer is not a replacement for the Web Designer.</b><br />
 It is a completely browser-based application (HTML+Javascript) that allows you to design basic reports like simple tables or charts very quickly.
-It offers only the most important features of the full List &amp; Label Designer,
-but does not require an installation on the client computer like the Web Designer does.
-Furthermore it provides a simplified user interface that can be used on any modern device, operating system and browser.
+It offers only the most important features of the full List &amp; Label Designer
+in a simplified user interface that can be handled by users that are not too familiar with the desktop Designer.
 <br /><br />
 
 <b>The projects of the Ad-hoc Designer are saved in a special file format.</b><br />
@@ -20,26 +19,24 @@ So usually for every browser tab that has the Ad-hoc Designer loaded, there is o
 Integrating the Ad-hoc Designer into your application means connecting that session to the rest of your application to handle operations like loading and saving the project or creating the data source.
 <br /><br />
 <b>The Ad-hoc Designer is an application within your application.</b><br />
-It is based on the ASP.NET MVC framework, but has it's own routes and controllers that you don't need to take care of. Please note that it is not a component that you can embed
+It is based on the ASP.NET Core MVC framework, but has it's own routes and controllers that you don't need to take care of. Please note that it is not a component that you can embed
 on your page (or view). The Ad-hoc Designer is opened by navigating (redirecting) to a special URL, so it always uses the whole page. If you would like to show it as part of an other page,
 you need to load it in an iframe.
 
 <br /><br />
 <h3>How to Add it to Your Application (in 3 Steps)</h3>
 <b>Step 1: Add the required dependencies</b><br />
-<div>To integrate the Ad-hoc Designer in your ASP.NET project you first need to add the following NuGet packages:</div>
+<div>To integrate the Ad-hoc Designer in your ASP.NET Core project you first need to add the following NuGet packages:</div>
 	<ul>
-		<li>combit.ListLabel26.AdhocDesign.Web</li>
-		<li>combit.ListLabel26.Web</li>
+		<li>combit.ListLabel27.AdhocDesign.Web</li>
+		<li>combit.ListLabel27.Web</li>
 	</ul>
 <b>Step 2: Do some configuration</b><br />
 The Ad-hoc Designer is based on ASP.NET Core. When your application is starting, you need to set up the routing and some other configuration of the Ad-hoc Designer:
 <ul>
-    <li>Call <code>AdhocWebDesigner.RegisterRoutes()</code> before (!) registering your own routes (see the <var>RouteConfig.cs</var> file of this project)</li>
+    <li>Call <code>app.UseAdhocDesigner(c => { });</code> within the <var>Configure</var> method at the <var>startup.cs</var> file.</li>
     <li>
-        Call <code>AdhocWebDesigner.Setup(...)</code> during the application startup (see the <var>Application_Start()</var> method in the <var>global.asax</var> file).
-        Many options are defined per-session, but the global options can be configured with this call.
-    </li>
+        Call <code>services.AddAdhocDesigner();</code> within the <var>ConfigureService</var> method at the <var>startup.cs</var> file.</li>
 </ul>
 <b>Step 3: Open the Ad-hoc Designer</b><br />
 <div>

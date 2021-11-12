@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C1A}#26.0#0"; "cmll26o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C1B}#27.0#0"; "cmll27o.ocx"
 Begin VB.Form Form1 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "List & Label - DevMode-Sample"

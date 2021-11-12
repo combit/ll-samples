@@ -547,7 +547,7 @@
         '
         'ListBoxSelectedFields
         '
-        Me.ListBoxSelectedFields.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ListBoxSelectedFields.DrawMode = System.Windows.Forms.DrawMode.Normal
         Me.ListBoxSelectedFields.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.ListBoxSelectedFields.Location = New System.Drawing.Point(331, 96)
         Me.ListBoxSelectedFields.Name = "ListBoxSelectedFields"
@@ -558,7 +558,7 @@
         '
         'ListBoxAvailableFields
         '
-        Me.ListBoxAvailableFields.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ListBoxAvailableFields.DrawMode = System.Windows.Forms.DrawMode.Normal
         Me.ListBoxAvailableFields.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.ListBoxAvailableFields.Location = New System.Drawing.Point(6, 96)
         Me.ListBoxAvailableFields.Name = "ListBoxAvailableFields"

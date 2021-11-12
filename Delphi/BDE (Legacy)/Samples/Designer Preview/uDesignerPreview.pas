@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, DB,
-  Registry, DBTables, ADODB, L26, StdCtrls, cmbtll26, L26db, uPrintWorker,
+  Registry, DBTables, ADODB, L27, StdCtrls, cmbtll27, L27db, uPrintWorker,
   ComCtrls, SyncObjs;
 
 type
@@ -16,8 +16,8 @@ type
     dsCustomers: TDataSource;
     Customers: TADOTable;
     ADOConnection1: TADOConnection;
-    LLDesign: TL26_;
-    LLDesignerPrint: TL26_;
+    LLDesign: TL27_;
+    LLDesignerPrint: TL27_;
     DesignIL: TButton;
     procedure DesignILClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -98,10 +98,10 @@ begin
 	  tmp := registry.ReadString('LL' + IntToStr(LLDesign.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
 	  if (tmp[Length(tmp)] = '\') then
 		begin
-		  workingPath := tmp + 'Delphi\';
+		  workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';
 		end
 	  else
-		  workingPath := tmp + '\Delphi\';
+		  workingPath := tmp + '\Delphi\BDE (Legacy)\Samples\';
 		  
       registry.CloseKey();
 

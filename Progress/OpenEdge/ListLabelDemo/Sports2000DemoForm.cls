@@ -376,7 +376,7 @@ CLASS ListLabelDemo.Sports2000DemoForm INHERITS Form:
         oProvider:Initialize().
 
         oLL = NEW ListLabel().
-        
+        /*oLL:LicensingInfo = "" */
         /*oLL:Language = LlLanguage:English.*/
         oLL:ForceSingleThread = TRUE. /* :-( */
         oLL:DataSource = oProvider. 

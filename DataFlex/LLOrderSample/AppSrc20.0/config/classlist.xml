@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2020-10-06T17:20:03</VDFLibraryTimeStamp>
+	<VDFLibraryTimeStamp>2021-09-28T12:10:52</VDFLibraryTimeStamp>
 	<libraries>
 		<library>
-			<libraryPath>..\LLLibrary26.0\LL26-VDF20.0.sws</libraryPath>
+			<libraryPath>..\LLLibrary27.0\LL27-VDF20.1.sws</libraryPath>
 			<libraryTimeStamp>2018-10-01T20:28:33</libraryTimeStamp>
 			<libraryID>Lib1</libraryID>
 		</library>
@@ -1029,6 +1029,34 @@
 			<image>cWebTagsForm.ico</image>
 			<package>cWebTagsForm.pkg</package>
 			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cSelectFolderDialog</className>
+			<image>ControlOpenDialog.ico</image>
+			<package>cSelectFolderDialog.pkg</package>
+			<groupName>Dialogs</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebView2Browser</className>
+			<image>cWebView2Browser.ico</image>
+			<package>cWebView2Browser.pkg</package>
+			<groupName>Base Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cDBTagsForm</className>
+			<image>cDBTagsForm.ico</image>
+			<package>cDBTagsForm.pkg</package>
+			<groupName>Data Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cTagsForm</className>
+			<image>cTagsForm.ico</image>
+			<package>cTagsForm.pkg</package>
+			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
 		</class>
 	</classes>

@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "DOM.h"
 #include "DOMDlg.h"
-#include "..\cmbtll26.h"
+#include "..\cmbtll27.h"
 #include "DomItem.h"
 
 #ifdef _DEBUG

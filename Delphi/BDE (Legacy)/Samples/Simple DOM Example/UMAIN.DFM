@@ -196,7 +196,7 @@ object frmMain: TfrmMain
     Left = 56
     Top = 504
   end
-  object LL: TDBL26_
+  object LL: TDBL27_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No

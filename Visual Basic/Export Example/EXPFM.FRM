@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C1A}#26.0#0"; "cmll26o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C1B}#27.0#0"; "cmll27o.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form Form1 
    Caption         =   "List & Label Quiet Export Sample"
@@ -10,7 +10,7 @@ Begin VB.Form Form1
    LinkTopic       =   "Form1"
    ScaleHeight     =   2985
    ScaleWidth      =   7620
-   StartUpPosition =   3  'Windows Default
+   StartUpPosition =   3  'Windows-Standard
    Begin MSComDlg.CommonDialog CommonDialog1 
       Left            =   6060
       Top             =   2400
@@ -89,15 +89,15 @@ Begin VB.Form Form1
       Caption         =   "Data1"
       Connect         =   "Access 2000;"
       DatabaseName    =   ""
-      DefaultCursorType=   0  'DefaultCursor
-      DefaultType     =   2  'UseODBC
+      DefaultCursorType=   0  'Standard-Cursor
+      DefaultType     =   2  'ODBC verwenden
       EOFAction       =   1  'EOF
       Exclusive       =   -1  'True
       Height          =   345
       Left            =   5880
       Options         =   0
       ReadOnly        =   -1  'True
-      RecordsetType   =   0  'Table
+      RecordsetType   =   0  'Tabelle
       RecordSource    =   "Article"
       Top             =   2040
       Visible         =   0   'False
@@ -137,10 +137,10 @@ Begin VB.Form Form1
    End
    Begin VB.ComboBox FormatCombo 
       Height          =   315
-      ItemData        =   "expfm.frx":0000
+      ItemData        =   "EXPFM.frx":0000
       Left            =   1140
-      List            =   "expfm.frx":001C
-      Style           =   2  'Dropdown List
+      List            =   "EXPFM.frx":0019
+      Style           =   2  'Dropdown-Liste
       TabIndex        =   4
       Top             =   1140
       Width           =   4635
@@ -229,7 +229,7 @@ Private Sub Form_Load()
 ' Copyright (C) combit GmbH
 '
 '--------------------------------------------------------------------------------------
-' File   : export.vbp, expfm.frm, cmll26.bas
+' File   : export.vbp, expfm.frm, cmll27.bas
 ' Module : export sample
 ' Descr. : D: Dieses Beispiel demonstriert den Export ohne Benutzerinteraktion.
 '          US: This example demonstrates an export without user interaction.

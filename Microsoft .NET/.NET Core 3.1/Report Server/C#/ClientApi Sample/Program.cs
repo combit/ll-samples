@@ -14,6 +14,7 @@ namespace ClientApiExample
         [STAThread]
         static void Main()
         {
+            SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -25,6 +26,8 @@ namespace ClientApiExample
 
             Application.Run(new StartDialog(loginDialog.Client));
         }
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
 
 
         public static void ShowValidationErrorsAtControls(Form container, ErrorProvider errProvider, ModelValidationFailedException validationErrors)

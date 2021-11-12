@@ -215,7 +215,7 @@ object frmDOMSimple: TfrmDOMSimple
     Left = 80
     Top = 432
   end
-  object LL: TDBl26_
+  object LL: TDBl27_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No

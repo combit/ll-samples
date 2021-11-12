@@ -45,8 +45,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel26.Wpf">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel26.Wpf.dll</HintPath>
+    <Reference Include="combit.ListLabel27.Wpf">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel27.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>

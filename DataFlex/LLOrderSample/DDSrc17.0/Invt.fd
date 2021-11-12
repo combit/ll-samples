@@ -1,8 +1,0 @@
-#REPLACE FILE22 Invt
-#REPLACE Invt.Recnum |FN22,0
-#REPLACE Invt.Item_ID |FS22,1
-#REPLACE Invt.Description |FS22,2
-#REPLACE Invt.Vendor_ID |FN22,3
-#REPLACE Invt.Vendor_Part_ID |FS22,4
-#REPLACE Invt.Unit_Price |FN22,5
-#REPLACE Invt.On_Hand |FN22,6

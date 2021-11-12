@@ -42,9 +42,10 @@
     <div data-role="controlgroup" data-type="horizontal">
         <a data-role="button" href="@Url.Action("StartPage", "Sample")" target="ContentContainer" data-icon="home" data-iconpos="right">Start</a>
 
-        @Html.DropDownList("ReportRepositoryID", reportList, new { onchange = "refreshHtml5Viewer()" })
-        <button id="RefreshViewer" data-icon="eye" data-iconpos="right" onclick="refreshHtml5Viewer()">HTML5 Viewer</button>
-        <button id="OpenDesigner" data-icon="edit" data-iconpos="right" onclick="startWebDesigner()">Design</button>
+        @Html.DropDownList("ReportRepositoryID", reportList, new { onchange = "startWebReportViewer()" })
+        <button id="OpenWebReportDesigner" data-icon="edit" data-iconpos="right" onclick="startWebReportDesigner()">WebReportDesigner (Browser)</button>
+        <button id="OpenWebReportViewer" data-icon="eye" data-iconpos="right" onclick="startWebReportViewer()">WebReportViewer</button>
+        <button id="OpenDesigner" data-icon="edit" data-iconpos="right" onclick="startWebDesigner()">Windows-Designer</button>
         <a data-role="button" href="@Url.Action("AddItem", "Sample")" target="ContentContainer" data-icon="plus" data-iconpos="right">Add Repository Item</a>
     </div>
 </div>
@@ -53,17 +54,24 @@
 <iframe id="ContentContainer" name="ContentContainer" src="@Url.Action("StartPage", "Sample")" onload="maximizeContentContainerHeight()" frameborder="0" style="width: 100%"></iframe>
 
 <script type="text/javascript">
-    function refreshHtml5Viewer() {
-        var selectedReportID = $('#ReportRepositoryID').val();
-        var html5viewerLink = '@Url.Action("Html5Viewer", "Sample")' + '?reportRepositoryID=' + encodeURIComponent(selectedReportID);
-        $('#ContentContainer').attr('src', html5viewerLink);
-    }
-
     function startWebDesigner() {
         var selectedReportID = $('#ReportRepositoryID').val();
         var launchWebDesignerLink = '@Url.Action("WebDesignerLauncher", "Sample")' + '?reportRepositoryID=' + encodeURIComponent(selectedReportID);
         $('#ContentContainer').attr('src', launchWebDesignerLink);
     }
+
+    function startWebReportDesigner() {
+        var selectedReportID = $('#ReportRepositoryID').val();
+        var launchWebDesignerLink = '@Url.Action("Designer", "Sample")' + '?reportRepositoryID=' + encodeURIComponent(selectedReportID);
+        $('#ContentContainer').attr('src', launchWebDesignerLink);
+    }
+
+        function startWebReportViewer() {
+        var selectedReportID = $('#ReportRepositoryID').val();
+        var launchWebDesignerLink = '@Url.Action("Viewer", "Sample")' + '?reportRepositoryID=' + encodeURIComponent(selectedReportID);
+        $('#ContentContainer').attr('src', launchWebDesignerLink);
+    }
+
 
     function maximizeContentContainerHeight() {
         $('#ContentContainer').height($('body').height() - $('#MainToolbar').outerHeight() - 5);

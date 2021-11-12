@@ -6,7 +6,7 @@ using System;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("combit List & Label 26 RptConverter")]
+[assembly: AssemblyTitle("combit List & Label 27 RptConverter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("combit GmbH, www.combit.net")]

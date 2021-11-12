@@ -1,8 +1,12 @@
 ﻿using combit.Reporting.Web;
+using combit.Reporting.Web.WebReportDesigner.Server;
+using combit.Reporting.Web.WebReportViewer;
 using combit.Reporting.Web.WindowsClientWebDesigner.Server;
 
 using System.IO;
+using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace WebReporting
@@ -16,13 +20,18 @@ namespace WebReporting
         protected void Application_Start()
         {
             RegisterRoutes(RouteTable.Routes);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             RepositoryDatabaseFile = Server.MapPath("~/App_Data/repository.db");
             TempDirectory = Server.MapPath("~/App_Data/TempFiles");
+            WebReportDesignerConfig.TempDirectory = Server.MapPath("~/App_Data/TempFiles");
 
             // D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
             // US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL26WebDesignerSetup.exe");
+            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL27WebDesignerSetup.exe");
 
             // D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
             //      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
@@ -35,16 +44,17 @@ namespace WebReporting
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //D: WebAPI/MVC-Routen von Html5Viewer und Web Designer registrieren. 
-            //US: Register the WebAPI/MVC routes of the Html5Viewer and Web Designer.
-            Html5ViewerConfig.RegisterRoutes(routes);
+            //D: WebAPI/MVC-Routen von Web Designer registrieren. 
+            //US: Register the WebAPI/MVC routes of the Web Designer.
             WindowsClientWebDesignerConfig.RegisterRoutes(routes);
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Sample", action = "Index", id = UrlParameter.Optional }
-            );
+            //D: WebAPI/MVC-Routen für Web Report Designer registrieren. 
+            //US: Register the WebAPI/MVC routes of the Web Report Designer.
+            WebReportDesignerConfig.RegisterRoutes(RouteTable.Routes);
+
+            //D: WebAPI/MVC-Routen für Web Report Viewer registrieren. 
+            //US: Register the WebAPI/MVC routes of the Web Report Viewer.
+            WebReportViewerConfig.RegisterRoutes(RouteTable.Routes);
         }
   
         protected void Application_End()

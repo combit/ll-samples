@@ -8,16 +8,16 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
-    <PackageReference Include="System.IO.Pipelines" Version="4.7.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    <PackageReference Include="System.IO.Pipelines" Version="5.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel26">
-      <HintPath>..\..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+    <Reference Include="combit.ListLabel27">
+      <HintPath>..\..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel26.Web">
-      <HintPath>..\..\..\..\Assemblies\combit.ListLabel26.Web.dll</HintPath>
+    <Reference Include="combit.ListLabel27.Web">
+      <HintPath>..\..\..\..\Assemblies\combit.ListLabel27.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

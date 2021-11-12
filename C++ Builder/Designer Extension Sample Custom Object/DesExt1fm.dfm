@@ -65,7 +65,7 @@ object Form1: TForm1
     TabOrder = 1
     OnClick = PrintButtonClick
   end
-  object SplitColorRect: TLl26XObject
+  object SplitColorRect: TLl27XObject
     Description = 'SplitColorRect'
     ParentComponent = LL
     PopupMenu = PopupMenu1
@@ -122,7 +122,7 @@ object Form1: TForm1
     Left = 240
     Top = 117
   end
-  object LL: Tl26_
+  object LL: Tl27_
     SortVariables = Yes
     UnitSystem = usHiInch
     Buttons3D = Yes

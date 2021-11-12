@@ -1,8 +1,0 @@
-[Properties]
-Version=17.1
-[WorkspacePaths]
-ConfigFile=.\Programs\Config17.1.ws
-[Projects]
-Project0=Order.src
-[Libraries]
-Lib2=..\LLLibrary26.0\LL26-VDF17.1.sws

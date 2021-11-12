@@ -198,7 +198,7 @@ object frmDatbind: TfrmDatbind
     Left = 280
     Top = 168
   end
-  object DBl26_1: TDBl26_
+  object DBl27_1: TDBl27_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No
@@ -215,7 +215,7 @@ object frmDatbind: TfrmDatbind
     Left = 160
     Top = 16
   end
-  object DBl26_2: TDBl26_
+  object DBl27_2: TDBl27_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No

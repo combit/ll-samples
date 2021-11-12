@@ -17,8 +17,6 @@ namespace WebReporting.Controllers
     [Authorize]
     public class SampleController : Controller
     {
-        private static SQLiteFileRepository _fileRepository;
-
         public ActionResult Index()
         {
             // D:   Liste alle Einträge im Repository auf. Da das Beispiel-Repository eine erweiterte RepositoryItem-Klasse verwendet, werden die Einträge in den erweiterten Typ gecastet
@@ -37,14 +35,7 @@ namespace WebReporting.Controllers
 
         private static SQLiteFileRepository GetCurrentRepository()
         {
-            if (_fileRepository == null)
-            {
-                // D:   Stellen Sie hier die Sprache für die Berichte ein. Wechseln Sie auf "de" für Deutsch. Vergessen Sie nicht, ".srt" in ".lsr" in der Funktion GetDataSourceForProject in dieser Datei zu ändern.
-                // US:  Set the language for the reports here. Change to "de" for German. Don't forget to change ".srt" to ".lsr" in the GetDataSourceForProject function in this file.
-                _fileRepository = new SQLiteFileRepository(SampleWebReportingApplication.RepositoryDatabaseFile, "en");
-            }
-
-            return _fileRepository;
+            return DefaultSettings.GetBaseRepository();
         }
 
         public ActionResult DeleteRepositoryItem(string repoItemId)
@@ -301,65 +292,15 @@ namespace WebReporting.Controllers
         #endregion
 
 
-        #region "Html5Viewer"
-
-        // D:   Öffnet den Html5Viewer für das Projekt mit der angegebenen Repository-ID
-        // US:  Loads the Html5Viewer for the project with with specified repository ID.
-        public ActionResult Html5Viewer(string reportRepositoryId)
+        public ActionResult Designer()
         {
-            if (!RepositoryItem.IsValidItemId(reportRepositoryId))
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            if (!GetCurrentRepository().ContainsItem(reportRepositoryId))
-                return Content("The selected project does not exist");
-
-            if (GetCurrentRepository().GetItem(reportRepositoryId).IsEmpty)
-                return Content("The selected project is empty. Please run the Designer first.");
-
-
-            Html5ViewerModel model = new Html5ViewerModel();
-            model.ViewerOptions.UseUIMiniStyle = true;
-            model.ViewerOptions.OnListLabelRequest += Html5Viewer_OnListLabelRequest;
-
-            // D:   'ReportName' wird im OnListLabelRequest-Event wieder zurückgeliefert, wo der Pfad zur Projektdatei gesetzt werden muss.
-            //      Anstelle des lokalen Dateipfads wird bei Verwendung von Repositories die ID der Datei im Repository verwendet.
-            // US:  The report name is returned in the OnListLabelRequest Event, where we need to set the project file.
-            //      When using a repository, the ID of the repository item has to be set instead of the local file path.
-            model.ReportName = reportRepositoryId;
-
-            return View("Html5Viewer", model);
+            return View("WebReportDesigner");
         }
 
-        // D:   Wenn keine Instanz dieser Controller-Klasse für den folgenden Code benötigt wird, sollte dieses Event statisch sein.
-        // US:  When no instance of this Controller class is requried for the following code, make this event static.
-        private static void Html5Viewer_OnListLabelRequest(object sender, combit.Reporting.Web.ListLabelRequestEventArgs e)
+        public ActionResult Viewer()
         {
-            string repositoryIdOfProject = e.ReportName;
-            ListLabel LL = new ListLabel
-            {
-
-                // D:   Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
-                // US:  Set license key for List & Label (client + server). If not set, a license error will be displayed on non-development machines.
-                // LicensingInfo = "insert license here";
-
-                // D:   Die Referenz auf das Repository muss an List & Label übergeben werden, damit die Repository-ID des Projekts für 'AutoProjectFile' akzeptiert wird.
-                // US:  The repository reference must be passed to List & Label to make the repository ID of the project a valid value for the 'AutoProjectFile' property.
-                FileRepository = GetCurrentRepository(),
-                AutoProjectFile = repositoryIdOfProject,
-
-                // D:   Lade die zum Report passende Datenquelle.
-                // US:  Get the corresponding data source for the report.
-                DataSource = GetDataSourceForProject(repositoryIdOfProject, false)
-            };
-
-            // D:   Der Html5Viewer benötigt ein Verzeichnis für temporäre Dateien. Diese werden einige Minuten nach Schließen eines Html5Viewers automatisch gelöscht.
-            // US:  The Html5Viewer requires a directory for temporary files. Some minutes after a Html5Viewer is closed, these files will be deleted automatically.
-            e.ExportPath = Path.Combine(SampleWebReportingApplication.TempDirectory, Guid.NewGuid().ToString("D"));
-
-            e.NewInstance = LL;
+            return View("WebReportViewer");
         }
-
-        #endregion
 
 
         #region "Web Designer"
@@ -456,22 +397,29 @@ namespace WebReporting.Controllers
         {
             switch (extension)
             {
-                case ".wmf":
-                case ".emf":
                 case ".bmp":
-                case ".rle":
                 case ".dib":
+                case ".emf":
+                case ".gif":
+                case ".hdp":
+                case ".heic":
+                case ".heif":
+                case ".ico":
+                case ".jpeg":
+                case ".jpg":
+                case ".jxr":
+                case ".pcd":
                 case ".pcx":
+                case ".png":
+                case ".rle":
                 case ".scr":
+                case ".svg":
+                case ".svgz":
                 case ".tif":
                 case ".tiff":
-                case ".gif":
-                case ".jpg":
-                case ".pcd":
-                case ".png":
-                case ".icp":
                 case ".wdp":
-                case ".hdp":
+                case ".webp":
+                case ".wmf":
                     return RepositoryItemType.Image;
 
                 case ".pdf":

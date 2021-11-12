@@ -24,9 +24,8 @@ USING ListLabel.OpenEdgeAdapter.OpenEdgeSchema FROM PROPATH.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeClientEvent FROM PROPATH.
 USING ListLabel.OpenEdgeAdapter.OpenEdgeCalculatedTableArgs FROM PROPATH.
 
-/*
 BLOCK-LEVEL ON ERROR UNDO, THROW.
-*/
+
 CLASS ListLabelDemo.Sports2000Service INHERITS OpenEdgeService: 
 
     /* Since LL24 - let's add a Calculated Table */

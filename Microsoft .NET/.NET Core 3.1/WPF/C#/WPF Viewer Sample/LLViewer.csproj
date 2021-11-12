@@ -9,11 +9,11 @@
   </PropertyGroup>
 
  <ItemGroup>
-   <Reference Include="combit.ListLabel26">
-     <HintPath>..\..\..\Assemblies\combit.ListLabel26.dll</HintPath>
+   <Reference Include="combit.ListLabel27">
+     <HintPath>..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
    </Reference>
-   <Reference Include="combit.ListLabel26.Wpf">
-     <HintPath>..\..\..\Assemblies\combit.ListLabel26.Wpf.dll</HintPath>
+   <Reference Include="combit.ListLabel27.Wpf">
+     <HintPath>..\..\..\Assemblies\combit.ListLabel27.Wpf.dll</HintPath>
    </Reference>
  </ItemGroup>
 </Project>

@@ -211,26 +211,24 @@
 			// 
 			// listBox2
 			// 
-			this.listBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.listBox2.DrawMode = System.Windows.Forms.DrawMode.Normal;
 			this.listBox2.Location = new System.Drawing.Point(267, 88);
 			this.listBox2.Name = "listBox2";
 			this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
 			this.listBox2.Size = new System.Drawing.Size(217, 121);
 			this.listBox2.Sorted = true;
 			this.listBox2.TabIndex = 13;
-			this.listBox2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ListBox2_DrawItem);
 			this.listBox2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBox2_MouseDoubleClick);
 			// 
 			// listBox1
 			// 
-			this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.listBox1.DrawMode = System.Windows.Forms.DrawMode.Normal;
 			this.listBox1.Location = new System.Drawing.Point(6, 88);
 			this.listBox1.Name = "listBox1";
 			this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
 			this.listBox1.Size = new System.Drawing.Size(214, 121);
 			this.listBox1.Sorted = true;
 			this.listBox1.TabIndex = 12;
-			this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ListBox1_DrawItem);
 			this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBox1_MouseDoubleClick);
 			// 
 			// label7

@@ -1,4 +1,6 @@
 ﻿Imports combit.Reporting.Web
+Imports combit.Reporting.Web.WebReportDesigner.Server
+Imports combit.Reporting.Web.WebReportViewer
 Imports combit.Reporting.Web.WindowsClientWebDesigner.Server
 Imports System.IO
 Imports System.Web.Mvc
@@ -35,7 +37,7 @@ Namespace WebReporting
 
             ' D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
             ' US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL26WebDesignerSetup.exe")
+            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL27WebDesignerSetup.exe")
 
             ' D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
             '      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
@@ -47,10 +49,18 @@ Namespace WebReporting
         Public Sub RegisterRoutes(routes As RouteCollection)
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}")
 
-            'D: WebAPI/MVC-Routen von Html5Viewer und Web Designer registrieren. 
-            'US: Register the WebAPI/MVC routes of the Html5Viewer and Web Designer.
-            Html5ViewerConfig.RegisterRoutes(routes)
+            'D WebAPI/ Mvc - Routen für Web Designer registrieren. 
+            'US: Register the WebAPI/MVC routes of the Web Designer.
             WindowsClientWebDesignerConfig.RegisterRoutes(routes)
+
+            'D WebAPI/ Mvc - Routen für Web Report Designer registrieren. 
+            'US: Register the WebAPI/MVC routes of the Web Report Designer.
+
+            WebReportDesignerConfig.RegisterRoutes(RouteTable.Routes)
+
+            'D WebAPI/ Mvc - Routen für Web Report Viewer registrieren. 
+            'US: Register the WebAPI/MVC routes of the Web Report Viewer.
+            WebReportViewerConfig.RegisterRoutes(RouteTable.Routes)
 
             routes.MapRoute(name:="Default", url:="{controller}/{action}/{id}", defaults:=New With {
                 Key .controller = "Sample",
