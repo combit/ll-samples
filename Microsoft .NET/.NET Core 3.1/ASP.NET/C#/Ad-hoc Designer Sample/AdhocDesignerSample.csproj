@@ -2,6 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="Current">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+	<Use64BitIISExpress>false</Use64BitIISExpress>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>

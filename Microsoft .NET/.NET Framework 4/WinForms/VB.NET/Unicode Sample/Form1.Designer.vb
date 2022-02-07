@@ -20,7 +20,7 @@ Partial Class Form1
     ''' </summary>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.LL = new combit.Reporting.ListLabel(Me.components)
+        Me.globalLL = new combit.Reporting.ListLabel(Me.components)
         Me.groupBox2 = New System.Windows.Forms.GroupBox()
         Me.button4 = New System.Windows.Forms.Button()
         Me.button3 = New System.Windows.Forms.Button()
@@ -37,21 +37,21 @@ Partial Class Form1
         '
         'LL
         '
-        Me.LL.AutoPrinterSettingsStream = Nothing
-        Me.LL.AutoProjectStream = Nothing
-        Me.LL.CompressStorage = True
-        Me.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
-        Me.LL.DrilldownAvailable = True
-        Me.LL.EMFResolution = 100
-        Me.LL.FileRepository = Nothing
-        Me.LL.GenericMaximumRecordCount = -1
-        Me.LL.LockNextChar = 8288
-        Me.LL.MaxRTFVersion = 65280
-        Me.LL.PhantomSpace = 8203
-        Me.LL.PreviewControl = Nothing
-        Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
-        Me.LL.UseHardwareCopiesForLabels = False
-        Me.LL.UseTableSchemaForDesignMode = False
+        Me.globalLL.AutoPrinterSettingsStream = Nothing
+        Me.globalLL.AutoProjectStream = Nothing
+        Me.globalLL.CompressStorage = True
+        Me.globalLL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad
+        Me.globalLL.DrilldownAvailable = True
+        Me.globalLL.EMFResolution = 100
+        Me.globalLL.FileRepository = Nothing
+        Me.globalLL.GenericMaximumRecordCount = -1
+        Me.globalLL.LockNextChar = 8288
+        Me.globalLL.MaxRTFVersion = 65280
+        Me.globalLL.PhantomSpace = 8203
+        Me.globalLL.PreviewControl = Nothing
+        Me.globalLL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
+        Me.globalLL.UseHardwareCopiesForLabels = False
+        Me.globalLL.UseTableSchemaForDesignMode = False
         '
         'groupBox2
         '
@@ -162,7 +162,7 @@ Partial Class Form1
         Me.ResumeLayout(False)
 
     End Sub
-    Private WithEvents LL As combit.Reporting.ListLabel
+    Private WithEvents globalLL As combit.Reporting.ListLabel
     Private WithEvents groupBox2 As System.Windows.Forms.GroupBox
     Private WithEvents button4 As System.Windows.Forms.Button
     Private WithEvents button3 As System.Windows.Forms.Button

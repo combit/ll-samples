@@ -1988,10 +1988,9 @@ METHOD dsListLabel:_datalink(nMode, nSelect, cDesigner, aField, nRecno )
 	LOCAL cStr, cId
 	LOCAL xRet
 	LOCAL nLL
-	LOCAL i, iCnt
+	LOCAL i, iCnt, nPos
 	LOCAL lStruct   	:= false
 	LOCAL nSourceType	:= 0
-	LOCAL nPos
 
 	if IsObject(nSelect)
 		if nSelect:IsDerivedfrom("dataobject")
@@ -2006,7 +2005,13 @@ METHOD dsListLabel:_datalink(nMode, nSelect, cDesigner, aField, nRecno )
 	DEFAULT cDesigner to ""
 
 	if !IsArray( aField)
-		aField	:= if(IsObject(nSelect), nSelect:dbstruct(), (nSelect)->(dbstruct()))
+		if IsObject(nSelect)
+			if IsMethod(nSelect,"dbstruct")
+				aField	:= nSelect:dbstruct()
+			endif
+		elseif !empty(nSelect)
+			aField	:= (nSelect)->(dbstruct())
+		endif
 	endif
 
 	iCnt	:= len( aField)
@@ -2270,8 +2275,16 @@ METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,;
 					coalesce(aField, nSelect:classdescribe(CLASS_DESCR_MEMBERS)), cSymbol})
 			else
-				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,;
-					coalesce(aField, nSelect:dbstruct()), nSelect:alias()})
+				if empty(aField)
+					if IsMethod(nSelect,"dbstruct")
+						aField	:= nSelect:dbstruct()
+					endif
+				endif
+				if IsMemberVar(nSelect, "alias" )
+					aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,aField, nSelect:alias })
+				else
+					aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,aField, cSymbol})
+				endif
 			endif
 		else
 			aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,;
@@ -2291,8 +2304,17 @@ METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 					::_dbVariables[nPos,__ALIAS ]	:= cSymbol
 
 				else
-					::_dbVariables[nPos,__STRUCT]	:= coalesce(aField, nSelect:struct())
-					::_dbVariables[nPos,__ALIAS ]	:= nSelect:alias
+					if empty(aField)
+						if IsMethod(nSelect,"dbstruct")
+							aField	:= nSelect:dbstruct()
+						endif
+					endif
+					::_dbVariables[nPos,__STRUCT]	:= aField
+					if IsMemberVar(nSelect, "alias" )
+						::_dbVariables[nPos,__ALIAS ]	:= nSelect:alias
+					else
+						::_dbVariables[nPos,__ALIAS ]	:= ""
+					endif
 				endif
 			else
 				::_dbVariables[nPos,__STRUCT]	:= coalesce(aField, (nSelect)->(dbstruct()))
@@ -2364,17 +2386,21 @@ METHOD dsListLabel:DataSetField(nSelect, cSymbol, cDesigner ,aField, nRekursiv )
 					aField, -1, nRekursiv})
 			endif
 		elseif IsObject(nSelect)
+			if empty(aField)
+				if IsMethod(nSelect,"dbstruct")
+					aField	:= nSelect:dbstruct()
+				endif
+			endif
 			if IsMembervar(nSelect, "Alias")
-				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,;
-					coalesce(aField, nSelect:dbstruct()), nSelect:alias, nRekursiv})
+				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,aField, nSelect:alias, nRekursiv})
 			else
-				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,;
-					coalesce(aField, nSelect:dbstruct()), "", nRekursiv})
+				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,aField, cSymbol, nRekursiv})
 			endif
 		else
 			aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,;
 				coalesce(aField, (nSelect)->(dbstruct())), alias(nSelect), nRekursiv})
 		endif
+
 	elseif nPos > 0
 		::_dbFields[nPos,__SELECT]	:= nSelect
 		::_dbFields[nPos,__SYMBOL]	:= cSymbol
@@ -3526,7 +3552,7 @@ STATIC FUNC _GetExportName(cPath, cExt)		;RETURN cPath + "LLEXPORT"+dtos(date())
 //=========================================
 STATIC FUNC _SetExtension(cFile, cExt)
 	LOCAL nLen   := len( "."+ cExt )
-	if right(cFile, nLen ) != "."+ cExt
+	if right(upper(cFile), nLen ) != "."+ cExt
 		cFile   += "."+ cExt
 	endif
 RETURN cFile

@@ -1120,6 +1120,7 @@ Namespace LLViewer
 		End Sub
 
 		Private Sub Window_Closed(sender As Object, e As EventArgs)
+			enhancedPreviewControl.Dispose()
 			LL.Dispose()
 		End Sub
 	End Class

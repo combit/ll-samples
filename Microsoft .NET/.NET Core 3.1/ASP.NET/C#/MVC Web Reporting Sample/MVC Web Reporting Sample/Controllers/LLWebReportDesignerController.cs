@@ -30,7 +30,10 @@ namespace WebReporting.Controllers
 
         public override void OnProvideProhibitedActions(ProvideProhibitedActionsContext provideProhibitedActionsContext)
         {
-            base.OnProvideProhibitedActions(provideProhibitedActionsContext);
+            foreach (WebReportDesignerAction action in DefaultSettings.GetProhibitedActions())
+            {
+                provideProhibitedActionsContext.ProhibitedActions.Add(action);
+            }
         }
     }
 }

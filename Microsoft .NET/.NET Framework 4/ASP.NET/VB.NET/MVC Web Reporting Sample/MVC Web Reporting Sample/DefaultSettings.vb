@@ -1,6 +1,7 @@
 ﻿Imports combit.Reporting
 Imports combit.Reporting.DataProviders
 Imports combit.Reporting.Repository
+Imports combit.Reporting.Web.WebReportDesigner.Server
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
@@ -110,7 +111,7 @@ Namespace WebReporting
             Dim LL As ListLabel = New ListLabel With {
                 .DataSource = GetDataSourceForProject(repositoryID, False),
                 .Language = CmbtSettings.Language,
-				.Unit = CmbtSettings.Unit
+                .Unit = CmbtSettings.Unit
             }
 
             If CmbtSettings.Language = LlLanguage.German Then
@@ -122,6 +123,23 @@ Namespace WebReporting
             End If
 
             Return LL
+        End Function
+
+        Function GetProhibitedActions() As List(Of WebReportDesignerAction)
+
+            'US: You can modify the user prohibitions here by uncommenting actions which should be prohibited.
+            'D: Hier können Sie die Benutzerverbote ändern, indem Sie die zu sperrende Aktion einkommentieren.
+
+            Dim prohibited = New List(Of WebReportDesignerAction) From {}
+            ' prohibited.Add(WebReportDesignerAction.CreateNewProject)
+            ' prohibited.Add(WebReportDesignerAction.BrowseProjects)
+            ' prohibited.Add(WebReportDesignerAction.DeleteProject)
+            ' prohibited.Add(WebReportDesignerAction.ExportProject)
+            ' prohibited.Add(WebReportDesignerAction.SaveAsProject)
+            ' prohibited.Add(WebReportDesignerAction.SaveProject)
+            ' prohibited.Add(WebReportDesignerAction.UnlockProject)
+            ' prohibited.Add(WebReportDesignerAction.UploadProject)
+            Return prohibited
         End Function
     End Module
 End Namespace

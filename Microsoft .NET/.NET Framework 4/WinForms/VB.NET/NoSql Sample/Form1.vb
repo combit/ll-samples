@@ -83,7 +83,7 @@ Partial Public Class Form1
                     provider = New SharePointDataProvider(TextBoxAddress.Text, TextBoxUsername.Text, TextBoxPassword.Text, TextBoxDomain.Text)
                     Exit Select
                 Case "Google Spreadsheets (Public)"
-                    provider = New GoogleSpreadsheetsDataProvider(TextBoxTableID.Text, CheckBoxFirstRowAreColumnNames.Checked)
+                    provider = New GoogleSpreadsheetsDataProvider(TextBoxTableID.Text, CheckBoxFirstRowAreColumnNames.Checked, "")
                     Exit Select
                 Case "Google Spreadsheets (Private)"
                     provider = New GoogleSpreadsheetsDataProvider(TextBoxTableID.Text, CheckBoxFirstRowAreColumnNames.Checked, TextBoxRefreshToken.Text, TextBoxClientID.Text, TextBoxClientSecret.Text)

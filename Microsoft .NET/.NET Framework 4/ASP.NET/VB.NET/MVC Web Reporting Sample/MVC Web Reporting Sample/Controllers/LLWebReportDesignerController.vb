@@ -19,7 +19,9 @@ Namespace WebReporting.Controllers
         End Sub
 
         Public Overrides Sub OnProvideProhibitedActions(ByVal provideProhibitedActionsContext As ProvideProhibitedActionsContext)
-            MyBase.OnProvideProhibitedActions(provideProhibitedActionsContext)
+            For Each action In DefaultSettings.GetProhibitedActions()
+                provideProhibitedActionsContext.ProhibitedActions.Add(action)
+            Next
         End Sub
     End Class
 End Namespace

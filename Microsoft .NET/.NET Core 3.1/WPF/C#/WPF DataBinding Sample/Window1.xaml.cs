@@ -1305,6 +1305,7 @@ namespace LLViewer
 
         private void Window_Closed(object sender, EventArgs e)
         {
+			enhancedPreviewControl.Dispose();
             LL.Dispose();
         }
     }

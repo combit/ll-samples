@@ -1,10 +1,9 @@
 ﻿using combit.Reporting;
 using combit.Reporting.DataProviders;
 using combit.Reporting.Repository;
+using combit.Reporting.Web.WebReportDesigner.Server;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace WebReporting
 {
@@ -122,6 +121,23 @@ namespace WebReporting
                 LL.Variables.Add("ItemList.ItemNo.To", string.Empty);
             }
             return LL;
+        }
+
+        public static WebReportDesignerAction[] GetProhibitedActions()
+        {
+            //US: You can modify the user prohibitions here by uncommenting actions which should be prohibited.
+            //D: Hier können Sie die Benutzerverbote ändern, indem Sie die zu sperrende Aktion einkommentieren.
+            return new WebReportDesignerAction[]
+            {
+                //WebReportDesignerAction.CreateNewProject,
+                //WebReportDesignerAction.BrowseProjects,
+                //WebReportDesignerAction.DeleteProject,
+                //WebReportDesignerAction.ExportProject,
+                //WebReportDesignerAction.SaveAsProject,
+                //WebReportDesignerAction.SaveProject,
+                //WebReportDesignerAction.UnlockProject,
+                //WebReportDesignerAction.UploadProject,
+            };
         }
     }
 }

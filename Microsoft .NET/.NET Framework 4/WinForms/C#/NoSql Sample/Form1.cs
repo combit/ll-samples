@@ -118,7 +118,8 @@ namespace DataProvidersWithoutSolidStructure
 					break;
 				case "Google Spreadsheets (Public)":
 					provider = new GoogleSpreadsheetsDataProvider(	textBoxTableID.Text,
-																	checkBoxFirstRowAreColumnNames.Checked);
+																	checkBoxFirstRowAreColumnNames.Checked,
+																	"");
 					break;
 				case "Google Spreadsheets (Private)":
 					provider = new GoogleSpreadsheetsDataProvider(	textBoxTableID.Text,

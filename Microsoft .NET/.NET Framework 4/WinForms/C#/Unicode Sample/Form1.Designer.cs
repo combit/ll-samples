@@ -30,7 +30,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.LL = new combit.Reporting.ListLabel(this.components);
+            this.globalLL = new combit.Reporting.ListLabel(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -73,23 +73,24 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "D:";
             // 
-            // LL
+            // globalLL
             // 
-            this.LL.AutoPrinterSettingsStream = null;
-            this.LL.AutoProjectStream = null;
-            this.LL.CompressStorage = true;
-            this.LL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
-            this.LL.DrilldownAvailable = true;
-            this.LL.EMFResolution = 100;
-            this.LL.FileRepository = null;
-            this.LL.GenericMaximumRecordCount = -1;
-            this.LL.LockNextChar = 8288;
-            this.LL.MaxRTFVersion = 65280;
-            this.LL.PhantomSpace = 8203;
-            this.LL.PreviewControl = null;
-            this.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
-            this.LL.UseHardwareCopiesForLabels = false;
-            this.LL.UseTableSchemaForDesignMode = false;
+            this.globalLL.AutoPrinterSettingsStream = null;
+            this.globalLL.AutoProjectStream = null;
+            this.globalLL.CompressStorage = true;
+            this.globalLL.DataBindingMode = combit.Reporting.DataBindingMode.DelayLoad;
+            this.globalLL.DrilldownAvailable = true;
+            this.globalLL.EMFResolution = 100;
+            this.globalLL.FileRepository = null;
+            this.globalLL.GenericMaximumRecordCount = -1;
+            this.globalLL.LockNextChar = 8288;
+            this.globalLL.MaxRTFVersion = 65280;
+            this.globalLL.PhantomSpace = 8203;
+            this.globalLL.PreviewControl = null;
+            this.globalLL.Printerless = false;
+            this.globalLL.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
+            this.globalLL.UseHardwareCopiesForLabels = false;
+            this.globalLL.UseTableSchemaForDesignMode = false;
             // 
             // groupBox1
             // 
@@ -109,7 +110,7 @@
             this.button2.Size = new System.Drawing.Size(136, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Print/Preview/Export...";
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button1
             // 
@@ -118,7 +119,7 @@
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Design...";
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // groupBox2
             // 
@@ -138,7 +139,7 @@
             this.button4.Size = new System.Drawing.Size(136, 23);
             this.button4.TabIndex = 1;
             this.button4.Text = "Print/Preview/Export...";
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // button3
             // 
@@ -147,7 +148,7 @@
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 0;
             this.button3.Text = "Design...";
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // Form1
             // 
@@ -176,7 +177,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private combit.Reporting.ListLabel LL;
+        private combit.Reporting.ListLabel globalLL;
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;

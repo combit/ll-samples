@@ -5,7 +5,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
     <OldToolsVersion>3.5</OldToolsVersion>

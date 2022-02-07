@@ -83,10 +83,7 @@ namespace AdhocDesignerSample
 
             Program.RepositoryDatabaseFile = Server.MapPath("~/App_Data/repository.db");
             Program.TempDirectory = Server.MapPath("~/App_Data/TempFiles");
-            Program.GanttDatabaseXmlFile = Server.MapPath("~/App_Data/gantt.xml");
             Program.NorthwindFullDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_full.xml");
-            Program.NorthwindSmallDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_small.xml");
-            Program.NorthwindSmallDatabaseWithEmployeeListXmlFile = Server.MapPath("~/App_Data/northwind_small_WithEmployeeList.xml");
 
             app.UseStaticFiles();
             app.UseRouting();
