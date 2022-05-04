@@ -15,7 +15,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, L27, L27dom, Menus, DB, ADODB, Registry, L27db
-  {$IFDEF ver280} // XE7
+  {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   {$ENDIF}
   ;

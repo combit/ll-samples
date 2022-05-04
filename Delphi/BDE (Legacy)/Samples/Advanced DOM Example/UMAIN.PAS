@@ -16,8 +16,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Registry,
   Dialogs, L27, L27db, cmbtll27, L27dom, DB, ADODB, ExtCtrls, StdCtrls, ComCtrls, ActnList,
   System.Actions
-  {$IFDEF ver280} // XE7
-  , System.UITypes, System.Actions
+  {$If CompilerVersion >=28} // >=XE7
+  , System.UITypes
   {$ENDIF}
   ;
 

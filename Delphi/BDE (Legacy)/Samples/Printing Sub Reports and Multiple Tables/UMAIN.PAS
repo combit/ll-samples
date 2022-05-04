@@ -16,7 +16,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ADODB, DB, L27, cmbtll27, StdCtrls, Buttons, Menus, uObject, uDataModule,
   Grids, DBGrids, Registry
-  {$IFDEF ver280} // XE7
+  {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   , Generics.Collections
   {$ENDIF}
@@ -134,8 +134,8 @@ var i: integer;
   var MasterFieldList: TList<TField>;
   var DetailFieldList: TList<TField>;
 {$ELSE}
-  var MasterFieldList: TList;
-  var DetailFieldList: TList;
+  var MasterFieldList: TList<TField>;
+  var DetailFieldList: TList<TField>;
 {$ENDIF}
 var registry: TRegistry;
 var tmp: String;
@@ -181,8 +181,8 @@ begin
     MasterFieldList := TList<TField>.Create;
     DetailFieldList := TList<TField>.Create;
   {$ELSE}
-    MasterFieldList := TList.Create;
-    DetailFieldList := TList.Create;
+    MasterFieldList := TList<TField>.Create;
+    DetailFieldList := TList<TField>.Create;
   {$ENDIF}
 
   IsPrinting := False;
@@ -345,7 +345,7 @@ var
  {$IFDEF VER280} // XE7
  	FList: TList<TDataSet>;
  {$ELSE}
- 	FList: TList;
+ 	FList: TList<TDataSet>;
  {$ENDIF}
 begin
      {D:  Initialisierung    }
@@ -374,7 +374,7 @@ begin
         {$IFDEF VER280} // XE7
         	FList := TList<TDataSet>.Create;
         {$ELSE}
-        	FList := TList.Create;
+        	FList := TList<TDataSet>.Create;
         {$ENDIF}
         for i := 0 to (ADOConnection1.DataSetCount-1) do
         begin

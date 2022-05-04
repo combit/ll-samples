@@ -60,7 +60,7 @@ begin
      begin
           Buffer:=TMemoryStream.create;
           Buffer.LoadFromFile(OpenDialog1.FileName);
-          RTF.Text:=PAnsiChar(Buffer.Memory);
+          RTF.Text:=String(PAnsiChar(Buffer.Memory));
           PrintButton.enabled:=true;
           PreviewButton.enabled:=true;
           DesignButton.enabled:=true;

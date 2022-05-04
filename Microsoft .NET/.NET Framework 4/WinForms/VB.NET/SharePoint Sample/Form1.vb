@@ -100,7 +100,7 @@ Partial Public Class Form1
                 'D: Erstelle Export Konfiguration
                 'US: create export configuration
                 Dim exportTarget As LlExportTarget = GetExportTargetFromIndex()
-                Dim exportConfiguration As New ExportConfiguration(exportTarget, exportStream, "..\..\..\simple.lst")
+                Dim exportConfiguration As New ExportConfiguration(exportTarget, exportStream, "..\..\..\..\..\..\Report Files\simple.lst")
                 exportConfiguration.Path = txtFileName.Text + GetExtension(exportTarget)
 
                 'D: Setze SharePoint Verbindungsoptionen

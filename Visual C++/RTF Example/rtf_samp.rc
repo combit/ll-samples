@@ -16,8 +16,10 @@
 // German (Germany) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 #pragma code_page(1252)
+#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -65,13 +67,12 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\rtf_samp.ico"
 
-
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     IDS_ERROR               "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1031{\\fonttbl{\\f0\\fswiss\\fprq2\\fcharset0 Tahoma;}}\n{\\colortbl ;\\red255\\green0\\blue0;}\n{\\*\\generator Msftedit 5.41.15.1507;}\\viewkind4\\uc1\\pard\\cf1\\f0\\fs20 Error: Cannot find file ""Sample.rtf""\\par\n}\n "
 END
@@ -84,8 +85,10 @@ END
 // Neutral (Sys. Default) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEUSD)
+#ifdef _WIN32
 LANGUAGE LANG_NEUTRAL, SUBLANG_SYS_DEFAULT
 #pragma code_page(1252)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -102,7 +105,7 @@ BEGIN
     PUSHBUTTON      "Design ...",IDC_BTN_DESIGN,7,216,49,15
     PUSHBUTTON      "Preview ...",IDC_BTN_PRNTOPREVIEW,61,216,49,15
     PUSHBUTTON      "Printer ...",IDC_BTN_PRNTOPRINTER,114,216,49,15
-    CONTROL         "",IDC_LLRTFCTRL1,"{C78B7BCD-03B4-412F-A25E-62DA8A4D2E11}",WS_TABSTOP,7,7,396,194
+    CONTROL         "",IDC_LLRTFCTRL1,"{C78B7BCD-03B4-412F-A25E-62DA8A4D2E12}",WS_TABSTOP,7,7,396,194
     CONTROL         "",IDC_LISTLABEL1,"{2213E280-16BC-101D-AFD4-040224009C1B}",WS_TABSTOP,193,211,24,20
 END
 
@@ -113,7 +116,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
+GUIDELINES DESIGNINFO 
 BEGIN
     IDD_RTF_SAMP_DIALOG, DIALOG
     BEGIN
@@ -142,7 +145,7 @@ BEGIN
 0x0064, 0x0020, 0x0043, 0x006f, 0x006e, 0x0074, 0x0072, 0x006f, 0x006c, 
 0x0020, 0x0043, 0x006f, 0x0070, 0x0079, 0x0072, 0x0069, 0x0067, 0x0068, 
 0x0074, 0x0020, 0x0063, 0x006f, 0x006d, 0x0062, 0x0069, 0x0074, 0x0020, 
-0x0032, 0x0030, 0x0032, 0x0030, 0x0001, 0x0001, 0x03b9, 0x0000, 0x0369, 
+0x0032, 0x0030, 0x0032, 0x0031, 0x0001, 0x0001, 0x03b9, 0x0000, 0x0369, 
 0x0000, 0x0040, 0x0000, 0xff01, 0xffff, 0x0eff, 0x0000, 0x0000, 0x0000, 
 0x0000, 0x0000, 0x0000, 0x0000, 0x0100, 0x0000, 0x0000, 0x0000, 0x0000, 
 0x0000, 0x0100, 0x0101, 0x0001, 0x0101, 0x6d01, 0x0001, 0x0000, 0x0000, 
@@ -159,9 +162,9 @@ END
 // AFX_DIALOG_LAYOUT
 //
 
-IDD_RTF_SAMP_DIALOG AFX_DIALOG_LAYOUT
+IDD_RTF_SAMP_DIALOG AFX_DIALOG_LAYOUT 
 BEGIN
-    0
+    0x0000
 END
 
 #endif    // Neutral (Sys. Default) resources

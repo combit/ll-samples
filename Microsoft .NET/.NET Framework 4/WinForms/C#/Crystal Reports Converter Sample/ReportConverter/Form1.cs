@@ -50,8 +50,8 @@ namespace WindowsFormsApplication1
             if (!sampleDir.EndsWith("\\"))
                 sampleDir += "\\";
 
-            SourceFileName = sampleDir + @"Microsoft .NET\C# Crystal Reports Converter\ReportConverter\CrystalReports.rpt";
-            TargetFileName = sampleDir + @"Microsoft .NET\C# Crystal Reports Converter\ReportConverter\ReportConvert.lst";
+            SourceFileName = sampleDir + @"Microsoft .NET\.NET Framework 4\WinForms\C#\Crystal Reports Converter Sample\ReportConverter\CrystalReports.rpt";
+            TargetFileName = sampleDir + @"Microsoft .NET\.NET Framework 4\WinForms\C#\Crystal Reports Converter Sample\ReportConverter\ReportConvert.lst";
 
             // D: Setze Cursor an die letzte Position
             // US: Set cursor to the last position

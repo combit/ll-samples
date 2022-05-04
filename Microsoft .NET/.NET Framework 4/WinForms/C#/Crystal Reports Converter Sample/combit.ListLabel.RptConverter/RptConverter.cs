@@ -669,8 +669,11 @@ namespace combit.Reporting.Converters
                     break;
                 }
             }
-            drawingField.Height = StaticHelper.ConvertUnit(obj.Height).ToUnit();
+            //If the content does not match, the image object becomes a text object internally 
+            //and this leads to an exception because the property does not exist.
+            //drawingField.Height = StaticHelper.ConvertUnit(obj.Height).ToUnit();
             CurrentXCoordinate += StaticHelper.ConvertUnit(obj.Width);
+            
         }
 
         #endregion

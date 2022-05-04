@@ -20,8 +20,8 @@
  CreatedByCallFrom=MSACCESS.EXE
 [Layout]
  P1.Template=
- xGrid=900
- yGrid=900
+ xGrid=800
+ yGrid=800
  GridShow=FALSE
  GridSnap=FALSE
  EnhancedExpressions=TRUE
@@ -39,7 +39,7 @@
  
 [SumVariables]
 [Layer]
- Name=ase
+ Name=Base
  Condition=
  WorkspaceColor=(102,102,102)
  Visible=TRUE
@@ -78,8 +78,8 @@
  WrapBefore=False
  bPageWrap=False
  ExportAsPicture=False
- Position/Left=4100
- Position/Top=2800
+ Position/Left=4200
+ Position/Top=2300
  Position/Width=91200
  Position/Height=5300
  Direction=0
@@ -158,9 +158,9 @@
  WrapBefore=False
  ExportAsPicture=False
  Position/Left=97600
- Position/Top=2900
+ Position/Top=2800
  Position/Width=0
- Position/Height=34200
+ Position/Height=34100
  Direction=0
  Frame/Layout=0
  Frame/Left/Spacing=0
@@ -237,9 +237,9 @@
  bPageWrap=False
  ExportAsPicture=False
  Position/Left=70000
- Position/Top=32800
- Position/Width=21800
- Position/Height=4100
+ Position/Top=32700
+ Position/Width=21700
+ Position/Height=4000
  Direction=0
  bFill=0
  Frame/Layout=0
@@ -332,7 +332,7 @@
  WrapBefore=False
  bPageWrap=False
  ExportAsPicture=False
- Position/Left=4300
+ Position/Left=4200
  Position/Top=9900
  Position/Width=90500
  Position/Height=21000
@@ -447,10 +447,10 @@
  WrapBefore=False
  bPageWrap=False
  ExportAsPicture=False
- Position/Left=4100
+ Position/Left=4000
  Position/Top=37000
- Position/Width=45400
- Position/Height=2700
+ Position/Width=45300
+ Position/Height=2600
  Direction=0
  bFill=0
  Frame/Layout=0
@@ -640,6 +640,7 @@
    }
   [UIDescriptions]
    {
+   0=ACCESS.LBL
    }
   [Subreports]
    {

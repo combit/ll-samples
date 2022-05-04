@@ -4,7 +4,7 @@ interface
 
 uses
   SysUtils, Windows, Classes, DB, ADODB, Dialogs, ComObj, Registry
-  {$IFDEF ver280} // XE7
+  {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   {$ENDIF}
   ;

@@ -20,7 +20,7 @@ uses
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MSAcc, FireDAC.Phys.MSAccDef,
   FireDAC.VCLUI.Wait, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, ListLabel27, StrUtils
-  {$IFDEF ver280} // XE7
+  {$if CompilerVersion >= 28} // XE7
   , System.UITypes
   {$ENDIF}
   ;

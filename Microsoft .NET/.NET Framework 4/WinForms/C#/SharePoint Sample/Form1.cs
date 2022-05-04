@@ -118,7 +118,7 @@ namespace SharePointSample
                     //D: Erstelle Export Konfiguration
                     //US: create export configuration
                     LlExportTarget exportTarget = GetExportTargetFromIndex();
-                    ExportConfiguration exportConfiguration = new ExportConfiguration(exportTarget, exportStream, @"..\..\..\simple.lst");
+                    ExportConfiguration exportConfiguration = new ExportConfiguration(exportTarget, exportStream, @"..\..\..\..\..\..\Report Files\simple.lst");
                     exportConfiguration.Path = txtFileName.Text + GetExtension(exportTarget);
 
                     //D: Setze SharePoint Verbindungsoptionen
