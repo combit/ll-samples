@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2021-09-28T12:10:52</VDFLibraryTimeStamp>
+	<VDFLibraryTimeStamp>2022-07-27T14:41:59</VDFLibraryTimeStamp>
 	<libraries>
 		<library>
-			<libraryPath>..\LLLibrary27.0\LL27-VDF20.1.sws</libraryPath>
+			<libraryPath>..\LLLibrary28.0\LL28-VDF20.1.sws</libraryPath>
 			<libraryTimeStamp>2018-10-01T20:28:33</libraryTimeStamp>
 			<libraryID>Lib1</libraryID>
 		</library>
@@ -1036,6 +1036,34 @@
 			<image>ControlOpenDialog.ico</image>
 			<package>cSelectFolderDialog.pkg</package>
 			<groupName>Dialogs</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebContextMenu</className>
+			<image>cWebContextMenu.ico</image>
+			<package>cWebContextMenu.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebDragDropHelper</className>
+			<image>cWebDragDropHelper.ico</image>
+			<package>cWebDragDropHelper.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebDragDropFileHelper</className>
+			<image>cWebDragDropFileHelper.ico</image>
+			<package>cWebDragDropFileHelper.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebMenuItemCheckbox</className>
+			<image>cWebMenuItemCheckbox.ico</image>
+			<package>cWebMenuItemCheckbox.pkg</package>
+			<groupName>Web Controls</groupName>
 			<libraryID>0</libraryID>
 		</class>
 		<class>

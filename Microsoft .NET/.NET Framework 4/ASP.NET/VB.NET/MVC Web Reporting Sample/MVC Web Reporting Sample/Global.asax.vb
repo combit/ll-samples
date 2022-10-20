@@ -37,7 +37,7 @@ Namespace WebReporting
 
             ' D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
             ' US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL27WebDesignerSetup.exe")
+            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL28WebDesignerSetup.exe")
 
             ' D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
             '      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.

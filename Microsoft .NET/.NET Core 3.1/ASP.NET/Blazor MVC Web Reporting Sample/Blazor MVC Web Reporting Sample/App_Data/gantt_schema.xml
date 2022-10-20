@@ -1,0 +1,114 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Pollen">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="PollenDescriptionEN" type="xs:string" minOccurs="0" />
+              <xs:element name="PollenDescriptionDE" type="xs:string" minOccurs="0" />
+              <xs:element name="PeriodBegin" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PeriodEnd" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PeriodType" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Project">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="DescriptionEN" type="xs:string" minOccurs="0" />
+              <xs:element name="DescriptionDE" type="xs:string" minOccurs="0" />
+              <xs:element name="BeginDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PercentageComplete" type="xs:int" minOccurs="0" />
+              <xs:element name="BarText" type="xs:string" minOccurs="0" />
+              <xs:element name="ParentID" type="xs:int" minOccurs="0" />
+              <xs:element name="Duration" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ClimateData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ISO_CODES" type="xs:string" minOccurs="0" />
+              <xs:element name="Tmean" type="xs:double" minOccurs="0" />
+              <xs:element name="WB_NAMES" type="xs:string" minOccurs="0" />
+              <xs:element name="Tmax" type="xs:double" minOccurs="0" />
+              <xs:element name="Tmin" type="xs:double" minOccurs="0" />
+              <xs:element name="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Precip" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Venue">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SeatID" type="xs:int" minOccurs="0" />
+              <xs:element name="RowNo" type="xs:int" minOccurs="0" />
+              <xs:element name="SeatNo" type="xs:int" minOccurs="0" />
+              <xs:element name="TicketPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="Booked" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SalesStages">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StageID" type="xs:int" minOccurs="0" />
+              <xs:element name="DescriptionDE" type="xs:string" minOccurs="0" />
+              <xs:element name="DescriptionEN" type="xs:string" minOccurs="0" />
+              <xs:element name="Number" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Sales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="APAC" type="xs:double" minOccurs="0" />
+              <xs:element name="EMEA" type="xs:double" minOccurs="0" />
+              <xs:element name="NAFTA" type="xs:double" minOccurs="0" />
+              <xs:element name="Year" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Budget">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Amount" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BusinessActivityTime">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Activity" type="xs:string" minOccurs="0" />
+              <xs:element name="Time" type="xs:int" minOccurs="0" />
+              <xs:element name="Visit" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Keyword">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Keyword" type="xs:string" minOccurs="0" />
+              <xs:element name="AmountOfUsage" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint2">
+      <xs:selector xpath=".//Project" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:keyref name="Project2Project" refer="Constraint2">
+      <xs:selector xpath=".//Project" />
+      <xs:field xpath="ParentID" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

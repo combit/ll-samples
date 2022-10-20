@@ -11,7 +11,7 @@ import javax.swing.*;
  * <p>Copyright: Copyright (C) combit GmbH</p>
  * <p>Company: combit GmbH</p>
  * @author combit GmbH
- * @version 27.0
+ * @version 28.0
  */
 
 
@@ -33,7 +33,7 @@ public class prtloopApplication extends JFrame
 private
 	
   //Create List & Label object
-  CmbtLL27 Ll = null;
+  CmbtLL28 Ll = null;
   int nLLJob_ = -1;
   long hWnd_ = 0;
   boolean isLlInitialized = false;
@@ -44,7 +44,7 @@ private
   //Objects for datasource
   String databaseFile; // holds filename for MS Access database-file. Will be set in 'getConnectionString()'
   String connectionString; // holds the whole connection string for 'DriverManager.getConnection()'. Will be set in 'getConnectionString()'
-  final String connectionStringPräfix = "jdbc:ucanaccess://";
+  final String connectionStringPrefix = "jdbc:ucanaccess://";
   boolean isDataConnectionInitialized = false;
 
   Connection connection = null;
@@ -72,7 +72,7 @@ public // data access...
     if(databaseFile.length() <= 0)
       connectionString = "";
     else
-      connectionString = connectionStringPräfix + databaseFile;
+      connectionString = connectionStringPrefix + databaseFile;
 
     return connectionString;
   }
@@ -176,7 +176,7 @@ public // combit List & Label...
     boolean returnValue = true;
     
     //Create List & Label object
-    Ll = new CmbtLL27();
+    Ll = new CmbtLL28();
     
     //Try to get the window handle for List & Label dialogs
     if(hWnd_ == 0)
@@ -184,20 +184,20 @@ public // combit List & Label...
     
     //Set combit List & Label debug mode; pending on CheckBox state
     if (jCheckBoxDebug.isSelected())
-      Ll.LlSetDebug(CmbtLL27.LL_DEBUG_CMBTLL);
+      Ll.LlSetDebug(CmbtLL28.LL_DEBUG_CMBTLL);
     else
       Ll.LlSetDebug(0);
     
     //Open combit List & Label job
     if (nLLJob_ <= 0)
     {
-      nLLJob_ = Ll.LlJobOpen(CmbtLL27.CMBTLANG_DEFAULT);
-      if (nLLJob_ == CmbtLL27.LL_ERR_BAD_JOBHANDLE)
+      nLLJob_ = Ll.LlJobOpen(CmbtLL28.CMBTLANG_DEFAULT);
+      if (nLLJob_ == CmbtLL28.LL_ERR_BAD_JOBHANDLE)
       {
         JOptionPane.showMessageDialog(this, "Job can't be initialized!", "List & Label Sample App", JOptionPane.ERROR_MESSAGE);
         returnValue = false;
       }
-      else if (nLLJob_ == CmbtLL27.LL_ERR_NO_LANG_DLL)
+      else if (nLLJob_ == CmbtLL28.LL_ERR_NO_LANG_DLL)
       {
         JOptionPane.showMessageDialog(this, "Language file not found!\nEnsure that *.lng files can be found in your combit List & Label DLL directory.", "List & Label Sample App", JOptionPane.ERROR_MESSAGE);
         returnValue = false;
@@ -205,13 +205,13 @@ public // combit List & Label...
 
       // register LL-callbacks
       MyLLCallback callback = new MyLLCallback();
-      Ll.LlSetOption(nLLJob_, CmbtLL27.LL_OPTION_CALLBACKPARAMETER, nLLJob_);
+      Ll.LlSetOption(nLLJob_, CmbtLL28.LL_OPTION_CALLBACKPARAMETER, nLLJob_);
       Ll.LlSetNotificationCallback(nLLJob_, callback);
       
       //Activate real data preview and export for designer
-      Ll.LlSetOption(nLLJob_, CmbtLL27.LL_OPTION_DESIGNERPREVIEWPARAMETER, 1);
-      Ll.LlSetOption(nLLJob_, CmbtLL27.LL_OPTION_DESIGNEREXPORTPARAMETER, 1);
-      Ll.LlSetOption(nLLJob_, CmbtLL27.LL_OPTION_DESIGNERPRINT_SINGLETHREADED, 1);
+      Ll.LlSetOption(nLLJob_, CmbtLL28.LL_OPTION_DESIGNERPREVIEWPARAMETER, 1);
+      Ll.LlSetOption(nLLJob_, CmbtLL28.LL_OPTION_DESIGNEREXPORTPARAMETER, 1);
+      Ll.LlSetOption(nLLJob_, CmbtLL28.LL_OPTION_DESIGNERPRINT_SINGLETHREADED, 1);
     }
     else
       returnValue = false;
@@ -225,7 +225,7 @@ public // combit List & Label...
    {
 		switch (value.callbackID_)
 		{
-		case CmbtLL27.LL_CMND_VARHELPTEXT: 
+		case CmbtLL28.LL_CMND_VARHELPTEXT: 
 		{
 			VarHelpTextCallback varHelpText = (VarHelpTextCallback) value;
 			if (varHelpText.getDescription().equals("<My Var/Field to change its description>"))
@@ -233,13 +233,13 @@ public // combit List & Label...
 		}
 		break;
 		
-		case CmbtLL27.LL_NTFY_DESIGNERPRINTJOB:
+		case CmbtLL28.LL_NTFY_DESIGNERPRINTJOB:
 		{
 			NtfyDesignerPrintJobCallback ntfyDesignCallBack = (NtfyDesignerPrintJobCallback)value;
 			switch (ntfyDesignCallBack.function_)
 			{
-				case CmbtLL27.LL_DESIGNERPRINTCALLBACK_PREVIEW_START:
-				case CmbtLL27.LL_DESIGNERPRINTCALLBACK_EXPORT_START:
+				case CmbtLL28.LL_DESIGNERPRINTCALLBACK_PREVIEW_START:
+				case CmbtLL28.LL_DESIGNERPRINTCALLBACK_EXPORT_START:
 				{
 					if (m_previewPrintThread != null)
 					{
@@ -247,14 +247,14 @@ public // combit List & Label...
 						m_previewPrintThread = null;
 					}
 
-					m_previewPrintThread = new PreviewThread(ntfyDesignCallBack, ntfyDesignCallBack.function_ == CmbtLL27.LL_DESIGNERPRINTCALLBACK_PREVIEW_START);
+					m_previewPrintThread = new PreviewThread(ntfyDesignCallBack, ntfyDesignCallBack.function_ == CmbtLL28.LL_DESIGNERPRINTCALLBACK_PREVIEW_START);
 					m_previewPrintThread.start();
 					ntfyDesignCallBack.setCallbackResult(0);
 				}
 				break;
 				
-				case CmbtLL27.LL_DESIGNERPRINTCALLBACK_PREVIEW_ABORT:
-				case CmbtLL27.LL_DESIGNERPRINTCALLBACK_EXPORT_ABORT:
+				case CmbtLL28.LL_DESIGNERPRINTCALLBACK_PREVIEW_ABORT:
+				case CmbtLL28.LL_DESIGNERPRINTCALLBACK_EXPORT_ABORT:
 				{
 				  if (m_previewPrintThread != null)
 				  {
@@ -264,8 +264,8 @@ public // combit List & Label...
 				}
 				break;
 	
-				case CmbtLL27.LL_DESIGNERPRINTCALLBACK_PREVIEW_FINALIZE:
-				case CmbtLL27.LL_DESIGNERPRINTCALLBACK_EXPORT_FINALIZE:
+				case CmbtLL28.LL_DESIGNERPRINTCALLBACK_PREVIEW_FINALIZE:
+				case CmbtLL28.LL_DESIGNERPRINTCALLBACK_EXPORT_FINALIZE:
 				{
 					if (m_previewPrintThread != null)
 					{
@@ -275,8 +275,8 @@ public // combit List & Label...
 				}
 				break;
 	
-				case CmbtLL27.LL_DESIGNERPRINTCALLBACK_PREVIEW_QUEST_JOBSTATE:
-				case CmbtLL27.LL_DESIGNERPRINTCALLBACK_EXPORT_QUEST_JOBSTATE:
+				case CmbtLL28.LL_DESIGNERPRINTCALLBACK_PREVIEW_QUEST_JOBSTATE:
+				case CmbtLL28.LL_DESIGNERPRINTCALLBACK_EXPORT_QUEST_JOBSTATE:
 				{
 					EPrintThreadState state = EPrintThreadState.STOPPED;
 					if (m_previewPrintThread != null)
@@ -287,7 +287,7 @@ public // combit List & Label...
 				}
 				break;
 	
-				case CmbtLL27.LL_DESIGNERPRINTTHREAD_STATE_STOPPED:
+				case CmbtLL28.LL_DESIGNERPRINTTHREAD_STATE_STOPPED:
 				{
 				}
 				break;
@@ -368,7 +368,7 @@ public // combit List & Label...
             colValue = "(NULL)";
 
           colName = tableName + "." + colName;
-          Ll.LlDefineFieldExt(jobId, colName, colValue, CmbtLL27.LL_TEXT, 0);
+          Ll.LlDefineFieldExt(jobId, colName, colValue, CmbtLL28.LL_TEXT, 0);
         }
 
         // table: Orders
@@ -382,7 +382,7 @@ public // combit List & Label...
             colValue = "(NULL)";
 
           colName = tableName + "." + colName;
-          Ll.LlDefineFieldExt(jobId, colName, colValue, CmbtLL27.LL_TEXT, 0);
+          Ll.LlDefineFieldExt(jobId, colName, colValue, CmbtLL28.LL_TEXT, 0);
         }
       }
       else
@@ -403,7 +403,7 @@ public // combit List & Label...
               colValue = "(NULL)";
 
             colName = tableName + "." + colName;
-            Ll.LlDefineFieldExt(jobId, colName, colValue, CmbtLL27.LL_TEXT, 0);
+            Ll.LlDefineFieldExt(jobId, colName, colValue, CmbtLL28.LL_TEXT, 0);
           }
         }
         else
@@ -420,7 +420,7 @@ public // combit List & Label...
                 colValue = "(NULL)";
 
               colName = tableName + "." + colName;
-              Ll.LlDefineFieldExt(jobId, colName, colValue, CmbtLL27.LL_TEXT, 0);
+              Ll.LlDefineFieldExt(jobId, colName, colValue, CmbtLL28.LL_TEXT, 0);
             }
           }
         }
@@ -573,11 +573,11 @@ public
     
     //Select project-file via file select dialog
     StringBuffer bufferFilename = new StringBuffer("*.lst");
-    if (Ll.LlSelectFileDlgTitleEx(nLLJob_, hWnd_, "", CmbtLL27.LL_PROJECT_LIST | CmbtLL27.LL_FILE_ALSONEW, bufferFilename, 0) < 0)
+    if (Ll.LlSelectFileDlgTitleEx(nLLJob_, hWnd_, "", CmbtLL28.LL_PROJECT_LIST | CmbtLL28.LL_FILE_ALSONEW, bufferFilename, 0) < 0)
       return; // user aborted this action
     
     //Call the desinger
-    if (Ll.LlDefineLayout(nLLJob_, hWnd_, "Designer", CmbtLL27.LL_PROJECT_LIST, bufferFilename.toString()) < 0)
+    if (Ll.LlDefineLayout(nLLJob_, hWnd_, "Designer", CmbtLL28.LL_PROJECT_LIST, bufferFilename.toString()) < 0)
       JOptionPane.showMessageDialog(null, "Error by calling LlDefineLayout.", "List & Label Sample App", JOptionPane.ERROR_MESSAGE);
   }
 
@@ -610,16 +610,16 @@ public
 	  if(jobId <= 0)
 	  {
 		  JOptionPane.showMessageDialog(this, "Job can't be initialized!", "List & Label Sample App", JOptionPane.ERROR_MESSAGE);
-		  return CmbtLL27.LL_ERR_USER_ABORTED;
+		  return CmbtLL28.LL_ERR_USER_ABORTED;
 	  }
 	  
 	  if(projectToPrint.isEmpty())
 	  {
 		//Select project-file via file select dialog
 	    StringBuffer bufferFilename = new StringBuffer("*.lst");
-	    if(Ll.LlSelectFileDlgTitleEx(jobId, hWnd, "", CmbtLL27.LL_PROJECT_LIST | CmbtLL27.LL_FILE_ALSONEW, bufferFilename, 0) < 0)
+	    if(Ll.LlSelectFileDlgTitleEx(jobId, hWnd, "", CmbtLL28.LL_PROJECT_LIST | CmbtLL28.LL_FILE_ALSONEW, bufferFilename, 0) < 0)
 	    {
-	    	return CmbtLL27.LL_ERR_USER_ABORTED;
+	    	return CmbtLL28.LL_ERR_USER_ABORTED;
 	    }
 	    else
 	    {
@@ -632,7 +632,7 @@ public
 	defineData(jobId, true /*dummyData; LL-Designmode ?*/, null);
 	
 	//Start printing
-	if (Ll.LlPrintWithBoxStart(jobId, CmbtLL27.LL_PROJECT_LIST, projectToPrint, CmbtLL27.LL_PRINT_EXPORT, CmbtLL27.LL_BOXTYPE_NORMALMETER, hWnd, "Printing...") < 0)
+	if (Ll.LlPrintWithBoxStart(jobId, CmbtLL28.LL_PROJECT_LIST, projectToPrint, CmbtLL28.LL_PRINT_EXPORT, CmbtLL28.LL_BOXTYPE_NORMALMETER, hWnd, "Printing...") < 0)
 	{
 		JOptionPane.showMessageDialog(this, "Error While Printing.", "List & Label Sample App", JOptionPane.ERROR_MESSAGE);
 		return nResult;
@@ -640,11 +640,11 @@ public
 	
 	if (nMaxPages > 0)
 	{
-        Ll.LlPrintSetOption(jobId, CmbtLL27.LL_PRNOPT_LASTPAGE, nMaxPages);
+        Ll.LlPrintSetOption(jobId, CmbtLL28.LL_PRNOPT_LASTPAGE, nMaxPages);
     }
 	
 	if((exportFormat != null) && (!exportFormat.isEmpty()))
-		Ll.LlPrintSetOptionString(jobId, CmbtLL27.LL_PRNOPTSTR_EXPORT, exportFormat);
+		Ll.LlPrintSetOptionString(jobId, CmbtLL28.LL_PRNOPTSTR_EXPORT, exportFormat);
 	
 	if (
 		(bWithoutDialog == false)
@@ -658,15 +658,15 @@ public
 	}
 	
     //Initialize first page. A page wrap may occur already caused by objects which are printed before the table
-    int nRet = CmbtLL27.LL_WRN_TABLECHANGE;
+    int nRet = CmbtLL28.LL_WRN_TABLECHANGE;
     while (nRet != 0)
     {
     	nRet = Ll.LlPrint(jobId);
-    	while(nRet == CmbtLL27.LL_WRN_REPEAT_DATA)
+    	while(nRet == CmbtLL28.LL_WRN_REPEAT_DATA)
 		  {
 			  nRet = Ll.LlPrint(jobId);
 		  }
-    	if(nRet == CmbtLL27.LL_ERR_USER_ABORTED)
+    	if(nRet == CmbtLL28.LL_ERR_USER_ABORTED)
     	{
     		Ll.LlPrintEnd(jobId, 0);
     		return nRet;
@@ -678,15 +678,15 @@ public
           if (printedPages == nMaxPages)
           {
           	Ll.LlPrintEnd(jobId, 0);
-              return CmbtLL27.LL_ERR_USER_ABORTED;
+              return CmbtLL28.LL_ERR_USER_ABORTED;
           }
         }
     }
     
     //Print loop. Repeat while there is still data to print
-    nRet = CmbtLL27.LL_WRN_TABLECHANGE;
+    nRet = CmbtLL28.LL_WRN_TABLECHANGE;
     StringBuffer tableName = new StringBuffer("");
-    while (nRet == CmbtLL27.LL_WRN_TABLECHANGE)
+    while (nRet == CmbtLL28.LL_WRN_TABLECHANGE)
     {
       Ll.LlPrintDbGetCurrentTable(jobId, tableName, false);
       if (tableName.toString().compareTo("Customers") == 0)
@@ -697,7 +697,7 @@ public
 	        if (printedPages == nMaxPages)
 	        {
 	        	Ll.LlPrintEnd(jobId, 0);
-	            return CmbtLL27.LL_ERR_USER_ABORTED;
+	            return CmbtLL28.LL_ERR_USER_ABORTED;
 	        }
 	      }
 		  
@@ -713,7 +713,7 @@ public
 				if (printedPages == nMaxPages)
 				{
 					Ll.LlPrintEnd(jobId, 0);
-					return CmbtLL27.LL_ERR_USER_ABORTED;
+					return CmbtLL28.LL_ERR_USER_ABORTED;
 				}
 			}
 			
@@ -749,14 +749,14 @@ public
         
         //Print table line, check return value and abort printing or wrap pages if necessary
         int nRet = Ll.LlPrintFields(jobId);
-        while (nRet == CmbtLL27.LL_WRN_REPEAT_DATA)
+        while (nRet == CmbtLL28.LL_WRN_REPEAT_DATA)
         {
           Ll.LlPrint(jobId);
           nRet = Ll.LlPrintFields(jobId);
         }
         
         //Print relational records
-        while (nRet == CmbtLL27.LL_WRN_TABLECHANGE)
+        while (nRet == CmbtLL28.LL_WRN_TABLECHANGE)
         {
           Ll.LlPrintDbGetCurrentTableRelation(jobId, tableRelationID);
           if(tableRelationID.toString().compareTo("Customers2Orders") == 0)
@@ -767,7 +767,7 @@ public
             nRet = PrintResultSet(jobId, filteredResultSet);
           }
           else
-            nRet = CmbtLL27.LL_WRN_REPEAT_DATA;
+            nRet = CmbtLL28.LL_WRN_REPEAT_DATA;
         }
       }
     }
@@ -781,8 +781,8 @@ public
     }
     
     //Finish printing the table, print linked objects
-    int nRet = CmbtLL27.LL_WRN_REPEAT_DATA;
-    while (nRet == CmbtLL27.LL_WRN_REPEAT_DATA)
+    int nRet = CmbtLL28.LL_WRN_REPEAT_DATA;
+    while (nRet == CmbtLL28.LL_WRN_REPEAT_DATA)
       nRet = Ll.LlPrintFieldsEnd(jobId);
 
     return nRet;
@@ -803,7 +803,7 @@ public
     
     //Set combit List & Label debug mode; pending on CheckBox state
     if (jCheckBoxDebug.isSelected())
-      Ll.LlSetDebug(CmbtLL27.LL_DEBUG_CMBTLL);
+      Ll.LlSetDebug(CmbtLL28.LL_DEBUG_CMBTLL);
     else
       Ll.LlSetDebug(0);
   }
@@ -869,13 +869,13 @@ public
       {
         if (m_printJobId <= 0)
         {
-          m_printJobId = Ll.LlJobOpen(CmbtLL27.CMBTLANG_DEFAULT);
-          if (m_printJobId == CmbtLL27.LL_ERR_BAD_JOBHANDLE)
+          m_printJobId = Ll.LlJobOpen(CmbtLL28.CMBTLANG_DEFAULT);
+          if (m_printJobId == CmbtLL28.LL_ERR_BAD_JOBHANDLE)
           {
             JOptionPane.showMessageDialog(prtloopApplication.this, "Job can't be initialized!", "List & Label Sample App", JOptionPane.ERROR_MESSAGE);
             return;
           }
-          else if (m_printJobId == CmbtLL27.LL_ERR_NO_LANG_DLL)
+          else if (m_printJobId == CmbtLL28.LL_ERR_NO_LANG_DLL)
           {
             JOptionPane.showMessageDialog(prtloopApplication.this, "Language file not found!\nEnsure that *.lng files can be found in your combit List & Label DLL directory.", "List & Label Sample App", JOptionPane.ERROR_MESSAGE);
             return;
@@ -890,7 +890,7 @@ public
         
         Ll.LlAssociatePreviewControl(m_printJobId, m_callbackData.hWnd_, 1);
         
-        Ll.LlSetOptionString(m_printJobId, CmbtLL27.LL_OPTIONSTR_ORIGINALPROJECTFILENAME, m_callbackData.originalProjectFileName_);
+        Ll.LlSetOptionString(m_printJobId, CmbtLL28.LL_OPTIONSTR_ORIGINALPROJECTFILENAME, m_callbackData.originalProjectFileName_);
         
         DoPrintReport(m_printJobId, m_callbackData.projectFileName_, m_bPreview, m_callbackData.pages_, m_callbackData.pszExportFormat_, m_callbackData.bWithoutDialog_, m_callbackData.hWnd_);
         

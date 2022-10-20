@@ -1,7 +1,7 @@
-Project File generated 27.08.2021 13:29:11
+Project File generated 25.08.2022 19:14:18
 
 [Project]
-Name=LL27SampleADO
+Name=LL28SampleADO
 DefaultDir=.
 MainProjectFileName=ADO\LLSamplesADO.prg
 Parameters=
@@ -35,17 +35,17 @@ ADO\ChartADO.wfm,0,0,0,
 OPTIONS.WFM,0,0,0, 
 LLRibbons.cc,0,0,0, 
 ADO\EventsADO.wfm,0,0,0, 
-cmbtLL27.h,0,0,0, 
-LL27.CC,0,0,0, 
+cmbtLL28.h,0,0,0, 
+LL28.CC,0,0,0, 
 
 [DEO]
 
 [INNO]
-ProjectExeFileName=G:\QUELLEN\PROJEKTE\LISTANDLABEL\27\llsampleADO.exe
+ProjectExeFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\28\llsampleADO.exe
 ProjectMainFileName=
 ProjectdBaseVersion=dBASE 2019 13.20  b2618 (11/26/2019-DE191126)
 DefaultDirName={pf}\{#AppName}
-AppName=LL27SampleADO
+AppName=LL28SampleADO
 AppVersion=1.0.0.0
 SM_dBASERuntime=false
 dBPlus=true
@@ -68,7 +68,7 @@ dBProgressbox=false
 dBSilent=false
 dBDestRuntime=
 dBDestBDE=
-SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\27\ADO
+SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\28\ADO
 InnoScriptname=
 LastDBVersion=1231
 LastDBLanguage=DE
@@ -126,5 +126,5 @@ CURRENTVSF=windows
 IMAGETOPRIGHT=
 IMAGESIDE=
 Icon1={group}\{#AppName} >> {app}\llsampleADO.exe
-Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\27\llsampleADO.exe >> DestDir: {app}
-Files2=G:\QUELLEN\PROJEKTE\LISTANDLABEL\27\llsampleADO.exe >> DestDir: {app}
+Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\28\llsampleADO.exe >> DestDir: {app}
+Files2=G:\QUELLEN\PROJEKTE\LISTANDLABEL\28\llsampleADO.exe >> DestDir: {app}

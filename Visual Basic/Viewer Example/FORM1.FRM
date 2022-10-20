@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
-Object = "{28EBE202-E7C7-11D0-B183-0040E994B592}#1.0#0"; "cmll27v.ocx"
+Object = "{28EBE202-E7C7-11D0-B183-0040E994B593}#1.0#0"; "cmll28v.ocx"
 Begin VB.Form Form1 
    Caption         =   "List & Label Viewer Sample Application"
    ClientHeight    =   7155
@@ -12,7 +12,7 @@ Begin VB.Form Form1
    PaletteMode     =   1  'UseZOrder
    ScaleHeight     =   7155
    ScaleWidth      =   7605
-   Begin CMLL27VLibCtl.LlViewCtrl LlView 
+   Begin CMLL28VLibCtl.LlViewCtrl LlView 
       Height          =   2895
       Left            =   120
       TabIndex        =   0
@@ -121,7 +121,7 @@ Private Sub Form_Load()
 ' Copyright (C) combit GmbH
 '
 '--------------------------------------------------------------------------------------
-' File   : viewer.vbp, form1.frm, cmll27.bas
+' File   : viewer.vbp, form1.frm, cmll28.bas
 ' Module : viewer sample
 ' Descr. : D:   Dieses Beispiel demonstriert die Verwendung des Viewer-OCX
 '          US: This example demonstrates how to use the viewer-ocx

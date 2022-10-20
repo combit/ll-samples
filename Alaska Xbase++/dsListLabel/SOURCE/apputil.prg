@@ -20,9 +20,9 @@ static scKey := ""
  $Topic:
  $Description:
  $Argument:    cSection		Ini Default GetUserName() oder Registry-Key Default "software\" + Appname()
- $Argument:    lRegistry	False, Eintrag wird in Appini geschrieben, Default
- 									True, Eintrag wird in Registry geschrieben
- $Return:      true, wenn gesetzt
+ $Argument:    lRegistry	FALSE, Eintrag wird in Appini geschrieben, Default
+ 									TRUE, Eintrag wird in Registry geschrieben
+ $Return:      TRUE, wenn gesetzt
  $See Also:
  $Example:
 ==============================================================================*/
@@ -41,16 +41,16 @@ FUNC RestorePos(cSection, lRegistry)
 
 	if !empty( cValue)
 		aVal	:= aStrExtract(cValue, ",")
-      aeval(aVal, {|u| u:=val(u)},,, True )
+      aeval(aVal, {|u| u:=val(u)},,, TRUE )
 
 		asize(aVal, 6)
       if !empty(aVal[6]) .and. IsObject(oApp) .and. IsMembervar(oApp, "ChildMaximized")
-			oApp:ChildMaximized	:= true
+			oApp:ChildMaximized	:= TRUE
 		endif
 
       if !empty(aVal[5] )
 			oApp:SetFramestate(XBPDLG_FRAMESTAT_MAXIMIZED)
-			RETURN true
+			RETURN TRUE
 
       else
          aPos  := {aVal[1], aVal[2]}
@@ -63,7 +63,7 @@ FUNC RestorePos(cSection, lRegistry)
          endif
 
 			if aSize[2] < 50
-            RETURN False
+            RETURN FALSE
          endif
 			aAppSize	:= AppDesktop():currentSize()
          if aSize[2] > aAppSize[2]
@@ -86,10 +86,10 @@ FUNC RestorePos(cSection, lRegistry)
 
          oApp:setposandsize(aPos, aSize)
 
-         RETURN True
+         RETURN TRUE
 		endif
 	endif
-RETURN false
+RETURN FALSE
 
 /*============================================================================
  $Function:    SavePos([cSection], [lRegistry])
@@ -98,8 +98,8 @@ RETURN false
  $Topic:
  $Description:
  $Argument:    cSection		Ini Default dsGetUserName() oder Registry-Key Default "software\" + Appname()
- $Argument:    lRegistry	False, Eintrag wird in Appini geschrieben, Default
- 									True, Eintrag wird in Registry geschrieben
+ $Argument:    lRegistry	FALSE, Eintrag wird in Appini geschrieben, Default
+ 									TRUE, Eintrag wird in Registry geschrieben
  $Return:      NIL
  $See Also:
  $Example:
@@ -111,7 +111,7 @@ FUNC SavePos(cSection, lRegistry)
 	local oIni, oReg
 	local oApp	:= GetApp()
 
-	DEFAULT lRegistry TO false
+	DEFAULT lRegistry TO FALSE
 
 	if lRegistry
 		if empty(cSection)
@@ -220,7 +220,7 @@ RETURN scKey
  $Argument:    cSubkey     Schlüssel
  $Argument:    xValue		Wert, mögliche Typen C M N D L A
 									REG_SZ				String, dtos(date)
-									REG_DWORD			numerisch, logisch false = 0, true = 1
+									REG_DWORD			numerisch, logisch FALSE = 0, TRUE = 1
 									REG_BINARY			string, mit 0-byte
 									REG_MULTI_SZ		sichern von Arrays, jeder Datentyp
 									REG_EXPAND_SZ		Environment Variablen auflösen
@@ -326,7 +326,7 @@ FUNC ReadRegistry(hKey, cKey, cSubkey, cType, xDefault )
 	endif
 
 	oReg	:= dsRegistry():new(hKey)
-  	xRet	:= oReg:GetValue(cKey, cSubKey, true , , cType )
+  	xRet	:= oReg:GetValue(cKey, cSubKey, TRUE , , cType )
 
 	if oReg:Status() = ERROR_FILE_NOT_FOUND .and. xDefault != NIL
 		xRet	:= xDefault

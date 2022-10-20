@@ -159,6 +159,7 @@ namespace combit.Services
                 // US: Create List & Label object and export
                 using (ListLabel ll = new ListLabel())
                 {
+					//ll.LicensingInfo = "<insert your license key here>";
                     ll.DataSource = provider;
 
                     if (!string.IsNullOrEmpty(dataMember))

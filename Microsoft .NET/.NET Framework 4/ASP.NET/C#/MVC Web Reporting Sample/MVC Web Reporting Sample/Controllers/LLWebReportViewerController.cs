@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace WebReporting.Controllers
 {
+    [Authorize]
     public class LLWebReportViewerController : WebReportViewerController
     {
         public override void OnProvideListLabel(ProvideListLabelContext provideListLabelContext)
@@ -23,13 +24,7 @@ namespace WebReporting.Controllers
             // D:   Der WebReportViewer benötigt ein Verzeichnis für temporäre Dateien. Diese werden einige Minuten nach Schließen eines WebReportViewer automatisch gelöscht.
             // US:  The WebReportViewer requires a directory for temporary files. Some minutes after a WebReportViewer is closed, these files will be deleted automatically.
             provideListLabelContext.ExportPath = SampleWebReportingApplication.TempDirectory; //use the same tempDir (Demo)
-
-            //LL.Variables.Add("ArtikelListe.ArtikelNr.Von", string.Empty);
-            //LL.Variables.Add("ArtikelListe.ArtikelNr.Bis", string.Empty);
-
-            ll.Variables.Add("ItemList.ItemNo.From", string.Empty);
-            ll.Variables.Add("ItemList.ItemNo.To", string.Empty);
-
+			
             provideListLabelContext.NewInstance = ll;
         }
 

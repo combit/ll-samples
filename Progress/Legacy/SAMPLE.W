@@ -93,9 +93,9 @@ DEFINE FRAME Dialog-Frame
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CUSTOM _INCLUDED-LIB Dialog-Frame 
 /* ************************* Included-Libraries *********************** */
 
-&GLOBAL-DEFINE cmll27_PERSISTENT PERSISTENT
-&GLOBAL-DEFINE cmll27_DLLNAME cmll27.dll
-{cmll27.i}
+&GLOBAL-DEFINE cxll28_PERSISTENT PERSISTENT
+&GLOBAL-DEFINE cxll28_DLLNAME cxll28.dll
+{cxll28.i}
 
 /* _UIB-CODE-BLOCK-END */
 &ANALYZE-RESUME
@@ -151,9 +151,9 @@ DO:
     run LlJobOpen(output hJob, {&CMBTLANG_DEFAULT}).
 
     /* D:   Debugging einschalten (das mit List & Label mitgeliefertes DEBWIN     */
-    /*     starten, um die Ausgaben zu erhalten!)			                     */
+    /*     starten, um die Ausgaben zu erhalten!)                                            */
     /* US: Enable debugging (DEBWIN  that came with List & Label must be         */
-    /*     started to receive debug messages				                    */
+    /*     started to receive debug messages                                                */
     /* run LlSetDebug(1). */
 
     /* D:   Optionen setzen */
@@ -173,7 +173,7 @@ DO:
     run LlDefineField (output nRet, hJob, "Customer.Contact", Customer.Contact).
     run LlDefineField (output nRet, hJob, "Customer.Address", Customer.Address).
     run LlDefineField (output nRet, hJob, "Customer.City",    Customer.City).
-    run LlDefineFieldExt(output nRet, hJob, "Customer.Zip",   STRING(Customer.Zip), {&LL_NUMERIC}, 0).
+    run LlDefineField (output nRet, hJob, "Customer.PostalCode", Customer.PostalCode).
 
     /* D:   Initialisiere Puffer fuer Dateiauswahl */
     /* US: Initialize buffer for fileopen dialog */
@@ -234,9 +234,9 @@ DO:
     run LlSetOption(output nRet, hJob, {&LL_OPTION_MULTIPLETABLELINES}, 1).
 
     /* D:   Debugging einschalten (das mit List & Label mitgeliefertes DEBWIN     */
-    /*     starten, um die Ausgaben zu erhalten!)			                     */
+    /*     starten, um die Ausgaben zu erhalten!)                                            */
     /* US: Enable debugging (DEBWIN  that came with List & Label must be         */
-    /*     started to receive debug messages				                    */
+    /*     started to receive debug messages                                                */
     /* run LlSetDebug(1). */
 
     /* D:   Variablen und Felder zuruecksetzen */
@@ -252,7 +252,7 @@ DO:
     run LlDefineField (output nRet, hJob, "Customer.Contact", Customer.Contact).
     run LlDefineField (output nRet, hJob, "Customer.Address", Customer.Address).
     run LlDefineField (output nRet, hJob, "Customer.City",    Customer.City).
-    run LlDefineFieldExt(output nRet, hJob, "Customer.Zip",   STRING(Customer.Zip), {&LL_NUMERIC}, 0).
+    run LlDefineField (output nRet, hJob, "Customer.PostalCode",Customer.PostalCode).
 
     /* D:   Initialisiere Puffer fuer Dateiauswahl */
     /* US: Initialize buffer for fileopen dialog */
@@ -325,7 +325,7 @@ DO:
         run LlDefineField (output nRet, hJob, "Customer.Contact", Contact).
         run LlDefineField (output nRet, hJob, "Customer.Address", Address).
         run LlDefineField (output nRet, hJob, "Customer.City",    City).
-        run LlDefineFieldExt(output nRet, hJob, "Customer.Zip",   STRING(Zip), {&LL_NUMERIC}, 0).
+        run LlDefineField (output nRet, hJob, "Customer.PostalCode",  PostalCode).
 
         /* D:   Datensatz drucken */
         /* US: Print record */

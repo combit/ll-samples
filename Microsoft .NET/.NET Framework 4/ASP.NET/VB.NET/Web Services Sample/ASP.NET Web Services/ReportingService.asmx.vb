@@ -137,6 +137,7 @@ Namespace combit.Services
                 ' D: List & Label Objekt erzeugen und exportieren
                 ' US: Create List & Label object and export
                 Using ll As New ListLabel()
+					'll.LicensingInfo = "<insert your license key here>"
                     ll.DataSource = provider
 
                     If Not String.IsNullOrEmpty(dataMember) Then

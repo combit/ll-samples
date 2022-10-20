@@ -58,11 +58,11 @@ PROCEDURE Mail(nPrintingTarget, lDesignDocument, cFolder)
 	ELSE
 		// D:  automatisiertes Erstellen eines PDF ohne Benutzeraingriff: SaveAsPdf(cFile, lQuiet)
 		// US: automated creation of a PDF file without user interaction: SaveAsPdf(cFile, lQuiet)
-		lRet	:= oListLabel:SendAsMail(true, "info@address.com",,, "Sending a PDF", "This is a body!", cFile )
+		lRet	:= oListLabel:SendAsMail(TRUE, "info@address.com",,, "Sending a PDF", "This is a body!", cFile )
 
-		// D:  wenn als 1. Parameter false und alle nötigen Informationen für die Mail existieren, wird die Mail sofort über den Standard Mailhandler versandt.
-		// US: passing false as 1st parameter and all neccessary informations for a mail exists, the mail will be send immediately through.the standard mailhandler
-		//lRet	:= oListLabel:SendAsMail(false, "info@address.com",,, "Sending a PDF", "This is a body!", cFile )
+		// D:  wenn als 1. Parameter FALSE und alle nötigen Informationen für die Mail existieren, wird die Mail sofort über den Standard Mailhandler versandt.
+		// US: passing FALSE as 1st parameter and all neccessary informations for a mail exists, the mail will be send immediately through.the standard mailhandler
+		//lRet	:= oListLabel:SendAsMail(FALSE, "info@address.com",,, "Sending a PDF", "This is a body!", cFile )
 
 		IF !lRet
 			Msgbox(oListLabel:GetLastMessage(), "Error: "+ var2char(oListLabel:GetLastError()))

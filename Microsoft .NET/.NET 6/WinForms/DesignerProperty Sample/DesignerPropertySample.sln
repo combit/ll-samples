@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 15.0.28307.572
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignerProperty", "DesignerPropertySample\DesignerProperty.csproj", "{5118162C-BFC6-4E5F-9529-57D09411AA83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsDesignerObject", "MapsDesignerObject\MapsDesignerObject.csproj", "{0BBE5DE6-5117-40DA-AEA6-663B875D08B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5118162C-BFC6-4E5F-9529-57D09411AA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5118162C-BFC6-4E5F-9529-57D09411AA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5118162C-BFC6-4E5F-9529-57D09411AA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5118162C-BFC6-4E5F-9529-57D09411AA83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BBE5DE6-5117-40DA-AEA6-663B875D08B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BBE5DE6-5117-40DA-AEA6-663B875D08B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BBE5DE6-5117-40DA-AEA6-663B875D08B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BBE5DE6-5117-40DA-AEA6-663B875D08B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
+

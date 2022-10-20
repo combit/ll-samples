@@ -1,4 +1,4 @@
-CLASS DeliveryReport OF LL27InterfaceSample FROM LL27.CC
+CLASS DeliveryReport OF LL28InterfaceSample FROM LL28.CC
    this.DATAMODREF1 = new DATAMODREF()
    this.DATAMODREF1.parent = this
    with (this.DATAMODREF1)

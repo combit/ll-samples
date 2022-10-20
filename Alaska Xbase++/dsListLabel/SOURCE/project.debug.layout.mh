@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sitelist name="Debug">
+	<site id="MainForm.MainSite">
+		<zone kind="HORZ">
+			<zone kind="VERT" size="266" dsize="0.145038167938931">
+				<zone kind="TABS" activetab="0" size="729" dsize="0.748148148148148">
+					<zone kind="PANEL" id="MainForm.ProjectManagerDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.ModulesDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.CodeExplorerDockPanel" visible="1"/>
+				</zone>
+				<zone kind="TABS" activetab="1" size="246" dsize="0.251851851851852">
+					<zone kind="PANEL" id="MainForm.CallstackDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.IDEErrorCallstackFormDockPanel" visible="1"/>
+				</zone>
+			</zone>
+			<zone kind="VERT" size="1328" dsize="0.724100327153762">
+				<zone kind="TABS" activetab="0" size="796" dsize="0.816410256410256" isspace="1">
+					<zone kind="PANEL" id="MainForm.frmClipperEditWindowDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.OutputWindowDockPanel" visible="1"/>
+				</zone>
+				<zone kind="TABS" activetab="3" size="179" dsize="0.183589743589744">
+					<zone kind="PANEL" id="MainForm.IDEMessageFormDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.IDESearchResultFormDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.CommandWindowDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.BreakpointsDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.ThreadsDockPanel" visible="1"/>
+				</zone>
+			</zone>
+			<zone kind="VERT" size="240" dsize="0.130861504907307">
+				<zone kind="TABS" activetab="0" size="653" dsize="0.669945355191257">
+					<zone kind="PANEL" id="MainForm.VariablesDockPanel" visible="1"/>
+					<zone kind="PANEL" id="MainForm.WatchDockPanel" visible="1"/>
+				</zone>
+				<zone kind="PANEL" id="MainForm.ObjectInspectorDockPanel" visible="1" size="322" dsize="0.330054644808743"/>
+			</zone>
+		</zone>
+	</site>
+	<description>Vorgabe-Fensterlayout für das Debuggen von Anwendungen. Enthält Sichten für Callstack- und Breakpointinformationen. Dieses Fensterlayout kann nicht gelöscht werden.</description>
+	<Variables style="3" attributes="100" sortorder="0"/>
+	<ObjectInspector style="3" attributes=""/>
+	<Threads style="3" attributes="14;14;14;9;20;24" sortorder="19"/>
+	<Breakpoints style="3" attributes="10;30;20;30;10" sortorder="0"/>
+	<Callstack style="3" attributes="30;69"/>
+	<Watch style="3" attributes="100" sortorder="0"/>
+	<Modules style="3" attributes=""/>
+	<ProjectManager style="3" attributes=""/>
+	<CodeExplorer style="3" attributes=""/>
+	<OutputWindow style="3" attributes=""/>
+	<CommandWindow style="3" attributes=""/>
+	<ExpressionInspector style="3" attributes=""/>
+</sitelist>

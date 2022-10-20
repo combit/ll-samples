@@ -380,7 +380,8 @@ namespace DOMAdvanced
                     //US: Set some properties for the rectangle
                     llobjHelper.Position.Set(10000, 10000, 1, 30000);
                     llobjHelper.LayerId = 1;
-                    llobjHelper.Frame.Color = "RGB(255, 255, 255)";
+                    llobjHelper.Frame.Style = "0";
+                    llobjHelper.Filling.Style = "0";
 
                     //D: Den Berichtscontainer mit dem Rechteck Objekt verketten, so dass der Container auf den Folgeseiten mehr Platz einnimmt
                     //US: Link the report container to the rectangle object in order to fill up space on following pages

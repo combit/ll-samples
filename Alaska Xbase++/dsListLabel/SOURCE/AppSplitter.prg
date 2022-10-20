@@ -49,14 +49,14 @@ METHOD AppSplitter:Create()
 	dbSamples := OpenDbTable("Samples")
 
 	// main SplitControl1
-	::oSplitCtrl := dsSplitControl():new(GetApp():drawingArea, True,,,, False)
+	::oSplitCtrl := dsSplitControl():new(GetApp():drawingArea, TRUE,,,, FALSE)
 	::oSplitCtrl:SplitLine:setColorBG( GraMakeRGBColor({176,216,255}) )
 	::oSplitCtrl:create()
-	::oSplitCtrl:connect(dbSamples, true )
+	::oSplitCtrl:connect(dbSamples, TRUE )
 
    //*** left panel
 	panLeft  := dsSplitPanel():new(::oSplitCtrl)
-	panLeft:enableCollapse := False
+	panLeft:enableCollapse := FALSE
 
 	panRight := panRight():new(::oSplitCtrl) //,,,, {{ XBP_PP_BGCLR, XBPSYSCLR_DIALOGBACKGROUND}})
 
@@ -73,8 +73,8 @@ METHOD AppSplitter:Create()
 	panLeft:create()
 	::oBrowse:create()
 
-	panRight:enableCollapse := False
-	panRight:enableResize	:= True
+	panRight:enableCollapse := FALSE
+	panRight:enableResize	:= TRUE
 	panRight:connect(dbSamples)
 	panRight:create()
 
@@ -84,9 +84,8 @@ METHOD AppSplitter:Create()
 	::oSplitCtrl:setpanelsize(nWidth)
 	GetApp():AddDestroyblock(, {|| WriteRegistry(,, "SPLIT", ::oSplitCtrl:setpanelsize())})
 
-	SetAppFocus(panLeft)
-	::RegisterHotkey(xbeK_F2, {|| ::EditDescription()})
-	::RegisterHotkey(xbeK_ESC, {|| ::EditDescription(true)})
+	::RegisterHotkey(xbeK_F2	,{|| ::EditDescription()})
+	::RegisterHotkey(xbeK_ESC	,{|| ::EditDescription(TRUE)})
 RETURN self
 
 //=========================================
@@ -99,12 +98,12 @@ RETURN self
 METHOD AppSplitter:EditDescription(lCancel)
 	if ::oSplitCtrl:getrightpanel():TabControl:getActivePage():PageId == 100
 		if IsLogic(lCancel) .and. lCancel
-			::oSplitCtrl:getrightpanel():TabControl:getActivePage():oMle:enableedit(false)
+			::oSplitCtrl:getrightpanel():TabControl:getActivePage():oMle:enableedit(FALSE)
 
 		elseif ::oSplitCtrl:getrightpanel():TabControl:getActivePage():oMle:editable
 			eval(::oSplitCtrl:getrightpanel():TabControl:getActivePage():oMle:writeblock())
 		else
-			::oSplitCtrl:getrightpanel():TabControl:getActivePage():oMle:enableedit(true)
+			::oSplitCtrl:getrightpanel():TabControl:getActivePage():oMle:enableedit(TRUE)
 		endif
 	endif
 RETURN self

@@ -133,7 +133,7 @@ namespace DataProvidersWithoutSolidStructure
 			return provider;
 		}
 
-		private bool IsAllInputGivenForDataProvider()
+		private bool IsAllInputGivenForDataProvider(string selectedDataProvider)
 		{
 			foreach (Control item in flowLayoutPanel1.Controls)
 			{
@@ -145,6 +145,14 @@ namespace DataProvidersWithoutSolidStructure
 
 				if (item is TextBox && item.Visible == true)
 				{
+					if (selectedDataProvider == "MongoDB")
+					{
+						if (item == textBoxPassword || item == textBoxUsername)
+						{
+							continue;
+						}
+					}
+
 					if (String.IsNullOrWhiteSpace(item.Text))
 					{
 						return false;
@@ -277,10 +285,11 @@ namespace DataProvidersWithoutSolidStructure
 
 		private void ButtonDataProviderTest_Click(object sender, EventArgs e)
 		{
-			if (IsAllInputGivenForDataProvider())
+			string selectedDataProvider = comboBoxDataProvider.SelectedItem as string;
+
+			if (IsAllInputGivenForDataProvider(selectedDataProvider))
 			{
 				bool passedTest = false;
-				string selectedDataProvider = comboBoxDataProvider.SelectedItem as string;
 
 				Cursor.Current = Cursors.WaitCursor;
 				try
@@ -535,7 +544,7 @@ namespace DataProvidersWithoutSolidStructure
 
 			try
 			{
-				var schemaRow = _dataProviderTables[0].SchemaRow;
+				var schemaRow = _dataProviderTables[comboBoxTable.SelectedIndex].SchemaRow;
 				foreach (var column in schemaRow.Columns)
 				{
 					listBoxAvailableFields.Items.Add(CleanUpString(column.ColumnName));

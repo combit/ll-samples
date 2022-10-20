@@ -1,4 +1,4 @@
-//Revision: 27.08.2021
+//Revision: 25.08.2022
 //Für diese Beispielanwendung wird die Firebird-Datenbank LLSample.FDB verwendet.
 //Bitte beachten Sie die Kommentare in der Funktion GetADODatabase
 //
@@ -65,7 +65,7 @@ ELSE
    lOpen=true
 ENDIF
 SET PROCEDURE TO PROGRAM(0)
-SET PROCEDURE TO ..\LL27.CC   ADDITIVE
+SET PROCEDURE TO ..\LL28.CC   ADDITIVE
 _app.MainADODatabase=GetADODatabase()
 IF .NOT. _app.MainADODatabase.active
    IF _app.language="DE"
@@ -86,9 +86,9 @@ RELEASE OBJECT oRibbons
 oApp.OldText=_app.frameWin.text
 DO CASE
    CASE _app.oInfo.Language="deutsch"
-      _app.frameWin.text="Beispielanwendung zur Integration von combit List & Label 27 in dBASE PLUS mit ADO (ohne BDE)"
+      _app.frameWin.text="Beispielanwendung zur Integration von combit List & Label 28 in dBASE PLUS mit ADO (ohne BDE)"
    OTHERWISE
-      _app.frameWin.text="Sample application to integration of combit List & Label 27 with dBASE PLUS with ADO (without BDE)"
+      _app.frameWin.text="Sample application to integration of combit List & Label 28 with dBASE PLUS with ADO (without BDE)"
 ENDCASE
 _app.speedbar =false
 _app.statusbar=true

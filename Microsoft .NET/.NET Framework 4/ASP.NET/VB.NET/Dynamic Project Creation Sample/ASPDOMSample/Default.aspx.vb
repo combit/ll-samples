@@ -12,6 +12,7 @@ Partial Public Class _Default
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         _ll = New ListLabel()
+		'_ll.LicensingInfo = "<insert your license key here>"
 
         'D: Erzeuge DataSet
         'US: Create DataSet

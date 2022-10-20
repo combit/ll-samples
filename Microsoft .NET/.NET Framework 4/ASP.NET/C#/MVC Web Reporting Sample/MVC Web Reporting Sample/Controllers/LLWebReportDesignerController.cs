@@ -1,8 +1,10 @@
 ﻿using combit.Reporting;
 using combit.Reporting.Web.WebReportDesigner.Server;
+using System.Web.Mvc;
 
 namespace WebReporting.Controllers
 {
+    [Authorize]
     public class LLWebReportDesignerController : WebReportDesignerController
     {
         public override void OnProvideListLabel(ProvideListLabelContext provideListLabelContext)

@@ -873,7 +873,7 @@ BOOL CPrintManager::DoJob(INT hJob)
     // stop printing if the lastpage (defined by LASTPAGE) is reached
     if (::LlPrintGetOption(pJDR->_hJob, LL_PRNOPT_PAGEINDEX) > ::LlPrintGetOption(pJDR->_hJob, LL_PRNOPT_LASTPAGE))
     {
-      ::LlPrintSetOption(pJDR->_hJob, LL_PRNOPT_PARTIALPREVIEW, TRUE);      
+      ::LlPrintSetOption(pJDR->_hJob, LL_PRNOPT_PARTIALPREVIEW, TRUE);
       ::LlPrintEnd(pJDR->_hJob, 0);
       return TRUE;
     }

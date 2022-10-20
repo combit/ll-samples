@@ -16,7 +16,7 @@ interface
 
 uses
   Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  DB, DBTables, cmbtll27, L27, StdCtrls, Registry, Windows, ADODB
+  DB, DBTables, cmbtll28, L28, StdCtrls, Registry, Windows, ADODB
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   {$ENDIF}
@@ -34,7 +34,7 @@ type
     DebugCheckBox: TCheckBox;
     ADOTableInvoice: TADOTable;
     ADOTableItems: TADOTable;
-    LL: TL27_;
+    LL: TL28_;
     ADOConnection1: TADOConnection;
     procedure GetInvoiceNo;
     procedure DefineFields;

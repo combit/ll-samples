@@ -97,7 +97,7 @@ PROCEDURE XRechnung(nPrintingTarget, lDesignDocument, cFolder)
 
 		// D:  automatisiertes Erstellen eines PDF ohne Benutzeraingriff: SaveAsPdf(cFile, lQuiet)
 		// US: automated creation of a PDF file without user interaction: SaveAsPdf(cFile, lQuiet)
-		lRet	:= oListLabel:saveaspdf(cFile, true )
+		lRet	:= oListLabel:saveaspdf(cFile, TRUE )
 
 		oListLabel:ZugferdXML()
 		if !lRet

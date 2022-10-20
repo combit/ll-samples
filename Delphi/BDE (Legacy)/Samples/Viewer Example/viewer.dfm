@@ -17,7 +17,7 @@ object ViewForm: TViewForm
   OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
-  object LlViewer: TLL27PreviewControl
+  object LlViewer: TLL28PreviewControl
     Left = 0
     Top = 0
     Width = 538

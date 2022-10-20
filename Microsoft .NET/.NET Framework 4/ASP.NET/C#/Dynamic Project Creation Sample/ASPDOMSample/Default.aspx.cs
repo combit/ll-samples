@@ -22,7 +22,8 @@ namespace ASPDOMSample
         protected void Page_Load(object sender, EventArgs e)
         {
             _ll = new ListLabel();
-
+			//_ll.LicensingInfo = "<insert your license key here>";
+			
             //D: Erzeuge DataSet
             //US: Create DataSet
             _ds = CreateDataSet();

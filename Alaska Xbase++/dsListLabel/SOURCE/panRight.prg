@@ -12,6 +12,11 @@
 #include "fileio.ch"
 #include "appevent.ch"
 
+
+#pragma library("XppUi2")
+
+#define TLBS_PRV_HIDE	-1
+
 ******************************************************************************
 * Von der Darstellungsklasse abgeleitete Klasse zur Implementierung der
 * Programmlogik. Die Instanzvariablen der einzelnen Objekte sind in der
@@ -20,8 +25,9 @@
 CLASS panRight FROM _panRight
    EXPORTED:
       METHOD create
-		METHOD StartPrint(lExport,lDesign)
+		METHOD OpenLL()
 		METHOD ReadData
+		METHOD StartPrint(lExport,lDesign)
 
 		INLINE ACCESS ASSIGN METHOD TabControl		;RETURN ::oTabCtrl
 ENDCLASS
@@ -34,9 +40,9 @@ METHOD panRight:create()
 
 	::sleFolder	:datalink := {|| ::Server:APP}
 	::sleFolder	:setResizeMode(TOP_LEFT, SIZE_WIDTH )
-	::sleFolder	:EditAble := False
+	::sleFolder	:EditAble := FALSE
 
-	::pbDesign	:activate	:= {|| ::StartPrint(,true, ::SplitControl:server:folder)}
+	::pbDesign	:activate	:= {|| ::StartPrint(,TRUE, ::SplitControl:server:folder)}
 	::pbPreview	:activate	:= {|| ::StartPrint(,, ::SplitControl:server:folder)}
 	::pbExport	:activate	:= {|| ::StartPrint(LL_PRINT_EXPORT,, ::SplitControl:server:folder)}
 
@@ -56,7 +62,11 @@ METHOD panRight:create()
 	oPage:connect(::SplitControl:server)
 	::oTabCtrl:AddPage(oPage)
 
-	::oTabCtrl:enableResize := True
+	oPage := pgOCX():new(::oTabCtrl)
+	oPage:Caption	:= "LL OCX"
+	oPage:PageId   := 300
+	oPage:connect(::SplitControl:server)
+	::oTabCtrl:AddPage(oPage)
 
    ::_panRight:create()
 RETURN self
@@ -69,10 +79,23 @@ METHOD panRight:ReadData()
 		::pbDesign	:disable()
 		::pbPreview	:disable()
 		::pbExport	:disable()
+		::oTabCtrl	:Disable(300)
+
+	elseif ::Server:MODUS = "S"
+		::pbDesign	:disable()
+		::pbPreview	:disable()
+		::pbExport	:enable()
+		::pbExport	:setcaption("Open")
+		::pbExport	:activate	:= {|| ::OpenLL()}
+		::oTabCtrl	:enable(300)
+
 	else
 		::pbDesign	:enable()
 		::pbPreview	:enable()
 		::pbExport	:enable()
+		::pbExport	:Setcaption( "Export" )
+		::pbExport	:activate	:= {|| ::StartPrint(LL_PRINT_EXPORT,, ::SplitControl:server:folder)}
+		::oTabCtrl	:Disable(300)
 	endif
 RETURN self
 
@@ -91,6 +114,23 @@ METHOD panRight:StartPrint(nExport,lDesign, cFolder)
 RETURN self
 
 //=========================================
+METHOD panRight:OpenLL()
+	LOCAL cFile
+	LOCAL oFileDlg
+
+	oFileDlg   := XbpFileDialog():new()
+	oFileDlg:create( AppDesktop() )
+	oFileDlg:FileFilters	:= {{"LL Preview", "*.LL" }}
+
+	cFile	:= oFileDlg:open(,,,FALSE)
+
+	if File(cFile)
+		::oTabCtrl:activate(300)
+		::oTabCtrl:GetPage(300):open(cFile)
+	endif
+RETURN self
+
+//=========================================
 CLASS pgDescrption FROM dsTabPage
 	HIDDEN:
 	PROTECTED:
@@ -105,9 +145,9 @@ METHOD pgDescrption:Create()
 	::oMle	:= dsMle():new(::drawingarea,,{3,3},{500,200})
 	::oMle:datalink		:= {|x|if(x==NIL, ::Server:fieldget(if(GetLanguage() == SET_GERMAN, "DE", "US" ) +"_COMMENT"), ::Server:fieldput(if(GetLanguage() == SET_GERMAN, "DE", "US" ) +"_COMMENT",x))}
 	::oMle:editable		:= dsGetUsername() = "mh"
-	::oMle:enableResize	:= True
-	::oMle:horizScroll	:= False
-	::oMle:wordWrap		:= True
+	::oMle:enableResize	:= TRUE
+	::oMle:horizScroll	:= FALSE
+	::oMle:wordWrap		:= TRUE
 	::oMle:writeblock		:= {|| ::Server:rlock(), ::oMle:GetData(), ::Server:unlock()}
 	::oMle:setColorBG(GraMakeRGBColor({255,255,196}))
 
@@ -129,9 +169,9 @@ ENDCLASS
 METHOD pgCode:Create()
 
 	::oMle	:= dsMle():new(::drawingarea,,{3,3},{500,200})
-	::oMle:editable		:= false
-	::oMle:enableResize	:= True
-	::oMle:wordWrap		:= false
+	::oMle:editable		:= FALSE
+	::oMle:enableResize	:= TRUE
+	::oMle:wordWrap		:= FALSE
 	::oMle:setColorBG(GraMakeRGBColor({255,255,196}))
 	::oMle:setfontcompoundname("12.Consolas")
 
@@ -158,5 +198,7 @@ METHOD pgCode:ReadData()
 	::oMle:setFirstChar(++nLen)
 
 RETURN self
+
+
 
 

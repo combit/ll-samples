@@ -40,7 +40,7 @@ namespace DesignerProperty
         //US: Datasource, initialization of used objects
         private void Form1_Load(object sender, EventArgs e)
         {
-            string[] cities = { "Tokyo","Mexiko-City","New York","Seoul","Mumbai","São Paulo","Manila","Jakarta","Delhi","Kairo","Istanbul","Shanghai","München","Los Angeles","Moskau","Buenos Aires","Paris","Berlin","London","Sydney" };
+            string[] cities = { "Konstanz","Mexiko-City","New York","Seoul","Mumbai","São Paulo","Manila","Jakarta","Delhi","Kairo","Istanbul","Shanghai","München","Los Angeles","Tokyo","Buenos Aires","Paris","Berlin","London","Sydney" };
             string pattern = @"TextBox(\d+)";
             Regex r = new Regex(pattern);
 
@@ -54,10 +54,10 @@ namespace DesignerProperty
             }
           
             // D: Zuweisung DesignerObjekt
-            //US: Assigment DesignerObject
+            //US: Assignment DesignerObject
             MapsObject MapObj = new MapsObject("MapsObject", "Maps Objekt", (System.Drawing.Icon)(DesignerProperty.Properties.Resources.MapsObj));
             LL.DesignerObjects.Add(MapObj);
-                     
+            
             // D: Projektdatei
             //US: Projectfile
             LL.AutoProjectFile = Application.StartupPath + @"\..\..\..\..\..\..\..\Report Files\Maps.lst";

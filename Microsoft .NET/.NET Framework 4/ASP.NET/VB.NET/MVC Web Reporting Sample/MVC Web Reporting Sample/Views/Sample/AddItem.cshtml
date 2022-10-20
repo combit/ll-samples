@@ -69,7 +69,7 @@
                         @Html.ValidationMessageFor(m => Model.File2)
                     </div>
                     <div id="Section_ShowInToolbar" style="display: none">
-                        @Html.LabelFor(m => Model.ShowInToolbar, "Show as report in the toolbar")
+                        @Html.LabelFor(m => Model.ShowInToolbar, "Show in toolbar")
                         @Html.CheckBoxFor(m => Model.ShowInToolbar, new { data_mini = "true" })
                     </div>
 
@@ -90,7 +90,7 @@
         $('#File1').on('change', function () {
             var fileExtension = $('#File1').val().substr($('#File1').val().lastIndexOf('.'));
             var isShapeFile = (fileExtension === '.shp');
-            var isProjectFile = (fileExtension === '.lst' || fileExtension === '.srt' || fileExtension === '.lsr' || fileExtension === '.crd' || fileExtension === '.lbl');
+            var isProjectFile = (fileExtension === '.lst' || fileExtension === '.srt' || fileExtension === '.lsr' || fileExtension === '.crd' || fileExtension === '.lbl' || fileExtension === '.lab');
             if (isShapeFile) {
                 $('#Section_File2').slideDown();
             } else {

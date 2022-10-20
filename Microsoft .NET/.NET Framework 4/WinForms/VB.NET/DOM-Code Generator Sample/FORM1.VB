@@ -65,7 +65,7 @@ Public Partial Class Form1
         'US: Before we can display the project we need to know wich is the current project type
         Dim projectType As LlProject = _ll.Core.LlUtilsGetProjectType(_fileName)
 
-        ' D: Um das ausgewähle Projekt im Designer laden zu können, benötigt List & Label eine Dummy-Datenquelle
+        ' D: Um das ausgewählte Projekt im Designer laden zu können, benötigt List & Label eine Dummy-Datenquelle
         ' US: To be able to use the selected project in the designer, we need a dummy-datasource
         _ll.DataSource = New List(Of Integer)()
 

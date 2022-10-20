@@ -1,7 +1,7 @@
-Project File generated 27.08.2021 13:34:43
+Project File generated 29.08.2022 18:08:52
 
 [Project]
-Name=LL27Sample
+Name=LL28Sample
 DefaultDir=.
 MainProjectFileName=LLSamples.prg
 Parameters=
@@ -36,17 +36,17 @@ Chart.wfm,0,0,0,
 OPTIONS.WFM,0,0,0, 
 LLRibbons.cc,0,0,0, 
 Events.wfm,0,0,0, 
-cmbtLL27.h,0,0,0, 
-LL27.CC,0,0,0, 
+\\LUTZ4\Quellen\Projekte\ListAndlabel\28\cmbtLL28.h,0,0,0, 
+\\LUTZ4\Quellen\Projekte\ListAndlabel\28\LL28.CC,0,0,0, 
 
 [DEO]
 
 [INNO]
-ProjectExeFileName=G:\QUELLEN\PROJEKTE\LISTANDLABEL\27\llsample.exe
+ProjectExeFileName=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\28\llsample.exe
 ProjectMainFileName=
 ProjectdBaseVersion=dBASE 2019 13.20  b2618 (11/26/2019-DE191126)
 DefaultDirName={pf}\{#AppName}
-AppName=LL27Sample
+AppName=LL28Sample
 AppVersion=1.0.0.0
 SM_dBASERuntime=false
 dBPlus=true
@@ -69,7 +69,7 @@ dBProgressbox=false
 dBSilent=false
 dBDestRuntime=
 dBDestBDE=
-SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\27
+SourceFolder=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\28
 InnoScriptname=
 LastDBVersion=1231
 LastDBLanguage=DE
@@ -127,5 +127,7 @@ CURRENTVSF=windows
 IMAGETOPRIGHT=
 IMAGESIDE=
 Icon1={group}\{#AppName} >> {app}\llsample.exe
-Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\27\llsample.exe >> DestDir: {app}
-Files2=G:\QUELLEN\PROJEKTE\LISTANDLABEL\27\llsample.exe >> DestDir: {app}
+Files1=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\28\llsample.exe >> DestDir: {app}
+Files2=G:\QUELLEN\PROJEKTE\LISTANDLABEL\28\llsample.exe >> DestDir: {app}
+Files3=\\LUTZ4\QUELLEN\PROJEKTE\LISTANDLABEL\28\llsample.exe >> DestDir: {app}
+Files4=\\LUTZ4\Quellen\Projekte\ListAndlabel\28\cmbtLL28.h >> DestDir: {app}

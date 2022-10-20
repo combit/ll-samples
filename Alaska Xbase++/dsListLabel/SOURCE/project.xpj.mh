@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<version number="1.0" />
+<session>
+  <active file=".\panRight.prg" />
+  <openfiles>
+    <openfile path=".\panRight.prg" column="0" line="135" />
+    <openfile path=".\Main.prg" column="0" line="97" />
+  </openfiles>
+  <breakpoints>
+    <breakpoint target    = "..\LLDemo.EXE"
+                file      = ".\panRight.prg"
+                line      = "133"
+                state     = "1"
+                condition = ".T."
+                fromPass  = "1"
+                toPass    = "-1"
+                everyPass = "1"
+                halt      = "Yes"
+                logMode   = "0"
+                msg       = "HALTEPUNKT IN %ProcName()%(), ZEILE: %ProcLine()%"
+                logFile   = ""
+                />
+  </breakpoints>
+  <view>
+    <expanded key="_2D73F757147DBF9C242164A15A44A2A92228852D" />
+  </view>
+</session>

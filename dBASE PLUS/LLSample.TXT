@@ -2,4 +2,4 @@ Sprache=Deutsch
 LizenzInfo=
 StartDialog=ON
 RibbonDesigner=ON
-RibbonViewer  =ON
+RibbonViewer=ON

@@ -1,6 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2008
+# Visual Studio Version 15
+VisualStudioVersion = 15.0.28307.572
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DesignerControl", "DesignerControl.vbproj", "{A6F0A1CB-AEDC-4A4B-ABA5-B24B2F395284}"
 EndProject
 Global

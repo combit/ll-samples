@@ -18,12 +18,12 @@
     RC_FLAGS      = /v
     OBJ_DIR       = objects
 // $START-AUTODEPEND
-    cmbtLL27.obj
+    cmbtLL28.obj
     dialog.obj
     LLCommon.obj
     main.obj
 // $STOP-AUTODEPEND
-    ..\cmbtLL27.prg
+    ..\cmbtLL28.prg
     dialog.prg
     LLCommon.prg
     main.PRG

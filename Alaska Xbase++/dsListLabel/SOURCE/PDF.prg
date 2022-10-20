@@ -59,13 +59,13 @@ PROCEDURE Pdf(nPrintingTarget, lDesignDocument, cFolder)
 	ELSE
 		// D:  automatisiertes Erstellen eines PDF ohne Benutzeraingriff: SaveAsPdf(cFile, lQuiet)
 		// US: automated creation of a PDF file without user interaction: SaveAsPdf(cFile, lQuiet)
-		lRet	:= oListLabel:saveaspdf(cFile, true )
+		lRet	:= oListLabel:saveaspdf(cFile, TRUE )
 		if !lRet
 			Msgbox(oListLabel:GetLastMessage(), "Error: "+ var2char(oListLabel:GetLastError()))
 		else
 			runshell('/C start " " /MIN "'+ GetAppDir()+cFile +'"')
 		endif
-		CopyFiles2Clipboard(GetApp():GetHWnd(), true, GetAppDir()+cFile)
+		CopyFiles2Clipboard(GetApp():GetHWnd(), TRUE, GetAppDir()+cFile)
 	ENDIF
 
 	// D: aufräumen

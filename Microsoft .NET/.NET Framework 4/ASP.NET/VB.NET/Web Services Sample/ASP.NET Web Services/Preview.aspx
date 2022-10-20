@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="true" CodeBehind="Preview.aspx.vb" Inherits="ASP.NET_Web_Services.Preview" %>
 
-<%@ Register assembly="combit.ListLabel27.Web" namespace="combit.Reporting.Web" tagprefix="combit" %>
+<%@ Register assembly="combit.ListLabel28.Web" namespace="combit.Reporting.Web" tagprefix="combit" %>
 
 <!DOCTYPE html>
 

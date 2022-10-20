@@ -11,11 +11,6 @@ Namespace DataAccess
     NotInheritable Class CmbtSettings
         Private Sub New()
         End Sub
-        Public Shared ReadOnly Property ArtkRecCount() As Integer
-            Get
-                Return 20
-            End Get
-        End Property
         Public Shared ReadOnly Property Language() As LlLanguage
             Get
                 Return LlLanguage.English
@@ -172,50 +167,6 @@ Namespace DataAccess
 
             Return ds
 
-        End Function
-#End Region
-
-#Region "Article /Item DB"
-        Public Shared Function GetArticleDataTable(isLocalization As Boolean, Optional isInvoice As Boolean = False) As DataTable
-            'get the datasource for the article projects (standalone)
-            Dim dt As New DataTable()
-            Dim tableName As String = String.Empty
-            Dim conn As New OleDbConnection(WebConfigurationManager.ConnectionStrings("Gantt").ConnectionString)
-            conn.Open()
-            Dim requestedRows As Integer = CmbtSettings.ArtkRecCount
-            If isLocalization Then
-                tableName = "Item"
-            Else
-                tableName = If(CmbtSettings.Language = LlLanguage.German, "Artikel", "Item")
-            End If
-
-
-            Dim tableRows As Integer = CountTableRows(conn, tableName)
-            'counted rows in table
-            Dim cmd As OleDbCommand = Nothing
-            Dim reader As OleDbDataReader = Nothing
-
-            'check table is limited or multiplied
-            If requestedRows <= tableRows And Not isInvoice Then
-                cmd = New OleDbCommand((Convert.ToString("Select TOP " & CmbtSettings.ArtkRecCount.ToString() & " * from   ") & tableName) & " ", conn)
-                reader = cmd.ExecuteReader()
-                dt.Load(reader)
-            Else
-                cmd = New OleDbCommand(Convert.ToString("Select * from ") & tableName, conn)
-                reader = cmd.ExecuteReader()
-                dt.Load(reader)
-                'multiple datatable
-                MultipleDataTable(dt, requestedRows)
-            End If
-
-            If isLocalization Then
-                dt.TableName = "Item"
-            Else
-
-                dt.TableName = If(CmbtSettings.Language = LlLanguage.German, "Artikel", "Item")
-            End If
-
-            Return dt
         End Function
 #End Region
 

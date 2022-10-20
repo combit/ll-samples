@@ -7,9 +7,6 @@
 ============================================================================*/
 
 
-#xtranslate   TRUE => .T.
-#xtranslate   FALSE => .F.
-
 #ifndef CRLF
 	#define CRLF   						chr(13)+chr(10)
 #endif

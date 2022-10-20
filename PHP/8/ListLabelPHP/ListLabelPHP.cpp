@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#define _NO_CMLL27APIDEFINES
-#include "..\..\Visual C++\cmbtll27.h"
+#define _NO_CMLL28APIDEFINES
+#include "..\..\Visual C++\cmbtll28.h"
 #define PHP_MAXSTRLEN 	128000
 // Hier werden alle Funktionen deklariert,
 // die später in PHP verfügbar sein sollen

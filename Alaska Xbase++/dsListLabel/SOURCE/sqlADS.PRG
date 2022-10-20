@@ -29,7 +29,7 @@ PROCEDURE sqlADS(nPrintingTarget, lDesignDocument, cFolder)
 	// D: ADS Datendictionary öffnen, using AdsClass++
 	// US: open ADS datadictionary    using AdsClass++
 	addLLDemo   := dsAceDD():new()
-	addLLDemo:connect(fullpath(".\data\lldemo.add",,false),,,,ADS_LOCAL_SERVER)
+	addLLDemo:connect(fullpath(".\data\lldemo.add",,FALSE),,,,ADS_LOCAL_SERVER)
 	if !addLLDemo:Connected()
 		ErrorBox("Error conneting to ADS: " + Var2Char(addLLDemo:Lasterror()))
 		RETURN

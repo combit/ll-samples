@@ -1,0 +1,19 @@
+﻿@using combit.Reporting.Web
+@using combit.Reporting.Web.WebReportViewer
+@{
+    Layout = null;
+    string repositoryId = Context.Request.Query["reportRepositoryID"].ToString();
+    if (!String.IsNullOrEmpty(repositoryId))
+    {
+        repositoryId = repositoryId.Replace("repository://{", "").Replace("}", "");
+    }
+
+    var options = new WebReportViewerMVCOptions(repositoryId)
+    {
+        Title = "Web Report Viewer"
+    };
+}
+
+<!DOCTYPE html>
+
+@Html.WebReportViewer(options);

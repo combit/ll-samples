@@ -35,7 +35,7 @@ PROC Main()
 
 	_CheckIndex(cPath)
 
-	// D: settings für LLDemo
+	// D:  settings für LLDemo
 	// US: settings for LLDemo
 	DefaultRegistrykey("Software\LLDemo")
 
@@ -66,7 +66,8 @@ PROC Main()
 	EnableTooltip(TRUE)
 
 	dsBaseProperty();
-		:SetInitProperty("XBROWSE"			,"enableResize"			,true);
+		:SetInitProperty("TABCONTROL"		,"enableResize"			,TRUE );
+		:SetInitProperty("XBROWSE"			,"enableResize"			,TRUE);
 		:SetInitProperty("XBROWSE"			,"WheelSkip"				,1 );
 		:SetInitProperty("XBROWSE"			,"setColorBG"				,GRA_CLR_WHITE)
 
@@ -86,7 +87,7 @@ PROC Main()
 	ENDIF
 	dsListLabel():DefaultBoxType(LL_BOXTYPE_NONE)
 
-	// D: Hier wird Ihr persoenlicher Lizenzinfostring eingetragen - siehe perslic.txt
+	// D:  Hier wird Ihr persoenlicher Lizenzinfostring eingetragen - siehe perslic.txt
 	// US: Enter your licensing info string here - see perslic.txt
 /*	dsListLabel():LicensingInfo(hJob, LL_OPTIONSTR_LICENSINGINFO, "<Personal License Key>"...) */
 
@@ -108,10 +109,11 @@ PROC Main()
 	oApp:Toolbar:AddItem(101, BMP_GERMANY	,{|| _SwitchLanguage(SET_GERMAN)})
 	oApp:Toolbar:AddItem(102, BMP_USA		,{|| _SwitchLanguage(SET_AMERICAN)})
 	oApp:Toolbar:AddItem(103, BMP_HELP		,{|| _StartHelp()})
-	RestorePos(, true )
+	RestorePos(, TRUE )
 
    // start application´s main event loop
    oApp:Show()
+	SetAppFocus(oApp:oBrowse)
 
    AppExec()
 
@@ -134,26 +136,26 @@ STATIC PROCEDURE _CheckIndex(cPath)
 	// D: Tabellen & Relation hinzufügen
 	// US: Add tables & relations
 	IF !file(cPath +"\ITEMS.CDX")
-		DbUseArea(.T., , "Items", .f.)
+		DbUseArea(.T., , "Items", FALSE)
    	INDEX ON field->BILLNO 		TAG BILLNO TO ITEMS
    	INDEX ON field->ARTICLENO 	TAG ARTICLENO TO ITEMS
 		dbclosearea()
 	ENDIF
 
 	IF !file(cPath +"\INVOICE.CDX")
-		DbUseArea(.T., , "Invoice", .f.)
+		DbUseArea(.T., , "Invoice", FALSE)
    	INDEX ON field->BILLNO 		TAG BILLNO TO INVOICE
 		dbclosearea()
 	ENDIF
 
 	IF !file(cPath +"\ARTICLE.CDX")
-		DbUseArea(.T., , "Article", .f.)
+		DbUseArea(.T., , "Article", FALSE)
    	INDEX ON field->ARTICLENO 	TAG ARTICLENO TO ARTICLE
 		dbclosearea()
 	ENDIF
 
 	IF !file(cPath +"\Samples.CDX")
-		DbUseArea(.T., , "Samples", .f.)
+		DbUseArea(.T., , "Samples", FALSE)
    	INDEX ON field->POS 	TAG POS TO Samples
 		dbclosearea()
 	ENDIF
@@ -163,7 +165,7 @@ RETURN
 //=========================================
 FUNC CatchCallback(nEvent,nId,oListLabel)
 	UNUSED (oListLabel)
-	// D: in der Vorschau wurde ein Toolbar Icon geklickt
+	// D:  in der Vorschau wurde ein Toolbar Icon geklickt
 	// US: preview click in toolbar
 	IF nEvent = LL_NTFY_VIEWERBTNCLICKED
 		IF nId = MNUID_LL_PRINT .or. nId = MNUID_LL_PRINT_RM
@@ -189,8 +191,8 @@ RETURN NIL
 //=========================================
 STATIC FUNC _StartHelp()
 	IF GetLanguage() = SET_GERMAN
-		runshell('/C start "" "'+fullpath(".\HELP\DEUTSCH\dsListLabel.CHM",, .f.)+'"')
+		runshell('/C start "" "'+fullpath(".\HELP\DEUTSCH\dsListLabel.CHM",, FALSE)+'"')
 	ELSE
-		runshell('/C start "" "'+fullpath(".\HELP\ENGLISH\dsListLabel.CHM",, .f.)+'"')
+		runshell('/C start "" "'+fullpath(".\HELP\ENGLISH\dsListLabel.CHM",, FALSE)+'"')
 	ENDIF
 RETURN NIL

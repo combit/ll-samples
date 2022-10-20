@@ -13,7 +13,6 @@ namespace DataAccess
 {
     static class CmbtSettings
     {
-        public static int ArtkRecCount { get { return 20; } }
         public static LlLanguage Language { get { return LlLanguage.English; } }
 
         public static int MultiTabRecCount { get { return 5; } }
@@ -34,8 +33,7 @@ namespace DataAccess
             }
         }
     }
-
-
+	
     public static class SampleData
     {
         public static DataProviderCollection CreateProviderCollection(string reportName, bool forDesign)
@@ -164,56 +162,7 @@ namespace DataAccess
 
         }
         #endregion
-
-        #region Article /Item DB
-        public static DataTable GetArticleDataTable(bool isLocalization, bool isInvoice = false)
-        {
-            //get the datasource for the article projects (standalone)
-            DataTable dt = new DataTable();
-            string tableName = string.Empty;
-            OleDbConnection conn = new OleDbConnection(WebConfigurationManager.ConnectionStrings["Gantt"].ConnectionString);
-            conn.Open();
-            int requestedRows = CmbtSettings.ArtkRecCount;
-            if (isLocalization)
-            {
-                tableName = "Item";
-            }
-            else
-            {
-                tableName = CmbtSettings.Language == LlLanguage.German ? "Artikel" : "Item";
-            }
-
-
-            int tableRows = CountTableRows(conn, tableName);//counted rows in table
-            OleDbCommand cmd = null;
-            OleDbDataReader reader = null;
-
-            //check table is limited or multiplied
-            if (requestedRows <= tableRows & !isInvoice)
-            {
-                cmd = new OleDbCommand("Select TOP " + CmbtSettings.ArtkRecCount.ToString() + " * from   " + tableName + " ", conn);
-                reader = cmd.ExecuteReader();
-                dt.Load(reader);
-            }
-            else
-            {
-                cmd = new OleDbCommand("Select * from " + tableName, conn);
-                reader = cmd.ExecuteReader();
-                dt.Load(reader);
-                //multiple datatable
-                MultipleDataTable(dt, requestedRows);
-            }
-
-            if (isLocalization)
-            { dt.TableName = "Item"; }
-
-            else
-            { dt.TableName = CmbtSettings.Language == LlLanguage.German ? "Artikel" : "Item"; }
-
-            return dt;
-        }
-        #endregion
-
+		
         #region Helper Methods
         public static DataTable MultipleDataTable(DataTable dt, int requestedRows)
         {

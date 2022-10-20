@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GMap.NET.Core" Version="2.0.1" />
+    <PackageReference Include="GMap.NET.WinForms" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MapsDesignerObject\MapsDesignerObject.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="combit.ListLabel28">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

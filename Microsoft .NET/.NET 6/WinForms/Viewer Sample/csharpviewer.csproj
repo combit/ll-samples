@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="combit.ListLabel28">
+      <HintPath>..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+ <ItemGroup>
+   <None Update="invoice.ll">
+     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+   </None>
+ </ItemGroup>
+
+</Project>

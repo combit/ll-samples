@@ -8,7 +8,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "..\cmbtll27.h"
+#include "..\cmbtll28.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // CPrtloopDlg dialog

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWpf>true</UseWpf>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+ <ItemGroup>
+   <Reference Include="combit.ListLabel28">
+     <HintPath>..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+   </Reference>
+   <Reference Include="combit.ListLabel28.Wpf">
+     <HintPath>..\..\Assemblies\combit.ListLabel28.Wpf.dll</HintPath>
+   </Reference>
+ </ItemGroup>
+</Project>

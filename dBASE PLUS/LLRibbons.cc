@@ -1,7 +1,7 @@
-// Revision: 27.08.21
+// Revision: 25.08.22
 #INCLUDE "WINDEF.H"
 #INCLUDE "WINREG.H"
-#DEFINE REG_PATH  "Software\Combit\CMBTLL\PlusRun\"
+#DEFINE REG_PATH  "Software\combit\cmbtll\PlusRun\"
 //This class may set the Ribbon Avtivity in LL Designer and Viewer
 //For the designer this is also availanle by using the Optionen Menu
 //but for Viewer is currently NO dialog to set the ribbon state separatly.
@@ -9,8 +9,8 @@
 //separat. Derzeit steht hierzu nur im Designer eine entsprechende Funktionalität
 //zur Verfügung, das Setzen unterschiedlicher Einstellungen für Designer/Viewer
 //ist nur per Zugriff auf die Registry möglich.
-//Designer --- HKEY_CURRENT_USER\Software\Combit\CMBTLL\PlusRun\Designer.Ribbon.Active
-//Viewer   --- HKEY_CURRENT_USER\Software\Combit\CMBTLL\PlusRun\Viewer.Ribbon.Active
+//Designer --- HKEY_CURRENT_USER\Software\combit\cmbtll\PlusRun\Designer.Ribbon.Active
+//Viewer   --- HKEY_CURRENT_USER\Software\combit\cmbtll\PlusRun\Viewer.Ribbon.Active
 CLASS LLRibbons OF OBJECT
    this.Key     =0
    this.Language=0 

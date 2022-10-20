@@ -15,11 +15,6 @@ Imports System.Text.RegularExpressions
 Imports System.Collections.ObjectModel
 Imports combit.ListLabel
 
-
-
-
-
-
 '
 ' This code uses substantial portions of GMap.NET (http://greatmaps.codeplex.com). Please take note of the following license that is
 ' attached to GMaps.NET:
@@ -47,7 +42,7 @@ Public Class Form1
     ' D: Datenquelle und Objekte initialisieren 
     'US: Datasource, initialization of used objects
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim cities As String() = {"Tokyo", "Mexiko-City", "New York", "Seoul", "Mumbai", "São Paulo", "Manila", "Jakarta", "Delhi", "Kairo", "Istanbul", "Shanghai", "München", "Los Angeles", "Moskau", "Buenos Aires", "Los Angeles", "Berlin", "London", "Sydney"}
+        Dim cities As String() = {"Konstanz", "Mexiko-City", "New York", "Seoul", "Mumbai", "São Paulo", "Manila", "Jakarta", "Delhi", "Kairo", "Istanbul", "Shanghai", "München", "Los Angeles", "Tokyo", "Buenos Aires", "Los Angeles", "Berlin", "London", "Sydney"}
         Dim pattern As String = "textBox(\d+)"
         Dim r As New Regex(pattern)
 
@@ -59,7 +54,7 @@ Public Class Form1
         Next
 
         ' D: Zuweisung DesignerObjekt
-        'US: Assigment DesignerObject
+        'US: Assignment DesignerObject
         Dim MapObj As New MapsObject.combit.ListLabel.DesignerExtensions.MapsObject("MapsObject", "Maps Objekt", DirectCast(DesignerProperty.My.Resources.MapsObj, System.Drawing.Icon))
         LL.DesignerObjects.Add(MapObj)
 

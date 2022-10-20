@@ -132,7 +132,13 @@ Namespace WebReporting
 
         ' See Interface
         Public Sub LoadItem(itemID As String, destinationStream As Stream, cancelToken As CancellationToken) Implements IRepository.LoadItem
-            Dim content As Byte() = DirectCast(_db.CreateCommand("SELECT FileContent FROM RepoItems WHERE ItemID = @ItemID").SetParameter("ItemID", itemID).ExecuteScalar(), Byte())
+            Dim fileContent As Object = _db.CreateCommand("SELECT FileContent FROM RepoItems WHERE ItemID = @ItemID").SetParameter("ItemID", itemID).ExecuteScalar()
+
+            Dim content As Byte() = New Byte() {}
+
+            If TypeOf fileContent Is Byte() Then
+                content = fileContent
+            End If
 
             destinationStream.Write(content, 0, content.Length)
         End Sub

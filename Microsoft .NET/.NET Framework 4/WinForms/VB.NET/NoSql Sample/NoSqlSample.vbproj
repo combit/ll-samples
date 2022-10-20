@@ -57,18 +57,17 @@
     <Reference Include="Cassandra, Version=3.99.0.0, Culture=neutral, PublicKeyToken=10b231fbfc8c4b4d, processorArchitecture=MSIL">
       <HintPath>packages\CassandraCSharpDriver.3.16.3\lib\net452\Cassandra.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel27">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
+    <Reference Include="combit.ListLabel28">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel28.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel27.CassandraDataProvider">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel27.CassandraDataProvider.dll</HintPath>
+    <Reference Include="combit.ListLabel28.CassandraDataProvider">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel28.CassandraDataProvider.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel27.MongoDBDataProvider">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel27.MongoDBDataProvider.dll</HintPath>
+    <Reference Include="combit.ListLabel28.MongoDBDataProvider">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel28.MongoDBDataProvider.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel27.SalesforceDataProvider">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel27.SalesforceDataProvider.dll</HintPath>
+    <Reference Include="combit.ListLabel28.SalesforceDataProvider">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel28.SalesforceDataProvider.dll</HintPath>
     </Reference>
     <Reference Include="DnsClient, Version=1.5.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <HintPath>packages\DnsClient.1.5.0\lib\net45\DnsClient.dll</HintPath>

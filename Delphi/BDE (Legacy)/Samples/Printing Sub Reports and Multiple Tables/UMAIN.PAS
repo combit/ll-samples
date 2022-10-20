@@ -14,7 +14,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ADODB, DB, L27, cmbtll27, StdCtrls, Buttons, Menus, uObject, uDataModule,
+  Dialogs, ADODB, DB, L28, cmbtll28, StdCtrls, Buttons, Menus, uObject, uDataModule,
   Grids, DBGrids, Registry
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
@@ -33,7 +33,7 @@ type
     Report1: TMenuItem;
     Print1: TMenuItem;
     Report2: TMenuItem;
-    LL: TL27_;
+    LL: TL28_;
     File1: TMenuItem;
     Exit1: TMenuItem;
     procedure FormCreate(Sender: TObject);

@@ -1,0 +1,67 @@
+﻿@using combit.Reporting.Repository
+
+@model MVC_Web_Reporting_Sample.WebReporting.ViewModels.RepositoryModel
+
+@{
+    ViewBag.Title = "View Repository";
+
+    // D:   Sortiere die Liste der Repository-Items
+    // US:  Sort the repository item list
+    var orderedRepositoryItems = Model.RepositoryItems.OrderBy(i => i.ExtractDisplayName() ?? i.InternalID);
+}
+
+@Html.Raw(File.ReadAllText(Server.MapPath("~/Readme.html")))
+<br />
+
+<div style="max-width: 1300px; margin:auto">
+    <a data-role="button" href="@Url.Action("AddItem", "Sample")" target="ContentContainer" data-icon="plus" data-iconpos="right">Add Repository Item</a>
+    <h4>Repository Items</h4>
+
+    <div id="RepositoryItemList">
+
+        @foreach (var repoItem in orderedRepositoryItems)
+        {
+            // D:   Ordner sollen in der Liste nicht angezeigt werden
+            // US:  Directories should not be listed
+            if (repoItem.Type == RepositoryItemType.Folder.Value)
+            {
+                continue;
+            }
+
+            // D:   Lese den Anzeigenamen des Repository-Items aus. Dieser ist optional und kann null sein! Daher Fallback auf die Repository-ID.
+            // US:  Get the repository item's display name. This name is optional and may be null! So fallback to the repository ID.
+            string itemName = repoItem.ExtractDisplayName() ?? (repoItem.InternalID + " (no display name defined)");
+
+            <div data-role="collapsible" data-mini="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                <h4>@itemName</h4>
+
+                <table class="RepositoryItemTable">
+                    <tr>
+                        <td>ID:</td>
+                        <td>@repoItem.InternalID</td>
+                        <td>Author:</td>
+                        <td>@repoItem.Author</td>
+                    </tr>
+                    <tr>
+                        <td>Type:</td>
+                        <td>@repoItem.Type</td>
+                        <td>Last Modification:</td>
+                        <td>@repoItem.LastModificationUTC.ToLocalTime()</td>
+                    </tr>
+                </table>
+                <div style="text-align: right">
+                    <a href="@Url.Action("DownloadRepositoryItem", "Sample", new { repoItemId = repoItem.InternalID})" data-ajax="false" data-role="button" data-mini="true" data-inline="true">Download</a>
+                    <a href="@Url.Action("DeleteRepositoryItem", "Sample", new { repoItemId = repoItem.InternalID})" data-ajax="false" data-role="button" data-mini="true" data-inline="true">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div id="CreateProjectPopup" data-role="popup" data-position-to="window">
+    <div data-role="header">
+        <h4>Create Project</h4>
+    </div>
+    <form action="@Url.Action("CreateProject", "Sample")" method="post"></form>
+</div>

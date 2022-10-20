@@ -1,0 +1,19 @@
+﻿@page "/"
+<div data-role="header" id="MainToolbar" style="padding:.2em">
+    <div>
+        <a href="/Sample/StartPage" target="ContentContainer" class="btn btn-light">Start</a>
+        <WebReporting.Components.ReportList></WebReporting.Components.ReportList>
+        <button id="WebReportDesigner" class="btn btn-light" onclick="webReportDesigner()">WebReportDesigner (Browser)</button>
+        <button id="RefreshViewer" class="btn btn-light" onclick="webReportViewer()">WebReportViewer</button>
+        <button id="OpenDesigner" class="btn btn-light" onclick="startWebDesigner()">Windows-Designer</button>
+        <a href="/Sample/AddItem" target="ContentContainer" class="btn btn-light">Add Repository Item</a>
+    </div>
+</div>
+
+<iframe id="ContentContainer" name="ContentContainer" src="/Sample/StartPage" onload="maximizeContentContainerHeight()" frameborder="0"
+        style="width: 100%; height:100%; position:absolute"></iframe>
+
+
+@code {
+
+}

@@ -30,7 +30,7 @@ PROCEDURE adsSimple2(nPrintingTarget, lDesignDocument, cFolder)
 	// D: ADS Datendictionary öffnen, mit AdsClass++
 	// US: open ADS datadictionary    using AdsClass++
 	addLLDemo   := dsAceDD():new()
-	addLLDemo:connect(fullpath(".\data\lldemo.add",,false),,,,ADS_LOCAL_SERVER)
+	addLLDemo:connect(fullpath(".\data\lldemo.add",,FALSE),,,,ADS_LOCAL_SERVER)
 	if !addLLDemo:Connected()
 		ErrorBox("Error conneting to ADS: " + Var2Char(addLLDemo:Lasterror()))
 		RETURN
@@ -47,7 +47,7 @@ PROCEDURE adsSimple2(nPrintingTarget, lDesignDocument, cFolder)
 
 	// D: dbRelease/dbRequest disablen, keine DBE, nicht nötig für AdsClass++
 	// US:dbRelease/dbRequest disablen, no DBE, no need for AdsClass++
-	oListLabel:UseDbRequest(false)
+	oListLabel:UseDbRequest(FALSE)
 
 	// D: Standard Verzeichnis für Vorlagen
 	// US:default folder for layout

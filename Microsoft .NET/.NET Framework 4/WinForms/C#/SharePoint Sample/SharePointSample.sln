@@ -1,6 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 15
+VisualStudioVersion = 15.0.28307.572
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharePointSample", "SharePointSample.csproj", "{B0EC1947-7529-43BB-AD35-9FF231C3FE83}"
 EndProject
 Global

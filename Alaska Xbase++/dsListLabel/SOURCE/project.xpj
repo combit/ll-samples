@@ -12,7 +12,7 @@
     DEBUG_SAVE           = yes
     GUI                  = yes
     LINKER               = alink
-    LINK_FLAGS           = lib\xclass.lib lib\xclace.lib dll\dsListLabel27.LIB
+    LINK_FLAGS           = lib\xclass.lib lib\xclace.lib dll\dsListLabel28.LIB
     RC_COMPILE           = arc
     RC_FLAGS             = /v
     INCLUDE              = Source\include;dll
@@ -34,6 +34,8 @@
  	source\Main.prg
  	source\panRight.prg
  	source\PDF.prg
+ 	source\pgOCX.prg
+	source\qrrechnung.prg
  	source\reportcontainer.PRG
  	source\resource\resource.arc
  	source\Simple1.prg

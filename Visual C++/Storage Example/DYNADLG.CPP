@@ -26,8 +26,8 @@ static char THIS_FILE[] = __FILE__;
 // D:   Vorbereitung für dynamisches Laden der List & Label Storage DLL
 // US: preparing storage load of the List & Label Storage DLL
 #define	IMPLEMENTATION
-#undef _LS27_H
-#include "..\cmbtls27.hx"
+#undef _LS28_H
+#include "..\cmbtls28.hx"
 #undef	IMPLEMENTATION
 
 
@@ -190,7 +190,7 @@ BOOL CLLStorageSampleDlg::OnInitDialog()
 	
 	// D:   List & Label wir dynamisch geladen
 	// US: storage load 
-	if(LS27xLoad() < 0) 
+	if(LS28xLoad() < 0) 
 	{
 		  AfxMessageBox(TEXT("List & Label storage load failed!"));
 	}
@@ -263,7 +263,7 @@ void CLLStorageSampleDlg::OnDestroy()
 {
 	// D:   List & Label entladen
 	// US: unload List & Label
-   	LS27xUnload();
+   	LS28xUnload();
 
 	CDialog::OnDestroy();
 }

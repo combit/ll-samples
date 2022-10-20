@@ -19,7 +19,7 @@
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.LL = new combit.Reporting.ListLabel(Me.components)
+        Me.LL = New combit.Reporting.ListLabel(Me.components)
         Me.label6 = New System.Windows.Forms.Label()
         Me.label2 = New System.Windows.Forms.Label()
         Me.selectTargetFile = New System.Windows.Forms.Button()
@@ -50,13 +50,14 @@
         Me.LL.MaxRTFVersion = 65280
         Me.LL.PhantomSpace = 8203
         Me.LL.PreviewControl = Nothing
+        Me.LL.Printerless = False
         Me.LL.Unit = combit.Reporting.LlUnits.Millimeter_1_100
         Me.LL.UseHardwareCopiesForLabels = False
         Me.LL.UseTableSchemaForDesignMode = False
         '
         'label6
         '
-        Me.label6.Location = New System.Drawing.Point(10, 90)
+        Me.label6.Location = New System.Drawing.Point(10, 210)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(107, 20)
         Me.label6.TabIndex = 28
@@ -64,7 +65,7 @@
         '
         'label2
         '
-        Me.label2.Location = New System.Drawing.Point(10, 61)
+        Me.label2.Location = New System.Drawing.Point(10, 181)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(107, 13)
         Me.label2.TabIndex = 27
@@ -72,7 +73,7 @@
         '
         'selectTargetFile
         '
-        Me.selectTargetFile.Location = New System.Drawing.Point(443, 89)
+        Me.selectTargetFile.Location = New System.Drawing.Point(443, 209)
         Me.selectTargetFile.Name = "selectTargetFile"
         Me.selectTargetFile.Size = New System.Drawing.Size(75, 24)
         Me.selectTargetFile.TabIndex = 26
@@ -80,7 +81,7 @@
         '
         'selectSourceFile
         '
-        Me.selectSourceFile.Location = New System.Drawing.Point(443, 59)
+        Me.selectSourceFile.Location = New System.Drawing.Point(443, 179)
         Me.selectSourceFile.Name = "selectSourceFile"
         Me.selectSourceFile.Size = New System.Drawing.Size(75, 23)
         Me.selectSourceFile.TabIndex = 25
@@ -89,7 +90,7 @@
         'textTargetFile
         '
         Me.textTargetFile.BackColor = System.Drawing.SystemColors.Window
-        Me.textTargetFile.Location = New System.Drawing.Point(123, 90)
+        Me.textTargetFile.Location = New System.Drawing.Point(123, 210)
         Me.textTargetFile.Name = "textTargetFile"
         Me.textTargetFile.Size = New System.Drawing.Size(314, 20)
         Me.textTargetFile.TabIndex = 24
@@ -98,14 +99,14 @@
         '
         Me.textSourceFile.BackColor = System.Drawing.SystemColors.Window
         Me.textSourceFile.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.textSourceFile.Location = New System.Drawing.Point(123, 60)
+        Me.textSourceFile.Location = New System.Drawing.Point(123, 180)
         Me.textSourceFile.Name = "textSourceFile"
         Me.textSourceFile.Size = New System.Drawing.Size(314, 20)
         Me.textSourceFile.TabIndex = 23
         '
         'label1
         '
-        Me.label1.Location = New System.Drawing.Point(10, 31)
+        Me.label1.Location = New System.Drawing.Point(10, 93)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(30, 21)
         Me.label1.TabIndex = 21
@@ -121,23 +122,23 @@
         '
         'label4
         '
-        Me.label4.Location = New System.Drawing.Point(40, 31)
+        Me.label4.Location = New System.Drawing.Point(40, 93)
         Me.label4.Name = "label4"
-        Me.label4.Size = New System.Drawing.Size(421, 16)
+        Me.label4.Size = New System.Drawing.Size(421, 84)
         Me.label4.TabIndex = 20
-        Me.label4.Text = "This sample shows the usage of the RDL Reports converter class."
+        Me.label4.Text = resources.GetString("label4.Text")
         '
         'label3
         '
         Me.label3.Location = New System.Drawing.Point(40, 10)
         Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(421, 16)
+        Me.label3.Size = New System.Drawing.Size(421, 83)
         Me.label3.TabIndex = 19
-        Me.label3.Text = "Dieses Beispiel zeigt die Verwendung der RDL Reports Konverter Klasse."
+        Me.label3.Text = resources.GetString("label3.Text")
         '
         'button1
         '
-        Me.button1.Location = New System.Drawing.Point(403, 119)
+        Me.button1.Location = New System.Drawing.Point(403, 239)
         Me.button1.Name = "button1"
         Me.button1.Size = New System.Drawing.Size(115, 24)
         Me.button1.TabIndex = 18
@@ -151,9 +152,9 @@
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0F, 13.0F)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(530, 152)
+        Me.ClientSize = New System.Drawing.Size(530, 275)
         Me.Controls.Add(Me.label6)
         Me.Controls.Add(Me.label2)
         Me.Controls.Add(Me.selectTargetFile)

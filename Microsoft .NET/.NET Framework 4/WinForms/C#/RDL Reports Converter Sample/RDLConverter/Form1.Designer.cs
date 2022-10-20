@@ -43,7 +43,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(403, 119);
+            this.button1.Location = new System.Drawing.Point(406, 239);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 24);
             this.button1.TabIndex = 1;
@@ -52,7 +52,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(10, 31);
+            this.label1.Location = new System.Drawing.Point(13, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 21);
             this.label1.TabIndex = 10;
@@ -68,25 +68,25 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(40, 31);
+            this.label4.Location = new System.Drawing.Point(40, 89);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(421, 16);
+            this.label4.Size = new System.Drawing.Size(421, 71);
             this.label4.TabIndex = 9;
-            this.label4.Text = "This sample shows the usage of the RDL Reports converter class.";
+            this.label4.Text = resources.GetString("label4.Text");
             // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(40, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(421, 16);
+            this.label3.Size = new System.Drawing.Size(421, 70);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Dieses Beispiel zeigt die Verwendung der RDL Reports Konverter Klasse.";
+            this.label3.Text = resources.GetString("label3.Text");
             // 
             // textSourceFile
             // 
             this.textSourceFile.BackColor = System.Drawing.SystemColors.Window;
             this.textSourceFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.textSourceFile.Location = new System.Drawing.Point(123, 60);
+            this.textSourceFile.Location = new System.Drawing.Point(126, 180);
             this.textSourceFile.Name = "textSourceFile";
             this.textSourceFile.Size = new System.Drawing.Size(314, 20);
             this.textSourceFile.TabIndex = 12;
@@ -96,7 +96,7 @@
             // textTargetFile
             // 
             this.textTargetFile.BackColor = System.Drawing.SystemColors.Window;
-            this.textTargetFile.Location = new System.Drawing.Point(123, 90);
+            this.textTargetFile.Location = new System.Drawing.Point(126, 210);
             this.textTargetFile.Name = "textTargetFile";
             this.textTargetFile.Size = new System.Drawing.Size(314, 20);
             this.textTargetFile.TabIndex = 13;
@@ -105,7 +105,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(10, 61);
+            this.label2.Location = new System.Drawing.Point(13, 181);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 16;
@@ -113,7 +113,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(10, 90);
+            this.label6.Location = new System.Drawing.Point(13, 210);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 20);
             this.label6.TabIndex = 17;
@@ -121,7 +121,7 @@
             // 
             // selectTargetFile
             // 
-            this.selectTargetFile.Location = new System.Drawing.Point(443, 89);
+            this.selectTargetFile.Location = new System.Drawing.Point(446, 209);
             this.selectTargetFile.Name = "selectTargetFile";
             this.selectTargetFile.Size = new System.Drawing.Size(75, 24);
             this.selectTargetFile.TabIndex = 15;
@@ -130,7 +130,7 @@
             // 
             // selectSourceFile
             // 
-            this.selectSourceFile.Location = new System.Drawing.Point(443, 59);
+            this.selectSourceFile.Location = new System.Drawing.Point(446, 179);
             this.selectSourceFile.Name = "selectSourceFile";
             this.selectSourceFile.Size = new System.Drawing.Size(75, 23);
             this.selectSourceFile.TabIndex = 14;
@@ -144,10 +144,10 @@
             this.toolTip1.ReshowDelay = 100;
             // 
             // Form1
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 157);
+            this.ClientSize = new System.Drawing.Size(533, 275);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.selectTargetFile);

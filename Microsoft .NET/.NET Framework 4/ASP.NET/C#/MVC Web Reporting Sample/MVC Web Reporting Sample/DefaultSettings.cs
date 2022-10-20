@@ -9,8 +9,6 @@ namespace WebReporting
 {
     static class CmbtSettings
     {
-        public static int ArtkRecCount { get { return 20; } }
-
         // D:   Stellen Sie hier die Sprache für die Berichte und den Designer ein.
         // US:  Set the language for the reports and the Designer here.
         public static LlLanguage Language { get { return LlLanguage.English; } }
@@ -20,25 +18,7 @@ namespace WebReporting
         // US: Set the Unit to Inch or Millimeter. SysDefault Values automatically use millimeter in the web report designer context to make sure client and server units are synchronized. 
         public static LlUnits Unit { get { return LlUnits.Inch_1_1000; } }
         //public static LlUnits Unit { get { return LlUnits.Millimeter_1_100; } }
-
-        public static int MultiTabRecCount { get { return 5; } }
-
-        public static List<string> UnlimitedRecordsList
-        {
-            get
-            {
-                return new List<string>() { "Customer list with sort order.srt", "Kundenliste mit Sortierung.lsr", "Crosstab with comparison of previous year.srt", "Kreuztabelle mit Vorjahresvergleich.lsr", "Conditional formatting and native aggregate functions.srt", "Bedingte Formatierung und native Aggregatsfunktionen.lsr" };
-            }
-        }
-
-        public static List<string> IsEmployeeList
-        {
-            get
-            {
-                return new List<string>() { "Mixed portrait and landscape.srt", "Mischung von Hoch- und Querformat.lsr", "Crosstab.srt", "Kreuztabelle.lsr" };
-            }
-        }
-
+		
         public static string RepositoryLanguage
         {
             get
@@ -68,6 +48,28 @@ namespace WebReporting
     {
         private static SQLiteFileRepository _fileRepository;
 
+        public static string DefaultSelectedReport
+        {
+            get
+            {
+                if (CmbtSettings.Language == LlLanguage.German)
+                {
+                    return "Kundenliste mit Sortierung";
+                }
+                return "Customer list with sort order";
+            }
+        }
+
+        // D:   Für Etikettenprojekte wird die Tabelle "Customers" ausgewählt.
+        // US:  The Table "Customers" is chosen for label projects.
+        private static string DataMember
+        {
+            get
+            {
+                return "Customers";
+            }
+        }
+
         public static SQLiteFileRepository GetBaseRepository()
         {
             if (_fileRepository == null)
@@ -94,32 +96,42 @@ namespace WebReporting
             return null;
         }
 
+        // D:   Liefert die passende Tabelle zu einem Beispiel-Etikett.
+        // US:  Returns the matching data member for a sample label.
+        public static string GetDataMemberForProject(string repositoryIdOfProject)
+        {
+            if (String.IsNullOrEmpty(repositoryIdOfProject))
+            {
+                return null;
+            }
+
+            RepositoryItem project = GetBaseRepository().GetItem(repositoryIdOfProject);
+
+            if (project.Type != RepositoryItemType.ProjectLabel.Value)
+            {
+                return null;
+            }
+
+            return DataMember;
+        }
+
         public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)
         {
             ListLabel LL = new ListLabel
             {
 
                 // D:   Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
-                // US:  Set license key for List & Label (client + server). If not set, a license error will be displayed on non-development machines.
-                // LicensingInfo = "insert license here";
+                // US:  Set license key for List & Label. If not set, a license error will be displayed on non-development machines.
+                // LicensingInfo = "<insert your license key here>",
 
                 // D:   Lade die zum Report passende Datenquelle.
                 // US:  Get the corresponding data source for the report.
                 DataSource = GetDataSourceForProject(repositoryID, false),
+                DataMember = GetDataMemberForProject(repositoryID),
                 Language = CmbtSettings.Language,
                 Unit = CmbtSettings.Unit
             };
-
-            if (CmbtSettings.Language == LlLanguage.German)
-            {
-                LL.Variables.Add("ArtikelListe.ArtikelNr.Von", string.Empty);
-                LL.Variables.Add("ArtikelListe.ArtikelNr.Bis", string.Empty);
-            }
-            else
-            {
-                LL.Variables.Add("ItemList.ItemNo.From", string.Empty);
-                LL.Variables.Add("ItemList.ItemNo.To", string.Empty);
-            }
+			
             return LL;
         }
 

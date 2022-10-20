@@ -1,7 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 15
 VisualStudioVersion = 15.0.28307.572
-MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOMSimple", "DOMSimple.csproj", "{BD298855-F8AF-42F8-9D6D-B85AB82BF8A4}"
 EndProject
 Global

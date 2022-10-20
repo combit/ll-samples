@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using combit.Reporting.Web
+@using combit.Reporting.Web.WebReportViewer
 @{
     Layout = null;
     string repositoryId = Request.QueryString["reportRepositoryID"];
@@ -7,8 +8,13 @@
     {
         repositoryId = repositoryId.Replace("repository://{", "").Replace("}", "");
     }
+	
+    var options = new WebReportViewerMVCOptions(repositoryId)
+    {
+        Title = "Web Report Viewer"
+    };
 }
 
 <!DOCTYPE html>
 
-@Html.WebReportViewer("Web Report Viewer", repositoryId)
+@Html.WebReportViewer(options);

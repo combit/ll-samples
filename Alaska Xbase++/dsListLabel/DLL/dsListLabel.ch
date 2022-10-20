@@ -2,7 +2,7 @@
  Include File: dsListLabel.ch
  Author:       Marcus Herz
  Description:
- Created:      28.07.2016     11:41:37        Updated: þ31.07.2017      þ12:13:29
+ Created:      28.07.2016     11:41:37        Updated: þ17.08.2022      þ09:19:22
  Copyright:    2016 by DS-Datasoft, 87654 Friesenried
 ============================================================================*/
 
@@ -11,35 +11,30 @@
 
 #ifndef __LL
 	// default, wenn nicht in COMPILE_FLAGS gesetzt
-	#define __LL	"27"
+	#define __LL	"28"
 #endif
 
-#if __LL = "27"
-	#define CMBT_DLL   "CMLL27.dll"
-	#include "cmbtll27.ch"
+#if __LL = "28"
+	#define CMBT_DLL   "CMLL28.dll"
+	#include "cmbtll28.ch"
 #else
-	#if __LL = "26"
-		#define CMBT_DLL   "CMLL26.dll"
-		#include "cmbtll26.ch"
+	#if __LL = "27"
+		#define CMBT_DLL   "CMLL27.dll"
+		#include "cmbtll27.ch"
 	#else
-		#if __LL = "25"
-			#define CMBT_DLL   "CMLL25.dll"
-			#include "cmbtll25.ch"
+		#if __LL = "26"
+			#define CMBT_DLL   "CMLL26.dll"
+			#include "cmbtll26.ch"
 		#else
-			#if __LL = "24"
-				#define CMBT_DLL   "CMLL24.dll"
-				#include "cmbtll24.ch"
+			#if __LL = "25"
+				#define CMBT_DLL   "CMLL25.dll"
+				#include "cmbtll25.ch"
 			#else
-				#if __LL = "23"
-					#define CMBT_DLL   "CMLL23.dll"
-					#include "cmbtll23.ch"
+				#if __LL = "24"
+					#define CMBT_DLL   "CMLL24.dll"
+					#include "cmbtll24.ch"
 				#else
-					#if __LL = "22"
-						#define CMBT_DLL   "CMLL22.dll"
-						#include "cmbtll22.ch"
-					#else
-						#error keine [unterstütze] List & Label Version in COMPILE_FLAGS gesetzt
-					#endif
+					#error keine [unterstütze] List & Label Version in COMPILE_FLAGS gesetzt
 				#endif
 			#endif
 		#endif

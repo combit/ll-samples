@@ -1,8 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
-MinimumVisualStudioVersion = 10.0.40219.1
+VisualStudioVersion = 15.0.28307.572
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DesignerProperty", "DesignerPropertySample\DesignerProperty.vbproj", "{2C493CCF-99CE-4EFF-8482-2948821270E8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{DED68879-0C21-4EF4-877D-0A3061A3F32E} = {DED68879-0C21-4EF4-877D-0A3061A3F32E}

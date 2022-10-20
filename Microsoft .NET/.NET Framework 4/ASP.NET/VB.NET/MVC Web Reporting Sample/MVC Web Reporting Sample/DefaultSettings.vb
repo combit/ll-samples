@@ -2,20 +2,9 @@
 Imports combit.Reporting.DataProviders
 Imports combit.Reporting.Repository
 Imports combit.Reporting.Web.WebReportDesigner.Server
-Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Web
 
 Namespace WebReporting
     Module CmbtSettings
-        Public ReadOnly Property ArtkRecCount As Integer
-            Get
-                Return 20
-            End Get
-        End Property
-
-
         ' D:   Stellen Sie hier die Sprache für die Berichte und den Designer ein.
         ' US:  Set the language For the reports And the Designer here.
         Public ReadOnly Property Language As LlLanguage
@@ -33,37 +22,7 @@ Namespace WebReporting
                 'Return LlUnits.Millimeter_1_100
             End Get
         End Property
-
-        Public ReadOnly Property MultiTabRecCount As Integer
-            Get
-                Return 5
-            End Get
-        End Property
-
-        Public ReadOnly Property UnlimitedRecordsList As List(Of String)
-            Get
-                Return New List(Of String)() From {
-                    "Customer list with sort order.srt",
-                    "Kundenliste mit Sortierung.lsr",
-                    "Crosstab with comparison of previous year.srt",
-                    "Kreuztabelle mit Vorjahresvergleich.lsr",
-                    "Conditional formatting and native aggregate functions.srt",
-                    "Bedingte Formatierung und native Aggregatsfunktionen.lsr"
-                }
-            End Get
-        End Property
-
-        Public ReadOnly Property IsEmployeeList As List(Of String)
-            Get
-                Return New List(Of String)() From {
-                    "Mixed portrait and landscape.srt",
-                    "Mischung von Hoch- und Querformat.lsr",
-                    "Crosstab.srt",
-                    "Kreuztabelle.lsr"
-                }
-            End Get
-        End Property
-
+		
         Public ReadOnly Property RepositoryLanguage As String
             Get
 
@@ -86,8 +45,25 @@ Namespace WebReporting
         End Property
     End Module
 
-    Module DefaultSettings
+    Public Module DefaultSettings
         Private _fileRepository As SQLiteFileRepository
+
+        Public ReadOnly Property DefaultSelectedReport As String
+            Get
+                If CmbtSettings.Language = LlLanguage.German Then
+                    Return "Kundenliste mit Sortierung"
+                End If
+
+                Return "Customer list with sort order"
+            End Get
+        End Property
+
+
+        Private ReadOnly Property DataMember As String
+            Get
+                Return "Customers"
+            End Get
+        End Property
 
         Function GetBaseRepository() As SQLiteFileRepository
             If _fileRepository Is Nothing Then
@@ -107,21 +83,30 @@ Namespace WebReporting
             Return Nothing
         End Function
 
+        Public Function GetDataMemberForProject(ByVal repositoryIdOfProject As String) As String
+            If String.IsNullOrEmpty(repositoryIdOfProject) Then
+                Return Nothing
+            End If
+
+            Dim project As RepositoryItem = GetBaseRepository().GetItem(repositoryIdOfProject)
+            If project.Type <> RepositoryItemType.ProjectLabel.Value Then
+                Return Nothing
+            End If
+
+            Return DataMember
+        End Function
+
         Function GetListLabelInstance(ByVal repositoryID As String, ByVal Optional repository As IRepository = Nothing) As ListLabel
             Dim LL As ListLabel = New ListLabel With {
                 .DataSource = GetDataSourceForProject(repositoryID, False),
+                .DataMember = GetDataMemberForProject(repositoryID),
                 .Language = CmbtSettings.Language,
                 .Unit = CmbtSettings.Unit
             }
-
-            If CmbtSettings.Language = LlLanguage.German Then
-                LL.Variables.Add("ArtikelListe.ArtikelNr.Von", String.Empty)
-                LL.Variables.Add("ArtikelListe.ArtikelNr.Bis", String.Empty)
-            Else
-                LL.Variables.Add("ItemList.ItemNo.From", String.Empty)
-                LL.Variables.Add("ItemList.ItemNo.To", String.Empty)
-            End If
-
+            'D: Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
+            'US:  Set license key for List & Label. If not set, a license error will be displayed on non-development machines.
+            'LL.LicensingInfo = "<insert your license key here>"
+			
             Return LL
         End Function
 

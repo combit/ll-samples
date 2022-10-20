@@ -122,7 +122,7 @@ object Form1: TForm1
     Left = 64
     Top = 88
   end
-  object LL: TL27_
+  object LL: TL28_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = Yes

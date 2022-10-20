@@ -10,6 +10,6 @@
 -Bt 2000
 #
 # if LL runs on the appserver also
-#-assemblies T:\LL27\LLWS\LLPRO\Assemblies
+#-assemblies T:\LL28\LLWS\LLPRO\Assemblies
 
 

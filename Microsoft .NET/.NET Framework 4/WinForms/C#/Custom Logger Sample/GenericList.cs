@@ -4,7 +4,7 @@ using System.ComponentModel;
 using combit.Reporting.DataProviders;
 using combit.Reporting;
 
-namespace combit.ListLabel21.CSharpSample.ObjectDataProviderSample
+namespace Custom_Logger_Sample
 {
     class GenericList
     {

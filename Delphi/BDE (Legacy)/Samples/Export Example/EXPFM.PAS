@@ -15,7 +15,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, L27, DB, DBTables,cmbtll27, Registry, ADODB
+  StdCtrls, L28, DB, DBTables,cmbtll28, Registry, ADODB
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   {$ENDIF}
@@ -24,7 +24,7 @@ uses
 type
   TForm1 = class(TForm)
     Label1: TLabel;
-    LL: TL27_;
+    LL: TL28_;
     Label2: TLabel;
     FormatCombo: TComboBox;
     Label3: TLabel;

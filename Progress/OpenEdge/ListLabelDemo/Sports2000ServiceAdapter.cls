@@ -53,14 +53,14 @@ CLASS ListLabelDemo.Sports2000ServiceAdapter IMPLEMENTS IServiceAdapter:
 		mhAppserver = SESSION.
 		mcLogfile = SESSION:TEMP-DIRECTORY + "Sports2000ServiceAdapter.log".
 		writeLog("CLEAR").
-		writeLog("LL27").
+		writeLog("LL28").
 	END CONSTRUCTOR.
 
     CONSTRUCTOR PUBLIC Sports2000ServiceAdapter ( plUseAppserver AS LOGICAL ):
         SUPER ().
         mcLogfile = SESSION:TEMP-DIRECTORY + "Sports2000ServiceAdapter.log".
         writeLog("CLEAR").
-        writeLog("LL27").
+        writeLog("LL28").
         IF plUseAppserver = FALSE THEN
             mhAppserver = SESSION.
         ELSE DO:

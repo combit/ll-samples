@@ -35,9 +35,8 @@
     <ApplicationIcon>Resources\TxText.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel27">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Assemblies\combit.ListLabel27.dll</HintPath>
+    <Reference Include="combit.ListLabel28">
+      <HintPath>..\..\..\..\Assemblies\combit.ListLabel28.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,13 +48,11 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="TXTextControl, Version=22.0.1500.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Text Control GmbH\TX Text Control 22.0.NET Server for ASP.NET\Assembly\TXTextControl.dll</HintPath>
+    <Reference Include="TXTextControl">
+      <HintPath>C:\Program Files\Text Control GmbH\TX Text Control 30.0.NET Server for ASP.NET\Assembly\TXTextControl.dll</HintPath>
     </Reference>
-    <Reference Include="TXTextControl.Server, Version=22.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Text Control GmbH\TX Text Control 22.0.NET Server for ASP.NET\Assembly\TXTextControl.Server.dll</HintPath>
+    <Reference Include="TXTextControl.Server">
+      <HintPath>C:\Program Files\Text Control GmbH\TX Text Control 30.0.NET Server for ASP.NET\Assembly\TXTextControl.Server.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -21,12 +21,12 @@ namespace WebReporting.Controllers
         {
             // D:   Liste alle Einträge im Repository auf. Da das Beispiel-Repository eine erweiterte RepositoryItem-Klasse verwendet, werden die Einträge in den erweiterten Typ gecastet
             // US:  Enumerate all items in the repository. As the sample repository uses a subclass of RepositoryItem, we need to cast the items to the extended type.
-            return View("Index", new StartPageModel() { RepositoryItems = GetCurrentRepository().GetAllItems().OfType<CustomizedRepostoryItem>() });
+            return View("Index", new RepositoryModel() { RepositoryItems = GetCurrentRepository().GetAllItems().OfType<CustomizedRepostoryItem>() });
         }
 
-        public ActionResult StartPage()
+        public ActionResult Repository()
         {
-            return View("StartPage", new StartPageModel() { RepositoryItems = GetCurrentRepository().GetAllItems().OfType<CustomizedRepostoryItem>() });
+            return View("Repository", new RepositoryModel() { RepositoryItems = GetCurrentRepository().GetAllItems().OfType<CustomizedRepostoryItem>() });
         }
 
 
@@ -44,7 +44,7 @@ namespace WebReporting.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             GetCurrentRepository().DeleteItem(repoItemId);
-            return StartPage();
+            return Repository();
         }
 
         // D:   Lässt den Client den Inhalt eines Repository-Items als Datei herunterladen.
@@ -324,6 +324,8 @@ namespace WebReporting.Controllers
                 //      Set the second parameter (forDesign) to true if you're using different provider (e.q. with property  MinimalSelect = false) for the designer.
                 DataSource = GetDataSourceForProject(reportRepositoryID, false),
 
+                DataMember = DefaultSettings.GetDataMemberForProject(reportRepositoryID),
+
                 // D:   Die Referenz auf das Repository muss an List & Label übergeben werden, damit die Repository-ID des Projekts für 'AutoProjectFile' akzeptiert wird.
                 // US:  The repository reference must be passed to List & Label to make the repository ID of the project a valid value for the 'AutoProjectFile' property.
                 FileRepository = GetCurrentRepository(),
@@ -433,6 +435,7 @@ namespace WebReporting.Controllers
                 case ".crd":
                     return RepositoryItemType.ProjectCard;
 
+                case ".lab":
                 case ".lbl":
                     return RepositoryItemType.ProjectLabel;
 

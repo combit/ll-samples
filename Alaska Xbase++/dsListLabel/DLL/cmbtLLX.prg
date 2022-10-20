@@ -44,19 +44,6 @@ FUNCTION <FuncName>( <paramVal1>[,<paramValN>] )                   ;;
 RETURN xRet
 
 
-#command TEMPLATE_EXTERN [<xCallConv:CDECL, STDCALL>] [VOID];
-      [<xRetType:SHORT, USHORT, INTEGER, UINTEGER, LONG, BOOL, BOOL8, INTEGER64, UINTEGER64, SINGLE, DOUBLE, STRING, WSTRING, IDISPATCH>];
-  		<FuncName>( [<paramVal1> AS <paramType1> [,<paramValN> AS <paramTypeN>]] );
-  		[ORDINAL <nOrdinal>];
-  		IN <LibraryName> [NAME <AliasName>] => ;
-FUNCTION <FuncName>( <paramVal1>[,<paramValN>] )                   ;;
-	LOCAL xRet                                                    ;;
-	IF hDll == 0                                                     ;;
-		RETURN(NIL)                                                    ;;
-	ENDIF                                                            ;;
-RETURN DllPrepareCall(<(LibraryName)>,Coalesce(__Sys( <xCallConv> ), DLL_STDCALL)+Coalesce(__Sys(<xRetType>),DLL_TYPE_INT32)+DLL_CALLMODE_COPY,Coalesce(<(AliasName)>,<nOrdinal>,<(FuncName)>),__Sys(<paramType1>)[,__Sys(<paramTypeN>)])
-
-
 //
 // parameters are passed by reference rather then a copy, callbacks
 //
@@ -76,6 +63,22 @@ FUNCTION <FuncName>( <paramVal1>[,<paramValN>] )                   ;;
 	ENDIF                                                        ;;
 	xRet := DllExecuteCall( template,<paramVal1>[,<paramValN>] )  ;;
 RETURN xRet
+
+
+//
+// returns template to be used by DllExecuteCall
+//
+#command TEMPLATE_EXTERN [<xCallConv:CDECL, STDCALL>] [VOID];
+      [<xRetType:SHORT, USHORT, INTEGER, UINTEGER, LONG, BOOL, BOOL8, INTEGER64, UINTEGER64, SINGLE, DOUBLE, STRING, WSTRING, IDISPATCH>];
+  		<FuncName>( [<paramVal1> AS <paramType1> [,<paramValN> AS <paramTypeN>]] );
+  		[ORDINAL <nOrdinal>];
+  		IN <LibraryName> [NAME <AliasName>] => ;
+FUNCTION <FuncName>( <paramVal1>[,<paramValN>] )                   ;;
+	IF hDll == 0                                                     ;;
+		RETURN(NIL)                                                    ;;
+	ENDIF                                                            ;;
+RETURN DllPrepareCall(<(LibraryName)>,Coalesce(__Sys( <xCallConv> ), DLL_STDCALL)+Coalesce(__Sys(<xRetType>),DLL_TYPE_INT32)+DLL_CALLMODE_COPY,Coalesce(<(AliasName)>,<nOrdinal>,<(FuncName)>),__Sys(<paramType1>)[,__Sys(<paramTypeN>)])
+
 
 
 //
@@ -137,88 +140,88 @@ LL_EXTERN INTEGER LlSetNotificationMessage(;                                    
 		hLlJob AS INTEGER ,;                                                                        //
 		nMessage AS UINTEGER ) ORDINAL 16 IN CMBT_DLL                                               //
 																																  //
-//CALLBACK_EXTERN INTEGER LlSetNotificationCallback(;                                               //
-LL_EXTERN INTEGER LlSetNotificationCallback(;                                               //
+//CALLBACK_EXTERN INTEGER LlSetNotificationCallback(;                                             //
+LL_EXTERN INTEGER LlSetNotificationCallback(;                                               		  //
 		hJob AS INTEGER,;                                                                           //
 		lpfnEnum AS ACALLBACK ) ORDINAL 17 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlDefineField(;                                                                 //
-		hJob AS INTEGER,;                                                                           //
-		@pszVarName  AS STRING ,;                                                                   //
-		@lpbufContents  AS STRING ) ORDINAL 18 IN CMBT_DLL                                          //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hLlJob,
+		pszVarName  AS STRING ,;                                                                    // LPCSTR               pszVarName,
+		lpbufContents  AS STRING ) ORDINAL 18 IN CMBT_DLL                                           // LPCSTR               lpbufContents
 																																  //
 LL_EXTERN INTEGER LlDefineFieldExt(;                                                              //
-		hJob AS INTEGER,;                                                                           //
-		@pszVarName  AS STRING ,;                                                                   //
-		@lpbufContents  AS STRING ,;                                                                //
-		lPara AS INTEGER,;                                                                          //
-		@lpPtr AS STRING ) ORDINAL 19 IN CMBT_DLL                                                   //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hLlJob,
+		pszVarName  AS STRING ,;                                                                    // LPCSTR               pszVarName,
+		lpbufContents  AS STRING ,;                                                                 // LPCSTR               lpbufContents,
+		lPara AS INTEGER,;                                                                          // INT                  lPara,
+		lpPtr AS STRING ) ORDINAL 19 IN CMBT_DLL                                                    // LPVOID               lpPtr
 																																  //
 #pragma info(NOUSE)
 TEMPLATE_EXTERN INTEGER templateDefineFieldExt(;                                                  //
 		hJob AS INTEGER,;                                                                           //
-		@pszVarName  AS STRING ,;                                                                   //
-		@lpbufContents  AS STRING ,;                                                                //
+		pszVarName  AS STRING ,;                                                                    //
+		lpbufContents  AS STRING ,;                                                                 //
 		lPara AS INTEGER,;                                                                          //
-		@lpPtr AS STRING ) ORDINAL 19 IN CMBT_DLL                                                   //
+		lpPtr AS STRING ) ORDINAL 19 IN CMBT_DLL                                                    //
 #pragma info(USE)
 																																  //
 LL_EXTERN INTEGER LlDefineFieldExtHandle(;                                                        //
 		hJob AS INTEGER,;                                                                           //
-		@pszVarName  AS STRING ,;                                                                   //
+		pszVarName  AS STRING ,;                                                                    //
 		hContents  AS INTEGER ,;                                                                    //
 		lPara AS INTEGER,;                                                                          //
-		@lpPtr AS STRING ) ORDINAL 20 IN CMBT_DLL                                                   //
+		lpPtr AS STRING ) ORDINAL 20 IN CMBT_DLL                                                    //
 																																  //
 LL_EXTERN VOID LlDefineFieldStart(;                                                               //
 		hJob AS INTEGER) ORDINAL 21 IN CMBT_DLL                                                     //
 																																  //
 LL_EXTERN INTEGER LlDefineVariable(;                                                              //
-		hJob AS INTEGER,;                                                                           //
-		@pszVarName AS STRING ,;                                                                    //
-		@lpbufContents AS STRING ) ORDINAL 22 IN CMBT_DLL                                           //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hLlJob,
+		pszVarName AS STRING ,;                                                                     // LPCSTR               pszVarName,
+		lpbufContents AS STRING ) ORDINAL 22 IN CMBT_DLL                                            // LPCSTR               lpbufContents
 																																  //
 LL_EXTERN INTEGER LlDefineVariableExt(;                                                           //
-		hJob AS INTEGER,;                                                                           //
-		@pszVarName AS STRING ,;                                                                    //
-		@lpbufContents AS STRING ,;                                                                 //
-		lPara AS INTEGER,;                                                                          //
-		@lpPtr AS STRING ) ORDINAL 23 IN CMBT_DLL                                                   //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hLlJob,
+		pszVarName AS STRING ,;                                                                     // LPCSTR               pszVarName,
+		lpbufContents AS STRING ,;                                                                  // LPCSTR               lpbufContents,
+		lPara AS INTEGER,;                                                                          // INT                  lPara,
+		lpPtr AS STRING ) ORDINAL 23 IN CMBT_DLL                                                    // LPVOID               lpPtr
 																																  //
 #pragma info(NOUSE)
 TEMPLATE_EXTERN INTEGER templateDefineVariableExt(;                                               //
 		hJob AS INTEGER,;                                                                           //
-		@pszVarName AS STRING ,;                                                                    //
-		@lpbufContents AS STRING ,;                                                                 //
+		pszVarName AS STRING ,;                                                                     //
+		lpbufContents AS STRING ,;                                                                  //
 		lPara AS INTEGER,;                                                                          //
-		@lpPtr AS STRING ) ORDINAL 23 IN CMBT_DLL                                                   //
+		lpPtr AS STRING ) ORDINAL 23 IN CMBT_DLL                                                    //
 #pragma info(USE)
 																																  //
 LL_EXTERN INTEGER LlDefineVariableHandle(;                                                        //
 		hJob AS INTEGER,;                                                                           //
-		@pszVarName  AS STRING ,;                                                                   //
+		pszVarName  AS STRING ,;                                                                    //
 		hContents  AS INTEGER ,;                                                                    //
 		lPara AS INTEGER,;                                                                          //
-		@lpPtr AS STRING ) ORDINAL 24 IN CMBT_DLL                                                   //
+		lpPtr AS STRING ) ORDINAL 24 IN CMBT_DLL                                                    //
 																																  //
 LL_EXTERN INTEGER LlDefineVariableName(;                                                          //
 		hJob AS INTEGER,;                                                                           //
-		@pszVarName  AS STRING ) ORDINAL 25 IN CMBT_DLL                                             //
+		pszVarName  AS STRING ) ORDINAL 25 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN VOID LlDefineVariableStart(;                                                            //
 		hJob AS INTEGER ) ORDINAL 26 IN CMBT_DLL                                                    //
 																																  //
 LL_EXTERN INTEGER LlDefineSumVariable(;                                                           //
 		hJob AS INTEGER,;                                                                           //
-		@pszVarName AS STRING ,;                                                                    //
-		@lpbufContents AS STRING ) ORDINAL 27 IN CMBT_DLL                                           //
+		pszVarName AS STRING ,;                                                                     //
+		lpbufContents AS STRING ) ORDINAL 27 IN CMBT_DLL                                            //
 																																  //
 LL_EXTERN INTEGER LlDefineLayout(;                                                                //
-		hLlJob AS INTEGER,;                                                                         //
-		hWnd AS UINTEGER,;                                                                          //
-		@pszTitle  AS STRING ,;                                                                     //
-		nObjType AS UINTEGER,;                                                                      //
-		@pszObjName  AS STRING ) ORDINAL 28 IN CMBT_DLL                                             //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		hWnd AS UINTEGER,;                                                                          // HWND                 hWnd,
+		pszTitle  AS STRING ,;                                                                      // LPCSTR               pszTitle,
+		nObjType AS UINTEGER,;                                                                      // UINT                 nObjType,
+		pszObjName  AS STRING ) ORDINAL 28 IN CMBT_DLL                                              // LPCSTR               pszObjName
 // no documentation                                                                               //
 //LL_EXTERN INTEGER LlDlgEditLine(;                                                               //
 //		hLlJob AS INTEGER,;                                                                         //
@@ -231,32 +234,32 @@ LL_EXTERN INTEGER LlDlgEditLineEx(;                                             
 		@pszBuffer  AS STRING ,;                                                                    //
 		nBufSize AS UINTEGER,;                                                                      //
 		nParaTypes AS UINTEGER,;                                                                    //
-		@pszTitle  AS STRING ,;                                                                     //
+		pszTitle  AS STRING ,;                                                                      //
 		bTable AS INTEGER,;                                                                         //
-		@pvReserved AS STRING ) ORDINAL 30 IN CMBT_DLL                                              //
+		pvReserved AS STRING ) ORDINAL 30 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlPreviewSetTempPath(;                                                          //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszPath AS STRING ) ORDINAL 31 IN CMBT_DLL                                                 //
+		pszPath AS STRING ) ORDINAL 31 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlPreviewDeleteFiles(;                                                          //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszObjName  AS STRING ,;                                                                   //
-		@pszPath AS STRING ) ORDINAL 32 IN CMBT_DLL                                                 //
+		pszObjName  AS STRING ,;                                                                    //
+		pszPath AS STRING ) ORDINAL 32 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlPreviewDisplay(;                                                              //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszObjName  AS STRING ,;                                                                   //
-		@pszPath AS STRING,;                                                                        //
-		Wnd AS UINTEGER ) ORDINAL 33 IN CMBT_DLL                                                    //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		pszObjName  AS STRING ,;                                                                    // LPCSTR               pszObjName,
+		pszPath AS STRING,;                                                                         // LPCSTR               pszPath,
+		Wnd AS UINTEGER ) ORDINAL 33 IN CMBT_DLL                                                    // HWND                 Wnd
 																																  //
 LL_EXTERN INTEGER LlPreviewDisplayEx(;                                                            //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszObjName  AS STRING ,;                                                                   //
-		@pszPath AS STRING,;                                                                        //
-		Wnd AS UINTEGER,;                                                                           //
-		nOptions AS UINTEGER,;                                                                      //
-		@pOptions AS STRING ) ORDINAL 34 IN CMBT_DLL                                                //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		pszObjName  AS STRING ,;                                                                    // LPCSTR               pszObjName,
+		pszPath AS STRING,;                                                                         // LPCSTR               pszPath,
+		Wnd AS UINTEGER,;                                                                           // HWND                 Wnd,
+		nOptions AS UINTEGER,;                                                                      // UINT                 nOptions,
+		pOptions AS STRING ) ORDINAL 34 IN CMBT_DLL                                                 // LPVOID               pOptions
 																																  //
 LL_EXTERN INTEGER LlPrint(;                                                                       //
 		hLlJob AS INTEGER ) ORDINAL 35 IN CMBT_DLL                                                  //
@@ -298,19 +301,20 @@ LL_EXTERN INTEGER LlPrintGetItemsPerTable(;                                     
 //		pszField AS STRING ) ORDINAL 45 IN CMBT_DLL                                                 //
 																																  //
 LL_EXTERN INTEGER LlPrintGetOption(;                                                              //
-		hLlJob AS INTEGER ) ORDINAL 46 IN CMBT_DLL                                                  //
+		hLlJob AS INTEGER,;
+		nIndex AS INTEGER  ) ORDINAL 46 IN CMBT_DLL                                                 //
 																																  //
-LL_EXTERN INTEGER LlPrintGetPrinterInfo(;                                                         //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszPrn  AS STRING ,;                                                                       //
-		nPrnLen AS UINTEGER,;                                                                       //
-		@pszPort  AS STRING ,;                                                                      //
-		nPortLen AS UINTEGER ) ORDINAL 47 IN CMBT_DLL                                               //
+LL_EXTERN INTEGER LlPrintGetPrinterInfo(;                                                         // CMBT_LL_WINAPI INT      DLLPROC  LlPrintGetPrinterInfoA
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		@pszPrn  AS STRING ,;                                                                       // LPSTR                pszPrn,
+		nPrnLen AS UINTEGER,;                                                                       // UINT                 nPrnLen,
+		@pszPort  AS STRING ,;                                                                      // LPSTR                pszPort,
+		nPortLen AS UINTEGER ) ORDINAL 47 IN CMBT_DLL                                               // UINT                 nPortLen
 																																  //
 LL_EXTERN INTEGER LlPrintOptionsDialog(;                                                          //
-		hLlJob AS INTEGER,;                                                                         //
-		hWnd AS UINTEGER,;                                                                          //
-		@pszText  AS STRING ) ORDINAL 48 IN CMBT_DLL                                                //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		hWnd AS UINTEGER,;                                                                          // HWND                 hWnd,
+		pszText  AS STRING ) ORDINAL 48 IN CMBT_DLL                                                 // LPCSTR               pszText
 																																  //
 LL_EXTERN INTEGER LlPrintSelectOffsetEx(;                                                         //
 		hLlJob AS INTEGER,;                                                                         //
@@ -318,7 +322,7 @@ LL_EXTERN INTEGER LlPrintSelectOffsetEx(;                                       
 																																  //
 LL_EXTERN INTEGER LlPrintSetBoxText(;                                                             //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszText  AS STRING,;                                                                       //
+		pszText  AS STRING,;                                                                        //
 		nPercentage AS INTEGER ) ORDINAL 50 IN CMBT_DLL                                             //
 																																  //
 LL_EXTERN INTEGER LlPrintSetOption(;                                                              //
@@ -332,29 +336,29 @@ LL_EXTERN INTEGER LlPrintUpdateBox(;                                            
 LL_EXTERN INTEGER LlPrintStart(;                                                                  // CMBT_LL_WINAPI INT      DLLPROC  LlPrintStartA
 		hLlJob AS INTEGER,;                                                                         // 	HLLJOB               hLlJob,
 		nObjType  AS UINTEGER,;                                                                     // 	UINT                 nObjType,
-		@pszObjName AS STRING,;                                                                     // 	LPCSTR               pszObjName,
+		pszObjName AS STRING,;                                                                      // 	LPCSTR               pszObjName,
 		nPrintOptions  AS INTEGER,;                                                                 // 	INT                  nPrintOptions,
 		nReserved AS INTEGER ) ORDINAL 53 IN CMBT_DLL                                               // 	INT                  nReserved
 																																  //
 LL_EXTERN INTEGER LlPrintWithBoxStart(;                                                           // CMBT_LL_WINAPI INT      DLLPROC  LlPrintWithBoxStartA
 		hLlJob AS INTEGER,;                                                                         // 	HLLJOB               hLlJob,
 		nObjType  AS UINTEGER,;                                                                     // 	UINT                 nObjType,
-		@pszObjName AS STRING,;                                                                     // 	LPCSTR               pszObjName,
+		pszObjName AS STRING,;                                                                      // 	LPCSTR               pszObjName,
 		nPrintOptions  AS INTEGER,;                                                                 // 	INT                  nPrintOptions,
 		nBoxType  AS INTEGER,;                                                                      // 	INT                  nBoxType,
 		hWnd  AS INTEGER,;                                                                          // 	HWND                 hWnd,
-		@pszTitle AS STRING ) ORDINAL 54 IN CMBT_DLL                                                // 	LPCSTR               pszTitle
+		pszTitle AS STRING ) ORDINAL 54 IN CMBT_DLL                                                 // 	LPCSTR               pszTitle
 																																  //
 LL_EXTERN INTEGER LlPrinterSetup(;                                                                // CMBT_LL_WINAPI INT      DLLPROC  LlPrinterSetupA
 		hLlJob AS INTEGER,;                                                                         //  HLLJOB               hLlJob,
 		hWnd  AS INTEGER,;                                                                          //  HWND                 hWnd,
 		nObjType  AS UINTEGER,;                                                                     //  UINT                 nObjType,
-		@pszObjName AS STRING ) ORDINAL 55 IN CMBT_DLL                                              //  LPCSTR               pszObjName
+		pszObjName AS STRING ) ORDINAL 55 IN CMBT_DLL                                               //  LPCSTR               pszObjName
 																																  //
 LL_EXTERN INTEGER LlSelectFileDlgTitleEx(;                                                        // CMBT_LL_WINAPI INT      DLLPROC  LlSelectFileDlgTitleExA
 		hLlJob AS INTEGER,;                                                                         // 	HLLJOB               hLlJob,
 		hWnd  AS INTEGER,;                                                                          // 	HWND                 hWnd,
-		@pszTitle AS STRING,;                                                                       // 	LPCSTR               pszTitle,
+		pszTitle AS STRING,;                                                                        // 	LPCSTR               pszTitle,
 		nObjType  AS UINTEGER,;                                                                     // 	UINT                 nObjType,
 		@pszObjName AS STRING,;                                                                     // 	LPSTR                pszObjName,
 		nBufSize  AS UINTEGER,;                                                                     // 	UINT                 nBufSize,
@@ -367,7 +371,7 @@ LL_EXTERN INTEGER LlGetDlgboxMode() ORDINAL 58 IN CMBT_DLL                      
 																																  //
 LL_EXTERN INTEGER LlExprParse(;                                                                   //
 		hLlJob AS INTEGER,;                                                                         //
-		@lpExprText  AS STRING,;                                                                    //
+		lpExprText  AS STRING,;                                                                     //
 		bIncludeFields AS INTEGER ) ORDINAL 59 IN CMBT_DLL                                          //
 																																  //
 LL_EXTERN INTEGER LlExprType(;                                                                    //
@@ -405,9 +409,9 @@ LL_EXTERN INTEGER LlGetOption(;                                                 
 		nMode AS UINTEGER ) ORDINAL 65 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlSetOptionString(;                                                             //
-		hLlJob AS INTEGER,;                                                                         //
-		nMode AS UINTEGER,;                                                                         //
-		@pszBuffer AS STRING ) ORDINAL 66 IN CMBT_DLL                                               //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		nMode AS UINTEGER,;                                                                         // INT                  nIndex,
+		pszBuffer AS STRING ) ORDINAL 66 IN CMBT_DLL                                                // LPCSTR               pszBuffer
 																																  //
 LL_EXTERN INTEGER LlGetOptionString(;                                                             //
 		hLlJob AS INTEGER,;                                                                         //
@@ -416,9 +420,9 @@ LL_EXTERN INTEGER LlGetOptionString(;                                           
 		nBufSize AS UINTEGER) ORDINAL 67 IN CMBT_DLL                                                //
 																																  //
 LL_EXTERN INTEGER LlPrintSetOptionString(;                                                        //
-		hLlJob AS INTEGER,;                                                                         //
-		nIndex AS UINTEGER,;                                                                        //
-		@pszBuffer AS STRING ) ORDINAL 68 IN CMBT_DLL                                               //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		nIndex AS UINTEGER,;                                                                        // INT                  nIndex,
+		pszBuffer AS STRING ) ORDINAL 68 IN CMBT_DLL                                                // LPCSTR               pszBuffer
 																																  //
 LL_EXTERN INTEGER LlPrintGetOptionString(;                                                        //
 		hLlJob AS INTEGER,;                                                                         //
@@ -432,7 +436,7 @@ LL_EXTERN INTEGER LlDesignerProhibitAction(;                                    
 																																  //
 LL_EXTERN INTEGER LlDesignerProhibitFunction(;                                                    //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszFunction AS STRING) ORDINAL 1 IN CMBT_DLL                                               //
+		pszFunction AS STRING) ORDINAL 1 IN CMBT_DLL                                                //
 																																  //
 LL_EXTERN INTEGER LlDesignerProhibitFunctionGroup(;                                               //
 		hLlJob AS INTEGER,;                                                                         //
@@ -440,43 +444,43 @@ LL_EXTERN INTEGER LlDesignerProhibitFunctionGroup(;                             
 																																  //
 LL_EXTERN INTEGER LlPrintEnableObject(;                                                           //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszObjectName AS STRING,;                                                                  //
+		pszObjectName AS STRING,;                                                                   //
 		bEnable AS INTEGER) ORDINAL 71 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlSetFileExtensions(;                                                           //
-		hLlJob AS INTEGER,;                                                                         //
-		nObjType AS UINTEGER,;                                                                      //
-		@pszObjectExt AS STRING,;                                                                   //
-		@pszPrinterExt AS STRING,;                                                                  //
-		@pszSketchExt AS STRING ) ORDINAL 72 IN CMBT_DLL                                            //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		nObjType AS UINTEGER,;                                                                      // INT                  nObjType,
+		pszObjectExt AS STRING,;                                                                    // LPCSTR               pszObjectExt,
+		pszPrinterExt AS STRING,;                                                                   // LPCSTR               pszPrinterExt
+		pszSketchExt AS STRING ) ORDINAL 72 IN CMBT_DLL                                             // LPCSTR               pszSketchExt
 																																  //
 LL_EXTERN INTEGER LlPrintGetTextCharsPrinted(;                                                    //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszObjectName AS STRING ) ORDINAL 73 IN CMBT_DLL                                           //
+		pszObjectName AS STRING ) ORDINAL 73 IN CMBT_DLL                                            //
 																																  //
 LL_EXTERN INTEGER LlPrintGetFieldCharsPrinted(;                                                   //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszObjectName AS STRING,;                                                                  //
-		@pszField AS STRING ) ORDINAL 74 IN CMBT_DLL                                                //
+		pszObjectName AS STRING,;                                                                   //
+		pszField AS STRING ) ORDINAL 74 IN CMBT_DLL                                                 //
 																																  //
 LL_EXTERN INTEGER LlPrintIsVariableUsed(;                                                         //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszVarName AS STRING ) ORDINAL 75 IN CMBT_DLL                                              //
+		pszVarName AS STRING ) ORDINAL 75 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlPrintIsFieldUsed(;                                                            //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszFieldName AS STRING ) ORDINAL 76 IN CMBT_DLL                                            //
+		pszFieldName AS STRING ) ORDINAL 76 IN CMBT_DLL                                             //
 																																  //
 LL_EXTERN INTEGER LlPrintOptionsDialogTitle(;                                                     //
-		hLlJob AS INTEGER,;                                                                         //
-		hWnd AS INTEGER,;                                                                           //
-		@pszTitle AS STRING,;                                                                       //
-		@pszText AS STRING ) ORDINAL 77 IN CMBT_DLL                                                 //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		hWnd AS INTEGER,;                                                                           // HWND                 hWnd,
+		pszTitle AS STRING,;                                                                        // LPCSTR               pszTitle,
+		pszText AS STRING ) ORDINAL 77 IN CMBT_DLL                                                  // LPCSTR               pszText
 																																  //
 LL_EXTERN INTEGER LlSetPrinterToDefault(;                                                         //
 		hLlJob AS INTEGER,;                                                                         //
 		nObjType AS UINTEGER,;                                                                      //
-		@pszObjName AS STRING ) ORDINAL 78 IN CMBT_DLL                                              //
+		pszObjName AS STRING ) ORDINAL 78 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlDefineSortOrderStart(;                                                        //
 		hLlJob AS INTEGER )ORDINAL 79 IN CMBT_DLL                                                   //
@@ -488,14 +492,14 @@ LL_EXTERN INTEGER LlDefineSortOrder(;                                           
 																																  //
 LL_EXTERN INTEGER LlDefineGetSortOrder(;                                                          //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszBuffer AS STRING,;                                                                      //
+		pszBuffer AS STRING,;                                                                       //
 		nBufSize AS UINTEGER ) ORDINAL 81 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlDefineGrouping(;                                                              //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszSortorder AS STRING,;                                                                   //
-		@pszIdentifier AS STRING,;                                                                  //
-		@pszText AS STRING ) ORDINAL 82 IN CMBT_DLL                                                 //
+		pszSortorder AS STRING,;                                                                    //
+		pszIdentifier AS STRING,;                                                                   //
+		pszText AS STRING ) ORDINAL 82 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlPrintGetGrouping(;                                                            //
 		hLlJob AS INTEGER,;                                                                         //
@@ -505,7 +509,7 @@ LL_EXTERN INTEGER LlPrintGetGrouping(;                                          
 LL_EXTERN INTEGER LlAddCtlSupport(;                                                               //
 		hLlJob AS INTEGER,;                                                                         //
 		nFlags AS UINTEGER,;                                                                        //
-		@pszInifile AS STRING ) ORDINAL 84 IN CMBT_DLL                                              //
+		pszInifile AS STRING ) ORDINAL 84 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlPrintBeginGroup(;                                                             //
 		hLlJob AS INTEGER,;                                                                         //
@@ -539,44 +543,44 @@ LL_EXTERN INTEGER LlPrintDidMatchFilter(;                                       
 																																  //
 LL_EXTERN INTEGER LlGetFieldContents(;                                                            //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszName AS STRING,;                                                                        //
+		pszName AS STRING,;                                                                         //
 		@pszBuffer AS STRING,;                                                                      //
 		nBufSize AS UINTEGER ) ORDINAL 93 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlGetVariableContents(;                                                         //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszName AS STRING,;                                                                        //
+		pszName AS STRING,;                                                                         //
 		@pszBuffer AS STRING,;                                                                      //
 		nBufSize AS UINTEGER ) ORDINAL 92 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlGetSumVariableContents(;                                                      //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszName AS STRING,;                                                                        //
+		pszName AS STRING,;                                                                         //
 		@pszBuffer AS STRING,;                                                                      //
 		nBufSize AS UINTEGER ) ORDINAL 94 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlGetUserVariableContents(;                                                     //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszName AS STRING,;                                                                        //
+		pszName AS STRING,;                                                                         //
 		@pszBuffer AS STRING,;                                                                      //
 		nBufSize AS UINTEGER ) ORDINAL 95 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlGetVariableType(;                                                             //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszName AS STRING ) ORDINAL 96 IN CMBT_DLL                                                 //
+		pszName AS STRING ) ORDINAL 96 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlGetFieldType(;                                                                //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszName AS STRING ) ORDINAL 97 IN CMBT_DLL                                                 //
+		pszName AS STRING ) ORDINAL 97 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlSetPrinterDefaultsDir(;                                                       //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszDir AS STRING ) ORDINAL 200 IN CMBT_DLL                                                 //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		pszDir AS STRING ) ORDINAL 200 IN CMBT_DLL                                                  // LPCSTR               pszDir
 																																  //
 LL_EXTERN INTEGER LlCreateSketch(;                                                                //
 		hLlJob AS INTEGER,;                                                                         //
 		nObjType AS UINTEGER,;                                                                      //
-		@pszDir AS STRING ) ORDINAL 201 IN CMBT_DLL                                                 //
+		pszDir AS STRING ) ORDINAL 201 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlViewerProhibitAction(;                                                        //
 		hLlJob AS INTEGER,;                                                                         //
@@ -584,15 +588,15 @@ LL_EXTERN INTEGER LlViewerProhibitAction(;                                      
 																																  //
 LL_EXTERN INTEGER LlPrintCopyPrinterConfiguration(;                                               //
 		hLlJob AS INTEGER,;                                                                         //
-		@lpszFilename AS STRING,;                                                                   //
+		lpszFilename AS STRING,;                                                                    //
 		nFunction AS INTEGER ) ORDINAL 203 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlSetPrinterInPrinterFile(;                                                     //
 		hLlJob AS INTEGER,;                                                                         //
 		nObjType AS UINTEGER,;                                                                      //
-		@pszObjName AS STRING,;                                                                     //
+		pszObjName AS STRING,;                                                                      //
 		nPrinterIndex AS UINTEGER,;                                                                 //
-		@pszPrinter AS STRING,;                                                                     //
+		pszPrinter AS STRING,;                                                                      //
 		pDevMode AS INTEGER ) ORDINAL 204 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlRTFCreateObject(;                                                             //
@@ -605,7 +609,7 @@ LL_EXTERN INTEGER LlRTFDeleteObject(;                                           
 LL_EXTERN INTEGER LlRTFSetText(;                                                                  //
 		hLlJob AS INTEGER,;                                                                         //
 		hRTF AS UINTEGER,;                                                                          //
-		@pszText AS STRING ) ORDINAL 230 IN CMBT_DLL                                                //
+		pszText AS STRING ) ORDINAL 230 IN CMBT_DLL                                                 //
 																																  //
 LL_EXTERN INTEGER LlRTFGetTextLength(;                                                            //
 		hLlJob AS INTEGER,;                                                                         //
@@ -651,7 +655,7 @@ LL_EXTERN INTEGER LlRTFEditorInvokeAction(;                                     
 																																  //
 LL_EXTERN VOID LlDebugOutput(;                                                                    //
 		hLlJob AS INTEGER,;                                                                         //
-		pszText AS STRING ) ORDINAL 1240 IN CMBT_DLL                                                //
+		pszText AS STRING ) ORDINAL 240 IN CMBT_DLL                                                //
 																																  //
 LL_EXTERN INTEGER LlEnumGetFirstVar(;                                                             //
 		hLlJob AS INTEGER,;                                                                         //
@@ -684,20 +688,20 @@ LL_EXTERN INTEGER LlPrintResetObjectStates(;                                    
 		hLlJob AS INTEGER ) ORDINAL 245 IN CMBT_DLL                                                 //
 																																  //
 LL_EXTERN INTEGER LlXSetParameter(;                                                               //
-		hLlJob AS INTEGER,;                                                                         //
-		nExtensionType AS INTEGER,;                                                                 //
-		@pszExtensionName AS STRING,;                                                               //
-		@pszKey AS STRING,;                                                                         //
-		@pszValue AS STRING ) ORDINAL 246 IN CMBT_DLL                                               //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		nExtensionType AS INTEGER,;                                                                 // INT                  nExtensionType,
+		pszExtensionName AS STRING,;                                                                // LPCSTR               pszExtensionName,
+		pszKey AS STRING,;                                                                          // LPCSTR               pszKey,
+		pszValue AS STRING ) ORDINAL 246 IN CMBT_DLL                                                // LPCSTR               pszValue
 																																  //
-LL_EXTERN INTEGER LlXGetParameter(;                                                               //
-		hLlJob AS INTEGER,;                                                                         //
-		nExtensionType AS INTEGER,;                                                                 //
-		@pszExtensionName AS STRING,;                                                               //
-		@pszKey AS STRING,;                                                                         //
-		@pszBuffer AS STRING,;                                                                      //
-		nBufSize AS UINTEGER ) ORDINAL 247 IN CMBT_DLL                                              //
-																																  //
+LL_EXTERN INTEGER LlXGetParameter(;                                                               // CMBT_LL_WINAPI INT      DLLPROC  LlXGetParameterA
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		nExtensionType AS INTEGER,;                                                                 // INT                  nExtensionType,
+		pszExtensionName AS STRING,;                                                                // LPCSTR               pszExtensionName,
+		pszKey AS STRING,;                                                                          // LPCSTR               pszKey,
+		@pszBuffer AS STRING,;                                                                      // LPSTR                pszBuffer,
+		nBufSize AS UINTEGER ) ORDINAL 247 IN CMBT_DLL                                              // UINT                 nBufSize
+
 LL_EXTERN INTEGER LlPrintResetProjectState(;                                                      //
 		hLlJob AS INTEGER ) ORDINAL 248 IN CMBT_DLL                                                 //
 																																  //
@@ -706,10 +710,10 @@ LL_EXTERN VOID LlDefineChartFieldStart(;                                        
 																																  //
 LL_EXTERN INTEGER LlDefineChartFieldExt(;                                                         //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszVarName AS STRING,;                                                                     //
-		@pszContents AS STRING,;                                                                    //
+		pszVarName AS STRING,;                                                                      //
+		pszContents AS STRING,;                                                                     //
 		lPara AS INTEGER,;                                                                          //
-		@lpPtr AS STRING ) ORDINAL 3 IN CMBT_DLL                                                    //
+		lpPtr AS STRING ) ORDINAL 3 IN CMBT_DLL                                                     //
 																																  //
 LL_EXTERN INTEGER LlPrintDeclareChartRow(;                                                        //
 		hLlJob AS INTEGER,;                                                                         //
@@ -724,67 +728,67 @@ LL_EXTERN INTEGER LlPrintIsChartFieldUsed(;                                     
 		pszFieldName AS STRING ) ORDINAL 5 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlGetChartFieldContents(;                                                       //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszName AS STRING,;                                                                        //
-		@pszBuffer AS STRING,;                                                                      //
-		nBufSize AS UINTEGER ) ORDINAL 8 IN CMBT_DLL                                                //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		pszName AS STRING,;                                                                         // LPCSTR               pszName,
+		@pszBuffer AS STRING,;                                                                      // LPSTR                pszBuffer,
+		nBufSize AS UINTEGER ) ORDINAL 8 IN CMBT_DLL                                                // UINT                 nBufSize
 																																  //
 LL_EXTERN INTEGER LlEnumGetFirstChartField(;                                                      //
 		hLlJob AS INTEGER,;                                                                         //
 		nFlags AS INTEGER ) ORDINAL 9 IN CMBT_DLL                                                   //
-   																																  //
-//CALLBACK_EXTERN INTEGER LlSetNotificationCallbackExt(;                                            // CMBT_LL_WINAPI FARPROC  DLLPROC  LlSetNotificationCallbackExt
-LL_EXTERN INTEGER LlSetNotificationCallbackExt(;                                            // CMBT_LL_WINAPI FARPROC  DLLPROC  LlSetNotificationCallbackExt
+   																															  //
+//CALLBACK_EXTERN INTEGER LlSetNotificationCallbackExt(;                                          // CMBT_LL_WINAPI FARPROC  DLLPROC  LlSetNotificationCallbackExt
+LL_EXTERN INTEGER LlSetNotificationCallbackExt(;                                            		  // CMBT_LL_WINAPI FARPROC  DLLPROC  LlSetNotificationCallbackExt
 		hJob AS INTEGER,;                                                                           //  HLLJOB               hLlJob,
 		nEvent AS INTEGER,;                                                                         //  INT                  nEvent,
 		lpfnEnum AS ACALLBACK ) ORDINAL 100 IN CMBT_DLL                                             //  FARPROC              lpfnNotify
 																																  //
 LL_EXTERN INTEGER LlGetPrinterFromPrinterFile(;                                                   //
-		hJob AS INTEGER,;                                                                           //
-		nObjType AS UINTEGER,;                                                                      //
-		@pszObjectName AS STRING,;                                                                  //
-		nPrinter AS INTEGER,;                                                                       //
-		@pszPrinter AS STRING,;                                                                     //
-		@pnPrinterBufSize AS INTEGER,;                                                              //
-		@pDevMode AS STRING,;                                                                       //
-		@pnDevModeBufSize AS INTEGER ) ORDINAL 98 IN CMBT_DLL                                       //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hJob,
+		nObjType AS UINTEGER,;                                                                      // UINT                 nObjType,
+		pszObjectName AS STRING,;                                                                   // LPCSTR               pszObjectName,
+		nPrinter AS INTEGER,;                                                                       // INT                  nPrinter,
+		@pszPrinter AS STRING,;                                                                     // LPSTR                pszPrinter,
+		@pnPrinterBufSize AS INTEGER,;                                                              // LLPUINT              pnPrinterBufSize,
+		@pDevMode AS STRING,;                                                                       // _PDEVMODEA           pDevMode,
+		@pnDevModeBufSize AS INTEGER ) ORDINAL 98 IN CMBT_DLL                                       // LLPUINT              pnDevModeBufSize
 																																  //
 LL_EXTERN INTEGER LlPrintGetRemainingSpacePerTable(;                                              //
 		hJob AS INTEGER,;                                                                           //
-		@pszField AS STRING,;                                                                       //
+		pszField AS STRING,;                                                                        //
 		nDimension AS INTEGER ) ORDINAL 102 IN CMBT_DLL                                             //
 																																  //
 LL_EXTERN INTEGER LlSetDefaultProjectParameter(;                                                  //
 		hJob AS INTEGER,;                                                                           //
-		@pszParameter AS STRING,;                                                                   //
-		@pszValue AS STRING,;                                                                       //
+		pszParameter AS STRING,;                                                                    //
+		pszValue AS STRING,;                                                                        //
 		nFlags AS INTEGER ) ORDINAL 108 IN CMBT_DLL                                                 //
 																																  //
 LL_EXTERN INTEGER LlGetDefaultProjectParameter(;                                                  //
-		hJob AS INTEGER,;                                                                           //
-		@pszParameter AS STRING,;                                                                   //
-		@pszBuffer AS STRING,;                                                                      //
-		nBufSize AS UINTEGER,;                                                                      //
-		nFlags AS INTEGER ) ORDINAL 110 IN CMBT_DLL                                                 //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hLlJob,
+		pszParameter AS STRING,;                                                                    // LPCSTR               pszParameter,
+		@pszBuffer AS STRING,;                                                                      // LPSTR                pszBuffer,
+		nBufSize AS UINTEGER,;                                                                      // INT                  nBufSize,
+		nFlags AS INTEGER ) ORDINAL 110 IN CMBT_DLL                                                 // _LPUINT              pnFlags
 																																  //
 LL_EXTERN INTEGER LlPrintSetProjectParameter(;                                                    //
 		hJob AS INTEGER,;                                                                           //
-		@pszParameter AS STRING,;                                                                   //
-		@pszValue AS STRING,;                                                                       //
+		pszParameter AS STRING,;                                                                    //
+		pszValue AS STRING,;                                                                        //
 		nFlags AS INTEGER ) ORDINAL 113 IN CMBT_DLL                                                 //
 																																  //
 LL_EXTERN INTEGER LlPrintGetProjectParameter(;                                                    //
-		hJob AS INTEGER,;                                                                           //
-		@pszParameter AS STRING,;                                                                   //
-		bEvaluated AS INTEGER,;                                                                     //
-		@pszBuffer AS STRING,;                                                                      //
-		nBufSize AS UINTEGER,;                                                                      //
-		nFlags AS INTEGER ) ORDINAL 114 IN CMBT_DLL                                                 //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hLlJob,
+		pszParameter AS STRING,;                                                                    // LPCSTR               pszParameter,
+		bEvaluated AS INTEGER,;                                                                     // BOOL                 bEvaluated,
+		@pszBuffer AS STRING,;                                                                      // LPSTR                pszBuffer,
+		nBufSize AS UINTEGER,;                                                                      // INT                  nBufSize,
+		nFlags AS INTEGER ) ORDINAL 114 IN CMBT_DLL                                                 // _LPUINT              pnFlags
 																																  //
 LL_EXTERN INTEGER LlExprContainsVariable(;                                                        //
 		hJob AS INTEGER,;                                                                           //
 		hExpr AS INTEGER,;                                                                          //
-		@pszVariable AS STRING ) ORDINAL 7 IN CMBT_DLL                                              //
+		pszVariable AS STRING ) ORDINAL 7 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlExprIsConstant(;                                                              //
 		hJob AS INTEGER,;                                                                           //
@@ -792,8 +796,8 @@ LL_EXTERN INTEGER LlExprIsConstant(;                                            
 																																  //
 LL_EXTERN INTEGER LlProfileStart(;                                                                //
 		hJob AS INTEGER,;                                                                           //
-		@pszBuffer AS STRING,;                                                                      //
-		@pszFilename AS STRING,;                                                                    //
+		pszBuffer AS STRING,;                                                                       //
+		pszFilename AS STRING,;                                                                     //
 		nTicksMS AS INTEGER ) ORDINAL 136 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN VOID LlProfileEnd(;                                                                     //
@@ -801,21 +805,21 @@ LL_EXTERN VOID LlProfileEnd(;                                                   
 																																  //
 LL_EXTERN INTEGER LlDbAddTable(;                                                                  //
 		hJob AS INTEGER,;                                                                           //
-		@pszTableID AS STRING,;                                                                     //
-		@pszDisplayName AS STRING ) ORDINAL 139 IN CMBT_DLL                                         //
+		pszTableID AS STRING,;                                                                      //
+		pszDisplayName AS STRING ) ORDINAL 139 IN CMBT_DLL                                          //
 																																  //
 LL_EXTERN INTEGER LlDbAddTableRelation(;                                                          //
-		hJob AS INTEGER,;                                                                           //
-		@pszTableID AS STRING,;                                                                     //
-		@pszParentTableID AS STRING,;                                                               //
-		@pszRelationID AS STRING,;                                                                  //
-		@pszRelationDisplayName AS STRING ) ORDINAL 140 IN CMBT_DLL                                 //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hJob,
+		pszTableID AS STRING,;                                                                      // LPCSTR               pszTableID,
+		pszParentTableID AS STRING,;                                                                // LPCSTR               pszParentTableID,
+		pszRelationID AS STRING,;                                                                   // LPCSTR               pszRelationID,
+		pszRelationDisplayName AS STRING ) ORDINAL 140 IN CMBT_DLL                                  // LPCSTR               pszRelationDisplayName
 																																  //
 LL_EXTERN INTEGER LlDbAddTableSortOrder(;                                                         //
 		hJob AS INTEGER,;                                                                           //
-		@pszTableID AS STRING,;                                                                     //
-		@pszSortOrderID AS STRING,;                                                                 //
-		@pszSortOrderDisplayName AS STRING ) ORDINAL 141 IN CMBT_DLL                                //
+		pszTableID AS STRING,;                                                                      //
+		pszSortOrderID AS STRING,;                                                                  //
+		pszSortOrderDisplayName AS STRING ) ORDINAL 141 IN CMBT_DLL                                 //
 																																  //
 LL_EXTERN INTEGER LlPrintDbGetCurrentTable(;                                                      //
 		hJob AS INTEGER,;                                                                           //
@@ -841,7 +845,7 @@ LL_EXTERN INTEGER LlPrintDbGetRootTableCount(;                                  
 																																  //
 LL_EXTERN INTEGER LlDbSetMasterTable(;                                                            //
 		hJob AS INTEGER,;                                                                           //
-		@pszTableID AS STRING ) ORDINAL 152 IN CMBT_DLL                                             //
+		pszTableID AS STRING ) ORDINAL 152 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlDbGetMasterTable(;                                                            //
 		hJob AS INTEGER,;                                                                           //
@@ -849,31 +853,31 @@ LL_EXTERN INTEGER LlDbGetMasterTable(;                                          
 		nBufSize AS UINTEGER ) ORDINAL 157 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlXSetExportParameter(;                                                         //
-		hJob AS INTEGER,;                                                                           //
-		@pszExtensionName AS STRING,;                                                               //
-		@pszKey AS STRING,;                                                                         //
-		@pszValue AS STRING ) ORDINAL 158 IN CMBT_DLL                                               //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hLlJob,
+		pszExtensionName AS STRING,;                                                                // LPCSTR               pszExtensionName,
+		pszKey AS STRING,;                                                                          // LPCSTR               pszKey,
+		pszValue AS STRING ) ORDINAL 158 IN CMBT_DLL                                                // LPCSTR               pszValue
 																																  //
 LL_EXTERN INTEGER LlXGetExportParameter(;                                                         //
-		hJob AS INTEGER,;                                                                           //
-		@pszExtensionName AS STRING,;                                                               //
-		@pszKey AS STRING,;                                                                         //
-		@pszBuffer AS STRING,;                                                                      //
-		nBufSize AS UINTEGER ) ORDINAL 160 IN CMBT_DLL                                              //
+		hJob AS INTEGER,;                                                                           // HLLJOB               hLlJob,
+		pszExtensionName AS STRING,;                                                                // LPCSTR               pszExtensionName,
+		pszKey AS STRING,;                                                                          // LPCSTR               pszKey,
+		@pszBuffer AS STRING,;                                                                      // LPSTR                pszBuffer,
+		nBufSize AS UINTEGER ) ORDINAL 160 IN CMBT_DLL                                              // UINT                 nBufSize
 																																  //
 LL_EXTERN INTEGER LlXlatName(;                                                                    //
 		hJob AS INTEGER,;                                                                           //
-		@pszName AS STRING,;                                                                        //
+		pszName AS STRING,;                                                                         //
 		@pszBuffer AS STRING,;                                                                      //
 		nBufSize AS UINTEGER ) ORDINAL 164 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlDesignerProhibitEditingObject(;                                               //
 		hJob AS INTEGER,;                                                                           //
-		@pszObject AS STRING ) ORDINAL 185 IN CMBT_DLL                                              //
+		pszObject AS STRING ) ORDINAL 185 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlGetUsedIdentifiers(;                                                          //
 		hJob AS INTEGER,;                                                                           //
-		@pszProjectName AS STRING,;                                                                 //
+		pszProjectName AS STRING,;                                                                  //
 		@pszBuffer AS STRING,;                                                                      //
 		nBufSize AS UINTEGER ) ORDINAL 186 IN CMBT_DLL                                              //
 																																  //
@@ -889,18 +893,18 @@ LL_EXTERN INTEGER LlDomGetProject(;                                             
 																																  //
 LL_EXTERN INTEGER LlDomGetProperty(;                                                              //
 		hDOMObj AS INTEGER,;                                                                        //
-		@pszName AS STRING,;                                                                        //
+		pszName AS STRING,;                                                                         //
 		@pszBuffer AS STRING,;                                                                      //
 		bOrgName AS INTEGER ) ORDINAL 207 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlDomSetProperty(;                                                              //
 		hDOMObj AS INTEGER,;                                                                        //
-		@pszName AS STRING,;                                                                        //
-		@pszValue AS STRING ) ORDINAL 208 IN CMBT_DLL                                               //
+		pszName AS STRING,;                                                                         //
+		pszValue AS STRING ) ORDINAL 208 IN CMBT_DLL                                                //
 																																  //
 LL_EXTERN INTEGER LlDomGetObject(;                                                                //
 		hDOMObj AS INTEGER,;                                                                        //
-		@pszName AS STRING,;                                                                        //
+		pszName AS STRING,;                                                                         //
 		@phDOMSubObj AS INTEGER ) ORDINAL 209 IN CMBT_DLL                                           //
 																																  //
 LL_EXTERN INTEGER LlDomGetSubobjectCount(;                                                        //
@@ -915,7 +919,7 @@ LL_EXTERN INTEGER LlDomGetSubobject(;                                           
 LL_EXTERN INTEGER LlDomCreateSubobject(;                                                          //
 		hDOMObj AS INTEGER,;                                                                        //
 		nPosition AS INTEGER,;                                                                      //
-		@pszType AS STRING,;                                                                        //
+		pszType AS STRING,;                                                                         //
 		@phDOMSubObj AS INTEGER ) ORDINAL 212 IN CMBT_DLL                                           //
 																																  //
 LL_EXTERN INTEGER LlDomDeleteSubobject(;                                                          //
@@ -925,12 +929,12 @@ LL_EXTERN INTEGER LlDomDeleteSubobject(;                                        
 LL_EXTERN INTEGER LlProjectOpen(;                                                                 //
 		hLlJob AS INTEGER,;                                                                         //
 		nObjType AS UINTEGER,;                                                                      //
-		@pszObjName AS STRING,;                                                                     //
+		pszObjName AS STRING,;                                                                      //
 		nOpenMode AS UINTEGER ) ORDINAL 214 IN CMBT_DLL                                             //
 																																  //
 LL_EXTERN INTEGER LlProjectSave(;                                                                 //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszObjName AS STRING ) ORDINAL 215 IN CMBT_DLL                                             //
+		pszObjName AS STRING ) ORDINAL 215 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlProjectClose(;                                                                //
 		hLlJob AS INTEGER ) ORDINAL 216 IN CMBT_DLL                                                 //
@@ -964,7 +968,7 @@ LL_EXTERN INTEGER LlDesignerRefreshWorkspace(;                                  
 																																  //
 LL_EXTERN INTEGER LlDesignerFileOpen(;                                                            //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszFilename AS STRING,;                                                                    //
+		pszFilename AS STRING,;                                                                     //
 		nValue AS UINTEGER ) ORDINAL 225 IN CMBT_DLL                                                //
 																																  //
 LL_EXTERN INTEGER LlDesignerFileSave(;                                                            //
@@ -972,19 +976,19 @@ LL_EXTERN INTEGER LlDesignerFileSave(;                                          
 		nValue AS UINTEGER ) ORDINAL 226 IN CMBT_DLL                                                //
 																																  //
 LL_EXTERN INTEGER LlDesignerAddAction(;                                                           //
-		hLlJob AS INTEGER,;                                                                         //
-		nID AS UINTEGER,;                                                                           //
-		nFlags AS UINTEGER,;                                                                        //
-		@pszMenuText AS STRING,;                                                                    //
-		@pszMenuHierarchy AS STRING,;                                                               //
-		@pszTooltipText AS STRING,;                                                                 //
-		nIcon AS UINTEGER,;                                                                         //
-		@pvReserved AS STRING ) ORDINAL 227 IN CMBT_DLL                                             //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		nID AS UINTEGER,;                                                                           // UINT                 nID,
+		nFlags AS UINTEGER,;                                                                        // UINT                 nFlags,
+		pszMenuText AS STRING,;                                                                     // LPCSTR               pszMenuText,
+		pszMenuHierarchy AS STRING,;                                                                // LPCSTR               pszMenuHierarchy,
+		pszTooltipText AS STRING,;                                                                  // LPCSTR               pszTooltipText,
+		nIcon AS UINTEGER,;                                                                         // UINT                 nIcon,
+		@pvReserved AS STRING ) ORDINAL 227 IN CMBT_DLL                                             // LPVOID               pvReserved
 																																  //
 LL_EXTERN INTEGER LlDesignerGetOptionString(;                                                     //
 		hLlJob AS INTEGER,;                                                                         //
 		nIndex AS UINTEGER,;                                                                        //
-		@pszBuffer AS STRING,;                                                                      //
+		pszBuffer AS STRING,;                                                                       //
 		nBufSize AS INTEGER ) ORDINAL 236 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlDesignerSetOptionString(;                                                     //
@@ -996,11 +1000,11 @@ LL_EXTERN INTEGER LlJobOpenCopy(;                                               
 		hLlJob AS INTEGER ) ORDINAL 239 IN CMBT_DLL                                                 //
 																																  //
 LL_EXTERN INTEGER LlGetProjectParameter(;                                                         //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszProjectName AS STRING,;                                                                 //
-		@pszParameter AS STRING,;                                                                   //
-		@pszBuffer AS STRING,;                                                                      //
-		nBufSize AS INTEGER ) ORDINAL 249 IN CMBT_DLL                                               //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		pszProjectName AS STRING,;                                                                  // LPCSTR               pszProjectName,
+		pszParameter AS STRING,;                                                                    // LPCSTR               pszParameter,
+		@pszBuffer AS STRING,;                                                                      // LPSTR                pszBuffer,
+		nBufSize AS INTEGER ) ORDINAL 249 IN CMBT_DLL                                               // UINT                 nBufSize
 																																  //
 LL_EXTERN INTEGER LlConvertBLOBToString(;                                                         //
 		@pBytes AS INTEGER,;                                                                        //
@@ -1010,41 +1014,41 @@ LL_EXTERN INTEGER LlConvertBLOBToString(;                                       
 		bWithCompression AS INTEGER ) ORDINAL 250 IN CMBT_DLL                                       //
 																																  //
 LL_EXTERN INTEGER LlConvertStringToBLOB(;                                                         //
-		@pszText AS STRING,;                                                                        //
-		@pBytes AS STRING,;                                                                         //
-		nBytes AS INTEGER ) ORDINAL 251 IN CMBT_DLL                                                 //
+		pszText AS STRING,;                                                                         //  LPCSTR               pszText,
+		@pBytes AS INTEGER,;                                                                        //  _PUINT8              pBytes,
+		nBytes AS INTEGER ) ORDINAL 251 IN CMBT_DLL                                                 //  UINT                 nBytes
 																																  //
 LL_EXTERN INTEGER LlDbAddTableRelationEx(;                                                        //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszTableID AS STRING,;                                                                     //
-		@pszParentTableID AS STRING,;                                                               //
-		@pszRelationID AS STRING,;                                                                  //
-		@pszRelationDisplayName AS STRING,;                                                         //
-		@pszKeyField AS STRING,;                                                                    //
-		@pszParentKeyField AS STRING ) ORDINAL 238 IN CMBT_DLL                                      //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hJob,
+		pszTableID AS STRING,;                                                                      // LPCSTR               pszTableID,
+		pszParentTableID AS STRING,;                                                                // LPCSTR               pszParentTableID,
+		pszRelationID AS STRING,;                                                                   // LPCSTR               pszRelationID,
+		pszRelationDisplayName AS STRING,;                                                          // LPCSTR               pszRelationDisplayName,
+		pszKeyField AS STRING,;                                                                     // LPCSTR               pszKeyField,
+		pszParentKeyField AS STRING ) ORDINAL 238 IN CMBT_DLL                                       // LPCSTR               pszParentKeyField
 																																  //
 LL_EXTERN INTEGER LlDbAddTableSortOrderEx(;                                                       //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszTableID AS STRING,;                                                                     //
-		@pszSortOrderID AS STRING,;                                                                 //
-		@pszSortOrderDisplayName AS STRING,;                                                        //
-		@pszParepszFieldntKeyField AS STRING ) ORDINAL 257 IN CMBT_DLL                              //
+		pszTableID AS STRING,;                                                                      //
+		pszSortOrderID AS STRING,;                                                                  //
+		pszSortOrderDisplayName AS STRING,;                                                         //
+		pszParepszFieldntKeyField AS STRING ) ORDINAL 257 IN CMBT_DLL                               //
 																																  //
-LL_EXTERN INTEGER LlGetUsedIdentifiersEx(;                                                        //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszProjectName AS STRING,;                                                                 //
-		nIdentifierTypes AS INTEGER,;                                                               //
-		@pszBuffer AS STRING,;                                                                      //
-		nBufSize AS INTEGER ) ORDINAL 258 IN CMBT_DLL                                               //
+LL_EXTERN INTEGER LlGetUsedIdentifiersEx(;                                                        // CMBT_LL_WINAPI INT   LlGetUsedIdentifiersExA
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hLlJob,
+		pszProjectName AS STRING,;                                                                  // LPCSTR               pszProjectName,
+		nIdentifierTypes AS UINTEGER,;                                                              // UINT                 nIdentifierTypes,
+		@pszBuffer AS STRING,;                                                                      // LPSTR                pszBuffer,
+		nBufSize AS UINTEGER ) ORDINAL 258 IN CMBT_DLL                                              // UINT                 nBufSize
 																																  //
 LL_EXTERN INTEGER LlGetTempFileName(;                                                             //
-		@pszPrefix AS STRING,;                                                                      //
-		@pszExt AS STRING,;                                                                         //
-		@pszBuffer AS STRING,;                                                                      //
-		nBufSize AS INTEGER,;                                                                       //
-		nOptions AS INTEGER) ORDINAL 259 IN CMBT_DLL                                                //
+		pszPrefix AS STRING,;                                                                       // LPCSTR               pszPrefix,
+		pszExt AS STRING,;                                                                          // LPCSTR               pszExt,
+		@pszBuffer AS STRING,;                                                                      // LPSTR                pszBuffer,
+		nBufSize AS INTEGER,;                                                                       // UINT                 nBufSize,
+		nOptions AS INTEGER) ORDINAL 259 IN CMBT_DLL                                                // UINT                 nOptions
 																																  //
-LL_EXTERN INTEGER LlGetDebug() ORDINAL 259 IN CMBT_DLL                                            //
+LL_EXTERN INTEGER LlGetDebug() ORDINAL 260 IN CMBT_DLL                                            //
 																																  //
 LL_EXTERN INTEGER LlRTFEditorGetRTFControlHandle(;                                                //
 		hLlJob AS INTEGER,;                                                                         //
@@ -1060,8 +1064,8 @@ LL_EXTERN INTEGER LlGetDefaultPrinter(;                                         
 LL_EXTERN INTEGER LlLocAddDictionaryEntry(;                                                       //
 		hLlJob AS INTEGER,;                                                                         //
 		nLCID AS INTEGER,;                                                                          //
-		@pszKey AS STRING,;                                                                         //
-		@pszValue AS STRING,;                                                                       //
+		pszKey AS STRING,;                                                                          //
+		pszValue AS STRING,;                                                                        //
 		nType AS UINTEGER) ORDINAL 263 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlLocAddDesignLCID(;                                                            //
@@ -1077,16 +1081,16 @@ LL_EXTERN INTEGER LlIsUILanguageAvailableLCID(;                                 
 		nTypesToLookFor AS UINTEGER) ORDINAL 266 IN CMBT_DLL                                        //
 																																  //
 LL_EXTERN INTEGER LlDbAddTableEx(;                                                                //
-		hLlJob AS INTEGER,;                                                                         //
-		@pszTableID AS STRING,;                                                                     //
-		@pszDisplayName AS STRING,;                                                                 //
-		nOptions AS UINTEGER) ORDINAL 267 IN CMBT_DLL                                               //
+		hLlJob AS INTEGER,;                                                                         // HLLJOB               hJob,
+		pszTableID AS STRING,;                                                                      // LPCSTR               pszTableID,
+		pszDisplayName AS STRING,;                                                                  // LPCSTR               pszDisplayName,
+		nOptions AS UINTEGER) ORDINAL 267 IN CMBT_DLL                                               // UINT                 nOptions
 																																  //
 LL_EXTERN INTEGER LlRTFSetTextEx(;                                                                //
 		hLlJob AS INTEGER,;                                                                         //
 		hRTF AS INTEGER,;                                                                           //
 		nFlags AS INTEGER,;                                                                         //
-		@pszText AS STRING ) ORDINAL 269 IN CMBT_DLL                                                //
+		pszText AS STRING ) ORDINAL 269 IN CMBT_DLL                                                 //
 																																  //
 LL_EXTERN INTEGER LlInplaceDesignerInteraction(;                                                  //
 		hLlJob AS INTEGER,;                                                                         //
@@ -1096,7 +1100,7 @@ LL_EXTERN INTEGER LlInplaceDesignerInteraction(;                                
 																																  //
 LL_EXTERN INTEGER LlGetProjectDescription(;                                                       //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszProjectName AS STRING,;                                                                 //
+		pszProjectName AS STRING,;                                                                  //
 		@pszBuffer AS STRING,;                                                                      //
 		nBufSize AS INTEGER ) ORDINAL 280 IN CMBT_DLL                                               //
 																																  //
@@ -1141,8 +1145,8 @@ LL_EXTERN INTEGER LlGetLastErrorText(;                                          
 																																  //
 LL_EXTERN INTEGER LlProjectFindAndReplace(;                                                       //
 		hLlJob AS INTEGER,;                                                                         //
-		@pszSearchText AS STRING,;                                                                  //
-		@pszReplaceText AS STRING,;                                                                 //
+		pszSearchText AS STRING,;                                                                   //
+		pszReplaceText AS STRING,;                                                                  //
 		nSARFlags AS INTEGER ) ORDINAL 312 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlExprTypeMask(;                                                                //

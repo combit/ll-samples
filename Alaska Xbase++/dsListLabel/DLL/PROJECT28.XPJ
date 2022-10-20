@@ -1,0 +1,27 @@
+[PROJECT]
+    DEBUG                = no
+    INTERMEDIATE_DEBUG   = ..\.debug
+    INTERMEDIATE_RELEASE = ..\.release
+    TARGET_DIR	   = ..\
+    VERSION       = 2.3
+    PROJECT.XPJ
+
+[PROJECT.XPJ]
+    dsListLabel28.DLL
+
+[dsListLabel28.DLL]
+    COMPILE              = xpp
+    COMPILE_FLAGS        = /ga /wi /wl /wu /q /w /D__LL=28
+    DEBUG_SAVE           = yes
+    GUI                  = yes
+    LINKER               = alink
+    RC_COMPILE           = arc
+    RC_FLAGS             = /v /q /D__LL=28
+// $START-AUTODEPEND
+    cmbtllX.obj
+    dsListLabel.obj
+// $STOP-AUTODEPEND
+    cmbtllX.prg
+    dsListLabel.arc
+    dsListLabel.prg
+

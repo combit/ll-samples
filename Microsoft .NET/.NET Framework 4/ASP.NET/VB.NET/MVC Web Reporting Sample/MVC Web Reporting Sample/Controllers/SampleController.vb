@@ -3,11 +3,9 @@ Imports combit.Reporting.DataProviders
 Imports combit.Reporting.Repository
 Imports combit.Reporting.Web.WindowsClientWebDesigner.Server
 Imports System.IO
-Imports System.Linq
 Imports System.Net
 Imports System.Threading
 Imports System.Web.Mvc
-Imports System.Web.Security
 Imports MVC_Web_Reporting_Sample.WebReporting.ViewModels
 
 Namespace WebReporting.Controllers
@@ -19,14 +17,14 @@ Namespace WebReporting.Controllers
         Public Function Index() As ActionResult
             ' D:   Liste alle Einträge im Repository auf. Da das Beispiel-Repository eine erweiterte RepositoryItem-Klasse verwendet, werden die Einträge in den erweiterten Typ gecastet
             ' US:  Enumerate all items in the repository. As the sample repository uses a subclass of RepositoryItem, we need to cast the items to the extended type.
-            Return View("Index", New StartPageModel() With {
+            Return View("Index", New RepositoryModel() With {
                         .RepositoryItems = GetCurrentRepository().GetAllItems().OfType(Of CustomizedRepostoryItem)()
                         })
 
         End Function
 
-        Public Function StartPage() As ActionResult
-            Return View("StartPage", New StartPageModel() With {
+        Public Function Repository() As ActionResult
+            Return View("Repository", New RepositoryModel() With {
                 .RepositoryItems = GetCurrentRepository().GetAllItems().OfType(Of CustomizedRepostoryItem)()
             })
         End Function
@@ -45,7 +43,7 @@ Namespace WebReporting.Controllers
             End If
 
             GetCurrentRepository().DeleteItem(repoItemId)
-            Return StartPage()
+            Return Repository()
         End Function
 
         ' D:   Lässt den Client den Inhalt eines Repository-Items als Datei herunterladen.
@@ -180,7 +178,7 @@ Namespace WebReporting.Controllers
 
                 ' D:   Für Dateien vom Type Shapefile muss die dazugehörende Datenbank (File2) mit dem Shapefile (File1) zusammen hochgeladen werden.
                 ' US:  For files of the type 'Shapefile' a suitable database file (File2) must be uploaded together with the shapefile (File1)
-                If fileType.Value = Repository.RepositoryItemType.Shapefile.Value Then
+                If fileType.Value = RepositoryItemType.Shapefile.Value Then
                     If model.File2 IsNot Nothing Then
                         model.File2.SaveAs(filePath2)
                     Else
@@ -303,6 +301,8 @@ Namespace WebReporting.Controllers
             '      Set the second parameter (forDesign) to true if you're using different provider (e.q. with property  MinimalSelect = false) for the designer.
             options.DataSource = GetDataSourceForProject(reportRepositoryID, False)
 
+            options.DataMember = DefaultSettings.GetDataMemberForProject(reportRepositoryID)
+
             ' D:   Die Referenz auf das Repository muss an List & Label übergeben werden, damit die Repository-ID des Projekts für 'AutoProjectFile' akzeptiert wird.
             ' US:  The repository reference must be passed to List & Label to make the repository ID of the project a valid value for the 'AutoProjectFile' property.
             options.FileRepository = GetCurrentRepository()
@@ -387,7 +387,7 @@ Namespace WebReporting.Controllers
                 Case ".crd"
                     Return RepositoryItemType.ProjectCard
 
-                Case ".lbl"
+                Case ".lab", ".lbl"
                     Return RepositoryItemType.ProjectLabel
 
                 Case ".idx"

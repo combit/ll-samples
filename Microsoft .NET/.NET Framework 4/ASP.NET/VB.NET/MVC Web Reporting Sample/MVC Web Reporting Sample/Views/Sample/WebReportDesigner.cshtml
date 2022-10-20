@@ -1,4 +1,5 @@
 ﻿@using combit.Reporting.Web
+@using combit.Reporting.Web.WebReportDesigner
 @{
     Layout = null;
     string repositoryId = Request.QueryString["reportRepositoryID"];
@@ -6,8 +7,13 @@
     {
         repositoryId = repositoryId.Replace("repository://{", "").Replace("}", "");
     }
+
+    var options = new WebReportDesignerMVCOptions(repositoryId)
+    {
+        Title = "Web Report Designer"
+    };
 }
 
 <!DOCTYPE html>
 
-@Html.WebReportDesigner("Web Report Designer", repositoryId)
+@Html.WebReportDesigner(options);
