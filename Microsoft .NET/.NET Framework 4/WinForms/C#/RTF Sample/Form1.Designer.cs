@@ -47,6 +47,7 @@
             this.listLabel1.MaxRTFVersion = 1280;
             this.listLabel1.PhantomSpace = 8203;
             this.listLabel1.PreviewControl = null;
+            this.listLabel1.Printerless = false;
             this.listLabel1.Unit = combit.Reporting.LlUnits.Millimeter_1_100;
             this.listLabel1.UseHardwareCopiesForLabels = false;
             this.listLabel1.UseTableSchemaForDesignMode = false;
@@ -62,18 +63,19 @@
             this.listLabelRTFControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listLabelRTFControl1.Location = new System.Drawing.Point(32, 47);
+            this.listLabelRTFControl1.Location = new System.Drawing.Point(37, 54);
             this.listLabelRTFControl1.Name = "listLabelRTFControl1";
             this.listLabelRTFControl1.ParentComponent = this.listLabel1;
-            this.listLabelRTFControl1.Size = new System.Drawing.Size(635, 307);
+            this.listLabelRTFControl1.Size = new System.Drawing.Size(741, 354);
             this.listLabelRTFControl1.TabIndex = 1;
             this.listLabelRTFControl1.Text = "listLabelRTFControl1";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(32, 18);
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(37, 21);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
+            this.button1.Size = new System.Drawing.Size(128, 27);
             this.button1.TabIndex = 2;
             this.button1.Text = "Open RTF File...";
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -81,9 +83,10 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(441, 360);
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(514, 415);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 23);
+            this.button2.Size = new System.Drawing.Size(128, 27);
             this.button2.TabIndex = 3;
             this.button2.Text = "Design...";
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -91,9 +94,10 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(557, 360);
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(650, 415);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 23);
+            this.button3.Size = new System.Drawing.Size(128, 27);
             this.button3.TabIndex = 4;
             this.button3.Text = "Print...";
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -102,14 +106,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 401);
+            this.ClientSize = new System.Drawing.Size(810, 463);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listLabelRTFControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(710, 440);
+            this.MinimumSize = new System.Drawing.Size(826, 502);
             this.Name = "Form1";
             this.Text = "List & Label C# RTF Control Sample";
             this.ResumeLayout(false);

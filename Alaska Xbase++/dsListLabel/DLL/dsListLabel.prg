@@ -2,7 +2,7 @@
  File Name:	   dsListLabel.prg
  Author:	 		Marcus Herz
  Description:
- Created:		19.08.2016     13:33:08	  Updated: þ22.09.2021	þ09:57:42
+ Created:		19.08.2016     13:33:08	  Updated: þ14.11.2022	þ13:33:35
  Copyright:		2016 by DS-Datasoft
  Revision:
 
@@ -19,6 +19,7 @@
 #include "xbp.ch"
 #include "common.ch"
 #include "class.ch"
+#include "fileio.ch"
 
 // ::_dbFields[]
 // ::_dbVariables[]
@@ -49,15 +50,27 @@
 EXTERN LONG GetComputerName(@cBuffer as STRING, @nBin AS LONG) 			IN KERNEL32.DLL
 EXTERN LONG GetUserName( @cBuffer as STRING, @nBuflen AS LONG)  			IN ADVAPI32.DLL
 
+
 #if XPPVER < 2001255
 
 EXTERN INTEGER GetTempPath( len AS UINTEGER, @buffer AS STRING )			IN KERNEL32.DLL
 EXTERN LONG SetEvent(hEvent AS UINTEGER)											IN KERNEL32.DLL
+EXTERN INTEGER GetTempFileName(;
+  lpPathName as STRING,;
+  lpPrefixString  as STRING,;
+  uUnique AS INTEGER,;
+  @lpTempFileName as STRING) IN KERNEL32.DLL
+
 
 #else
 
 STATIC EXTERN INTEGER GetTempPath( len AS UINTEGER, @buffer AS STRING )	IN KERNEL32.DLL
 STATIC EXTERN LONG SetEvent(hEvent AS UINTEGER)									IN KERNEL32.DLL
+STATIC EXTERN INTEGER GetTempFileName(;
+  lpPathName as STRING,;
+  lpPrefixString  as STRING,;
+  uUnique AS INTEGER,;
+  @lpTempFileName as STRING) IN KERNEL32.DLL
 
 #endif	// XPPVER < 2001255
 
@@ -147,12 +160,14 @@ PROTECTED:
    VAR _dbFields                                               // array mit tables/workareas for llDefineField
    VAR _dbVariables                                            // array mit tables/workareas for llDefineVariable
    VAR _lDesign			                                       // start design mode
+	VAR _lDesignerUpdated
    VAR _lDesignerPreview                                       // designer preview enabled
    VAR _lIsReleased                                            // internal
    VAR _lOptions                                               // internal
 	VAR _lPrepared                                              // internal
    VAR _lPrintAtEof                                            // wenn TRUE, wird immer mindestens 1 Satz übergeben auch wenn eof()
    VAR _lRtf                                                   // LlSetOption(-1, LL_OPTION_MAXRTFVERSION, 0 )
+	VAR _lStreamMode                                            // Stream2Report
    VAR _lUseDbRequest 	                                       // nur FALSE für ADSClass++ PQclass++, eigene Lösungen
    VAR _lSubReport                                             // TRUE wenn mit berichtscontainer
    VAR _nBoxType                                               // art der fortschritts anzeige
@@ -185,6 +200,7 @@ EXPORTED:
 	VAR hJob 	READONLY
 	VAR hWnd 	READONLY
 
+	CLASS METHOD DefaultPath(xSet)
 	CLASS METHOD initClass
 
 	METHOD AddPath																//
@@ -214,11 +230,13 @@ EXPORTED:
 	METHOD GetPrinter 														//
 	METHOD GetSelect															//
 	METHOD Init																	//
+	METHOD Notify(nEvent, nId )											//
 	METHOD OptimizeDatalink													//
 	METHOD Prepare																//
 	METHOD PrepareExport(cExportFormat, cOutFile)					//
 	METHOD Print																//
 	METHOD PrintLabel															//
+	METHOD Report2Stream(pnError)													//
 	METHOD ResetMenue															//
 	METHOD SaveAsPreview														//
 	METHOD SaveAsPDF															//
@@ -227,6 +245,7 @@ EXPORTED:
 	METHOD SetDefaultPrinter												//
 	METHOD SetMenuId															//
 	METHOD SetProperty														//
+	METHOD Stream2Report(cStream, nProject)
 
 	METHOD Close			IS Destroy
 
@@ -277,6 +296,7 @@ EXPORTED:
 	INLINE METHOD UseDbRequest(xSet)				;::_lUseDbRequest := xSet 			;RETURN self
 	INLINE METHOD ZugferdXML(xSet)				;::_cZUGFeRDXML	:= xSet			;RETURN self
 
+
 	//=========================================
 	// for free use
 	INLINE ACCESS ASSIGN METHOD Dataobject
@@ -316,6 +336,14 @@ EXPORTED:
 			RETURN self
 		endif
 		RETURN ::_nLastRec
+
+	//=========================================
+	INLINE ACCESS ASSIGN METHOD DesignerUpdated( xSet)
+		if IsLogical(xSet)
+			::_lDesignerUpdated		:= xSet
+			RETURN self
+		endif
+		RETURN ::_lDesignerUpdated
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD Quantity( xSet)
@@ -510,40 +538,6 @@ EXPORTED:
 		RETURN self
 
 	//=========================================
-	INLINE CLASS Method DefaultPath(xSet)
-		LOCAL aTmp
-		LOCAL i, iCnt
-
-		if pcount() = 0
-			RETURN ::__aDefaultPath
-		endif
-
-		if IsArray(xSet)
-			iCnt	:= len( xSet)
-			for i := 1 to iCnt
-				xSet[i]	:= strtran( xSet[i], "%APPDATA%"		, GetEnv("APPDATA"))
-				xSet[i]	:= strtran( xSet[i], "%USERPROFILE%", GetEnv("APPDATA"))
-				aadd(::__aDefaultPath, xSet[i] )
-			next
-
-		elseif IsCharacter(xSet)
-			if ";" $ xSet
-				aTmp	:= _aStrExtract(xSet, ";")
-				iCnt	:= len( aTmp)
-				for i := 1 to iCnt
-					aTmp[i]	:= strtran( aTmp[i], "%APPDATA%"		, GetEnv("APPDATA"))
-					aTmp[i]	:= strtran( aTmp[i], "%USERPROFILE%", GetEnv("APPDATA"))
-					aadd(::__aDefaultPath, aTmp[i] )
-				next
-			else
-				xSet	:= strtran( xSet, "%APPDATA%"		, GetEnv("APPDATA"))
-				xSet	:= strtran( xSet, "%USERPROFILE%", GetEnv("APPDATA"))
-				aadd(::__aDefaultPath, xSet )
-			endif
-		endif
-		RETURN ::__aDefaultPath
-
-	//=========================================
 	INLINE CLASS Method DefaultConfigBlock(bSet)
 		if IsBlock(bSet)
 			::__bConfig	:= bSet
@@ -613,6 +607,40 @@ CLASS METHOD dsListLabel:InitClass()
 	endif
 RETURN self
 
+//=========================================
+CLASS METHOD dsListLabel:DefaultPath(xSet)
+	LOCAL aTmp
+	LOCAL i, iCnt
+
+	if pcount() = 0
+		RETURN ::__aDefaultPath
+	endif
+
+	if IsArray(xSet)
+		iCnt	:= len( xSet)
+		for i := 1 to iCnt
+			xSet[i]	:= strtran( xSet[i], "%APPDATA%"		, GetEnv("APPDATA"))
+			xSet[i]	:= strtran( xSet[i], "%USERPROFILE%", GetEnv("APPDATA"))
+			aadd(::__aDefaultPath, xSet[i] )
+		next
+
+	elseif IsCharacter(xSet)
+		if ";" $ xSet
+			aTmp	:= _aStrExtract(xSet, ";")
+			iCnt	:= len( aTmp)
+			for i := 1 to iCnt
+				aTmp[i]	:= strtran( aTmp[i], "%APPDATA%"		, GetEnv("APPDATA"))
+				aTmp[i]	:= strtran( aTmp[i], "%USERPROFILE%", GetEnv("APPDATA"))
+				aadd(::__aDefaultPath, aTmp[i] )
+			next
+		else
+			xSet	:= strtran( xSet, "%APPDATA%"		, GetEnv("APPDATA"))
+			xSet	:= strtran( xSet, "%USERPROFILE%", GetEnv("APPDATA"))
+			aadd(::__aDefaultPath, xSet )
+		endif
+	endif
+RETURN ::__aDefaultPath
+
 /*============================================================================
  $Method:	Init(oParent, lRtf )
  $Author:	Marcus Herz
@@ -642,7 +670,9 @@ METHOD dsListLabel:Init( oParent, lRtf )
 	::_bTop					:= _TOPBLOCK
 	::_bEof					:= _EOFBLOCK
 	::_bRecno   			:= _RECNOBLOCK
+	::_lDesignerUpdated	:= FALSE
 	::_lRtf					:= lRtf
+	::_lStreamMode			:= FALSE
 	::_oParent				:= oParent                                                     // aufrufender dialog
 	::_aRights				:= aclone(::__aRights)
 
@@ -881,11 +911,15 @@ METHOD dsListLabel:Print(bPrint)
 		endif
 	endif
 
-	oCallBack   := LLCallBack():New(self, ::_bNotify)
-	if !empty(::_nDrillDown) .or. !empty(::_nExpand)
-		LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERDRILLDOWN, oCallBack)
+	if IsBlock( ::_bNotify) .or. !empty(::_nDrillDown) .or. !empty(::_nExpand)
+		oCallBack   := LLCallBack():New(self )
+		if IsBlock( ::_bNotify)
+			LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERBTNCLICKED, oCallBack)
+		endif
+		if !empty(::_nDrillDown) .or. !empty(::_nExpand)
+			LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERDRILLDOWN, oCallBack)
+		endif
 	endif
-	LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERBTNCLICKED, oCallBack)
 
 	nLastRec	:= ::_nLastRec
 	nRec   	:= 0
@@ -1035,7 +1069,7 @@ METHOD dsListLabel:Print(bPrint)
 					do while (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA	;enddo
 				next
 				nPage		:= LlPrintGetCurrentPage(::hJob)
-				if ::_nPages == 0 .or. nPage <= ::_nPages
+				if ::_nPages > 0 .and. nPage > ::_nPages
 					exit
 				endif
 				LlPrintSetBoxText(::hJob, "Printing", nPrint / nLastRec * 100 )
@@ -1050,7 +1084,7 @@ METHOD dsListLabel:Print(bPrint)
 			next
 		endif
 		::_nLastpage   := LlPrintGetCurrentPage(::hJob)
-		::_nError := LlPrintEnd(::hJob,0)
+		::_nError 		:= LlPrintEnd(::hJob,0)
 		::_RaiseError(::_nError, ::cReport, "LlPrintEnd()")
 	endif
 
@@ -1097,8 +1131,15 @@ METHOD dsListLabel:Design()
 		eval(::_bPrepare, self, ::nSelect )
 	endif
 
+	if ::_lStreamMode
+		oCallBack   := LLCallBack():New(self )
+		LlSetNotificationCallbackExt(::hJob, LL_CMND_SAVEFILENAME, oCallBack)
+	endif
+
 	if ::_lDesignerPreview
-		oCallBack   := LLCallBack():New(self)
+		if oCallBack == NIL
+			oCallBack   := LLCallBack():New(self)
+		endif
   		LlSetOption(::hJob,LL_OPTION_DESIGNERPREVIEWPARAMETER, 1)
 		LlSetNotificationCallbackExt(::hJob, LL_NTFY_DESIGNERPRINTJOB, oCallBack)
 		if !empty(::_nDrillDown) .or. !empty(::_nExpand)
@@ -1107,9 +1148,10 @@ METHOD dsListLabel:Design()
 	endif
 
 	::_nError	:= LlDefineLayout(::hJob, ::hWnd, "Designer", ::_nProject, ::cReport)
+
 	::_RaiseError(::_nError, ::cReport, "LlDefineLayout()")
 
-	if ::_lDesignerPreview
+	if oCallBack != NIL
 		oCallback:destroy()
 	endif
 RETURN 0
@@ -1543,6 +1585,10 @@ RETURN ::_nError
 ==============================================================================*/
 METHOD dsListLabel:Destroy()
 	::DbContainer:destroy()
+
+	::templateDefineFieldExt		:= NIL
+	::templateDefineVariableExt	:= NIL
+
 	::_DataObject	:= NIL
 	::_nStatus		:= XBP_STAT_INIT
 	if IsNumber(::hJob) .and. ::hJob > 0                                             // ::hJob kann auch NIL sein!!!
@@ -1851,14 +1897,51 @@ METHOD dsListLabel:Report(cReport)
 		// autodetect Projekttype
 		cReport	:= upper( right(::cReport,3))
 		if cReport = "CRD"
-			::_nProject   := LL_PROJECT_CARD
+			::_nProject	:= LL_PROJECT_CARD
 		elseif cReport = "LST"
-			::_nProject   := LL_PROJECT_LIST
+			::_nProject	:= LL_PROJECT_LIST
 		elseif cReport = "LBL"
-			::_nProject   := LL_PROJECT_LABEL
+			::_nProject	:= LL_PROJECT_LABEL
 		endif
 	endif
 RETURN ::cReport
+
+//=========================================
+METHOD dsListLabel:Stream2Report(cStream, nProject)
+	LOCAL hHandle
+
+	if IsNumber( nProject )
+		::_nProject   := nProject
+	endif
+
+	::cReport	:= space(255)
+	GetTempFileName( _GetTempPath(), "LLT", 0, @::cReport)
+	::cReport	:= alltrim(::cReport)
+
+	hHandle	:= fopen(::cReport, FO_WRITE)
+	fwrite(hHandle, cStream)
+	fclose(hHandle)
+
+	::_lStreamMode	:= TRUE
+
+RETURN self
+
+//=========================================
+METHOD dsListLabel:Report2Stream(pnError)
+	LOCAL hHandle
+	LOCAL nLen
+	LOCAL cStream
+	pnError  := 0
+	hHandle	:= fopen(::cReport, FO_READ)
+	if hHandle < 0
+		pnError	:= ferror()
+		RETURN ""
+	endif
+	nLen	:= FSeek(hHandle, 0, FS_END )
+	FSeek(hHandle, 0, FS_SET )
+	cStream	:= freadstr(hHandle, nLen )
+	fclose(hHandle)
+RETURN cStream
 
 /*============================================================================
  $Method:	SelectOptions(xSet)
@@ -1932,7 +2015,7 @@ METHOD dsListLabel:Datalink(nMode, nRecno)
 					::_datalink( nMode, dbTable, left(::_aUsedFields[i], nPos-1 ), {subs(::_aUsedFields[i], nPos + 1)})
 				endif
 			else
-				::_datalink( nMode, ::_nConnect,"", {::_aUsedFields[i]})
+				::_datalink( nMode, ::nSelect,"", {::_aUsedFields[i]})
 			endif
 		next
 	else
@@ -2086,17 +2169,16 @@ METHOD dsListLabel:_datalink(nMode, nSelect, cDesigner, aField, nRecno )
 			// var2lchar setzt 2 decimalen [set(_SET_DECIMALS)] und ignoriert die Genauigkeit der Zahl
 			nLL   := LL_NUMERIC
 			cStr  := ltrim(str(xRet))
-			if at(".", cStr) == 0
+			if xRet == int(xRet)
 				nLL   := LL_NUMERIC_INTEGER
 			endif
 
 		elseif valtype(xRet) = "D"
+			nLL   := LL_DATE_YYYYMMDD
 			if !empty( xRet)
 				cStr	:= dtos(xRet)
-				nLL   := LL_DATE_YYYYMMDD
 			else
-				cStr	:= '1e100'
-				nLL   := LL_DATE_MS
+				cStr	:= '(NULL)'
 			endif
 
 		elseif valtype(xRet) = "L"
@@ -2255,11 +2337,11 @@ RETURN self
 METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 	LOCAL nPos
 
-	if IsObject(nSelect)
-		if nSelect:IsDerivedfrom("dataobject")
-			cSymbol	:= coalesce( cSymbol,"")
+	if IsArray(nSelect)
+		cSymbol	:= coalesce( cSymbol,"")
 
-		elseif IsMembervar(nSelect, "Alias")
+	elseif IsObject(nSelect)
+		if IsMembervar(nSelect, "Alias")
 			cSymbol	:= coalesce( cSymbol, nSelect:Alias, "")
 
 		else
@@ -2269,16 +2351,22 @@ METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 		nSelect	:= coalesce( nSelect, Select())
 		cSymbol	:= coalesce( cSymbol,"")
 	endif
-	cDesigner  := coalesce( cDesigner, cSymbol )
-
 	cSymbol	:= alltrim(cSymbol)
+	cDesigner  := coalesce( cDesigner, cSymbol )
 	if ::__toUpper
 		cSymbol	:= upper(cSymbol)
 	endif
 
 	nPos := ascan(::_dbVariables, {|a| a[2] == cSymbol })
 	if nPos == 0 .and. !empty(nSelect )
-		if IsObject(nSelect)
+		if IsArray(nSelect)
+			if len(nSelect) > 0 .and. nSelect[1]:IsDerivedfrom( "dataobject")
+				aField	:= nSelect[1]:classdescribe(CLASS_DESCR_MEMBERS)
+				aeval( aField, {|a| a := a[1]},,,TRUE)
+				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner,;
+					aField, -1 })
+			endif
+		elseif IsObject(nSelect)
 			if nSelect:IsDerivedfrom("dataobject")
 				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,;
 					coalesce(aField, nSelect:classdescribe(CLASS_DESCR_MEMBERS)), cSymbol})
@@ -2306,7 +2394,13 @@ METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 			::_dbVariables[nPos,__SELECT]	:= nSelect
 			::_dbVariables[nPos,__SYMBOL]	:= cSymbol
 			::_dbVariables[nPos,__LLDESC]	:= cDesigner
-			if IsObject(nSelect)
+			if IsArray(nSelect)
+				if len(nSelect) > 0 .and. nSelect[1]:IsDerivedfrom("dataobject")
+					aField	:= nSelect[1]:classdescribe(CLASS_DESCR_MEMBERS)
+					aeval( aField, {|a| a := a[1]},,,TRUE)
+					::_dbVariables[nPos,__STRUCT]	:= aField
+				endif
+			elseif IsObject(nSelect)
 				if nSelect:IsDerivedfrom("dataobject")
 					::_dbVariables[nPos,__STRUCT]	:= nSelect:classdescribe(CLASS_DESCR_MEMBERS)
 					::_dbVariables[nPos,__ALIAS ]	:= cSymbol
@@ -2378,10 +2472,10 @@ METHOD dsListLabel:DataSetField(nSelect, cSymbol, cDesigner ,aField, nRekursiv )
 		cSymbol	:= coalesce( cSymbol,  "")
 	endif
 	cSymbol	:= alltrim(cSymbol)
+	cDesigner	:= coalesce( cDesigner, cSymbol )
 	if ::__toUpper
 		cSymbol	:= upper(cSymbol)
 	endif
-	cDesigner	:= coalesce( cDesigner, cSymbol )
 	nRekursiv	:= coalesce( nRekursiv, -99)
 
 	nPos := ascan(::_dbFields, {|a| a[2] == cSymbol })
@@ -3265,20 +3359,28 @@ METHOD dsListLabel:_RaiseError(nError, cArgs, cOperation)
 	endif
 RETURN self
 
-/*============================================================================
- $Function:    onLLCallback(nNotification, nStructurePtr, xDummy, oListLabel)
- $Group:
- $Author:	Marcus Herz
- $Topic:
- $Description:
- $Argument:    nNotification
- $Argument:     nStructurePtr
- $Argument:     oListLabel
- $Return:
- $See Also:
- $Example:
-==============================================================================*/
-FUNC onLLCallback(nNotification, nStructurePtr, xDummy, oListLabel)
+//=========================================
+METHOD dsListLabel:Notify(nEvent, nId )
+	if IsBlock(::_bNotify)
+		::eval(::_bNotify, nEvent, nId, self )
+	endif
+RETURN self
+
+//=========================================
+CLASS LLCallBack FROM DllCallBack
+	EXPORTED:
+		VAR oListLabel
+		METHOD Execute(x1,x2,x3)
+
+		INLINE METHOD Init(oListLabel)
+			::oListLabel	:= oListLabel
+			::DllCallBack:init( , DLL_OSAPI+DLL_TYPE_INT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32)
+			RETURN self
+
+ENDCLASS
+
+//=========================================
+METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 	LOCAL lThreadRuns := FALSE
 	LOCAL oThread
 	LOCAL nProjecthWnd, hEvent, nPages, hAttach, nParam //, nId
@@ -3292,13 +3394,14 @@ FUNC onLLCallback(nNotification, nStructurePtr, xDummy, oListLabel)
 	LOCAL oLlCallbackNotify
 	LOCAL oLlDrillDownJobNotify
 #endif
+	LOCAL oListLabel := ::oListLabel
 	UNUSED (xDummy)
 
 	IF nNotification == LL_NTFY_DESIGNERPRINTJOB
 #if XPPVER >= 2001392
-		oLlCallbackNotify:setAddress(nStructurePtr)
+		oLlCallbackNotify	:setAddress(nStructurePtr)
 #else
-		oLlCallbackNotify   := LlCallbackNotify():New(nStructurePtr)
+		oLlCallbackNotify	:= LlCallbackNotify():New(nStructurePtr)
 #endif
 		DO CASE
 		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_START .or. ;
@@ -3374,6 +3477,12 @@ FUNC onLLCallback(nNotification, nStructurePtr, xDummy, oListLabel)
 		ENDIF
 
 		RETURN nParam
+	ELSEIF nNotification == LL_CMND_SAVEFILENAME
+		oListLabel:DesignerUpdated( TRUE )
+
+	ELSEIF nNotification == LL_NTFY_VIEWERBTNCLICKED
+		oListLabel:notify(nNotification, nStructurePtr)
+
 	ENDIF
 RETURN 0
 
@@ -3463,26 +3572,6 @@ STATIC FUNCTION _PrintRuns(lSet, lCheck)
 	endif
 RETURN aPrintRuns[nFindThread,2]
 
-//=========================================
-CLASS LLCallBack FROM DllCallBack
-	EXPORTED:
-		VAR oPrint
-		VAR bBlock
-
-		INLINE METHOD Init(oPrint, bBlock)
-			::oPrint	:= oPrint
-			::bBlock	:= bBlock
-			SUPER:init( , DLL_OSAPI+DLL_TYPE_INT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32)
-			RETURN self
-
-		INLINE METHOD Execute(x1,x2,x3)
-			if IsBlock(::bBlock)
-*				eval(::bBlock, x1,x2, x3,::oPrint)
-			endif
-			onLLCallback(x1,x2,x3,::oPrint)
-			RETURN 0
-
-ENDCLASS
 
 //=========================================
 // XClass++ copy

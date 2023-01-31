@@ -25,7 +25,7 @@ namespace LLViewer
 
         private void NativeViewerbtn_Click(object sender, RoutedEventArgs e)
         {
-            Window1 main = new Window1();
+            NativeWpfViewerWindow main = new NativeWpfViewerWindow();
             App.Current.MainWindow = main;
             this.Close();
             main.Show();
@@ -33,7 +33,7 @@ namespace LLViewer
 
         private void HostedViewerbtn_Click(object sender, RoutedEventArgs e)
         {
-            Window2 main = new Window2();
+            HostedPreviewControlWindow main = new HostedPreviewControlWindow();
             App.Current.MainWindow = main;
             this.Close();
             main.Show();

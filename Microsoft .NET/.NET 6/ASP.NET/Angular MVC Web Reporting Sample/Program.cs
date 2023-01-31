@@ -64,10 +64,10 @@ app.Run();
 
 public partial class Program
 {
-    public static string? RepositoryDatabaseFile { get; set; }
-    public static string? GanttDatabaseXmlFile { get; set; }
-    public static string? NorthwindFullDatabaseXmlFile { get; set; }
-    public static string? NorthwindSmallDatabaseXmlFile { get; set; }
-    public static string? NorthwindSmallDatabaseWithEmployeeListXmlFile { get; set; }
-    public static string? TempDirectory { get; set; }
+    public static string RepositoryDatabaseFile { get; set; }
+    public static string GanttDatabaseXmlFile { get; set; }
+    public static string NorthwindFullDatabaseXmlFile { get; set; }
+    public static string NorthwindSmallDatabaseXmlFile { get; set; }
+    public static string NorthwindSmallDatabaseWithEmployeeListXmlFile { get; set; }
+    public static string TempDirectory { get; set; }
 }

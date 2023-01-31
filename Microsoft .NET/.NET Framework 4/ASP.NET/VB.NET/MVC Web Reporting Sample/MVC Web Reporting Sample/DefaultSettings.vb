@@ -119,7 +119,7 @@ Namespace WebReporting
             ' prohibited.Add(WebReportDesignerAction.CreateNewProject)
             ' prohibited.Add(WebReportDesignerAction.BrowseProjects)
             ' prohibited.Add(WebReportDesignerAction.DeleteProject)
-            ' prohibited.Add(WebReportDesignerAction.ExportProject)
+            ' prohibited.Add(WebReportDesignerAction.DownloadProject)
             ' prohibited.Add(WebReportDesignerAction.SaveAsProject)
             ' prohibited.Add(WebReportDesignerAction.SaveProject)
             ' prohibited.Add(WebReportDesignerAction.UnlockProject)

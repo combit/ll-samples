@@ -206,7 +206,7 @@ namespace AngularMVCWebReportingSample
         }
 
         /// <summary>Reads one or all items (itemId = null) from the database.</summary>
-        private IEnumerable<CustomizedRepostoryItem> GetItemsFromDb(string? itemId = null)
+        private IEnumerable<CustomizedRepostoryItem> GetItemsFromDb(string itemId = null)
         {
             List<CustomizedRepostoryItem> result = new();
 

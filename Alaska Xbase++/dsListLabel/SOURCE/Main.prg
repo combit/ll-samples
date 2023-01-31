@@ -12,13 +12,28 @@
 
 #include "lldemo.ch"
 #include "dsListLabel.ch"
+#include "dll.ch"
 #include "Nls.ch"
+
+#define MB_OK                       0x00000000
+#define MB_ICONINFORMATION				0x00000040
+
+EXTERN INTEGER FindWindow( cName AS STRING, cWinName AS STRING ) in USER32.DLL
+EXTERN INTEGER FindWindowEx(;
+  hWndParent AS INTEGER,;
+  hWndChildAfter AS INTEGER,;
+  lpszClass AS STRING ,;
+  lpszWindow AS STRING ) in USER32.DLL
+EXTERN INTEGER GetClassName(;
+  hWnd AS INTEGER,;
+  @lpClassName AS STRING,;
+  nMaxCount AS INTEGER) in USER32.DLL
 
 //=========================================
 PROC Main()
 	LOCAL oApp, oIni
 	LOCAL aLang
-	LOCAL cPath	:= AppName(.t.)
+	LOCAL cPath	:= AppName(TRUE)
 
 	cPath	:= subs(cPath, 1, rat("\", cPath))
 
@@ -87,10 +102,17 @@ PROC Main()
 	ENDIF
 	dsListLabel():DefaultBoxType(LL_BOXTYPE_NONE)
 
+	// D:  Sprache einstellen
+	// US: set language
+	// dsListLabel():DefaultLanguage(CMBTLANG_SPANISH)
+
 	// D:  Hier wird Ihr persoenlicher Lizenzinfostring eingetragen - siehe perslic.txt
 	// US: Enter your licensing info string here - see perslic.txt
-/*	dsListLabel():LicensingInfo(hJob, LL_OPTIONSTR_LICENSINGINFO, "<Personal License Key>"...) */
+	/*	dsListLabel():LicensingInfo(hJob, LL_OPTIONSTR_LICENSINGINFO, "<Personal License Key>"...) */
 
+
+	// D:  oder Lizenzkey in LLDEMO.INI eintragen
+	// US: or add license to lldemo.ini
 	IF !empty(oIni:getentry("combit", "LicensingInfo"))
 		dsListLabel():LicensingInfo(oIni:getentry("combit", "LicensingInfo"))
 	ENDIF
@@ -163,19 +185,21 @@ STATIC PROCEDURE _CheckIndex(cPath)
 RETURN
 
 //=========================================
+// no msgbox or any other Xbase++ dialog can be called
+//=========================================
 FUNC CatchCallback(nEvent,nId,oListLabel)
 	UNUSED (oListLabel)
 	// D:  in der Vorschau wurde ein Toolbar Icon geklickt
 	// US: preview click in toolbar
 	IF nEvent = LL_NTFY_VIEWERBTNCLICKED
 		IF nId = MNUID_LL_PRINT .or. nId = MNUID_LL_PRINT_RM
-			msgBox("Document is printed")
+			// todo, save timestamp
 
 		ELSEIF nId = MNUID_LL_SEND_TO
-			msgBox("Document is send to")
+			// todo, save timestamp
 
 		ELSEIF nId = MNUID_LL_SAVE_AS
-			msgBox("Document is saved")
+			// todo, save timestamp
 		ENDIF
 	ENDIF
 RETURN 0
@@ -196,3 +220,5 @@ STATIC FUNC _StartHelp()
 		runshell('/C start "" "'+fullpath(".\HELP\ENGLISH\dsListLabel.CHM",, FALSE)+'"')
 	ENDIF
 RETURN NIL
+
+

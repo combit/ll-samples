@@ -1,5 +1,5 @@
 [PROJECT]
-    DEBUG                = no
+    DEBUG                = yes
     INTERMEDIATE_DEBUG   = ..\.debug
     INTERMEDIATE_RELEASE = ..\.release
     TARGET_DIR	   = ..\
@@ -12,7 +12,6 @@
 [dsListLabel28.DLL]
     COMPILE              = xpp
     COMPILE_FLAGS        = /ga /wi /wl /wu /q /w /D__LL=28
-    DEBUG_SAVE           = yes
     GUI                  = yes
     LINKER               = alink
     RC_COMPILE           = arc

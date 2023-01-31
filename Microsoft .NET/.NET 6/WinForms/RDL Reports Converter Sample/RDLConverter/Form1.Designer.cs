@@ -43,7 +43,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(475, 235);
+            this.button1.Location = new System.Drawing.Point(475, 246);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 28);
@@ -53,7 +53,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 83);
+            this.label1.Location = new System.Drawing.Point(12, 95);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 24);
@@ -71,10 +71,10 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(47, 83);
+            this.label4.Location = new System.Drawing.Point(47, 95);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(491, 80);
+            this.label4.Size = new System.Drawing.Size(491, 75);
             this.label4.TabIndex = 9;
             this.label4.Text = resources.GetString("label4.Text");
             // 
@@ -83,7 +83,7 @@
             this.label3.Location = new System.Drawing.Point(47, 12);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(491, 71);
+            this.label3.Size = new System.Drawing.Size(491, 75);
             this.label3.TabIndex = 8;
             this.label3.Text = resources.GetString("label3.Text");
             // 
@@ -91,7 +91,7 @@
             // 
             this.textSourceFile.BackColor = System.Drawing.SystemColors.Window;
             this.textSourceFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.textSourceFile.Location = new System.Drawing.Point(149, 167);
+            this.textSourceFile.Location = new System.Drawing.Point(149, 178);
             this.textSourceFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textSourceFile.Name = "textSourceFile";
             this.textSourceFile.Size = new System.Drawing.Size(366, 23);
@@ -102,7 +102,7 @@
             // textTargetFile
             // 
             this.textTargetFile.BackColor = System.Drawing.SystemColors.Window;
-            this.textTargetFile.Location = new System.Drawing.Point(149, 202);
+            this.textTargetFile.Location = new System.Drawing.Point(149, 213);
             this.textTargetFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textTargetFile.Name = "textTargetFile";
             this.textTargetFile.Size = new System.Drawing.Size(366, 23);
@@ -112,7 +112,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(17, 168);
+            this.label2.Location = new System.Drawing.Point(17, 179);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 15);
@@ -121,7 +121,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(17, 202);
+            this.label6.Location = new System.Drawing.Point(17, 213);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 23);
@@ -130,7 +130,7 @@
             // 
             // selectTargetFile
             // 
-            this.selectTargetFile.Location = new System.Drawing.Point(522, 201);
+            this.selectTargetFile.Location = new System.Drawing.Point(522, 212);
             this.selectTargetFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.selectTargetFile.Name = "selectTargetFile";
             this.selectTargetFile.Size = new System.Drawing.Size(88, 28);
@@ -140,7 +140,7 @@
             // 
             // selectSourceFile
             // 
-            this.selectSourceFile.Location = new System.Drawing.Point(522, 166);
+            this.selectSourceFile.Location = new System.Drawing.Point(522, 177);
             this.selectSourceFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.selectSourceFile.Name = "selectSourceFile";
             this.selectSourceFile.Size = new System.Drawing.Size(88, 27);
@@ -158,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 275);
+            this.ClientSize = new System.Drawing.Size(622, 286);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.selectTargetFile);

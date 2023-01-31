@@ -31,11 +31,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonInvoiceMergePrint = new System.Windows.Forms.Button();
+            this.buttonInvoiceMergeDesign = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonInvoiceItemsPrint = new System.Windows.Forms.Button();
+            this.buttonInvoiceItemsDesign = new System.Windows.Forms.Button();
             this.LL = new combit.Reporting.ListLabel(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -77,8 +77,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.buttonInvoiceMergePrint);
+            this.groupBox1.Controls.Add(this.buttonInvoiceMergeDesign);
             this.groupBox1.Location = new System.Drawing.Point(285, 98);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(256, 64);
@@ -86,28 +86,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Invoice Merge";
             // 
-            // button2
+            // buttonInvoiceMergePrint
             // 
-            this.button2.Location = new System.Drawing.Point(104, 24);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Print/Preview/Export...";
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.buttonInvoiceMergePrint.Location = new System.Drawing.Point(104, 24);
+            this.buttonInvoiceMergePrint.Name = "buttonInvoiceMergePrint";
+            this.buttonInvoiceMergePrint.Size = new System.Drawing.Size(136, 23);
+            this.buttonInvoiceMergePrint.TabIndex = 4;
+            this.buttonInvoiceMergePrint.Text = "Print/Preview/Export...";
+            this.buttonInvoiceMergePrint.Click += new System.EventHandler(this.ButtonInvoiceMergePrint_Click);
             // 
-            // button1
+            // buttonInvoiceMergeDesign
             // 
-            this.button1.Location = new System.Drawing.Point(16, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Design...";
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.buttonInvoiceMergeDesign.Location = new System.Drawing.Point(16, 24);
+            this.buttonInvoiceMergeDesign.Name = "buttonInvoiceMergeDesign";
+            this.buttonInvoiceMergeDesign.Size = new System.Drawing.Size(75, 23);
+            this.buttonInvoiceMergeDesign.TabIndex = 3;
+            this.buttonInvoiceMergeDesign.Text = "Design...";
+            this.buttonInvoiceMergeDesign.Click += new System.EventHandler(this.ButtonInvoiceMergeDesign_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.buttonInvoiceItemsPrint);
+            this.groupBox2.Controls.Add(this.buttonInvoiceItemsDesign);
             this.groupBox2.Location = new System.Drawing.Point(23, 98);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(256, 64);
@@ -115,23 +115,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Invoice && Items List";
             // 
-            // button3
+            // buttonInvoiceItemsPrint
             // 
-            this.button3.Location = new System.Drawing.Point(104, 24);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(136, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Print/Preview/Export...";
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.buttonInvoiceItemsPrint.Location = new System.Drawing.Point(104, 24);
+            this.buttonInvoiceItemsPrint.Name = "buttonInvoiceItemsPrint";
+            this.buttonInvoiceItemsPrint.Size = new System.Drawing.Size(136, 23);
+            this.buttonInvoiceItemsPrint.TabIndex = 2;
+            this.buttonInvoiceItemsPrint.Text = "Print/Preview/Export...";
+            this.buttonInvoiceItemsPrint.Click += new System.EventHandler(this.ButtonInvoiceItemsPrint_Click);
             // 
-            // button4
+            // buttonInvoiceItemsDesign
             // 
-            this.button4.Location = new System.Drawing.Point(16, 24);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Design...";
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            this.buttonInvoiceItemsDesign.Location = new System.Drawing.Point(16, 24);
+            this.buttonInvoiceItemsDesign.Name = "buttonInvoiceItemsDesign";
+            this.buttonInvoiceItemsDesign.Size = new System.Drawing.Size(75, 23);
+            this.buttonInvoiceItemsDesign.TabIndex = 1;
+            this.buttonInvoiceItemsDesign.Text = "Design...";
+            this.buttonInvoiceItemsDesign.Click += new System.EventHandler(this.ButtonInvoiceItemsDesign_Click);
             // 
             // LL
             // 
@@ -180,11 +180,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonInvoiceMergeDesign;
+        private System.Windows.Forms.Button buttonInvoiceMergePrint;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonInvoiceItemsPrint;
+        private System.Windows.Forms.Button buttonInvoiceItemsDesign;
         private combit.Reporting.ListLabel LL;
         #endregion
     }

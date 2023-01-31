@@ -2,6 +2,10 @@
 #define _NO_CMLL28APIDEFINES
 #include "..\..\Visual C++\cmbtll28.h"
 #define PHP_MAXSTRLEN 	128000
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_void, 0, 0, 0)
+ZEND_END_ARG_INFO()
+
 // Hier werden alle Funktionen deklariert,
 // die später in PHP verfügbar sein sollen
 ZEND_FUNCTION(LlDbAddTable);
@@ -31,29 +35,29 @@ ZEND_FUNCTION(LlSetOptionString);
 // {NULL, NULL, NULL} hat wohl keine Relevanz für uns
 zend_function_entry ListLabelPHPModule_functions[] = 
 {
-	ZEND_FE(LlDbAddTable, NULL)
-	ZEND_FE(LlDebugOutput, NULL)
-	ZEND_FE(LlDefineField, NULL)
-	ZEND_FE(LlDefineFieldExt, NULL)
-	ZEND_FE(LlDefineVariable, NULL)
-	ZEND_FE(LlDefineVariableStart, NULL)
-	ZEND_FE(LlGetErrortext, NULL)
-	ZEND_FE(LlGetVariableContents, NULL)
-	ZEND_FE(LlGetVersion, NULL)
-	ZEND_FE(LlJobClose, NULL)
-    ZEND_FE(LlJobOpen, NULL)
-	ZEND_FE(LlPrint, NULL)
-	ZEND_FE(LlPrintEnd, NULL)
-	ZEND_FE(LlPrintFields, NULL)
-	ZEND_FE(LlPrintFieldsEnd, NULL)
-	ZEND_FE(LlPrintGetCurrentPage, NULL)
-	ZEND_FE(LlPrintGetOption, NULL)
-	ZEND_FE(LlPrintGetOptionString, NULL)
-	ZEND_FE(LlPrintSetOptionString, NULL)
-	ZEND_FE(LlPrintStart, NULL)
-	ZEND_FE(LlSetDebug, NULL)
-	ZEND_FE(LlXSetParameter, NULL)
-	ZEND_FE(LlSetOptionString, NULL)
+	ZEND_FE(LlDbAddTable, arginfo_void)
+	ZEND_FE(LlDebugOutput, arginfo_void)
+	ZEND_FE(LlDefineField, arginfo_void)
+	ZEND_FE(LlDefineFieldExt, arginfo_void)
+	ZEND_FE(LlDefineVariable, arginfo_void)
+	ZEND_FE(LlDefineVariableStart, arginfo_void)
+	ZEND_FE(LlGetErrortext, arginfo_void)
+	ZEND_FE(LlGetVariableContents, arginfo_void)
+	ZEND_FE(LlGetVersion, arginfo_void)
+	ZEND_FE(LlJobClose, arginfo_void)
+    ZEND_FE(LlJobOpen, arginfo_void)
+	ZEND_FE(LlPrint, arginfo_void)
+	ZEND_FE(LlPrintEnd, arginfo_void)
+	ZEND_FE(LlPrintFields, arginfo_void)
+	ZEND_FE(LlPrintFieldsEnd, arginfo_void)
+	ZEND_FE(LlPrintGetCurrentPage, arginfo_void)
+	ZEND_FE(LlPrintGetOption, arginfo_void)
+	ZEND_FE(LlPrintGetOptionString, arginfo_void)
+	ZEND_FE(LlPrintSetOptionString, arginfo_void)
+	ZEND_FE(LlPrintStart, arginfo_void)
+	ZEND_FE(LlSetDebug, arginfo_void)
+	ZEND_FE(LlXSetParameter, arginfo_void)
+	ZEND_FE(LlSetOptionString, arginfo_void)
     {NULL, NULL, NULL}
 };
 // Konstantendeklarationen
@@ -232,9 +236,6 @@ ZEND_MINIT_FUNCTION(ListLabelPHPModule)
 	REGISTER_LONG_CONSTANT("LL_NTFY_QUEST_DRILLDOWNDENIED",							 LL_NTFY_QUEST_DRILLDOWNDENIED,							 CONST_CS | CONST_PERSISTENT);
 	REGISTER_LONG_CONSTANT("LL_QUERY_DRILLDOWN_ADDITIONAL_BASETABLES_FOR_VARIABLES", LL_QUERY_DRILLDOWN_ADDITIONAL_BASETABLES_FOR_VARIABLES, CONST_CS | CONST_PERSISTENT);
 	REGISTER_LONG_CONSTANT("LL_QUERY_DRILLDOWN_ADDITIONAL_TABLES",					 LL_QUERY_DRILLDOWN_ADDITIONAL_TABLES,					 CONST_CS | CONST_PERSISTENT);
-	REGISTER_LONG_CONSTANT("OBJECT_LABEL",                                           OBJECT_LABEL,                                           CONST_CS | CONST_PERSISTENT);
-    REGISTER_LONG_CONSTANT("OBJECT_LIST",                                            OBJECT_LIST,                                            CONST_CS | CONST_PERSISTENT);
-    REGISTER_LONG_CONSTANT("OBJECT_CARD",                                            OBJECT_CARD,                                            CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_PROJECT_LABEL",                                       LL_PROJECT_LABEL,                                       CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_PROJECT_LIST",                                        LL_PROJECT_LIST,                                        CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_PROJECT_CARD",                                        LL_PROJECT_CARD,                                        CONST_CS | CONST_PERSISTENT);
@@ -993,7 +994,7 @@ void CheckErrorCode(int nError)
 		delete[] aczContents;
 		char* aczBuffer;
 		aczBuffer = new char[strlen((const char*)aczContents) + 10];
-        sprintf_s((char*)aczBuffer, sizeof((char*)aczBuffer), (const char*)"%s (%d)", oBuffer.value.str, nError);
+        sprintf_s((char*)aczBuffer, sizeof((char*)aczBuffer), (const char*)"%s (%d)", (char*)oBuffer.value.str, nError);
 		zend_error(E_USER_ERROR, (const char*)aczBuffer);
 	}
 }

@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor MVC Web Reporting Sample", "Blazor MVC Web Reporting Sample\Blazor MVC Web Reporting Sample.csproj", "{C459ED84-5102-4E2F-A3D7-C9728C0BD61A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor MVC Web Reporting Sample", ".\Blazor MVC Web Reporting Sample.csproj", "{C459ED84-5102-4E2F-A3D7-C9728C0BD61A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

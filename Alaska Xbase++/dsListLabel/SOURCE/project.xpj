@@ -13,6 +13,8 @@
     GUI                  = yes
     LINKER               = alink
     LINK_FLAGS           = lib\xclass.lib lib\xclace.lib dll\dsListLabel28.LIB
+// activate for SQLXPP
+//  LINK_FLAGS           = lib\xclass.lib lib\xclace.lib dll\dsListLabel28.LIB lib\SQLXPP.LIB
     RC_COMPILE           = arc
     RC_FLAGS             = /v
     INCLUDE              = Source\include;dll
@@ -24,7 +26,7 @@
  	source\AppSplitter.prg
  	source\AppUtil.prg
  	source\dboInvoice.prg
- 	source\dboreportcontainer.PRG
+ 	source\dboReportContainer.PRG
  	source\dboSimple1.prg
  	source\dboSimple2.prg
  	source\DrillDown.PRG
@@ -42,7 +44,13 @@
  	source\Simple2.prg
  	source\SimpleArray.PRG
  	source\SimpleDataObject.PRG
+ 	source\SimpleDataObjectLBL.PRG
+	source\Simple2Stream.prg
  	source\sqlADS.prg
  	source\xRechnung.prg
  	source\_panRight.prg
+
+// activate for SQLXPP
+// 	source\sqlXPP.prg
+// 	source\sqlXPPDataset.prg
 

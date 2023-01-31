@@ -265,6 +265,17 @@ namespace DataBinding
                 if (cbCustomerNames.Text != string.Empty)
                 {
                     ItemClass selectedItem = (ItemClass)cbCustomerNames.SelectedItem;
+
+                    //D: Für den Fall, dass der Filter der eingegeben wurde in der Collection nicht gefunden werden kann, wird eine Fehlermeldung ausgegeben, und null zurückgegeben.
+                    //US: In case the filter is invalid, and therefore cannot be found inside the Collection, show an error message, and return null.
+
+                    if (selectedItem == null)
+                    {
+                        MessageBox.Show("The entered Filter is invalid. Please check, correct and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return null;
+                    }
+
+
                     dvm.DataViewSettings["Customers"].RowFilter = "CustomerID='" + selectedItem.Value + "'";
                 }
                 providerCollection.Add(new AdoDataProvider(dvm));
@@ -778,6 +789,14 @@ namespace DataBinding
             EnableButtons(false);
             DataProviderCollection providerCollection = CreateProviderCollection(true);
 
+            //D: Falls null zurückgegeben wurde, was für den Fall, dass der Filter ungültig sein sollte erwartet wird, wird der Methodenaufruf beendet.
+            //US:This stops execution if providerCollection returns null, which is expected, if the Filter the user entered is wrong. Therefore interrupt further execution.
+            if (providerCollection == null)
+            {
+                EnableButtons(true);
+                return;
+            }
+
             try
             {
                 //D: Dateiendung je nach Sprache setzen
@@ -832,6 +851,14 @@ namespace DataBinding
         {
 
             DataProviderCollection providerCollection = CreateProviderCollection(true);
+
+            //D: Falls null zurückgegeben wurde, was für den Fall, dass der Filter ungültig sein sollte erwartet wird, wird der Methodenaufruf beendet.
+            //US:This stops execution if providerCollection returns null, which is expected, if the Filter the user entered is wrong. Therefore interrupt further execution.
+            if (providerCollection == null)
+            {
+                return;
+            }
+
             try
             {
                 //D: Dateiendung je nach Sprache setzen

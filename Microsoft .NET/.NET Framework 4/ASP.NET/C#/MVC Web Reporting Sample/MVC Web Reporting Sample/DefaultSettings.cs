@@ -144,7 +144,7 @@ namespace WebReporting
                 //WebReportDesignerAction.CreateNewProject,
                 //WebReportDesignerAction.BrowseProjects,
                 //WebReportDesignerAction.DeleteProject,
-                //WebReportDesignerAction.ExportProject,
+                //WebReportDesignerAction.DownloadProject,
                 //WebReportDesignerAction.SaveAsProject,
                 //WebReportDesignerAction.SaveProject,
                 //WebReportDesignerAction.UnlockProject,

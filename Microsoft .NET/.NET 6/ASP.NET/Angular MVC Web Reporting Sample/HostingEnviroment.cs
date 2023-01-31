@@ -9,6 +9,6 @@ namespace AngularMVCWebReportingSample
             Current = hostingEnvironment;
         }
 
-        public static IWebHostEnvironment? Current { get; private set; }
+        public static IWebHostEnvironment Current { get; private set; }
     }
 }

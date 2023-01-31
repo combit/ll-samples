@@ -34,7 +34,12 @@
 					#define CMBT_DLL   "CMLL24.dll"
 					#include "cmbtll24.ch"
 				#else
-					#error keine [unterstütze] List & Label Version in COMPILE_FLAGS gesetzt
+					#if __LL = "23"
+						#define CMBT_DLL   "CMLL23.dll"
+						#include "cmbtll23.ch"
+					#else
+						#error keine [unterstützte] List & Label Version in COMPILE_FLAGS gesetzt
+					#endif
 				#endif
 			#endif
 		#endif

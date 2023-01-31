@@ -1,15 +1,16 @@
-.App {
+#root>.App {
   height: 100vh;
   display: flex;
   justify-content: center;
 }
 
-.Headline {
-  text-align: center;
+#root>.App>div>.Form {
+    justify-content: center;
+    display: flex;
 }
 
-.Form {
-  text-align: center;
+#root>.App>div>.Headline {
+    text-align: center;
 }
 
 .App-logo {

@@ -18,7 +18,7 @@ namespace DataBinding
     {
         private CultureInfo _cultureInfo;
         private string _databasePath;
-		private string _xmlFile;
+        private string _xmlFile;
         private bool _isNotPrinting;
 
         public Form1()
@@ -35,10 +35,10 @@ namespace DataBinding
 				_xmlFile = Path.Combine(installKey.GetValue("LL" + LlCore.LlGetVersion(LlVersion.Major) + "SampleDir").ToString(), "Microsoft .NET\\Report Files\\sampledata.xml");
                 _isNotPrinting = true;
             }
-			
+
             if (string.IsNullOrEmpty(_databasePath) || !File.Exists(_databasePath))
                 MessageBox.Show("Unable to find sample database. Make sure List & Label is installed correctly.", "List & Label");
-			
+
             if (string.IsNullOrEmpty(_xmlFile) || !File.Exists(_xmlFile))
                 MessageBox.Show("Unable to find sampledata.xml. Make sure List & Label is installed correctly.", "List & Label");
         }
@@ -265,6 +265,15 @@ namespace DataBinding
                 if (cbCustomerNames.Text != string.Empty)
                 {
                     ItemClass selectedItem = (ItemClass)cbCustomerNames.SelectedItem;
+
+                    //D: Für den Fall, dass der Filter der eingegeben wurde in der Collection nicht gefunden werden kann, wird eine Fehlermeldung ausgegeben, und null zurückgegeben.
+                    //US: In case the filter is invalid, and therefore cannot be found inside the Collection, show an error message, and return null.
+
+                    if (selectedItem == null)
+                    {
+                        MessageBox.Show("The entered Filter is invalid. Please check, correct and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return null;
+                    }
                     dvm.DataViewSettings["Customers"].RowFilter = "CustomerID='" + selectedItem.Value + "'";
                 }
                 providerCollection.Add(new AdoDataProvider(dvm));
@@ -372,7 +381,7 @@ namespace DataBinding
                 EnableButtons(true);
             }
         }
-		
+
         private void Design_XML_Click(object sender, System.EventArgs e)
         {
             XmlDocument xmlDocument = new XmlDocument();
@@ -421,7 +430,7 @@ namespace DataBinding
                 }
             }
         }
-		
+
         private void Print_XML_Click(object sender, System.EventArgs e)
         {
             //D: Schaltflächen für Druck und Design deaktivieren
@@ -490,7 +499,7 @@ namespace DataBinding
                 }
             }
         }
-		
+
         private void Design_Reader_Click(object sender, System.EventArgs e)
         {
             //D: Erstelle eine SQL Abfrage
@@ -498,7 +507,7 @@ namespace DataBinding
             OleDbCommand cmd = CreateOleDbCommand();
 
             DbCommandSetDataProvider provider = new DbCommandSetDataProvider();
-			provider.MinimalSelect = false;
+            provider.MinimalSelect = false;
             provider.AddCommand(cmd, "Products");
 
             try
@@ -538,7 +547,7 @@ namespace DataBinding
 
             OleDbCommand cmd = CreateOleDbCommand();
             DbCommandSetDataProvider provider = new DbCommandSetDataProvider();
-			provider.MinimalSelect = false;
+            provider.MinimalSelect = false;
             provider.AddCommand(cmd, "Products");
 
             try
@@ -778,6 +787,14 @@ namespace DataBinding
             EnableButtons(false);
             DataProviderCollection providerCollection = CreateProviderCollection(true);
 
+            //D: Falls null zurückgegeben wurde, was für den Fall, dass der Filter ungültig sein sollte erwartet wird, wird der Methodenaufruf beendet.
+            //US:This stops execution if providerCollection returns null, which is expected, if the Filter the user entered is wrong. Therefore interrupt further execution.
+            if (providerCollection == null)
+            {
+                EnableButtons(true);
+                return;
+            }
+
             try
             {
                 //D: Dateiendung je nach Sprache setzen
@@ -832,6 +849,13 @@ namespace DataBinding
         {
 
             DataProviderCollection providerCollection = CreateProviderCollection(true);
+            //D: Falls null zurückgegeben wurde, was für den Fall, dass der Filter ungültig sein sollte erwartet wird, wird der Methodenaufruf beendet.
+            //US:This stops execution if providerCollection returns null, which is expected, if the Filter the user entered is wrong. Therefore interrupt further execution.
+            if (providerCollection == null)
+            {
+                return;
+            }
+
             try
             {
                 //D: Dateiendung je nach Sprache setzen

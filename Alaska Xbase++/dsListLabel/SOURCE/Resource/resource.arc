@@ -14,11 +14,11 @@
 VERSION
 	"CompanyName"      = "DS-Datasoft GmbH &Co.KG, Germany"
    "ProductName"      = "Demo"
-   "ProductVersion"   = "1.0.0.0"
-   "FileVersion"      = "1.0.0.0"
+   "ProductVersion"   = "1.0.0.2"
+   "FileVersion"      = "1.0.0.2"
    "FileDescription"  = "LLDemo"
    "InternalName"     = "LLDEMO.EXE"
-   "LegalCopyright"   = "Copyright ©XClass++ DS-Datasoft GmbH 1998-2020"
+   "LegalCopyright"   = "Copyright DS-Datasoft GmbH 1998-2023"
    "OriginalFilename" = "LLDEMO.EXE"
 
 

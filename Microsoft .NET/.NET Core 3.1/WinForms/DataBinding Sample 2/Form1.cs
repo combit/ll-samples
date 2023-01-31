@@ -36,10 +36,10 @@ namespace Data_Binding_2
 
                 //D: Buttons deaktivieren
                 //US: Disable Buttons
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
+                invoiceMergeDesignButton.Enabled = false;
+                invoiceMergePrintButton.Enabled = false;
+                invoiceItemsPrintButton.Enabled = false;
+                invoiceItemsDesignButton.Enabled = false;
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Data_Binding_2
             LL.SetDataBinding(_commandSetDataProvider, "Orders");
         }
 
-        private void Button1_Click(object sender, System.EventArgs e)
+        private void InvoiceMergeDesignButton_Click(object sender, System.EventArgs e)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace Data_Binding_2
             }
         }
 
-        private void Button2_Click(object sender, System.EventArgs e)
+        private void InvoiceMergePrintButton_Click(object sender, System.EventArgs e)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace Data_Binding_2
             }
         }
 
-        private void Button4_Click(object sender, System.EventArgs e)
+        private void InvoiceItemsDesignButton_Click(object sender, System.EventArgs e)
         {
             try
             {
@@ -150,7 +150,7 @@ namespace Data_Binding_2
             }
         }
 
-        private void Button3_Click(object sender, System.EventArgs e)
+        private void InvoiceItemsPrintButton_Click(object sender, System.EventArgs e)
         {
             try
             {

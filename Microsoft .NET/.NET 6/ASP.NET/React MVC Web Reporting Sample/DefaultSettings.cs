@@ -80,7 +80,7 @@ namespace ReactMVCWebReportingSample
 
         // D:   Liefert die passende Datenquelle zu einem Beispiel-Report.
         // US:  Returns the required data source of the sample report.
-        private static IDataProvider? GetDataSourceForProject(string repositoryIdOfProject, bool forDesign)
+        private static IDataProvider GetDataSourceForProject(string repositoryIdOfProject, bool forDesign)
         {
             if (!String.IsNullOrEmpty(repositoryIdOfProject))
             {
@@ -113,7 +113,7 @@ namespace ReactMVCWebReportingSample
             return DataMember;
         }
 
-        public static ListLabel GetListLabelInstance(string repositoryID, IRepository? repository = null)
+        public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)
         {
             ListLabel LL = new()
             {
@@ -141,7 +141,7 @@ namespace ReactMVCWebReportingSample
                 //WebReportDesignerAction.CreateNewProject,
                 //WebReportDesignerAction.BrowseProjects,
                 //WebReportDesignerAction.DeleteProject,
-                //WebReportDesignerAction.ExportProject,
+                //WebReportDesignerAction.DownloadProject,
                 //WebReportDesignerAction.SaveAsProject,
                 //WebReportDesignerAction.SaveProject,
                 //WebReportDesignerAction.UnlockProject,

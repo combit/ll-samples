@@ -54,8 +54,8 @@ namespace WindowsFormsApplication1
             if (!sampleDir.EndsWith("\\"))
                 sampleDir += "\\";
 
-            SourceFileName = sampleDir + @"Microsoft .NET\.NET 6\WinForms\Rdl Reports Converter Sample\RdlConverter\RDlReports.rdl";
-            TargetFileName = sampleDir + @"Microsoft .NET\.NET 6\WinForms\Rdl Reports Converter Sample\RdlConverter\ReportConvert.lst";
+            SourceFileName = Path.GetFullPath(Path.GetDirectoryName(Application.StartupPath + @"\..\..\..\") + @"\RDLReports.rdl");
+            TargetFileName = Path.GetFullPath(Path.GetDirectoryName(Application.StartupPath + @"\..\..\..\") + @"\ReportConvert.lst");
 
             // D: Setze Cursor an die letzte Position
             // US: Set cursor to the last position

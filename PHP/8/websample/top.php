@@ -5,7 +5,7 @@
 				<select id="report" name="report">
 				<?php
 					foreach ($reports as $rep) {
-					echo '<option value="'.$rep.'" '.(($_POST['report'] == $rep) ? 'selected="selected"': '').'>'.$rep.'</option>';
+					echo '<option value="'.$rep.'" '.((isset($_POST['report']) && $_POST['report'] == $rep) ? 'selected="selected"': '').'>'.$rep.'</option>';						
 					}
 				?>
 				</select>
@@ -16,7 +16,7 @@
 				<select id="format" name="format">
 				<?php
 					foreach ($formats as $key => $for) {
-					echo '<option value="'.$key.'" '.(($_POST['format'] == $key) ? 'selected="selected"': '').'>'.$for.'</option>';
+					echo '<option value="'.$key.'" '.((isset($_POST['format']) && $_POST['format'] == $key) ? 'selected="selected"': '').'>'.$for.'</option>';
 					}
 				?>
 				</select>

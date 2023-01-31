@@ -162,7 +162,7 @@ namespace CodeDomSample
                 }
                 catch { }
             }
-            else if (propertyType.BaseType.IsGenericType && 
+            else if (propertyType.BaseType != null && propertyType.BaseType.IsGenericType && 
                 (propertyType.BaseType.GetGenericTypeDefinition() == typeof(DomArrayBase<>) || propertyType.BaseType.GetGenericTypeDefinition() == typeof(SettableDomArray<>)))
             {
                 object propertyValue = pd.GetValue(parentNode.Tag);
@@ -306,7 +306,7 @@ namespace CodeDomSample
             {
                 object propertyValue = pd.GetValue(parentNode.Tag);
 
-                ICollection collection = propertyValue as ICollection;
+                IEnumerable<DomItem> collection = propertyValue as IEnumerable<DomItem>;
                 childNode = parentNode.Nodes.Add(propertyName);
                 childNode.Tag = propertyValue;
                 childNode.ImageIndex = 6;

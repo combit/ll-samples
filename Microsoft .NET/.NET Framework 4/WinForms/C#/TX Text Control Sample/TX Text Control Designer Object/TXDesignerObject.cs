@@ -21,7 +21,7 @@ namespace TXTextDesignerObject
     public enum DataSource
     {
         FreeText,   // free rtf-text; maybe with formula
-        Identifier, // varibale or field
+        Identifier, // variable or field
     }
 
     public class TXDesignerObject : DesignerObject

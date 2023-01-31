@@ -16,14 +16,14 @@ PROCEDURE Simple2(nPrintingTarget, lDesignDocument, cFolder)
 	LOCAL oListLabel
 	LOCAL nError
 
-	// D: LL_PRINT_NORMAL, LL_PRINT_FILE, LL_PRINT_EXPORT, siehe LlPrintWithBoxStart
+	// D:  LL_PRINT_NORMAL, LL_PRINT_FILE, LL_PRINT_EXPORT, siehe LlPrintWithBoxStart
 	// US: LL_PRINT_NORMAL, LL_PRINT_FILE, LL_PRINT_EXPORT, see LlPrintWithBoxStart
 	DEFAULT nPrintingTarget TO  LL_PRINT_PREVIEW
 	// D: .t. - Druck/Export; .f. - Design
 	// US: .t. - print/export; .f. - design document
 	DEFAULT lDesignDocument  TO .f.
 
-	// D: Datenbank sollte bei Applikation liegen...
+	// D:  Datenbank sollte bei Applikation liegen...
 	// US: Database should be with application exe...
 	USE ARTICLE INDEX ARTICLE NEW
 	GOTO TOP
@@ -46,11 +46,11 @@ PROCEDURE Simple2(nPrintingTarget, lDesignDocument, cFolder)
 	// US:define extra field for LLDefineField, executed after each skip
 	oListLabel:defineField("ARTICLENO_EAN128", {|o,n| (n)->ARTICLENO}, LL_BARCODE_EAN128 )
 
-	// D: Dateiauswahldialog oeffnen
+	// D:  Dateiauswahldialog oeffnen
 	// US: Call file open dialog
 	oListLabel:SetProperty(, LL_PROJECT_LIST, "Select File" )
 
-	// D: Callback event in Druckvorschau
+	// D:  Callback event in Druckvorschau
 	// US: catch callback event in preview
 	oListLabel:onNotify	:= {|nEvent,nId,oListLabel| CatchCallback(nEvent,nId,oListLabel)}
 
