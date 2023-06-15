@@ -14,10 +14,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="combit.ListLabel28">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+      <HintPath>..\..\Assemblies\combit.ListLabel28.dll</HintPath>
     </Reference>
     <Reference Include="combit.ListLabel28.Web">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel28.Web.dll</HintPath>
+      <HintPath>..\..\Assemblies\combit.ListLabel28.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -15,10 +15,10 @@
 
   <ItemGroup>
     <Reference Include="combit.ListLabel28">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+      <HintPath>..\..\Assemblies\combit.ListLabel28.dll</HintPath>
     </Reference>
     <Reference Include="combit.ReportServer28.SharedTypes">
-      <HintPath>..\..\..\Assemblies\combit.ReportServer28.SharedTypes.dll</HintPath>
+      <HintPath>..\..\Assemblies\combit.ReportServer28.SharedTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
 

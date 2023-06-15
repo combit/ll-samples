@@ -889,7 +889,7 @@ LL_EXTERN INTEGER LlExprGetUsedVarsEx(;                                         
 																																  //
 LL_EXTERN INTEGER LlDomGetProject(;                                                               //
 		hJob AS INTEGER,;                                                                           //
-		phDOMObj AS INTEGER ) ORDINAL 206 IN CMBT_DLL                                               //
+		@phDOMObj AS INTEGER ) ORDINAL 206 IN CMBT_DLL                                               //
 																																  //
 LL_EXTERN INTEGER LlDomGetProperty(;                                                              //
 		hDOMObj AS INTEGER,;                                                                        //

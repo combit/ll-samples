@@ -539,14 +539,16 @@ namespace TXTextDesignerObject
 				
                 if (bReplace)
                 {
-                    sContents = sContents.Replace("\\u171\\'ab", "«"); // neccessary for the LL RTF-Ctrl (uses Microsoft RTF-Control!)
-                    sContents = sContents.Replace("\\'ab\\hich\\af0\\dbch\\af0\\loch\\f0 ", " «");
-                    sContents = sContents.Replace("\\'ab\\hich\\af1\\dbch\\af1\\loch\\f1 ", " «");
-                    sContents = sContents.Replace("\\'ab", "«");
-                    sContents = sContents.Replace("\\u187\\'bb", "»"); // neccessary for the LL RTF-Ctrl (uses Microsoft RTF-Control!)
-                    sContents = sContents.Replace("\\loch\\af0\\dbch\\af0\\hich\\f0\\'bb", "»");
-                    sContents = sContents.Replace("\\loch\\af1\\dbch\\af1\\hich\\f1\\'bb", "»");
-                    sContents = sContents.Replace("\\'bb", "»");
+                    // hint: also insert while replacing the no-operation marker {} to separate rtf-commands from content
+                    // e.g. if the first character of rtf-content is a digit it belongs to the previous rtf-command and becomes wrong
+                    sContents = sContents.Replace("\\u171\\'ab", "{}«"); // neccessary for the LL RTF-Ctrl (uses Microsoft RTF-Control!)
+                    sContents = sContents.Replace("\\'ab\\hich\\af0\\dbch\\af0\\loch\\f0 ", " {}«");
+                    sContents = sContents.Replace("\\'ab\\hich\\af1\\dbch\\af1\\loch\\f1 ", " {}«");
+                    sContents = sContents.Replace("\\'ab", "{}«");
+                    sContents = sContents.Replace("\\u187\\'bb", "»{}"); // neccessary for the LL RTF-Ctrl (uses Microsoft RTF-Control!)
+                    sContents = sContents.Replace("\\loch\\af0\\dbch\\af0\\hich\\f0\\'bb", "»{}");
+                    sContents = sContents.Replace("\\loch\\af1\\dbch\\af1\\hich\\f1\\'bb", "»{}");
+                    sContents = sContents.Replace("\\'bb", "»{}");
 					
 					// if we are an LL formula we also need to decode special characters like german Umlaute, new line or something similar
                     sContents = sContents.Replace("\\'e4", "ä");

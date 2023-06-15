@@ -44,6 +44,7 @@ namespace WebReporting
             services.AddHttpContextAccessor();
             services.AddMemoryCache();
             services.AddWebReportDesigner();
+            services.AddControllers().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

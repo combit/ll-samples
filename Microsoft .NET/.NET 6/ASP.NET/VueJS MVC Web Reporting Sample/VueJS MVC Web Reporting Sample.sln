@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "VueJS MVC Web Reporting Sample", "VueJS MVC Web Reporting Sample.esproj", "{7B1F1AF2-1FBE-4156-9F63-8CF528CA543D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebReportingBackend", "..\WebReportingBackend\WebReportingBackend.csproj", "{4B9D33B7-ED40-4988-B6B1-921E76AB6A7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebReportingBackend", "WebReportingBackend\WebReportingBackend.csproj", "{4B9D33B7-ED40-4988-B6B1-921E76AB6A7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPDOMSample", "ASPDOMSample\ASPDOMSample.csproj", "{3BA6F318-1E69-4981-9B85-4C86C259B734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPDOMSample", "ASPDOMSample.csproj", "{3BA6F318-1E69-4981-9B85-4C86C259B734}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

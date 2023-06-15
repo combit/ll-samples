@@ -49,6 +49,7 @@ namespace WebReporting
 			services.AddHttpContextAccessor();
 			services.AddMemoryCache();
 			services.AddWebReportDesigner();
+			services.AddControllers().AddNewtonsoftJson();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -103,8 +104,7 @@ namespace WebReporting
 				endpoints.MapFallbackToPage("~/Blazor/{*clientroutes:nonfile}", "/Blazor/_Host");
 			});
 
-
-			app.UseSession();
+            app.UseSession();
 			app.UseWebReportDesigner();
 			app.UseWebReportViewer();
 			app.UseMvc(RegisterRoutes);
