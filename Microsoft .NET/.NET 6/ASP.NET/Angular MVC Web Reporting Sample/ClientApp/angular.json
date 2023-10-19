@@ -10,7 +10,6 @@
           "strict": false
         }
       },
-      "scripts": [ "./WebReportDesigner.js" ],
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -130,5 +129,7 @@
       }
     }
   },
-  "defaultProject": "Angular"
+  "cli": {
+    "analytics": false
+  }
 }

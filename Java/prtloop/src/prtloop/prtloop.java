@@ -8,7 +8,7 @@ import javax.swing.*;
  * <p>Copyright: Copyright (C) combit GmbH</p>
  * <p>Company: combit GmbH</p>
  * @author combit GmbH
- * @version 28.0
+ * @version 29.0
  */
 
 public class prtloop

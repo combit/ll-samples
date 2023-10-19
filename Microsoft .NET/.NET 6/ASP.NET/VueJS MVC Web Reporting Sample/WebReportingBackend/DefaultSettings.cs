@@ -83,19 +83,16 @@ namespace VueJsMvcWebReportingSample
         // D:   Liefert die passende Datenquelle zu einem Beispiel-Report.
         // US:  Returns the required data source of the sample report.
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "This Software is only available on Windows")]
-        private static IDataProvider GetDataSourceForProject(string repositoryIdOfProject, bool forDesign)
+		private static IDataProvider GetDataSourceForProject(string repositoryIdOfProject, bool forDesign)
         {
-            if (!String.IsNullOrEmpty(repositoryIdOfProject))
-            {
-                // D:   Für dieses Beispielprojekt hängt die benötigte Datenquelle vom Namen des geöffneten Projekt ab, daher muss der Name ausgelesen werden.
-                // US:  For this sample project the datasource depends on the name of the opened project, so we need to read the display name.
-                string reportDisplayName = GetBaseRepository().GetItem(repositoryIdOfProject).ExtractDisplayName();
+            // D:   Für dieses Beispielprojekt hängt die benötigte Datenquelle vom Namen des geöffneten Projekt ab, daher muss der Name ausgelesen werden.
+            // US:  For this sample project the datasource depends on the name of the opened project, so we need to read the display name.               
+            string reportDisplayName = String.IsNullOrEmpty(repositoryIdOfProject) ? "" : GetBaseRepository().GetItem(repositoryIdOfProject).ExtractDisplayName();
 
-                IDataProvider dataProvider = DataAccess.SampleData.CreateProviderCollection(reportDisplayName + CmbtSettings.FileExtension, forDesign);
-                return dataProvider;
-            }
-            return null;
+            IDataProvider dataProvider = DataAccess.SampleData.CreateProviderCollection(String.IsNullOrEmpty(repositoryIdOfProject) ? "" : reportDisplayName + CmbtSettings.FileExtension, forDesign);
+            return dataProvider;
         }
+		
 
         // D:   Liefert die passende Tabelle zu einem Beispiel-Etikett.
         // US:  Returns the matching data member for a sample label.

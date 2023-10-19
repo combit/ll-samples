@@ -14,7 +14,7 @@
 PROCEDURE dboReportContainer(nPrintingTarget, lDesignDocument, cFolder)
 	LOCAL nError
 	LOCAL oListLabel
-	LOCAL dboItems, dboInvoice
+	LOCAL dboOrdDetail, dboOrders, dboCustomers, dboProducts
 
 	// D: LL_PRINT_NORMAL, LL_PRINT_FILE,LL_PRINT_EXPORT, siehe LlPrintWithBoxStart
 	// US: LL_PRINT_NORMAL, LL_PRINT_FILE,LL_PRINT_EXPORT, see LlPrintWithBoxStart
@@ -33,28 +33,40 @@ PROCEDURE dboReportContainer(nPrintingTarget, lDesignDocument, cFolder)
 	//    Tabellen mit Xbase++ DBE öffnen und die Workarea in einem Klasseobjekt kapseln (hier XClass++)
 	// US: Database should be with application exe...
 	//    open tables via Xbase++ DBE and wrap workarea in a class object (using XClass++)
-	dboItems	:= OpenDbTable("ITEMS")
-	dboItems:ordsetfocus("BILLNO")
 
-	dboInvoice	:= OpenDbTable("INVOICE")
-	dboInvoice:ordsetfocus("BILLNO")
+	dboCustomers	:= OpenDbTable("CUSTOMERS")
+	dboCustomers:ordsetfocus("CUSTOMERID")
 
+	dboProducts	:= OpenDbTable("PRODUCTS")
+	dboProducts:ordsetfocus("PRODUCTID")
+
+	dboOrdDetail	:= OpenDbTable("ORDDETAIL")
+	dboOrdDetail:ordsetfocus("ORDERID")
+
+	dboOrdDetail:SetRelation( dboProducts,,"PRODUCTID")
+
+	dboOrders	:= OpenDbTable("ORDERS")
+	dboOrders:ordsetfocus("ORDERID")
+
+	dboOrders:SetRelation( dboCustomers,,"CUSTOMERID")
 
 	// D: Tabellen anmelden: AddTable(cSymbol, cDescription)
 	// US:register tables
-	oListLabel	:AddTable("ITEMS")
-	oListLabel	:DataSetField(dboItems, "ITEMS")
+	oListLabel	:AddTable("ORDDETAIL")
+	oListLabel	:AddTable("ORDERS")
 
-	oListLabel	:AddTable("INVOICE")
-	oListLabel	:DataSetField(dboInvoice, "INVOICE")
+	oListLabel	:DataSetField(dboOrdDetail		,"ORDDETAIL")
+	oListLabel	:DataSetField(dboOrders			,"ORDERS"	)
+	oListLabel	:DataSetField(dboCustomers		,"CUSTOMERS")
+	oListLabel	:DataSetField(dboProducts		,"PRODUCTS"	)
 
 	// D: Relation definieren :AddTableRelationEx(cChild, cParent, cRelation, cDescription, cChildKey, cParentKey)
 	// US:define relation
-	oListLabel	:AddTableRelation("ITEMS","INVOICE","InvoiceToItems")
+	oListLabel	:AddTableRelation("ORDDETAIL","ORDERS","ORDDETAIL")
 
 	// D: Tabellenobjekt anmelden, über dies Tabelle wird für die Liste geskippt
 	// US:register table object, the report will skip through this table
-	oListLabel:connect(dboInvoice)
+	oListLabel:connect(dboOrders)
 
 	// D: Event in Druckvorschau abfangen
 	// US: catch events in preview
@@ -80,15 +92,17 @@ PROCEDURE dboReportContainer(nPrintingTarget, lDesignDocument, cFolder)
 
 	// D:  Destroy Objekt, Datei schliessen
 	// US: Destroy object, close table
-	dboInvoice:close()
-	dboItems:close()
+	dboOrders:close()
+	dboOrdDetail:close()
+	dboProducts:close()
+	dboCustomers:close()
 RETURN
 
 //=========================================
 STATIC FUNC _TableChange(oLL,lStart,cChild,cParent)
 	if lStart .and. !empty(cParent)
 		if cChild <> cParent
-			oLL:GetSelect(cChild):setscope( SCOPE_BOTH, (oLL:GetSelect(cParent)):billno)
+			oLL:GetSelect(cChild):setscope( SCOPE_BOTH, (oLL:GetSelect(cParent)):ORDERID)
 		endif
    elseif !lStart .and. !empty(cParent)
 		oLL:GetSelect(cChild):ClearScope()

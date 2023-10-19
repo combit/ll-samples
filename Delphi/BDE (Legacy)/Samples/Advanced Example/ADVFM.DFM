@@ -128,7 +128,7 @@ object Form1: TForm1
       end
     end
   end
-  object LL: TL28_
+  object LL: TL29_
     EMFResolution = 100
     PhantomspaceRepresentationCode = #11
     LocknextcharRepresentationCode = '`'

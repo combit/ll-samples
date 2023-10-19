@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2022-07-27T14:41:59</VDFLibraryTimeStamp>
+	<VDFLibraryTimeStamp>2023-07-24T18:47:23</VDFLibraryTimeStamp>
 	<libraries>
 		<library>
-			<libraryPath>..\LLLibrary28.0\LL28-VDF20.1.sws</libraryPath>
+			<libraryPath>..\LLLibrary29.0\LL29-VDF23.0.sws</libraryPath>
 			<libraryTimeStamp>2018-10-01T20:28:33</libraryTimeStamp>
 			<libraryID>Lib1</libraryID>
 		</library>
@@ -1085,6 +1085,48 @@
 			<image>cTagsForm.ico</image>
 			<package>cTagsForm.pkg</package>
 			<groupName>Base Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebColumnTags</className>
+			<image>cWebColumnTags.ico</image>
+			<package>cWebColumnTags.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebColumnSelectionIndicator</className>
+			<image>cWebColumnSelectionIndicator.ico</image>
+			<package>cWebColumnSelectionIndicator.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebMultiSelectList</className>
+			<image>cWebMultiSelectList.ico</image>
+			<package>cWebMultiSelectList.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cLocalWebAppHost</className>
+			<image>cLocalWebAppHost.ico</image>
+			<package>cLocalWebAppHost.pkg</package>
+			<groupName>Base Containers</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cLocalWebControlHost</className>
+			<image>cLocalWebControlHost.ico</image>
+			<package>cLocalWebControlHost.pkg</package>
+			<groupName>Base Containers</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cDbLocalWebControlHost</className>
+			<image>cDbLocalWebControlHost.ico</image>
+			<package>cDbLocalWebControlHost.pkg</package>
+			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
 		</class>
 	</classes>

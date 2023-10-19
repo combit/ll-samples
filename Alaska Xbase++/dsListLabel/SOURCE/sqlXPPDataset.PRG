@@ -20,9 +20,6 @@
 #include "sqlext.ch"
 
 
-FUNCTION SQLExpressKey(); Return 538115845026.78   // <-- put your SQLExpress license key here (replace NIL with your key)
-
-
 
 #ifdef __SQL_SERVER__
 
@@ -48,32 +45,24 @@ FUNCTION SQLExpressKey(); Return 538115845026.78   // <-- put your SQLExpress li
 
 //-----------------------------------------------------------------------------
 FUNC sqlxpp(nPrintingTarget, lDesignDocument, cFolder)
-   Local oConn, oDataSet
+	LOCAL oDataSet1 			// Clientes
+	LOCAL oDataSet2         // articles
 	LOCAL oListLabel
 	LOCAL nError
 	LOCAL aFieldlist
 
 
 	// DEMO CODE starts here
-   // establish the ODBC connection
-*   oConn := SQLConnection():new()
-*   oConn:driverConnect(nil, __CONNECT_STRING)
+   // define SqlDataSet
+	oDataSet1 := SqlDataSet():New()
 
-*   if ! oConn:isConnected
-*      MsgBox("Connection error!")
-*      Return NIL
-*   endif
-
-
-	oDataSet := SqlDataSet():New()
-
-	oDataSet:AddColumn( "codigo"   , { ||  0 } )
-	oDataSet:AddColumn( "nombre"   , { || "" } )
-	oDataSet:AddColumn( "direccion", { || "" } )
-	oDataSet:AddColumn( "telefono" , { || "" } )
-	oDataSet:AddColumn( "cod_pos"  , { ||  0 } )
-	oDataSet:AddColumn( "saldo"    , { ||  0 } )
-	oDataSet:AddColumn( "importe"  , { ||  0 } )
+	oDataSet1:AddColumn( "codigo"   , { ||  0 } )
+	oDataSet1:AddColumn( "nombre"   , { || "" } )
+	oDataSet1:AddColumn( "direccion", { || "" } )
+	oDataSet1:AddColumn( "telefono" , { || "" } )
+	oDataSet1:AddColumn( "cod_pos"  , { ||  0 } )
+	oDataSet1:AddColumn( "saldo"    , { ||  0 } )
+	oDataSet1:AddColumn( "importe"  , { ||  0 } )
 
 	aFieldlist	:= {;
 		{"codigo"   , "N", 10,0 },;
@@ -85,14 +74,15 @@ FUNC sqlxpp(nPrintingTarget, lDesignDocument, cFolder)
 		{"importe"  , "N", 10,0 }}
 
 
-	oDataSet:Append()
-	oDataSet:RecordPut( { 1, "Martín Compañia" , "Pelegrini 1234", "12345678" , 2000, 185225.56, 680.00 } )
-	oDataSet:Append()
-	oDataSet:RecordPut( { 2, "Ernesto", "Mendoza 1234"  , "654321", 2000, 87562.25, 540.00 } )
-	oDataSet:Append()
-	oDataSet:RecordPut( { 3, "Pepe", "Tupungato 145"  , "64321", 2000, 6762.25, 250.00 } )
-	oDataSet:Append()
-	oDataSet:RecordPut( { 4, "Silvio", "Segui 14"  , "4568925", 2000, 7562.25, 150.00 } )
+	oDataSet1:Append()
+	oDataSet1:RecordPut( { 1, "Martín Compañia" , "Pelegrini 1234", "12345678" , 2000, 185225.56, 680.00 } )
+	oDataSet1:Append()
+	oDataSet1:RecordPut( { 2, "Ernesto", "Mendoza 1234"  , "654321", 2000, 87562.25, 540.00 } )
+	oDataSet1:Append()
+	oDataSet1:RecordPut( { 3, "Pepe", "Tupungato 145"  , "64321", 2000, 6762.25, 250.00 } )
+	oDataSet1:Append()
+	oDataSet1:RecordPut( { 4, "Silvio", "Segui 14"  , "4568925", 2000, 7562.25, 150.00 } )
+
 
 	// D: LL_PRINT_NORMAL, LL_PRINT_FILE,LL_PRINT_EXPORT, siehe LlPrintWithBoxStart
 	// US: LL_PRINT_NORMAL, LL_PRINT_FILE,LL_PRINT_EXPORT, see LlPrintWithBoxStart
@@ -114,14 +104,45 @@ FUNC sqlxpp(nPrintingTarget, lDesignDocument, cFolder)
 	oListLabel	:AddPath(cFolder)
 
 
-	oListLabel:connect( oDataSet, "Clientes" )
-	oListLabel:DataSetField( oDataSet,"Clientes",,aFieldlist )
+	oListLabel:connect( oDataSet1, "Clientes" )
+	oListLabel:DataSetField( oDataSet1,"Clientes",,aFieldlist )
+
+
+	oDataSet2 := SqlDataSet():New()
+
+	oDataSet2:AddColumn( "article"  , { ||  0 } )
+	oDataSet2:AddColumn( "nombre"   , { || "" } )
+	oDataSet2:AddColumn( "amount"   , { || 0 } )
+	oDataSet2:AddColumn( "price" 	  , { || 0 } )
+
+	aFieldlist	:= {;
+		{"article"   , "N", 10,0 },;
+		{"nombre"   , "C", 20,0 },;
+		{"amount"  , "N", 10,0 },;
+		{"price"  , "N", 10,0 }}
+
+
+	oDataSet2:Append()
+	oDataSet2:RecordPut( { 1, "Coffee" , 111, 12.80 } )
+	oDataSet2:Append()
+	oDataSet2:RecordPut( { 1, "Tea" , 222, 5.80 } )
+	oDataSet2:Append()
+	oDataSet2:RecordPut( { 1, "Whiskey" , 333, 22.80 } )
+	oDataSet2:Append()
+	oDataSet2:RecordPut( { 1, "Rum" , 444, 32.80 } )
+
+	oListLabel:DataSetField( oDataSet2,"Articles",,aFieldlist )
+
 
 	oListLabel:DefineVariable("Empresa", "Martin Y Martin", LL_TEXT)
 
 	// D: Dateiauswahldialog oeffnen
 	// US: Call file open dialog
 	oListLabel:SetProperty(, LL_PROJECT_LIST, "Select File" )
+
+	// AddTable() initializes report container
+	oListLabel	:AddTable("Clientes")         		// same name as oListLabel:DataSetField( oDataSet1,"Clientes",,aFieldlist )
+	oListLabel	:AddTable("Articles")					// same name as oListLabel:DataSetField( oDataSet1,"Articles",,aFieldlist )
 
 	if lDesignDocument
 		// D: Designer starten
@@ -142,7 +163,8 @@ FUNC sqlxpp(nPrintingTarget, lDesignDocument, cFolder)
 
 	// D:  Destroy Objekt, Datei schliessen
 	// US: Destroy object, close table
-   oDataSet:destroy()
+   oDataSet1:destroy()
+   oDataSet2:destroy()
 RETURN NIL
 
 

@@ -50,7 +50,7 @@
                         </tr>
                     </table>
                     <div style="text-align: right">
-                        @if (RepositoryItemType.IsProjectType(repoItem.Type, false))   // Show Designer/Html5Viewer links only for project files
+                        @if (RepositoryItemType.IsProjectType(repoItem.Type, false))   // Show Designer/Viewer links only for project files
                         {
                             <a href="@Url.Action("WebReportDesigner", "Sample", new { reportRepositoryID = repoItem.InternalID })" data-ajax="false" data-role="button" data-mini="true" data-inline="true">WebReportDesigner (Browser)</a>
                             <a href="@Url.Action("WebReportViewer", "Sample", new { reportRepositoryID = repoItem.InternalID })" data-ajax="false" data-role="button" data-mini="true" data-inline="true">WebReportViewer</a>

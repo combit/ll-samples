@@ -217,7 +217,7 @@ Configure PHP
 - IMPORTANT: The PHP version of your web server needs to match the version used for compiling the DLL.
 - Move the generated DLL to the "ext" folder of your PHP8 directory.
 - Locate the "php.ini" used by your PHP configuration.
-- Add the following command: "extension=php_listlabel28.dll;" or the name you've chosen for the DLL.
+- Add the following command: "extension=php_listlabel29.dll;" or the name you've chosen for the DLL.
 
 Now locate line 45 in "frame.php in your "websample" folder and add your personal license key. You can find it in the file "PersonalLicense.txt" in the List & Label installation directory.
 

@@ -22,7 +22,7 @@ namespace TXTextDesignerObject
     public enum DataSource
     {
         FreeText,   // free rtf-text; maybe with formula
-        Identifier, // varibale or field
+        Identifier, // variable or field
     }
     [System.Runtime.Versioning.SupportedOSPlatform("windows")]
     public class TXDesignerObject : DesignerObject
@@ -31,6 +31,8 @@ namespace TXTextDesignerObject
 
         ListLabel _parentListLabel = null;
         bool _ownsParent = false;
+        bool _contentStillEvaluatedInDesigner = false;
+        bool _contentLoaded = false;
 
         int _textControlScaleFactorDpiX = 0;
         int _rtfPageNumber = 0;
@@ -77,7 +79,7 @@ namespace TXTextDesignerObject
 
             // Set the icon of the designer object (16 x 16)
             SmallRibbonImage = TX_Text_Control_Designer_Object.Properties.Resources.TxText_small; 
-                        
+            
             _serverTXTextControl = new ServerTextControl();
             _serverTXTextControl.Create();
 
@@ -130,27 +132,15 @@ namespace TXTextDesignerObject
 
         // Is called by List & Label to reset a possible data source which the Designer object is linking to
         // This happens e.g. if you call the real data preview in the Designer if you where in the Layout mode before
-        bool _contentStillEvaluatedInDesigner = false;
         protected override void OnResetPrintState(EventArgs e)
         {
-            String FileContents = DocumentRTFContent;
-            if (
-                IsPrinting
-                || !_contentStillEvaluatedInDesigner
-               )
-            {
-                bool bRTFContentContainsLLFormulas = RTFContentContainsLLFormulas(ref FileContents);
-                if (bRTFContentContainsLLFormulas)
-                {
-                    EvaluateRTFContent(ref FileContents);
-                }
-            }
-            LoadRTFContent(FileContents);
+            _contentLoaded = false;
+            _contentStillEvaluatedInDesigner = false;
 
             // PageMargins must be set to 0 so that it fits neatly into the printable area
             _serverTXTextControl.PageMargins = new PageMargins(0, 0, 0, 0);
 
-            //******************************   Kopf und Fusszeilen entfernen --> machen keinen Sinn in diesem Zusammenhang
+            // Remove header- and footer-lines which makes no sense
             if (_serverTXTextControl.HeadersAndFooters != null)
                 _serverTXTextControl.HeadersAndFooters.Remove(HeaderFooterType.All);
 
@@ -162,7 +152,10 @@ namespace TXTextDesignerObject
         protected override void OnGetFieldHeightInformation(GetFieldHeightInformationEventArgs e)
         {
             //System.Diagnostics.Debug.WriteLine(string.Format(">>OnGetFieldHeightInformation.AvailableSpace.Height: {0}", e.AvailableSpace.Height));
-            
+
+            // load the rtf document as late as possible
+            LoadRTFContentIfNeeded();
+
             _rtfPageNumber += 1;
 
             // do we have something to render?
@@ -232,6 +225,11 @@ namespace TXTextDesignerObject
         protected override void OnDrawDesignerObject(DrawDesignerObjectEventArgs e)
         {
             //System.Diagnostics.Debug.WriteLine(string.Format(">>OnDrawDesignerObject.ClipRectangle.Height: {0}", e.ClipRectangle.Height));
+
+            // load the rtf document as late as possible
+            // hint: within a table the rtf document is still loaded in OnGetFieldHeightInformation() - necessary for height calculation!
+            if (!IsInTableCell)
+                LoadRTFContentIfNeeded();
 
             // Only in layout mode or printing?
             if (e.IsDesignMode)
@@ -354,6 +352,7 @@ namespace TXTextDesignerObject
             clone._expressionEvaluator = null;
             clone._expressionEvaluatorForUsedIdentifiers = null;
             clone._contentStillEvaluatedInDesigner = false;
+            clone._contentLoaded = false;
 
             clone._serverTXTextControl = new ServerTextControl();
             clone._serverTXTextControl.Create();
@@ -563,6 +562,37 @@ namespace TXTextDesignerObject
             }
 
             return bRTFContentContainsLLFormulas;
+        }
+
+        private void LoadRTFContentIfNeeded()
+        {
+            if (!_contentLoaded)
+            {
+                String FileContents = DocumentRTFContent;
+                if (
+                    IsPrinting
+                    || !_contentStillEvaluatedInDesigner
+                    )
+                {
+                    bool bRTFContentContainsLLFormulas = RTFContentContainsLLFormulas(ref FileContents);
+                    if (bRTFContentContainsLLFormulas)
+                    {
+                        EvaluateRTFContent(ref FileContents);
+                    }
+                }
+                LoadRTFContent(FileContents);
+
+                // PageMargins must be set to 0 so that it fits neatly into the printable area
+                _serverTXTextControl.PageMargins = new PageMargins(0, 0, 0, 0);
+
+                // Remove header- and footer-lines which makes no sense
+                if (_serverTXTextControl.HeadersAndFooters != null)
+                    _serverTXTextControl.HeadersAndFooters.Remove(HeaderFooterType.All);
+
+                _rtfPageNumber = 0;
+
+                _contentLoaded = true;
+            }
         }
 
         private void LoadRTFContent(string documentRTFContent = "")

@@ -93,9 +93,9 @@ DEFINE FRAME Dialog-Frame
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CUSTOM _INCLUDED-LIB Dialog-Frame 
 /* ************************* Included-Libraries *********************** */
 
-&GLOBAL-DEFINE cxll28_PERSISTENT PERSISTENT
-&GLOBAL-DEFINE cxll28_DLLNAME cxll28.dll
-{cxll28.i}
+&GLOBAL-DEFINE cxll29_PERSISTENT PERSISTENT
+&GLOBAL-DEFINE cxll29_DLLNAME cxll29.dll
+{cxll29.i}
 
 /* _UIB-CODE-BLOCK-END */
 &ANALYZE-RESUME

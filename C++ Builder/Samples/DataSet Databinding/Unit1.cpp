@@ -6,7 +6,7 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "ListLabel28"
+#pragma link "ListLabel29"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -17,37 +17,37 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::btnDesignInvoiceAndItemsListClick(TObject *Sender)
 {
-  ListLabel->DataController->AutoMasterMode = mmAsFields;
-  ListLabel->DataController->DataMember = "";
-  ListLabel->AutoProjectFile = "..\\..\\inv_lst.lst";
-  ListLabel->Design();
+  ListLabelInvoiceList->DataController->AutoMasterMode = mmAsFields;
+  ListLabelInvoiceList->DataController->DataMember = "";
+  ListLabelInvoiceList->AutoProjectFile = "..\\..\\inv_lst.lst";
+  ListLabelInvoiceList->Design();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::btnPrintInvoiceAndItemsListClick(TObject *Sender)
 {
-  ListLabel->DataController->AutoMasterMode = mmAsFields;
-  ListLabel->DataController->DataMember = "";
-  ListLabel->AutoProjectFile = "..\\..\\inv_lst.lst";
-  ListLabel->Print();
+  ListLabelInvoiceList->DataController->AutoMasterMode = mmAsFields;
+  ListLabelInvoiceList->DataController->DataMember = "";
+  ListLabelInvoiceList->AutoProjectFile = "..\\..\\inv_lst.lst";
+  ListLabelInvoiceList->Print();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::btnDesignInvoiceMergeClick(TObject *Sender)
 {
-  ListLabel->DataController->AutoMasterMode = mmAsVariables;
-  ListLabel->DataController->DataMember = "Orders";
-  ListLabel->AutoProjectFile = "..\\..\\inv_merg.lst";
-  ListLabel->Design();
+  ListLabelInvoiceMerge->DataController->AutoMasterMode = mmAsVariables;
+  ListLabelInvoiceMerge->DataController->DataMember = "Orders";
+  ListLabelInvoiceMerge->AutoProjectFile = "..\\..\\inv_merg.lst";
+  ListLabelInvoiceMerge->Design();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::btnPrintInvoiceMergeClick(TObject *Sender)
 {
-  ListLabel->DataController->AutoMasterMode = mmAsVariables;
-  ListLabel->DataController->DataMember = "Orders";
-  ListLabel->AutoProjectFile = "..\\..\\inv_merg.lst";
-  ListLabel->Print();
+  ListLabelInvoiceMerge->DataController->AutoMasterMode = mmAsVariables;
+  ListLabelInvoiceMerge->DataController->DataMember = "Orders";
+  ListLabelInvoiceMerge->AutoProjectFile = "..\\..\\inv_merg.lst";
+  ListLabelInvoiceMerge->Print();
 }
 //---------------------------------------------------------------------------
 

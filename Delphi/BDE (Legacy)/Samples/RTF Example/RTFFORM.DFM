@@ -83,7 +83,7 @@ object Form1: TForm1
     TabOrder = 3
     OnClick = PrintButtonClick
   end
-  object RTF: TLL28RTFObject
+  object RTF: TLL29RTFObject
     Left = 8
     Top = 8
     Width = 617
@@ -101,7 +101,7 @@ object Form1: TForm1
     Left = 600
     Top = 360
   end
-  object LL: TL28_
+  object LL: TL29_
     SortVariables = Yes
     UnitSystem = usHiInch
     CompressStorage = Yes

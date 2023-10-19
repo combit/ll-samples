@@ -1,11 +1,9 @@
 /*============================================================================
-
-
  File Name:	   main.prg
  Author:       Marcus Herz
  Description:
- Created:			 28.05.2020     12:49:25        Updated: þ28.05.2020      þ12:49:25
- Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
+ Created:		28.05.2020     12:49:25        Updated: þ26.05.2023      þ08:48:40
+ Copyright:		2020 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:
 ============================================================================*/
@@ -14,20 +12,6 @@
 #include "dsListLabel.ch"
 #include "dll.ch"
 #include "Nls.ch"
-
-#define MB_OK                       0x00000000
-#define MB_ICONINFORMATION				0x00000040
-
-EXTERN INTEGER FindWindow( cName AS STRING, cWinName AS STRING ) in USER32.DLL
-EXTERN INTEGER FindWindowEx(;
-  hWndParent AS INTEGER,;
-  hWndChildAfter AS INTEGER,;
-  lpszClass AS STRING ,;
-  lpszWindow AS STRING ) in USER32.DLL
-EXTERN INTEGER GetClassName(;
-  hWnd AS INTEGER,;
-  @lpClassName AS STRING,;
-  nMaxCount AS INTEGER) in USER32.DLL
 
 //=========================================
 PROC Main()
@@ -45,10 +29,16 @@ PROC Main()
 	SET(_SET_CHARSET	,CHARSET_ANSI)
 	SET(_SET_DATEFORMAT,"" )
 	SET(_SET_DELETED	,FALSE )
-	SET(_SET_PATH		,cPath )
-	SET(_SET_DEFAULT	,cPath )
 
-	_CheckIndex(cPath)
+	SET(_SET_DEFAULT	,cPath )
+	SET(_SET_PATH		,cPath )
+	_CheckDataIndex(cPath)
+
+	SET(_SET_DEFAULT	,cPath +"\northwind" )
+	SET(_SET_PATH		,cPath +"\northwind" )
+	_CheckNorthwindIndex(cPath +"\northwind")
+
+	SET(_SET_PATH		,cPath +";"+ cPath +"\northwind" )
 
 	// D:  settings für LLDemo
 	// US: settings for LLDemo
@@ -69,6 +59,7 @@ PROC Main()
 		ENDIF
 	ENDIF
 
+	// default APP settings
    SetDefaultBrowseFont("11.Arial")
    SetDefaultTextFont("11.Arial")
    SetDefaultEditFont("11.Arial")
@@ -79,12 +70,11 @@ PROC Main()
    SetAutoAccelerator( FALSE )
    EnableFocusFrame( FALSE )
 	EnableTooltip(TRUE)
-
 	dsBaseProperty();
-		:SetInitProperty("TABCONTROL"		,"enableResize"			,TRUE );
-		:SetInitProperty("XBROWSE"			,"enableResize"			,TRUE);
-		:SetInitProperty("XBROWSE"			,"WheelSkip"				,1 );
-		:SetInitProperty("XBROWSE"			,"setColorBG"				,GRA_CLR_WHITE)
+		:SetInitProperty("TABCONTROL"		,"enableResize"	,TRUE );
+		:SetInitProperty("XBROWSE"			,"enableResize"	,TRUE);
+		:SetInitProperty("XBROWSE"			,"WheelSkip"		,1 );
+		:SetInitProperty("XBROWSE"			,"setColorBG"		,GRA_CLR_WHITE)
 
 	// D: Designer Preview aktivieren
 	// US: activate Designer Preview
@@ -104,22 +94,23 @@ PROC Main()
 
 	// D:  Sprache einstellen
 	// US: set language
-	// dsListLabel():DefaultLanguage(CMBTLANG_SPANISH)
+	// dsListLabel():DefaultLanguage(CMBTLANG_???)
 
 	// D:  Hier wird Ihr persoenlicher Lizenzinfostring eingetragen - siehe perslic.txt
 	// US: Enter your licensing info string here - see perslic.txt
 	/*	dsListLabel():LicensingInfo(hJob, LL_OPTIONSTR_LICENSINGINFO, "<Personal License Key>"...) */
 
-
 	// D:  oder Lizenzkey in LLDEMO.INI eintragen
 	// US: or add license to lldemo.ini
+	//[COMBIT]
+	//LicensingInfo=XXXXX
+	//
 	IF !empty(oIni:getentry("combit", "LicensingInfo"))
 		dsListLabel():LicensingInfo(oIni:getentry("combit", "LicensingInfo"))
 	ENDIF
 
    oApp	:= AppSplitter():New(,,,{1200,800})
    oApp:FrameClientArea := FALSE
-
 	oApp:Title := "dsListLabel"
    oApp:icon  := ICON_APPLICATION
 	oApp:create()
@@ -152,9 +143,11 @@ RETURN
 //=========================================
 PROC dbeSys()	;dsDbeSys("FOXCDX")	;RETURN
 PROC AppSys() 								;RETURN
+FUNC RegisterXClass			;RETURN if(file("XDEMO.DLL"), DllCall( "XDEMO.DLL", DLL_XPPCALL, "_Register", 1), NIL )
+FUNC RegisterAdsClass		;RETURN if(file("XDEMO.DLL"), DllCall( "XDEMO.DLL", DLL_XPPCALL, "_Register", 3), NIL )
 
 //=========================================
-STATIC PROCEDURE _CheckIndex(cPath)
+STATIC PROCEDURE _CheckDataIndex(cPath)
 	// D: Tabellen & Relation hinzufügen
 	// US: Add tables & relations
 	IF !file(cPath +"\ITEMS.CDX")
@@ -181,8 +174,50 @@ STATIC PROCEDURE _CheckIndex(cPath)
    	INDEX ON field->POS 	TAG POS TO Samples
 		dbclosearea()
 	ENDIF
+RETURN
+
+//=========================================
+STATIC PROCEDURE _CheckNorthwindIndex(cPath)
+	// D: Tabellen & Relation hinzufügen
+	// US: Add tables & relations
+	IF !file(cPath +"\CUSTOMERS.CDX")
+		DbUseArea(.T., , "CUSTOMERS", FALSE)
+   	INDEX ON field->CUSTOMERID 	TAG CUSTOMERID	TO CUSTOMERS
+   	INDEX ON field->COMPNAME	 	TAG COMPNAME	TO CUSTOMERS
+   	INDEX ON field->COUNTRY	 		TAG COUNTRY		TO CUSTOMERS
+		dbclosearea()
+	ENDIF
+
+	IF !file(cPath +"\ORDERS.CDX")
+		DbUseArea(.T., , "ORDERS", FALSE)
+   	INDEX ON field->ORDERID 		TAG ORDERID		TO ORDERS
+   	INDEX ON field->CUSTOMERID 	TAG CUSTOMERID	TO ORDERS
+		dbclosearea()
+	ENDIF
+
+	IF !file(cPath +"\ORDDETAIL.CDX")
+		DbUseArea(.T., , "ORDDETAIL", FALSE)
+   	INDEX ON field->ORDERID 		TAG ORDERID		TO ORDDETAIL
+   	INDEX ON field->PRODUCTID 		TAG PRODUCTID	TO ORDDETAIL
+		dbclosearea()
+	ENDIF
+
+	IF !file(cPath +"PRODUCTS.CDX")
+		DbUseArea(.T., , "PRODUCTS", FALSE)
+   	INDEX ON field->PRODUCTID 		TAG PRODUCTID	TO PRODUCTS
+   	INDEX ON field->PRODNAME 		TAG PROTNAME	TO PRODUCTS
+		dbclosearea()
+	ENDIF
+
+	IF !file(cPath +"\SUPPLIERS.CDX")
+		DbUseArea(.T., , "SUPPLIERS", FALSE)
+   	INDEX ON field->SUPPLIERID 	TAG SUPPLIERID TO SUPPLIERS
+   	INDEX ON field->COMPNAME	 	TAG COMPNAME	TO SUPPLIERS
+		dbclosearea()
+	ENDIF
 
 RETURN
+
 
 //=========================================
 // no msgbox or any other Xbase++ dialog can be called

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C1C}#28.0#0"; "cmll28o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C1D}#29.0#0"; "cmll29o.ocx"
 Begin VB.Form Form1 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "List & Label  -  Simple Report Sample"
@@ -289,7 +289,7 @@ Private Sub Form_Load()
 ' Copyright (C) combit GmbH
 '
 '--------------------------------------------------------------------------------------
-' File   : simble.vbp, simple.frm, cmll28.bas
+' File   : simble.vbp, simple.frm, cmll29.bas
 ' Module : simple report sample
 ' Descr. : D:   Dieses Beispiel demonstriert das Designen und Drucken von Listen.
 '          US: This example demonstrates how to design and print reports.

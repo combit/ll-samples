@@ -93,7 +93,7 @@ object Form1: TForm1
     TabOrder = 1
     OnClick = btnPrintClick
   end
-  object LL: TDBL28_
+  object LL: TDBL29_
     DebugMode = 1
     SortVariables = Yes
     CompressStorage = Yes

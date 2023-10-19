@@ -12,8 +12,8 @@
     <ApplicationIcon>Resources\TxText.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel28">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+    <Reference Include="combit.ListLabel29">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel29.dll</HintPath>
     </Reference>
     <Reference Include="TXTextControl">
       <HintPath>C:\Program Files\Text Control GmbH\TX Text Control 30.0.NET for Windows Forms\Assembly\TXTextControl.dll</HintPath>
@@ -42,6 +42,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.7" />
   </ItemGroup>
 </Project>

@@ -113,7 +113,7 @@ object frmDesignerPreview: TfrmDesignerPreview
     Left = 368
     Top = 24
   end
-  object LLDesign: TL28_
+  object LLDesign: TL29_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No
@@ -122,7 +122,7 @@ object frmDesignerPreview: TfrmDesignerPreview
     Left = 248
     Top = 8
   end
-  object LLDesignerPrint: TL28_
+  object LLDesignerPrint: TL29_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No

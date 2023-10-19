@@ -15,7 +15,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, ComCtrls, L28, cmbtll28, Registry;
+  StdCtrls, ComCtrls, L29, cmbtll29, Registry;
 
 type
   TForm1 = class(TForm)
@@ -26,8 +26,8 @@ type
     OpenDialog1: TOpenDialog;
     Label1: TLabel;
     Label2: TLabel;
-    LL: TL28_;
-    RTF: TLL28RTFObject;
+    LL: TL29_;
+    RTF: TLL29RTFObject;
     procedure LoadButtonClick(Sender: TObject);
     procedure DesignButtonClick(Sender: TObject);
     procedure PreviewButtonClick(Sender: TObject);

@@ -109,7 +109,7 @@ namespace AdhocDesignerSample.Controllers
                 // EN:  You can find more information on the available options in the online help of List & Label.
 
                 DataSource = ExampleDatasources.GetOleDbProviderNorthwindDb(),
-                // ListLabelLicensingInfo = "<insert your license key here>",
+                // LicensingInfo = "<insert your license key here>",
 
                 DefaultProjectTitle = reportTitle,
                 DesignerTitle = reportTitle + " [Design]",

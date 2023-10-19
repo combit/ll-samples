@@ -11,7 +11,6 @@ object Form1: TForm1
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 15
   object lblEnglish: TLabel
     Left = 16
@@ -124,6 +123,7 @@ object Form1: TForm1
     Top = 176
   end
   object FDQueryOrderDetails: TFDQuery
+    MasterSource = DataSourceOrders
     MasterFields = 'OrderID'
     DetailFields = 'OrderID'
     Connection = FDConnectionNorthwind
@@ -161,7 +161,7 @@ object Form1: TForm1
     Left = 416
     Top = 176
   end
-  object ListLabel: TListLabel28
+  object ListLabelInvoiceList: TListLabel29
     Debug = []
     DataController.DataSource = DataSourceOrders
     DataController.DetailSources = <
@@ -180,5 +180,25 @@ object Form1: TForm1
       end>
     Left = 40
     Top = 160
+  end
+  object ListLabelInvoiceMerge: TListLabel29
+    Debug = []
+    DataController.DataSource = DataSourceOrders
+    DataController.DetailSources = <
+      item
+        Name = 'Orders'
+        DataSource = DataSourceOrders
+        PrimaryKeyField = 'OrderID'
+        InternalOwnItems = <
+          item
+            Name = 'Order Details'
+            DataSource = DataSourceOrderDetails
+            PrimaryKeyField = 'OrderID'
+            DetailKeyField = 'OrderID'
+            MasterKeyField = 'OrderID'
+          end>
+      end>
+    Left = 48
+    Top = 168
   end
 end

@@ -117,8 +117,8 @@ class LabelsADOForm of FORM
    ENDCASE 
    RETURN
    FUNCTION OpenReport
-   SET PROCEDURE TO ..\LL28.CC ADDITIVE
-   r=new LL28InterfaceSample()
+   SET PROCEDURE TO ..\LL29.CC ADDITIVE
+   r=new LL29InterfaceSample()
    r.rowset=form.Customers.rowset
    r.Design=form.LLDesign
    r.Extension=".LBL"

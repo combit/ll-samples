@@ -164,7 +164,7 @@ object Form1: TForm1
     Left = 416
     Top = 176
   end
-  object ListLabel: TListLabel28
+  object ListLabel: TListLabel29
     Debug = []
     DataController.DataSource = DataSourceOrders
     DataController.DetailSources = <

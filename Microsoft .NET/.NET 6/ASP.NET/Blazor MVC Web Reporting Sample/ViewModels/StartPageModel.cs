@@ -8,6 +8,6 @@ namespace WebReporting.ViewModels
         /// <summary>
         /// List of items of the custom repository type defined for this sample
         /// </summary>
-        public IEnumerable<CustomizedRepostoryItem> RepositoryItems { get; set; }
+        public IEnumerable<CustomizedRepositoryItem> RepositoryItems { get; set; }
     }
 }

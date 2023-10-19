@@ -23,7 +23,6 @@
 FUNCTION SQLExpressKey(); Return NIL   // <-- put your SQLExpress license key here (replace NIL with your key)
 
 
-
 #ifdef __SQL_SERVER__
 
   // if you have Microsoft SQL Server installed on your machine you can use
@@ -55,6 +54,7 @@ FUNC sqlxpp(nPrintingTarget, lDesignDocument, cFolder)
 
 
 	// DEMO CODE starts here
+   // see source\project.xpj on how to compile with SQLExpress
    // establish the ODBC connection
    oConn := SQLConnection():new()
    oConn:driverConnect(nil, __CONNECT_STRING)
@@ -71,8 +71,6 @@ FUNC sqlxpp(nPrintingTarget, lDesignDocument, cFolder)
 	// D: Wichtig: hier Feldliste mit fieldwblock erzeugen
 	// US: important, create a fieldlist with fieldwblock
 	aFieldlist	:= GetSqlXppFieldList(oCursor)
-
-
 
 	// D: LL_PRINT_NORMAL, LL_PRINT_FILE,LL_PRINT_EXPORT, siehe LlPrintWithBoxStart
 	// US: LL_PRINT_NORMAL, LL_PRINT_FILE,LL_PRINT_EXPORT, see LlPrintWithBoxStart

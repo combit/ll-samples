@@ -474,7 +474,6 @@ object frmMain: TfrmMain
           Height = 57
           BevelInner = bvRaised
           BevelOuter = bvLowered
-          Caption = 'Panel1'
           TabOrder = 1
           object lblSampleText: TLabel
             Left = 40
@@ -928,7 +927,7 @@ object frmMain: TfrmMain
     Left = 520
     Top = 22
   end
-  object LL: TDBL28_
+  object LL: TDBL29_
     OnlyOneTable = True
     SortVariables = Yes
     CompressStorage = Yes

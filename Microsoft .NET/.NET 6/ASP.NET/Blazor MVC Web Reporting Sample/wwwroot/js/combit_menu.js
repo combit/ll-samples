@@ -1,19 +1,19 @@
 ﻿function webReportViewer() {
-        var selectedReportID = $('#ReportRepositoryID').val();
-        var html5viewerLink = '/Sample/Viewer?reportRepositoryID=' + encodeURIComponent(selectedReportID);
-        $('#ContentContainer').attr('src', html5viewerLink);
+    var selectedReportID = $('#ReportRepositoryID').val();
+    var viewerLink = '/Sample/Viewer?reportRepositoryID=' + encodeURIComponent(selectedReportID);
+    $('#ContentContainer').attr('src', viewerLink);
 }
 
 function webReportDesigner() {
     var selectedReportID = $('#ReportRepositoryID').val();
-    var html5viewerLink = '/Sample/WebReportDesigner?reportRepositoryID=' + encodeURIComponent(selectedReportID);
-    $('#ContentContainer').attr('src', html5viewerLink);
+    var designerLink = '/Sample/WebReportDesigner?reportRepositoryID=' + encodeURIComponent(selectedReportID);
+    $('#ContentContainer').attr('src', designerLink);
 }
 
     function startWebDesigner() {
-        var selectedReportID = $('#ReportRepositoryID').val();
-        var launchWebDesignerLink = '/Sample/WebDesignerLauncher?reportRepositoryID=' + encodeURIComponent(selectedReportID);
-        $('#ContentContainer').attr('src', launchWebDesignerLink);
+    var selectedReportID = $('#ReportRepositoryID').val();
+    var launchWebDesignerLink = '/Sample/WebDesignerLauncher?reportRepositoryID=' + encodeURIComponent(selectedReportID);
+    $('#ContentContainer').attr('src', launchWebDesignerLink);
     }
 
 function maximizeContentContainerHeight() {

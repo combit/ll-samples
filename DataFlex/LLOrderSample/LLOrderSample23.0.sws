@@ -1,0 +1,11 @@
+[Properties]
+Version=23.0
+[WorkspacePaths]
+ConfigFile=.\Programs\Config23.0.ws
+[Projects]
+Project0=Order.src
+[Conditionals]
+Is$WebApp=False
+Is$Win64=True
+[Libraries]
+Lib1=..\LLLibrary29.0\LL29-VDF23.0.sws

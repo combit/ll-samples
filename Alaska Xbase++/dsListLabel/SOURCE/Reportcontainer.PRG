@@ -24,14 +24,26 @@ PROCEDURE ReportContainer(nPrintingTarget, lDesignDocument, cFolder)
 
 	// D: Tabellen & Relation hinzufügen
 	// US: Add tables & relations
-	DbUseArea(.T., , "ITEMS")
-	dbsetIndex("Items")
-	ordsetfocus("BILLNO")
+	DbUseArea(.T., , "CUSTOMERS")
+	dbsetIndex("CUSTOMERS")
+	ordsetfocus("CUSTOMERID")
 
-	DbUseArea(.T., , "INVOICE")
-	dbsetIndex("INVOICE")
-	ordsetfocus("BILLNO")
+	DbUseArea(.T., , "PRODUCTS")
+	dbsetIndex("PRODUCTS")
+	ordsetfocus("PRODUCTID")
+
+	DbUseArea(.T., , "ORDDETAIL")
+	dbsetIndex("ORDDETAIL")
+	ordsetfocus("ORDDERID")
+
+	dbSetRelation( "PRODUCTS",{|| ORDDETAIL->PRODUCTID},,"PRODUCTID")
+
+	DbUseArea(.T., , "ORDERS")
+	dbsetIndex("ORDERS")
+	ordsetfocus("ORDDERID")
 	Goto top
+
+	dbSetRelation( "CUSTOMERS",{|| ORDERS->CUSTOMERID},,"CUSTOMERID")
 
 	// D: Klasse initialisieren
 	// US:class init
@@ -41,17 +53,19 @@ PROCEDURE ReportContainer(nPrintingTarget, lDesignDocument, cFolder)
 	// DEMO CODE starts here
 	// D: Tabellen anmelden: AddTable(cSymbol, cDescription)
 	// US:register tables
-	oListLabel	:AddTable("ITEMS")
-	oListLabel	:AddTable("INVOICE")
+	oListLabel	:AddTable("ORDDETAIL")
+	oListLabel	:AddTable("ORDERS")
 
 	// D: alle Felder der Workarea für LLDefineField anmelden
 	// US:register all columns of workarea for LLDefineField
-	oListLabel	:DataSetField(select("Items"), "ITEMS")
-	oListLabel	:DataSetField(select("Invoice"), "INVOICE")
+	oListLabel	:DataSetField(select("ORDDETAIL")	,"ORDDETAIL")
+	oListLabel	:DataSetField(select("ORDERS")		,"ORDERS"	)
+	oListLabel	:DataSetField(select("CUSTOMERS")	,"CUSTOMERS")
+	oListLabel	:DataSetField(select("PRODUCTS")		,"PRODUCTS"	)
 
 	// D: Relation definieren :AddTableRelationEx(cChild, cParent, cRelation, cDescription, cChildKey, cParentKey)
 	// US:define relation
-	oListLabel	:AddTableRelation("ITEMS","INVOICE","INVOICETOITEMS")
+	oListLabel	:AddTableRelation("ORDDETAIL","ORDERS","ORDDETAIL")
 
 	// D: aktuelle Workarea anmelden, über dies Tabelle wird für die Liste geskippt
 	// US:register active workarea, the report will skip through this table
@@ -81,8 +95,10 @@ PROCEDURE ReportContainer(nPrintingTarget, lDesignDocument, cFolder)
 	// D: aufräumen
 	// E: clean up
 	oListLabel:destroy()
-	(select("Invoice"))->(dbclosearea())
-	(select("items"))->(dbclosearea())
+	(select("ORDERS"))->(dbclosearea())
+	(select("ORDDETAIL"))->(dbclosearea())
+	(select("CUSTOMERS"))->(dbclosearea())
+	(select("PRODUCTS"))->(dbclosearea())
 RETURN
 
 /*============================================================================
@@ -99,7 +115,7 @@ STATIC FUNC _TableChange(oLL,lStart,cChild,cParent)
 		// nothing to do
 	elseif lStart
 		if cChild <> cParent
-			(oLL:GetSelect(cChild))->(dbsetscope( SCOPE_BOTH, (oLL:GetSelect(cParent))->billno))
+			(oLL:GetSelect(cChild))->(dbsetscope( SCOPE_BOTH, (oLL:GetSelect(cParent))->ORDERID))
 		endif
    elseif !lStart
 		(oLL:GetSelect(cChild))->(dbClearScope())

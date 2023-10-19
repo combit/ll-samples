@@ -1,7 +1,7 @@
 ﻿<Window x:Class="LLViewer.NativeWpfViewerWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:combit.Reporting.Wpf;assembly=combit.ListLabel28.Wpf"
+    xmlns:local="clr-namespace:combit.Reporting.Wpf;assembly=combit.ListLabel29.Wpf"
     Title="List &amp; Label C# WPF Viewer Sample" Height="500" Width="700">
     <Window.Resources>
         <Style x:Key="expanderItem" TargetType="{x:Type Control}">

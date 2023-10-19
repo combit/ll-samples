@@ -10,7 +10,7 @@ import javax.swing.*;
  * <p>Copyright: Copyright (C) combit GmbH</p>
  * <p>Company: combit GmbH</p>
  * @author combit GmbH
- * @version 28.0
+ * @version 29.0
  */
 
 import combit.*;
@@ -25,7 +25,7 @@ private static final long serialVersionUID = 7457913868673571688L;
   private
 
   //Create List & Label object
-  CmbtLL28 Ll;
+  CmbtLL29 Ll;
   int nLLJob_;
   long hWnd_;
 
@@ -171,7 +171,7 @@ public
   public boolean initializeLL()
   {
     //Create List & Label object
-    Ll = new CmbtLL28();
+    Ll = new CmbtLL29();
     
     //Try to get the window handle for List & Label dialogs
     if(hWnd_ == 0)
@@ -180,7 +180,7 @@ public
     //Set debug mode
     if (JCheckBoxLLDebug.isSelected())
     {
-      Ll.LlSetDebug(CmbtLL28.LL_DEBUG_CMBTLL);
+      Ll.LlSetDebug(CmbtLL29.LL_DEBUG_CMBTLL);
     }
     else
     {
@@ -190,15 +190,15 @@ public
     //Open List & Label job
     if (nLLJob_ <= 0)
     {
-      nLLJob_ = Ll.LlJobOpen(CmbtLL28.CMBTLANG_DEFAULT);
-      if (nLLJob_ == CmbtLL28.LL_ERR_BAD_JOBHANDLE)
+      nLLJob_ = Ll.LlJobOpen(CmbtLL29.CMBTLANG_DEFAULT);
+      if (nLLJob_ == CmbtLL29.LL_ERR_BAD_JOBHANDLE)
       {
         JOptionPane.showMessageDialog(this, "Job can't be initialized!",
                                       "List & Label Sample App",
                                       JOptionPane.ERROR_MESSAGE);
         return false;
       }
-      else if (nLLJob_ == CmbtLL28.LL_ERR_NO_LANG_DLL)
+      else if (nLLJob_ == CmbtLL29.LL_ERR_NO_LANG_DLL)
       {
         JOptionPane.showMessageDialog(this, "Language file not found!\nEnsure that *.lng files can be found in your LuL DLL directory.",
                                       "List & Label Sample App",
@@ -227,7 +227,7 @@ public
         nLLJob_,
         hWnd_,
         "",
-        CmbtLL28.LL_PROJECT_LABEL | CmbtLL28.LL_FILE_ALSONEW,
+        CmbtLL29.LL_PROJECT_LABEL | CmbtLL29.LL_FILE_ALSONEW,
         bufferFilename,
         0) < 0)
     {
@@ -252,41 +252,41 @@ public
     //Definition of barcode variables
     //Normally you define only the barcode variables which are really needed
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13", "44|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13P2", "44|44444|44444|44",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13P5", "44|44444|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN128", "EAN128ean1288",
-                    CmbtLL28.LL_BARCODE_EAN128, 0);
+                    CmbtLL29.LL_BARCODE_EAN128, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_CODE128", "Code 128",
-                    CmbtLL28.LL_BARCODE_CODE128, 0);
+                    CmbtLL29.LL_BARCODE_CODE128, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_Codabar", "A123456A",
-                    CmbtLL28.LL_BARCODE_CODABAR, 0);
+                    CmbtLL29.LL_BARCODE_CODABAR, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_UPCA", "44|44444",
-                    CmbtLL28.LL_BARCODE_EAN8, 0);
+                    CmbtLL29.LL_BARCODE_EAN8, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_UPCE", "4|44444|44444",
-                    CmbtLL28.LL_BARCODE_UPCA, 0);
+                    CmbtLL29.LL_BARCODE_UPCA, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_3OF9", "*TEST*",
-                    CmbtLL28.LL_BARCODE_3OF9, 0);
+                    CmbtLL29.LL_BARCODE_3OF9, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25IND", "44444",
-                    CmbtLL28.LL_BARCODE_25INDUSTRIAL, 0);
+                    CmbtLL29.LL_BARCODE_25INDUSTRIAL, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25IL", "444444",
-                    CmbtLL28.LL_BARCODE_25INTERLEAVED, 0);
+                    CmbtLL29.LL_BARCODE_25INTERLEAVED, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25MAT", "44444",
-                    CmbtLL28.LL_BARCODE_25MATRIX, 0);
+                    CmbtLL29.LL_BARCODE_25MATRIX, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25DL", "44444",
-                    CmbtLL28.LL_BARCODE_25DATALOGIC, 0);
+                    CmbtLL29.LL_BARCODE_25DATALOGIC, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET5", "44444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET10", "44444-4444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET12", "44444-444444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
-    Ll.LlDefineVariableExt(nLLJob_, "Barcode_FIM", "A", CmbtLL28.LL_BARCODE_FIM, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
+    Ll.LlDefineVariableExt(nLLJob_, "Barcode_FIM", "A", CmbtLL29.LL_BARCODE_FIM, 0);
     
     //Call the desinger
-    if (Ll.LlDefineLayout(nLLJob_, hWnd_, "Designer", CmbtLL28.LL_PROJECT_LABEL,
+    if (Ll.LlDefineLayout(nLLJob_, hWnd_, "Designer", CmbtLL29.LL_PROJECT_LABEL,
                           bufferFilename.toString()) < 0)
     {
       JOptionPane.showMessageDialog(null, "Error by calling LlDefineLayout.",
@@ -324,7 +324,7 @@ public
         nLLJob_,
         hWnd_,
         "",
-        CmbtLL28.LL_PROJECT_LIST | CmbtLL28.LL_FILE_ALSONEW,
+        CmbtLL29.LL_PROJECT_LIST | CmbtLL29.LL_FILE_ALSONEW,
         bufferFilename,
         0) < 0)
     {
@@ -362,46 +362,46 @@ public
     
     //Definition of a numerical variable
     //Important: Normally you'd use here your database functions
-    Ll.LlDefineFieldExt(nLLJob_, "NumericalField", "1", CmbtLL28.LL_NUMERIC, 0);
+    Ll.LlDefineFieldExt(nLLJob_, "NumericalField", "1", CmbtLL29.LL_NUMERIC, 0);
     
     //Definition of barcode variables
     //Normally you define only the barcode variables which are really needed
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13", "44|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13P2", "44|44444|44444|44",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13P5", "44|44444|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN128", "EAN128ean1288",
-                    CmbtLL28.LL_BARCODE_EAN128, 0);
+                    CmbtLL29.LL_BARCODE_EAN128, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_CODE128", "Code 128",
-                    CmbtLL28.LL_BARCODE_CODE128, 0);
+                    CmbtLL29.LL_BARCODE_CODE128, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_Codabar", "A123456A",
-                    CmbtLL28.LL_BARCODE_CODABAR, 0);
+                    CmbtLL29.LL_BARCODE_CODABAR, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_UPCA", "44|44444",
-                    CmbtLL28.LL_BARCODE_EAN8, 0);
+                    CmbtLL29.LL_BARCODE_EAN8, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_UPCE", "4|44444|44444",
-                    CmbtLL28.LL_BARCODE_UPCA, 0);
+                    CmbtLL29.LL_BARCODE_UPCA, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_3OF9", "*TEST*",
-                    CmbtLL28.LL_BARCODE_3OF9, 0);
+                    CmbtLL29.LL_BARCODE_3OF9, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25IND", "44444",
-                    CmbtLL28.LL_BARCODE_25INDUSTRIAL, 0);
+                    CmbtLL29.LL_BARCODE_25INDUSTRIAL, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25IL", "444444",
-                    CmbtLL28.LL_BARCODE_25INTERLEAVED, 0);
+                    CmbtLL29.LL_BARCODE_25INTERLEAVED, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25MAT", "44444",
-                    CmbtLL28.LL_BARCODE_25MATRIX, 0);
+                    CmbtLL29.LL_BARCODE_25MATRIX, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25DL", "44444",
-                    CmbtLL28.LL_BARCODE_25DATALOGIC, 0);
+                    CmbtLL29.LL_BARCODE_25DATALOGIC, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET5", "44444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET10", "44444-4444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET12", "44444-444444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
-    Ll.LlDefineVariableExt(nLLJob_, "Barcode_FIM", "A", CmbtLL28.LL_BARCODE_FIM, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
+    Ll.LlDefineVariableExt(nLLJob_, "Barcode_FIM", "A", CmbtLL29.LL_BARCODE_FIM, 0);
     
     //Call the desinger
-    if (Ll.LlDefineLayout(nLLJob_, hWnd_, "Designer", CmbtLL28.LL_PROJECT_LIST,
+    if (Ll.LlDefineLayout(nLLJob_, hWnd_, "Designer", CmbtLL29.LL_PROJECT_LIST,
                           bufferFilename.toString()) < 0)
     {
       JOptionPane.showMessageDialog(null, "Error by calling LlDefineLayout.",
@@ -438,7 +438,7 @@ public
         nLLJob_,
         hWnd_,
         "",
-        CmbtLL28.LL_PROJECT_LABEL,
+        CmbtLL29.LL_PROJECT_LABEL,
         bufferFilename,
         0) < 0)
     {
@@ -470,46 +470,46 @@ public
     //Definition of barcode variables
     //Normally you define only the barcode variables which are really needed
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13", "44|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13P2", "44|44444|44444|44",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13P5", " 44|44444|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN128", "EAN128ean1288",
-                    CmbtLL28.LL_BARCODE_EAN128, 0);
+                    CmbtLL29.LL_BARCODE_EAN128, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_CODE128", "Code 128",
-                    CmbtLL28.LL_BARCODE_CODE128, 0);
+                    CmbtLL29.LL_BARCODE_CODE128, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_Codabar", "A123456A",
-                    CmbtLL28.LL_BARCODE_CODABAR, 0);
+                    CmbtLL29.LL_BARCODE_CODABAR, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_UPCA", "44|44444",
-                    CmbtLL28.LL_BARCODE_EAN8, 0);
+                    CmbtLL29.LL_BARCODE_EAN8, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_UPCE", "4|44444|44444",
-                    CmbtLL28.LL_BARCODE_UPCA, 0);
+                    CmbtLL29.LL_BARCODE_UPCA, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_3OF9", "*TEST*",
-                    CmbtLL28.LL_BARCODE_3OF9, 0);
+                    CmbtLL29.LL_BARCODE_3OF9, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25IND", "44444",
-                    CmbtLL28.LL_BARCODE_25INDUSTRIAL, 0);
+                    CmbtLL29.LL_BARCODE_25INDUSTRIAL, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25IL", "444444",
-                    CmbtLL28.LL_BARCODE_25INTERLEAVED, 0);
+                    CmbtLL29.LL_BARCODE_25INTERLEAVED, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25MAT", "44444",
-                    CmbtLL28.LL_BARCODE_25MATRIX, 0);
+                    CmbtLL29.LL_BARCODE_25MATRIX, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25DL", "44444",
-                    CmbtLL28.LL_BARCODE_25DATALOGIC, 0);
+                    CmbtLL29.LL_BARCODE_25DATALOGIC, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET5", "44444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET10", "44444-4444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET12", "44444-444444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
-    Ll.LlDefineVariableExt(nLLJob_, "Barcode_FIM", "A", CmbtLL28.LL_BARCODE_FIM, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
+    Ll.LlDefineVariableExt(nLLJob_, "Barcode_FIM", "A", CmbtLL29.LL_BARCODE_FIM, 0);
     
     //Start printing
     if (Ll.LlPrintWithBoxStart(
         nLLJob_,
-        CmbtLL28.LL_PROJECT_LABEL,
+        CmbtLL29.LL_PROJECT_LABEL,
         bufferFilename.toString(),
-        CmbtLL28.LL_PRINT_EXPORT,
-        CmbtLL28.LL_BOXTYPE_NORMALMETER,
+        CmbtLL29.LL_PRINT_EXPORT,
+        CmbtLL29.LL_BOXTYPE_NORMALMETER,
         hWnd_,
         "Printing...") < 0)
     {
@@ -529,17 +529,17 @@ public
     //Predifined selections for print options dialog
     Ll.LlPrintSetOption(
         nLLJob_,
-        CmbtLL28.LL_PRNOPT_COPIES,
-        CmbtLL28.LL_COPIES_HIDE);
+        CmbtLL29.LL_PRNOPT_COPIES,
+        CmbtLL29.LL_COPIES_HIDE);
 
     Ll.LlPrintSetOption(
         nLLJob_,
-        CmbtLL28.LL_PRNOPT_STARTPAGE,
+        CmbtLL29.LL_PRNOPT_STARTPAGE,
         1);
 
     Ll.LlPrintSetOption(
         nLLJob_,
-        CmbtLL28.LL_PRNOPT_OFFSET,
+        CmbtLL29.LL_PRNOPT_OFFSET,
         0);
 
     if (Ll.LlPrintOptionsDialog(
@@ -568,44 +568,44 @@ public
         bufferPrinter,
         bufferPort);
 
-    nLastPage = Ll.LlPrintGetOption(nLLJob_, CmbtLL28.LL_OPTION_LASTPAGE);
+    nLastPage = Ll.LlPrintGetOption(nLLJob_, CmbtLL29.LL_OPTION_LASTPAGE);
     nRecno = 1;
     
     //Definition of barcode variables
     //Normally you define only the barcode variables which are really needed
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13", "44|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13P2", "44|44444|44444|44",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN13P5", "44|44444|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_EAN128", "EAN128ean1288",
-                    CmbtLL28.LL_BARCODE_EAN128, 0);
+                    CmbtLL29.LL_BARCODE_EAN128, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_CODE128", "Code 128",
-                    CmbtLL28.LL_BARCODE_CODE128, 0);
+                    CmbtLL29.LL_BARCODE_CODE128, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_Codabar", "A123456A",
-                    CmbtLL28.LL_BARCODE_CODABAR, 0);
+                    CmbtLL29.LL_BARCODE_CODABAR, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_UPCA", "44|44444",
-                    CmbtLL28.LL_BARCODE_EAN8, 0);
+                    CmbtLL29.LL_BARCODE_EAN8, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_UPCE", "4|44444|44444",
-                    CmbtLL28.LL_BARCODE_UPCA, 0);
+                    CmbtLL29.LL_BARCODE_UPCA, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_3OF9", "*TEST*",
-                    CmbtLL28.LL_BARCODE_3OF9, 0);
+                    CmbtLL29.LL_BARCODE_3OF9, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25IND", "44444",
-                    CmbtLL28.LL_BARCODE_25INDUSTRIAL, 0);
+                    CmbtLL29.LL_BARCODE_25INDUSTRIAL, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25IL", "444444",
-                    CmbtLL28.LL_BARCODE_25INTERLEAVED, 0);
+                    CmbtLL29.LL_BARCODE_25INTERLEAVED, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25MAT", "44444",
-                    CmbtLL28.LL_BARCODE_25MATRIX, 0);
+                    CmbtLL29.LL_BARCODE_25MATRIX, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_25DL", "44444",
-                    CmbtLL28.LL_BARCODE_25DATALOGIC, 0);
+                    CmbtLL29.LL_BARCODE_25DATALOGIC, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET5", "44444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET10", "44444-4444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineVariableExt(nLLJob_, "Barcode_POSTNET12", "44444-444444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
-    Ll.LlDefineVariableExt(nLLJob_, "Barcode_FIM", "A", CmbtLL28.LL_BARCODE_FIM, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
+    Ll.LlDefineVariableExt(nLLJob_, "Barcode_FIM", "A", CmbtLL29.LL_BARCODE_FIM, 0);
     
     //Do printing loop only when there is any data to be printed and no error has occurred
     while (nRecno < nRecCount
@@ -634,7 +634,7 @@ public
           sBoxText,
           (100 * nRecno / nRecCount));
 
-      if (nErrorValue == CmbtLL28.LL_ERR_USER_ABORTED)
+      if (nErrorValue == CmbtLL29.LL_ERR_USER_ABORTED)
       {
         Ll.LlPrintEnd(
             nLLJob_,
@@ -680,7 +680,7 @@ public
         nLLJob_,
         hWnd_,
         "",
-        CmbtLL28.LL_PROJECT_LIST,
+        CmbtLL29.LL_PROJECT_LIST,
         bufferFilename,
         0) < 0)
     {
@@ -726,7 +726,7 @@ public
         nLLJob_,
         "NumericalField",
         "1",
-        CmbtLL28.LL_NUMERIC,
+        CmbtLL29.LL_NUMERIC,
         0);
     
     //Definition of barcode variables
@@ -734,46 +734,46 @@ public
     //in this example the barcodes are constant
     //so they will not be defined again in the print loop
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_EAN13", "44|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_EAN13P2", "44|44444|44444|44",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_EAN13P5", "44|44444|44444|44444",
-                    CmbtLL28.LL_BARCODE_EAN13, 0);
+                    CmbtLL29.LL_BARCODE_EAN13, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_EAN128", "EAN128ean128",
-                    CmbtLL28.LL_BARCODE_EAN128, 0);
+                    CmbtLL29.LL_BARCODE_EAN128, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_CODE128", "Code 128",
-                    CmbtLL28.LL_BARCODE_CODE128, 0);
+                    CmbtLL29.LL_BARCODE_CODE128, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_Codabar", "A123456A",
-                    CmbtLL28.LL_BARCODE_CODABAR, 0);
+                    CmbtLL29.LL_BARCODE_CODABAR, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_UPCA", "44|44444",
-                    CmbtLL28.LL_BARCODE_EAN8, 0);
+                    CmbtLL29.LL_BARCODE_EAN8, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_UPCE", "4|44444|44444",
-                    CmbtLL28.LL_BARCODE_UPCA, 0);
-    Ll.LlDefineFieldExt(nLLJob_, "Barcode_3OF9", "*TEST*", CmbtLL28.LL_BARCODE_3OF9,
+                    CmbtLL29.LL_BARCODE_UPCA, 0);
+    Ll.LlDefineFieldExt(nLLJob_, "Barcode_3OF9", "*TEST*", CmbtLL29.LL_BARCODE_3OF9,
                         0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_25IND", "44444",
-                    CmbtLL28.LL_BARCODE_25INDUSTRIAL, 0);
+                    CmbtLL29.LL_BARCODE_25INDUSTRIAL, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_25IL", "444444",
-                    CmbtLL28.LL_BARCODE_25INTERLEAVED, 0);
+                    CmbtLL29.LL_BARCODE_25INTERLEAVED, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_25MAT", "44444",
-                    CmbtLL28.LL_BARCODE_25MATRIX, 0);
+                    CmbtLL29.LL_BARCODE_25MATRIX, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_25DL", "44444",
-                    CmbtLL28.LL_BARCODE_25DATALOGIC, 0);
+                    CmbtLL29.LL_BARCODE_25DATALOGIC, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_POSTNET5", "44444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_POSTNET10", "44444-4444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
     Ll.LlDefineFieldExt(nLLJob_, "Barcode_POSTNET12", "44444-444444",
-                    CmbtLL28.LL_BARCODE_POSTNET, 0);
-    Ll.LlDefineFieldExt(nLLJob_, "Barcode_FIM", "A", CmbtLL28.LL_BARCODE_FIM, 0);
+                    CmbtLL29.LL_BARCODE_POSTNET, 0);
+    Ll.LlDefineFieldExt(nLLJob_, "Barcode_FIM", "A", CmbtLL29.LL_BARCODE_FIM, 0);
     
     //Start printing
     if (Ll.LlPrintWithBoxStart(
         nLLJob_,
-        CmbtLL28.LL_PROJECT_LIST,
+        CmbtLL29.LL_PROJECT_LIST,
         bufferFilename.toString(),
-        CmbtLL28.LL_PRINT_EXPORT,
-        CmbtLL28.LL_BOXTYPE_NORMALMETER,
+        CmbtLL29.LL_PRINT_EXPORT,
+        CmbtLL29.LL_BOXTYPE_NORMALMETER,
         hWnd_,
         "Printing...") < 0)
     {
@@ -793,12 +793,12 @@ public
     //Predifined selections for print options dialog
     Ll.LlPrintSetOption(
         nLLJob_,
-        CmbtLL28.LL_PRNOPT_COPIES,
-        CmbtLL28.LL_COPIES_HIDE);
+        CmbtLL29.LL_PRNOPT_COPIES,
+        CmbtLL29.LL_COPIES_HIDE);
 
     Ll.LlPrintSetOption(
         nLLJob_,
-        CmbtLL28.LL_PRNOPT_STARTPAGE,
+        CmbtLL29.LL_PRNOPT_STARTPAGE,
         1);
 
     if (Ll.LlPrintOptionsDialog(
@@ -825,13 +825,13 @@ public
         bufferPrinter,
         bufferPort);
 
-    nLastPage = Ll.LlPrintGetOption(nLLJob_, CmbtLL28.LL_OPTION_LASTPAGE);
+    nLastPage = Ll.LlPrintGetOption(nLLJob_, CmbtLL29.LL_OPTION_LASTPAGE);
     nRecno = 1;
     
     //Do printing loop only when there is any data to be printed and no error has occurred
     while (nRecno < nRecCount &&
            (Ll.LlPrintGetCurrentPage(nLLJob_) <= nLastPage) &&
-           (nErrorValue == 0 || nErrorValue == CmbtLL28.LL_WRN_REPEAT_DATA))
+           (nErrorValue == 0 || nErrorValue == CmbtLL29.LL_WRN_REPEAT_DATA))
     {
       for (int i = 1; i < 10; i++)
       {
@@ -866,7 +866,7 @@ public
         {
           sTemp2 = String.valueOf(nRecno);
           Ll.LlDefineFieldExt(nLLJob_, "NumericalField", sTemp2,
-                          CmbtLL28.LL_NUMERIC, 0);
+                          CmbtLL29.LL_NUMERIC, 0);
         }
         
         //Set percentage
@@ -874,7 +874,7 @@ public
         nErrorValue = Ll.LlPrintSetBoxText(nLLJob_,
                                            sBoxText,
                                            (100 * nRecno / nRecCount));
-        if (nErrorValue == CmbtLL28.LL_ERR_USER_ABORTED)
+        if (nErrorValue == CmbtLL29.LL_ERR_USER_ABORTED)
         {
           Ll.LlPrintEnd(nLLJob_, 0);
           
@@ -910,7 +910,7 @@ public
     //If footer doesn't fit to this page try again for the next page
 
     nErrorValue = Ll.LlPrintFieldsEnd(nLLJob_);
-    while (nErrorValue == CmbtLL28.LL_WRN_REPEAT_DATA)
+    while (nErrorValue == CmbtLL29.LL_WRN_REPEAT_DATA)
     {
       //Update the definitions of your page dependent variables here...
       for (int i = 1; i < 10; i++)
@@ -973,7 +973,7 @@ public
     
     //Create a new list project called 'sample_dom.lst'
     String sFileName = "sample_dom.lst";
-    int nRet = Ll.LlProjectOpen(nLLJob_, CmbtLL28.LL_PROJECT_LIST, sFileName, CmbtLL28.LL_PRJOPEN_CD_CREATE_ALWAYS | CmbtLL28.LL_PRJOPEN_AM_READWRITE);
+    int nRet = Ll.LlProjectOpen(nLLJob_, CmbtLL29.LL_PROJECT_LIST, sFileName, CmbtLL29.LL_PRJOPEN_CD_CREATE_ALWAYS | CmbtLL29.LL_PRJOPEN_AM_READWRITE);
     if (nRet < 0)
     {
       JOptionPane.showMessageDialog(
@@ -1060,7 +1060,7 @@ public
     
     //Link To - Type: Position Adaption: Vertical Relative to end.
     //Size Adaption: Vertical Proportional
-    int nLinkMode = combit.CmbtLL28.LL_LINK_VPOS_END | combit.CmbtLL28.LL_LINK_VSIZE_INV;
+    int nLinkMode = combit.CmbtLL29.LL_LINK_VPOS_END | combit.CmbtLL29.LL_LINK_VSIZE_INV;
     String sLinkMode = String.valueOf(nLinkMode);
     Ll.LlDomSetProperty(handleReportContainer, "LinkMode", sLinkMode);
     
@@ -1118,7 +1118,7 @@ public
     Ll.LlProjectClose(nLLJob_);
     
     //Call the desinger
-    if (Ll.LlDefineLayout(nLLJob_, hWnd_, "Designer", CmbtLL28.LL_PROJECT_LIST,
+    if (Ll.LlDefineLayout(nLLJob_, hWnd_, "Designer", CmbtLL29.LL_PROJECT_LIST,
                               sFileName) < 0)
         {
           JOptionPane.showMessageDialog(null, "Error by calling LlDefineLayout.",

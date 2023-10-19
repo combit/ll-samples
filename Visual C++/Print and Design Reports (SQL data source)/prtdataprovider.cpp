@@ -11,10 +11,10 @@
 //
 //=============================================================================
 // prtdataprovider.cpp : 
-// D :	Exemplarische Deklaration/Implementation von Klassen und Strukturen für den List und Label Zugriff mittels eines
+// D :	Exemplarische Deklaration/Implementation von Klassen und Strukturen für den List & Label Zugriff mittels eines
 //		C++ Datenproviders auf Basis von SQLite. Da es sich um ein Beispiel handelt wurde Zwecks Übersichtlichkeit weitgehend auf
 //		Fehlerbehandlung oder auch Absicherungen gegen z.B. SQL Injections bewusst verzichtet.
-// US:	Sample declaration / implementation of data structures and classes demonstrating usage of List and Label dataprovider interface
+// US:	Sample declaration / implementation of data structures and classes demonstrating usage of List & Label dataprovider interface
 //		working on top of sqlite database. Since this is a sample, error handling and securing e.g against sql injections has been neglected 
 //		in favour of keeping code as simple as possible.
 

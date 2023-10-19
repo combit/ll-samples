@@ -3,7 +3,7 @@ unit uPrintWorker;
 interface
 
 uses
-  Classes, SysUtils, Windows, cmbtls28, cmbtll28, L28, ADODB, DB;
+  Classes, SysUtils, Windows, cmbtls29, cmbtll29, L29, ADODB, DB;
 
 type
   TPrintWorker = class(TThread)
@@ -15,7 +15,7 @@ type
     procedure Execute; override;
     procedure UpdateCaption();
   public
-    printInstance: TL28_;
+    printInstance: TL29_;
 
     projectFile: string;
     originalProjectFile: string;

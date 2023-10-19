@@ -48,7 +48,7 @@ class AboutForm of FORM
       left = 1.0
       top = 1.5
       width = 32.0
-      text = "combit List & Label 28"
+      text = "combit List & Label 29"
       fontBold = true
       alignVertical = 1	// Mitte
       alignHorizontal = 1	// Zentriert

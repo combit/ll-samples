@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Xml;
 using System.ComponentModel;
 using DataBind.GenericList;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data.OleDb;
 
 namespace LLViewer

@@ -11,10 +11,8 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = True
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 8
@@ -102,12 +100,17 @@ object Form1: TForm1
     TabOrder = 4
     OnClick = DebugCheckBoxClick
   end
-  object LL: TL28_
+  object LL: TL29_
+    EMFResolution = 100
+    PhantomspaceRepresentationCode = #11
+    LocknextcharRepresentationCode = '`'
+    MaxRTFVersion = 65280
     SortVariables = Yes
     UnitSystem = usHiInch
     CompressStorage = Yes
     Buttons3D = Yes
     ButtonsWithBitmaps = No
+    MaximumIdleIterationsPerObject = 0
     Left = 416
     Top = 48
   end

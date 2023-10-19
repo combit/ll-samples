@@ -116,7 +116,7 @@ STYLE WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     CONTROL         "",IDC_LLVIEWCTRL1,
-                    "{28EBE213-E7C7-11D0-B183-0040E994B593}",WS_TABSTOP,0,0,
+                    "{28EBE213-E7C7-11D0-B183-0040E994B594}",WS_TABSTOP,0,0,
                     239,162
 END
 

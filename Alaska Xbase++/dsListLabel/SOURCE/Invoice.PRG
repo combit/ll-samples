@@ -9,7 +9,23 @@
 ============================================================================*/
 
 #include "lldemo.ch"
+#include "dll.ch"
 
+EXTERN LONG DocumentProperties( ;
+	hWnd AS UINTEGER, ;
+	hPrinter AS UINTEGER, ;
+	cDevice AS STRING, ;
+	@DevModeOut AS STRUCTURE, ;
+	@DevModeIn AS STRUCTURE, ;
+	fMode AS UINTEGER ) IN WINSPOOL.DRV
+
+
+EXTERN BOOL OpenPrinter( ;
+	cPrinter AS STRING, ;
+	@nHandle AS UINTEGER, ;
+	nDefaults  AS UINTEGER) IN WINSPOOL.DRV
+
+#define DM_OUT_BUFFER     2
 //-------------------------------------------------------------------
 PROCEDURE Invoice(nPrintingTarget, lDesignDocument, cFolder)
 	//-------------------------------------------------------------------
@@ -27,6 +43,7 @@ PROCEDURE Invoice(nPrintingTarget, lDesignDocument, cFolder)
 	// US:class init
 	oListLabel	:= dsListLabel():New(SetAppWindow())
 	oListLabel	:AddPath(cFolder)
+
 
 	// DEMO CODE starts here
 	// D: Datenbank sollte bei Applikation liegen...
@@ -85,6 +102,9 @@ PROCEDURE Invoice(nPrintingTarget, lDesignDocument, cFolder)
 	// US: catch events in preview
 	oListLabel:onNotify	:= {|nEvent,nId,oListLabel| CatchCallback(nEvent,nId,oListLabel)}
 
+  	oListLabel:SetDevMode( "dmDefaultSource", 2 )
+  	oListLabel:SetDevMode( "dmColor", 1 )
+
 	if lDesignDocument
 		// D: Designer starten
 		// US: start designer
@@ -104,5 +124,4 @@ PROCEDURE Invoice(nPrintingTarget, lDesignDocument, cFolder)
 
 	dbCloseArea()
 RETURN
-
 

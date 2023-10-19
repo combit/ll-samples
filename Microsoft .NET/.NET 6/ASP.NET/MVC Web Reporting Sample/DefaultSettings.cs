@@ -11,13 +11,13 @@ namespace WebReporting
     {
         // D:   Stellen Sie hier die Sprache für die Berichte und den Designer ein.
         // US:  Set the language for the reports and the Designer here.
-        public static LlLanguage Language { get { return LlLanguage.English; } }
-        //public static LlLanguage Language { get { return LlLanguage.German; } }
+        //public static LlLanguage Language { get { return LlLanguage.English; } }
+        public static LlLanguage Language { get { return LlLanguage.German; } }
 
         // D: Setzen Sie die gewünschte Einheit auf Inch oder Millimeter. SysDefault Werte verwenden für den WebReportDesigner immer Millimeter, um die Synchronisierung zwischen Client und Server zu gewährleisten.
         // US: Set the Unit to Inch or Millimeter. SysDefault Values automatically use millimeter in the web report designer context to make sure client and server units are synchronized. 
-        public static LlUnits Unit { get { return LlUnits.Inch_1_1000; } }
-        //public static LlUnits Unit { get { return LlUnits.Millimeter_1_100; } }
+        //public static LlUnits Unit { get { return LlUnits.Inch_1_1000; } }
+        public static LlUnits Unit { get { return LlUnits.Millimeter_1_100; } }
 
         public static string RepositoryLanguage
         {
@@ -84,16 +84,12 @@ namespace WebReporting
         // US:  Returns the required data source of the sample report.
         private static IDataProvider GetDataSourceForProject(string repositoryIdOfProject, bool forDesign)
         {
-            if (!String.IsNullOrEmpty(repositoryIdOfProject))
-            {
-                // D:   Für dieses Beispielprojekt hängt die benötigte Datenquelle vom Namen des geöffneten Projekt ab, daher muss der Name ausgelesen werden.
-                // US:  For this sample project the datasource depends on the name of the opened project, so we need to read the display name.
-                string reportDisplayName = GetBaseRepository().GetItem(repositoryIdOfProject).ExtractDisplayName();
+            // D:   Für dieses Beispielprojekt hängt die benötigte Datenquelle vom Namen des geöffneten Projekt ab, daher muss der Name ausgelesen werden.
+            // US:  For this sample project the datasource depends on the name of the opened project, so we need to read the display name.               
+            string reportDisplayName = String.IsNullOrEmpty(repositoryIdOfProject) ? "" : GetBaseRepository().GetItem(repositoryIdOfProject).ExtractDisplayName();
 
-                IDataProvider dataProvider = DataAccess.SampleData.CreateProviderCollection(reportDisplayName + CmbtSettings.FileExtension, forDesign);
-                return dataProvider;
-            }
-            return null;
+            IDataProvider dataProvider = DataAccess.SampleData.CreateProviderCollection(String.IsNullOrEmpty(repositoryIdOfProject) ? "" : reportDisplayName + CmbtSettings.FileExtension, forDesign);
+            return dataProvider;
         }
 
         // D:   Liefert die passende Tabelle zu einem Beispiel-Etikett.

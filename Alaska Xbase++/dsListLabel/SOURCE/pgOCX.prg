@@ -33,7 +33,7 @@ METHOD pgOCX:Create()
 	begin sequence
 		::ocxLL	:= dsActiveXControl():new( ::drawingArea,,{10,10},{800,500})
 		if IsObject(::ocxLL)
-			::ocxLL	:clsID := "cmll28v.LLViewCtrl"
+			::ocxLL	:clsID := "cmll29v.LLViewCtrl"
 			::ocxLL	:enableresize	:= TRUE
 			lInstalled	:= TRUE
 		else

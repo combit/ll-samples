@@ -30,7 +30,7 @@ namespace WebReporting.Controllers
 
 		public ActionResult StartPage()
 		{
-			return View("StartPage", new StartPageModel() { RepositoryItems = GetCurrentRepository().GetAllItems().OfType<CustomizedRepostoryItem>() });
+			return View("StartPage", new StartPageModel() { RepositoryItems = GetCurrentRepository().GetAllItems().OfType<CustomizedRepositoryItem>() });
 		}
 
 
@@ -74,7 +74,7 @@ namespace WebReporting.Controllers
 				return new StatusCodeResult(StatusCodes.Status400BadRequest);
 
 			var repository = GetCurrentRepository();
-			var itemToDownload = (CustomizedRepostoryItem)repository.GetItem(repoItemId);
+			var itemToDownload = (CustomizedRepositoryItem)repository.GetItem(repoItemId);
 
 			if (itemToDownload == null)
 				return new StatusCodeResult(StatusCodes.Status404NotFound);
@@ -145,7 +145,7 @@ namespace WebReporting.Controllers
 		// US:  Sets a display name for a repository item. Note that this name is only used in the dialogs of the designer, the repository item is still only identified by it's ID.
 		private void SetRepositoryItemProperties(string itemId, string name, bool showAsReportInToolbar, string originalFilename)
 		{
-			CustomizedRepostoryItem modifiedItem = (CustomizedRepostoryItem)GetCurrentRepository().GetItem(itemId);
+			CustomizedRepositoryItem modifiedItem = (CustomizedRepositoryItem)GetCurrentRepository().GetItem(itemId);
 
 			// D:   Rufe den (kodierten) Descriptor dieses Repository-Items ab (dieser enthält Metadaten wie den Anzeigenamen).
 			// US:  Get the (encoded) descriptor of this repository item (contains metadata like the display name).

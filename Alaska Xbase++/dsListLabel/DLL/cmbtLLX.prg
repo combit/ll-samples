@@ -11,8 +11,8 @@
 #include "dll.ch"
 
 #if XPPVER < 2001392
-#include "xpprt2.ch"
-#endif
+	#error This DLL needs Xbase++ Version 2.0 or higher
+#endif	// XPPVER < 2001392
 
 STATIC hDll := 0
 STATIC nDLLLoadCount := 0
@@ -681,8 +681,8 @@ LL_EXTERN INTEGER LlEnumGetEntry(;                                              
 		nNameBufSize AS INTEGER,;                                                                   //
 		@pszContBuf AS STRING,;                                                                     //
 		nContBufSize AS INTEGER,;                                                                   //
-		pHandle AS INTEGER,;                                                                        //
-		pType AS INTEGER ) ORDINAL 244 IN CMBT_DLL                                                  //
+		@pHandle AS INTEGER,;                                                                        //
+		@pType AS INTEGER ) ORDINAL 244 IN CMBT_DLL                                                  //
 																																  //
 LL_EXTERN INTEGER LlPrintResetObjectStates(;                                                      //
 		hLlJob AS INTEGER ) ORDINAL 245 IN CMBT_DLL                                                 //
@@ -737,20 +737,20 @@ LL_EXTERN INTEGER LlEnumGetFirstChartField(;                                    
 		hLlJob AS INTEGER,;                                                                         //
 		nFlags AS INTEGER ) ORDINAL 9 IN CMBT_DLL                                                   //
    																															  //
-//CALLBACK_EXTERN INTEGER LlSetNotificationCallbackExt(;                                          // CMBT_LL_WINAPI FARPROC  DLLPROC  LlSetNotificationCallbackExt
+//CALLBACK_EXTERN INTEGER LlSetNotificationCallbackExt(;                                          //
 LL_EXTERN INTEGER LlSetNotificationCallbackExt(;                                            		  // CMBT_LL_WINAPI FARPROC  DLLPROC  LlSetNotificationCallbackExt
 		hJob AS INTEGER,;                                                                           //  HLLJOB               hLlJob,
 		nEvent AS INTEGER,;                                                                         //  INT                  nEvent,
 		lpfnEnum AS ACALLBACK ) ORDINAL 100 IN CMBT_DLL                                             //  FARPROC              lpfnNotify
 																																  //
-LL_EXTERN INTEGER LlGetPrinterFromPrinterFile(;                                                   //
+LL_EXTERN INTEGER LlGetPrinterFromPrinterFile(;                                                   // CMBT_LL_WINAPI INT      DLLPROC  LlGetPrinterFromPrinterFileA
 		hJob AS INTEGER,;                                                                           // HLLJOB               hJob,
 		nObjType AS UINTEGER,;                                                                      // UINT                 nObjType,
 		pszObjectName AS STRING,;                                                                   // LPCSTR               pszObjectName,
 		nPrinter AS INTEGER,;                                                                       // INT                  nPrinter,
 		@pszPrinter AS STRING,;                                                                     // LPSTR                pszPrinter,
 		@pnPrinterBufSize AS INTEGER,;                                                              // LLPUINT              pnPrinterBufSize,
-		@pDevMode AS STRING,;                                                                       // _PDEVMODEA           pDevMode,
+		pDevMode AS UINTEGER,;                                                                       // _PDEVMODEA           pDevMode,
 		@pnDevModeBufSize AS INTEGER ) ORDINAL 98 IN CMBT_DLL                                       // LLPUINT              pnDevModeBufSize
 																																  //
 LL_EXTERN INTEGER LlPrintGetRemainingSpacePerTable(;                                              //
@@ -893,7 +893,7 @@ LL_EXTERN INTEGER LlDomGetProject(;                                             
 																																  //
 LL_EXTERN INTEGER LlDomGetProperty(;                                                              //
 		hDOMObj AS INTEGER,;                                                                        //
-		pszName AS STRING,;                                                                         //
+		@pszName AS STRING,;                                                                         //
 		@pszBuffer AS STRING,;                                                                      //
 		bOrgName AS INTEGER ) ORDINAL 207 IN CMBT_DLL                                               //
 																																  //
@@ -1056,9 +1056,9 @@ LL_EXTERN INTEGER LlRTFEditorGetRTFControlHandle(;                              
 																																  //
 LL_EXTERN INTEGER LlGetDefaultPrinter(;                                                           //
 		@pszPrinter AS STRING,;                                                                     //
-		pnPrinterBufSize AS INTEGER,;                                                               //
-		@pDevMode AS INTEGER,;                                                                      //
-		@pnDevModeBufSize AS STRING,;                                                               //
+		@pnPrinterBufSize AS INTEGER,;                                                               //
+		@pDevMode AS STRING,;                                                                      //
+		@pnDevModeBufSize AS INTEGER,;                                                               //
 		nOptions AS INTEGER) ORDINAL 262 IN CMBT_DLL                                                //
 																																  //
 LL_EXTERN INTEGER LlLocAddDictionaryEntry(;                                                       //
@@ -1158,11 +1158,7 @@ LL_EXTERN INTEGER LlExprTypeMask(;                                              
 //=========================================
 // Create a function for structure
 //=========================================
-#if XPPVER >= 2001392
 STRUCTURE LLCallbackNotify
-#else
-DEFINE STRUCTURE LLCallbackNotify
-#endif
 	VAR _nSize           AS UINTEGER
 	VAR _nUserParam      AS UINTEGER
 	VAR _pszProjectName  AS @STRING
@@ -1173,42 +1169,51 @@ DEFINE STRUCTURE LLCallbackNotify
 	VAR _hEvent          AS UINTEGER
 	VAR _pszExportFormat AS @STRING
 	VAR _bWithoutDialog  AS UINTEGER
-#if XPPVER >= 2001392
 ENDSTRUCTURE
-#else
-ENDDEFINE
-#endif
 
 //=========================================
 // Create a function for structure
 //=========================================
-#if XPPVER >= 2001392
 STRUCTURE LlDrillDownJobNotify
-#else
-DEFINE STRUCTURE LlDrillDownJobNotify
-#endif
-	VAR _nSize					  AS UINTEGER
-	VAR _nFunction            AS UINTEGER
-	VAR _nUserParameter       AS @STRING
-	VAR _pszTableID           AS @STRING
-	VAR _pszRelationID        AS @STRING
-	VAR _pszSubreportTableID  AS @STRING
-	VAR _pszKeyField          AS @STRING
-	VAR _pszSubreportKeyField AS @STRING
-	VAR _pszKeyValue          AS @STRING
-	VAR _pszProjectFileName   AS @STRING
-	VAR _pszPreviewFileName   AS @STRING
-	VAR _pszTooltipText       AS @STRING
-	VAR _pszTabText           AS @STRING
-	VAR _hWnd                 AS UINTEGER
-	VAR _nID                  AS @STRING
-	VAR _hAttachInfo          AS UINTEGER
-	VAR _pszSRID              AS @STRING
-	VAR _pszExportFormat      AS @STRING
-#if XPPVER >= 2001392
+	VAR _nSize					  AS UINTEGER						//  UINT       _nSize;        // [in]
+	VAR _nFunction            AS UINTEGER                 //  UINT       _nFunction;       // [in]
+	VAR _nUserParameter       AS @STRING                  //  UINT_PTR   _nUserParameter;     // [in]
+	VAR _pszTableID           AS @STRING                  //  LPCWSTR    _pszTableID;      // [in]
+	VAR _pszRelationID        AS @STRING                  //  LPCWSTR    _pszRelationID;      // [in]
+	VAR _pszSubreportTableID  AS @STRING                  //  LPCWSTR    _pszSubreportTableID;    // [in]
+	VAR _pszKeyField          AS @STRING                  //  LPCWSTR    _pszKeyField;      // [in]
+	VAR _pszSubreportKeyField AS @STRING                  //  LPCWSTR    _pszSubreportKeyField;    // [in]
+	VAR _pszKeyValue          AS @STRING                  //  LPCWSTR    _pszKeyValue;      // [in]
+	VAR _pszProjectFileName   AS @STRING                  //  LPCWSTR    _pszProjectFileName;    // [in]
+	VAR _pszPreviewFileName   AS @STRING                  //  LPCWSTR    _pszPreviewFileName;    // [in] NULL for interactive mode
+	VAR _pszTooltipText       AS @STRING                  //  LPCWSTR    _pszTooltipText;     // [in]
+	VAR _pszTabText           AS @STRING                  //  LPCWSTR    _pszTabText;      // [in] right now, same as _pszTooltipText
+	VAR _hWnd                 AS UINTEGER                 //  HWND       _hWnd;        // [in]
+	VAR _nID                  AS @STRING                  //  UINT_PTR   _nID;        // [in] unique ID of job (important for ABORT/FINISH)
+	VAR _hAttachInfo          AS UINTEGER                 //  HANDLE		_hAttachInfo;      // [in]
+	VAR _pszSRID              AS @STRING                  //  LPCWSTR    _pszSRID;       // [in] internal, subreport ID of link in base report
+	VAR _pszExportFormat      AS @STRING                  //  LPCWSTR    _pszExportFormat;     // [in] internal
 ENDSTRUCTURE
-#else
-ENDDEFINE
-#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

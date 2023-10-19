@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:combit.Reporting.Wpf;assembly=combit.ListLabel28.Wpf"
+        xmlns:local="clr-namespace:combit.Reporting.Wpf;assembly=combit.ListLabel29.Wpf"
         mc:Ignorable="d"
         
         Title="List &amp; Label C# WPF DataBinding Sample" MinHeight="750" Height="750" MinWidth="803" Width="803" FontSize="16" FontFamily="Segoe UI Light">
@@ -89,7 +89,7 @@
                     <TextBlock HorizontalAlignment="Left" Height="21" Margin="366,18.38,0,0" TextWrapping="Wrap" Text="US:" VerticalAlignment="Top" Width="25" FontSize="12"/>
                     <TextBlock HorizontalAlignment="Left" Height="22" Margin="404,17.38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" FontSize="12"><Run Text="Binds the component to a SqlConnectionDataProvider."/><LineBreak/><Run/></TextBlock>
                     <TextBlock HorizontalAlignment="Left" Height="21" Margin="0,75.38,735,0" TextWrapping="Wrap" Text="Url:" VerticalAlignment="Top" Width="21" FontSize="12"/>
-                    <TextBox x:Name="tbConnectionString" TextWrapping="NoWrap" Text="Data Source=&lt;ComputerName&gt;\SQLEXPRESS;Initial Catalog=&lt;DatabaseName&gt;;Integrated Security=True" Margin="24,74.545,251,10" FontSize="12"/>
+                    <TextBox x:Name="tbConnectionString" TextWrapping="NoWrap" Text="Data Source=&lt;ComputerName&gt;\SQLEXPRESS;Initial Catalog=&lt;DatabaseName&gt;;Integrated Security=True;Encrypt=False;" Margin="24,74.545,251,10" FontSize="12"/>
                     <Button x:Name="print_SQL" Content="Print" HorizontalAlignment="Right" Height="27" Margin="0,72.38,0,0" VerticalAlignment="Top" Width="100" Click="Print_SQL_Click"/>
                     <Button x:Name="design_SQL" Content="Design" HorizontalAlignment="Right" Height="27" Margin="0,72.38,128,0" VerticalAlignment="Top" Width="100" Click="Design_SQL_Click"/>
                 </Grid>

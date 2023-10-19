@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, DB,
-  Registry, DBTables, ADODB, L28, StdCtrls, cmbtll28, L28db;
+  Registry, DBTables, ADODB, L29, StdCtrls, cmbtll29, L29db;
         
 type
   TForm1 = class(TForm)
@@ -18,8 +18,8 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    DBL28_1: TDBL28_;
-    DBL28_2: TDBL28_;
+    DBL29_1: TDBL29_;
+    DBL29_2: TDBL29_;
     dsOrders: TDataSource;
     dsCustomers: TDataSource;
     dsOrderDetails: TDataSource;
@@ -51,36 +51,36 @@ implementation
 procedure TForm1.DesignILClick(Sender: TObject);
 begin
 
-  DBL28_1.AutoShowSelectFile := No;
-  DBL28_1.AutoDesignerFile := workingPath + 'inv_var.lst';
-  DBL28_1.AutoDesign('Invoice List');
+  DBL29_1.AutoShowSelectFile := No;
+  DBL29_1.AutoDesignerFile := workingPath + 'inv_var.lst';
+  DBL29_1.AutoDesign('Invoice List');
 
 end;
 
 procedure TForm1.PrintILClick(Sender: TObject);
 begin
 
-  DBL28_1.AutoShowSelectFile := No;
-  DBL28_1.AutoDesignerFile := workingPath + 'inv_var.lst';
-  DBL28_1.AutoPrint('Invoice List', '');
+  DBL29_1.AutoShowSelectFile := No;
+  DBL29_1.AutoDesignerFile := workingPath + 'inv_var.lst';
+  DBL29_1.AutoPrint('Invoice List', '');
 
 end;
 
 procedure TForm1.DesignIILClick(Sender: TObject);
 begin
 
-  DBL28_2.AutoShowSelectFile := No;
-  DBL28_2.AutoDesignerFile := workingPath + 'inv_fie.lst';
-  DBL28_2.AutoDesign('Invoice/Item List');
+  DBL29_2.AutoShowSelectFile := No;
+  DBL29_2.AutoDesignerFile := workingPath + 'inv_fie.lst';
+  DBL29_2.AutoDesign('Invoice/Item List');
 
 end;
 
 procedure TForm1.PrintIILClick(Sender: TObject);
 begin
 
-  DBL28_2.AutoShowSelectFile := No;
-  DBL28_2.AutoDesignerFile := workingPath + 'inv_fie.lst';
-  DBL28_2.AutoPrint('Invoice/Item List','');
+  DBL29_2.AutoShowSelectFile := No;
+  DBL29_2.AutoDesignerFile := workingPath + 'inv_fie.lst';
+  DBL29_2.AutoPrint('Invoice/Item List','');
 
 end;
 
@@ -106,7 +106,7 @@ begin
 
       dbPath := registry.ReadString('NWINDPath');
 	  
-	  tmp := registry.ReadString('LL' + IntToStr(DBL28_1.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
+	  tmp := registry.ReadString('LL' + IntToStr(DBL29_1.LlGetVersion(LL_VERSION_MAJOR)) + 'SampleDir');
 	  if (tmp[Length(tmp)] = '\') then
 		begin
 		  workingPath := tmp + 'Delphi\BDE (Legacy)\Samples\';

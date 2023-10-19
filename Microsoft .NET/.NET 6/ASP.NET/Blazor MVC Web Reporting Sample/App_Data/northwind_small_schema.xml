@@ -85,7 +85,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Order_x0020_Details" msdata:Locale="de-DE">
+        <xs:element name="Order_x0020_Details">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="OrderID" type="xs:int" minOccurs="0" />
@@ -124,7 +124,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Shippers" msdata:Locale="de-DE">
+        <xs:element name="Shippers">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ShipperID" type="xs:int" minOccurs="0" />

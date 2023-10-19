@@ -8,8 +8,8 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel28">
-      <HintPath>..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+    <Reference Include="combit.ListLabel29">
+      <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -21,9 +21,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.14" />
-    <PackageReference Include="NLog" Version="5.0.1" />
+    <PackageReference Include="log4net" Version="2.0.15" />
+    <PackageReference Include="NLog" Version="5.1.2" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.7" />
   </ItemGroup>
 </Project>

@@ -217,7 +217,7 @@ PHP Konfiguration
 - WICHTIG: Die PHP Version Ihres Webservers muss mit der Version der kompilierten DLL übereinstimmen.
 - Verschieben Sie die erstellte .dll-Datei in den Ordner "ext" in Ihrem PHP8-Verzeichnis.
 - Suchen Sie die für Ihre PHP-Konfiguration verwendete "php.ini".
-- Fügen Sie der php.ini folgenden Befehl hinzu: "extension=php_listlabel28.dll" oder den Namen den Sie für Ihre DLL gewählt haben.
+- Fügen Sie der php.ini folgenden Befehl hinzu: "extension=php_listlabel29.dll" oder den Namen den Sie für Ihre DLL gewählt haben.
 
 Nun müssen Sie in der Datei "frame.php" in Zeile 45 im Ordner "websample" Ihren persönlichen Lizenzschlüssel setzen. Zu finden ist dieser in der Datei "PersonalLicense.txt" im List & Label Installationsverzeichnis.
 

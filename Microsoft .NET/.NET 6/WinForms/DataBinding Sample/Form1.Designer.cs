@@ -873,7 +873,7 @@ namespace DataBinding
             this.tbConnectionString.BackColor = System.Drawing.SystemColors.Window;
             this.tbConnectionString.Lines = new string[] {
         "Data Source=<ComputerName>\\SQLEXPRESS;Initial Catalog=<DatabaseName>;Integrated S" +
-            "ecurity=True"};
+            "ecurity=True;Encrypt=False;"};
             this.tbConnectionString.Location = new System.Drawing.Point(104, 61);
             this.tbConnectionString.MaxLength = 32767;
             this.tbConnectionString.Name = "tbConnectionString";
@@ -883,7 +883,7 @@ namespace DataBinding
             this.tbConnectionString.Size = new System.Drawing.Size(374, 20);
             this.tbConnectionString.TabIndex = 29;
             this.tbConnectionString.Text = "Data Source=<ComputerName>\\SQLEXPRESS;Initial Catalog=<DatabaseName>;Integrated S" +
-    "ecurity=True";
+    "ecurity=True;Encrypt=False;";
             this.tbConnectionString.WordWrap = false;
             // 
             // tabOdata
@@ -1207,7 +1207,7 @@ namespace DataBinding
             // 
             this.textBox3.Lines = new string[] {
         "Data Source=<ComputerName>\\SQLEXPRESS;Initial Catalog=<DatabaseName>;Integrated S" +
-            "ecurity=True"};
+            "ecurity=True;Encrypt=False;"};
             this.textBox3.Location = new System.Drawing.Point(116, 67);
             this.textBox3.MaxLength = 32767;
             this.textBox3.Name = "textBox3";
@@ -1217,7 +1217,7 @@ namespace DataBinding
             this.textBox3.Size = new System.Drawing.Size(334, 20);
             this.textBox3.TabIndex = 29;
             this.textBox3.Text = "Data Source=<ComputerName>\\SQLEXPRESS;Initial Catalog=<DatabaseName>;Integrated S" +
-    "ecurity=True";
+    "ecurity=True;Encrypt=False;";
             // 
             // tabPage37
             // 

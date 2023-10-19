@@ -10,7 +10,7 @@ using combit.Reporting.DataProviders;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
 
             installKey = Registry.CurrentUser.CreateSubKey(@"Software\combit\cmbtll");
             if (installKey != null)
-                sampleDir = (string)installKey.GetValue("LL28SampleDir", string.Empty);
+                sampleDir = (string)installKey.GetValue("LL29SampleDir", string.Empty);
 
             if (!sampleDir.EndsWith("\\"))
                 sampleDir += "\\";

@@ -17,13 +17,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.OleDb" Version="5.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Data.OleDb" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel28">
-      <HintPath>..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+    <Reference Include="combit.ListLabel29">
+      <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
     </Reference>
   </ItemGroup>
 

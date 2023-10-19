@@ -16,7 +16,7 @@ interface
 
 uses
   Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  DB, DBTables, cmbtll28, L28, StdCtrls, Registry, Windows, ADODB
+  DB, DBTables, cmbtll29, L29, StdCtrls, Registry, Windows, ADODB
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   {$ENDIF}
@@ -34,8 +34,9 @@ type
     DebugCheckBox: TCheckBox;
     ADOTableInvoice: TADOTable;
     ADOTableItems: TADOTable;
-    LL: TL28_;
+    LL: TL29_;
     ADOConnection1: TADOConnection;
+
     procedure GetInvoiceNo;
     procedure DefineFields;
     procedure DefineVars;
@@ -354,7 +355,7 @@ begin
      {D:  Designer starten}
      {US: Start designer  }
      LL.LlDefineLayout(handle,'Design invoice',
-         OBJECT_LIST, FileName);
+         LL_PROJECT_LIST, FileName);
 
 end;
 

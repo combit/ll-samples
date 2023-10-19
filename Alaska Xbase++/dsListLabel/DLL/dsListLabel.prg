@@ -9,7 +9,7 @@
  Remark: Set Tab to 3 blanks
 
  Any List&Label Version can be used by defining
- /D__LL=27
+ /D__LL=29
  /D__LL=<version number>
  in the COMPILE_FLAGS in XPJ
 
@@ -20,6 +20,43 @@
 #include "common.ch"
 #include "class.ch"
 #include "fileio.ch"
+#include "WINSDK-WINUSER.CH"
+// WIN API DEVMODE
+#define CCHFORMNAME			32
+
+#command INSTANCE <variablename> AS STRUCTURE <structurename> => <variablename> := <structurename>_xpp_structure():new()
+
+#if XPPVER < 2001392
+	#error This DLL needs Xbase++ Version 2.0 or higher
+#endif	// XPPVER < 2001392
+
+STATIC snJobId	:= 0
+
+
+EXTERN LONG GetComputerName(@cBuffer as STRING, @nBin AS LONG) 			IN KERNEL32.DLL
+EXTERN LONG GetUserName( @cBuffer as STRING, @nBuflen AS LONG)  			IN ADVAPI32.DLL
+EXTERN INTEGER GetTempPath( len AS UINTEGER, @buffer AS STRING )			IN KERNEL32.DLL
+EXTERN LONG SetEvent(hEvent AS UINTEGER)											IN KERNEL32.DLL
+EXTERN INTEGER GetTempFileName(;
+	lpPathName as STRING,;
+	lpPrefixString  as STRING,;
+	uUnique AS INTEGER,;
+	@lpTempFileName as STRING) IN KERNEL32.DLL
+
+
+EXTERN UINTEGER LocalAlloc(;
+	uFlags   AS UINTEGER,;
+	uBytes   AS UINTEGER) in Kernel32.DLL
+
+EXTERN UINTEGER LocalFree(;
+	uBytes   AS UINTEGER) in Kernel32.DLL
+
+
+// DLL specific
+#translate ntrim(<n>)	=> alltrim(str(<n>))
+#ifndef DEBUGOUT
+	#translate debugout(<n,.n.>)	=>
+#endif  // DEBUGOUT
 
 // ::_dbFields[]
 // ::_dbVariables[]
@@ -28,53 +65,14 @@
 #define __LLDESC		3
 #define __STRUCT		4
 #define __ALIAS		5
-#define __STUFE		6
+#define __LEVEL		6
 
-
-#if XPPVER < 2000000
-#error This DLL needs Xbase++ Version 2.0 or higher
-#endif	// XPPVER < 2000000
-
-#ifndef DEBUGOUT
-	#translate debugout(<n,.n.>)	=>
-#endif  // DEBUGOUT
-
-
-#define _SKIPBLOCK	{|o, c| if(empty(c), 	,if(IsObject(c), c:skip(), (c)->(dbskip())))}
-#define _TOPBLOCK		{|o, c| if(empty(c), 	,if(IsObject(c), c:gotop(), (c)->(dbgotop())))}
-#define _EOFBLOCK		{|o, c| if(empty(c), TRUE,if(IsObject(c), c:eof(), (c)->(eof())))}
-#define _RECNOBLOCK	{|o, c| if(empty(c), 0	,if(IsObject(c), c:recno(), (c)->(recno())))}
+#define _SKIPBLOCK	{|o, c| if(empty(c),   ,if(IsObject(c), c:skip(),  (c)->(dbskip()))	)}
+#define _TOPBLOCK		{|o, c| if(empty(c),   ,if(IsObject(c), c:gotop(), (c)->(dbgotop()))	)}
+#define _EOFBLOCK		{|o, c| if(empty(c),.t.,if(IsObject(c), c:eof(),   (c)->(eof()))		)}
+#define _RECNOBLOCK	{|o, c| if(empty(c), 0 ,if(IsObject(c), c:recno(), (c)->(recno()))	)}
 #define _TAB			chr(9)
 
-
-EXTERN LONG GetComputerName(@cBuffer as STRING, @nBin AS LONG) 			IN KERNEL32.DLL
-EXTERN LONG GetUserName( @cBuffer as STRING, @nBuflen AS LONG)  			IN ADVAPI32.DLL
-
-
-#if XPPVER < 2001255
-
-EXTERN INTEGER GetTempPath( len AS UINTEGER, @buffer AS STRING )			IN KERNEL32.DLL
-EXTERN LONG SetEvent(hEvent AS UINTEGER)											IN KERNEL32.DLL
-EXTERN INTEGER GetTempFileName(;
-  lpPathName as STRING,;
-  lpPrefixString  as STRING,;
-  uUnique AS INTEGER,;
-  @lpTempFileName as STRING) IN KERNEL32.DLL
-
-
-#else
-
-STATIC EXTERN INTEGER GetTempPath( len AS UINTEGER, @buffer AS STRING )	IN KERNEL32.DLL
-STATIC EXTERN LONG SetEvent(hEvent AS UINTEGER)									IN KERNEL32.DLL
-STATIC EXTERN INTEGER GetTempFileName(;
-  lpPathName as STRING,;
-  lpPrefixString  as STRING,;
-  uUnique AS INTEGER,;
-  @lpTempFileName as STRING) IN KERNEL32.DLL
-
-#endif	// XPPVER < 2001255
-
-#translate ntrim(<n>)	=> alltrim(str(<n>))
 
 //=========================================
 EXIT Procedure dsListLabelStop
@@ -171,6 +169,7 @@ PROTECTED:
    VAR _lUseDbRequest 	                                       // nur FALSE für ADSClass++ PQclass++, eigene Lösungen
    VAR _lSubReport                                             // TRUE wenn mit berichtscontainer
    VAR _nBoxType                                               // art der fortschritts anzeige
+	VAR _hDevmode                                               // LOCALALLOC hHandle für LOACLFREE
 	VAR _nDrillDown                                             // drilldown
    VAR _nError                                                 //
 	VAR _nExpand	                                             // expandable region
@@ -189,6 +188,7 @@ PROTECTED:
 	VAR templateDefineVariableExt											// internal
 
    METHOD _Datalink                                            //
+	METHOD _InitDevMode(nIndex)
    METHOD _PrintStart                                          // wrap LlPrint[WithBox]Start
    METHOD _PrintTable                                          //
    METHOD _Varlink                                             //
@@ -199,6 +199,7 @@ PROTECTED:
 EXPORTED:
 	VAR hJob 	READONLY
 	VAR hWnd 	READONLY
+	VAR oDevmode
 
 	CLASS METHOD DefaultPath(xSet)
 	CLASS METHOD initClass
@@ -226,6 +227,7 @@ EXPORTED:
 	METHOD Destroy																//
 	METHOD EnableDebug														//
 	METHOD ExportFile 														//
+	METHOD GetDevMode															//
 	METHOD GetErrorText()													//
 	METHOD GetPrinter 														//
 	METHOD GetSelect															//
@@ -236,13 +238,14 @@ EXPORTED:
 	METHOD PrepareExport(cExportFormat, cOutFile)					//
 	METHOD Print																//
 	METHOD PrintLabel															//
-	METHOD Report2Stream(pnError)													//
+	METHOD Report2Stream(pnError)											//
 	METHOD ResetMenue															//
 	METHOD SaveAsPreview														//
 	METHOD SaveAsPDF															//
 	METHOD SendAsMail															//
 	METHOD SetChildRelation                                  	//
 	METHOD SetDefaultPrinter												//
+	METHOD SetDevMode															//
 	METHOD SetMenuId															//
 	METHOD SetProperty														//
 	METHOD Stream2Report(cStream, nProject)
@@ -295,7 +298,6 @@ EXPORTED:
 	INLINE METHOD ResetRights()					;::_aRights	:= aclone(::__aRights);RETURN self
 	INLINE METHOD UseDbRequest(xSet)				;::_lUseDbRequest := xSet 			;RETURN self
 	INLINE METHOD ZugferdXML(xSet)				;::_cZUGFeRDXML	:= xSet			;RETURN self
-
 
 	//=========================================
 	// for free use
@@ -655,6 +657,8 @@ RETURN ::__aDefaultPath
 METHOD dsListLabel:Init( oParent, lRtf )
 	LOCAL oError
 
+	INSTANCE ::oDevmode		as STRUCTURE DEVMODE
+
 	::DbContainer:Init()
 	if IsNumber(oParent)                                                             // :clone(), Designer Preview
 		::hWnd			:= oParent
@@ -791,7 +795,7 @@ METHOD dsListLabel:Prepare()
 	endif
 
 	if !empty( ::_cPrinter )
-		::_SetPrinter()
+		::_SetPrinter(::_cPrinter)
 	endif
 
 	if IsBlock(::_bPrepare)                                                          // User Callback
@@ -911,14 +915,12 @@ METHOD dsListLabel:Print(bPrint)
 		endif
 	endif
 
-	if IsBlock( ::_bNotify) .or. !empty(::_nDrillDown) .or. !empty(::_nExpand)
-		oCallBack   := LLCallBack():New(self )
-		if IsBlock( ::_bNotify)
-			LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERBTNCLICKED, oCallBack)
-		endif
-		if !empty(::_nDrillDown) .or. !empty(::_nExpand)
-			LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERDRILLDOWN, oCallBack)
-		endif
+	oCallBack   := LLCallBack():New(self )
+	if IsBlock( ::_bNotify)
+		LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERBTNCLICKED, oCallBack)
+	endif
+	if !empty(::_nDrillDown) .or. !empty(::_nExpand)
+		LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERDRILLDOWN, oCallBack)
 	endif
 
 	nLastRec	:= ::_nLastRec
@@ -1131,15 +1133,12 @@ METHOD dsListLabel:Design()
 		eval(::_bPrepare, self, ::nSelect )
 	endif
 
+	oCallBack   := LLCallBack():New(self )
 	if ::_lStreamMode
-		oCallBack   := LLCallBack():New(self )
 		LlSetNotificationCallbackExt(::hJob, LL_CMND_SAVEFILENAME, oCallBack)
 	endif
 
 	if ::_lDesignerPreview
-		if oCallBack == NIL
-			oCallBack   := LLCallBack():New(self)
-		endif
   		LlSetOption(::hJob,LL_OPTION_DESIGNERPREVIEWPARAMETER, 1)
 		LlSetNotificationCallbackExt(::hJob, LL_NTFY_DESIGNERPRINTJOB, oCallBack)
 		if !empty(::_nDrillDown) .or. !empty(::_nExpand)
@@ -1151,9 +1150,8 @@ METHOD dsListLabel:Design()
 
 	::_RaiseError(::_nError, ::cReport, "LlDefineLayout()")
 
-	if oCallBack != NIL
-		oCallback:destroy()
-	endif
+
+	oCallback:destroy()
 RETURN 0
 
 //=========================================
@@ -1466,7 +1464,7 @@ METHOD dsListLabel:SetChildRelation( cRelation, dbParent, dbChild, pnScope)
 					dbChild:SqlConn():setparam( aTmp[1], dbParent:fieldget(aTmp[2]))
 				endif
 			next
-			dbChild:refreshSql()
+			dbChild:refreshSql(TRUE)
 
 		elseif dbChild:IsDerivedfrom("dsPQselect")
 			// bezeichnung@param:4711&klar
@@ -1585,6 +1583,10 @@ RETURN ::_nError
 ==============================================================================*/
 METHOD dsListLabel:Destroy()
 	::DbContainer:destroy()
+
+	if !empty(::_hDevmode)
+		LocalFree( ::_hDevmode)
+	endif
 
 	::templateDefineFieldExt		:= NIL
 	::templateDefineVariableExt	:= NIL
@@ -1771,6 +1773,30 @@ METHOD dsListLabel:_SetPrinter(cPrinter)
 		LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, -1, cPrinter, 0)
 	endif
 RETURN self
+
+//=========================================
+METHOD dsListLabel:SetDevMode(cProperty, xValue, nIndex )
+	LOCAL nError
+	if empty(::_hDevMode)
+		nError	:= ::_InitDevMode(nIndex)
+	endif
+   if ascan( ::oDevmode:classdescribe(3), lower(cProperty)) > 0
+		::oDevMode:&(cProperty)	:= xValue
+		nError	:= LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, nIndex, , ::_hDevmode)
+   else
+   	nError	:= -1
+   endif
+RETURN nError
+
+//=========================================
+METHOD dsListLabel:GetDevMode(cProperty)
+	if empty(::_hDevMode)
+		::_InitDevMode()
+	endif
+   if ascan( ::oDevmode:classdescribe(3), lower(cProperty)) > 0
+		RETURN ::oDevMode:&(cProperty)
+	endif
+RETURN NIL
 
 /*============================================================================
  $Method:	GetPrinter()
@@ -2524,7 +2550,7 @@ METHOD dsListLabel:DataSetField(nSelect, cSymbol, cDesigner ,aField, nRekursiv )
 			::_dbFields[nPos,__STRUCT]	:= coalesce(aField, (nSelect)->(dbstruct()))
 			::_dbFields[nPos,__ALIAS ]	:= alias(nSelect)
 		endif
-		::_dbFields[nPos,__STUFE ]	:= nRekursiv
+		::_dbFields[nPos,__LEVEL ]	:= nRekursiv
 	endif
 
 	::AddDbContainer( cSymbol, nSelect )
@@ -3367,6 +3393,39 @@ METHOD dsListLabel:Notify(nEvent, nId )
 RETURN self
 
 //=========================================
+METHOD dsListLabel:_InitDevMode(nIndex)
+   local nSize, nError
+
+	DEFAULT nIndex to -1
+	// erstinit
+	nSize	:= 0
+
+   nError	:= LlGetPrinterFromPrinterFile(;
+			::hJob,;
+			LL_PROJECT_LIST,;
+			::cReport,;
+			-1,;
+			NIL,;
+			NIL,;
+			NIL,;
+			@nSize)
+
+	::_hDevmode	:= LocalAlloc( 0 ,nSize)
+
+   nError	:= LlGetPrinterFromPrinterFile(;
+			::hJob,;
+			::_nProject,;
+			::cReport,;
+			nIndex,;
+			NIL,;
+			NIL,;
+			::_hDevmode,;
+			nSize)
+
+	::oDevMode:SetAddress(::_hDevmode)
+RETURN nError
+
+//=========================================
 CLASS LLCallBack FROM DllCallBack
 	EXPORTED:
 		VAR oListLabel
@@ -3374,7 +3433,8 @@ CLASS LLCallBack FROM DllCallBack
 
 		INLINE METHOD Init(oListLabel)
 			::oListLabel	:= oListLabel
-			::DllCallBack:init( , DLL_OSAPI+DLL_TYPE_INT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32)
+//			::DllCallBack:init( , DLL_OSAPI+DLL_TYPE_INT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32)
+			SUPER:init( , DLL_OSAPI+DLL_TYPE_INT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32, DLL_TYPE_UINT32)
 			RETURN self
 
 ENDCLASS
@@ -3383,26 +3443,17 @@ ENDCLASS
 METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 	LOCAL lThreadRuns := FALSE
 	LOCAL oThread
-	LOCAL nProjecthWnd, hEvent, nPages, hAttach, nParam //, nId
+	LOCAL nProjecthWnd, hEvent, nPages, hAttach, nParam, nId
 	LOCAL cProjectName, cProjectOrgName, cExpFormat
 	LOCAL cPreviewName ,cParent, cChild, cKeyfield, cRefField
 	LOCAL xValue
-#if XPPVER >= 2001392
 	LOCAL oLlCallbackNotify			as STRUCTURE LlCallbackNotify
 	LOCAL oLlDrillDownJobNotify	as STRUCTURE LlDrillDownJobNotify
-#else
-	LOCAL oLlCallbackNotify
-	LOCAL oLlDrillDownJobNotify
-#endif
 	LOCAL oListLabel := ::oListLabel
 	UNUSED (xDummy)
 
 	IF nNotification == LL_NTFY_DESIGNERPRINTJOB
-#if XPPVER >= 2001392
 		oLlCallbackNotify	:setAddress(nStructurePtr)
-#else
-		oLlCallbackNotify	:= LlCallbackNotify():New(nStructurePtr)
-#endif
 		DO CASE
 		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_START .or. ;
 				oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_EXPORT_START
@@ -3422,7 +3473,7 @@ METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 
 		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_ABORT .or. ;
 				oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_EXPORT_ABORT
-			_PrintRuns(FALSE, TRUE )
+			_PrintRuns(FALSE, TRUE, snJobId)
 			lThreadRuns := FALSE
 
 		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_FINALIZE .or. ;
@@ -3432,7 +3483,7 @@ METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 
 		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_QUEST_JOBSTATE .or. ;
 				oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_EXPORT_QUEST_JOBSTATE
-			lThreadRuns := _PrintRuns(FALSE, TRUE)
+			lThreadRuns := _PrintRuns(FALSE, TRUE, snJobId )
 			lThreadRuns := FALSE
 
 		ENDCASE
@@ -3442,15 +3493,13 @@ METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 		RETURN IF(lThreadRuns,LL_DESIGNERPRINTTHREAD_STATE_RUNNING,LL_DESIGNERPRINTTHREAD_STATE_STOPPED)
 
 	ELSEIF nNotification == LL_NTFY_VIEWERDRILLDOWN
-#if XPPVER >= 2001392
+
 		oLlDrillDownJobNotify:setAddress(nStructurePtr)
-#else
-		oLlDrillDownJobNotify:= LlDrillDownJobNotify():New(nStructurePtr)
-#endif
+		nId	:= int(oLlDrillDownJobNotify:Get_nID())
 
-		nParam	:= 0
+		nParam	:= snJobId
 
-		IF oLlDrillDownJobNotify:Get_nFunction() == LL_DRILLDOWN_START
+		IF oLlDrillDownJobNotify:Get_nFunction() == LL_DRILLDOWN_START						// 1
 			// Init/retrieve values for the print thread
 			nProjecthWnd	:= oLlDrillDownJobNotify:Get_hWnd()
 			cProjectName	:= oLlDrillDownJobNotify:_pszProjectFileNameFromVar()
@@ -3463,20 +3512,23 @@ METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 			cRefField		:= oLlDrillDownJobNotify:_pszSubreportKeyFieldFromVar()
 			xValue			:= oLlDrillDownJobNotify:_pszKeyValueFromVar()
 			hAttach			:= oLlDrillDownJobNotify:Get_hAttachInfo()
-//			nId				:= oLlDrillDownJobNotify:Get_nID()
 
-			oListLabel:dbReleaseAll()
-			// Start print thread
-			oThread   := Thread():new()
-			oThread   :start( {|| _ThreadPrintDrillDown(oThread, oListLabel, nProjecthWnd, cProjectName, cPreviewName, hAttach, cParent, cKeyfield, cChild, cRefField, xValue )})
-			nParam	:= oThread:ThreadId
+			if snJobId = 0 .or. !_PrintRuns(, TRUE, snJobId)
+				oListLabel:dbReleaseAll()
+				// Start print thread
+				oThread   := Thread():new()
+				nParam    := ++snJobId
+				oThread   :start( {|| _ThreadPrintDrillDown(oThread, oListLabel, nProjecthWnd, cProjectName, cPreviewName, hAttach, cParent, cKeyfield, cChild, cRefField, xValue )})
+			endif
 
-		ELSEIF oLlDrillDownJobNotify:Get_nFunction() == LL_DRILLDOWN_FINALIZE
-			oListLabel:dbRequestAll()
+		ELSEIF oLlDrillDownJobNotify:Get_nFunction() == LL_DRILLDOWN_FINALIZE			// 2
+			if !_PrintRuns(, TRUE, nId )
+				oListLabel:dbRequestAll()
+			endif
 
 		ENDIF
-
 		RETURN nParam
+
 	ELSEIF nNotification == LL_CMND_SAVEFILENAME
 		oListLabel:DesignerUpdated( TRUE )
 
@@ -3491,7 +3543,7 @@ STATIC FUNC _ThreadPrint(oThread, oDesigner, hEvent, nProjecthWnd, cProjectName,
 	LOCAL oListLabel
    local nEvent	:= hEvent
 
-	_PrintRuns(TRUE, FALSE )
+	_PrintRuns(TRUE, FALSE, snJobId )
 	SetEvent(hEvent)
 
 	oListLabel	:= oDesigner:clone(nProjecthWnd, cProjectName)
@@ -3512,7 +3564,7 @@ STATIC FUNC _ThreadPrint(oThread, oDesigner, hEvent, nProjecthWnd, cProjectName,
 
 	LlAssociatePreviewControl(oListLabel:hJob,NIL,1)							// associate the window handle
 
-	_PrintRuns(FALSE, TRUE )
+	_PrintRuns(FALSE, TRUE, snJobId )
 	SetEvent(nEvent)
 
 RETURN NIL
@@ -3525,7 +3577,7 @@ STATIC FUNC _ThreadPrintDrillDown(oThread, oDesigner, nProjecthWnd, cProjectName
 	UNUSED (cKeyField)
 	UNUSED (cRefField)
 
-	_PrintRuns(TRUE, FALSE )
+	_PrintRuns(TRUE, FALSE, snJobId)
 
 	oListLabel	:= oDesigner:clone(nProjecthWnd, cProjectName)
 	oThread:cargo   := {oDesigner, oListLabel }
@@ -3552,26 +3604,25 @@ STATIC FUNC _ThreadPrintDrillDown(oThread, oDesigner, nProjecthWnd, cProjectName
 	oListLabel	:dbReleaseAll()
 	oListLabel	:destroy()
 	LlAssociatePreviewControl(oListLabel:hJob,NIL,1)							// associate the window handle
-	_PrintRuns(FALSE, TRUE )
+	_PrintRuns(FALSE, TRUE, snJobId )
 RETURN NIL
 
 //=========================================
-STATIC FUNCTION _PrintRuns(lSet, lCheck)
+STATIC FUNCTION _PrintRuns(lSet, lCheck, nJobId)
 	STATIC aPrintRuns := {}
-	LOCAL nFindThread := AScan(aPrintRuns,{|a|a[1] == ThreadID() })
+	LOCAL nFindThread := AScan(aPrintRuns,{|a|a[1] == nJobId })
 
 	if nFindThread = 0
 		if lCheck
 			RETURN TRUE
 		endif
-		aAdd(aPrintRuns,{ThreadID(),FALSE})
+		aAdd(aPrintRuns,{nJobId,FALSE})
 		nFindThread := Len(aPrintRuns)
 	endif
 	if lSet != NIL
 		aPrintRuns[nFindThread,2] := lSet
 	endif
 RETURN aPrintRuns[nFindThread,2]
-
 
 //=========================================
 // XClass++ copy
@@ -3888,19 +3939,42 @@ PROC DataSetField(hJob, nMode)
 	next
 RETURN
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+STRUCTURE DEVMODE
+	VAR dmDeviceName				AS STRING[CCHDEVICENAME]				//   1-32
+	VAR dmSpecVersion				AS USHORT                           //  33
+	VAR dmDriverVersion			AS USHORT                           //  35
+	VAR dmSize						AS USHORT                           //  37
+	VAR dmDriverExtra				AS USHORT                           //  39
+	VAR dmFields					AS UINTEGER                         //  41
+	VAR dmOrientation				AS USHORT                           //  45
+	VAR dmPaperSize				AS USHORT                           //  47
+	VAR dmPaperLength				AS USHORT                           //  49
+	VAR dmPaperWidth				AS USHORT                           //  51
+	VAR dmScale						AS USHORT                           //  53
+	VAR dmCopies					AS USHORT                           //  55
+	VAR dmDefaultSource			AS USHORT                           //  57  PaperBin
+	VAR dmPrintQuality			AS USHORT                           //  59
+	VAR dmColor						AS USHORT                           //  61
+	VAR dmDuplex					AS USHORT                           //  63
+	VAR dmYResolution				AS USHORT                           //  65
+	VAR dmTTOption					AS USHORT                           //  67
+	VAR dmCollate					AS USHORT                           //  69
+	VAR dmFormName					AS STRING[CCHFORMNAME]              //  71-102
+	VAR dmUnusedPadding			AS UINTEGER                         // 103
+	VAR dmLogPixels				AS USHORT                           // 107
+	VAR dmBitsPerPel				AS UINTEGER                         // 109
+	VAR dmPelsWidth				AS UINTEGER                         // 113
+	VAR dmPelsHeight				AS UINTEGER                         // 117
+	VAR dmDisplayFrequency		AS UINTEGER                         // 121
+	VAR dmICMMethod				AS UINTEGER                         // 125
+	VAR dmICMIntent				AS UINTEGER                         // 129
+	VAR dmMediaType				AS UINTEGER                         // 133
+	VAR dmDitherType				AS UINTEGER                         // 137
+	VAR dmReserved1				AS UINTEGER                         // 141
+	VAR dmReserved2				AS UINTEGER                         // 145
+	VAR dmPanningWidth			AS UINTEGER                         // 149
+	VAR dmPanningHeight			AS UINTEGER                         // 153-156
+ENDSTRUCTURE
 
 
 

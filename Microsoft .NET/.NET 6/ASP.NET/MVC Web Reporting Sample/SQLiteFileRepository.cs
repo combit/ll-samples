@@ -81,14 +81,14 @@ namespace WebReporting
             }
 
 
-            CustomizedRepostoryItem itemToInsert;
+            CustomizedRepositoryItem itemToInsert;
             bool isUpdate = ContainsItem(item.InternalID);
 
             // Update of existing item?
             if (isUpdate)
             {
                 // The 'item' parameter is always a new instance of the RepositoryItem class. List & Label does not know the custom properties
-                // that we have added to the RepositoryItem in the 'CustomizedRepostoryItem' class, so when we want to update an existing item,
+                // that we have added to the RepositoryItem in the 'CustomizedRepositoryItem' class, so when we want to update an existing item,
                 // the already existing item must be updated manually. The 'Type' and 'InternalID' properties never change.
 
                 itemToInsert = GetItemsFromDb(item.InternalID).First();
@@ -100,7 +100,7 @@ namespace WebReporting
             {
                 // Create an object of our own repository item class from the base class object that we got from List & Label.
                 bool showInToolbar = RepositoryItemType.IsProjectType(item.Type, false);
-                itemToInsert = new CustomizedRepostoryItem(item.InternalID, item.Descriptor, item.Type, item.LastModificationUTC, currentUser, showInToolbar, null, _reportLanguage);
+                itemToInsert = new CustomizedRepositoryItem(item.InternalID, item.Descriptor, item.Type, item.LastModificationUTC, currentUser, showInToolbar, null, _reportLanguage);
             }
 
             // Get a suitable SQL query for INSERT / UPDATE and a call with/without the file content.
@@ -229,9 +229,9 @@ namespace WebReporting
         }
 
         /// <summary>Reads one or all items (itemId = null) from the database.</summary>
-        private IEnumerable<CustomizedRepostoryItem> GetItemsFromDb(string itemId = null)
+        private IEnumerable<CustomizedRepositoryItem> GetItemsFromDb(string itemId = null)
         {
-            List<CustomizedRepostoryItem> result = new List<CustomizedRepostoryItem>();
+            List<CustomizedRepositoryItem> result = new List<CustomizedRepositoryItem>();
 
             var cmd = _db.CreateCommand("SELECT ItemID, Type, Descriptor, TimestampUTC, Author, ShowInToolbar, OriginalFileName, LENGTH(FileContent), Language FROM RepoItems");
 
@@ -249,7 +249,7 @@ namespace WebReporting
             {
                 while (reader.Read())
                 {
-                    result.Add(new CustomizedRepostoryItem(
+                    result.Add(new CustomizedRepositoryItem(
                         /* ItemID */ reader.GetString(0),
                         /* Descriptor */ reader.GetString(2),
                         /* Type */ reader.GetString(1),
@@ -293,7 +293,7 @@ namespace WebReporting
     /// <summary>
     /// Example for a customized repository item class that extends each item with some user-defined properties (Author, Original Filename, ...)
     /// </summary>
-    public class CustomizedRepostoryItem : RepositoryItem
+    public class CustomizedRepositoryItem : RepositoryItem
     {
         /// <summary>Name of the last user who modified the repository item.</summary>
         public string Author { get; set; }
@@ -310,7 +310,7 @@ namespace WebReporting
         /// <summary>Language for the report.</summary>
         public string Language { get; set; }
 
-        public CustomizedRepostoryItem(string itemID, string descriptor, string type, DateTime lastModified, string author, bool showInToolbar, string originalFileName, string language)
+        public CustomizedRepositoryItem(string itemID, string descriptor, string type, DateTime lastModified, string author, bool showInToolbar, string originalFileName, string language)
             : base(itemID, descriptor, type, lastModified)
         {
             Author = author;

@@ -2,13 +2,13 @@
 
 // combit module Headers
 #ifndef CTRLRESVER
- #define CTRLRESVER 28
+ #define CTRLRESVER 29
 #endif
 
 #include <list>
 #include <comdef.h>
-#include "..\cmbtLL28.h"
-#include "LL28interf_designer_extension.h"
+#include "..\cmbtLL29.h"
+#include "LL29interf_designer_extension.h"
 
 class LlXFct;
 

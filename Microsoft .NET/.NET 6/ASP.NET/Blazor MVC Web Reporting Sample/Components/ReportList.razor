@@ -19,7 +19,7 @@
 
     protected override void OnInitialized()
     {
-        IEnumerable<CustomizedRepostoryItem> Model = WebReporting.Controllers.SampleController.GetCurrentRepository().GetAllItems().OfType<CustomizedRepostoryItem>();
+        IEnumerable<CustomizedRepositoryItem> Model = WebReporting.Controllers.SampleController.GetCurrentRepository().GetAllItems().OfType<CustomizedRepositoryItem>();
 
         // D:   Bereite die Liste der Reports für die Headerleiste vor.
         // US:  Build the list of reports for the header bar.

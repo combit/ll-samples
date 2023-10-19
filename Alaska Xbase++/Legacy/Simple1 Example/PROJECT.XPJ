@@ -28,15 +28,15 @@
     DLL.CH
     XBP.CH
     COMMON.CH
-    ..\cmbtll28.CH
+    ..\cmbtll29.CH
     GRA.CH
     APPEVENT.CH
-    cmbtll28.obj
+    cmbtll29.obj
     LLCOMMON.obj
     LULDEMO.obj
     LULMENU.obj
 // $STOP-AUTODEPEND
-    ..\cmbtll28.PRG
+    ..\cmbtll29.PRG
     ..\LLCOMMON.PRG
     LULDEMO.PRG
     LULMENU.PRG

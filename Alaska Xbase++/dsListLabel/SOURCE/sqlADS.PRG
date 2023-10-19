@@ -40,7 +40,6 @@ PROCEDURE sqlADS(nPrintingTarget, lDesignDocument, cFolder)
 	dboInvoice	:= addLLDemo:OpenSelect("select * from Invoice order by billno")
 	dboInvoice	:alias	:= "Invoice"
 
-
 	// D: Items öffnen, hier ein SQL für :prepare() erzeugen
 	// US:open ITEMS, create SQL for :prepare()
 	sqlConn	:= addLLDemo:CreateSql()

@@ -15,7 +15,7 @@ interface
 
 uses
   Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  DB, DBTables, cmbtll28, L28, StdCtrls, L28db, Registry, Windows,
+  DB, DBTables, cmbtll29, L29, StdCtrls, L29db, Registry, Windows,
   Data.Win.ADODB
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
@@ -30,7 +30,7 @@ type
     PreviewButton: TButton;
     PrintButton: TButton;
     DebugCheckBox: TCheckBox;
-    LL: TDBL28_;
+    LL: TDBL29_;
     ADOConnection1: TADOConnection;
     ADOTableArticle: TADOTable;
     dsProducts: TDataSource;

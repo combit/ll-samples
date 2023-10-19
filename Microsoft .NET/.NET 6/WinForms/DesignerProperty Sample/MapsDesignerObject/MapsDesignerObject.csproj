@@ -11,13 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GMap.NET.Core" Version="2.0.1" />
-    <PackageReference Include="GMap.NET.WinForms" Version="2.0.1" />
+    <PackageReference Include="GMap.NET.Core" Version="2.1.7" />
+    <PackageReference Include="GMap.NET.WinForms" Version="2.1.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel28">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel28.dll</HintPath>
+    <Reference Include="combit.ListLabel29">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel29.dll</HintPath>
     </Reference>
   </ItemGroup>
 
