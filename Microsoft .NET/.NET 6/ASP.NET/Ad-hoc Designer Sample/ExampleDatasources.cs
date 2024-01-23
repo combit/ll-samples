@@ -12,6 +12,7 @@ namespace AdhocDesignerSample
         {
             DataSet ds = new System.Data.DataSet();
             var xmlFile = Program.NorthwindFullDatabaseXmlFile;
+            ds.ReadXmlSchema(Program.NorthwindFullDatabaseXmlSchemaFile);
             ds.ReadXml(xmlFile);
             return new AdoDataProvider(ds);
         }

@@ -1,22 +1,21 @@
 [PROJECT]
-    DEBUG         = yes
-    VERSION       = 2.0
-    OPENFILES     = main.PRG
+    DEBUG                = yes
+    Version = 2.3
     Project.xpj
 
 [Project.xpj]
     report container.exe
 
 [report container.exe]
-    COMPILE       = xpp
-    COMPILE_FLAGS = /ga /wi /wl /wu /q /w
-    DEBUG_SAVE    = yes
-    GUI           = yes
-    LINKER        = alink
-    LINK_FLAGS    =
-    RC_COMPILE    = arc
-    RC_FLAGS      = /v
-    OBJ_DIR       = objects
+    COMPILE              = xpp
+    COMPILE_FLAGS        = /ga /wi /wl /wu /q /w
+    DEBUG_SAVE           = yes
+    GUI                  = yes
+    LINKER               = alink
+    LINK_FLAGS           = 
+    RC_COMPILE           = arc
+    RC_FLAGS             = /v
+    OBJ_DIR              = objects
 // $START-AUTODEPEND
     cmbtLL29.obj
     dialog.obj

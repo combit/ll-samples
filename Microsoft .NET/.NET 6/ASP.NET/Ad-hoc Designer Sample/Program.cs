@@ -7,6 +7,7 @@ namespace AdhocDesignerSample
     {
         public static string RepositoryDatabaseFile { get; set; }
         public static string NorthwindFullDatabaseXmlFile { get; set; }
+        public static string NorthwindFullDatabaseXmlSchemaFile { get; set; }
         public static string TempDirectory { get; set; }
 
         public static void Main(string[] args)

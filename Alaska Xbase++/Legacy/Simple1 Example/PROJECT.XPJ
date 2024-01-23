@@ -1,22 +1,21 @@
 [PROJECT]
-    DEBUG         = yes
-    OPENFILES     = LULMENU.PRG
-    VERSION       = 2.0
+    DEBUG                = yes
+    Version = 2.3
     PROJECT.XPJ
 
 [PROJECT.XPJ]
     SIMPLE1.EXE
 
 [SIMPLE1.EXE]
-    COMPILE       = xpp /w /wi /wl /wu
-    COMPILE_FLAGS = /q
-    DEBUG_SAVE    = yes
-    GUI           = yes
-    LINKER        = alink
-    LINK_FLAGS    =
-    RC_COMPILE    = arc
-    RC_FLAGS      = -v
-    OBJ_DIR       = Objects
+    COMPILE              = xpp /w /wi /wl /wu
+    COMPILE_FLAGS        = /q
+    DEBUG_SAVE           = yes
+    GUI                  = yes
+    LINKER               = alink
+    LINK_FLAGS           = 
+    RC_COMPILE           = arc
+    RC_FLAGS             = -v
+    OBJ_DIR              = Objects
 // $START-AUTODEPEND
     STD.CH
     SET.CH
