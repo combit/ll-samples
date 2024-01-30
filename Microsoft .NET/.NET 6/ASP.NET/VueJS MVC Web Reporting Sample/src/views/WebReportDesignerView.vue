@@ -1,6 +1,6 @@
 <template>
     <div class="WebReportDesigner">
-        <WebReportDesigner msg="DesignerComponent opened." />
+        <WebReportDesigner />
     </div>
 </template>
 

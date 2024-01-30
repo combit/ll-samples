@@ -1,6 +1,6 @@
 <template>
     <div class="WebReportViewer">
-        <WebReportViewer msg="ViewerComponent opened." />
+        <WebReportViewer />
     </div>
 </template>
 

@@ -8,10 +8,10 @@
         <br />
         <div class="home-button-flex">
             <div class="button-on-home">
-                <a class="nav-link text-bright button-text" href="https://localhost:5002/WebReportDesigner" target='_blank'>Design</a>
+                <a class="nav-link text-bright button-text" href="https://localhost:3000/WebReportDesigner" target='_blank'>Design</a>
             </div>
             <div class="button-on-home">
-                <a class="nav-link text-bright button-text" href="https://localhost:5002/WebReportViewer" target='_blank'>Preview</a>
+                <a class="nav-link text-bright button-text" href="https://localhost:3000/WebReportViewer" target='_blank'>Preview</a>
             </div>
         </div>
     </div>

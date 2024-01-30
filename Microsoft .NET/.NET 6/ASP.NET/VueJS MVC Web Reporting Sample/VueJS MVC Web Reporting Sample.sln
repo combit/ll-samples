@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "VueJS MVC Web Reporting Sample", "VueJS MVC Web Reporting Sample.esproj", "{7B1F1AF2-1FBE-4156-9F63-8CF528CA543D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B9D33B7-ED40-4988-B6B1-921E76AB6A7E} = {4B9D33B7-ED40-4988-B6B1-921E76AB6A7E}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebReportingBackend", "WebReportingBackend\WebReportingBackend.csproj", "{4B9D33B7-ED40-4988-B6B1-921E76AB6A7E}"
 EndProject
@@ -18,7 +21,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7B1F1AF2-1FBE-4156-9F63-8CF528CA543D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B1F1AF2-1FBE-4156-9F63-8CF528CA543D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B1F1AF2-1FBE-4156-9F63-8CF528CA543D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{7B1F1AF2-1FBE-4156-9F63-8CF528CA543D}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{7B1F1AF2-1FBE-4156-9F63-8CF528CA543D}.Debug|x64.Build.0 = Debug|Any CPU

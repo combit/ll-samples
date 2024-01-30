@@ -84,9 +84,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\TX Text Control Designer Object\TX Text Control Designer Object.csproj">
       <Project>{1452c2e5-6bec-439b-9c15-6c98884c66d2}</Project>
       <Name>TX Text Control Designer Object</Name>
