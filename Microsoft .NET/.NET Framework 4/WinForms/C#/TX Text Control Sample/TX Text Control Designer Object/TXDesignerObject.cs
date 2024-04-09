@@ -30,6 +30,8 @@ namespace TXTextDesignerObject
 
         ListLabel _parentListLabel = null;
         bool _ownsParent = false;
+        bool _contentStillEvaluatedInDesigner = false;
+        bool _contentLoaded = false;
 
         int _textControlScaleFactorDpiX = 0;
         int _rtfPageNumber = 0;
@@ -138,27 +140,15 @@ namespace TXTextDesignerObject
 
         // Is called by List & Label to reset a possible data source which the Designer object is linking to
         // This happens e.g. if you call the real data preview in the Designer if you where in the Layout mode before
-        bool _contentStillEvaluatedInDesigner = false;
         protected override void OnResetPrintState(EventArgs e)
         {
-            String FileContents = DocumentRTFContent;
-            if (
-                IsPrinting
-                || !_contentStillEvaluatedInDesigner
-               )
-            {
-                bool bRTFContentContainsLLFormulas = RTFContentContainsLLFormulas(ref FileContents);
-                if (bRTFContentContainsLLFormulas)
-                {
-                    EvaluateRTFContent(ref FileContents);
-                }
-            }
-            LoadRTFContent(FileContents);
+            _contentLoaded = false;
+            _contentStillEvaluatedInDesigner = false;
 
             // PageMargins must be set to 0 so that it fits neatly into the printable area
             _serverTXTextControl.PageMargins = new PageMargins(0, 0, 0, 0);
 
-            //******************************   Kopf und Fusszeilen entfernen --> machen keinen Sinn in diesem Zusammenhang
+            // Remove header- and footer-lines which makes no sense
             if (_serverTXTextControl.HeadersAndFooters != null)
                 _serverTXTextControl.HeadersAndFooters.Remove(HeaderFooterType.All);
 
@@ -170,7 +160,10 @@ namespace TXTextDesignerObject
         protected override void OnGetFieldHeightInformation(GetFieldHeightInformationEventArgs e)
         {
             //System.Diagnostics.Debug.WriteLine(string.Format(">>OnGetFieldHeightInformation.AvailableSpace.Height: {0}", e.AvailableSpace.Height));
-            
+
+            // load the rtf document as late as possible
+            LoadRTFContentIfNeeded();
+
             _rtfPageNumber += 1;
 
             // do we have something to render?
@@ -231,7 +224,7 @@ namespace TXTextDesignerObject
 
             //System.Diagnostics.Debug.WriteLine(string.Format("<<OnGetFieldHeightInformation.MinimalHeight: {0} - OnGetFieldHeightInformation.IdealHeight: {1}", e.MinimalHeight, e.IdealHeight));
         }
-
+        
         // After the user has edited the object, you are asked by List & Label to draw the object. 
         // The event DrawDesignerObject is triggered for this purpose. A Graphics object and the rectangle of the object are passed 
         // through EventArguments. Now, you can draw in the work area with the known GDI + methods
@@ -239,6 +232,11 @@ namespace TXTextDesignerObject
         {
             //System.Diagnostics.Debug.WriteLine(string.Format(">>OnDrawDesignerObject.ClipRectangle.Height: {0}", e.ClipRectangle.Height));
 
+            // load the rtf document as late as possible
+            // hint: within a table the rtf document is still loaded in OnGetFieldHeightInformation() - necessary for height calculation!
+            if (!IsInTableCell)
+                LoadRTFContentIfNeeded();
+            
             // Only in layout mode or printing?
             if (e.IsDesignMode)
             {
@@ -309,6 +307,7 @@ namespace TXTextDesignerObject
             Metafile lobjMetafile = _serverTXTextControl.GetPages()[1].GetImage(TXTextControl.Page.PageContent.MainText);
             Rectangle lobjRectangle = new Rectangle(e.ClipRectangle.Left, e.ClipRectangle.Top, Convert.ToInt32(CoordinateHelper.ConvertUnit(Convert.ToDouble(_serverTXTextControl.GetPages()[1].TextBounds.Width), CoordinateHelper.ConversionUnit.Twip, UnitSystem, null)), Convert.ToInt32(CoordinateHelper.ConvertUnit(Convert.ToDouble(_serverTXTextControl.GetPages()[1].TextBounds.Height), CoordinateHelper.ConversionUnit.Twip, UnitSystem, null)));
             e.Graphics.DrawImage(lobjMetafile, lobjRectangle);
+			
             lobjMetafile.Dispose();
             lobjMetafile = null;
 
@@ -357,6 +356,7 @@ namespace TXTextDesignerObject
             clone._expressionEvaluator = null;
             clone._expressionEvaluatorForUsedIdentifiers = null;
             clone._contentStillEvaluatedInDesigner = false;
+            clone._contentLoaded = false;
 
             clone._serverTXTextControl = new ServerTextControl();
             clone._serverTXTextControl.Create();
@@ -594,6 +594,37 @@ namespace TXTextDesignerObject
             catch (Exception exc)
             {
                 System.Diagnostics.Debug.WriteLine(exc.Message);
+            }
+        }
+
+        private void LoadRTFContentIfNeeded()
+        {
+            if (!_contentLoaded)
+            {
+                String FileContents = DocumentRTFContent;
+                if (
+                    IsPrinting
+                    || !_contentStillEvaluatedInDesigner
+                    )
+                {
+                    bool bRTFContentContainsLLFormulas = RTFContentContainsLLFormulas(ref FileContents);
+                    if (bRTFContentContainsLLFormulas)
+                    {
+                        EvaluateRTFContent(ref FileContents);
+                    }
+                }
+                LoadRTFContent(FileContents);
+
+                // PageMargins must be set to 0 so that it fits neatly into the printable area
+                _serverTXTextControl.PageMargins = new PageMargins(0, 0, 0, 0);
+
+                // Remove header- and footer-lines which makes no sense
+                if (_serverTXTextControl.HeadersAndFooters != null)
+                    _serverTXTextControl.HeadersAndFooters.Remove(HeaderFooterType.All);
+
+                _rtfPageNumber = 0;
+
+                _contentLoaded = true;
             }
         }
 

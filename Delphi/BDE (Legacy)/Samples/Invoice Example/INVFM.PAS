@@ -354,7 +354,7 @@ begin
      {D:  Designer starten}
      {US: Start designer  }
      LL.LlDefineLayout(handle,'Design invoice',
-         OBJECT_LIST, FileName);
+         LL_PROJECT_LIST, FileName);
 
 end;
 
