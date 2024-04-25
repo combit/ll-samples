@@ -115,7 +115,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(826, 502);
             this.Name = "Form1";
-            this.Text = "List & Label C# RTF Control Sample";
+            this.Text = "List & Label RTF Control Sample";
             this.ResumeLayout(false);
 
         }

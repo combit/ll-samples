@@ -1,22 +1,9 @@
 ﻿using combit.Reporting.Repository;
 using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Linq;
-using System.Threading;
 
-namespace WebReporting
+namespace WebReportingSample
 {
-
-    /// <summary>
-    /// DE: Beispiel-Implementierung eines Repositories für ListLabel, das die Dateien mit Hilfe einer SQLite-Datenbankdatei verwaltet.
-    ///     Details sind der Dokumentation für das IRepository-Interface zu entnehmen.
-    ///     
-    /// EN: Demo implementation of a ListLabel file repository which uses a SQLite database file to store the repository items.
-    ///     Please check the documentation of the IRepository interface for more details.
-    /// </summary>
     public class SQLiteFileRepository : IRepository
     {
 
@@ -50,17 +37,7 @@ namespace WebReporting
         // See Interface
         public void CreateOrUpdateItem(RepositoryItem item, string userImportData, Stream sourceStream)
         {
-            string currentUser = null;
-            try
-            {
-                currentUser = HttpContext.Current.User.Identity.Name;
-            }
-            catch (NullReferenceException)
-            {
-            }
-
-            if (string.IsNullOrEmpty(currentUser))
-                currentUser = "[Anonymous User]";
+            string currentUser = "[Anonymous User]";
 
             // Convert stream from List & Label to byte array to store it in the DB
             // Warning: sourceStream may be null! In that case, only the metadata should be changed in the database. See the documentation for IRepository.CreateOrUpdateItem() for details.
@@ -176,7 +153,7 @@ namespace WebReporting
                  "SELECT FileContent FROM RepoItems WHERE ItemID = @ItemID")
                     .SetParameter("ItemID", itemID).ExecuteScalar();
 
-            byte[] content = new byte[0];
+            byte[] content = Array.Empty<byte>();
 
             if (fileContent is byte[] byteContent)
             {
@@ -231,7 +208,7 @@ namespace WebReporting
         /// <summary>Reads one or all items (itemId = null) from the database.</summary>
         private IEnumerable<CustomizedRepositoryItem> GetItemsFromDb(string itemId = null)
         {
-            List<CustomizedRepositoryItem> result = new List<CustomizedRepositoryItem>();
+            List<CustomizedRepositoryItem> result = new();
 
             var cmd = _db.CreateCommand("SELECT ItemID, Type, Descriptor, TimestampUTC, Author, ShowInToolbar, OriginalFileName, LENGTH(FileContent), Language FROM RepoItems");
 
@@ -239,7 +216,7 @@ namespace WebReporting
             cmd.CommandText += " WHERE (Language isnull OR Language=@Language)";
             cmd.SetParameter("Language", _reportLanguage);
 
-            if (itemId != null)   // Optional: select a specific item by it`s ID
+            if (itemId != null)   // Optional: select a specific item by its ID
             {
                 cmd.CommandText += " AND (ItemID = @ItemId)";
                 cmd.SetParameter("ItemId", itemId);
@@ -348,4 +325,3 @@ namespace WebReporting
         }
     }
 }
-

@@ -24,7 +24,7 @@ namespace TXTextDesignerObject
         FreeText,   // free rtf-text; maybe with formula
         Identifier, // variable or field
     }
-    [System.Runtime.Versioning.SupportedOSPlatform("windows")]
+    
     public class TXDesignerObject : DesignerObject
     {
         #region Declarations

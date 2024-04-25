@@ -31,8 +31,6 @@ namespace VueJsMvcWebReportingSample.DataAccess
     public static class SampleData
     {
 
-        //Suppress Irrelevant Build-Warnings
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "The Software is only available on Windows")]
         public static DataProviderCollection CreateProviderCollection(string reportName, bool forDesign)
         {
             //DE: Caching der Daten
@@ -123,7 +121,6 @@ namespace VueJsMvcWebReportingSample.DataAccess
 
         #region Public Methods
         //needed for extended sample
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "This Software is only available on Windows")]
         public static DataSet CreateDataSet(bool isEmployeeList)
         {
             //D: DataSet Objekt erstellen
@@ -133,8 +130,8 @@ namespace VueJsMvcWebReportingSample.DataAccess
             //D: Laden der Daten (XML) in das DataSet
             //US: load DataSet from the XML
             var xmlFile = isEmployeeList ? Program.NorthwindSmallDatabaseWithEmployeeListXmlFile : Program.NorthwindSmallDatabaseXmlFile;
-            var xmlShemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
-            ds.ReadXmlSchema(xmlShemaFile);
+            var xmlSchemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
+            ds.ReadXmlSchema(xmlSchemaFile);
             ds.ReadXml(xmlFile);
             
             //D: Datumsangaben modernisieren
@@ -166,8 +163,8 @@ namespace VueJsMvcWebReportingSample.DataAccess
             //D: Laden der Daten (XML) in das DataSet
             //US: load DataSet from the XML
             var xmlFile = Program.NorthwindFullDatabaseXmlFile;
-            var xmlShemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
-            ds.ReadXmlSchema(xmlShemaFile);
+            var xmlSchemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
+            ds.ReadXmlSchema(xmlSchemaFile);
             ds.ReadXml(xmlFile);
 
             //D: Datumsangaben modernisieren

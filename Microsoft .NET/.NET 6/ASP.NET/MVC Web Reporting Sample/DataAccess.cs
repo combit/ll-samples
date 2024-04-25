@@ -73,10 +73,10 @@ namespace WebReporting.DataAccess
             //D: Laden der Daten (XML) in das DataSet
             //US: load DataSet from the XML
             var xmlFile = Program.GanttDatabaseXmlFile;
-            var xmlShemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
-            ds.ReadXmlSchema(xmlShemaFile);
+            var xmlSchemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
+            ds.ReadXmlSchema(xmlSchemaFile);
             ds.ReadXml(xmlFile);
-                        
+            
             //D: Datumsangaben modernisieren
             //US: modernize dates
             try
@@ -105,7 +105,7 @@ namespace WebReporting.DataAccess
             {
                 throw new ListLabelException(ex.ToString());
             }
-                        
+            
             return ds;
         }
         #endregion
@@ -130,8 +130,8 @@ namespace WebReporting.DataAccess
             //D: Laden der Daten (XML) in das DataSet
             //US: load DataSet from the XML
             var xmlFile = isEmployeeList ? Program.NorthwindSmallDatabaseWithEmployeeListXmlFile : Program.NorthwindSmallDatabaseXmlFile;
-            var xmlShemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
-            ds.ReadXmlSchema(xmlShemaFile);
+            var xmlSchemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
+            ds.ReadXmlSchema(xmlSchemaFile);
             ds.ReadXml(xmlFile);
             
             //D: Datumsangaben modernisieren
@@ -163,8 +163,8 @@ namespace WebReporting.DataAccess
             //D: Laden der Daten (XML) in das DataSet
             //US: load DataSet from the XML
             var xmlFile = Program.NorthwindFullDatabaseXmlFile;
-            var xmlShemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
-            ds.ReadXmlSchema(xmlShemaFile);
+            var xmlSchemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
+            ds.ReadXmlSchema(xmlSchemaFile);
             ds.ReadXml(xmlFile);
 
             //D: Datumsangaben modernisieren

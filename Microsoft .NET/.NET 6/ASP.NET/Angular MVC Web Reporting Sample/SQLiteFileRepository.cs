@@ -214,9 +214,9 @@ namespace AngularMVCWebReportingSample
 
             // Define language for the reports
             cmd.CommandText += " WHERE (Language isnull OR Language=@Language)";
-            cmd.SetParameter("Language", _reportLanguage);//debug _reportLanguage ersetzt durch "de", warum funktioniert "de" aber "en" nicht?
+            cmd.SetParameter("Language", _reportLanguage);
 
-            if (itemId != null)   // Optional: select a specific item by it`s ID
+            if (itemId != null)   // Optional: select a specific item by its ID
             {
                 cmd.CommandText += " AND (ItemID = @ItemId)";
                 cmd.SetParameter("ItemId", itemId);

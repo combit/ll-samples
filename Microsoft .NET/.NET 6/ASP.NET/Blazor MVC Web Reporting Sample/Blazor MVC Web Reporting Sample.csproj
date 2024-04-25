@@ -2,43 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <UserSecretsId>aspnet-Blazor-138A5B9E-C688-4083-81C1-0FF2FA8A0412</UserSecretsId>
-	<ApplicationIcon />
-    <OutputType>Exe</OutputType>
-    <StartupObject />
-	<RootNamespace>WebReporting</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Prefer32Bit>false</Prefer32Bit>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-  
-  <ItemGroup>
-    <Compile Remove="Content\**" />
-    <Compile Remove="Scripts\**" />
-    <Content Remove="Content\**" />
-    <Content Remove="Scripts\**" />
-    <EmbeddedResource Remove="Content\**" />
-    <EmbeddedResource Remove="Scripts\**" />
-    <None Remove="Content\**" />
-    <None Remove="Scripts\**" />
-  </ItemGroup>
-  
-
 
   <ItemGroup>
-    <None Include="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+    <Content Remove="Pages\WebReportViewer.razor" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.21" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.21" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.14" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.14" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="System.CodeDom" Version="7.0.0" />
+    <PackageReference Include="System.CodeDom" Version="8.0.0" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
-  
+
+
   <ItemGroup>
     <Reference Include="combit.ListLabel29">
       <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
@@ -47,5 +28,7 @@
       <HintPath>..\..\Assemblies\combit.ListLabel29.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+
 
 </Project>

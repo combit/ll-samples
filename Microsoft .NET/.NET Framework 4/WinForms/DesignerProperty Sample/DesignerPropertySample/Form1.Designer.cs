@@ -569,7 +569,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "List & Label C# DesignerProperty Sample";
+            this.Text = "List & Label DesignerProperty Sample";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

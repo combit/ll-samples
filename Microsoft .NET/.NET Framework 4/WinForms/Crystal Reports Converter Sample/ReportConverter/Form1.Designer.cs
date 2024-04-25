@@ -163,7 +163,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "List & Label C# Crystal Reports Converter Sample";
+            this.Text = "List & Label Crystal Reports Converter Sample";
             this.ResumeLayout(false);
             this.PerformLayout();
 

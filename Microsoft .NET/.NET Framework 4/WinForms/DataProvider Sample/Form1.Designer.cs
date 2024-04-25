@@ -100,7 +100,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "List & Label C# Custom Data Provider Sample";
+            this.Text = "List & Label Custom Data Provider Sample";
             this.ResumeLayout(false);
 
         }

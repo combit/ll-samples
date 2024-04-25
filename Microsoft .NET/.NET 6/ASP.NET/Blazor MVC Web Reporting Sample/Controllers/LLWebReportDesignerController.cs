@@ -1,15 +1,16 @@
-﻿using combit.Reporting;
+﻿using System.Security.Principal;
+using System.Web;
+using combit.Reporting;
 using combit.Reporting.Web.WebReportDesigner.Server;
-using Microsoft.AspNetCore.Authorization;
+using combit.Reporting.Web.WebReportDesigner.Server.JsonModels;
 
-namespace WebReporting.Controllers
+namespace WebReportingSample.Controllers
 {
-    [Authorize]
     public class LLWebReportDesignerController : WebReportDesignerController
     {
         public override void OnProvideListLabel(ProvideListLabelContext provideListLabelContext)
         {
-            ListLabel ll = DefaultSettings.GetListLabelInstance(provideListLabelContext.RepositoryId, null);
+            ListLabel ll = DefaultSettings.GetListLabelInstance(provideListLabelContext.RepositoryId);
 
             provideListLabelContext.NewInstance = ll;
         }
@@ -26,7 +27,10 @@ namespace WebReporting.Controllers
 
         public override void OnProvideProhibitedActions(ProvideProhibitedActionsContext provideProhibitedActionsContext)
         {
-            base.OnProvideProhibitedActions(provideProhibitedActionsContext);
+            foreach (WebReportDesignerAction action in DefaultSettings.GetProhibitedActions())
+            {
+                provideProhibitedActionsContext.ProhibitedActions.Add(action);
+            }
         }
     }
 }

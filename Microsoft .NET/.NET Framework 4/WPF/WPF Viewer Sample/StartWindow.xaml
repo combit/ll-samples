@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LLViewer"
         mc:Ignorable="d"
-        Title="List &amp; Label C# WPF Viewer Sample" Height="200" MinHeight="200" MaxHeight="200" Width="360" MinWidth="360" MaxWidth="360" Icon="ll.ico">
+        Title="List &amp; Label WPF Viewer Sample" Height="200" MinHeight="200" MaxHeight="200" Width="360" MinWidth="360" MaxWidth="360" Icon="ll.ico">
     <Grid>
         <TextBlock x:Name="textBlock" Height="65" Margin="25,10,10,0" TextWrapping="Wrap" Text="Would you like to open the Native WPF Viewer or the Hosted Preview Control?" VerticalAlignment="Top" Padding="10,0,0,0" FontSize="16" />
         <Button x:Name="nativeViewerbtn" Content="Native WPF Viewer" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top" Width="130" FontSize="12" Click="NativeViewerbtn_Click"/>

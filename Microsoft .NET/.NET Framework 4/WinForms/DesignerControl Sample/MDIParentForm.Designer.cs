@@ -88,7 +88,7 @@
             this.MainMenuStrip = this.menuStrip1;
 			this.MinimumSize = new System.Drawing.Size(1042, 741);
             this.Name = "MdiParentForm";
-            this.Text = "List & Label C# Designer Control Sample";
+            this.Text = "List & Label Designer Control Sample";
             this.TransparencyKey = System.Drawing.Color.Empty;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

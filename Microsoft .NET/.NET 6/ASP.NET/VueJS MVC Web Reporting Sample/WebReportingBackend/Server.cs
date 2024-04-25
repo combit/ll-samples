@@ -1,20 +1,20 @@
 ﻿using System.IO;
 
-namespace  VueJsMvcWebReportingSample
+namespace VueJsMvcWebReportingSample
 
 {
     public class Server
     {
         public static string MapPath(string path)
         {
-            if (HostingEnviroment.Current == null)
+            if (HostingEnvironment.Current == null)
             {
                 return path.Replace("~", Directory.GetCurrentDirectory());
 
             }
             else
             {
-                return path.Replace("~", HostingEnviroment.Current.ContentRootPath);
+                return path.Replace("~", HostingEnvironment.Current.ContentRootPath);
 
             }
         }

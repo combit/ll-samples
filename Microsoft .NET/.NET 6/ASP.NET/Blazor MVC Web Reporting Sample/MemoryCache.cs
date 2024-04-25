@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 
-namespace WebReporting
+namespace WebReportingSample
 {
-    public static class MemoryCache
+    public class MemoryCache
     {
         public static void Configure(IMemoryCache memoryCache)
         {

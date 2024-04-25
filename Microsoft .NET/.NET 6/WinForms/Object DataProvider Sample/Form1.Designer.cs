@@ -133,7 +133,7 @@ namespace combit.Reporting.CSharpSample.ObjectDataProviderSample
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "List & Label C# ObjectDataProvider Sample";
+            this.Text = "List & Label ObjectDataProvider Sample";
             this.ResumeLayout(false);
             this.PerformLayout();
 

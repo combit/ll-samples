@@ -45,7 +45,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(410, 22);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Dieses Beispiel zeigt die Erweiterung des Designers mit C#.";
+            this.label3.Text = "Dieses Beispiel zeigt die Erweiterung des Designers.";
             // 
             // label1
             // 
@@ -61,7 +61,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(410, 16);
             this.label4.TabIndex = 5;
-            this.label4.Text = "This sample shows the extension of the designer with C#.";
+            this.label4.Text = "This sample shows the extension of the designer.";
             // 
             // label5
             // 
@@ -169,7 +169,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "List & Label C# Designer Extension Sample";
+            this.Text = "List & Label Designer Extension Sample";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ResumeLayout(false);
 

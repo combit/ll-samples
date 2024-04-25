@@ -77,7 +77,7 @@ namespace ClientApiExample.Dialogs
             }
             else if (tabControl1.SelectedTab == tabUseDateValue)  // Date Value
             {
-                if (dateTimePicker.Value == null)
+                if (dateTimePicker.Value == DateTime.MinValue)
                 {
                     MessageBox.Show("Please enter a date value.");
                     return;

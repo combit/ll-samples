@@ -1,12 +1,9 @@
 ﻿using combit.Reporting;
 using combit.Reporting.DataProviders;
 using combit.Reporting.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using combit.Reporting.Web.WebReportDesigner.Server;
 
-namespace WebReporting
+namespace WebReportingSample
 {
     static class CmbtSettings
     {
@@ -15,7 +12,7 @@ namespace WebReporting
         public static LlLanguage Language { get { return LlLanguage.English; } }
         //public static LlLanguage Language { get { return LlLanguage.German; } }
 
-        // D: Setzen Sie die gewünschte Einheit auf Inch oder Millimeter. SysDefault Werte verwenden für den WebReportDesigner immer Millimeter, um die Synchronisierung zwischen Client und Server zu gewährleisten.
+        // D: Setzen Sie die gewünschte Einheit auf Zoll (Inch) oder Millimeter. SysDefault Werte verwenden für den WebReportDesigner immer Millimeter, um die Synchronisierung zwischen Client und Server zu gewährleisten.
         // US: Set the Unit to Inch or Millimeter. SysDefault Values automatically use millimeter in the web report designer context to make sure client and server units are synchronized. 
         public static LlUnits Unit { get { return LlUnits.Inch_1_1000; } }
         //public static LlUnits Unit { get { return LlUnits.Millimeter_1_100; } }
@@ -48,10 +45,22 @@ namespace WebReporting
     public static class DefaultSettings
     {
         private static SQLiteFileRepository _fileRepository;
+
+        public static string DefaultSelectedReport
+        {
+            get
+            {
+                if (CmbtSettings.Language == LlLanguage.German)
+                {
+                    return "Kundenliste mit Sortierung";
+                }
+                return "Customer list with sort order";
+            }
+        }
         
         // D:   Für Etikettenprojekte wird die Tabelle "Customers" ausgewählt.
         // US:  The Table "Customers" is chosen for label projects.
-        private static string DataMember
+        public static string DataMember
         {
             get
             {
@@ -102,7 +111,7 @@ namespace WebReporting
 
         public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)
         {
-            ListLabel LL = new ListLabel
+            ListLabel LL = new()
             {
                 // D:   Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
                 // US:  Set license key for List & Label. If not set, a license error will be displayed on non-development machines.
@@ -117,6 +126,23 @@ namespace WebReporting
             };
 
             return LL;
+        }
+
+        public static WebReportDesignerAction[] GetProhibitedActions()
+        {
+            //US: You can modify the user prohibitions here by uncommenting actions which should be prohibited.
+            //D: Hier können Sie die Benutzerverbote ändern, indem Sie die zu sperrende Aktion einkommentieren.
+            return new WebReportDesignerAction[]
+            {
+                //WebReportDesignerAction.CreateNewProject,
+                //WebReportDesignerAction.BrowseProjects,
+                //WebReportDesignerAction.DeleteProject,
+                //WebReportDesignerAction.DownloadProject,
+                //WebReportDesignerAction.SaveAsProject,
+                //WebReportDesignerAction.SaveProject,
+                //WebReportDesignerAction.UnlockProject,
+                //WebReportDesignerAction.UploadProject,
+            };
         }
     }
 }

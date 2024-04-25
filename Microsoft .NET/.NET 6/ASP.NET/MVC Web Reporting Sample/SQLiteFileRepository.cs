@@ -239,7 +239,7 @@ namespace WebReporting
             cmd.CommandText += " WHERE (Language isnull OR Language=@Language)";
             cmd.SetParameter("Language", _reportLanguage);
 
-            if (itemId != null)   // Optional: select a specific item by it`s ID
+            if (itemId != null)   // Optional: select a specific item by its ID
             {
                 cmd.CommandText += " AND (ItemID = @ItemId)";
                 cmd.SetParameter("ItemId", itemId);

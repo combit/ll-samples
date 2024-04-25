@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace WebReporting
+namespace WebReportingSample
 {
     public class HttpContext
     {
@@ -10,6 +10,6 @@ namespace WebReporting
             _context = context;
         }
 
-        public static Microsoft.AspNetCore.Http.HttpContext Current => _context.HttpContext; 
+        public static Microsoft.AspNetCore.Http.HttpContext Current => _context.HttpContext;
     }
 }

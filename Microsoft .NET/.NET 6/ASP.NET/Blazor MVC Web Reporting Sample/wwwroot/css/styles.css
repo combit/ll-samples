@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+body {
+    margin:0;
+}
+
+.nav-link {
+    text-decoration: none;
+}
+
+.createSomeMargin {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.button-on-home {
+    margin: 10px 5px;
+    padding: 15px 30px;
+    background: #0693e3;
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+}
+
+.home-button-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-bright {
+    color: antiquewhite;
+}
+
+#wrdFrame{
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+body > .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+.button-text {
+    margin: 4px 6px 4px 6px;
+}

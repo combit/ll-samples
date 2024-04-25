@@ -1,10 +1,9 @@
 <template>
-    <h1 style="text-align: center;">Vue.JS MVC Web Reporting Sample</h1>
+    <h1 style="text-align: center;">Vue.js MVC Web Reporting Sample</h1>
     <br />
     <div class="createSomeMargin">
-        <p>DE: In diesem Beispiel wird die Einbindung des WebReportDesigners und des WebReportViewers mit einem ASP.NET Core Backend und einem Vue.JS Frontend gezeigt.</p>
-        <p>EN: This example shows the integration of the WebReportDesigner and the WebReportViewer with an ASP.NET Core backend and a Vue.JS frontend.</p>
-        <br />
+        <p style="text-align: center;">DE: In diesem Beispiel wird die Einbindung des Web Report Designers und des Web Report Viewers mit einem ASP.NET Core-Backend und einem Vue.js-Frontend gezeigt.</p>
+        <p style="text-align: center;">EN: This example shows the integration of the Web Report Designer and the Web Report Viewer with an ASP.NET Core backend and a Vue.js frontend.</p>
         <br />
         <div class="home-button-flex">
             <div class="button-on-home">

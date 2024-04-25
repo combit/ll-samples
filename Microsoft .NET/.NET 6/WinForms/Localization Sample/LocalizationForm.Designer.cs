@@ -121,7 +121,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LocalizationForm";
-            this.Text = "List & Label C# Localization Sample";
+            this.Text = "List & Label Localization Sample";
             this.ResumeLayout(false);
 
         }

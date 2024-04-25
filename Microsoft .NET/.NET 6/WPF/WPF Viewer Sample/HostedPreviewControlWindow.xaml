@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:combit.Reporting.Wpf;assembly=combit.ListLabel29.Wpf"
         mc:Ignorable="d"
-        Title="List &amp; Label C# WPF Viewer Sample" Height="700" Width="950">
+        Title="List &amp; Label WPF Viewer Sample" Height="700" Width="950">
     <Window.Resources>
         <Style x:Key="expanderItem" TargetType="{x:Type Control}">
             <Setter Property="Margin" Value="2" />

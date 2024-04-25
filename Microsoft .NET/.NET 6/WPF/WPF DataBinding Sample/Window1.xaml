@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:combit.Reporting.Wpf;assembly=combit.ListLabel29.Wpf"
         mc:Ignorable="d"
         
-        Title="List &amp; Label C# WPF DataBinding Sample" MinHeight="750" Height="750" MinWidth="803" Width="803" FontSize="16" FontFamily="Segoe UI Light">
+        Title="List &amp; Label WPF DataBinding Sample" MinHeight="750" Height="750" MinWidth="803" Width="803" FontSize="16" FontFamily="Segoe UI Light">
 
     <DockPanel>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="45" Margin="20,10,0,0" TextWrapping="Wrap" Text="List &amp; Label C# WPF DataBinding Sample" VerticalAlignment="Top" Width="763" FontSize="25" Padding="10,0,0,0" DockPanel.Dock="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="45" Margin="20,10,0,0" TextWrapping="Wrap" Text="List &amp; Label WPF DataBinding Sample" VerticalAlignment="Top" Width="763" FontSize="25" Padding="10,0,0,0" DockPanel.Dock="Top"/>
         <TabControl x:Name="tabControl" MaxHeight="140" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="14" BorderThickness="0" Margin="10,0,10,10" BorderBrush="Transparent"  Background="Transparent" DockPanel.Dock="Top" >
             <TabItem Header="DataSet" Background="Transparent">
                 <Grid>

@@ -105,7 +105,7 @@
             this.Controls.Add(this.statusBar);
             this.MinimumSize = new System.Drawing.Size(800, 750);
             this.Name = "Form1";
-            this.Text = "List & Label C# Viewer Sample";
+            this.Text = "List & Label Viewer Sample";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.Form1_Closing);
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel2)).EndInit();

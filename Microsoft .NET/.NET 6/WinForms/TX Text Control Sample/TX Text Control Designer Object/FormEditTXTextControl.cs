@@ -5,7 +5,6 @@ using combit.Reporting;
 
 namespace TXTextDesignerObject
 {
-    [System.Runtime.Versioning.SupportedOSPlatform("windows")]
     public partial class FormEditTXTextControl : Form
     {
         

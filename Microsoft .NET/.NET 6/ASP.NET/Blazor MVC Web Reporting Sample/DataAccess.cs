@@ -7,7 +7,7 @@ using combit.Reporting;
 using Microsoft.Extensions.Caching.Memory;
 using System.IO;
 
-namespace WebReporting.DataAccess
+namespace WebReportingSample.DataAccess
 {
     static class CmbtSettings
     {
@@ -43,7 +43,7 @@ namespace WebReporting.DataAccess
             }
             else
             {
-                DataProviderCollection providerCollection = new DataProviderCollection();
+                DataProviderCollection providerCollection = new();
                 DataSet ds;
                 if (DataAccess.CmbtSettings.UnlimitedRecordsList.Contains(reportName))
                 {
@@ -68,15 +68,15 @@ namespace WebReporting.DataAccess
         #region Gantt DB
         public static DataSet GantDS()
         {
-            DataSet ds = new DataSet();
+            DataSet ds = new();
 
             //D: Laden der Daten (XML) in das DataSet
             //US: load DataSet from the XML
             var xmlFile = Program.GanttDatabaseXmlFile;
-            var xmlShemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
-            ds.ReadXmlSchema(xmlShemaFile);
+            var xmlSchemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
+            ds.ReadXmlSchema(xmlSchemaFile);
             ds.ReadXml(xmlFile);
-                        
+            
             //D: Datumsangaben modernisieren
             //US: modernize dates
             try
@@ -84,7 +84,7 @@ namespace WebReporting.DataAccess
 
                 int yearOffset = DateTime.Now.Year - 2010 + 15;
 
-                Dictionary<string, List<string>> tablesWithDates = new Dictionary<string, List<string>>
+                Dictionary<string, List<string>> tablesWithDates = new()
                 {
                     { "Project", new List<string> { "BeginDate" } },
                     { "Pollen", new List<string> { "PeriodBegin", "PeriodEnd" } }
@@ -105,7 +105,7 @@ namespace WebReporting.DataAccess
             {
                 throw new ListLabelException(ex.ToString());
             }
-                        
+            
             return ds;
         }
         #endregion
@@ -130,8 +130,8 @@ namespace WebReporting.DataAccess
             //D: Laden der Daten (XML) in das DataSet
             //US: load DataSet from the XML
             var xmlFile = isEmployeeList ? Program.NorthwindSmallDatabaseWithEmployeeListXmlFile : Program.NorthwindSmallDatabaseXmlFile;
-            var xmlShemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
-            ds.ReadXmlSchema(xmlShemaFile);
+            var xmlSchemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
+            ds.ReadXmlSchema(xmlSchemaFile);
             ds.ReadXml(xmlFile);
             
             //D: Datumsangaben modernisieren
@@ -141,7 +141,7 @@ namespace WebReporting.DataAccess
                 int yearOffset = DateTime.Now.Year - 2010 + 15;
                 DataTable dtOrder = ds.Tables["Orders"];
 
-                List<String> dateColumns = new List<string>() { "OrderDate", "RequiredDate", "ShippedDate" };
+                List<String> dateColumns = new() { "OrderDate", "RequiredDate", "ShippedDate" };
                 foreach (string dateColumn in dateColumns)
                 {
                     dtOrder.Select().ToList<DataRow>().ForEach(r => r[dateColumn] = (r[dateColumn] != DBNull.Value) ? ((DateTime)r[dateColumn]).AddYears(yearOffset) : r[dateColumn]);
@@ -158,13 +158,13 @@ namespace WebReporting.DataAccess
 
         public static DataSet CreateFullDataSet()
         {
-            DataSet ds = new System.Data.DataSet();
+            DataSet ds = new();
 
             //D: Laden der Daten (XML) in das DataSet
             //US: load DataSet from the XML
             var xmlFile = Program.NorthwindFullDatabaseXmlFile;
-            var xmlShemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
-            ds.ReadXmlSchema(xmlShemaFile);
+            var xmlSchemaFile = Path.Combine(Path.GetDirectoryName(xmlFile), Path.GetFileNameWithoutExtension(xmlFile) + "_schema.xml");
+            ds.ReadXmlSchema(xmlSchemaFile);
             ds.ReadXml(xmlFile);
 
             //D: Datumsangaben modernisieren
@@ -174,7 +174,7 @@ namespace WebReporting.DataAccess
                 int yearOffset = DateTime.Now.Year - 2010 + 15;
                 DataTable dtOrder = ds.Tables["Orders"];
 
-                List<String> dateColumns = new List<string>() { "OrderDate", "RequiredDate", "ShippedDate" };
+                List<String> dateColumns = new() { "OrderDate", "RequiredDate", "ShippedDate" };
                 foreach (string dateColumn in dateColumns)
                 {
                     dtOrder.Select().ToList<DataRow>().ForEach(r => r[dateColumn] = (r[dateColumn] != DBNull.Value) ? ((DateTime)r[dateColumn]).AddYears(yearOffset) : r[dateColumn]);

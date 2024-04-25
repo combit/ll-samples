@@ -482,7 +482,7 @@
             this.Controls.Add(this.label1);
             this.MinimumSize = new System.Drawing.Size(930, 560);
             this.Name = "Form1";
-            this.Text = "List & Label C# Custom Logger Sample";
+            this.Text = "List & Label Custom Logger Sample";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabsLogType.ResumeLayout(false);
             this.tabPageListView.ResumeLayout(false);

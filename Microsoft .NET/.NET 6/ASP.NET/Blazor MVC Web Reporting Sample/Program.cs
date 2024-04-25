@@ -1,144 +1,77 @@
-﻿using combit.Reporting.Web.WebReportDesigner.Server;
-using combit.Reporting.Web.WindowsClientWebDesigner.Server;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using WebReportingSample;
+using combit.Reporting.Web.WebReportDesigner.Server;
+using combit.Reporting.Web.WebReportDesigner;
+using combit.Reporting.Web.WebReportViewer;
 
-namespace WebReporting
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+builder.Services.AddControllersWithViews().AddNewtonsoftJson();
+
+builder.Services.AddWebReportDesigner();
+builder.Services.AddControllers().AddNewtonsoftJson();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static IConfiguration Configuration { get; set; }
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
-        public static string RepositoryDatabaseFile { get; set; }
-        public static string GanttDatabaseXmlFile { get; set; }
-        public static string NorthwindFullDatabaseXmlFile { get; set; }
-        public static string NorthwindSmallDatabaseXmlFile { get; set; }
-        public static string NorthwindSmallDatabaseWithEmployeeListXmlFile { get; set; }
-        public static string TempDirectory { get; set; }
+WebReportDesignerHelper.ExtractWebReportDesignerScript(Server.MapPath("~/wwwroot"), "WebReportDesigner.js");
+WebReportViewerHelper.ExtractWebReportViewerScript(Server.MapPath("~/wwwroot"), "WebReportViewer.js");
 
+WebReportDesignerConfig.TempDirectory = Server.MapPath("~/App_Data/TempFiles");
 
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Program>();
-                });
+// Configure internal Singletons
+HostingEnvironment.Configure(app.Services.GetRequiredService<IWebHostEnvironment>());
+WebReportingSample.MemoryCache.Configure(app.Services.GetRequiredService<IMemoryCache>());
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
+Program.RepositoryDatabaseFile = Server.MapPath("~/App_Data/repository.db");
+Program.TempDirectory = Server.MapPath("~/App_Data/TempFiles");
+Program.GanttDatabaseXmlFile = Server.MapPath("~/App_Data/gantt.xml");
+Program.NorthwindFullDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_full.xml");
+Program.NorthwindSmallDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_small.xml");
+Program.NorthwindSmallDatabaseWithEmployeeListXmlFile = Server.MapPath("~/App_Data/northwind_small_WithEmployeeList.xml");
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o => o.LoginPath = "/Sample/Login");
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("AuthorizationMode", policy => policy.Requirements.Add(new AuthenticationModeRequirement()));
-            });
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
 
-            // AddWebApiConventions() for old WebApi, HttpResponseMessage, etc. support
-            // AddApplicationPart() to enable routing for external LL assembly. IMPORTANT
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
-            //services.AddCors();
-            services.AddMvc(options =>
-            {
-                options.EnableEndpointRouting = false;
-                //https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/formatting?view=aspnetcore-2.1#special-case-formatters
-                //If this formatter is not removed, return null; will result in an NoAction-Response instead of an OK-Response
-                options.OutputFormatters.RemoveType<HttpNoContentOutputFormatter>();
-            });
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Sample}/{action=Index}/{id?}");
 
-            services.Configure<IISServerOptions>(options =>
-            {
-                options.AllowSynchronousIO = true;
-            });
+app.MapControllerRoute(
+    name: "defaultApi",
+    pattern: "api/{controller}/{id?}");
 
-            services.AddSession();
+app.UseWebReportDesigner();
+app.UseWebReportViewer();
 
-            services.AddHttpContextAccessor();
-            services.AddMemoryCache();
-            services.AddWebReportDesigner();
-            services.AddControllers().AddNewtonsoftJson();
-        }
+app.Run();
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            // Configure internal Singletons
-            HostingEnvironment.Configure(app.ApplicationServices.GetRequiredService<IWebHostEnvironment>());
-            MemoryCache.Configure(app.ApplicationServices.GetRequiredService<IMemoryCache>());
-            HttpContext.Configure(app.ApplicationServices.GetRequiredService<Microsoft.AspNetCore.Http.IHttpContextAccessor>());
-
-            Program.RepositoryDatabaseFile = Server.MapPath("~/App_Data/repository.db");
-            Program.TempDirectory = Server.MapPath("~/App_Data/TempFiles");
-            Program.GanttDatabaseXmlFile = Server.MapPath("~/App_Data/gantt.xml");
-            Program.NorthwindFullDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_full.xml");
-            Program.NorthwindSmallDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_small.xml");
-            Program.NorthwindSmallDatabaseWithEmployeeListXmlFile = Server.MapPath("~/App_Data/northwind_small_WithEmployeeList.xml");
-
-            // D:   Festlegen, welche Setup-Datei an Clients ohne Web Designer-Installation ausgeliefert wird.
-            // US:  Define which setup file to deploy to clients without a Web Designer installation.
-            WindowsClientWebDesignerConfig.WindowsClientWebDesignerSetupFile = Server.MapPath("~/WebDesigner/LL29WebDesignerSetup.exe");
-
-            // D:   Für Forms- und Windows Authentifizierung kann der Web Designer automatisch die benötigten Informationen übernehmen (z.B. Login-Cookie).
-            //      WebDesignerAuthenticationModes.None erlaubt die Verwendung ohne Authentifizierung.
-            // US:  For Forms- and Windows authentication, the Web Designer can automatically grab the required information (e.g. login cookies).
-            //      WebDesignerAuthenticationModes.None allows to use no authentication at all.
-            WindowsClientWebDesignerConfig.AuthenticationMode = WindowsClientWebDesignerAuthenticationModes.Automatic;
-
-            WebReportDesignerConfig.TempDirectory = Server.MapPath("~/App_Data/TempFiles");
-            app.UseRouting();
-            app.UseCors(c => c
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true)
-                .AllowCredentials()
-            );
-            app.UseAuthentication();
-            app.UseAuthorization();
-            app.UseStaticFiles();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-
-                // Maps blazor content to ~/Blazor/SomePage to avoid interfering with existing MVC behavior.
-                // Some day, if the entire MVC app is ever completely re-worked in Blazor, you could change this
-                // back to the typical settings.
-                endpoints.MapBlazorHub("/Blazor/_blazor");
-                endpoints.MapFallbackToPage("~/Blazor/{*clientroutes:nonfile}", "/Blazor/_Host");
-            });
-
-            app.UseSession();
-            app.UseWebReportDesigner();
-            app.UseWebReportViewer();
-            app.UseMvc(RegisterRoutes);
-        }
-
-        private void RegisterRoutes(IRouteBuilder routes)
-        {
-            //D: WebAPI/MVC-Routen von Web Designer registrieren.  
-            //US: Register the WebAPI/MVC routes of the Web Designer.
-            WindowsClientWebDesignerConfig.RegisterRoutes(routes);
-            routes.MapRoute("Default", "{controller=Sample}/{action=Index}/{id?}");
-            routes.MapRoute("DefaultApi", "api/{controller}/{id?}");
-        }
-
-
-    }
+public partial class Program
+{
+    public static string RepositoryDatabaseFile { get; set; }
+    public static string GanttDatabaseXmlFile { get; set; }
+    public static string NorthwindFullDatabaseXmlFile { get; set; }
+    public static string NorthwindSmallDatabaseXmlFile { get; set; }
+    public static string NorthwindSmallDatabaseWithEmployeeListXmlFile { get; set; }
+    public static string TempDirectory { get; set; }
 }

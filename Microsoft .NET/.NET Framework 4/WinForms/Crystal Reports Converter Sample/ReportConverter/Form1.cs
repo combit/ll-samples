@@ -50,8 +50,8 @@ namespace WindowsFormsApplication1
             if (!sampleDir.EndsWith("\\"))
                 sampleDir += "\\";
 
-            SourceFileName = sampleDir + @"Microsoft .NET\.NET Framework 4\WinForms\C#\Crystal Reports Converter Sample\ReportConverter\CrystalReports.rpt";
-            TargetFileName = sampleDir + @"Microsoft .NET\.NET Framework 4\WinForms\C#\Crystal Reports Converter Sample\ReportConverter\ReportConvert.lst";
+            SourceFileName = sampleDir + @"Microsoft .NET\.NET Framework 4\WinForms\Crystal Reports Converter Sample\ReportConverter\CrystalReports.rpt";
+            TargetFileName = sampleDir + @"Microsoft .NET\.NET Framework 4\WinForms\Crystal Reports Converter Sample\ReportConverter\ReportConvert.lst";
 
             // D: Setze Cursor an die letzte Position
             // US: Set cursor to the last position
@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1
 
             //D: Pfad auf Sample-Hauptverzeichnis setzen, Datenbankpfad auslesen
             //US: Set path to main sample path, read database path
-            Directory.SetCurrentDirectory(Application.StartupPath + @"\..\..\..\..\..\..\Report Files");
+            Directory.SetCurrentDirectory(Application.StartupPath + @"\..\..\..\");
         }
 
         private void Button1_Click(object sender, EventArgs e)

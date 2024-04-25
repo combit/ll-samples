@@ -166,7 +166,7 @@
     <None Remove="WebReportingBackend\HttpContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="WebReportingBackend\HostingEnviroment.cs" />
+    <None Remove="WebReportingBackend\HostingEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="WebReportingBackend\DefaultSettings.cs" />

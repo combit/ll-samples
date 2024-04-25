@@ -218,7 +218,7 @@
             this.Controls.Add(this.tbDescription);
             this.MinimumSize = new System.Drawing.Size(850, 600);
             this.Name = "Form1";
-            this.Text = "List & Label C# Data Grid View Sample";
+            this.Text = "List & Label Data Grid View Sample";
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

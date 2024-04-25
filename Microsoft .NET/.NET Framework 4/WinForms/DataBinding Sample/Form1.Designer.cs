@@ -1231,7 +1231,7 @@ namespace DataBinding
 			this.MinimumSize = new System.Drawing.Size(803, 750);
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "List & Label C# Databinding Sample";
+			this.Text = "List & Label Databinding Sample";
 			this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			this.Load += new System.EventHandler(this.Form1_Load);

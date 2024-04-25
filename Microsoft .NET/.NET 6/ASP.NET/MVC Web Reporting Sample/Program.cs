@@ -109,23 +109,18 @@ namespace WebReporting
             app.UseSession();
             app.UseWebReportDesigner();
             app.UseWebReportViewer();
-            app.UseMvc(RegisterRoutes);
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { RegisterRoutes(endpoints); endpoints.MapControllers(); });
         }
 
-        private void RegisterRoutes(IRouteBuilder routes)
+        private void RegisterRoutes(IEndpointRouteBuilder routes)
         {
             //D: WebAPI/MVC-Routen von Web Designer registrieren.  
             //US: Register the WebAPI/MVC routes of the Web Designer.
             WindowsClientWebDesignerConfig.RegisterRoutes(routes);
-            routes.MapRoute("Default", "{controller=Sample}/{action=Index}/{id?}");
-            routes.MapRoute("DefaultApi", "api/{controller}/{id?}");
+            routes.MapControllerRoute("Default", "{controller=Sample}/{action=Index}/{id?}");
+            routes.MapControllerRoute("DefaultApi", "api/{controller}/{id?}");
         }
-
 
         public static IConfiguration Configuration { get; set; }
 

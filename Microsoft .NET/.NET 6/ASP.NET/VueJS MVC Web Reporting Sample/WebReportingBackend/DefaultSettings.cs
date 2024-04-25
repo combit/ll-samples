@@ -5,7 +5,6 @@ using combit.Reporting.Web.WebReportDesigner.Server;
 
 namespace VueJsMvcWebReportingSample
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "Software is only available on Windows")]
     static class CmbtSettings
     {
         // D:   Stellen Sie hier die Sprache für die Berichte und den Designer ein. Passen Sie dazu ebenfalls die Dateien "src\components\WebReportDesigner.vue" und "src\components\WebReportViewer.vue".
@@ -82,7 +81,6 @@ namespace VueJsMvcWebReportingSample
 
         // D:   Liefert die passende Datenquelle zu einem Beispiel-Report.
         // US:  Returns the required data source of the sample report.
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "This Software is only available on Windows")]
 		private static IDataProvider GetDataSourceForProject(string repositoryIdOfProject, bool forDesign)
         {
             // D:   Für dieses Beispielprojekt hängt die benötigte Datenquelle vom Namen des geöffneten Projekt ab, daher muss der Name ausgelesen werden.
@@ -96,7 +94,6 @@ namespace VueJsMvcWebReportingSample
 
         // D:   Liefert die passende Tabelle zu einem Beispiel-Etikett.
         // US:  Returns the matching data member for a sample label.
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "The Software is only available on Windows")]
         public static string GetDataMemberForProject(string repositoryIdOfProject)
         {
             if (String.IsNullOrEmpty(repositoryIdOfProject))
@@ -118,7 +115,6 @@ namespace VueJsMvcWebReportingSample
             return DataMember;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "The Software is only available on Windows")]
         public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)
         {
             ListLabel LL = new()

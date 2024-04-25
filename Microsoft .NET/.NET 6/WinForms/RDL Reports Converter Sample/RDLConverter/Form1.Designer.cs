@@ -175,7 +175,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "List & Label C# RDL Converter Sample";
+            this.Text = "List & Label RDL Converter Sample";
             this.ResumeLayout(false);
             this.PerformLayout();
 

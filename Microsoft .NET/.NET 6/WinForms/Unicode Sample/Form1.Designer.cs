@@ -179,7 +179,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "List & Label C# Unicode Sample";
+            this.Text = "List & Label Unicode Sample";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

@@ -32,7 +32,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 // Configure internal Singletons
-HostingEnviroment.Configure(app.Services.GetRequiredService<IWebHostEnvironment>());
+HostingEnvironment.Configure(app.Services.GetRequiredService<IWebHostEnvironment>());
 AngularMVCWebReportingSample.MemoryCache.Configure(app.Services.GetRequiredService<IMemoryCache>());
 
 Program.RepositoryDatabaseFile = Server.MapPath("~/App_Data/repository.db");

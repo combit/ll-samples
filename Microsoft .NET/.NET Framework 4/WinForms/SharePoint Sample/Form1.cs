@@ -202,20 +202,7 @@ namespace SharePointSample
             //US: Open download site
             try
             {
-                Process.Start(@"http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=21786");
-            }
-            catch (Win32Exception) { }
-            catch (ObjectDisposedException) { }
-            catch (FileNotFoundException) { }
-        }
-
-        private void Button1_Click_1(object sender, EventArgs e)
-        {
-            //D: Öffne Downloadseite
-            //US: Open download site
-            try
-            {
-                Process.Start(@"http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=21786");
+                Process.Start(@"https://www.microsoft.com/en-us/download/details.aspx?id=21786");
             }
             catch (Win32Exception) { }
             catch (ObjectDisposedException) { }

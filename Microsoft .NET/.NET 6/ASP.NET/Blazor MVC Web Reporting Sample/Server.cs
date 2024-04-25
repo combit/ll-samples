@@ -1,10 +1,21 @@
-﻿namespace WebReporting
+﻿using System.IO;
+
+namespace WebReportingSample
 {
-    public static class Server
+    public class Server
     {
         public static string MapPath(string path)
         {
-            return path.Replace("~", HostingEnvironment.Current.ContentRootPath);
+            if (HostingEnvironment.Current == null)
+            {
+                return path.Replace("~", Directory.GetCurrentDirectory());
+
+            }
+            else
+            {
+                return path.Replace("~", HostingEnvironment.Current.ContentRootPath);
+
+            }
         }
     }
 }

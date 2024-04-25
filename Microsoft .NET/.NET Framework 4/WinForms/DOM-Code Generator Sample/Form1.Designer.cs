@@ -327,7 +327,7 @@ namespace CodeDomSample
             this.Controls.Add(this.toolStrip1);
             this.MinimumSize = new System.Drawing.Size(800, 400);
             this.Name = "Form1";
-            this.Text = "List & Label C# DOM-Code Generator Sample";
+            this.Text = "List & Label DOM-Code Generator Sample";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
