@@ -300,7 +300,7 @@ namespace combit.ListLabel.DesignerExtensions
                 if (!String.IsNullOrEmpty(City))
                 {
                     GeoCoderStatusCode status;
-                    position = GMap.NET.MapProviders.OpenStreetMapProvider.Instance.GetPoint(City, out status);
+                    position = GMap.NET.MapProviders.OpenCycleMapProvider.Instance.GetPoint(City, out status);
                     if (position == null || status != GeoCoderStatusCode.OK)
                     {
                         return null;
