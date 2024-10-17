@@ -415,7 +415,7 @@ namespace DataProvidersWithoutSolidStructure
 
                     //D: Standardschrift und -größe setzen
                     //US: Set default font and size
-                    proj.Settings.DefaultFont.FaceName = "\"Calibri\"";
+                    proj.Settings.DefaultFont.FaceName = "Calibri";
                     proj.Settings.DefaultFont.Size = "12";
 
                     //D: Designschema setzen

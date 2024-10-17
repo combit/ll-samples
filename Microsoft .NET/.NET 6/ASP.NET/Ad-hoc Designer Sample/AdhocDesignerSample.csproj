@@ -28,31 +28,31 @@
     <Content Include="App_Data\repository.db" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="bootstrap" Version="5.3.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" Version="6.0.21" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.21" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.10" />
+    <PackageReference Include="bootstrap" Version="5.3.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" Version="6.0.33" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.33" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	<PackageReference Include="System.CodeDom" Version="7.0.0" />
+	<PackageReference Include="System.CodeDom" Version="8.0.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
-    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
-    <PackageReference Include="System.Runtime.Caching" Version="7.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
+    <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.33" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel29">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
+    <Reference Include="combit.ListLabel30">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel29.AdhocDesign">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.AdhocDesign.dll</HintPath>
+    <Reference Include="combit.ListLabel30.AdhocDesign">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.AdhocDesign.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel29.AdhocDesign.Web">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.AdhocDesign.Web.dll</HintPath>
+    <Reference Include="combit.ListLabel30.AdhocDesign.Web">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.AdhocDesign.Web.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel29.Web">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.Web.dll</HintPath>
+    <Reference Include="combit.ListLabel30.Web">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

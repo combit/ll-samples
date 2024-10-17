@@ -1056,9 +1056,9 @@ LL_EXTERN INTEGER LlRTFEditorGetRTFControlHandle(;                              
 																																  //
 LL_EXTERN INTEGER LlGetDefaultPrinter(;                                                           //
 		@pszPrinter AS STRING,;                                                                     //
-		@pnPrinterBufSize AS INTEGER,;                                                               //
-		@pDevMode AS STRING,;                                                                      //
-		@pnDevModeBufSize AS INTEGER,;                                                               //
+		@pnPrinterBufSize AS INTEGER,;                                                              //
+		@pDevMode AS STRING,;                                                                       //
+		@pnDevModeBufSize AS INTEGER,;                                                              //
 		nOptions AS INTEGER) ORDINAL 262 IN CMBT_DLL                                                //
 																																  //
 LL_EXTERN INTEGER LlLocAddDictionaryEntry(;                                                       //
@@ -1154,7 +1154,65 @@ LL_EXTERN INTEGER LlExprTypeMask(;                                              
 		@lpExpr AS STRING) ORDINAL 345 IN CMBT_DLL                                                  //
 
 
-
+LL_EXTERN INTEGER LlStgTestJobCmpEmbeddedStorages2(;                                              // CMBT_LL_WINAPI INT      DLLPROC  LlStgTestJobCmpEmbeddedStorages2
+		hLlJob AS INTEGER,;                                                     						  // 	HLLTESTJOB           hJob,
+		@pvErrors AS STRING,;																							  // 	PVARIANT             pvErrors,
+		@pvarListOfProblematicStorages AS STRING;                                                   // 	PVARIANT             pvarListOfProblematicStorages
+		) ORDINAL 367 IN CMBT_DLL                                                  					  //
+																																  //
+LL_EXTERN INTEGER LlStgTestJobAddResultJobs(;                                 						  // CMBT_LL_WINAPI INT      DLLPROC  LlStgTestJobAddResultJobs
+		hLlJob AS INTEGER,;                                                     						  // 	HLLTESTJOB           hJob,
+		@pvarListOfProblematicStorages AS STRING;                                                   // 	PCVARIANT            pvarListOfProblematicStorages
+		) ORDINAL 349 IN CMBT_DLL                                                  					  //
+																																  //
+LL_EXTERN INTEGER LlStgCreateFrom(;                                           						  // CMBT_LL_WINAPI INT      DLLPROC  LlStgCreateFrom
+		hLlJob AS INTEGER,;                                                     						  // 	HLLJOB               hJob,
+		nLCID AS INTEGER,;                                                                          // 	UINT                 nLCID,
+		hWndForLengthyOpDialog AS INTEGER,;                                                         // 	HWND                 hWndForLengthyOpDialog,
+		@pszFile AS STRING,;                                                                        // 	LPCWSTR              pszFile,
+		@pszResultingFileNameBuffer AS STRING,;                                                     // 	LPWSTR               pszResultingFileNameBuffer,
+		nResultingFileNameBufferSize AS INTEGER,;                                                   // 	UINT                 nResultingFileNameBufferSize,
+		nOptions AS INTEGER;                                                                        // 	UINT                 nOptions
+		) ORDINAL 391 IN CMBT_DLL                                                  					  //
+																																  //
+LL_EXTERN INTEGER LlRemoveIdentifier(;                                        						  // CMBT_LL_WINAPI INT      DLLPROC  LlRemoveIdentifier
+		hLlJob AS INTEGER,;                                                     						  // 	HLLJOB               hLlJob,
+		@pszVarName AS STRING;                                                                      // 	LPCWSTR              pszVarName
+		) ORDINAL 392 IN CMBT_DLL                                                  					  //
+																																  //
+LL_EXTERN STRING LlExprParseEx(;                                             						     // CMBT_LL_WINAPI HLLEXPR  DLLPROC  LlExprParseEx
+		hLlJob AS INTEGER,;                                                     						  // 	HLLJOB               hLlJob,
+		lpExprText AS STRING,;                                                                      // 	LPCWSTR              lpExprText,
+		nParaTypes AS INTEGER,;                                                                     // 	UINT                 nParaTypes,
+		bIncludeFields as INTEGER;                                                                  // 	BOOL                 bIncludeFields
+		) ORDINAL 393 IN CMBT_DLL                                                  					  //
+																																  //
+LL_EXTERN INTEGER LlGetAvailableFonts(;                                       						  // CMBT_LL_WINAPI INT      DLLPROC  LlGetAvailableFonts
+		hLlJob AS INTEGER,;                                                     						  // 	HLLJOB               hJob,
+		@pvArray AS STRING;                                                                         // 	PVARIANT             pvArray
+		) ORDINAL 397 IN CMBT_DLL                                                  					  //
+																																  //
+LL_EXTERN INTEGER LlRepositoryGetDrilldownItemList(;                          						  // CMBT_LL_WINAPI INT      DLLPROC  LlRepositoryGetDrilldownItemList
+		hLlJob AS INTEGER,;                                                     						  // 	HLLJOB               hLlJob,
+		pszRootTableID AS STRING,;                                                                  // 	LPCWSTR              pszRootTableID,
+		pszProjectType AS STRING,;                                                                  // 	LPCWSTR              pszProjectType,
+		nDrilldownType AS STRING,;                                                                  // 	UINT32               nDrilldownType,
+		@pvArray AS STRING;                                                                         // 	PVARIANT             pvArray
+		) ORDINAL 398 IN CMBT_DLL                                                  					  //
+																																  //
+LL_EXTERN INTEGER LlUtilsGetReportParameterNames(;                            						  // CMBT_LL_WINAPI INT      DLLPROC  LlUtilsGetReportParameterNames
+		hLlJob AS INTEGER,;                                                     						  // 	HLLJOB               hJob,
+		pszProjectFilename AS STRING,;                                                              // 	LPCWSTR              pszProjectFilename,
+		@pvArray AS STRING;                                                                         // 	PVARIANT             pvArray
+		) ORDINAL 399 IN CMBT_DLL                                                  					  //
+																																  //
+LL_EXTERN INTEGER LlGetIdentifierHelpText(;                                   						  // CMBT_LL_WINAPI INT      DLLPROC  LlGetIdentifierHelpText
+		hLlJob AS INTEGER,;                                                     						  // 	HLLJOB               hJob,
+		pszVarName AS STRING,;                                                                      // 	LPCWSTR              pszVarName,
+		@pszBuffer AS STRING,;                                                                      // 	LPWSTR               pszBuffer,
+		nBufSize AS INTEGER;                                                                        // 	UINT                 nBufSize
+		) ORDINAL 400 IN CMBT_DLL                                                  					  //
+																																  //
 //=========================================
 // Create a function for structure
 //=========================================
@@ -1175,24 +1233,24 @@ ENDSTRUCTURE
 // Create a function for structure
 //=========================================
 STRUCTURE LlDrillDownJobNotify
-	VAR _nSize					  AS UINTEGER						//  UINT       _nSize;        // [in]
-	VAR _nFunction            AS UINTEGER                 //  UINT       _nFunction;       // [in]
+	VAR _nSize					  AS UINTEGER						//  UINT       _nSize;        		// [in]
+	VAR _nFunction            AS UINTEGER                 //  UINT       _nFunction;       	// [in]
 	VAR _nUserParameter       AS @STRING                  //  UINT_PTR   _nUserParameter;     // [in]
-	VAR _pszTableID           AS @STRING                  //  LPCWSTR    _pszTableID;      // [in]
+	VAR _pszTableID           AS @STRING                  //  LPCWSTR    _pszTableID;      	// [in]
 	VAR _pszRelationID        AS @STRING                  //  LPCWSTR    _pszRelationID;      // [in]
-	VAR _pszSubreportTableID  AS @STRING                  //  LPCWSTR    _pszSubreportTableID;    // [in]
-	VAR _pszKeyField          AS @STRING                  //  LPCWSTR    _pszKeyField;      // [in]
+	VAR _pszSubreportTableID  AS @STRING                  //  LPCWSTR    _pszSubreportTableID;// [in]
+	VAR _pszKeyField          AS @STRING                  //  LPCWSTR    _pszKeyField;      	// [in]
 	VAR _pszSubreportKeyField AS @STRING                  //  LPCWSTR    _pszSubreportKeyField;    // [in]
-	VAR _pszKeyValue          AS @STRING                  //  LPCWSTR    _pszKeyValue;      // [in]
-	VAR _pszProjectFileName   AS @STRING                  //  LPCWSTR    _pszProjectFileName;    // [in]
-	VAR _pszPreviewFileName   AS @STRING                  //  LPCWSTR    _pszPreviewFileName;    // [in] NULL for interactive mode
+	VAR _pszKeyValue          AS @STRING                  //  LPCWSTR    _pszKeyValue;      	// [in]
+	VAR _pszProjectFileName   AS @STRING                  //  LPCWSTR    _pszProjectFileName; // [in]
+	VAR _pszPreviewFileName   AS @STRING                  //  LPCWSTR    _pszPreviewFileName; // [in] NULL for interactive mode
 	VAR _pszTooltipText       AS @STRING                  //  LPCWSTR    _pszTooltipText;     // [in]
-	VAR _pszTabText           AS @STRING                  //  LPCWSTR    _pszTabText;      // [in] right now, same as _pszTooltipText
-	VAR _hWnd                 AS UINTEGER                 //  HWND       _hWnd;        // [in]
-	VAR _nID                  AS @STRING                  //  UINT_PTR   _nID;        // [in] unique ID of job (important for ABORT/FINISH)
-	VAR _hAttachInfo          AS UINTEGER                 //  HANDLE		_hAttachInfo;      // [in]
-	VAR _pszSRID              AS @STRING                  //  LPCWSTR    _pszSRID;       // [in] internal, subreport ID of link in base report
-	VAR _pszExportFormat      AS @STRING                  //  LPCWSTR    _pszExportFormat;     // [in] internal
+	VAR _pszTabText           AS @STRING                  //  LPCWSTR    _pszTabText;      	// [in] right now, same as _pszTooltipText
+	VAR _hWnd                 AS UINTEGER                 //  HWND       _hWnd;        			// [in]
+	VAR _nID                  AS @STRING                  //  UINT_PTR   _nID;        			// [in] unique ID of job (important for ABORT/FINISH)
+	VAR _hAttachInfo          AS UINTEGER                 //  HANDLE		_hAttachInfo;      	// [in]
+	VAR _pszSRID              AS @STRING                  //  LPCWSTR    _pszSRID;       		// [in] internal, subreport ID of link in base report
+	VAR _pszExportFormat      AS @STRING                  //  LPCWSTR    _pszExportFormat;    // [in] internal
 ENDSTRUCTURE
 
 

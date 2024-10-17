@@ -1,5 +1,0 @@
-﻿#IFDEF USELLVERSION
-#ELSE
-Define USELLVERSION for 29
-#ENDIF
-Use cListLabel.pkg

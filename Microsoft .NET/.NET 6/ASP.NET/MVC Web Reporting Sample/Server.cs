@@ -1,4 +1,4 @@
-﻿namespace WebReporting
+﻿namespace MvcWebReportingSample
 {
     public static class Server
     {

@@ -11,12 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.5" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel29">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel29.dll</HintPath>
+    <Reference Include="combit.ListLabel30">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel30.dll</HintPath>
     </Reference>
   </ItemGroup>
 

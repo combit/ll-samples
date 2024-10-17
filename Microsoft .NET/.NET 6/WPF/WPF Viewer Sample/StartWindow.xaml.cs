@@ -25,17 +25,17 @@ namespace LLViewer
 
         private void NativeViewerbtn_Click(object sender, RoutedEventArgs e)
         {
-            NativeWpfViewerWindow main = new NativeWpfViewerWindow();
+            NativeWpfViewerWindow main = new NativeWpfViewerWindow(this);
             App.Current.MainWindow = main;
-            this.Close();
+            this.Visibility = Visibility.Hidden;
             main.Show();
         }
 
         private void HostedViewerbtn_Click(object sender, RoutedEventArgs e)
         {
-            HostedPreviewControlWindow main = new HostedPreviewControlWindow();
+            HostedPreviewControlWindow main = new HostedPreviewControlWindow(this);
             App.Current.MainWindow = main;
-            this.Close();
+            this.Visibility = Visibility.Hidden;
             main.Show();
         }
     }

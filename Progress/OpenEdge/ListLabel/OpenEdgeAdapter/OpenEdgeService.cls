@@ -260,6 +260,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             END.
             
             DEFINE VARIABLE cFKMapping AS CHARACTER NO-UNDO.
+            DEFINE VARIABLE cMapping   AS CHARACTER NO-UNDO.
                        
             IF iBuffer = 1 THEN 
             DO:
@@ -393,20 +394,27 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
                        hSourceQuery[iBuffer]:ADD-BUFFER(ttForeignKeyBuffer.BufferHandle).
                        cPrepare = cPrepare + SUBSTITUTE (", FIRST &1 WHERE &2 NO-LOCK OUTER-JOIN", ttForeignKeyBuffer.BufferName, ttForeignKeyBuffer.BufferWhere).                 
                    END.
+
                    hDataSource[iBuffer]:QUERY = hSourceQuery[iBuffer].
+                   
+                   /* Since LL29 - If we have multiple Source Buffers then we now add the default mapping plus FkMapping
+                      Otherwise there are problems with same field names in different source buffers. The ABL mapping is just wrong.
+                   */
                    IF cFKMapping > "" THEN 
-                       hBuffer:ATTACH-DATA-SOURCE (hDataSource[iBuffer],cFKMapping).
-                   ELSE 
+                   DO:
+                       cMapping = DefaultMapping(hBuffer, hSourceBuffer[iBuffer]).
+                       cMapping = cMapping + (IF cMapping > "" THEN "," ELSE "") + cFKMapping.
+                       hBuffer:ATTACH-DATA-SOURCE (hDataSource[iBuffer],cMapping).
+                   END.    
+                   ELSE
                        hBuffer:ATTACH-DATA-SOURCE (hDataSource[iBuffer]).
                END.
                ELSE DO:
                    hDataSource[iBuffer]:QUERY = hSourceQuery[iBuffer].
                    hBuffer:ATTACH-DATA-SOURCE (hDataSource[iBuffer]).
                END.
-               
                IF cLimit > "" THEN 
                  cPrepare = cPrepare + " " + cLimit.    
-                   
                hSourceQuery[iBuffer]:QUERY-PREPARE(cPrepare).
             END.
             ELSE DO:
@@ -468,6 +476,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         */
         hExportDataset:SERIALIZE-NAME = "OpenEdgeDataResponse".
         hExportDataset:WRITE-JSON ("LONGCHAR",lcResponseJson,TRUE).
+        
         RETURN lcResponseJson.
         
         /* Destroy 
@@ -491,12 +500,8 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             EMPTY TEMP-TABLE ttForeignKeyColumn.
             
             IF VALID-HANDLE(hExportDataset) THEN 
-            DO:
-                DO iBuffer = 1 TO hExportDataset:NUM-BUFFERS:
-                    DELETE OBJECT hExportDataset:GET-BUFFER-HANDLE(iBuffer):TABLE-HANDLE NO-ERROR.
-                END.    
                 DELETE OBJECT hExportDataset NO-ERROR.
-            END.
+
         END FINALLY.
 
     END METHOD.
@@ -779,10 +784,9 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             IF iBuffer = 1 THEN 
             FOR EACH ttForeignKeyColumn:
                 hField = hTempTable:DEFAULT-BUFFER-HANDLE:BUFFER-FIELD (ttForeignKeyColumn.SortColumnName) NO-ERROR.
-                IF VALID-HANDLE(hField) THEN 
+                IF VALID-HANDLE(hField) THEN
                     ASSIGN hField:SERIALIZE-HIDDEN = TRUE.
             END.
-            
             hTempTable:COPY-TEMP-TABLE (hBuffer:TABLE-HANDLE,?,?,TRUE,"cpy").
             hDataset:ADD-BUFFER (hTempTable:DEFAULT-BUFFER-HANDLE).
         END.
@@ -889,6 +893,30 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
 		RETURN cPattern.
 
 	END METHOD.
+	
+   /*------------------------------------------------------------------------------
+     Purpose: Build default mapping for a temp-table and a source buffer.
+     Notes:   Since LL29
+              <TempTable Buffer>:<Field>,<Source Buffer>:<Field>,....
+              Required if we have multiple buffers in a data-source in case of FKSort.
+    ------------------------------------------------------------------------------*/
+   METHOD PRIVATE CHARACTER DefaultMapping( phBuffer AS HANDLE, phSourceBuffer AS HANDLE ):
+       DEFINE VARIABLE cMapping AS CHARACTER NO-UNDO.
+       DEFINE VARIABLE iField       AS INTEGER NO-UNDO.
+       DEFINE VARIABLE hField       AS HANDLE  NO-UNDO.
+       DEFINE VARIABLE hSourceField AS HANDLE  NO-UNDO.
+       
+       DO iField = 1 TO phBuffer:NUM-FIELDS:
+           hField = phBuffer:BUFFER-FIELD(iField):HANDLE.
+           hSourceField = ?.
+           hSourceField = phSourceBuffer:BUFFER-FIELD (hField:NAME):HANDLE NO-ERROR.
+           IF VALID-HANDLE(hSourceField) THEN 
+             ASSIGN cMapping = cMapping + (IF cMapping > "" THEN "," ELSE "")
+                             + SUBSTITUTE("&1.&3,&2.&3",phBuffer:NAME,phSourceBuffer:NAME,hField:NAME).
+       END.
+       RETURN cMapping.
+
+    END METHOD.
 	
     /*------------------------------------------------------------------------------
      Purpose: ClientEvent - notification from DataProvider

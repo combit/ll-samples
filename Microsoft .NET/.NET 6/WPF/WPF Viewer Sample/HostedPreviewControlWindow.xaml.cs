@@ -18,9 +18,17 @@ namespace LLViewer
     /// </summary>
     public partial class HostedPreviewControlWindow : Window
     {
-        public HostedPreviewControlWindow()
+        private Window _mainWindow;
+		
+        public HostedPreviewControlWindow(Window mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _mainWindow.Visibility = Visibility.Visible;
         }
     }
 }

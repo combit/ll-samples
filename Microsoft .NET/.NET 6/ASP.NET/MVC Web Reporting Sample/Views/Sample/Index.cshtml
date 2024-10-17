@@ -1,7 +1,7 @@
 ﻿@using combit.Reporting.Repository
-@using WebReporting
+@using MvcWebReportingSample
 
-@model WebReporting.ViewModels.RepositoryModel
+@model MvcWebReportingSample.ViewModels.RepositoryModel
 
 @{
     // D:   Bereite die Liste der Reports für die Headerleiste vor.
@@ -45,42 +45,60 @@
 }
 
 <div data-role="header" id="MainToolbar">
-    <div data-role="controlgroup" data-type="horizontal">
-        <button id="OpenWebReportDesigner" data-icon="edit" data-iconpos="right" onclick="startWebReportDesigner()">Web Report Designer</button>
+    <div class="inline-group" data-role="controlgroup" data-type="horizontal">
 
-        @Html.DropDownList("ReportRepositoryID", reportList, new { onchange = "startWebReportDesigner()" })
+        <button id="OpenWebReportDesigner" data-icon="edit" data-iconpos="right" onclick="startWebReportDesigner()" style="margin-right:20px;">Web Report Designer</button>
+        @Html.DropDownList("ReportRepositoryID", reportList, new { onchange = "startWebReportViewer()" })
         <button id="OpenWebReportViewer" data-icon="eye" data-iconpos="right" onclick="startWebReportViewer()">Web Report Viewer</button>
         <button id="OpenDesigner" data-icon="edit" data-iconpos="right" onclick="startWebDesigner()">Windows Designer</button>
-
-        <a data-role="button" href="@Url.Action("Repository", "Sample")" target="ContentContainer" data-icon="bars" data-iconpos="right">Repository</a>
+        
     </div>
 </div>
 
+<script>
 
-<iframe id="ContentContainer" name="ContentContainer" onload="maximizeContentContainerHeight()" frameborder="0" style="width: 100%"></iframe>
+    function maximizeContentContainerHeight() {
+        $('#ContentContainer').height($('body').height() - $('#MainToolbar').outerHeight() - 5);
+    }
+</script>
+
+<iframe id="ContentContainer" name="ContentContainer" src="" onload="maximizeContentContainerHeight()" frameborder="0" style="width: 100%"></iframe>
 
 <script type="text/javascript">
     function startWebDesigner() {
         var selectedReportID = $('#ReportRepositoryID').val();
         var launchWebDesignerLink = '@Url.Action("WebDesignerLauncher", "Sample")' + '?reportRepositoryID=' + encodeURIComponent(selectedReportID);
-        $('#ContentContainer').attr('src', launchWebDesignerLink);
+        var iFrame = document.getElementById("ContentContainer");
+        var baseUrl = iFrame.baseURI;
+        iFrame.contentWindow.location.replace(hostUrl(baseUrl) + launchWebDesignerLink);
     }
 
-    function startWebReportDesigner() {
+    function startWebReportDesigner(initialStart) {
         var selectedReportID = $('#ReportRepositoryID').val();
         var launchWebDesignerLink = '@Url.Action("Designer", "Sample")' + '?reportRepositoryID=' + encodeURIComponent(selectedReportID);
-        $('#ContentContainer').attr('src', launchWebDesignerLink);
+        var iFrame = document.getElementById("ContentContainer");
+        var baseUrl = iFrame.baseURI;
+        if (initialStart) {
+            iFrame.src = hostUrl(baseUrl) + launchWebDesignerLink;
+        } else {
+            iFrame.contentWindow.location.replace(hostUrl(baseUrl) + launchWebDesignerLink);
+        }
+
     }
 
         function startWebReportViewer() {
         var selectedReportID = $('#ReportRepositoryID').val();
         var launchWebDesignerLink = '@Url.Action("Viewer", "Sample")' + '?reportRepositoryID=' + encodeURIComponent(selectedReportID);
-        $('#ContentContainer').attr('src', launchWebDesignerLink);
+        var iFrame = document.getElementById("ContentContainer");
+        var baseUrl = iFrame.baseURI;
+        iFrame.contentWindow.location.replace(hostUrl(baseUrl) + launchWebDesignerLink);
     }
 
-
-    function maximizeContentContainerHeight() {
-        $('#ContentContainer').height($('body').height() - $('#MainToolbar').outerHeight() - 5);
+    function hostUrl(url) {
+        const regex = /^(https?:\/\/[^\/]+)/;
+        const match = url.match(regex);
+        const result = match ? match[1] : null;
+        return result;
     }
 
     $(document).ready(function () {
@@ -88,6 +106,6 @@
         maximizeContentContainerHeight();
     });
 
-    startWebReportDesigner()
+    startWebReportDesigner(true);
 </script>
 

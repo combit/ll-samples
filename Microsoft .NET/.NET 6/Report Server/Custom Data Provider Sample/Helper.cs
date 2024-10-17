@@ -25,31 +25,32 @@ namespace combit.Reporting.Samples
                 string destination = Path.Combine(cacheDir, Guid.NewGuid().ToString() + Path.GetExtension(uri.LocalPath));
 
                 // The destination file must be opened before impersonation to stay accessible for the report server
-                using (FileStream dest = new FileStream(destination, FileMode.Create, FileAccess.Write, FileShare.None))
+                using (FileStream dest = new(destination, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    using (var impersonationContext = new WrappedImpersonationContext(domain, username, password, uri.IsUnc))  // impersonation is skipped when username is empty
+                    using var impersonationContext = new WrappedImpersonationContext(domain, username, password, uri.IsUnc);  // impersonation is skipped when username is empty
+                    impersonationContext.Enter();
+                    impersonationContext.RunImpersonated(() =>
                     {
-                        impersonationContext.Enter();
-                        impersonationContext.RunImpersonated(() =>
-                        {
-                            using (FileStream source = new FileStream(uri.LocalPath, FileMode.Open, FileAccess.Read, FileShare.Read))
-                            {
-                                source.CopyTo(dest);
-                            }
-                        });
-                    }
+                        using FileStream source = new(uri.LocalPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                        source.CopyTo(dest);
+                    });
                 }
                 return destination;
             }
             else
             {
-                TimeoutWebClient client = new TimeoutWebClient();
+                TimeoutHttpClient client = null;
+
                 if (!String.IsNullOrWhiteSpace(username))
                 {
-                    client.Credentials = new NetworkCredential(username, password, domain);
+                    client = new(10, new NetworkCredential(username, password, domain));
+                }
+                else
+                {
+                    client = new();
                 }
 
-                byte[] bytes = client.DownloadData(uri.AbsoluteUri);
+                byte[] bytes = client.GetRequestAsByteArray(uri.AbsoluteUri);
                 string destination = Path.Combine(cacheDir, Guid.NewGuid().ToString()) + Path.GetExtension(client.FileName);
                 File.WriteAllBytes(destination, bytes);
                 return File.Exists(destination) ? destination : null;
@@ -153,10 +154,8 @@ namespace combit.Reporting.Samples
         {
             if (OperatingSystem.IsWindows())
             {
-                using (SafeAccessTokenHandle token = new SafeAccessTokenHandle(_token))
-                {
-                    WindowsIdentity.RunImpersonated(token, action);
-                }
+                using SafeAccessTokenHandle token = new(_token);
+                WindowsIdentity.RunImpersonated(token, action);
             }
         }
 

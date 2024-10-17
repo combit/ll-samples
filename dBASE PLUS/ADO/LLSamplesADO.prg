@@ -65,7 +65,7 @@ ELSE
    lOpen=true
 ENDIF
 SET PROCEDURE TO PROGRAM(0)
-SET PROCEDURE TO ..\LL29.CC   ADDITIVE
+SET PROCEDURE TO ..\LL30.CC   ADDITIVE
 _app.MainADODatabase=GetADODatabase()
 IF .NOT. _app.MainADODatabase.active
    IF _app.language="DE"
@@ -86,9 +86,9 @@ RELEASE OBJECT oRibbons
 oApp.OldText=_app.frameWin.text
 DO CASE
    CASE _app.oInfo.Language="deutsch"
-      _app.frameWin.text="Beispielanwendung zur Integration von combit List & Label 29 in dBASE PLUS mit ADO (ohne BDE)"
+      _app.frameWin.text="Beispielanwendung zur Integration von combit List & Label 30 in dBASE PLUS mit ADO (ohne BDE)"
    OTHERWISE
-      _app.frameWin.text="Sample application to integration of combit List & Label 29 with dBASE PLUS with ADO (without BDE)"
+      _app.frameWin.text="Sample application to integration of combit List & Label 30 with dBASE PLUS with ADO (without BDE)"
 ENDCASE
 _app.speedbar =false
 _app.statusbar=true

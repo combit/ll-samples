@@ -117,9 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="lblServer.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblServer.GenerateMember" type="System.Boolean, mscorlib">
     <value>False</value>
-  </metadata>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblServer.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 73</value>
@@ -127,7 +128,6 @@
   <data name="lblServer.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 14</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblServer.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
@@ -146,9 +146,9 @@
   <data name="&gt;&gt;lblServer.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="lblDocBib.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="lblDocBib.GenerateMember" type="System.Boolean, mscorlib">
     <value>False</value>
-  </metadata>
+  </data>
   <data name="lblDocBib.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 183</value>
   </data>
@@ -779,87 +779,11 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>440, 417</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA
-        AAAbw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcEBvDnAAbw5wAG8OcABvDnAAbw5wAzZkYAM2Z
-        GADNmRgAzZkYABvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wQG8OcABvDnAAbw5wAG8OcAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAG8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnBAbw5wAG8OcABvD
-        nADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGAAbw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcEBvD
-        nAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYABvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5wQG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAG8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnBAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGAAbw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcAM2ZGADNmRgAzZkY/82ZGP/NmRj/zZkY/82Z
-        GP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRj/zZkY/82Z
-        GP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2Z
-        GP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2Z
-        GADNmRgAzZkY/82ZGP/NmRj/zZkY/82ZGP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRj/zZkY/82ZGP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkY/82ZGP/NmRj/zZkY/82ZGP/NmRj/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRj/zZkY/82ZGP/NmRj/zZkY/82Z
-        GP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGP/NmRj/zZkY/82Z
-        GP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkY/82Z
-        GP/NmRj/zZkY/82ZGP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRj/zZkY/82ZGP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkY/82ZGP/NmRj/zZkY/82ZGP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRj/zZkY/82ZGP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkY/82ZGP/NmRj/zZkY/82Z
-        GP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRj/zZkY/82Z
-        GP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkY/82ZGP/NmRj/zZkY/82ZGP/NmRj/G8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nADNmRgAzZkYAMyZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP8bw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAzZkYAM2ZGADNmRgAzJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/xvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADMmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/G8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAMyZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP8bw5wAG8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/xvDnAAbw5wAG8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2ZGADMmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/AAAB/wAAAf8AAAH/AAAB/wAAAf8AAAH/A///wAP//8AD///AA///wAP/
-        /8AD///AA///wAP//8AD///AA///wAP//8AD///AA///wAP//8AD///AA///wAP//8AD///AA///wAP/
-        /8D/wAAA/8AAAP/AAAD/wAAA/8AAAP/AAAA=
-</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>List &amp; Label SharePoint Sample</value>

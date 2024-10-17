@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C1D}#29.0#0"; "cmll29o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C1E}#30.0#0"; "cmll30o.ocx"
 Begin VB.Form BaseForm 
    Appearance      =   0  'Flat
    BorderStyle     =   3  'Fixed Dialog
@@ -507,7 +507,7 @@ Private Sub Form_Load()
 '
 '--------------------------------------------------------------------------------------
 ' File   : main.frm, Paradlg.frm
-' Module : cmll29.bas, constant.txt, datacons.txt gdiapi.txt, userapi.txt
+' Module : cmll30.bas, constant.txt, datacons.txt gdiapi.txt, userapi.txt
 ' Descr. : D:   Dieses Beispiel demonstriert das Designen und Drucken von
 '              Etiketten, Listen und User-Objekten
 '          US: This example demonstrates how to design and print

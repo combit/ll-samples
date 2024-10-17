@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace WebReporting
+namespace MvcWebReportingSample
 {
     public class HttpContext
     {

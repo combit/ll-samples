@@ -100,7 +100,7 @@ object Form1: TForm1
     TabOrder = 4
     OnClick = DebugCheckBoxClick
   end
-  object LL: TL29_
+  object LL: TL30_
     EMFResolution = 100
     PhantomspaceRepresentationCode = #11
     LocknextcharRepresentationCode = '`'

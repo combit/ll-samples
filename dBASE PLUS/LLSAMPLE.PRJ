@@ -1,7 +1,7 @@
 Project File generated 29.08.2022 18:08:52
 
 [Project]
-Name=LL29Sample
+Name=LL30Sample
 DefaultDir=.
 MainProjectFileName=LLSamples.prg
 Parameters=
@@ -36,8 +36,8 @@ Chart.wfm,0,0,0,
 OPTIONS.WFM,0,0,0, 
 LLRibbons.cc,0,0,0, 
 Events.wfm,0,0,0, 
-cmbtLL29.h,0,0,0, 
-LL29.CC,0,0,0, 
+cmbtLL30.h,0,0,0, 
+LL30.CC,0,0,0, 
 
 [DEO]
 
@@ -46,7 +46,7 @@ ProjectExeFileName=llsample.exe
 ProjectMainFileName=
 ProjectdBaseVersion=dBASE 2019 13.20  b2618 (11/26/2019-DE191126)
 DefaultDirName={pf}\{#AppName}
-AppName=LL29Sample
+AppName=LL30Sample
 AppVersion=1.0.0.0
 SM_dBASERuntime=false
 dBPlus=true

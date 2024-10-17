@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
-namespace WebReporting.ViewModels
+namespace MvcWebReportingSample.ViewModels
 {
     public class AddItemModel
     {

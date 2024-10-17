@@ -23,7 +23,7 @@
   ----------------------------------------------------------------------*/
 
 /* ***************************  Definitions  ************************** */
-DEFINE TEMP-TABLE OEDataTable
+DEFINE TEMP-TABLE OEDataTable NO-UNDO
     FIELD TableNumber          AS INTEGER 
     FIELD OETableName          AS CHARACTER
     FIELD OEDbTableName        AS CHARACTER

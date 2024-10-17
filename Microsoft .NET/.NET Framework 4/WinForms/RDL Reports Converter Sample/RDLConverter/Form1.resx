@@ -127,84 +127,8 @@ To open the converted project, a Microsoft SQL Server with an AdventureWorks dat
 
 Um das konvertierte Projekt öffnen zu können, muss ein Microsoft SQL Server mit einer AdventureWorks-Datenbank vorhanden sein. Die SQL Server-Verbindung muss in den ConnectionProperties der RDL-Datei angepasst werden.</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA
-        AAAbw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcEBvDnAAbw5wAG8OcABvDnAAbw5wAzZkYAM2Z
-        GADNmRgAzZkYABvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wQG8OcABvDnAAbw5wAG8OcAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAG8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnBAbw5wAG8OcABvD
-        nADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGAAbw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcEBvD
-        nAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYABvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5wQG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAG8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnBAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGAAbw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcAM2ZGADNmRgAzZkY/82ZGP/NmRj/zZkY/82Z
-        GP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRj/zZkY/82Z
-        GP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2Z
-        GP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2Z
-        GADNmRgAzZkY/82ZGP/NmRj/zZkY/82ZGP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRj/zZkY/82ZGP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkY/82ZGP/NmRj/zZkY/82ZGP/NmRj/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRj/zZkY/82ZGP/NmRj/zZkY/82Z
-        GP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGP/NmRj/zZkY/82Z
-        GP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkY/82Z
-        GP/NmRj/zZkY/82ZGP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRj/zZkY/82ZGP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nAAbw5wAG8OcABvDnAAbw5wAG8OcAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkY/82ZGP/NmRj/zZkY/82ZGP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvD
-        nP8bw5z/G8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRj/zZkY/82ZGP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvD
-        nP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkY/82ZGP/NmRj/zZkY/82Z
-        GP/NmRj/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRj/zZkY/82Z
-        GP/NmRj/zZkY/82ZGP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnP8bw5wAG8OcABvDnADNmRgAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GP/NmRj/zZkY/82ZGP/NmRj/zZkY/xvDnP8bw5z/G8Oc/xvDnP8bw5z/G8Oc/xvDnAAbw5wAzZkYAM2Z
-        GADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2ZGADNmRgAzZkYAM2Z
-        GADNmRgAzZkY/82ZGP/NmRj/zZkY/82ZGP/NmRj/G8OcABvDnAAbw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nADNmRgAzZkYAMyZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP8bw5wAG8OcABvDnAAbw5wAG8OcABvD
-        nAAbw5wAzZkYAM2ZGADNmRgAzJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/xvDnAAbw5wAG8OcABvD
-        nAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADMmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/G8OcABvD
-        nAAbw5wAG8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAMyZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP8bw5wAG8OcABvDnAAbw5wAG8OcABvDnADNmRgAzZkYAM2ZGADNmRgAzJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/xvDnAAbw5wAG8OcABvDnAAbw5wAzZkYAM2ZGADNmRgAzZkYAM2ZGADMmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZAP/MmQD/zJkA/8yZ
-        AP/MmQD/zJkA/8yZAP/MmQD/AAAB/wAAAf8AAAH/AAAB/wAAAf8AAAH/A///wAP//8AD///AA///wAP/
-        /8AD///AA///wAP//8AD///AA///wAP//8AD///AA///wAP//8AD///AA///wAP//8AD///AA///wAP/
-        /8D/wAAA/8AAAP/AAAD/wAAA/8AAAP/AAAA=
-</value>
+  <data name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
   </data>
 </root>

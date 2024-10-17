@@ -12,12 +12,16 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebReporting.ViewModels;
+using MvcWebReportingSample.ViewModels;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Net;
 
-namespace WebReporting.Controllers
+namespace MvcWebReportingSample.Controllers
 {
 
-    [Authorize]
+    
     public class SampleController : Controller
     {
         public ActionResult Index()
@@ -314,8 +318,10 @@ namespace WebReporting.Controllers
 
         // D:   Liefert eine Seite mit einer HTML/Javascript-Komponente, die den Start des Web Designers auf dem Client auslöst.
         // US:  Returns a page that contains a HTML/Javascript component which will triggert the start of the Web Designer on the client.
+        [Authorize]
         public ActionResult WebDesignerLauncher(string reportRepositoryID)
         {
+            reportRepositoryID = WebUtility.UrlDecode(reportRepositoryID);
             if (!RepositoryItem.IsValidItemId(reportRepositoryID))
                 return new StatusCodeResult(StatusCodes.Status400BadRequest);
 
@@ -361,28 +367,33 @@ namespace WebReporting.Controllers
 
         #region "Authentication"
 
-        [AllowAnonymous]
-        public ActionResult Login()
+    
+        //[HttpPost]
+        public async Task<IActionResult> Login([FromQuery]string returnUrl = null)
         {
-            return View("Login");
+            // Validate user credentials (this is just an example, use a proper validation method)
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, "combit")
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+            if (!String.IsNullOrEmpty(returnUrl))
+            {
+                Match match = Regex.Match(returnUrl, @"reportRepositoryID=([^&]+)");
+                return RedirectToAction("WebDesignerLauncher", "Sample", new { reportRepositoryID = match.Groups[1].Value });
+            }
+            else
+            {
+                return RedirectToAction("WebDesignerLauncher", "Sample");
+            }
         }
 
-        [HttpPost, AllowAnonymous]
-        public ActionResult Login(string username)
-        {
-            if (string.IsNullOrEmpty(username))
-                return Login();
 
-            // D:   Dummy-Login zur Demonstration der Nutzung des Web Designers mit Forms Authentication
-            // US:  Dummy-Login for demonstration of using the Web Designer with Forms Autentication.
-            //FormsAuthentication.SetAuthCookie(username, false);
-            var claims = new[] { new Claim(ClaimTypes.Name, username)};
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
-
-            return RedirectToAction("Index", "Sample");
-        }
 
         #endregion
 

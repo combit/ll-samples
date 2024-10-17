@@ -10,7 +10,7 @@
 #include "Xbp.ch"
 #include "dll.ch"
 #include "common.ch"
-#include "..\cmbtLL29.ch"
+#include "..\cmbtLL30.ch"
 
 PROCEDURE Main
 
@@ -51,8 +51,8 @@ LOCAL sFileName := Replicate(chr(0),255)
 
    // D: Fehler beim Laden der Library
    // US: Library loading error
-   IF .not.LL29ModuleInit()
-      ConfirmBox(SetAppWindow(),"Error loading CMLL29.DLL !."+chr(13)+;
+   IF .not.LL30ModuleInit()
+      ConfirmBox(SetAppWindow(),"Error loading CMLL30.DLL !."+chr(13)+;
                                 "OS error#"+Alltrim(Str(DosError()))+Chr(13)+; //
                                 DosErrorMessage(DosError())+chr(13)+;
                                 Chr(13)+;
@@ -79,7 +79,7 @@ LOCAL sFileName := Replicate(chr(0),255)
    IF nRet <0
       LLErrorMessage(nRet)
       LlJobClose(hJob)
-      LL29ModuleExit()
+      LL30ModuleExit()
    ELSE
 
       // D: Tabellen & Relation hinzufügen
@@ -90,7 +90,7 @@ LOCAL sFileName := Replicate(chr(0),255)
       // US: Start designer
       nRet := LlDefineLayout(hJob, SetAppWindow():GetHWND(),"Designer", LL_PROJECT_LIST,sFileName)
       LlJobClose(hJob)
-      LL29ModuleExit()
+      LL30ModuleExit()
       Close Databases
 
    END IF
@@ -103,8 +103,8 @@ LOCAL sFileName := Replicate(chr(0),255)
 
    // D: Fehler beim Laden der Library
    // US: Library loading error
-   IF .not.LL29ModuleInit()
-      ConfirmBox(SetAppWindow(),"Error loading CMLL29.DLL !."+chr(13)+;
+   IF .not.LL30ModuleInit()
+      ConfirmBox(SetAppWindow(),"Error loading CMLL30.DLL !."+chr(13)+;
                                 "OS error#"+Alltrim(Str(DosError()))+Chr(13)+; //
                                 DosErrorMessage(DosError())+chr(13)+;
                                 Chr(13)+;
@@ -131,7 +131,7 @@ LOCAL sFileName := Replicate(chr(0),255)
    IF nRet <0
       LLErrorMessage(nRet)
       LlJobClose(hJob)
-      LL29ModuleExit()
+      LL30ModuleExit()
    ELSE
       // D: Tabellen & Relation hinzufügen
       // US: Add tables & relations
@@ -172,7 +172,7 @@ LOCAL sFileName := Replicate(chr(0),255)
       nRet := LlPrintEnd(hJob, 0)
 
       LlJobClose(hJob)
-      LL29ModuleExit()
+      LL30ModuleExit()
       Close Databases
 
    END IF

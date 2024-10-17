@@ -40,8 +40,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel29">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
+    <Reference Include="combit.ListLabel30">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

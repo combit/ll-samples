@@ -8,4 +8,4 @@ Project0=Order.src
 Is$WebApp=False
 Is$Win64=True
 [Libraries]
-Lib1=..\LLLibrary29.0\LL29-VDF23.0.sws
+Lib1=..\LLLibrary30.0\LL30-VDF23.0.sws

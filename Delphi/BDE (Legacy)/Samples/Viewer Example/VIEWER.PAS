@@ -15,7 +15,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  OleCtrls, Menus, L29, cmbtll29, Registry;
+  OleCtrls, Menus, L30, cmbtll30, Registry;
 
 type
   TViewForm = class(TForm)
@@ -39,7 +39,7 @@ type
     Print1: TMenuItem;
     CurrentPage1: TMenuItem;
     MultiplePages1: TMenuItem;
-    LlViewer: TLL29PreviewControl;
+    LlViewer: TLL30PreviewControl;
     procedure FormCreate(Sender: TObject);
     procedure Open1Click(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
@@ -88,8 +88,8 @@ begin
 		if registry.OpenKeyReadOnly(regKeyPath) then
 		begin
 			
-			// cmbtll29
-			tmp := registry.ReadString('LL29SampleDir');
+			// cmbtll30
+			tmp := registry.ReadString('LL30SampleDir');
 			if (tmp[Length(tmp)] = '\') then
 				begin
 					tmp := tmp + 'Delphi\BDE (Legacy)\Samples\Viewer Example\';

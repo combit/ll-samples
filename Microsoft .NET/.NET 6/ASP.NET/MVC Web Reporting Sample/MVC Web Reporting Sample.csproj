@@ -24,22 +24,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Sample\Login.cshtml" />
+    <Content Remove="Views\Sample\Repository.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.14" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.10" />
-    <PackageReference Include="System.CodeDom" Version="7.0.0" />
-    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.33" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.8" />
+    <PackageReference Include="System.CodeDom" Version="8.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel29">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
+    <Reference Include="combit.ListLabel30">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel29.Web">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.Web.dll</HintPath>
+    <Reference Include="combit.ListLabel30.Web">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
 

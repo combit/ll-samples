@@ -42,14 +42,14 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel29">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
+    <Reference Include="combit.ListLabel30">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel29.ReportServerIntegration">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.ReportServerIntegration.dll</HintPath>
+    <Reference Include="combit.ListLabel30.ReportServerIntegration">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.ReportServerIntegration.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ReportServer29.ClientApi">
-      <HintPath>..\..\Assemblies\combit.ReportServer29.ClientApi.dll</HintPath>
+    <Reference Include="combit.ReportServer30.ClientApi">
+      <HintPath>..\..\Assemblies\combit.ReportServer30.ClientApi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext" />
@@ -327,7 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Platforms">
-      <Version>7.0.0</Version>
+      <Version>7.0.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Win32.Primitives">
       <Version>4.3.0</Version>
@@ -336,7 +336,7 @@
       <Version>2.0.3</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.2</Version>
+      <Version>13.0.3</Version>
     </PackageReference>
     <PackageReference Include="System.AppContext">
       <Version>4.3.0</Version>
@@ -354,7 +354,7 @@
       <Version>4.3.0</Version>
     </PackageReference>
     <PackageReference Include="System.Diagnostics.DiagnosticSource">
-      <Version>7.0.1</Version>
+      <Version>8.0.1</Version>
     </PackageReference>
     <PackageReference Include="System.Diagnostics.Tools">
       <Version>4.3.0</Version>

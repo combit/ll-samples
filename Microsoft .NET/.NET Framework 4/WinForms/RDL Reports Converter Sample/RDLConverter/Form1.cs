@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
 
             installKey = Registry.CurrentUser.CreateSubKey(@"Software\combit\cmbtll");
             if (installKey != null)
-                sampleDir = (string)installKey.GetValue("LL29SampleDir", string.Empty);
+                sampleDir = (string)installKey.GetValue("LL30SampleDir", string.Empty);
 
             if (!sampleDir.EndsWith("\\"))
                 sampleDir += "\\";

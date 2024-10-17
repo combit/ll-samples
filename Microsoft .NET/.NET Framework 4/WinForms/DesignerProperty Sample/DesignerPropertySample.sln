@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio Version 15
 VisualStudioVersion = 15.0.28307.572
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignerProperty", "DesignerPropertySample\DesignerProperty.csproj", "{5118162C-BFC6-4E5F-9529-57D09411AA83}"
 EndProject

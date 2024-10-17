@@ -45,9 +45,9 @@
             // 
             // _showFileCheck
             // 
-            this._showFileCheck.Location = new System.Drawing.Point(258, 80);
+            this._showFileCheck.Location = new System.Drawing.Point(248, 80);
             this._showFileCheck.Name = "_showFileCheck";
-            this._showFileCheck.Size = new System.Drawing.Size(138, 24);
+            this._showFileCheck.Size = new System.Drawing.Size(148, 24);
             this._showFileCheck.TabIndex = 10;
             this._showFileCheck.Text = "Show file after creation";
             // 
@@ -168,6 +168,7 @@
             this.LL.MaxRTFVersion = 256;
             this.LL.PhantomSpace = 8203;
             this.LL.PreviewControl = null;
+            this.LL.Printerless = false;
             this.LL.Unit = combit.Reporting.LlUnits.Inch_1_1000;
             this.LL.UseHardwareCopiesForLabels = false;
             this.LL.UseTableSchemaForDesignMode = false;

@@ -7,7 +7,7 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "ListLabel29.hpp"
+#include "ListLabel30.hpp"
 #include <Data.DB.hpp>
 #include <FireDAC.Comp.Client.hpp>
 #include <FireDAC.Phys.hpp>
@@ -46,8 +46,8 @@ __published:	// Von der IDE verwaltete Komponenten
 	TFDQuery *FDQueryOrderDetails;
 	TDataSource *DataSourceOrders;
 	TDataSource *DataSourceOrderDetails;
-	TListLabel29 *ListLabelInvoiceList;
-	TListLabel29 *ListLabelInvoiceMerge;
+	TListLabel30 *ListLabelInvoiceList;
+	TListLabel30 *ListLabelInvoiceMerge;
 	void __fastcall btnDesignInvoiceAndItemsListClick(TObject *Sender);
 	void __fastcall btnPrintInvoiceAndItemsListClick(TObject *Sender);
 	void __fastcall btnDesignInvoiceMergeClick(TObject *Sender);

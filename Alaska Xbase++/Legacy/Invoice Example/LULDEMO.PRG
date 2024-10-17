@@ -19,7 +19,7 @@
 #include "Xbp.ch"
 #include "common.ch"
 #include "AppEvent.ch"
-#include "..\cmbtLL29.ch"
+#include "..\cmbtLL30.ch"
 
 
 PROCEDURE Main()
@@ -51,7 +51,7 @@ PROCEDURE CreateMainWindow()
    Local oButton
 
    oDlg := XbpDialog():new()
-   oDlg:title    := "List & Label 29 Xbase++ - Demo"
+   oDlg:title    := "List & Label 30 Xbase++ - Demo"
    oDlg:border   := XBPDLG_DLGBORDER
    oDlg:taskList := .T.
    oDlg:maxButton:= .F.
@@ -124,7 +124,7 @@ STATIC PROCEDURE MenuCreate( oMenuBar )
 RETURN
 
 STATIC Procedure AboutBox()
- ConfirmBox(SetAppWindow() , "List & Label 29 Xbase++ Demo (c) 1999-2011 combit GmbH", "About", XBPMB_OK , XBPMB_INFORMATION+XBPMB_APPMODAL+XBPMB_MOVEABLE )
+ ConfirmBox(SetAppWindow() , "List & Label 30 Xbase++ Demo (c) 1999-2011 combit GmbH", "About", XBPMB_OK , XBPMB_INFORMATION+XBPMB_APPMODAL+XBPMB_MOVEABLE )
 
 
 RETURN

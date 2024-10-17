@@ -31,9 +31,22 @@ namespace LLViewer
 
     public partial class NativeWpfViewerWindow : Window
     {
-        public NativeWpfViewerWindow()
+        private Window _mainWindow;
+
+        public NativeWpfViewerWindow(Window mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            _mainWindow.Visibility = Visibility.Visible;
+        }
+
+        private void cmbtViewer_FileNameChanged(object sender, RoutedEventArgs e)
+        {
+            cmbtViewer.ShowToolBar = true;
         }
     }
 }

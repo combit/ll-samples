@@ -7,9 +7,9 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Authorization;
 
-namespace WebReporting.Controllers
+namespace MvcWebReportingSample.Controllers
 {
-    [Authorize]
+
     public class LLWebReportViewerController : WebReportViewerController
     {
         public override void OnProvideListLabel(ProvideListLabelContext provideListLabelContext)

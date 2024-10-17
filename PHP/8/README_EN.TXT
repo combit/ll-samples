@@ -1,11 +1,11 @@
 -------------------------------------------------
-List & Label Sample for PHP (Version 8.2.3)
+List & Label Sample for PHP (Version 8.3.1)
 Copyright (C) combit GmbH
 -------------------------------------------------
 
 Copy sources
-- Download the latest PHP8 sources that match your web server's PHP version (PHP Version, Non Thread Safe/Thread Safe, Visual Studio Version), from https://www.php.net/downloads.php
-- Unpack the archive to the "php_src" folder
+- Download the latest PHP8 sources that match your web server's PHP version (PHP version, Non Thread Safe/Thread Safe, Visual Studio version), from "https://www.php.net/downloads.php".
+- Unpack the archive to the "php_src" folder.
 - Copy the file "php8ts.lib" from your web server installation ("dev\lib") into the "dev" folder.
 
 Then locate the following lines in "zend_build.h" in the "php_src/zend" folder:
@@ -16,20 +16,20 @@ Then locate the following lines in "zend_build.h" in the "php_src/zend" folder:
 	#define ZEND_BUILD_SYSTEM
 	#endif
 
-Replace them with:
+Replace them with the following lines:
 
 	#if defined(ZEND_WIN32)
 	#define PHP_COMPILER_ID "VS16"
 	#define ZEND_BUILD_SYSTEM "," PHP_COMPILER_ID
 	#endif
 	
-If you are using PHP Version 8.2.0 or later, please open the file named 'zend_alloc.h' inside the folder "php_src/zend" in your sample, and replace the following lines:
+If you are using PHP Version 8.2.0 or later, please open the file "zend_alloc.h" inside the folder "php_src/zend" in your sample and located the following lines:
 
 	#ifndef ZEND_MM_ALIGNMENT
 	# error "ZEND_MM_ALIGNMENT was not defined during configure"
 	#endif
 
-With:
+Replace them with the following lines:
 
 	#ifndef ZEND_MM_ALIGNMENT
 	# define ZEND_MM_ALIGNMENT Z_UL(8)
@@ -41,6 +41,27 @@ With:
 	# define ZEND_MM_ALIGNMENT_LOG2 Z_L(2)
 	#endif
 	
+If you are using PHP 8.3.1, there is a known error on the part of PHP and the build error "error: invalid conversion from 'const void*' to 'const char*'" could occur in "zend_operators.h". If this happens, please locate the following lines in the file "zend_operators.h" in the folder "php_src/zend":
+
+	#if defined(HAVE_STRNLEN)
+		return strnlen(s, maxlen);
+	#else
+		const char *p = memchr(s, '\0', maxlen);
+		return p ? p-s : maxlen;
+	#endif
+	}
+
+Replace them with the following lines:
+
+	#if defined(HAVE_STRNLEN)
+		return strnlen(s, maxlen);
+	#else
+		const char *p = (const char *)memchr(s, '\0', maxlen);
+		return p ? p-s : maxlen;
+	#endif
+	}
+
+
 You're now able to compile the DLL (Visual C++/Visual Studio 2019 and newer).
 -------------------------------------------------
 
@@ -187,12 +208,12 @@ Should you encounter the error "fatal error C1083: Cannot open Include File "con
 #define HAVE_GETADDRINFO 1
 -------------------------------------------------
 
-Should you encounter the error "Error C3163: ‘_vsnprintf’: attributes inconsistent with previous declaration" during compilation locate the following lines in "zend_config.w32.h":
+Should you encounter the error "Error C3163:  _vsnprintf : attributes inconsistent with previous declaration" during compilation locate the following lines in "zend_config.w32.h":
 
 	#define snprintf _snprintf
 	#define vsnprintf _vsnprintf
 
-Replace them with:
+Replace them with the following lines:
 
 	#if not defined(_MSC_VER) || defined(__MINGW32__)
 	#define snprintf _snprintf
@@ -206,7 +227,7 @@ Should you encounter the error "fatal error C1017: invalid integer constant expr
 	#define TSRM_WIN32
 	#endif
 
-and replace them with:
+Replace them with the following lines:
 
 	#if define (WINNT)| define(WIN32)
 	#define TSRM_WIN32
@@ -217,7 +238,7 @@ Configure PHP
 - IMPORTANT: The PHP version of your web server needs to match the version used for compiling the DLL.
 - Move the generated DLL to the "ext" folder of your PHP8 directory.
 - Locate the "php.ini" used by your PHP configuration.
-- Add the following command: "extension=php_listlabel29.dll;" or the name you've chosen for the DLL.
+- Add the following command: "extension=php_listlabel??.dll;" or the name you've chosen for the DLL.
 
 Now locate line 45 in "frame.php in your "websample" folder and add your personal license key. You can find it in the file "PersonalLicense.txt" in the List & Label installation directory.
 

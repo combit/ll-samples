@@ -9,18 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel29">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
+    <Reference Include="combit.ListLabel30">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel29.ReportServerIntegration">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.ReportServerIntegration.dll</HintPath>
+    <Reference Include="combit.ListLabel30.ReportServerIntegration">
+      <HintPath>..\..\Assemblies\combit.ListLabel30.ReportServerIntegration.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ReportServer29.ClientApi">
-      <HintPath>..\..\Assemblies\combit.ReportServer29.ClientApi.dll</HintPath>
+    <Reference Include="combit.ReportServer30.ClientApi">
+      <HintPath>..\..\Assemblies\combit.ReportServer30.ClientApi.dll</HintPath>
     </Reference>
   </ItemGroup>
 

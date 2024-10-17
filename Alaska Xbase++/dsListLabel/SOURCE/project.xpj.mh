@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
 <version number="1.0" />
 <session>
-  <active file=".\panRight.prg" />
+  <active file=".\Main.prg" />
   <openfiles>
-    <openfile path=".\panRight.prg" column="0" line="135" />
-    <openfile path=".\Main.prg" column="0" line="97" />
+    <openfile path=".\Main.prg" column="0" line="21" />
   </openfiles>
   <breakpoints>
-    <breakpoint target    = "..\LLDemo.EXE"
-                file      = ".\panRight.prg"
-                line      = "133"
+    <breakpoint target    = ".\LLDemo.EXE"
+                file      = "..\DLL\dsListLabel.prg"
+                line      = "759"
                 state     = "1"
                 condition = ".T."
                 fromPass  = "1"
@@ -21,7 +20,4 @@
                 logFile   = ""
                 />
   </breakpoints>
-  <view>
-    <expanded key="_2D73F757147DBF9C242164A15A44A2A92228852D" />
-  </view>
 </session>

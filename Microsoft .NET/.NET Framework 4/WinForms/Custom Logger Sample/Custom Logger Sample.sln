@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio Version 15
 VisualStudioVersion = 15.0.28307.572
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custom Logger Sample", "Custom Logger Sample.csproj", "{2D5A4E14-7FC1-4ED2-9A88-2C80C3A65286}"
 EndProject

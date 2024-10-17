@@ -1,12 +1,12 @@
 -------------------------------------------------
-List & Label Sample für PHP (Version 8.2.3)
+List & Label Sample für PHP (Version 8.3.1)
 Copyright (C) combit GmbH
 -------------------------------------------------
 
 Quelldateien kopieren
-- Laden Sie sich die aktuellen PHP8-Quelldateien, die mit Ihrer Webserver PHP Version übereinstimmen (PHP Version, Non Thread Safe/Thread Safe, Visual Studio Version), von https://www.php.net/downloads.php herunter.
+- Laden Sie sich die aktuellen PHP8-Quelldateien, die mit Ihrer Webserver-PHP-Version übereinstimmen (PHP-Version, Non-Thread-Safe/Thread-Safe, Visual Studio-Version), von "https://www.php.net/downloads.php" herunter.
 - Entpacken Sie das Archiv direkt in den Ordner "php_src".
-- Kopieren Sie die Datei "php8ts.lib" aus ihrer Webserverinstallation ("dev") in den Ordner "dev".
+- Kopieren Sie die Datei "php8ts.lib" aus Ihrer Webserverinstallation ("dev") in den Ordner "dev".
 
 Anschließend öffnen Sie bitte die Datei "zend_build.h" im Ordner "php_src/zend" und suchen die folgenden Zeilen:
 
@@ -16,20 +16,20 @@ Anschließend öffnen Sie bitte die Datei "zend_build.h" im Ordner "php_src/zend" 
 	#define ZEND_BUILD_SYSTEM
 	#endif
 
-Ersetzen Sie diese mit folgendem Quellcode:
+Ersetzen Sie diese mit folgenden Zeilen:
 
 	#if defined(ZEND_WIN32)
 	#define PHP_COMPILER_ID "VS16"
 	#define ZEND_BUILD_SYSTEM "," PHP_COMPILER_ID
 	#endif
 
-Falls Sie PHP 8.2.0 oder größer verwenden, öffnen Sie bitte die Datei 'zend_alloc.h' im Ordner "php_src/zend" und ersetzen Sie die folgenden Zeilen:
+Falls Sie PHP 8.2.0 oder größer verwenden, öffnen Sie bitte die Datei "zend_alloc.h" im Ordner "php_src/zend" und suchen die folgenden Zeilen:
 
 	#ifndef ZEND_MM_ALIGNMENT
 	# error "ZEND_MM_ALIGNMENT was not defined during configure"
 	#endif
 
-durch folgendes:
+Ersetzen Sie diese durch folgende Zeilen:
 
 	#ifndef ZEND_MM_ALIGNMENT
 	# define ZEND_MM_ALIGNMENT Z_UL(8)
@@ -40,11 +40,32 @@ durch folgendes:
 	# define ZEND_MM_ALIGNMENT Z_UL(4)
 	# define ZEND_MM_ALIGNMENT_LOG2 Z_L(2)
 	#endif
-	
+
+Falls Sie PHP 8.3.1 einsetzen, existiert ein bekannter Fehler seitens PHP. Außerdem kann der Buildfehler "error: invalid conversion from 'const void*' to 'const char*'" in der Datei "zend_operators.h" auftreten. Falls das passiert, suchen Sie bitte in der Datei "zend_operators.h" im Ordner "php_src/zend" nach den folgenden Zeilen:
+
+
+	#if defined(HAVE_STRNLEN)
+		return strnlen(s, maxlen);
+	#else
+		const char *p = memchr(s, '\0', maxlen);
+		return p ? p-s : maxlen;
+	#endif
+	}
+
+Ersetzen Sie diese durch die folgenden Zeilen:
+
+	#if defined(HAVE_STRNLEN)
+		return strnlen(s, maxlen);
+	#else
+		const char *p = (const char *)memchr(s, '\0', maxlen);
+		return p ? p-s : maxlen;
+	#endif
+	}
+
 Nun können Sie die .dll-Datei kompilieren (Visual C++/Visual Studio 2019 und höher).
 -------------------------------------------------
 
-Sollte beim Kompilieren der Fehler "fatal error C1083: Cannot open Include File "config.w32.h": No such file or directory in PHP/php_src/main/ on line 25" auftreten, erstellen Sie eine Datei mit dem Namen "config.w32.h" und fügen folgenden Code für die PHP 8.0.x Versionen ein:
+Sollte beim Kompilieren der Fehler "fatal error C1083: Cannot open Include File "config.w32.h": No such file or directory in PHP/php_src/main/ on line 25" auftreten, erstellen Sie eine Datei mit dem Namen "config.w32.h" und fügen folgenden Code für die PHP 8.0.x-Versionen ein:
 
 /*
 	Build Configuration Template for Win32.
@@ -192,7 +213,7 @@ Sollte beim Kompilieren der Fehler "Error C3163: ‘_vsnprintf’: attributes incons
 	#define snprintf _snprintf
 	#define vsnprintf _vsnprintf
 
-Ersetzen Sie diese mit folgendem Quellcode:
+Ersetzen Sie diese mit den folgenden Zeilen:
 
 	#if not defined(_MSC_VER) || defined(__MINGW32__)
 	#define snprintf _snprintf
@@ -206,20 +227,20 @@ Sollte beim Kompilieren der Fehler "fatal error C1017: Ungültiger Ausdruck für G
 	#define TSRM_WIN32
 	#endif
 
-Ersetzen Sie diese mit folgendem Quellcode:
+Ersetzen Sie diese mit den folgenden Zeilen:
 
 	#if define (WINNT)| define(WIN32)
 	#define TSRM_WIN32
 	#endif
 -------------------------------------------------
 
-PHP Konfiguration
-- WICHTIG: Die PHP Version Ihres Webservers muss mit der Version der kompilierten DLL übereinstimmen.
+PHP-Konfiguration
+- WICHTIG: Die PHP-Version Ihres Webservers muss mit der Version der kompilierten DLL übereinstimmen.
 - Verschieben Sie die erstellte .dll-Datei in den Ordner "ext" in Ihrem PHP8-Verzeichnis.
 - Suchen Sie die für Ihre PHP-Konfiguration verwendete "php.ini".
-- Fügen Sie der php.ini folgenden Befehl hinzu: "extension=php_listlabel29.dll" oder den Namen den Sie für Ihre DLL gewählt haben.
+- Fügen Sie der "php.ini" folgenden Befehl hinzu: "extension=php_listlabel??.dll" oder den Namen den Sie für Ihre DLL gewählt haben.
 
-Nun müssen Sie in der Datei "frame.php" in Zeile 45 im Ordner "websample" Ihren persönlichen Lizenzschlüssel setzen. Zu finden ist dieser in der Datei "PersonalLicense.txt" im List & Label Installationsverzeichnis.
+Nun müssen Sie in der Datei "frame.php" in Zeile 45 im Ordner "websample" Ihren persönlichen Lizenzschlüssel setzen. Zu finden ist dieser in der Datei "PersonalLicense.txt" im List & Label-Installationsverzeichnis.
 
 Um das Beispiel auszuführen, müssen Sie lediglich den Inhalt des "websample"-Ordners auf Ihren Webserver kopieren und gegebenenfalls der Datei "frame.php" sowie dem Ordner "tmp" den CHMOD 777 zuweisen.
 Um die Änderungen zu übernehmen müssen Sie Ihren Webserver neustarten.

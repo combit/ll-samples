@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, DB,
-  Registry, DBTables, ADODB, L29, StdCtrls, cmbtll29, L29db, uPrintWorker,
+  Registry, DBTables, ADODB, L30, StdCtrls, cmbtll30, L30db, uPrintWorker,
   ComCtrls, SyncObjs;
 
 type
@@ -16,8 +16,8 @@ type
     dsCustomers: TDataSource;
     Customers: TADOTable;
     ADOConnection1: TADOConnection;
-    LLDesign: TL29_;
-    LLDesignerPrint: TL29_;
+    LLDesign: TL30_;
+    LLDesignerPrint: TL30_;
     DesignIL: TButton;
     procedure DesignILClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

@@ -95,8 +95,8 @@ class EventsForm of FORM
       cSQL+=" INNER JOIN Data\events.dbf Events"
       cSQL+=" ON (Customers.CustomerID = Events.CustomerID)"  
       cSQL+=" ORDER BY Customers.Name, Events.StartDate"
-      SET PROCEDURE TO LL29.CC ADDITIVE
-      r=new LL29InterfaceSample()
+      SET PROCEDURE TO LL30.CC ADDITIVE
+      r=new LL30InterfaceSample()
       r.query1=new QUERY()
       r.query1.sql=cSQL
       r.query1.active=true

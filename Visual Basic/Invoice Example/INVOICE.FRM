@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{2213E283-16BC-101D-AFD4-040224009C1D}#29.0#0"; "cmll29o.ocx"
+Object = "{2213E283-16BC-101D-AFD4-040224009C1E}#30.0#0"; "cmll30o.ocx"
 Begin VB.Form Form1 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "List & Label - Advanced Bill Sample"
@@ -556,7 +556,7 @@ Private Sub Form_Load()
 ' Copyright (C) combit GmbH
 '
 '--------------------------------------------------------------------------------------
-' File   : invoice.vbp, invoice.frm, cmll29.bas
+' File   : invoice.vbp, invoice.frm, cmll30.bas
 ' Module : advanced invoice sample
 ' Descr. : D:   Dieses Beispiel demonstriert das Designen und Drucken von Rechnungen
 '          US: This example demonstrates how to design and print invoices

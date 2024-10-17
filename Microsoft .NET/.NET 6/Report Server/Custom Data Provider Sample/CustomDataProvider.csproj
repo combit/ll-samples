@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<Deterministic>false</Deterministic>
@@ -14,11 +14,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel29">
-      <HintPath>..\..\Assemblies\combit.ListLabel29.dll</HintPath>
+    <Reference Include="combit.ListLabel30">
+      <HintPath>..\..\..\.NET 8\Assemblies\combit.ListLabel30.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ReportServer29.SharedTypes">
-      <HintPath>..\..\Assemblies\combit.ReportServer29.SharedTypes.dll</HintPath>
+    <Reference Include="combit.ReportServer30.SharedTypes">
+      <HintPath>..\..\..\.NET 8\Assemblies\combit.ReportServer30.SharedTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
 

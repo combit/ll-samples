@@ -2,8 +2,8 @@
 <sitelist name="Debug">
 	<site id="MainForm.MainSite">
 		<zone kind="HORZ">
-			<zone kind="VERT" size="266" dsize="0.145038167938931">
-				<zone kind="TABS" activetab="0" size="729" dsize="0.748148148148148">
+			<zone kind="VERT" size="266" dsize="0.145673603504929">
+				<zone kind="TABS" activetab="2" size="729" dsize="0.748148148148148">
 					<zone kind="PANEL" id="MainForm.ProjectManagerDockPanel" visible="1"/>
 					<zone kind="PANEL" id="MainForm.ModulesDockPanel" visible="1"/>
 					<zone kind="PANEL" id="MainForm.CodeExplorerDockPanel" visible="1"/>
@@ -13,7 +13,7 @@
 					<zone kind="PANEL" id="MainForm.IDEErrorCallstackFormDockPanel" visible="1"/>
 				</zone>
 			</zone>
-			<zone kind="VERT" size="1328" dsize="0.724100327153762">
+			<zone kind="VERT" size="1320" dsize="0.72289156626506">
 				<zone kind="TABS" activetab="0" size="796" dsize="0.816410256410256" isspace="1">
 					<zone kind="PANEL" id="MainForm.frmClipperEditWindowDockPanel" visible="1"/>
 					<zone kind="PANEL" id="MainForm.OutputWindowDockPanel" visible="1"/>
@@ -26,7 +26,7 @@
 					<zone kind="PANEL" id="MainForm.ThreadsDockPanel" visible="1"/>
 				</zone>
 			</zone>
-			<zone kind="VERT" size="240" dsize="0.130861504907307">
+			<zone kind="VERT" size="240" dsize="0.131434830230011">
 				<zone kind="TABS" activetab="0" size="653" dsize="0.669945355191257">
 					<zone kind="PANEL" id="MainForm.VariablesDockPanel" visible="1"/>
 					<zone kind="PANEL" id="MainForm.WatchDockPanel" visible="1"/>
@@ -36,7 +36,8 @@
 		</zone>
 	</site>
 	<description>Vorgabe-Fensterlayout für das Debuggen von Anwendungen. Enthält Sichten für Callstack- und Breakpointinformationen. Dieses Fensterlayout kann nicht gelöscht werden.</description>
-	<Variables style="3" attributes="100" sortorder="0"/>
+	<ExpressionInspector style="3" attributes=""/>
+	<Variables style="3" attributes="100" sortorder="2"/>
 	<ObjectInspector style="3" attributes=""/>
 	<Threads style="3" attributes="14;14;14;9;20;24" sortorder="19"/>
 	<Breakpoints style="3" attributes="10;30;20;30;10" sortorder="0"/>
@@ -47,5 +48,4 @@
 	<CodeExplorer style="3" attributes=""/>
 	<OutputWindow style="3" attributes=""/>
 	<CommandWindow style="3" attributes=""/>
-	<ExpressionInspector style="3" attributes=""/>
 </sitelist>

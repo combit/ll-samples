@@ -74,7 +74,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\cmll29.lib"
+				AdditionalDependencies="..\cmll30.lib"
 				OutputFile="$(OutDir)$(ProjectName).exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -169,7 +169,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\cmll29.lib"
+				AdditionalDependencies="..\cmll30.lib"
 				OutputFile="$(OutDir)$(ProjectName).exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

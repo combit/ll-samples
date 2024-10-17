@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebReporting.ViewModels
+namespace MvcWebReportingSample.ViewModels
 {
     public class RepositoryModel
     {

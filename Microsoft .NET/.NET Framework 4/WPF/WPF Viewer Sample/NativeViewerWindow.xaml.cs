@@ -31,9 +31,17 @@ namespace LLViewer
 
     public partial class NativeViewerWindow : Window
     {
-        public NativeViewerWindow()
+        private Window _mainWindow;
+
+        public NativeViewerWindow(Window mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            _mainWindow.Visibility = Visibility.Visible;
         }
     }
 }

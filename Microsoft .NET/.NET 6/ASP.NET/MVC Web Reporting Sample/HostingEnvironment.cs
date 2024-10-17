@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 
-namespace WebReporting
+namespace MvcWebReportingSample
 {
     public class HostingEnvironment
     {

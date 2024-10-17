@@ -95,13 +95,15 @@ namespace WebReporting
                 itemToInsert = GetItemsFromDb(item.InternalID).First();
                 itemToInsert.Descriptor = item.Descriptor;
                 itemToInsert.LastModificationUTC = item.LastModificationUTC;
+                itemToInsert.FolderId = item.FolderId;
+                itemToInsert.FolderPath = item.FolderPath;
                 itemToInsert.Author = currentUser;
             }
             else   // New Repository Item
             {
                 // Create an object of our own repository item class from the base class object that we got from List & Label.
                 bool showInToolbar = RepositoryItemType.IsProjectType(item.Type, false);
-                itemToInsert = new CustomizedRepositoryItem(item.InternalID, item.Descriptor, item.Type, item.LastModificationUTC, currentUser, showInToolbar, null, _reportLanguage);
+                itemToInsert = new CustomizedRepositoryItem(item.InternalID, item.Descriptor, item.Type, item.LastModificationUTC, currentUser, showInToolbar, item.UIName, _reportLanguage);
             }
 
             // Get a suitable SQL query for INSERT / UPDATE and a call with/without the file content.

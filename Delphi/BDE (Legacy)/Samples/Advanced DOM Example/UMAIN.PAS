@@ -14,7 +14,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Registry,
-  Dialogs, L29, L29db, cmbtll29, L29dom, DB, ADODB, ExtCtrls, StdCtrls, ComCtrls, ActnList,
+  Dialogs, L30, L30db, cmbtll30, L30dom, DB, ADODB, ExtCtrls, StdCtrls, ComCtrls, ActnList,
   System.Actions
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
@@ -57,7 +57,7 @@ type
     FontDialog1: TFontDialog;
     ColorDialog1: TColorDialog;
     ADOConnection1: TADOConnection;
-    LL: TDBL29_;
+    LL: TDBL30_;
     btnColorCell1: TButton;
     lblColorCell1: TLabel;
     lblColorCell2: TLabel;

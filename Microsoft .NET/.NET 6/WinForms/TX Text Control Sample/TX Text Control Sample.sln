@@ -1,8 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio Version 15
+VisualStudioVersion = 15.0.28307.572
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TX Text Control Sample", "TX Text Control Sample\TX Text Control Sample.csproj", "{120D5A51-BB9E-4B93-A83D-85F23ACB5999}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TX Text Control Designer Object", "TX Text Control Designer Object\TX Text Control Designer Object.csproj", "{1452C2E5-6BEC-439B-9C15-6C98884C66D2}"

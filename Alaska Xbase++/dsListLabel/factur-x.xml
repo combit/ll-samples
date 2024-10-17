@@ -15,7 +15,8 @@
     <ram:Content>9889432</ram:Content>
   </ram:IncludedNote>
   <ram:IncludedNote>
-    <ram:Content>Sonnenallee 5 D - 12047 Berlin</ram:Content>
+    <ram:Content>Untere Laube 30
+65760 D - 78462 Konstanz</ram:Content>
     <ram:SubjectCode>REG</ram:SubjectCode>
   </ram:IncludedNote>
 </rsm:ExchangedDocument>
@@ -69,11 +70,11 @@
     <ram:BuyerTradeParty>
       <ram:ID>737237</ram:ID>
       <ram:GlobalID schemeID="0088">4000001123452</ram:GlobalID>
-      <ram:Name>Deutschsprachige Xbase-Entwickler e.V.</ram:Name>
+      <ram:Name>combit GmbH</ram:Name>
       <ram:PostalTradeAddress>
-        <ram:PostcodeCode>12047</ram:PostcodeCode>
-        <ram:LineOne>Sonnenallee 5</ram:LineOne>
-        <ram:CityName>Berlin</ram:CityName>
+        <ram:PostcodeCode>78467</ram:PostcodeCode>
+        <ram:LineOne>B&#252;cklestr. 3-5</ram:LineOne>
+        <ram:CityName>Konstanz</ram:CityName>
         <ram:CountryID>DE</ram:CountryID>
       </ram:PostalTradeAddress>
       <ram:SpecifiedTaxRegistration>

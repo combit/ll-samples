@@ -11,13 +11,13 @@ namespace WebReporting
     {
         // D:   Stellen Sie hier die Sprache für die Berichte und den Designer ein.
         // US:  Set the language for the reports and the Designer here.
-        //public static LlLanguage Language { get { return LlLanguage.English; } }
-        public static LlLanguage Language { get { return LlLanguage.German; } }
+        public static LlLanguage Language { get { return LlLanguage.English; } }
+        // public static LlLanguage Language { get { return LlLanguage.German; } }
 
         // D: Setzen Sie die gewünschte Einheit auf Inch oder Millimeter. SysDefault Werte verwenden für den WebReportDesigner immer Millimeter, um die Synchronisierung zwischen Client und Server zu gewährleisten.
         // US: Set the Unit to Inch or Millimeter. SysDefault Values automatically use millimeter in the web report designer context to make sure client and server units are synchronized. 
-        //public static LlUnits Unit { get { return LlUnits.Inch_1_1000; } }
-        public static LlUnits Unit { get { return LlUnits.Millimeter_1_100; } }
+        public static LlUnits Unit { get { return LlUnits.Inch_1_1000; } }
+        // public static LlUnits Unit { get { return LlUnits.Millimeter_1_100; } }
 		
         public static string RepositoryLanguage
         {
@@ -61,7 +61,7 @@ namespace WebReporting
         }
 
         // D:   Für Etikettenprojekte wird die Tabelle "Customers" ausgewählt.
-        // US:  The Table "Customers" is chosen for label projects.
+        // US:  The table "Customers" is chosen for label projects.
         private static string DataMember
         {
             get
@@ -92,7 +92,7 @@ namespace WebReporting
             return dataProvider;
         }
 
-        // D:   Liefert die passende Tabelle zu einem Beispiel-Etikett.
+        // D:   Liefert den passenden DataMember zu einem Beispiel-Etikett.
         // US:  Returns the matching data member for a sample label.
         public static string GetDataMemberForProject(string repositoryIdOfProject)
         {
@@ -138,9 +138,11 @@ namespace WebReporting
             return new WebReportDesignerAction[]
             {
                 //WebReportDesignerAction.CreateNewProject,
-                //WebReportDesignerAction.BrowseProjects,
                 //WebReportDesignerAction.DeleteProject,
                 //WebReportDesignerAction.DownloadProject,
+                //WebReportDesignerAction.ExportAs,
+                //WebReportDesignerAction.ManageRepository,
+                //WebReportDesignerAction.OpenProjects,
                 //WebReportDesignerAction.SaveAsProject,
                 //WebReportDesignerAction.SaveProject,
                 //WebReportDesignerAction.UnlockProject,

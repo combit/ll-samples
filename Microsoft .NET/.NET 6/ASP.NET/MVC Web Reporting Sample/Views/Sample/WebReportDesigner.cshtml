@@ -8,9 +8,10 @@
         repositoryId = repositoryId.Replace("repository://{", "").Replace("}", "");
     }
 
-    var options = new WebReportDesignerMVCOptions(repositoryId)
+    var options = new WebReportDesignerMVCOptions(string.Empty)
 	{
-		Title = "Web Report Designer"
+		Title = "Web Report Designer",
+        ShowTutorial = true        
 	};
 }
 

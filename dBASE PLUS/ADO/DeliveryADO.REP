@@ -1,5 +1,5 @@
 // Revision: 25.08.2022
-CLASS DeliveryADOReport OF LL29InterfaceSample FROM ..\LL29.CC
+CLASS DeliveryADOReport OF LL30InterfaceSample FROM ..\LL30.CC
    this.ORDERDETAILS1 = new ADOQUERY(this)
    with (this.ORDERDETAILS1)
       left = 126.0

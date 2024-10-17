@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label4.Text" xml:space="preserve">
-    <value>This example project shows how to use the Report Server ClientApi assembly. The ClientApi assembly is a convenient wrapper for integrating .NET applications with combit Report Server via it's REST API.</value>
+    <value>This example project shows how to use the Report Server ClientApi assembly. The ClientApi assembly is a convenient wrapper for integrating .NET applications with combit Report Server via its REST API.</value>
   </data>
 </root>

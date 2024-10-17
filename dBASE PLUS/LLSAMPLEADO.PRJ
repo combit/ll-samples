@@ -1,7 +1,7 @@
 Project File generated 25.08.2022 19:14:18
 
 [Project]
-Name=LL29SampleADO
+Name=LL30SampleADO
 DefaultDir=.
 MainProjectFileName=ADO\LLSamplesADO.prg
 Parameters=
@@ -35,8 +35,8 @@ ADO\ChartADO.wfm,0,0,0,
 OPTIONS.WFM,0,0,0, 
 LLRibbons.cc,0,0,0, 
 ADO\EventsADO.wfm,0,0,0, 
-cmbtLL29.h,0,0,0, 
-LL29.CC,0,0,0, 
+cmbtLL30.h,0,0,0, 
+LL30.CC,0,0,0, 
 
 [DEO]
 
@@ -45,7 +45,7 @@ ProjectExeFileName=llsampleADO.exe
 ProjectMainFileName=
 ProjectdBaseVersion=dBASE 2019 13.20  b2618 (11/26/2019-DE191126)
 DefaultDirName={pf}\{#AppName}
-AppName=LL29SampleADO
+AppName=LL30SampleADO
 AppVersion=1.0.0.0
 SM_dBASERuntime=false
 dBPlus=true

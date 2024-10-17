@@ -56,10 +56,10 @@ public:
 /////////////////////////////////////////////////////////////////////////////
 // D:  Waehlen Sie hier die List & Label Sprache für den Designer und die
 //     Dialoge aus :
-//    (Die entsprechenden Sprachkonstanten entnehmen Sie der Datei cmll29.h)
+//    (Die entsprechenden Sprachkonstanten entnehmen Sie der Datei cmll30.h)
 
 // US: choose your LuL-Language for all designer, dialogs, etc... here:
-//    (see cmll29.h for other language-constants)
+//    (see cmll30.h for other language-constants)
 
 const int LUL_LANGUAGE = CMBTLANG_DEFAULT;
 

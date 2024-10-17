@@ -1,0 +1,27 @@
+﻿@page 
+
+<script src="~/webreportdesigner.js"></script>
+
+<HeadContent>
+    <title>Web Report Designer</title>
+</HeadContent>
+
+@{
+    Layout = "_Layout";
+    string baseUri = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
+    string defaultProject = string.Empty;
+
+    if (BlazorWebReportingSample.CmbtSettings.Language == combit.Reporting.LlLanguage.English)
+    {
+        defaultProject = null;
+    }
+    else
+    { 
+        defaultProject = null;
+    }
+}
+
+<div>
+    <ll-webreportdesigner backendurl="@baseUri/LLWebReportDesigner" defaultProject="@defaultProject" showTutorial />
+</div>
+

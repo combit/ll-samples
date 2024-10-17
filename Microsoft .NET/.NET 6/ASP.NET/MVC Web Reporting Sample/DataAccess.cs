@@ -7,7 +7,7 @@ using combit.Reporting;
 using Microsoft.Extensions.Caching.Memory;
 using System.IO;
 
-namespace WebReporting.DataAccess
+namespace MvcWebReportingSample.DataAccess
 {
     static class CmbtSettings
     {

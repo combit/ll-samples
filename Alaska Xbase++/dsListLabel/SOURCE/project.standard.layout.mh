@@ -8,14 +8,14 @@
 	</site>
 	<site id="MainForm.MainSite">
 		<zone kind="HORZ">
-			<zone kind="VERT" size="213" dsize="0.115760869565217">
+			<zone kind="VERT" size="213" dsize="0.116266375545852">
 				<zone kind="TABS" activetab="0" size="981" dsize="1">
 					<zone kind="PANEL" id="MainForm.ProjectManagerDockPanel" visible="1"/>
 					<zone kind="PANEL" id="MainForm.CodeExplorerDockPanel" visible="1"/>
 				</zone>
 				<zone kind="PANEL" id="MainForm.CallstackDockPanel" visible="0" size="165" dsize="0.364238410596026"/>
 			</zone>
-			<zone kind="VERT" size="1627" dsize="0.884239130434783">
+			<zone kind="VERT" size="1619" dsize="0.883733624454148">
 				<zone kind="TABS" size="165" dsize="0.369127516778524">
 					<zone kind="PANEL" id="MainForm.VariablesDockPanel" visible="0"/>
 					<zone kind="PANEL" id="MainForm.ThreadsDockPanel" visible="0"/>
@@ -36,6 +36,7 @@
 		</zone>
 	</site>
 	<description>Vorgabe-Fensterlayout für das Entwickeln von Anwendungen. Dieses Fensterlayout kann nicht gelöscht werden.</description>
+	<ExpressionInspector style="3" attributes=""/>
 	<Variables style="3" attributes="100" sortorder="0"/>
 	<ObjectInspector style="3" attributes=""/>
 	<Threads style="3" attributes="14;14;14;9;20;24" sortorder="19"/>
@@ -47,5 +48,4 @@
 	<CodeExplorer style="3" attributes=""/>
 	<OutputWindow style="3" attributes=""/>
 	<CommandWindow style="3" attributes=""/>
-	<ExpressionInspector style="3" attributes=""/>
 </sitelist>
