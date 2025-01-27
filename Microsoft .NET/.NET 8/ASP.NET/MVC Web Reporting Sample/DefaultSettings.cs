@@ -2,14 +2,16 @@
 using combit.Reporting.DataProviders;
 using combit.Reporting.Repository;
 using combit.Reporting.Web.WebReportDesigner.Server;
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace WebReporting
+namespace MvcWebReportingSample
 {
     static class CmbtSettings
     {
+
         public static class LanguageSettings
         {
             //D: Sprache des Windows-Betriebssystems abfragen.
@@ -39,6 +41,7 @@ namespace WebReporting
             }
         }
 
+
         public static string RepositoryLanguage
         {
             get
@@ -64,7 +67,7 @@ namespace WebReporting
         {
             get
             {
-                return CmbtSettings.LanguageSettings.Language == LlLanguage.German ? "Kundenliste mit Sortierung" : "Customer list with sort order";
+                return String.Empty;
             }
         }
 
@@ -80,10 +83,7 @@ namespace WebReporting
 
         public static SQLiteFileRepository GetBaseRepository()
         {
-            if (_fileRepository == null)
-            {
-                _fileRepository = new SQLiteFileRepository(WebReporting.SampleWebReportingApplication.RepositoryDatabaseFile, CmbtSettings.RepositoryLanguage);
-            }
+            _fileRepository ??= new SQLiteFileRepository(Program.RepositoryDatabaseFile, CmbtSettings.RepositoryLanguage);
 
             return _fileRepository;
         }
@@ -111,19 +111,13 @@ namespace WebReporting
 
             RepositoryItem project = GetBaseRepository().GetItem(repositoryIdOfProject);
 
-            if (project.Type != RepositoryItemType.ProjectLabel.Value)
-            {
-                return null;
-            }
-
-            return DataMember;
+            return project.Type != RepositoryItemType.ProjectLabel.Value ? null : DataMember;
         }
 
         public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)
         {
-            ListLabel LL = new ListLabel
+            ListLabel LL = new()
             {
-
                 // D:   Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
                 // US:  Set license key for List & Label. If not set, a license error will be displayed on non-development machines.
                 // LicensingInfo = "<insert your license key here>",
@@ -135,7 +129,7 @@ namespace WebReporting
                 Language = CmbtSettings.LanguageSettings.Language,
                 Unit = CmbtSettings.LanguageSettings.Unit
             };
-			
+
             return LL;
         }
 
@@ -146,8 +140,8 @@ namespace WebReporting
             return new WebReportDesignerAction[]
             {
                 //WebReportDesignerAction.CreateNewProject,
-                //WebReportDesignerAction.DeleteFile,
                 //WebReportDesignerAction.DeleteProject,
+                //WebReportDesignerAction.DeleteFile,
                 //WebReportDesignerAction.DownloadProject,
                 //WebReportDesignerAction.ExportAs,
                 //WebReportDesignerAction.ManageRepository,

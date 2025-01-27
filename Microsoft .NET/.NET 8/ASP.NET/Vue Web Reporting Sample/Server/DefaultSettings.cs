@@ -2,11 +2,10 @@
 using combit.Reporting.DataProviders;
 using combit.Reporting.Repository;
 using combit.Reporting.Web.WebReportDesigner.Server;
-using System;
-using System.Collections.Generic;
+
 using System.Globalization;
 
-namespace WebReporting
+namespace VueWebReportingSample
 {
     static class CmbtSettings
     {
@@ -67,10 +66,10 @@ namespace WebReporting
                 return CmbtSettings.LanguageSettings.Language == LlLanguage.German ? "Kundenliste mit Sortierung" : "Customer list with sort order";
             }
         }
-
+        
         // D:   Für Etikettenprojekte wird die Tabelle "Customers" ausgewählt.
-        // US:  The table "Customers" is chosen for label projects.
-        private static string DataMember
+        // US:  The Table "Customers" is chosen for label projects.
+        public static string DataMember
         {
             get
             {
@@ -82,7 +81,7 @@ namespace WebReporting
         {
             if (_fileRepository == null)
             {
-                _fileRepository = new SQLiteFileRepository(WebReporting.SampleWebReportingApplication.RepositoryDatabaseFile, CmbtSettings.RepositoryLanguage);
+                _fileRepository = new SQLiteFileRepository(Program.RepositoryDatabaseFile, CmbtSettings.RepositoryLanguage);
             }
 
             return _fileRepository;
@@ -90,7 +89,7 @@ namespace WebReporting
 
         // D:   Liefert die passende Datenquelle zu einem Beispiel-Report.
         // US:  Returns the required data source of the sample report.
-        private static IDataProvider GetDataSourceForProject(string repositoryIdOfProject, bool forDesign)
+		private static IDataProvider GetDataSourceForProject(string repositoryIdOfProject, bool forDesign)
         {
             // D:   Für dieses Beispielprojekt hängt die benötigte Datenquelle vom Namen des geöffneten Projekt ab, daher muss der Name ausgelesen werden.
             // US:  For this sample project the datasource depends on the name of the opened project, so we need to read the display name.               
@@ -99,21 +98,26 @@ namespace WebReporting
             IDataProvider dataProvider = DataAccess.SampleData.CreateProviderCollection(String.IsNullOrEmpty(repositoryIdOfProject) ? "" : reportDisplayName + CmbtSettings.FileExtension, forDesign);
             return dataProvider;
         }
+		
 
-        // D:   Liefert den passenden DataMember zu einem Beispiel-Etikett.
+        // D:   Liefert die passende Tabelle zu einem Beispiel-Etikett.
         // US:  Returns the matching data member for a sample label.
         public static string GetDataMemberForProject(string repositoryIdOfProject)
         {
             if (String.IsNullOrEmpty(repositoryIdOfProject))
             {
+#pragma warning disable CS8603 // Suppress Warning, this is clearly done on purpose.
                 return null;
+#pragma warning restore CS8603 // Suppress Warning, this is clearly done on purpose.
             }
 
             RepositoryItem project = GetBaseRepository().GetItem(repositoryIdOfProject);
 
             if (project.Type != RepositoryItemType.ProjectLabel.Value)
             {
+#pragma warning disable CS8603 // Suppress Warning, this is clearly done on purpose.
                 return null;
+#pragma warning restore CS8603 // Suppress Warning, this is clearly done on purpose.
             }
 
             return DataMember;
@@ -121,13 +125,12 @@ namespace WebReporting
 
         public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)
         {
-            ListLabel LL = new ListLabel
+            ListLabel LL = new()
             {
-
                 // D:   Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
                 // US:  Set license key for List & Label. If not set, a license error will be displayed on non-development machines.
                 // LicensingInfo = "<insert your license key here>",
-
+                
                 // D:   Lade die zum Report passende Datenquelle.
                 // US:  Get the corresponding data source for the report.
                 DataSource = GetDataSourceForProject(repositoryID, false),
@@ -135,7 +138,7 @@ namespace WebReporting
                 Language = CmbtSettings.LanguageSettings.Language,
                 Unit = CmbtSettings.LanguageSettings.Unit
             };
-			
+
             return LL;
         }
 

@@ -2,21 +2,18 @@
 using combit.Reporting.DataProviders;
 using combit.Reporting.Repository;
 using combit.Reporting.Web.WebReportDesigner.Server;
-using System;
-using System.Collections.Generic;
+
 using System.Globalization;
 
-namespace WebReporting
+namespace AngularWebReportingSample
 {
     static class CmbtSettings
     {
         public static class LanguageSettings
         {
-            //D: Sprache des Windows-Betriebssystems abfragen.
+            //D: Sprache des Windows Betriebssystems abfragen.
             //US: Get the language of the Windows operating system.
-            public static string OSLanguage = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            //public static string OSLanguage = "de";
-            //public static string OSLanguage = "en";
+            public static string OSLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 
             // D:   Einstellen der Sprache für die Berichte und Designer anhand der Systemsprache.
             // US:  Setting the language for the reports and the Designer depending on the language of the system.
@@ -38,7 +35,6 @@ namespace WebReporting
                 }
             }
         }
-
         public static string RepositoryLanguage
         {
             get
@@ -64,13 +60,14 @@ namespace WebReporting
         {
             get
             {
-                return CmbtSettings.LanguageSettings.Language == LlLanguage.German ? "Kundenliste mit Sortierung" : "Customer list with sort order";
+                return CmbtSettings.LanguageSettings.Language == LlLanguage.German ? "Kundenliste mit Sortierung.lsr" : "Customer list with sort order";
+
             }
         }
 
         // D:   Für Etikettenprojekte wird die Tabelle "Customers" ausgewählt.
-        // US:  The table "Customers" is chosen for label projects.
-        private static string DataMember
+        // US:  The Table "Customers" is chosen for label projects.
+        public static string DataMember
         {
             get
             {
@@ -80,10 +77,7 @@ namespace WebReporting
 
         public static SQLiteFileRepository GetBaseRepository()
         {
-            if (_fileRepository == null)
-            {
-                _fileRepository = new SQLiteFileRepository(WebReporting.SampleWebReportingApplication.RepositoryDatabaseFile, CmbtSettings.RepositoryLanguage);
-            }
+            _fileRepository ??= new SQLiteFileRepository(Program.RepositoryDatabaseFile, CmbtSettings.RepositoryLanguage);
 
             return _fileRepository;
         }
@@ -100,7 +94,7 @@ namespace WebReporting
             return dataProvider;
         }
 
-        // D:   Liefert den passenden DataMember zu einem Beispiel-Etikett.
+        // D:   Liefert die passende Tabelle zu einem Beispiel-Etikett.
         // US:  Returns the matching data member for a sample label.
         public static string GetDataMemberForProject(string repositoryIdOfProject)
         {
@@ -111,19 +105,13 @@ namespace WebReporting
 
             RepositoryItem project = GetBaseRepository().GetItem(repositoryIdOfProject);
 
-            if (project.Type != RepositoryItemType.ProjectLabel.Value)
-            {
-                return null;
-            }
-
-            return DataMember;
+            return project.Type != RepositoryItemType.ProjectLabel.Value ? null : DataMember;
         }
 
         public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)
         {
-            ListLabel LL = new ListLabel
+            ListLabel LL = new()
             {
-
                 // D:   Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
                 // US:  Set license key for List & Label. If not set, a license error will be displayed on non-development machines.
                 // LicensingInfo = "<insert your license key here>",
@@ -135,7 +123,7 @@ namespace WebReporting
                 Language = CmbtSettings.LanguageSettings.Language,
                 Unit = CmbtSettings.LanguageSettings.Unit
             };
-			
+
             return LL;
         }
 

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWpf>true</UseWpf>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+ <ItemGroup>
+   <Reference Include="combit.ListLabel30">
+     <HintPath>..\..\Assemblies\combit.ListLabel30.dll</HintPath>
+   </Reference>
+   <Reference Include="combit.ListLabel30.Wpf">
+     <HintPath>..\..\Assemblies\combit.ListLabel30.Wpf.dll</HintPath>
+   </Reference>
+ </ItemGroup>
+</Project>

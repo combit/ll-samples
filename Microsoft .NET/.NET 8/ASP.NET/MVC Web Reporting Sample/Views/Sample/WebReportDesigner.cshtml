@@ -1,0 +1,20 @@
+﻿@using combit.Reporting.Web
+@using combit.Reporting.Web.WebReportDesigner
+@{
+    Layout = null;
+    string repositoryId = Context.Request.Query["reportRepositoryID"].ToString();
+    if (!String.IsNullOrEmpty(repositoryId))
+    {
+        repositoryId = "";
+    }
+
+    var options = new WebReportDesignerMVCOptions(string.Empty)
+    {
+        Title = "Web Report Designer",
+        ShowTutorial = true
+    };
+}
+
+<!DOCTYPE html>
+
+@Html.WebReportDesigner(options);

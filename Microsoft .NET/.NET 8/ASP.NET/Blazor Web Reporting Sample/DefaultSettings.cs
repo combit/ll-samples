@@ -2,11 +2,10 @@
 using combit.Reporting.DataProviders;
 using combit.Reporting.Repository;
 using combit.Reporting.Web.WebReportDesigner.Server;
-using System;
-using System.Collections.Generic;
+
 using System.Globalization;
 
-namespace WebReporting
+namespace BlazorWebReportingSample
 {
     static class CmbtSettings
     {
@@ -43,7 +42,11 @@ namespace WebReporting
         {
             get
             {
-                return LanguageSettings.Language == LlLanguage.German ? "de" : "en";
+                if (LanguageSettings.Language == LlLanguage.German)
+                {
+                    return "de";
+                }
+                return "en";
             }
         }
 
@@ -51,7 +54,11 @@ namespace WebReporting
         {
             get
             {
-                return LanguageSettings.Language == LlLanguage.German ? ".lsr" : ".srt";
+                if (LanguageSettings.Language == LlLanguage.German)
+                {
+                    return ".lsr";
+                }
+                return ".srt";
             }
         }
     }
@@ -64,13 +71,17 @@ namespace WebReporting
         {
             get
             {
-                return CmbtSettings.LanguageSettings.Language == LlLanguage.German ? "Kundenliste mit Sortierung" : "Customer list with sort order";
+                if (CmbtSettings.LanguageSettings.Language == LlLanguage.German)
+                {
+                    return "Kundenliste mit Sortierung";
+                }
+                return "Customer list with sort order";
             }
         }
-
+        
         // D:   Für Etikettenprojekte wird die Tabelle "Customers" ausgewählt.
-        // US:  The table "Customers" is chosen for label projects.
-        private static string DataMember
+        // US:  The Table "Customers" is chosen for label projects.
+        public static string DataMember
         {
             get
             {
@@ -82,7 +93,7 @@ namespace WebReporting
         {
             if (_fileRepository == null)
             {
-                _fileRepository = new SQLiteFileRepository(WebReporting.SampleWebReportingApplication.RepositoryDatabaseFile, CmbtSettings.RepositoryLanguage);
+                _fileRepository = new SQLiteFileRepository(Program.RepositoryDatabaseFile, CmbtSettings.RepositoryLanguage);
             }
 
             return _fileRepository;
@@ -100,7 +111,7 @@ namespace WebReporting
             return dataProvider;
         }
 
-        // D:   Liefert den passenden DataMember zu einem Beispiel-Etikett.
+        // D:   Liefert die passende Tabelle zu einem Beispiel-Etikett.
         // US:  Returns the matching data member for a sample label.
         public static string GetDataMemberForProject(string repositoryIdOfProject)
         {
@@ -121,13 +132,12 @@ namespace WebReporting
 
         public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)
         {
-            ListLabel LL = new ListLabel
+            ListLabel LL = new()
             {
-
                 // D:   Lizenzschlüssel für List & Label setzen. Auf Nicht-Entwicklungsrechnern wird ein Lizenzfehler angezeigt, falls dieser nicht gesetzt wurde.
                 // US:  Set license key for List & Label. If not set, a license error will be displayed on non-development machines.
                 // LicensingInfo = "<insert your license key here>",
-
+                
                 // D:   Lade die zum Report passende Datenquelle.
                 // US:  Get the corresponding data source for the report.
                 DataSource = GetDataSourceForProject(repositoryID, false),
@@ -135,7 +145,7 @@ namespace WebReporting
                 Language = CmbtSettings.LanguageSettings.Language,
                 Unit = CmbtSettings.LanguageSettings.Unit
             };
-			
+
             return LL;
         }
 
