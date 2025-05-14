@@ -26,7 +26,7 @@
 //
 // you have to make sure that the passed Handle is now a Handle pointing to a WString
 //
-// The Property piRtfObjectHandle (should only be rarely used) is changed to phRtfObjectHandle
+// The Property piRtfObjectHandle (should only be rarely used) is changed to 
 
 
 #IFDEF USELLVERSION
@@ -5594,7 +5594,8 @@ Class cListLabelWrapper is a DFControl
         If ( (pbDesignerPreviewRunning(Self)) and (not(pbDesignerPreviewRunningOverride(Self))) ) Begin
             Function_Return 0
         End        
-        If ( (piEmbeddedPreviewObjectInt(Self)<>0) and (not(pbIncrementalPreview(Self))) ) Begin
+        //If ( (piEmbeddedPreviewObjectInt(Self)<>0) and (not(pbIncrementalPreview(Self))) ) Begin
+        If ( (piEmbeddedPreviewObjectInt(Self)<>0) ) Begin
             Get object_id of (piEmbeddedPreviewObjectInt(Self)) to iPreviewObj                        
             If (iPreviewObj<>0) Begin
                 Get FileUrl of iPreviewObj to sExistingPreview
@@ -7611,6 +7612,8 @@ Class cListLabelWrapper is a DFControl
                     If (hoObj<>0) Begin
                         Set psPreviewOriginalLabel to (label(hoObj))
                     End
+                    //2025-02-07: Fixes a Bug when the same Report is re-printed into the embedded Preview Control (new Preview was not building)
+                    Send DoClearPreview to (piEmbeddedPreviewObjectInt(Self))
                     Get object_id of (piEmbeddedPreviewObjectInt(Self)) to iObj
                     Send OnBeforeIncrementalPreviewStart to iObj (Self)
                     Set phoFocusBeforePrint to (focus(desktop))

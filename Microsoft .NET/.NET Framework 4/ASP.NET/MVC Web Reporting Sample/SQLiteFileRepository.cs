@@ -186,7 +186,10 @@ namespace WebReporting
                 content = byteContent;
             }
 
-            destinationStream.Write(content, 0, content.Length);
+            destinationStream
+            .WriteAsync(content, 0, content.Length, cancelToken)
+            .GetAwaiter()
+            .GetResult();
         }
 
         // See Interface
