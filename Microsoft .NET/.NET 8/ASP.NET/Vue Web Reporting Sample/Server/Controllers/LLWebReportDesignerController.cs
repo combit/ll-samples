@@ -1,5 +1,6 @@
-﻿using combit.Reporting.Web.WebReportDesigner.Server;
-using combit.Reporting;
+﻿using combit.Reporting;
+using combit.Reporting.Web.WebReportDesigner.Server;
+using Newtonsoft.Json;
 
 namespace VueWebReportingSample.Controllers
 {
@@ -8,6 +9,28 @@ namespace VueWebReportingSample.Controllers
         public override void OnProvideListLabel(ProvideListLabelContext provideListLabelContext)
         {
             ListLabel ll = DefaultSettings.GetListLabelInstance(provideListLabelContext.RepositoryId, null);
+
+            //D:    Abrufen der ServerData und ClientData von provideListLabelContext. 
+            //US:   Getting the ServerData and ClientData properties from provideListLabelContext.
+            string clientData = string.Empty;
+            string serverData = string.Empty;
+
+            if (provideListLabelContext.ServerData != null && !string.IsNullOrEmpty(provideListLabelContext.ServerData.ToString()))
+            {
+                dynamic testData = JsonConvert.DeserializeObject((string)provideListLabelContext.ServerData);
+                serverData = testData.testdata.ToString();
+            }
+
+            if (provideListLabelContext.ClientData != null && !string.IsNullOrEmpty(provideListLabelContext.ClientData.ToString()))
+            {
+                dynamic testData = JsonConvert.DeserializeObject((string)provideListLabelContext.ClientData);
+                clientData = testData.testdata.ToString();
+            }
+
+            //D:    Einfaches Beispiel zur Verwendung der ServerData Objekte
+            //US:   Simple example on how to use the ServerData objects.
+            ll.Variables.Add("serverData", serverData);
+            ll.Variables.Add("ClientData", clientData);
 
             provideListLabelContext.NewInstance = ll;
         }
@@ -20,6 +43,10 @@ namespace VueWebReportingSample.Controllers
         public override void OnProvideWebReportDesignerSessionOptions(ProvideWebReportDesignerSessionOptionsContext provideWebReportDesignerSessionOptionsContext)
         {
             base.OnProvideWebReportDesignerSessionOptions(provideWebReportDesignerSessionOptionsContext);
+
+            //D:    Definition des ServerData Strings.
+            //US:   Defining the ServerData string.
+            provideWebReportDesignerSessionOptionsContext.Options.ServerData = "{\"testdata\":\"Im also a test object\"}";
         }
 
         public override void OnProvideProhibitedActions(ProvideProhibitedActionsContext provideProhibitedActionsContext)

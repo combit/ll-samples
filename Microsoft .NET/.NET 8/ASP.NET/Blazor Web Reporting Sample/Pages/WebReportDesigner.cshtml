@@ -22,6 +22,9 @@
 }
 
 <div>
-    <ll-webreportdesigner backendurl="@baseUri/LLWebReportDesigner" defaultProject="@defaultProject" showTutorial />
+
+                                                                                    @* US: You can define the ClientData String and pass it to provideListLabelContext here *@
+                                                                                    @* D:  Definition eines ClientData strings welcher an provideListLabelContext weitergegeben wird *@
+    <ll-webreportdesigner backendurl="@baseUri/LLWebReportDesigner" defaultProject="@defaultProject" showTutorial clientData="{'testdata':'Im a test object'}" />
 </div>
 
