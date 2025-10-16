@@ -6,6 +6,7 @@ using System.Data;
 using combit.Reporting;
 using Microsoft.Extensions.Caching.Memory;
 using System.IO;
+using BlazorWebReportingSample;
 
 namespace BlazorWebReportingSample.DataAccess
 {

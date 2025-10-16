@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#define _NO_CMLL30APIDEFINES
-#include "..\..\Visual C++\cmbtll30.h"
+#define _NO_CMLL31APIDEFINES
+#include "..\..\Visual C++\cmbtll31.h"
 #define PHP_MAXSTRLEN 	128000
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_void, 0, 0, 0)
@@ -980,24 +980,41 @@ ZEND_GET_MODULE(ListLabelPHPModule)
 // Error-Check
 void CheckErrorCode(int nError)
 {
-	if (nError < 0 && nError > -106)
-	{ 
-		zval oBuffer;
-		ZVAL_LONG(&oBuffer, 0);
-		int nErrTxteLen = ::LlGetErrortextA(nError, NULL, 0);
-		char* aczContents = new char[nErrTxteLen];
-		::LlGetErrortextA(nError, (LPSTR)aczContents, nErrTxteLen); 
-		Z_TYPE_INFO(oBuffer);
-		(oBuffer).u1.type_info = IS_STRING;
-		Z_STRLEN(oBuffer) = strlen(aczContents);
-		oBuffer.value.str = zend_string_init(aczContents, sizeof(aczContents) - 1, 0);
-		delete[] aczContents;
-		char* aczBuffer;
-		aczBuffer = new char[strlen((const char*)aczContents) + 10];
-        sprintf_s((char*)aczBuffer, sizeof((char*)aczBuffer), (const char*)"%s (%d)", (char*)oBuffer.value.str, nError);
-		zend_error(E_USER_ERROR, (const char*)aczBuffer);
-	}
+    if (nError < 0 && nError > -106)
+    {
+        zval oBuffer;
+        ZVAL_UNDEF(&oBuffer); // Properly initialize zval
+
+        // Get error text length
+        int nErrTxteLen = ::LlGetErrortextA(nError, NULL, 0);
+        if (nErrTxteLen <= 0) {
+            zend_error(E_USER_ERROR, "Unknown error occurred.");
+            return;
+        }
+
+        // Allocate buffer with extra space for null terminator
+        char* aczContents = new char[nErrTxteLen + 1];
+        ::LlGetErrortextA(nError, (LPSTR)aczContents, nErrTxteLen);
+        aczContents[nErrTxteLen] = '\0'; // Ensure null termination
+
+        // Properly set zval as a PHP string
+        ZVAL_STRING(&oBuffer, aczContents);
+
+        // Allocate buffer for the formatted error message
+        size_t bufferLen = strlen(aczContents) + 15; // Enough space for "%s (%d)"
+        char* aczBuffer = new char[bufferLen];
+        snprintf(aczBuffer, bufferLen, "%s (%d)", Z_STRVAL(oBuffer), nError);
+
+        // Trigger PHP error
+        zend_error(E_USER_ERROR, aczBuffer);
+
+        // Cleanup
+        delete[] aczContents; // Free the temporary buffer
+        delete[] aczBuffer;   // Free formatted error buffer
+        zval_dtor(&oBuffer);  // Free the PHP string memory
+    }
 }
+
 // LlDbAddTable
 ZEND_FUNCTION(LlDbAddTable) 
 {

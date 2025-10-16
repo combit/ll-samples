@@ -67,14 +67,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel30">
-      <HintPath>..\..\Assemblies\combit.ListLabel30.dll</HintPath>
+    <Reference Include="combit.ListLabel31">
+      <HintPath>..\..\Assemblies\combit.ListLabel31.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel30.AdhocDesign">
-      <HintPath>..\..\Assemblies\combit.ListLabel30.AdhocDesign.dll</HintPath>
+    <Reference Include="combit.ListLabel31.AdhocDesign">
+      <HintPath>..\..\Assemblies\combit.ListLabel31.AdhocDesign.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel30.AdhocDesign.Web">
-      <HintPath>..\..\Assemblies\combit.ListLabel30.AdhocDesign.Web.dll</HintPath>
+    <Reference Include="combit.ListLabel31.AdhocDesign.Web">
+      <HintPath>..\..\Assemblies\combit.ListLabel31.AdhocDesign.Web.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -150,7 +150,7 @@
       <Version>3.5.0.2</Version>
     </PackageReference>
     <PackageReference Include="bootstrap">
-      <Version>5.3.3</Version>
+      <Version>5.3.8</Version>
     </PackageReference>
     <PackageReference Include="EntityFramework">
       <Version>6.5.1</Version>
@@ -177,19 +177,19 @@
       <Version>2.4.9</Version>
     </PackageReference>
     <PackageReference Include="Stub.System.Data.SQLite.Core.NetFramework">
-      <Version>1.0.118.0</Version>
+      <Version>1.0.119</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite">
-      <Version>1.0.118.0</Version>
+      <Version>1.0.119</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite.Core">
-      <Version>1.0.118.0</Version>
+      <Version>1.0.119</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite.EF6">
-      <Version>1.0.118.0</Version>
+      <Version>1.0.119</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite.Linq">
-      <Version>1.0.118.0</Version>
+      <Version>1.0.119</Version>
     </PackageReference>
     <PackageReference Include="WebActivatorEx">
       <Version>2.2.0</Version>

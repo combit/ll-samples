@@ -2,7 +2,7 @@
  File Name:	   pgOCX.prg
  Author:       Marcus Herz
  Description:
- Created:		08.08.2022     10:25:30        Updated: þ08.08.2022      þ10:25:30
+ Created:		08.08.2022     10:25:30        Updated: þ18.08.2025      þ10:00:19
  Copyright:		2022 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:
@@ -33,7 +33,7 @@ METHOD pgOCX:Create()
 	begin sequence
 		::ocxLL	:= dsActiveXControl():new( ::drawingArea,,{10,10},{800,500})
 		if IsObject(::ocxLL)
-			::ocxLL	:clsID := "cmll29v.LLViewCtrl"
+			::ocxLL	:clsID := "cmll31v.LLViewCtrl"
 			::ocxLL	:enableresize	:= TRUE
 			lInstalled	:= TRUE
 		else

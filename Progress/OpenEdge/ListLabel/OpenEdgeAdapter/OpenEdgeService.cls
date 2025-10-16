@@ -62,13 +62,21 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
     GET.
     PRIVATE SET. 
     
-    DEFINE PUBLIC PROPERTY  SourceDatasetHandle AS HANDLE  NO-UNDO 
+    DEFINE PUBLIC PROPERTY SourceDatasetHandle AS HANDLE  NO-UNDO 
     GET.
     SET. 
     
-    DEFINE PUBLIC PROPERTY ServiceParameter AS OpenEdgeServiceParameter NO-UNDO
+    DEFINE PUBLIC PROPERTY ServiceParameter    AS OpenEdgeServiceParameter NO-UNDO
     GET.
     PRIVATE SET.
+
+    /* Since LL30 */
+    DEFINE PRIVATE VARIABLE mhMasterBuffer         AS HANDLE    NO-UNDO.
+    DEFINE PRIVATE VARIABLE mhMasterBufferCallback AS HANDLE    NO-UNDO.
+    DEFINE PRIVATE VARIABLE mcMasterWhereClause    AS CHARACTER NO-UNDO.
+
+    /* Since LL30 */
+    DEFINE PUBLIC EVENT ResponseDatasetFilled SIGNATURE VOID (pdResponseDatasetHandle AS HANDLE).
 
 	/*------------------------------------------------------------------------------
 	 Purpose:
@@ -81,7 +89,6 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
 		ServiceSchema = NEW OpenEdgeSchema(ServiceName).
 
 	END CONSTRUCTOR.
-
 
     /*------------------------------------------------------------------------------
      Purpose: Needs to be implemented by the Service.
@@ -98,6 +105,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
 	    registerSchema().
 		RETURN ServiceSchema:getSchemaJSON().
 	END METHOD.
+
 
     /*------------------------------------------------------------------------------
      Purpose: Get the data for a request
@@ -149,7 +157,9 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
         DEFINE VARIABLE cColumnNameAndType AS CHARACTER NO-UNDO.
         DEFINE VARIABLE cSourceSortBy  AS CHARACTER NO-UNDO.
         DEFINE VARIABLE cTempTableName AS CHARACTER NO-UNDO.
-        
+
+        DEFINE VARIABLE hOpenEdgeServiceHelper AS HANDLE    NO-UNDO.
+
         DEFINE VARIABLE oCalculatedTableArgs AS OpenEdgeCalculatedTableArgs NO-UNDO.
 
         DEFINE BUFFER OEChildDataTable   FOR OEDataTable.
@@ -159,6 +169,9 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
            So this was a problem for the designer.*/
         EMPTY TEMP-TABLE ttForeignKeyBuffer.
         EMPTY TEMP-TABLE ttForeignKeyColumn.
+        
+        /* Attach the events / callback helper. Maybe used later */
+        RUN ListLabel/OpenEdgeAdapter/OpenEdgeServiceHelper.p PERSISTENT SET hOpenEdgeServiceHelper (THIS-OBJECT).
 
         /* Parse request and return data in dataset */
         ServiceParameter = NEW OpenEdgeServiceParameter(plcServiceParameterJson).
@@ -334,13 +347,36 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
                Another problem is that LL uses an Excel like "All". It sends all keys instead of not filtering
                when the value of a parameter is "All". But I asked combit to do something here.
             */
-            DEFINE VARIABLE cExpression AS CHARACTER NO-UNDO.
-            FOR EACH OEAdvancedFilter OF OEDataTable BY LENGTH(OEAdvancedFilter.OEFilterValues) DESCENDING :
-                IF LENGTH(cWhereClause[iBuffer]) > 15000 THEN 
-                   cExpression = AdvancedFilterExpressionUsingLookup().
-                ELSE 
-                   cExpression = AdvancedFilterExpressionUsingOR().
-                cWhereClause[iBuffer] = REPLACE (cWhereClause[iBuffer],OEAdvancedFilter.OEFilterName,cExpression).
+            DEFINE VARIABLE cExpression  AS LONGCHAR  NO-UNDO.
+            DEFINE VARIABLE lUseCallback AS LOGICAL   NO-UNDO.
+            
+            /* Since LL30 - Filtering large multi value filters in Callback instead lookup in query */
+            lUseCallback = FALSE.
+            
+            IF iBuffer = 1 THEN /* Only supported for the master table and not required for foreign keys */
+            DO:
+                mcMasterWhereClause = cWhereClause[1]. /* Where clause including [OEFilterName] placeholders */
+                mhMasterBuffer = hSourceBuffer[iBuffer].
+                FOR EACH OEAdvancedFilter OF OEDataTable BY LENGTH(OEAdvancedFilter.OEFilterValues) DESCENDING:
+                    cExpression = AdvancedFilterExpressionUsingOR().
+                    IF LENGTH(cWhereClause[iBuffer]) + LENGTH (cExpression) > 15000 THEN
+                    DO: 
+                       /*cExpression = AdvancedFilterExpressionUsingLookup().*/
+                       lUseCallback = TRUE.
+                       cWhereClause[iBuffer] = REPLACE (cWhereClause[iBuffer],OEAdvancedFilter.OEFilterName,"TRUE").
+                    END.   
+                    ELSE DO:
+                       cExpression = AdvancedFilterExpressionUsingOR().
+                       cWhereClause[iBuffer] = REPLACE (cWhereClause[iBuffer],OEAdvancedFilter.OEFilterName,cExpression).
+                       mcMasterWhereClause   = REPLACE (mcMasterWhereClause,OEAdvancedFilter.OEFilterName,"TRUE").
+                    END.
+                END.
+ 
+                IF lUseCallback THEN
+                DO: 
+                   CREATE BUFFER mhMasterBufferCallback FOR TABLE mhMasterBuffer:TABLE. 
+                   hDataset:GET-BUFFER-HANDLE (1):SET-CALLBACK-PROCEDURE ("BEFORE-ROW-FILL","BeforeRowFillHandler",hOpenEdgeServiceHelper).
+                END.   
             END.
             
             /* Add Sort order for Json later */
@@ -352,7 +388,6 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
                 
                 MESSAGE OEDataTable.OETableSortBy
                 VIEW-AS ALERT-BOX.
-                
             END.  
             */ 
         END.    
@@ -475,6 +510,10 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
            Note: The provider checks the name !! 
         */
         hExportDataset:SERIALIZE-NAME = "OpenEdgeDataResponse".
+        
+        /* Since LL30 - Subribe to this in your master class if you need to massage the data */
+        ResponseDatasetFilled:Publish(hExportDataset).
+        
         hExportDataset:WRITE-JSON ("LONGCHAR",lcResponseJson,TRUE).
         
         RETURN lcResponseJson.
@@ -502,7 +541,51 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
             IF VALID-HANDLE(hExportDataset) THEN 
                 DELETE OBJECT hExportDataset NO-ERROR.
 
+            IF VALID-HANDLE(hOpenEdgeServiceHelper) THEN 
+                DELETE OBJECT hOpenEdgeServiceHelper NO-ERROR.
+                
+            IF VALID-HANDLE(mhMasterBufferCallback) THEN 
+                DELETE OBJECT mhMasterBufferCallback NO-ERROR.  
+
         END FINALLY.
+
+    END METHOD.
+
+    /*------------------------------------------------------------------------------
+     Purpose: Callback from OpenEdgeServiceHelper.p to handle multi-value filter
+              with many values properly.
+     Notes:   This event fires only for the master table in the request.
+    ------------------------------------------------------------------------------*/
+    METHOD PUBLIC VOID BeforeRowFillCallback(  ):
+        
+        DEFINE VARIABLE cValues AS LONGCHAR NO-UNDO.
+        DEFINE VARIABLE lValid  AS LOGICAL  NO-UNDO.
+        
+        /* The table query has already been executed. 
+           Certain multi-value filters have been replaced with 'true', i.e. not taken into account. 
+           We will now make up for this here. We now check each individual, remaining filter separately 
+           and insert the result into the copy of the query in which the filters still exist. 
+           Then we try to search for the record again using Rowid and the complete filter. 
+           If this fails, the record does not fulfill the condition and is ignored. */
+        FOR EACH OEAdvancedFilter WHERE OEAdvancedFilter.FilterUsingLookup = TRUE:
+           cValues = OEAdvancedFilter.OEFilterValues.
+           IF OEAdvancedFilter.OEFilterOperator = "IN" THEN 
+               lValid = LOOKUP(mhMasterBuffer:BUFFER-FIELD(OEAdvancedFilter.OEColumnName):BUFFER-VALUE,cValues) > 0.
+            ELSE 
+               lValid = LOOKUP(mhMasterBuffer:BUFFER-FIELD(OEAdvancedFilter.OEColumnName):BUFFER-VALUE,cValues) = 0.
+            mcMasterWhereClause = REPLACE (mcMasterWhereClause,OEAdvancedFilter.OEFilterName, STRING(lValid,"TRUE/FALSE")).
+        END.
+        
+        /* Second buffer */
+        mhMasterBufferCallback:FIND-UNIQUE 
+            (SUBSTITUTE("WHERE ROWID(&1) = &2 AND (&3)", 
+                        mhMasterBufferCallback:BUFFER-NAME,
+                        mhMasterBuffer:ROWID,
+                        mcMasterWhereClause
+                        )) NO-ERROR.
+        IF mhMasterBufferCallback:AVAILABLE = FALSE THEN 
+            RETURN NO-APPLY.               
+        RETURN.
 
     END METHOD.
 
@@ -577,11 +660,11 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeService USE-WIDGET-POOL ABSTRACT IMPLEME
 	END METHOD.
 
     /*------------------------------------------------------------------------------
-	 Purpose:
-	 Notes:  
+	 Purpose: Build a Lookup for an Advanced Filter.
+	 Notes:   Replaced by BeforeRowFillCallback for large expressions.
 	------------------------------------------------------------------------------*/
-	METHOD PRIVATE CHARACTER AdvancedFilterExpressionUsingLookup(  ):
-		DEFINE VARIABLE cFilter    AS CHARACTER NO-UNDO.
+	METHOD PRIVATE LONGCHAR AdvancedFilterExpressionUsingLookup(  ):
+		DEFINE VARIABLE cFilter    AS LONGCHAR  NO-UNDO.
         DEFINE VARIABLE cValues    AS LONGCHAR  NO-UNDO.   
         DEFINE VARIABLE cField     AS CHARACTER NO-UNDO.
         DEFINE VARIABLE cOp        AS CHARACTER NO-UNDO.

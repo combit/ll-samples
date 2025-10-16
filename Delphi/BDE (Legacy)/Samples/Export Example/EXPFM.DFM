@@ -108,7 +108,7 @@ object Form1: TForm1
     Caption = 'Show File after Creation'
     TabOrder = 4
   end
-  object LL: TL30_
+  object LL: TL31_
     SortVariables = Yes
     UnitSystem = usHiInch
     CompressStorage = Yes

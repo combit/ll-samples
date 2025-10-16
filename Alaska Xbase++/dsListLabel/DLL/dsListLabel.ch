@@ -2,7 +2,7 @@
  Include File: dsListLabel.ch
  Author:       Marcus Herz
  Description:
- Created:      28.07.2016     11:41:37        Updated: þ17.08.2022      þ09:19:22
+ Created:      28.07.2016     11:41:37        Updated: þ18.08.2025      þ10:16:47
  Copyright:    2016 by DS-Datasoft, 87654 Friesenried
 ============================================================================*/
 
@@ -11,33 +11,18 @@
 
 #ifndef __LL
 	// default, wenn nicht in COMPILE_FLAGS gesetzt
-	#define __LL	"30"
+	#define __LL	"31"
 #endif
 
-#if __LL = "30"
-	#define CMBT_DLL   "CMLL30.dll"						// LL_EXTERN declaration
-	#include "cmbtll30.ch"
+#if __LL = "31"
+	#define CMBT_DLL   "CMLL31.dll"						// LL_EXTERN declaration
+	#include "cmbtll31.ch"
 #else
-	#if __LL = "29"
-		#define CMBT_DLL   "CMLL29.dll"
-		#include "cmbtll29.ch"
+	#if __LL = "30"
+		#define CMBT_DLL   "CMLL30.dll"
+		#include "cmbtll30.ch"
 	#else
-		#if __LL = "28"
-			#define CMBT_DLL   "CMLL28.dll"
-			#include "cmbtll28.ch"
-		#else
-			#if __LL = "27"
-				#define CMBT_DLL   "CMLL27.dll"
-				#include "cmbtll27.ch"
-			#else
-				#if __LL = "26"
-					#define CMBT_DLL   "CMLL26.dll"
-					#include "cmbtll26.ch"
-				#else
-					#error keine [unterstützte] List & Label Version in COMPILE_FLAGS gesetzt
-				#endif
-			#endif
-		#endif
+		#error keine [unterstützte] List & Label Version in COMPILE_FLAGS gesetzt
 	#endif
 #endif
 

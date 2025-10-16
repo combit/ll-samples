@@ -18,12 +18,12 @@
 #include "rtf_dlg.h"
 
 // D:  	Wenn Sie das List & Label OCX Control verwenden, sollten Sie vor
-//      dem #include der Headerdatei _NO_CMLL30APIDEFINES definieren      
+//      dem #include der Headerdatei _NO_CMLL31APIDEFINES definieren      
 // US:	If you use the List & Label OCX Control, you should define 
-//		_NO_CMLL30APIDEFINES before you include the List & Label header
+//		_NO_CMLL31APIDEFINES before you include the List & Label header
 
-#define _NO_CMLL30APIDEFINES
-#include "..\cmbtll30.h"
+#define _NO_CMLL31APIDEFINES
+#include "..\cmbtll31.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

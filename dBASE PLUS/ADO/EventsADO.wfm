@@ -94,8 +94,8 @@ class EventsADOForm of FORM
       cSQL+=" INNER JOIN Events"
       cSQL+=" ON (Customers.CustomerID = Events.CustomerID)"  
       cSQL+=" ORDER BY Customers.Name, Events.StartDate"
-      SET PROCEDURE TO ..\LL30.CC ADDITIVE
-      r=new LL30InterfaceSample()
+      SET PROCEDURE TO ..\LL31.CC ADDITIVE
+      r=new LL31InterfaceSample()
       r.query1=new ADOQUERY()
       r.query1.database = _app.MainADODatabase
       r.query1.sql=cSQL

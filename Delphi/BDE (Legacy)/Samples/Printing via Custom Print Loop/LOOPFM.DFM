@@ -86,7 +86,7 @@ object Form1: TForm1
     TabOrder = 0
     OnClick = DebugCheckBoxClick
   end
-  object LL: TL30_
+  object LL: TL31_
     SortVariables = Yes
     UnitSystem = usHiInch
     CompressStorage = Yes

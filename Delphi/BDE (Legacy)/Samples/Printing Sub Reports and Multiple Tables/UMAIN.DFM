@@ -99,7 +99,7 @@ object frmMultipleTables: TfrmMultipleTables
       end
     end
   end
-  object LL: TL30_
+  object LL: TL31_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = Yes

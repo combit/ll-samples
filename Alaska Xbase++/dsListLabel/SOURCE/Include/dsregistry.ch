@@ -1,3 +1,12 @@
+/*============================================================================
+ Include File: dsRegistry.CH
+ Author:       Marcus Herz
+ Description:
+ Created:      18.08.2025     10:09:04        Updated: þ18.08.2025      þ10:09:04
+ Copyright:    2025 DS-Datasoft
+============================================================================*/
+
+
 #ifndef __REGISTRY_CH__
 	#define __REGISTRY_CH__
 

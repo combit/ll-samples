@@ -51,6 +51,10 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
     DEFINE PUBLIC PROPERTY DatasetHandle AS HANDLE   NO-UNDO 
     GET.
     PRIVATE SET. 
+    
+    DEFINE PUBLIC PROPERTY ExtentPrefix AS CHARACTER NO-UNDO INIT "_"
+    GET.
+    SET. 
 
 	/*------------------------------------------------------------------------------
 	 Purpose:
@@ -65,6 +69,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
         ServiceName   = pcServiceName.
         registerService(ServiceName).
     END CONSTRUCTOR.
+
 
 	/*------------------------------------------------------------------------------
 	 Purpose:
@@ -114,6 +119,26 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
     END METHOD.
 
     /*------------------------------------------------------------------------------
+     Purpose: Fix OpenEdge TableName and ColumnName for LL.
+     Notes:   Some character are not allowed in LL and LL will replace them by "_".
+              If we don't know this, we have problems here. 
+              So, we replace invalid characters here and pass proper names.
+              The OE Names already passed the OE Syntax Check but there are 
+              still some invalid characters left.
+    ------------------------------------------------------------------------------*/
+    METHOD PUBLIC CHARACTER TranslateIdentifier ( pcOpenEdgeIdentifier AS CHARACTER ):
+        
+        DEFINE VARIABLE cIdentifier AS CHARACTER NO-UNDO.
+        
+        cIdentifier = REPLACE(pcOpenEdgeIdentifier,"-","_").
+        cIdentifier = REPLACE(cIdentifier,"#","_").
+        
+        /* Add your own rules here ... */
+        
+        RETURN cIdentifier.
+    END METHOD.
+
+    /*------------------------------------------------------------------------------
      Purpose:
      Notes:
     ------------------------------------------------------------------------------*/
@@ -143,17 +168,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
         RETURN lcTables.
 
     END METHOD.
-
-    /*------------------------------------------------------------------------------
-     Purpose:
-     Notes:
-    ------------------------------------------------------------------------------*/
-    METHOD PUBLIC CHARACTER getSchemaJSON( plcJsonSchema AS LONGCHAR ):
-        
-        DATASET dsOpenEdgeSchema:READ-JSON("LONGCHAR",plcJsonSchema,"EMPTY").
-
-    END METHOD.
-
+    
     /*------------------------------------------------------------------------------
      Purpose:
      Notes:
@@ -193,6 +208,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                 ASSIGN cLLTableName = SUBSTRING(hBuffer:NAME,iStart).
             ELSE 
                 ASSIGN cLLTableName = hBuffer:NAME.
+            cLLTableName = TranslateIdentifier(cLLTableName).    
             registerTable(hBuffer,cLLTableName).
         END.
 		
@@ -240,8 +256,8 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
 	------------------------------------------------------------------------------*/
 	METHOD PRIVATE VOID registerService( pcServiceName AS CHARACTER ):
   		CREATE OpenEdgeService.
- 		ASSIGN OpenEdgeService.ServiceId   = GUID
-  		       OpenEdgeService.ServiceName = pcServiceName.
+ 		ASSIGN OpenEdgeService.ServiceId    = GUID
+  		       OpenEdgeService.ServiceName  = pcServiceName.
 		RETURN.
 	END METHOD.
 
@@ -275,10 +291,14 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                                        plCalculatedTable AS LOGICAL,
                                        plCachedTable     AS LOGICAL ):
 		
-		DEFINE VARIABLE iField       AS INTEGER   NO-UNDO.
-		DEFINE VARIABLE iIndex       AS INTEGER   NO-UNDO.
-		DEFINE VARIABLE hField       AS HANDLE    NO-UNDO.
-		DEFINE VARIABLE cSampleValue AS CHARACTER NO-UNDO.
+		DEFINE VARIABLE iField        AS INTEGER   NO-UNDO.
+		DEFINE VARIABLE iIndex        AS INTEGER   NO-UNDO.
+		DEFINE VARIABLE hField        AS HANDLE    NO-UNDO.
+        DEFINE VARIABLE iKey          AS INTEGER   NO-UNDO.
+		
+		DEFINE VARIABLE cSampleValue  AS CHARACTER NO-UNDO.
+		
+		DEFINE VARIABLE cLLColumnName AS CHARACTER NO-UNDO.
 		
 		FIND OpenEdgeService WHERE OpenEdgeService.ServiceName = ServiceName.
 		
@@ -292,9 +312,10 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
             ASSIGN OpenEdgeTable.ServiceId         = OpenEdgeService.ServiceId
                    OpenEdgeTable.TableId           = GUID 
                    OpenEdgeTable.OETableName       = phBuffer:NAME
-                   OpenEdgeTable.TableName         = pcLLTableName
+                   OpenEdgeTable.TableName         = TranslateIdentifier(pcLLTableName)
                    OpenEdgeTable.OECalculatedTable = plCalculatedTable
-                   OpenEdgeTable.OECachedTable     = plCachedTable.
+                   OpenEdgeTable.OECachedTable     = plCachedTable
+                   OpenEdgeTable.OEExtentPrefix    = THIS-OBJECT:ExtentPrefix.
                    
             ASSIGN OpenEdgeTable.OEDbTableName  = SUBSTITUTE("&1.&2",phBuffer:DBNAME,phBuffer:TABLE).
 		    
@@ -303,35 +324,44 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                 hField = phBuffer:BUFFER-FIELD (iField).
                 cSampleValue = LLSampleValue( hField:DATA-TYPE ).
 
+                cLLColumnName = TranslateIdentifier(hField:NAME).
+
     		    IF hField:EXTENT = 0 THEN 
     		    DO:
         		    CREATE OpenEdgeTableColumn.
-        		    ASSIGN OpenEdgeTableColumn.ColumnId       = GUID
-        		           OpenEdgeTableColumn.TableId        = OpenEdgeTable.TableId
+        		    ASSIGN OpenEdgeTableColumn.ColumnId         = GUID
+        		           OpenEdgeTableColumn.TableId          = OpenEdgeTable.TableId
         		           OpenEdgeTableColumn.OEColumnIndex    = 0
         		           OpenEdgeTableColumn.OEColumnName     = hField:NAME
                            OpenEdgeTableColumn.OEColumnDataType = hField:DATA-TYPE
                            OpenEdgeTableColumn.OEColumnFormat   = hField:FORMAT
                            OpenEdgeTableColumn.OEColumnDecimals = hField:DECIMALS
                            OpenEdgeTableColumn.OECaseSensitive  = hField:CASE-SENSITIVE
-                           OpenEdgeTableColumn.ColumnName       = OpenEdgeTableColumn.OEColumnName
+                           OpenEdgeTableColumn.ColumnName       = cLLColumnName
                            OpenEdgeTableColumn.OESampleValue    = cSampleValue.
            		           .
+                    iKey = LOOKUP(hField:NAME,phBuffer:KEYS) NO-ERROR.
+                    IF iKey > 0 THEN 
+                        ASSIGN OpenEdgeTableColumn.OEPrimaryKeyColumn = TRUE 
+                               OpenEdgeTableColumn.OEPrimaryKeyOrder  = iKey.
            		END. 
+           		
            		ELSE DO iIndex = 1 TO hField:EXTENT:
                     CREATE OpenEdgeTableColumn.
                     ASSIGN OpenEdgeTableColumn.ColumnId       = GUID
                            OpenEdgeTableColumn.TableId          = OpenEdgeTable.TableId
+                           OpenEdgeTableColumn.OEColumnExtent   = hField:EXTENT
                            OpenEdgeTableColumn.OEColumnIndex    = iIndex
-                           OpenEdgeTableColumn.OEColumnName     = /*SUBSTITUTE("&1[&2]",hField:NAME,iIndex)*/ hField:NAME
+                           OpenEdgeTableColumn.OEColumnName     = hField:NAME
                            OpenEdgeTableColumn.OEColumnDataType = hField:DATA-TYPE
                            OpenEdgeTableColumn.OEColumnFormat   = hField:FORMAT
                            OpenEdgeTableColumn.OEColumnDecimals = hField:DECIMALS
                            OpenEdgeTableColumn.OECaseSensitive  = hField:CASE-SENSITIVE
-                           OpenEdgeTableColumn.ColumnName       = SUBSTITUTE("&1_&2",OpenEdgeTableColumn.OEColumnName,iIndex)
-                           OpenEdgeTableColumn.OESampleValue    = cSampleValue.
+                           OpenEdgeTableColumn.ColumnName       = SUBSTITUTE("&1&2&3",cLLColumnName,THIS-OBJECT:ExtentPrefix,iIndex)
+                           OpenEdgeTableColumn.OESampleValue    = cSampleValue
                            .
-           		END.         
+           		END.  
+           		      
     	    END.	    
         END.
 		RETURN.
@@ -351,10 +381,11 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                                          pcRelationFields AS CHARACTER, pcRelationName  AS CHARACTER,
                                          pcLLRelationName AS CHARACTER):
 
-        DEFINE BUFFER ParentTable  FOR OpenEdgeTable.
-        DEFINE BUFFER ChildTable   FOR OpenEdgeTable.
-
-        DEFINE VARIABLE iPair AS INTEGER NO-UNDO.
+        DEFINE BUFFER ParentTable   FOR OpenEdgeTable.
+        DEFINE BUFFER ChildTable    FOR OpenEdgeTable.
+        DEFINE BUFFER RelationField FOR OpenEdgeTableColumn.
+        
+        DEFINE VARIABLE iPair AS INTEGER   NO-UNDO.
         
         FIND OpenEdgeService WHERE OpenEdgeService.ServiceName = ServiceName.
         
@@ -376,18 +407,41 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                    OpenEdgeDataRelation.ParentTableName   = ParentTable.TableName
                    OpenEdgeDataRelation.ChildTableId      = ChildTable.TableId
                    OpenEdgeDataRelation.ChildTableName    = ChildTable.TableName
-                   OpenEdgeDataRelation.RelationName      = pcLLRelationName
+                   OpenEdgeDataRelation.RelationName      = TranslateIdentifier(pcLLRelationName)
                    OpenEdgeDataRelation.OERelationFields  = pcRelationFields
                    OpenEdgeDataRelation.OERelationName    = pcRelationName
                    .             
+                   
             DO iPair = 1 TO NUM-ENTRIES(pcRelationFields) BY 2:
                 ASSIGN OpenEdgeDataRelation.ParentColumnName = OpenEdgeDataRelation.ParentColumnName
                                                              + (IF iPair = 1 THEN "" ELSE "~t")
-                                                             + TRIM(ENTRY(iPair,pcRelationFields))
+                                                             + TRIM( TranslateIdentifier (ENTRY(iPair,pcRelationFields)))
                        OpenEdgeDataRelation.ChildColumnName  = OpenEdgeDataRelation.ChildColumnName
                                                              + (IF iPair = 1 THEN "" ELSE "~t")
-                                                             + TRIM(ENTRY(iPair + 1,pcRelationFields))
-                       .                                        
+                                                             + TRIM( TranslateIdentifier(ENTRY(iPair + 1,pcRelationFields)))
+                       .   
+                       
+                FIND RelationField WHERE RelationField.TableId      = ParentTable.TableId  
+                                   AND   RelationField.OEColumnName = ENTRY(iPair,pcRelationFields) NO-ERROR.
+                IF AVAILABLE RelationField THEN 
+                    ASSIGN RelationField.OERelationField = TRUE.
+
+                FIND RelationField WHERE RelationField.TableId      = ChildTable.TableId  
+                                   AND   RelationField.OEColumnName = ENTRY(iPair + 1,pcRelationFields) NO-ERROR.
+                IF AVAILABLE RelationField THEN 
+                    ASSIGN RelationField.OERelationField = TRUE.
+                    
+                IF ENTRY(iPair,pcRelationFields) = ENTRY(iPair + 1,pcRelationFields) THEN 
+                    ASSIGN OpenEdgeDataRelation.OERelationFieldsText = OpenEdgeDataRelation.OERelationFieldsText
+                                                                     + (IF iPair > 1 THEN "," ELSE "") 
+                                                                     + ENTRY(iPair,pcRelationFields).
+                ELSE 
+                    ASSIGN OpenEdgeDataRelation.OERelationFieldsText = OpenEdgeDataRelation.OERelationFieldsText
+                                                                     + (IF iPair > 1 THEN "," ELSE "") 
+                                                                     + SUBSTITUTE("&1@&2",
+                                                                       ENTRY(iPair,pcRelationFields),
+                                                                       ENTRY(iPair + 1,pcRelationFields)
+                                                                       ).
             END.       
         END.
 		
@@ -511,7 +565,7 @@ CLASS ListLabel.OpenEdgeAdapter.OpenEdgeSchema:
                OpenEdgeTableColumn.OEColumnName       = OEColumnName
                OpenEdgeTableColumn.OEColumnDataType   = OEDataType
                OpenEdgeTableColumn.OECalculatedColumn = TRUE 
-               OpenEdgeTableColumn.ColumnName         = OEColumnName
+               OpenEdgeTableColumn.ColumnName         = TranslateIdentifier(OEColumnName)
                OpenEdgeTableColumn.OEMimeType         = OEMimeType
                OpenEdgeTableColumn.OESampleValue      = cSampleValue.
                

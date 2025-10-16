@@ -2,7 +2,7 @@
  File Name:	   QRrechnung.prg
  Author:       Marcus Herz
  Description:  erzeugt SWISS QR Rechnung
- Created:			 08.08.2022     11:24:28        Updated: þ08.08.2022      þ11:24:28
+ Created:			 08.08.2022     11:24:28        Updated: þ18.08.2025      þ10:00:13
  Copyright:		 2022 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:

@@ -2,14 +2,14 @@
  File Name:	   adsSimple2.PRG
  Author:       Marcus Herz
  Description:
- Created:			 28.05.2020     14:23:54        Updated: þ28.05.2020      þ14:23:54
+ Created:			 28.05.2020     14:23:54        Updated: þ18.08.2025      þ09:59:38
  Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:
 ============================================================================*/
 
 #include "lldemo.ch"
-#include "dsAceServer.ch"
+#include "acexbp.ch"
 
 //-------------------------------------------------------------------
 PROCEDURE adsSimple2(nPrintingTarget, lDesignDocument, cFolder)

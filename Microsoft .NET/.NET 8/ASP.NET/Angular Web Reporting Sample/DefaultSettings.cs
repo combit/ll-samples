@@ -100,12 +100,12 @@ namespace AngularWebReportingSample
         {
             if (String.IsNullOrEmpty(repositoryIdOfProject))
             {
-                return null;
+                return string.Empty;
             }
 
             RepositoryItem project = GetBaseRepository().GetItem(repositoryIdOfProject);
 
-            return project.Type != RepositoryItemType.ProjectLabel.Value ? null : DataMember;
+            return project.Type != RepositoryItemType.ProjectLabel.Value ? string.Empty : DataMember;
         }
 
         public static ListLabel GetListLabelInstance(string repositoryID, IRepository repository = null)

@@ -106,14 +106,14 @@ namespace WebReporting
         {
             if (String.IsNullOrEmpty(repositoryIdOfProject))
             {
-                return null;
+                return string.Empty;
             }
 
             RepositoryItem project = GetBaseRepository().GetItem(repositoryIdOfProject);
 
             if (project.Type != RepositoryItemType.ProjectLabel.Value)
             {
-                return null;
+                return string.Empty;
             }
 
             return DataMember;

@@ -1,9 +1,12 @@
-using Microsoft.Extensions.Caching.Memory;
+using Blazor_Web_Reporting_Sample.Components;
+
 using BlazorWebReportingSample;
-using combit.Reporting.Web.WebReportDesigner.Server;
+
 using combit.Reporting.Web.WebReportDesigner;
+using combit.Reporting.Web.WebReportDesigner.Server;
 using combit.Reporting.Web.WebReportViewer;
 
+using Microsoft.Extensions.Caching.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,10 @@ builder.Services.AddControllersWithViews().AddNewtonsoftJson();
 
 builder.Services.AddWebReportDesigner();
 builder.Services.AddControllers().AddNewtonsoftJson();
+
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -31,8 +38,10 @@ WebReportViewerHelper.ExtractWebReportViewerScript(Server.MapPath("~/wwwroot"), 
 WebReportDesignerConfig.TempDirectory = Server.MapPath("~/App_Data/TempFiles");
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAntiforgery();
 
 // Configure internal Singletons
 HostingEnvironment.Configure(app.Services.GetRequiredService<IWebHostEnvironment>());
@@ -45,8 +54,8 @@ Program.NorthwindFullDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_full
 Program.NorthwindSmallDatabaseXmlFile = Server.MapPath("~/App_Data/northwind_small.xml");
 Program.NorthwindSmallDatabaseWithEmployeeListXmlFile = Server.MapPath("~/App_Data/northwind_small_WithEmployeeList.xml");
 
-app.MapBlazorHub();
-app.MapFallbackToPage("/_Host");
+//app.MapBlazorHub();
+//app.MapFallbackToPage("/_Host");
 
 app.UseCors(builder => builder
     .AllowAnyOrigin()
@@ -63,6 +72,9 @@ app.MapControllerRoute(
 
 app.UseWebReportDesigner();
 app.UseWebReportViewer();
+
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
 app.Run();
 

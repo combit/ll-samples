@@ -2,7 +2,7 @@
  File Name:	   Mail.prg
  Author:       Marcus Herz
  Description:
- Created:			 26.05.2021     12:52:24        Updated: þ26.05.2021      þ12:52:24
+ Created:			 26.05.2021     12:52:24        Updated: þ18.08.2025      þ10:00:21
  Copyright:		 2021 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:

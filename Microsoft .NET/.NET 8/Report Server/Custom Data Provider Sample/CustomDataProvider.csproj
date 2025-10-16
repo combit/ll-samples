@@ -14,11 +14,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="combit.ListLabel30">
-      <HintPath>..\..\..\.NET 8\Assemblies\combit.ListLabel30.dll</HintPath>
+    <Reference Include="combit.ListLabel31">
+      <HintPath>..\..\..\.NET 8\Assemblies\combit.ListLabel31.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ReportServer30.SharedTypes">
-      <HintPath>..\..\..\.NET 8\Assemblies\combit.ReportServer30.SharedTypes.dll</HintPath>
+    <Reference Include="combit.ReportServer31.SharedTypes">
+      <HintPath>..\..\..\.NET 8\Assemblies\combit.ReportServer31.SharedTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
 

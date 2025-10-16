@@ -344,7 +344,6 @@ Object oLLEmbeddedPreview is a cListLabelReportView
     	Integer iRet iDest iProjectType
         String sFile 
         Handle hoLL hoMain hWnd
-        
         Move oListLabelReport to hoLL
         // Find a Parent-Window for List & Label
         Get SuggestedParentWindowHandle of hoLL (Self) to hWnd

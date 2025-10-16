@@ -8,14 +8,13 @@
 
 [LLDemo.EXE]
     COMPILE              = xpp
-    COMPILE_FLAGS        = /wi /wu /b /q /w
+    COMPILE_FLAGS        = /b /q /w /es /wu /wi /wl
     DEBUG_SAVE           = yes
     GUI                  = yes
     LINKER               = alink
-    LINK_FLAGS           = /defaultlib:..\lib\xclass.lib /defaultlib:..\lib\xclace.lib /defaultlib:..\dll\dsListLabel30.LIB
+    LINK_FLAGS           = /defaultlib:..\lib\xclass.lib /defaultlib:..\lib\adsclass.lib /defaultlib:..\dll\dsListLabel31.LIB  // /defaultlib:[<path>]SQLXPP.LIB
     RC_COMPILE           = arc
     RC_FLAGS             = /v
-    //  LINK_FLAGS       = /defaultlib:..\lib\xclass.lib /defaultlib:..\lib\xclace.lib /defaultlib:..\dll\dsListLabel30.LIB /defaultlib:[<path>]SQLXPP.LIB
     INCLUDE              = include;..\dll
     TARGET_DIR           = ..\
     INTERMEDIATE_DEBUG   = ..\.debug
@@ -61,6 +60,7 @@
     DrillDown.PRG
     Expandable.PRG
     Invoice.prg
+    SimpleInvoice.prg
     Mail.prg
     Main.prg
     panRight.prg

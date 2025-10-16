@@ -2,7 +2,7 @@
  Include File: resource.ch
  Author:       Marcus Herz
  Description:
- Created:      13.05.2020     12:47:27        Updated: þ13.05.2020      þ12:47:27
+ Created:      13.05.2020     12:47:27        Updated: þ18.08.2025      þ10:03:02
  Copyright:    2020 DS-Datasoft, 87671 Ronsberg
 ============================================================================*/
 
@@ -18,11 +18,11 @@ CHARACTER
 VERSION
 	"CompanyName"      = "DS-Datasoft, Germany"
    "ProductName"      = "Demo"
-   "ProductVersion"   = "1.0.0.4"
-   "FileVersion"      = "1.0.0.4"
+   "ProductVersion"   = "1.0.0.5"
+   "FileVersion"      = "1.0.0.5"
    "FileDescription"  = "LLDemo"
    "InternalName"     = "LLDEMO.EXE"
-   "LegalCopyright"   = "Copyright DS-Datasoft 2024, Report-/Druckmodul List & Label® Version 30: Copyright combit® GmbH"
+   "LegalCopyright"   = "Copyright DS-Datasoft 2025, Report-/Druckmodul List & Label® Version 31: Copyright combit® GmbH"
 	"OriginalFilename" = "LLDEMO.EXE"
 
 

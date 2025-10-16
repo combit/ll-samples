@@ -1,13 +1,14 @@
 /*============================================================================
  File Name:    dlgsplitterVT.prg
  Description:
- Created:      06.02.2006     20:53:18        Updated: þ06.02.2006    þ20:53:18
+ Created:      06.02.2006     20:53:18        Updated: þ18.08.2025    þ09:59:46
  Copyright:    2006 by DS-Datasoft GmbH&Co.KG, 87654 Friesenried
  Revision:
 ============================================================================*/
 
 #include "lldemo.ch"
 #include "appevent.ch"
+#include "dsclass.ch"
 
 //=========================================
 CLASS AppSplitter FROM dsApp

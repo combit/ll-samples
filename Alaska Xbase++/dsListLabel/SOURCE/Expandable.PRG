@@ -2,7 +2,7 @@
  File Name:	   Expandable.PRG
  Author:       Marcus Herz
  Description:
- Created:			 03.06.2020     15:52:56        Updated: þ03.06.2020      þ15:52:56
+ Created:			 03.06.2020     15:52:56        Updated: þ18.08.2025      þ10:00:14
  Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:

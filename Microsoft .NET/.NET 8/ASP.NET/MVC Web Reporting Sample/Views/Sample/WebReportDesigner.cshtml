@@ -1,6 +1,5 @@
 ﻿@using combit.Reporting.Web
 @using combit.Reporting.Web.WebReportDesigner
-@using Newtonsoft.Json
 @{
     Layout = null;
     string repositoryId = Context.Request.Query["reportRepositoryID"].ToString();
@@ -12,10 +11,7 @@
     var options = new WebReportDesignerMVCOptions(string.Empty)
     {
         Title = "Web Report Designer",
-        ShowTutorial = true,
-        //D:    Weitergeben der Model Daten als ClientData. Hier könnten sie auch direkt einen ClientData String definieren.
-        //US:   Passing the Model data as ClientData. You could also define your ClientData string here.
-		ClientData = Model.ToString(),
+        ShowTutorial = true
     };
 }
 

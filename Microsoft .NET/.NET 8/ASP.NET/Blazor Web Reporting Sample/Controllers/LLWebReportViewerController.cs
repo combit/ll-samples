@@ -22,7 +22,6 @@ namespace BlazorWebReportingSample.Controllers
             // D:   Der WebReportViewer benötigt ein Verzeichnis für temporäre Dateien. Diese werden einige Minuten nach Schließen eines WebReportViewer automatisch gelöscht.
             // US:  The WebReportViewer requires a directory for temporary files. Some minutes after a WebReportViewer is closed, these files will be deleted automatically.
             provideListLabelContext.ExportPath = Server.MapPath("~/App_Data/TempFiles"); //use the same tempDir (Demo)
-
             provideListLabelContext.NewInstance = ll;
         }
 

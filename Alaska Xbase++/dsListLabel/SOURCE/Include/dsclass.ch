@@ -1,3 +1,12 @@
+/*============================================================================
+ Include File: dsClass.CH
+ Author:       Marcus Herz
+ Description:  INCLUDE for XClass++
+ Created:      18.08.2025     10:13:53        Updated: þ18.08.2025      þ10:13:53
+ Copyright:    2025 DS-Datasoft
+============================================================================*/
+
+
 #ifndef __dsCLASS_INCLUDE_CH__
 #define 	__dsCLASS_INCLUDE_CH__
 

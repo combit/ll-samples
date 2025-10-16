@@ -2,7 +2,7 @@
  File Name:	   xclSimple1.PRG
  Author:       Marcus Herz
  Description:
- Created:			 28.05.2020     14:20:46        Updated: þ28.05.2020      þ14:20:46
+ Created:			 28.05.2020     14:20:46        Updated: þ18.08.2025      þ10:00:03
  Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:

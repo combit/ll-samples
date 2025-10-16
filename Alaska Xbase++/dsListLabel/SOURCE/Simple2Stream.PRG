@@ -2,7 +2,7 @@
  File Name:	   Simple2Stream.prg
  Author:       Marcus Herz
  Description:
- Created:			 19.12.2022     10:12:06        Updated: þ19.12.2022      þ10:12:06
+ Created:			 19.12.2022     10:12:06        Updated: þ18.08.2025      þ09:59:59
  Copyright:		 2022 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:

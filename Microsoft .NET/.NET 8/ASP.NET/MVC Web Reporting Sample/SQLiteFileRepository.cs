@@ -185,10 +185,7 @@ namespace MvcWebReportingSample
                 content = byteContent;
             }
 
-            destinationStream
-            .WriteAsync(content, 0, content.Length, cancelToken)
-            .GetAwaiter()
-            .GetResult();
+            destinationStream.Write(content, 0, content.Length);
         }
 
         // See Interface

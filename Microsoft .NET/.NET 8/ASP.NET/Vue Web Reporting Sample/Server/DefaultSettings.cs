@@ -106,9 +106,7 @@ namespace VueWebReportingSample
         {
             if (String.IsNullOrEmpty(repositoryIdOfProject))
             {
-#pragma warning disable CS8603 // Suppress Warning, this is clearly done on purpose.
-                return null;
-#pragma warning restore CS8603 // Suppress Warning, this is clearly done on purpose.
+                return string.Empty;
             }
 
             RepositoryItem project = GetBaseRepository().GetItem(repositoryIdOfProject);
@@ -116,7 +114,7 @@ namespace VueWebReportingSample
             if (project.Type != RepositoryItemType.ProjectLabel.Value)
             {
 #pragma warning disable CS8603 // Suppress Warning, this is clearly done on purpose.
-                return null;
+                return string.Empty;
 #pragma warning restore CS8603 // Suppress Warning, this is clearly done on purpose.
             }
 

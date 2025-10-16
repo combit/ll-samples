@@ -2,7 +2,7 @@
  File Name:	   xclInvoice.PRG
  Author:       Marcus Herz
  Description:
- Created:			 29.05.2020     14:19:07        Updated: þ29.05.2020      þ14:19:07
+ Created:			 29.05.2020     14:19:07        Updated: þ18.08.2025      þ09:59:57
  Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:

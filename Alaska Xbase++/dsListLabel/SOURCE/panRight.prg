@@ -2,7 +2,7 @@
  File Name:	   panRight.PRG
  Author:       Marcus Herz
  Description:
- Created:			 28.05.2020     15:15:52        Updated: þ28.05.2020      þ15:15:52
+ Created:			 28.05.2020     15:15:52        Updated: þ18.08.2025      þ10:00:24
  Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:

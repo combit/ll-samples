@@ -56,6 +56,9 @@ DEFINE TEMP-TABLE OEAdvancedFilter NO-UNDO
     FIELD OEFilterOperator      AS CHARACTER
     FIELD OEValueDelimiter      AS CHARACTER
     FIELD OEFilterValues        AS CLOB
+    /* Used internally */
+    FIELD FilterUsingLookup     AS LOGICAL  
+    FIELD FilterResult          AS LOGICAL
     INDEX pk IS PRIMARY UNIQUE OETableName OEFilterName. 
     
 /* Native Function Call */

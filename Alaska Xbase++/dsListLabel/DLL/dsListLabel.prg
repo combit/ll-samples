@@ -2,18 +2,14 @@
  File Name:	   dsListLabel.prg
  Author:	 		Marcus Herz
  Description:
- Created:		19.08.2016     13:33:08	  Updated: þ14.11.2022	þ13:33:35
+ Created:		19.08.2016     13:33:08	  Updated: þ18.08.2025	þ10:18:58
  Copyright:		2016 by DS-Datasoft
  Revision:
 
- Remark: Set Tab to 3 blanks
-
- Any List&Label Version can be used by defining
- /D__LL=30
- /D__LL=<version number>
- in the COMPILE_FLAGS in XPJ
+ Remark: Set TAB to 3 blanks
 
 ============================================================================*/
+
 #include "dsListLabel.ch"
 #include "dll.ch"
 #include "xbp.ch"
@@ -22,15 +18,14 @@
 #include "fileio.ch"
 #include "WINSDK-WINUSER.CH"
 
-
 // WIN API DEVMODE
 #define CCHFORMNAME			32
 
 #command INSTANCE <variablename> AS STRUCTURE <structurename> => <variablename> := <structurename>_xpp_structure():new()
 
-#if XPPVER < 2001392
+#IF XPPVER < 2001392
 	#error This DLL needs Xbase++ Version 2.0 or higher
-#endif	// XPPVER < 2001392
+#ENDIF	// XPPVER < 2001392
 
 STATIC snJobId	:= 0
 
@@ -57,7 +52,7 @@ EXTERN UINTEGER LocalFree(;
 #translate ntrim(<n>)	=> alltrim(str(<n>))
 #ifndef DEBUGOUT
 	#translate debugout(<n,.n.>)	=>
-#endif  // DEBUGOUT
+#ENDIF  // DEBUGOUT
 
 // ::_dbFields[]
 // ::_dbVariables[]
@@ -99,35 +94,35 @@ HIDDEN:
 
 
 PROTECTED:
-	CLASS VAR __aDefaultPath			SHARED							// paths to search reports
-	CLASS VAR __aDefaultVar				SHARED							// LlDefineVariable
-	CLASS VAR __aRights					SHARED							// rights
-	CLASS VAR __bConfig					SHARED							// user callback after LLPrint[withBox]Start
-	CLASS VAR __bPrepare					SHARED							// user callback before LLPrint[withBox]Start
-	CLASS VAR __cEmailProvider			SHARED							// Emailprovider
-	CLASS VAR __cExportFormat			SHARED							// possible exports
-	CLASS VAR __cExportPath				SHARED							// possible exports
-	CLASS VAR __cIgnoreField			SHARED							// mask to ignore field
-	CLASS VAR __cLicence					SHARED							// your licence
-	CLASS VAR __cPrinter					SHARED							//
-	CLASS VAR __cPrintText				SHARED							// progrss bar
-	CLASS VAR __cSmtpIPAddress			SHARED							// Email Versand
-	CLASS VAR __cSmtpPassword			SHARED							// Email Versand
-	CLASS VAR __cSmtpSenderAddress	SHARED							// Email Versand
-	CLASS VAR __cSmtpSenderName   	SHARED							// Email Versand
-	CLASS VAR __cSmtpUser				SHARED							// Email Versand
-	CLASS VAR __cTempPath				SHARED							// Tmp path
-	CLASS VAR __lDesignerPreview  	SHARED							// enable real data preview
-	CLASS VAR __lUseDbRequest			SHARED							// wenn mit Tabellenobjekten ohne *DBE
-	CLASS VAR __nBoxType					SHARED							// LlPrintWithBoxStart
-	CLASS VAR __nDebug					SHARED							// LlSetDebug(::__nDebug )
-	CLASS VAR __nEnableDrillDown  	SHARED							// enable drilldown
-	CLASS VAR __nEnableExpand		  	SHARED							// enable expand
-	CLASS VAR __nLanguage				SHARED							// LlJobOpen(::__nLanguage)
-	CLASS VAR __nSmtpIPPort				SHARED							// Email Versand
-	CLASS VAR __nZoom						SHARED							// Zoom bei Preview
-	CLASS VAR __onError					SHARED							// Fehler Handling
-	CLASS VAR __toUpper					SHARED							// Symbol UPPERCASE
+	CLASS VAR __aDefaultPath			NODEBUG SHARED					// paths to search reports
+	CLASS VAR __aDefaultVar				NODEBUG SHARED					// LlDefineVariable
+	CLASS VAR __aRights					NODEBUG SHARED					// rights
+	CLASS VAR __bConfig					NODEBUG SHARED					// user callback after LLPrint[withBox]Start
+	CLASS VAR __bPrepare					NODEBUG SHARED					// user callback before LLPrint[withBox]Start
+	CLASS VAR __cEmailProvider			NODEBUG SHARED					// Emailprovider
+	CLASS VAR __cExportFormat			NODEBUG SHARED					// possible exports
+	CLASS VAR __cExportPath				NODEBUG SHARED					// possible exports
+	CLASS VAR __cIgnoreField			NODEBUG SHARED					// mask to ignore field
+	CLASS VAR __cLicence					NODEBUG SHARED					// your licence
+	CLASS VAR __cPrinter					NODEBUG SHARED					//
+	CLASS VAR __cPrintText				NODEBUG SHARED					// progrss bar
+	CLASS VAR __cSmtpIPAddress			NODEBUG SHARED					// Email Versand
+	CLASS VAR __cSmtpPassword			NODEBUG SHARED					// Email Versand
+	CLASS VAR __cSmtpSenderAddress	NODEBUG SHARED					// Email Versand
+	CLASS VAR __cSmtpSenderName   	NODEBUG SHARED					// Email Versand
+	CLASS VAR __cSmtpUser				NODEBUG SHARED					// Email Versand
+	CLASS VAR __cTempPath				NODEBUG SHARED					// Tmp path
+	CLASS VAR __lDesignerPreview  	NODEBUG SHARED					// enable real data preview
+	CLASS VAR __lUseDbRequest			NODEBUG SHARED					// wenn mit Tabellenobjekten ohne *DBE
+	CLASS VAR __nBoxType					NODEBUG SHARED					// LlPrintWithBoxStart
+	CLASS VAR __nDebug					NODEBUG SHARED					// LlSetDebug(::__nDebug )
+	CLASS VAR __nEnableDrillDown  	NODEBUG SHARED					// enable drilldown
+	CLASS VAR __nEnableExpand		  	NODEBUG SHARED					// enable expand
+	CLASS VAR __nLanguage				NODEBUG SHARED					// LlJobOpen(::__nLanguage)
+	CLASS VAR __nSmtpIPPort				NODEBUG SHARED					// Email Versand
+	CLASS VAR __nZoom						NODEBUG SHARED					// Zoom bei Preview
+	CLASS VAR __onError					NODEBUG SHARED					// Fehler Handling
+	CLASS VAR __toUpper					NODEBUG SHARED					// Symbol UPPERCASE
 
    VAR cOutFile                                                // export filename
    VAR cOutPut                                                 // export medium
@@ -209,11 +204,11 @@ PROTECTED:
 EXPORTED:
 	VAR datalink
    VAR cExportFormat                                           // export format "PRV" "PRN" "PDF"
-	VAR hJob 	READONLY
-	VAR hWnd 	READONLY
+	VAR hJob 								READONLY
+	VAR hWnd 								READONLY
 	VAR oDevmode
 
-	CLASS METHOD DefaultPath(xSet)
+	CLASS METHOD DefaultPath
 	CLASS METHOD initClass
 
 	METHOD AddPath																//
@@ -287,7 +282,7 @@ EXPORTED:
 	INLINE METHOD GetLastError										;RETURN ::_nError
 	INLINE METHOD GetLastMessage									;RETURN ::_cErrorMessage
 	INLINE METHOD GetOutPutFile									;RETURN ::cOutFile
-	INLINE METHOD IsPreview											;RETURN (::_nPrintOption == LL_PRINT_PREVIEW .or. ::cOutput = "PRV")
+	INLINE METHOD IsPreview											;RETURN (::_nPrintOption == LL_PRINT_PREVIEW .OR. ::cOutput = "PRV")
 	INLINE METHOD Output												;RETURN ::cOutput
 	INLINE METHOD Status												;RETURN if( ! empty(::hJob), XBP_STAT_INIT, XBP_STAT_FAILURE )
 	INLINE METHOD UsedChartFields									;RETURN ::_aUsedChartFields
@@ -306,211 +301,211 @@ EXPORTED:
 		LlSetOption(::hJob, LL_OPTION_PRVZOOM_PERC, nZoom )
 		RETURN self
 
-	INLINE METHOD ClearSync()						;::_aSync	:= {}						;RETURN self
-	INLINE METHOD CloneDataSetField(aList)		;::_dbFields	:= aclone(aList)	;RETURN self
-	INLINE METHOD CloneDataSetVariable(aTable);::_dbVariables:= aclone(aTable)	;RETURN self
-	INLINE METHOD CloneDefineField(aField)		;::_aField	:= aclone(aField)		;RETURN self
-	INLINE METHOD CloneDefineVariable(aVar)	;::_aVar		:= aclone(aVar)		;RETURN self
-	INLINE METHOD ResetRights()					;::_aRights	:= aclone(::__aRights);RETURN self
-	INLINE METHOD UseDbRequest(xSet)				;::_lUseDbRequest := xSet 			;RETURN self
-	INLINE METHOD ZugferdXML(xSet)				;::_cZUGFeRDXML	:= xSet			;RETURN self
+	INLINE METHOD ClearSync()						;::_aSync			:= {}							;RETURN self
+	INLINE METHOD CloneDataSetField(aList)		;::_dbFields		:= aclone(aList)			;RETURN self
+	INLINE METHOD CloneDataSetVariable(aTable);::_dbVariables	:= aclone(aTable)			;RETURN self
+	INLINE METHOD CloneDefineField(aField)		;::_aField			:= aclone(aField)			;RETURN self
+	INLINE METHOD CloneDefineVariable(aVar)	;::_aVar				:= aclone(aVar)			;RETURN self
+	INLINE METHOD ResetRights()					;::_aRights			:= aclone(::__aRights)	;RETURN self
+	INLINE METHOD UseDbRequest(xSet)				;::_lUseDbRequest := xSet 						;RETURN self
+	INLINE METHOD ZugferdXML(xSet)				;::_cZUGFeRDXML	:= xSet						;RETURN self
 
 	//=========================================
 	// for free use
 	INLINE ACCESS ASSIGN METHOD Dataobject
-		if ::_Dataobject == NIL
+		IF ::_Dataobject == NIL
 			::_Dataobject	:= Dataobject():New()
-		endif
+		ENDIF
 		RETURN ::_Dataobject
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD DesignerPreview( xSet)
-		if IsLogic(xSet)
+		IF IsLogic(xSet)
 			::_lDesignerPreview		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_lDesignerPreview
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD BoxType( xSet)
-		if IsNumber(xSet)
+		IF IsNumber(xSet)
 			::_nBoxType		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_nBoxType
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD onNotify( xSet)
-		if IsBlock(xSet)
+		IF IsBlock(xSet)
 			::_bNotify		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_bNotify
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD Lastrec( xSet)
-		if IsNumber(xSet)
+		IF IsNumber(xSet)
 			::_nLastRec		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_nLastRec
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD DesignerUpdated( xSet)
-		if IsLogical(xSet)
+		IF IsLogical(xSet)
 			::_lDesignerUpdated		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_lDesignerUpdated
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD Quantity( xSet)
-		if IsNumber(xSet)
+		IF IsNumber(xSet)
 			::_nQuantity	:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_nQuantity
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD IgnoreFieldmask( xSet)
-		if IsCharacter(xSet)
+		IF IsCharacter(xSet)
 			::_cIgnoreField  := xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_cIgnoreField
 
 	//=========================================
 	INLINE ASSIGN METHOD ExportFormat( xSet)
-		if IsCharacter( xSet) .and. !empty(xSet)
+		IF IsCharacter( xSet) .AND. !empty(xSet)
 			::cExportFormat   := xSet
 			LlSetOptionString(::hJob, LL_OPTIONSTR_EXPORTS_ALLOWED_IN_PREVIEW, ::cExportFormat)
-		endif
+		ENDIF
 		RETURN self
 
 	//=========================================
 	INLINE ASSIGN METHOD PrintText( xSet)
-		if IsCharacter( xSet)
+		IF IsCharacter( xSet)
 			::_cPrintText	:= xSet
-		endif
+		ENDIF
 		RETURN self
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD Pages( xSet)
-		if IsNumber( xSet)
+		IF IsNumber( xSet)
 			::_nPages		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_nPages
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD ProjectType( xSet)
-		if IsNumber( xSet)
+		IF IsNumber( xSet)
 			::_nProject		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_nProject
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD Project( xSet)														// obsolet backward compatible,use ProjectType
-		if IsNumber( xSet)
+		IF IsNumber( xSet)
 			::_nProject		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_nProject
 
 //=========================================
 	INLINE ACCESS ASSIGN METHOD SkipBlock( xSet)
-		if IsBlock( xSet)
+		IF IsBlock( xSet)
 			::_bSkip	:= xSet
 			RETURN self
-     	elseif pcount() = 1
-     		::_bSkip   := _SKIPBLOCK			// default, muss immer gültiger codeblock sein
-    	endif
+     	ELSEIF pcount() = 1
+     		::_bSkip   := _SKIPBLOCK																		// default, must be valid codeblock, muss immer gültiger codeblock sein
+		ENDIF
     	RETURN ::_bSkip
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD TopBlock( xSet)
-   	if IsBlock( xSet)
+   	IF IsBlock( xSet)
    		::_bTop	:= xSet
 			RETURN self
-  		elseif pcount() = 1
-  			::_bTop   := _TOPBLOCK           // default, muss immer gültiger codeblock sein
- 		endif
+  		ELSEIF pcount() = 1
+  			::_bTop   := _TOPBLOCK           															// default, must be valid codeblock, muss immer gültiger codeblock sein
+		ENDIF
  		RETURN ::_bTop
 
 //=========================================
 	INLINE ACCESS ASSIGN METHOD EofBlock( xSet)
-		if IsBlock( xSet)
+		IF IsBlock( xSet)
 			::_bEof	:= xSet
 			RETURN self
-     	elseif pcount() = 1
-     		::_bEOF   := _EOFBLOCK           // default, muss immer gültiger codeblock sein
-    	endif
+     	ELSEIF pcount() = 1
+     		::_bEOF   := _EOFBLOCK           															// default, must be valid codeblock, muss immer gültiger codeblock sein
+		ENDIF
     	RETURN ::_bEOF
 
 //=========================================
 	INLINE ACCESS ASSIGN METHOD RecnoBlock( xSet)
-		if IsBlock( xSet)
+		IF IsBlock( xSet)
 			::_bRecno	:= xSet
 			RETURN self
-     	elseif pcount() = 1
-     		::_bRecno   := _RECNOBLOCK       // default, muss immer gültiger codeblock sein
-    	endif
+     	ELSEIF pcount() = 1
+     		::_bRecno   := _RECNOBLOCK       															// default, must be valid codeblock, muss immer gültiger codeblock sein
+		ENDIF
     	RETURN ::_bRecno
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD TableChange( xSet)
-		if IsBlock( xSet)
+		IF IsBlock( xSet)
 			::_bTableChange   := xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_bTableChange
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD ConfigBlock( xSet)
-		if IsBlock( xSet)
+		IF IsBlock( xSet)
 			::_bConfig		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_bConfig
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD PrepareBlock( xSet)
-		if IsBlock( xSet)
+		IF IsBlock( xSet)
 			::_bPrepare		:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_bPrepare
 
 	//=========================================
 	INLINE ACCESS ASSIGN METHOD CopyBlock( xSet)
-		if IsBlock( xSet)
+		IF IsBlock( xSet)
 			::_bCopyblock	:= xSet
 			RETURN self
-		endif
+		ENDIF
 		RETURN ::_bCopyblock
 
 	//=========================================
 	INLINE METHOD EnableDrillDown( xSet)
-		if IsLogical(xSet) .and. xSet
+		IF IsLogical(xSet) .AND. xSet
 			::_nDrillDown	:= 1
-		elseif IsNumber(xSet)
+		ELSEIF IsNumber(xSet)
 			::_nDrillDown	:= xSet
-		else
+		ELSE
 			::_nDrillDown	:= 0
-		endif
+		ENDIF
 		LlSetOption(::hJob, LL_OPTION_DRILLDOWNPARAMETER, ::_nDrillDown)
 		RETURN self
 
 	//=========================================
 	INLINE METHOD EnableExpand( xSet)
-		if IsLogical(xSet) .and. xSet
+		IF IsLogical(xSet) .AND. xSet
 			::_nExpand	:= 1
-		elseif IsNumber(xSet)
+		ELSEIF IsNumber(xSet)
 			::_nExpand	:= xSet
-		else
+		ELSE
 			::_nExpand	:= 0
-		endif
+		ENDIF
 		LlSetOption(::hJob, LL_OPTION_EXPANDABLE_REGIONS_REALDATAJOBPARAMETER, ::_nExpand)
 		LlSetOption(::hJob, LL_OPTION_REPORT_PARAMETERS_REALDATAJOBPARAMETER, ::_nExpand)
 		RETURN self
@@ -545,9 +540,9 @@ EXPORTED:
 	INLINE CLASS Method LLVersion()
 		LOCAL hJob	:= LlJobOpen(::__nLanguage)
 		LOCAL xRet	:= 0
-		if hJob == NIL .or. hJob < 0
+		IF hJob == NIL .OR. hJob < 0
 			RETURN 0
-		endif
+		ENDIF
 		xRet	:= LlGetVersion(LL_VERSION_MAJOR)
 		LlJobClose(hJob)
 		RETURN xRet
@@ -557,46 +552,46 @@ EXPORTED:
 		LOCAL nPos
 		LOCAL cTmp	:= cSymbol
 		nPos   := ascan( ::__aDefaultVar, {|a| a[1] == cTmp})
-		if nPos > 0
+		IF nPos > 0
 			::__aDefaultVar[nPos,2] := xValue
 			::__aDefaultVar[nPos,3] := nLLType
-		else
+		ELSE
 			aadd( ::__aDefaultVar, {cSymbol, xValue, nLLType})
-		endif
+		ENDIF
 		RETURN self
 
 	//=========================================
 	INLINE CLASS Method DefaultConfigBlock(bSet)
-		if IsBlock(bSet)
+		IF IsBlock(bSet)
 			::__bConfig	:= bSet
-		endif
+		ENDIF
 		RETURN self
 
 	//=========================================
 	INLINE CLASS Method DefaultPrepareBlock(bSet)
-		if IsBlock(bSet)
+		IF IsBlock(bSet)
 			::__bPrepare	:= bSet
-		endif
+		ENDIF
 		RETURN self
 
 	//=========================================
 	INLINE CLASS Method onError(xSet)
-		if IsBlock(xSet)
+		IF IsBlock(xSet)
 			::__onError	:= xSet
-		endif
+		ENDIF
 		RETURN self
 
 	//=========================================
 	INLINE CLASS Method DefaultDebug(xSet)
-		if IsNumber(xSet)
+		IF IsNumber(xSet)
 			::__nDebug   := xSet
-		elseif IsLogical(xSet)
-			if xSet
+		ELSEIF IsLogical(xSet)
+			IF xSet
 				::__nDebug   := LL_DEBUG_CMBTLL
-			else
+			ELSE
 				::__nDebug   := 0
-			endif
-		endif
+			ENDIF
+		ENDIF
 		RETURN self
 
 	//=========================================
@@ -607,7 +602,7 @@ ENDCLASS
 
 //=========================================
 CLASS METHOD dsListLabel:InitClass()
-	if ::__aDefaultVar == NIL
+	IF ::__aDefaultVar == NIL
 		::__aDefaultVar			:= {}
 		::__aRights					:= {}
 		::__bConfig					:= NIL
@@ -634,8 +629,10 @@ CLASS METHOD dsListLabel:InitClass()
 		::__nLanguage				:= -1
 		::__nSmtpIPPort			:= 25
 		::__nZoom					:= 100
+		::__onError					:= Errorblock()
 		::__toUpper					:= FALSE
-	endif
+
+	ENDIF
 RETURN self
 
 //=========================================
@@ -643,33 +640,33 @@ CLASS METHOD dsListLabel:DefaultPath(xSet)
 	LOCAL aTmp
 	LOCAL i, iCnt
 
-	if pcount() = 0
+	IF pcount() = 0
 		RETURN ::__aDefaultPath
-	endif
+	ENDIF
 
-	if IsArray(xSet)
+	IF IsArray(xSet)
 		iCnt	:= len( xSet)
-		for i := 1 to iCnt
+		FOR i := 1 TO iCnt
 			xSet[i]	:= strtran( xSet[i], "%APPDATA%"		, GetEnv("APPDATA"))
 			xSet[i]	:= strtran( xSet[i], "%USERPROFILE%", GetEnv("APPDATA"))
 			aadd(::__aDefaultPath, xSet[i] )
-		next
+		NEXT
 
-	elseif IsCharacter(xSet)
-		if ";" $ xSet
+	ELSEIF IsCharacter(xSet)
+		IF ";" $ xSet
 			aTmp	:= _aStrExtract(xSet, ";")
 			iCnt	:= len( aTmp)
-			for i := 1 to iCnt
+			FOR i := 1 TO iCnt
 				aTmp[i]	:= strtran( aTmp[i], "%APPDATA%"		, GetEnv("APPDATA"))
 				aTmp[i]	:= strtran( aTmp[i], "%USERPROFILE%", GetEnv("APPDATA"))
 				aadd(::__aDefaultPath, aTmp[i] )
-			next
-		else
+			NEXT
+		ELSE
 			xSet	:= strtran( xSet, "%APPDATA%"		, GetEnv("APPDATA"))
 			xSet	:= strtran( xSet, "%USERPROFILE%", GetEnv("APPDATA"))
 			aadd(::__aDefaultPath, xSet )
-		endif
-	endif
+		ENDIF
+	ENDIF
 RETURN ::__aDefaultPath
 
 /*============================================================================
@@ -689,15 +686,15 @@ METHOD dsListLabel:Init( oParent, lRtf )
 	INSTANCE ::oDevmode		as STRUCTURE DEVMODE
 
 	::DbContainer:Init()
-	if IsNumber(oParent)                                                             // :clone(), Designer Preview
+	IF IsNumber(oParent)                                                             // :clone(), Designer Preview
 		::hWnd			:= oParent
 
-	elseif IsObject(oParent)
+	ELSEIF IsObject(oParent)
 		::hWnd			:= oParent:GetHWND()
-	else
+	ELSE
 		oParent			:= SetAppWindow()
 		::hWnd			:= SetAppWindow():GetHWND()
-	endif
+	ENDIF
 
 	::_bSkip					:= _SKIPBLOCK
 	::_bTop					:= _TOPBLOCK
@@ -711,9 +708,9 @@ METHOD dsListLabel:Init( oParent, lRtf )
 	::_cExportPath			:= ::__cExportPath
 	::_cPrintText			:= ::__cPrintText
 
-	if !LLModuleInit()
+	IF !LLModuleInit()
 		::_nStatus   := XBP_STAT_FAILURE
-		if IsBlock(::__onError)
+		IF IsBlock(::__onError)
 			oError	:= Error():New()
 			oError:args				:= CMBT_DLL
 			oError:canDefault		:= FALSE
@@ -727,40 +724,40 @@ METHOD dsListLabel:Init( oParent, lRtf )
 			oError:cargo			:= self
 			oError:thread			:= threadid()
 			eval(::__onError, oError)
-		endif
+		ENDIF
 		RETURN self
-	endif
+	ENDIF
 
 	// booster
 	::templateDefineFieldExt		:= templateDefineFieldExt()
 	::templateDefineVariableExt	:= templateDefineVariableExt()
 
-	if empty(lRtf)                                                                   // ausschalten wegen performance
+	IF empty(lRtf)                                                                   // ausschalten wegen performance
 		LlSetOption(-1, LL_OPTION_MAXRTFVERSION, 0 )
-	endif
+	ENDIF
 
 	::hJob	 := LlJobOpen(::__nLanguage)
-	if empty(::hJob) .or. ::hJob < 0
+	IF empty(::hJob) .OR. ::hJob < 0
 		::_nError   := ::hJob
 		::_nStatus  := XBP_STAT_FAILURE
 		::hJob		:= 0
 		::_RaiseError(::_nError, var2char(::__nLanguage), "LLJobOpen()")
 		RETURN self
-	endif
+	ENDIF
 	::_nStatus		:= XBP_STAT_CREATE                                                // laden DLL erfolgreich
 
 	// defaults + reset
 	LlSetPrinterDefaultsDir(::hJob, ::__cTempPath)
 	LlPreviewSetTempPath(::hJob, ::__cTempPath)
 
-	if !empty(::__nDebug)
+	IF !empty(::__nDebug)
 		LlSetDebug(::__nDebug )
-	endif
+	ENDIF
 
 	LlSetOptionString (::hJob, LL_OPTIONSTR_LICENSINGINFO    ,::__cLicence )
 
 	LlViewerProhibitAction(::hJob, 0)
-	aeval( ::_aRights, {|n| LlViewerProhibitAction(::hJob, n )})
+	AEVAL( ::_aRights, {|n| LlViewerProhibitAction(::hJob, n )})
 
 	::Clear(1)
 
@@ -781,35 +778,35 @@ METHOD dsListLabel:Prepare()
 	LOCAL cPath, cTmp
 	LOCAL i, nLen
 
-	if ! IsNumber(::hJob) .or. ::hJob <= 0                                           // ::hJob kann auch NIL sein!!!
+	IF ! IsNumber(::hJob) .OR. ::hJob <= 0                                           // ::hJob kann auch NIL sein!!!
 		RETURN LL_ERR_BAD_JOBHANDLE
-	endif
-	if ::_lPrepared
+	ENDIF
+	IF ::_lPrepared
 		RETURN 0
-	endif
+	ENDIF
 
 	::_nRootSelect := ::nSelect
 
-	if IsObject(::nSelect )
-		if empty(::_nLastRec)
-			if IsMethod(::nSelect, "countrec")
+	IF IsObject(::nSelect )
+		IF empty(::_nLastRec)
+			IF IsMethod(::nSelect, "countrec")
 				::_nLastRec	:= ::nSelect:countrec()                                     // nur AdsClass++
 
-			elseif IsMethod(::nSelect, "lastrec")
+			ELSEIF IsMethod(::nSelect, "lastrec")
 				::_nLastRec	:= ::nSelect:lastrec()
-			endif
-		endif
+			ENDIF
+		ENDIF
 
-	elseif IsArray(::nSelect )
+	ELSEIF IsArray(::nSelect )
 		::_nLastRec		:= len(::nSelect)
 		::_bSkip			:= {|o, n| NIL}
 		::_bTop			:= {|o, n| NIL}
 
-	elseif IsNumber(::nSelect) .and. ::nSelect > 0
-		if empty(::_nLastRec)
+	ELSEIF IsNumber(::nSelect) .AND. ::nSelect > 0
+		IF empty(::_nLastRec)
 			::_nLastRec   := (::nSelect)->(lastrec())
-		endif
-	endif
+		ENDIF
+	ENDIF
 
 	::_nLastRec				:= max(1, ::_nLastRec)
 	::_aUsedFields			:= {}
@@ -818,7 +815,7 @@ METHOD dsListLabel:Prepare()
 
 	IF ::_lOptimize
 		// bei arrays vorerst nicht möglich
-		::_lOptimize	:= !( ascan(::_dbFields, {|a| valtype(a[1]) = "A"}) == 0 .or. ascan(::_dbVariables, {|a| valtype(a[1]) = "A"}) == 0)
+		::_lOptimize	:= !( ascan(::_dbFields, {|a| valtype(a[1]) = "A"}) == 0 .OR. ascan(::_dbVariables, {|a| valtype(a[1]) = "A"}) == 0)
 	ENDIF
 
 	eval(::_bTop, self, ::nSelect )
@@ -826,81 +823,81 @@ METHOD dsListLabel:Prepare()
 	nLen  := 5000
 	cTmp	:= space(nLen)
 	nError	:= LLGetUsedIdentifiersEx(::hJob, ::cReport, LL_USEDIDENTIFIERSFLAG_FIELDS, @cTmp, nLen)
-	if nError == 0
+	IF nError == 0
 		cTmp	:= _Trim0(cTmp)
-		if !empty(cTmp)
+		IF !empty(cTmp)
 			::_aUsedFields	:= _astrextract(cTmp, ";")
 			asort(::_aUsedFields)
-		endif
-	endif
+		ENDIF
+	ENDIF
 
 	nLen  := 5000
 	cTmp	:= space(nLen)
 	nError	:= LLGetUsedIdentifiersEx(::hJob, ::cReport, LL_USEDIDENTIFIERSFLAG_VARIABLES, @cTmp, nLen)
-	if nError == 0
+	IF nError == 0
 		cTmp	:= _Trim0(cTmp)
-		if !empty(cTmp)
+		IF !empty(cTmp)
 			::_aUsedVariables	:= _astrextract(cTmp, ";")
 			asort(::_aUsedVariables)
-		endif
-	endif
+		ENDIF
+	ENDIF
 
 	nLen  := 5000
 	cTmp	:= space(nLen)
 	nError	:= LLGetUsedIdentifiersEx(::hJob, ::cReport, LL_USEDIDENTIFIERSFLAG_CHARTFIELDS, @cTmp, nLen)
-	if nError == 0
+	IF nError == 0
 		cTmp	:= _Trim0(cTmp)
-		if !empty(cTmp)
+		IF !empty(cTmp)
 			::_aUsedChartFields	:= _astrextract(cTmp, ";")
 			asort(::_aUsedChartFields)
-		endif
-	endif
+		ENDIF
+	ENDIF
 
 	cTmp	:= NIL
 
 	::_Synchronize(1)
 	::datalink(1, 1 )                                                                // erstinit variablen
-	if ::_nProject == LL_PROJECT_LIST
+	IF ::_nProject == LL_PROJECT_LIST
 		::datalink(0, 1 )                                                          	// erstinit felder
-	endif
+	ENDIF
 
-	if empty( ::_cPrinter ) .and. !empty(::__cPrinter)
+	IF empty( ::_cPrinter ) .AND. !empty(::__cPrinter)
 		::_cPrinter	:= ::__cPrinter
-	endif
+	ENDIF
 
-	if !empty( ::_cPrinter )
+	IF !empty( ::_cPrinter )
 		::_SetPrinter(::_cPrinter)
-	endif
+	ENDIF
 
-	if IsBlock(::_bPrepare)                                                          // User Callback
+	IF IsBlock(::_bPrepare)                                                          // User Callback
 		eval(::_bPrepare, self, ::hJob )
-	endif
+	ENDIF
 
-	if !::_PrintStart()
+	IF !::_PrintStart()
 		RETURN ::_nError
-	endif
+	ENDIF
 
 	LlPrintSetOption(::hJob, LL_PRNOPT_PAGE , ::_nFirstpage )
 
-	if IsCharacter(::cOutFile) .and. ( i := rat("\", ::cOutFile )) > 0
+	IF IsCharacter(::cOutFile) .AND. ( i := rat("\", ::cOutFile )) > 0
 		::_cExportPath	:= left( ::cOutFile, i )
 		::cOutFile := subs( ::cOutFile, ++i)
-	endif
+	ENDIF
 
-	if IsBlock(::_bConfig)                                                           // User Callback
+	IF IsBlock(::_bConfig)                                                           // User Callback
 		eval(::_bConfig, self, ::hJob )
-	endif
+	ENDIF
 
 	::_PrepareExport()
 
-	if !::IsPreview() .and. ::_lOptions
+	IF !::IsPreview() .AND. ::_lOptions
 		::_nError   := LLPrintOptionsDialog( ::hJob, ::hWND, "")
-		if ::_nError == LL_ERR_USER_ABORTED
+		IF ::_nError == LL_ERR_USER_ABORTED
 			::GetErrorText(::_nError)
 			RETURN LL_ERR_USER_ABORTED
-		endif
+		ENDIF
 		::GetPrinter()
-	endif
+	ENDIF
 
 	nLen			:= 250
 	::cOutPut	:= space(nLen)
@@ -911,12 +908,12 @@ METHOD dsListLabel:Prepare()
 	LlPrintGetOptionString(::hJob, LL_PRNOPTSTR_EXPORT, @::cOutPut, nLen)
 	::cOutPut   := _Trim0( ::cOutPut)
 
-	if !empty(::cOutPut)
+	IF !empty(::cOutPut)
 		LlXGetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, ::cOutPut   ,"Export.File", @::cOutFile, nLen)
 		LlXGetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, ::cOutPut   ,"Export.Path", @cPath, nLen)
 		::_cExportPath	:= _Trim0(cPath )
 		::cOutFile		:= ::_cExportPath + _Trim0( ::cOutFile)
-	endif
+	ENDIF
 
 	::_lPrepared	:= TRUE
 
@@ -938,35 +935,36 @@ METHOD dsListLabel:Print(bPrint)
 	LOCAL oSelf		:= self:&(self:classname())
 	LOCAL cChild
 	LOCAL lPrintAtEof
+	LOCAL dbTable
 	LOCAL oCallBack
 
-	if ! IsNumber(::hJob) .or. ::hJob <= 0							 // ::hJob kann auch NIL sein!!!
+	IF ! IsNumber(::hJob) .OR. ::hJob <= 0							 // ::hJob kann auch NIL sein!!!
 		RETURN LL_ERR_BAD_JOBHANDLE
-	endif
+	ENDIF
 
-	if ::_lDesign															// abwärtskompatibel
+	IF ::_lDesign															// abwärtskompatibel
 		RETURN ::design()
-	endif
+	ENDIF
 
-	if ::_nError = LL_ERR_USER_ABORTED
+	IF ::_nError = LL_ERR_USER_ABORTED
 		RETURN ::_nError
-	endif
+	ENDIF
 
-	if !::_lPrepared
+	IF !::_lPrepared
 		// kann in Subclass überschrieben werden
 		nError	:= oSelf:prepare()
-		if nError <> 0
+		IF nError <> 0
 			RETURN nError
-		endif
-	endif
+		ENDIF
+	ENDIF
 
 	oCallBack   := LLCallBack():New(self )
-	if IsBlock( ::_bNotify)
+	IF IsBlock( ::_bNotify)
 		LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERBTNCLICKED, oCallBack)
-	endif
-	if !empty(::_nDrillDown) .or. !empty(::_nExpand)
+	ENDIF
+	IF !empty(::_nDrillDown) .OR. !empty(::_nExpand)
 		LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERDRILLDOWN, oCallBack)
-	endif
+	ENDIF
    IF ::IsPreview()
       LlPrintSetOptionString(::hJob, LL_PRNOPTSTR_PREVIEWTITLE, ::cTitle )
    ENDIF
@@ -975,186 +973,225 @@ METHOD dsListLabel:Print(bPrint)
 	nRec   	:= 0
 	nPage  	:= 0
 
-	if IsBlock( bPrint )
+	IF IsBlock( bPrint )
 		// LlPrint + llPrintEnd  muß hier in codeblock gestartet werden !!
 		::_nError   	:= ::eval( bPrint, self, ::nSelect )
-		if !IsNumber(::_nError)
+		IF !IsNumber(::_nError)
 			::_nError	:= 0
-		endif
+		ENDIF
 		::_nLastpage   := LlPrintGetCurrentPage(::hJob)
 
-	else
-		if ::_nProject == LL_PROJECT_LIST
+	ELSE
+		IF ::_nProject == LL_PROJECT_LIST
 			nLastRec   *= ::_nQuantity
-			for _nQuantity := 1 to ::_nQuantity
+			FOR _nQuantity := 1 TO ::_nQuantity
 				lPrintAtEof   := ::_lPrintAtEof
 				nRec     := 0
 				nError   := 0
+				IF !empty(::_cMaster)
+					::nSelect	:= ::GetSelect(::_cMaster)
+				ENDIF
 				eval(::_bTop, self, ::nSelect )
-				if IsBlock(::_bCopyblock)
+				IF IsBlock(::_bCopyblock)
 					eval( ::_bCopyblock, self, ::nSelect, _nQuantity )
-				endif
-				do while LlPrint(::hJob) == LL_WRN_REPEAT_DATA; enddo
+				ENDIF
+				::datalink(1, 1)
+				DO WHILE LlPrint(::hJob) == LL_WRN_REPEAT_DATA; ENDDO
 
-				if ::_lSubReport
+				IF ::_lSubReport .AND. !empty(::_cMaster)
+					dbTable	:= ::GetSelect(::_cMaster)
+
+					nRec	:= eval(::_bRecno,self,dbTable)
+
+					DO WHILE nError != LL_ERR_USER_ABORTED .AND. (!eval(::_bEof, self, dbTable) .OR. lPrintAtEof ) .AND. (::_nPages == 0 .OR. nPage <= ::_nPages)
+						cChild   := space(50)
+						LlPrintDbGetCurrentTable(::hJob, @cChild, 50, FALSE )
+						cChild := _Trim0( cChild )
+                  IF !empty(cChild)
+							nError := ::_PrintTable(cChild, ::_cMaster, 0 )
+                  ENDIF
+						IF nError = LL_WRN_TABLECHANGE
+							loop
+						ENDIF
+						eval( ::_bSkip, self, dbTable)
+						IF nRec == eval(::_bRecno,self,dbTable) .OR. ;                            // skip ohne eof flag
+							   eval(::_bEof, self, dbTable)
+							exit
+						ENDIF
+						nRec	:= eval(::_bRecno,self,dbTable)
+						::_Synchronize( nRec)
+				  		::datalink(1, nRec)
+				  		::datalink(0, nRec)
+						LlPrintResetProjectState(::hJob)
+					ENDDO
+					::_nLastpage   := LlPrintGetCurrentPage(::hJob)
+
+				ELSEIF ::_lSubReport
 					cChild   := space(50)
 					LlPrintDbGetCurrentTable(::hJob, @cChild, 50, FALSE )
 					cChild := _Trim0( cChild )
-					if IsBlock(::_bTableChange) .and. cChild != "LLStaticTable"
+					IF IsBlock(::_bTableChange) .AND. cChild != "LLStaticTable"
 						eval(::_bTableChange, self, TRUE, ::getSelect(cChild), "")
-					endif
+					ENDIF
 					::nSelect	:= ::getSelect(cChild)
 
-					if IsArray( ::nSelect)
-						do while !nError = LL_ERR_USER_ABORTED
+					IF IsArray( ::nSelect)
+						DO WHILE !nError = LL_ERR_USER_ABORTED
 							nError := ::_PrintTable(cChild, "", 0 )
-							if nError = LL_WRN_TABLECHANGE
+							IF nError = LL_WRN_TABLECHANGE
 								cChild   := space(50)
 								LlPrintDbGetCurrentTable(::hJob, @cChild, 50, FALSE )
 								cChild := _Trim0( cChild )
-								if IsBlock(::_bTableChange) .and. cChild != "LLStaticTable"
+								IF IsBlock(::_bTableChange) .AND. cChild != "LLStaticTable"
 									eval(::_bTableChange, self, TRUE, ::getSelect(cChild), "")
-								endif
+								ENDIF
 								::nSelect	:= ::getSelect(cChild)
-								if IsBlock(::_bTableChange) .and. cChild != "LLStaticTable"
+								IF IsBlock(::_bTableChange) .AND. cChild != "LLStaticTable"
 									eval(::_bTableChange, self, FALSE, ::getSelect(cChild), "")
-								endif
+								ENDIF
 								loop
-							endif
+							ENDIF
 							exit
-						enddo
+						ENDDO
+						DO WHILE (nError := LlPrintFieldsEnd(::hJob)) == LL_WRN_REPEAT_DATA; ENDDO
+						::_nLastpage   := LlPrintGetCurrentPage(::hJob)
 
-					else
-						do while !nError = LL_ERR_USER_ABORTED
+					ELSE
+						DO WHILE !nError = LL_ERR_USER_ABORTED
 
 							nError := ::_PrintTable(cChild, ::_cMaster, 0 )
 
-							if nError = LL_WRN_TABLECHANGE
+							IF nError = LL_WRN_TABLECHANGE
 								cChild   := space(50)
 								LlPrintDbGetCurrentTable(::hJob, @cChild, 50, FALSE )
 								cChild := _Trim0( cChild )
-								if IsBlock(::_bTableChange) .and. cChild != "LLStaticTable"
+								IF IsBlock(::_bTableChange) .AND. cChild != "LLStaticTable"
 									eval(::_bTableChange, self, TRUE, ::getSelect(cChild), "")
-								endif
+								ENDIF
 								::nSelect	:= ::getSelect(cChild)
 
-								if IsBlock(::_bTableChange) .and. cChild != "LLStaticTable"
+								IF IsBlock(::_bTableChange) .AND. cChild != "LLStaticTable"
 									eval(::_bTableChange, self, FALSE, ::getSelect(cChild), "")
-								endif
+								ENDIF
 								loop
-							endif
+							ENDIF
 							exit
-						enddo
+						ENDDO
+						DO WHILE (nError := LlPrintFieldsEnd(::hJob)) == LL_WRN_REPEAT_DATA; ENDDO
+						::_nLastpage   := LlPrintGetCurrentPage(::hJob)
 						::GetErrorText(nError)
-					endif
+					ENDIF
 
-				elseif IsArray( ::nSelect)
-						nLastRec	:= len(::nSelect)
-						for nPrint := 1 to nLastRec
-							::_Synchronize(nPrint)
-							::datalink(0, nPrint)
-							do while (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
-								LlPrint(::hJob)
-							enddo
-							nPage		:= LlPrintGetCurrentPage(::hJob)
-							LlPrintSetBoxText(::hJob, ::_cPrintText, nPrint / nLastRec * 100 )
-							if ::_nPages > 0 .and. nPage > ::_nPages
-								exit
-							endif
-						next
-				else
-					do while nError == 0 .and. (!eval(::_bEof, self, ::nSelect) .or. lPrintAtEof ) .and. nRec <> eval(::_bRecno,self,::nSelect) .and. (::_nPages == 0 .or. nPage <= ::_nPages)
+				ELSEIF IsArray( ::nSelect)
+					nLastRec	:= len(::nSelect)
+					FOR nPrint := 1 TO nLastRec
+						::_Synchronize(nPrint)
+						::datalink(0, nPrint)
+						DO WHILE (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
+							LlPrint(::hJob)
+						ENDDO
+						nPage		:= LlPrintGetCurrentPage(::hJob)
+						LlPrintSetBoxText(::hJob, ::_cPrintText, nPrint / nLastRec * 100 )
+						IF ::_nPages > 0 .AND. nPage > ::_nPages
+							exit
+						ENDIF
+					NEXT
+					DO WHILE (nError := LlPrintFieldsEnd(::hJob)) == LL_WRN_REPEAT_DATA; ENDDO
+					::_nLastpage   := LlPrintGetCurrentPage(::hJob)
+
+				ELSE
+					DO WHILE nError == 0 .AND. (!eval(::_bEof, self, ::nSelect) .OR. lPrintAtEof ) .AND. nRec <> eval(::_bRecno,self,::nSelect) .AND. (::_nPages == 0 .OR. nPage <= ::_nPages)
 						nRec   := eval(::_bRecno, self,::nSelect)
 						lPrintAtEof   := FALSE
 						::_Synchronize( nRec, ::nSelect)
 						::datalink(0, nRec)
-						do while (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
+						DO WHILE (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
 							::datalink(1, nRec)
 							LlPrint(::hJob)
-						enddo
+						ENDDO
 						nPage		:= LlPrintGetCurrentPage(::hJob)
 						eval( ::_bSkip, self, ::nSelect)
 						LlPrintSetBoxText(::hJob, ::_cPrintText, ++nPrint / nLastRec * 100 )
-					enddo
-					do while (nError := LlPrintFieldsEnd(::hJob)) == LL_WRN_REPEAT_DATA; enddo
+					ENDDO
+					DO WHILE (nError := LlPrintFieldsEnd(::hJob)) == LL_WRN_REPEAT_DATA; ENDDO
 					::_nLastpage   := LlPrintGetCurrentPage(::hJob)
-				endif
-				if (::IsPreview() .and. !IsBlock(::_bCopyblock)) .or. nError == LL_ERR_USER_ABORTED
+				ENDIF
+				IF (::IsPreview() .AND. !IsBlock(::_bCopyblock)) .OR. nError == LL_ERR_USER_ABORTED
 					::GetErrorText(nError)
 					exit
-				endif
+				ENDIF
 				LlPrintResetProjectState(::hJob)
-			next
+			NEXT
 
-		elseif IsObject(::nSelect )									    // CRD oder LBL
+		ELSEIF IsObject(::nSelect )									    // CRD oder LBL
 			eval(::_bTop, self, ::nSelect )
-			do while nError == 0 .and. (!::nSelect:eof() .or. ::_lPrintAtEof) .and. nRec <> ::nSelect:recno() .and. (::_nPages == 0 .or. nPage <= ::_nPages)
+			DO WHILE nError == 0 .AND. (!::nSelect:eof() .OR. ::_lPrintAtEof) .AND. nRec <> ::nSelect:recno() .AND. (::_nPages == 0 .OR. nPage <= ::_nPages)
 				nRec   := ::nSelect:recno()
 				::_lPrintAtEof   := FALSE
 				::_Synchronize( nRec, ::nSelect)
 				::datalink(1, nRec)
-				for _nQuantity := 1 to ::_nQuantity
-					do while (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA	;enddo
-				next
+				FOR _nQuantity := 1 TO ::_nQuantity
+					DO WHILE (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA	;ENDDO
+				NEXT
 				nPage		:= LlPrintGetCurrentPage(::hJob)
 				eval( ::_bSkip, self, ::nSelect)
 				LlPrintSetBoxText(::hJob, ::_cPrintText, ++nPrint / nLastRec * 100 )
-			enddo
+			ENDDO
 
-		elseif IsNumber(::nSelect) .and. ::nSelect > 0									    // CRD oder LBL
+		ELSEIF IsNumber(::nSelect) .AND. ::nSelect > 0									    // CRD oder LBL
 			eval(::_bTop, self, ::nSelect )
-			do while nError == 0 .and. (!(::nSelect)->(eof()) .or. ::_lPrintAtEof) .and. nRec <> (::nSelect)->(recno()) .and. (::_nPages == 0 .or. nPage <= ::_nPages)
+			DO WHILE nError == 0 .AND. (!(::nSelect)->(eof()) .OR. ::_lPrintAtEof) .AND. nRec <> (::nSelect)->(recno()) .AND. (::_nPages == 0 .OR. nPage <= ::_nPages)
 				nRec   := (::nSelect)->(recno())
 				::_lPrintAtEof   := FALSE
 				::_Synchronize( nRec, ::nSelect)
 				::datalink(1, nRec)
-				for _nQuantity := 1 to ::_nQuantity
-					do while (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA	;enddo
-				next
+				FOR _nQuantity := 1 TO ::_nQuantity
+					DO WHILE (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA	;ENDDO
+				NEXT
 				nPage		:= LlPrintGetCurrentPage(::hJob)
 				eval( ::_bSkip, self, ::nSelect)
 				LlPrintSetBoxText(::hJob, ::_cPrintText, ++nPrint / nLastRec * 100 )
-			enddo
+			ENDDO
 
-		elseif IsArray( ::nSelect)
-			for nPrint := 1 to nLastRec
+		ELSEIF IsArray( ::nSelect)
+			FOR nPrint := 1 TO nLastRec
 				::_Synchronize( nPrint)
 				::datalink(1, nPrint)
-				for _nQuantity := 1 to ::_nQuantity
-					do while (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA	;enddo
-				next
+				FOR _nQuantity := 1 TO ::_nQuantity
+					DO WHILE (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA	;ENDDO
+				NEXT
 				nPage		:= LlPrintGetCurrentPage(::hJob)
-				if ::_nPages > 0 .and. nPage > ::_nPages
+				IF ::_nPages > 0 .AND. nPage > ::_nPages
 					exit
-				endif
+				ENDIF
 				LlPrintSetBoxText(::hJob, ::_cPrintText, nPrint / nLastRec * 100 )
-			next
+			NEXT
 
-		else
+		ELSE
 			// aktuelle Daten einmal ausgeben,
-			for _nQuantity := 1 to ::_nQuantity
-				do while (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA .and. ::_nProject <> LL_PROJECT_LABEL .and. (::_nPages == 0 .or. nPage <= ::_nPages); enddo
+			FOR _nQuantity := 1 TO ::_nQuantity
+				DO WHILE (nError := LlPrint(::hJob)) == LL_WRN_REPEAT_DATA .AND. ::_nProject <> LL_PROJECT_LABEL .AND. (::_nPages == 0 .OR. nPage <= ::_nPages); ENDDO
 				nPage		:= LlPrintGetCurrentPage(::hJob)
 				LlPrintSetBoxText(::hJob, ::_cPrintText, ++nPrint / ::_nQuantity * 100 )
-			next
-		endif
+			NEXT
+		ENDIF
 		::_nLastpage   := LlPrintGetCurrentPage(::hJob)
 		::_nError 		:= LlPrintEnd(::hJob,0)
 		::_RaiseError(::_nError, ::cReport, "LlPrintEnd()")
-	endif
+	ENDIF
 
-	if ::_nError == 0 .and. IsBlock(::_bNotify) .and. !::IsPreView()
+	IF ::_nError == 0 .AND. IsBlock(::_bNotify) .AND. !::IsPreView()
 		// falls direkt druck
 		eval( ::_bNotify, LL_NTFY_AFTERPRINT, MNUID_LL_PRINT, self )
-	endif
+	ENDIF
 
-	if !empty(llGetOption( ::hJob, LL_OPTION_INCREMENTAL_PREVIEW ))
+	IF !empty(llGetOption( ::hJob, LL_OPTION_INCREMENTAL_PREVIEW ))
 		LlPreviewDeleteFiles(::hJob, ::cReport, ::__cTempPath)
-	endif
+	ENDIF
 
-	if IsObject(oCallBack)
+	IF IsObject(oCallBack)
 		oCallBack:destroy()
-	endif
+	ENDIF
 	::_lPrepared	:= FALSE
 
 RETURN nError
@@ -1172,33 +1209,33 @@ RETURN nError
 METHOD dsListLabel:Design()
 	LOCAL oCallback
 
-	if ! IsNumber(::hJob) .or. ::hJob <= 0                                           // ::hJob kann auch NIL sein!!!
+	IF ! IsNumber(::hJob) .OR. ::hJob <= 0                                           // ::hJob kann auch NIL sein!!!
 		RETURN LL_ERR_BAD_JOBHANDLE
-	endif
+	ENDIF
 	::_lDesign	:= TRUE
 
 	::_Synchronize( 1 )
 	::datalink(1, 1 )                                                                 // erstinit variablen
-	if ::_nProject == LL_PROJECT_LIST
+	IF ::_nProject == LL_PROJECT_LIST
 		::datalink(0, 1 )                                                         // erstinit felder
-	endif
+	ENDIF
 
-	if IsBlock(::_bPrepare)
+	IF IsBlock(::_bPrepare)
 		eval(::_bPrepare, self, ::nSelect )
-	endif
+	ENDIF
 
 	oCallBack   := LLCallBack():New(self )
-	if ::_lStreamMode
+	IF ::_lStreamMode
 		LlSetNotificationCallbackExt(::hJob, LL_CMND_SAVEFILENAME, oCallBack)
-	endif
+	ENDIF
 
-	if ::_lDesignerPreview
+	IF ::_lDesignerPreview
   		LlSetOption(::hJob,LL_OPTION_DESIGNERPREVIEWPARAMETER, 1)
 		LlSetNotificationCallbackExt(::hJob, LL_NTFY_DESIGNERPRINTJOB, oCallBack)
-		if !empty(::_nDrillDown) .or. !empty(::_nExpand)
+		IF !empty(::_nDrillDown) .OR. !empty(::_nExpand)
 			LlSetNotificationCallbackExt(::hJob, LL_NTFY_VIEWERDRILLDOWN, oCallBack)
-		endif
-	endif
+		ENDIF
+	ENDIF
 
 	::_nError	:= LlDefineLayout(::hJob, ::hWnd, "Designer", ::_nProject, ::cReport)
 
@@ -1218,16 +1255,16 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 	LOCAL nError , nPrint, nPage, nRecNo, nLastRec
 	LOCAL dbChild, dbParent
 
-	if cChild == "LLStaticTable"
+	IF cChild == "LLStaticTable"
 		nError := LlPrintFields(::hJob)
-		do while nError == LL_WRN_REPEAT_DATA
-			do while LlPrint(::hJob) == LL_WRN_REPEAT_DATA
-			enddo
+		DO WHILE nError == LL_WRN_REPEAT_DATA
+			DO WHILE LlPrint(::hJob) == LL_WRN_REPEAT_DATA
+			ENDDO
 			nError	:= LlPrintFields(::hJob)
-		enddo
+		ENDDO
 		nError	:= LlPrintFieldsEnd(::hJob)
 		RETURN nError
-	endif
+	ENDIF
 
 	nPage			:= 0
 	nPrint 		:= 0
@@ -1236,93 +1273,96 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 	nError		:= LlPrintDbGetCurrentTableRelation(::hJob, @cRelation, 200 )
 	cRelation	:= _Trim0( cRelation )
 	dbChild		:= nSelect
-	if !empty(cParent)
+	IF !empty(cParent)
 		dbParent	:= ::getSelect(cParent)
-	endif
+	ENDIF
 
 	eval(::_bTop, self, nSelect )
 	::nSelect   := nSelect
 	::_Synchronize( -1, cParent)
 	::datalink(0, 1 )
 
-	if IsArray( nSelect)
-		if !empty(cRelation)
+	IF IsArray( nSelect)
+		IF !empty(cRelation)
 			// kann in Subclass überschrieben werden
 			oSelf:SetChildRelation(cRelation, cParent, cChild, @nScope)
-		endif
+		ENDIF
 
 		nLastRec	:= len( nSelect)
 		nRecNo	   := 0
 
-		do while nError == 0 .and. nRecNo < nLastrec  .and. (::_nPages == 0 .or. nPage <= ::_nPages)
+		DO WHILE nError == 0 .AND. nRecNo < nLastrec  .AND. (::_nPages == 0 .OR. nPage <= ::_nPages)
 			nRecNo++
 			::_Synchronize( nRecNo, cChild )
 			::datalink(0, nRecNo )
-			do while (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
-				do while LlPrint(::hJob) == LL_WRN_REPEAT_DATA
-				enddo
-			enddo
-			do while nError == LL_WRN_TABLECHANGE
+			DO WHILE (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
+				DO WHILE LlPrint(::hJob) == LL_WRN_REPEAT_DATA
+				ENDDO
+			ENDDO
+			DO WHILE nError == LL_WRN_TABLECHANGE
 				cSubChild   := space(50)
 				LlPrintDbGetCurrentTable(::hJob, @cSubChild, 50, FALSE )
 				cSubChild := _Trim0( cSubChild )
 
-				if IsBlock(::_bTableChange) .and. cChild != "LLStaticTable"
+				IF IsBlock(::_bTableChange) .AND. cChild != "LLStaticTable"
 					eval(::_bTableChange, self, TRUE, cSubChild, cChild, nRecNo )
-				endif
+				ENDIF
 
 				nError := ::_PrintTable(cSubChild, cChild, 0 )
-			enddo
+			ENDDO
 			nPage		:= LlPrintGetCurrentPage(::hJob)
-         if empty(cParent)
+         IF empty(cParent)
 				LlPrintSetBoxText(::hJob, ::_cPrintText, nRecNo / nLastRec * 100 )
-         endif
-		enddo
+         ENDIF
+		ENDDO
 
-	else
-		if !empty(cRelation)
+	ELSE
+		IF !empty(cRelation)
 			// kann in Subclass überschrieben werden
 			oSelf:SetChildRelation(cRelation, coalesce(dbParent, ::getSelect(::_cMaster), ::_nRootSelect), nSelect, @nScope)
-		endif
+		ENDIF
 
-		do while nError == 0 .and. !eval(::_bEof, self, nSelect) .and. (::_nPages == 0 .or. nPage <= ::_nPages)
+		DO WHILE nError == 0 .AND. !eval(::_bEof, self, nSelect) .AND. (::_nPages == 0 .OR. nPage <= ::_nPages)
 			nRecNo	:= eval(::_bRecno,self,nSelect)
 			::_Synchronize( nRecNo, nSelect )
 			::datalink(0, nRecNo )
-			do while (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
-				do while LlPrint(::hJob) == LL_WRN_REPEAT_DATA
-				enddo
-			enddo
+			DO WHILE (nError := LlPrintFields(::hJob)) == LL_WRN_REPEAT_DATA
+				DO WHILE LlPrint(::hJob) == LL_WRN_REPEAT_DATA
+				ENDDO
+			ENDDO
 
-			do while nError == LL_WRN_TABLECHANGE
+			DO WHILE nError == LL_WRN_TABLECHANGE
 				cSubChild		:= space(50)
 				nError	:= LlPrintDbGetCurrentTable(::hJob, @cSubChild, 50, FALSE )
 				cSubChild		:= _Trim0( cSubChild )
 
-				if IsBlock(::_bTableChange) .and. cChild != "LLStaticTable"
+				IF IsBlock(::_bTableChange) .AND. cChild != "LLStaticTable"
 					eval(::_bTableChange, self, TRUE, cSubChild, cChild, nRecNo )
-				endif
+				ENDIF
 
 				nError	:= ::_PrintTable(cSubChild, cChild, nRek + 1 )
-			enddo
+			ENDDO
 			nPage		:= LlPrintGetCurrentPage(::hJob)
 			eval( ::_bSkip, self, nSelect)
-         if empty(cParent)
+         IF empty(cParent)
 				LlPrintSetBoxText(::hJob, ::_cPrintText, ++nPrint / ::_nLastRec * 100 )
-         endif
-		enddo
-	endif
+         ENDIF
+		ENDDO
+	ENDIF
 	::GetErrorText(nError)
 
-	if nError != LL_ERR_USER_ABORTED
-		do while (nError := LlPrintFieldsEnd(::hJob)) == LL_WRN_REPEAT_DATA
-		enddo
-	endif
+	IF nError != LL_ERR_USER_ABORTED
+		DO WHILE (nError := LlPrintFieldsEnd(::hJob)) == LL_WRN_REPEAT_DATA ;ENDDO
+	ENDIF
 	::_nLastpage   := LlPrintGetCurrentPage(::hJob)
 
-	if nScope = 1
-		dbChild:clearscope()
-	endif
+	IF nScope = 1
+		IF IsObject(dbChild)
+			dbChild:clearscope()
+		ELSE
+			(dbChild)->(dbClearScope(SCOPE_BOTH))
+		ENDIF
+	ENDIF
 	::nSelect   := nOSelect
 
 RETURN nError
@@ -1333,9 +1373,9 @@ METHOD dsListLabel:_PrepareExport()
 	LOCAL i, iCnt
 	LOCAL cOutFile	:= ::cOutFile
 
-	if empty(::cExportFormat)
+	IF empty(::cExportFormat)
 		RETURN self
-	endif
+	ENDIF
 
 	aExport   := _astrextract(::cExportFormat, ";")
 	iCnt	:= len( aExport)
@@ -1343,9 +1383,9 @@ METHOD dsListLabel:_PrepareExport()
 	LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, ""   ,"Export.Path", ::_cExportPath)
 	LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, ""   ,"Export.ShowResult", ::cShowExport)
 
-	if empty(cOutFile)
+	IF empty(cOutFile)
 		cOutFile	:= "LLEXPORT"+dtos(date())+strtran(time(),":")
-	else
+	ELSE
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"  			,"Export.Quiet", "1")
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "XHTML"			,"Export.Quiet", "1")
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "HTML"				,"Export.Quiet", "1")
@@ -1357,54 +1397,54 @@ METHOD dsListLabel:_PrepareExport()
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PICTURE_TIFF"	,"Export.Quiet", "1")
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PICTURE_BMP"	,"Export.Quiet", "1")
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "TXT"				,"Export.Quiet", "1")
-	endif
+	ENDIF
 
-	for i := 1 to iCnt
-		if aExport[i] = "PDF"
+	FOR i := 1 TO iCnt
+		IF aExport[i] = "PDF"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"	,"Export.File", _SetExtension(cOutFile, "PDF") )
 
-		elseif aExport[i] = "XHTML"
+		ELSEIF aExport[i] = "XHTML"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "XHTML","Export.File", _SetExtension(cOutFile, "HTML") )
 
-		elseif aExport[i] = "HTML"
+		ELSEIF aExport[i] = "HTML"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "HTML" ,"Export.File", _SetExtension(cOutFile, "HTML") )
 
-		elseif aExport[i] = "JQM"
+		ELSEIF aExport[i] = "JQM"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "JQM"  ,"Export.File", _SetExtension(cOutFile, "HTML") )
 
-		elseif aExport[i] = "PPTX"
+		ELSEIF aExport[i] = "PPTX"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PPTX" ,"Export.File", _SetExtension(cOutFile, "PPTX") )
 
-		elseif aExport[i] = "XLS"
+		ELSEIF aExport[i] = "XLS"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "XLS"  ,"Export.File", _SetExtension(cOutFile, "XLS") )
 
-		elseif aExport[i] = "XML"
+		ELSEIF aExport[i] = "XML"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "XML"  ,"Export.File", _SetExtension(cOutFile, "XML"))
 
-		elseif aExport[i] = "TXT"
+		ELSEIF aExport[i] = "TXT"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "TXT"  ,"Export.OnlyTableData", "1")
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "TXT"  ,"Export.FrameChar", "NONE")
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "TXT"  ,"Export.SeparatorChar", ";")
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "TXT"  ,"Export.File", _SetExtension(cOutFile, "TXT"))
 
-		elseif aExport[i] = "PICTURE_JPEG"
+		ELSEIF aExport[i] = "PICTURE_JPEG"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PICTURE_JPEG"  ,"Export.File", _SetExtension(cOutFile, "JPG"))
 
-		elseif aExport[i] = "PICTURE_TIFF"
+		ELSEIF aExport[i] = "PICTURE_TIFF"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PICTURE_TIFF"  ,"Export.File", _SetExtension(cOutFile, "TIF"))
 
-		elseif aExport[i] = "PICTURE_BMP"
+		ELSEIF aExport[i] = "PICTURE_BMP"
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PICTURE_BMP"	,"Export.File", _SetExtension(cOutFile, "BMP"))
-		endif
-	next
+		ENDIF
+	NEXT
 	LLSetOptionString(::hJob, LL_OPTIONSTR_EXPORTS_ALLOWED, ::cExportFormat)
-	if ! ";" $ ::cExportFormat                                                       // nur 1 Export def., dann keine Auswahl
+	IF ! ";" $ ::cExportFormat                                                       // nur 1 Export def., dann keine Auswahl
 		::_nError	:= LlPrintSetOptionString(::hJob, LL_PRNOPTSTR_EXPORT, ::cExportFormat)
 		::_RaiseError(::_nError, ::cExportFormat, "LlPrintSetOptionString(LL_PRNOPTSTR_EXPORT)")
 		::_lOptions   := FALSE
-	else
+	ELSE
 		::_lOptions   := TRUE
-	endif
+	ENDIF
 RETURN self
 
 //=========================================
@@ -1412,11 +1452,11 @@ METHOD dsListLabel:_Synchronize(nRecno, cMaster )
 	LOCAL i, iCnt
 
 	iCnt   := len( ::_aSync)
-	for i := 1 to iCnt
-		if IsBlock(::_aSync[i])
+	FOR i := 1 TO iCnt
+		IF IsBlock(::_aSync[i])
 			::eval( ::_aSync[i], self, ::nSelect, nRecno, cMaster )
-		endif
-	next
+		ENDIF
+	NEXT
 RETURN self
 
 /*============================================================================
@@ -1436,135 +1476,135 @@ METHOD dsListLabel:SetChildRelation( cRelation, dbParent, dbChild, pnScope)
 	LOCAL bKey
 
 	// kein unterstufe
-	if empty(cRelation)
+	IF empty(cRelation)
 		pnScope	:= 0
 		RETURN self
-	endif
+	ENDIF
 
-	if (nPos := at("@scope?", cRelation)) > 0
+	IF (nPos := at("@scope?", cRelation)) > 0
 		bKey	:= &("{|o,dbP,dbC| " + subs(cRelation,nPos+7) +"}")
-		if IsObject(dbChild)
+		IF IsObject(dbChild)
 			aKey	:= eval( bKey, self, dbParent, dbChild )
-			if aKey != NIL
+			IF aKey != NIL
 				dbChild:setscope(SCOPE_BOTH, aKey )
-			endif
-		else
+			ENDIF
+		ELSE
 			aKey	:= (dbParent)->(eval( bKey, self, dbParent, dbChild ))
-			if aKey != NIL
+			IF aKey != NIL
 				(dbChild)->(dbSetScope(SCOPE_BOTH, aKey))
-			endif
-		endif
+			ENDIF
+		ENDIF
 		pnScope	:= 1
 
-	elseif (nPos := at("@raw?", cRelation)) > 0                                          //.or. (nPos := at(";", cRelation)) > 0
+	ELSEIF (nPos := at("@raw?", cRelation)) > 0                                          //.OR. (nPos := at(";", cRelation)) > 0
 		// nur AdsClass++, rawkey-scope
 		aKey     := _aStrExtract(subs(cRelation,nPos+5), ";")
 		aeval( aKey, {|a| if(a = "'", a := strtran(a, "'"), a := dbParent:fieldget(a))},,, TRUE )
-		if len(aKey) == 1
+		IF len(aKey) == 1
 			aKey	:= aKey[1]
-		endif
-		if IsObject(dbChild)
+		ENDIF
+		IF IsObject(dbChild)
 			dbChild:setscope(SCOPE_BOTH, aKey )
-		endif
+		ENDIF
 		pnScope	:= 1
 
-	elseif (nPos := at("@param?", cRelation)) > 0
+	ELSEIF (nPos := at("@param?", cRelation)) > 0
 		// nur mit SQL, daher auch nur mit Tabellenobjekten möglich
 		// bezeichnung@param:rec_id=4711&wert=klar
 		cRelation:= subs(cRelation, nPos+7 )
 		aKey     := _aStrExtract(cRelation, "&")
 		iCnt		:= len( aKey)
-		if dbChild:IsDerivedfrom("dsAceQTable")
+		IF dbChild:IsDerivedfrom("dsAceQTable")
 			// ADS arbeitet mit named Parameter, deswegen immer ein Pärchen: {name,wert}
-			for i := 1 to iCnt
-				if ";" $ aKey[i]
+			FOR i := 1 TO iCnt
+				IF ";" $ aKey[i]
 					aTmp	:= _aStrExtract(aKey[i], ";" )
 					dbChild:SqlConn():setparam( aTmp[1], dbParent:fieldget(aTmp[2]))
-				elseif ":" $ aKey[i]
+				ELSEIF ":" $ aKey[i]
 					aTmp	:= _aStrExtract(aKey[i], ":" )
 					dbChild:SqlConn():setparam( aTmp[1], dbParent:fieldget(aTmp[2]))
-				elseif "=" $ aKey[i]
+				ELSEIF "=" $ aKey[i]
 					aTmp	:= _aStrExtract(aKey[i], "=" )
 					dbChild:SqlConn():setparam( aTmp[1], dbParent:fieldget(aTmp[2]))
-				endif
-			next
+				ENDIF
+			NEXT
 			dbChild:refreshSql(TRUE)
 
-		elseif dbChild:IsDerivedfrom("dsPQselect")
+		ELSEIF dbChild:IsDerivedfrom("dsPQselect")
 			// bezeichnung@param:4711&klar
 			// PostgreSQL arbeitet mit nummerierten Parametern, keine Nummer darf fehlen, keine darf doppelt erscheinen
 			// deswegen werden immer alle Parameter in der richtigen Reihenfolge definiert
 			aTmp	:= {}
-			for i := 1 to iCnt
+			FOR i := 1 TO iCnt
 				aadd( aTmp, dbParent:fieldget(aKey[i]))
-			next
+			NEXT
 			dbChild:execute(, aTmp)
-		endif
+		ENDIF
+
+	ELSEIF (nPos := at("<", cRelation)) > 0
+		aKey     := _aStrExtract(subs(cRelation,nPos+1), ";")
+		IF IsObject(dbParent)
+			aeval( aKey, {|a| if(a = "'", a := strtran(a, "'"), a := dbParent:fieldget(a))},,, TRUE )
+		ELSE
+			aeval( aKey, {|a| if(a = "'", a := strtran(a, "'"),), a := (dbParent)->(fieldget(fieldpos(a)))},,, TRUE )
+		ENDIF
+		IF len(aKey) == 1
+			aKey	:= aKey[1]
+		ENDIF
+		IF IsObject(dbChild)
+			dbChild:setscope(SCOPE_BOTH, aKey )
+		ELSE
+			(dbChild)->(dbSetScope(SCOPE_BOTH, aKey))
+		ENDIF
+		pnScope	:= 1
 
 #ifdef _XCLASS
-		// only for backward compatibility
-	elseif left(cRelation,1 ) = "&"
+		// only FOR backward compatibility
+	ELSEIF left(cRelation,1 ) = "&"
 		bKey	:= &("{|o,dbP,dbC| " + subs(cRelation,2) +"}")
 		aKey	:= eval( bKey, self, dbParent, dbChild )
-		if aKey != NIL
+		IF aKey != NIL
 			dbChild:setscope(, aKey )
 			pnScope	:= 1
-		endif
+		ENDIF
 
-	elseif left(cRelation,1 ) $ "<;"
+	ELSEIF left(cRelation,1 ) $ "<;"
 		aKey     := _aStrExtract(subs(cRelation,2), ";")
 		aeval( aKey, {|a| if(a = "'", a := strtran(a, "'"), a := dbParent:fieldget(a))},,, TRUE )
-		if len(aKey) == 1
+		IF len(aKey) == 1
 			aKey	:= aKey[1]
-		endif
+		ENDIF
 		dbChild:setscope(, aKey )
 		pnScope	:= 1
 
-	elseif (nPos := at("<", cRelation)) > 0
-		aKey     := _aStrExtract(subs(cRelation,nPos+1), ";")
-		if IsObject(dbParent)
-			aeval( aKey, {|a| if(a = "'", a := strtran(a, "'"), a := dbParent:fieldget(a))},,, TRUE )
-		else
-			aeval( aKey, {|a| if(a = "'", a := strtran(a, "'"), a := (dbParent)->(fieldget(a)))},,, TRUE )
-		endif
-		if len(aKey) == 1
-			aKey	:= aKey[1]
-		endif
-		if IsObject(dbChild)
-			dbChild:setscope(SCOPE_BOTH, aKey )
-		else
-			(dbChild)->(dbSetScope(SCOPE_BOTH, aKey))
-		endif
-		pnScope	:= 1
-
-	elseif (nPos := at("$", cRelation)) > 0
+	ELSEIF (nPos := at("$", cRelation)) > 0
 		aKey     := _aStrExtract(subs(cRelation,nPos+1), "$")
 		iCnt	:= len( aKey)
-		for i := 1 to iCnt
-			if ";" $ aKey[i]
+		FOR i := 1 TO iCnt
+			IF ";" $ aKey[i]
 				aTmp	:= _aStrExtract(aKey[i], ";" )
 				dbChild:SqlConn():setparam( aTmp[1], dbParent:fieldget(aTmp[2]))
-			elseif ":" $ aKey[i]
+			ELSEIF ":" $ aKey[i]
 				aTmp	:= aStrExtract(aKey[i], ":" )
 				dbChild:SqlConn():setparam( aTmp[1], dbParent:fieldget(aTmp[2]))
-			else
+			ELSE
 				dbChild:SqlConn():setparam( aKey[i], dbParent:fieldget(aKey[i]))
-			endif
-		next
+			ENDIF
+		NEXT
 		dbChild:refreshSql()
 
-	elseif ";" $ cRelation
+	ELSEIF ";" $ cRelation
 		aKey     := _aStrExtract(cRelation, ";")
 		aeval( aKey, {|a| if(a = "'", a := strtran(a, "'"), a := dbParent:fieldget(a))},,, TRUE )
-		if len(aKey) == 1
+		IF len(aKey) == 1
 			aKey	:= aKey[1]
-		endif
+		ENDIF
 		dbChild:setscope(, aKey )
 		pnScope	:= 1
 
-#endif
+#ENDIF
 
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -1581,20 +1621,20 @@ RETURN self
 METHOD dsListLabel:PrintLabel(nQuantity, lJobOpen)
 	LOCAL nPos	:= 0
 
-	if nQuantity = NIL
+	IF nQuantity = NIL
 		nQuantity	:= coalesce(::_nQuantity,1)
-	endif
+	ENDIF
 
 	::_Synchronize( 1)
 	::datalink(1, 1)
-	do while ::_nError == 0 .and. nPos++ < nQuantity
+	DO WHILE ::_nError == 0 .AND. nPos++ < nQuantity
       DllExecuteCall( ::templateDefineFieldExt,::hJob,  "Number" ,var2char(nPos)   ,LL_NUMERIC, 0 )
 		::_nError	:= LlPrint(::hJob)
 		LlPrintSetBoxText(::hJob, ::_cPrintText, nPos / nQuantity * 100 )
-	enddo
-	if empty(lJobOpen)
+	ENDDO
+	IF empty(lJobOpen)
 		LlPrintEnd(::hJob,0)
-	endif
+	ENDIF
 RETURN ::_nError
 
 /*============================================================================
@@ -1608,18 +1648,18 @@ RETURN ::_nError
 METHOD dsListLabel:Destroy()
 	::DbContainer:destroy()
 
-	if !empty(::_hDevmode)
+	IF !empty(::_hDevmode)
 		LocalFree( ::_hDevmode)
-	endif
+	ENDIF
 
 	::templateDefineFieldExt		:= NIL
 	::templateDefineVariableExt	:= NIL
 
 	::_DataObject	:= NIL
 	::_nStatus		:= XBP_STAT_INIT
-	if IsNumber(::hJob) .and. ::hJob > 0                                             // ::hJob kann auch NIL sein!!!
+	IF IsNumber(::hJob) .AND. ::hJob > 0                                             // ::hJob kann auch NIL sein!!!
 		LlJobClose(::hJob)
-	endif
+	ENDIF
 	::hJob			:= NIL
 RETURN self
 
@@ -1634,13 +1674,13 @@ RETURN self
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:getSelect(cSymbol)
-	if empty(cSymbol)
+	IF empty(cSymbol)
 		RETURN NIL
-	elseif IsNumber(cSymbol)
+	ELSEIF IsNumber(cSymbol)
 		RETURN cSymbol
-	elseif IsObject(cSymbol)
+	ELSEIF IsObject(cSymbol)
 		RETURN cSymbol
-	endif
+	ENDIF
 RETURN ::GetDbContainer(cSymbol)
 
 /*============================================================================
@@ -1655,15 +1695,15 @@ RETURN ::GetDbContainer(cSymbol)
 ==============================================================================*/
 METHOD dsListLabel:EnableDebug(xSet)
 	LOCAL nDebug
-	if IsNumber(xSet)
+	IF IsNumber(xSet)
 		nDebug   	:= xSet
-	elseif IsLogical(xSet)
-		if xSet
+	ELSEIF IsLogical(xSet)
+		IF xSet
 			nDebug	:= LL_DEBUG_CMBTLL
-		else
+		ELSE
 			nDebug	:= 0
-		endif
-	endif
+		ENDIF
+	ENDIF
 	LlSetDebug( nDebug)
 RETURN self
 
@@ -1683,52 +1723,52 @@ METHOD dsListLabel:SetProperty(cReport, nProject, cTitle )
 	LOCAL cTmp
 	LOCAL i, iCnt
 
-	if nProject != NIL
+	IF nProject != NIL
 		::_nProject	:= nProject
-	endif
-	if IsCharacter(cReport )                                                           // diesen Report auswählen
+	ENDIF
+	IF IsCharacter(cReport )                                                           // diesen Report auswählen
 		iCnt	:= len( ::_aPath)
-		for i := 1 to iCnt
-			if file( _Fullpath( cReport, ::_aPath[i]))
+		FOR i := 1 TO iCnt
+			IF file( _Fullpath( cReport, ::_aPath[i]))
 				::cReport	:= _Fullpath( cReport, ::_aPath[i] )
 				exit
-			endif
-		next
-		if empty(::cReport)
+			ENDIF
+		NEXT
+		IF empty(::cReport)
 			iCnt	:= len( ::__aDefaultPath)
-			for i := 1 to iCnt
-				if file( _Fullpath( cReport, ::__aDefaultPath[i]))
+			FOR i := 1 TO iCnt
+				IF file( _Fullpath( cReport, ::__aDefaultPath[i]))
 					::cReport	:= _Fullpath( cReport, ::__aDefaultPath[i] )
 					exit
-				endif
-			next
-		endif
+				ENDIF
+			NEXT
+		ENDIF
 
-	elseif !empty( ::hJob )
-		if !empty(::_aPath)
+	ELSEIF !empty( ::hJob )
+		IF !empty(::_aPath)
 			curdir(::_aPath[1])
-		elseif !Empty(::__aDefaultPath)
+		ELSEIF !Empty(::__aDefaultPath)
 			curdir(::__aDefaultPath[1])
-		endif
+		ENDIF
 		::cReport	:= replicate(chr(0),255)
 		::_nError	:= LlSelectFileDlgTitleEx( ::hJob, ::hWND, coalesce( cTitle, "Select file"), ::_nProject, @::cReport, 255)
-		if ::_nError <> 0
+		IF ::_nError <> 0
 			::GetErrorText(::_nError)
-		endif
+		ENDIF
 		::cReport	:= _trim0(::cReport)
-	endif
+	ENDIF
 
-	if nProject == NIL .and. !empty( ::cReport)
+	IF nProject == NIL .AND. !empty( ::cReport)
 		cTmp	:= upper( right(::cReport,3))
 
-		if cTmp = "CRD"
+		IF cTmp = "CRD"
 			::_nProject	:= LL_PROJECT_CARD
-		elseif cTmp = "LST"
+		ELSEIF cTmp = "LST"
 			::_nProject	:= LL_PROJECT_LIST
-		elseif cTmp = "LBL"
+		ELSEIF cTmp = "LBL"
 			::_nProject	:= LL_PROJECT_LABEL
-		endif
-	endif
+		ENDIF
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -1743,24 +1783,24 @@ RETURN self
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:Connect(nSelect)
-	if IsObject(nSelect) .or. IsArray(nSelect)
+	IF IsObject(nSelect) .OR. IsArray(nSelect)
 		::nSelect   := nSelect
 
-	else
-		if pcount() > 0
-			if IsCharacter(nSelect)
+	ELSE
+		IF pcount() > 0
+			IF IsCharacter(nSelect)
 				nSelect   := select(nSelect)
-			endif
+			ENDIF
 			::nSelect   := nSelect
-		else
+		ELSE
 			::nSelect   := Select()
-		endif
-	endif
+		ENDIF
+	ENDIF
 RETURN self
 
 //=========================================
 METHOD dsListLabel:_PrintStart()
-	if ::_nBoxType >= 0
+	IF ::_nBoxType >= 0
 		::_nError   := LlPrintWithBoxStart(::hJob,	;
 			::_nProject,;
 			::cReport,;
@@ -1768,58 +1808,58 @@ METHOD dsListLabel:_PrintStart()
 			::_nBoxType,;
 			::hWND,;
 			::cTitle )
-	else
+	ELSE
 		::_nError   := LlPrintStart(::hJob,;
 			::_nProject,;
 			::cReport,;
 			::_nPrintOption )
-	endif
-	if ::_nError == 0
+	ENDIF
+	IF ::_nError == 0
 		::_nStatus   := XBP_STAT_CREATE
 
-	elseif ::_nError == LL_ERR_USER_ABORTED
+	ELSEIF ::_nError == LL_ERR_USER_ABORTED
 		// quit, no error
 		::_nStatus   := XBP_STAT_INIT
 		::GetErrorText(::_nError)
 
-	else
+	ELSE
 		::_nStatus   := XBP_STAT_FAILURE
 		::_RaiseError(::_nError, ::cReport, "LlPrint[WithBox]Start()" )
-	endif
+	ENDIF
 RETURN ::_nError == 0
 
 //=========================================
 METHOD dsListLabel:_SetPrinter(cPrinter)
-	if empty( cPrinter)
+	IF empty( cPrinter)
 		cPrinter   := ::_cPrinter
-	endif
-	if !empty( cPrinter) .and. !empty(::hJob)
+	ENDIF
+	IF !empty( cPrinter) .AND. !empty(::hJob)
 		LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, -1, cPrinter, 0)
-	endif
+	ENDIF
 RETURN self
 
 //=========================================
 METHOD dsListLabel:SetDevMode(cProperty, xValue, nIndex )
 	LOCAL nError
-	if empty(::_hDevMode)
+	IF empty(::_hDevMode)
 		nError	:= ::_InitDevMode(nIndex)
-	endif
-   if ascan( ::oDevmode:classdescribe(3), lower(cProperty)) > 0
+	ENDIF
+   IF ascan( ::oDevmode:classdescribe(3), lower(cProperty)) > 0
 		::oDevMode:&(cProperty)	:= xValue
 		nError	:= LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, nIndex, , ::_hDevmode)
-   else
+   ELSE
    	nError	:= -1
-   endif
+   ENDIF
 RETURN nError
 
 //=========================================
 METHOD dsListLabel:GetDevMode(cProperty)
-	if empty(::_hDevMode)
+	IF empty(::_hDevMode)
 		::_InitDevMode()
-	endif
-   if ascan( ::oDevmode:classdescribe(3), lower(cProperty)) > 0
+	ENDIF
+   IF ascan( ::oDevmode:classdescribe(3), lower(cProperty)) > 0
 		RETURN ::oDevMode:&(cProperty)
-	endif
+	ENDIF
 RETURN NIL
 
 /*============================================================================
@@ -1851,24 +1891,24 @@ RETURN ::_cPrinter
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:SetDefaultPrinter()
-	if !empty(::hJob)
+	IF !empty(::hJob)
 		LlSetPrinterToDefault(::hJob, ::_nProject, ::cReport)
-	endif
+	ENDIF
 RETURN self
 
 //=========================================
 METHOD dsListLabel:SetTitle(xSet)
-	if IsCharacter(xSet)
+	IF IsCharacter(xSet)
 		::cTitle   := xSet
-	endif
+	ENDIF
 RETURN self
 
 //=========================================
 METHOD dsListLabel:PrintOption(nPrtMode)
 	local nOMode	:= ::_nPrintOption
-	if IsNumber(nPrtMode)
+	IF IsNumber(nPrtMode)
 		::_nPrintOption	:= nPrtMode
-	endif
+	ENDIF
 RETURN nOMode
 
 /*============================================================================
@@ -1882,13 +1922,13 @@ RETURN nOMode
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:SetExport(xSet)
-	if IsLogical(xSet)
-		if xSet
+	IF IsLogical(xSet)
+		IF xSet
 			::_nPrintOption := LL_PRINT_EXPORT
-		else
+		ELSE
 			::_nPrintOption := LL_PRINT_NORMAL
-		endif
-	endif
+		ENDIF
+	ENDIF
 RETURN ::_nPrintOption == LL_PRINT_EXPORT
 
 /*============================================================================
@@ -1902,13 +1942,13 @@ RETURN ::_nPrintOption == LL_PRINT_EXPORT
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:SetPreView(xSet)
-	if IsLogical(xSet)
-		if xSet
+	IF IsLogical(xSet)
+		IF xSet
 			::_nPrintOption := LL_PRINT_PREVIEW
-		else
+		ELSE
 			::_nPrintOption := LL_PRINT_NORMAL
-		endif
-	endif
+		ENDIF
+	ENDIF
 RETURN ::_nPrintOption == LL_PRINT_PREVIEW
 
 /*============================================================================
@@ -1923,46 +1963,46 @@ RETURN ::_nPrintOption == LL_PRINT_PREVIEW
 ==============================================================================*/
 METHOD dsListLabel:Report(cReport)
 	LOCAL i, iCnt
-	if IsCharacter(cReport)
+	IF IsCharacter(cReport)
       ::cReport   := cReport
-		if !file(cReport)
+		IF !file(cReport)
 			iCnt	:= len( ::_aPath)
-			for i := 1 to iCnt
-				if file( _Fullpath( cReport, ::_aPath[i] ))
+			FOR i := 1 TO iCnt
+				IF file( _Fullpath( cReport, ::_aPath[i] ))
 					::cReport	:= _Fullpath( cReport, ::_aPath[i] )
 					exit
-				endif
-			next
-      endif
-		if !file(::cReport)
+				ENDIF
+			NEXT
+      ENDIF
+		IF !file(::cReport)
 			iCnt	:= len( ::__aDefaultPath)
-			for i := 1 to iCnt
-				if file( _Fullpath( cReport, ::__aDefaultPath[i] ))
+			FOR i := 1 TO iCnt
+				IF file( _Fullpath( cReport, ::__aDefaultPath[i] ))
 					::cReport	:= _Fullpath( cReport, ::__aDefaultPath[i] )
 					exit
-				endif
-			next
-		endif
+				ENDIF
+			NEXT
+		ENDIF
 
 		// autodetect Projekttype
 		cReport	:= upper( right(::cReport,3))
-		if cReport = "CRD"
+		IF cReport = "CRD"
 			::_nProject	:= LL_PROJECT_CARD
-		elseif cReport = "LST"
+		ELSEIF cReport = "LST"
 			::_nProject	:= LL_PROJECT_LIST
-		elseif cReport = "LBL"
+		ELSEIF cReport = "LBL"
 			::_nProject	:= LL_PROJECT_LABEL
-		endif
-	endif
+		ENDIF
+	ENDIF
 RETURN ::cReport
 
 //=========================================
 METHOD dsListLabel:Stream2Report(cStream, nProject)
 	LOCAL hHandle
 
-	if IsNumber( nProject )
+	IF IsNumber( nProject )
 		::_nProject   := nProject
-	endif
+	ENDIF
 
 	::cReport	:= space(255)
 	GetTempFileName( ::__cTempPath, "LLT", 0, @::cReport)
@@ -1983,10 +2023,10 @@ METHOD dsListLabel:Report2Stream(pnError)
 	LOCAL cStream
 	pnError  := 0
 	hHandle	:= fopen(::cReport, FO_READ)
-	if hHandle < 0
+	IF hHandle < 0
 		pnError	:= ferror()
 		RETURN ""
-	endif
+	ENDIF
 	nLen	:= FSeek(hHandle, 0, FS_END )
 	FSeek(hHandle, 0, FS_SET )
 	cStream	:= freadstr(hHandle, nLen )
@@ -2005,9 +2045,9 @@ RETURN cStream
 ==============================================================================*/
 METHOD dsListLabel:SelectOptions(xSet)
 	LOCAL xRet:=::_lOptions
-	if IsLogical(xSet)
+	IF IsLogical(xSet)
 		::_lOptions := xSet
-	endif
+	ENDIF
 RETURN xRet
 
 /*============================================================================
@@ -2022,17 +2062,17 @@ RETURN xRet
 ==============================================================================*/
 METHOD dsListLabel:Printer(xSet)
 	LOCAL xRet:=::_cPrinter
-	if IsCharacter(xSet) .and. !empty(xSet)
+	IF IsCharacter(xSet) .AND. !empty(xSet)
 		::_cPrinter := xSet
 		::_lOptions := FALSE
 
-	elseif pcount() == 1 .and. empty(xSet)
+	ELSEIF pcount() == 1 .AND. empty(xSet)
 		::_cPrinter := NIL
 		::_lOptions := TRUE
-	endif
-	if !empty( ::_cPrinter) .and. !empty(::hJob)
+	ENDIF
+	IF !empty( ::_cPrinter) .AND. !empty(::hJob)
 		LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, -1, ::_cPrinter, 0)
-	endif
+	ENDIF
 RETURN xRet
 
 /*============================================================================
@@ -2056,89 +2096,89 @@ METHOD dsListLabel:Datalink(nMode, nRecno)
 
 	nMode   	  := coalesce(nMode, 0)
 
-	if IsBlock(::datalink) .and. !::_lDesign
-		if nMode == 0
+	IF IsBlock(::datalink) .AND. !::_lDesign
+		IF nMode == 0
 			lRet	:= eval(::datalink, self, nMode, nRecno)
-		else
+		ELSE
 			lRet	:= eval(::datalink, self, nMode, nRecno)
-		endif
-		if !IsLogic(lRet) .and. lRet
+		ENDIF
+		IF !IsLogic(lRet) .AND. lRet
 			RETURN self
-		endif
+		ENDIF
 
-	elseif ::_lOptimize .and. !::_lDesign
-		if nMode == 0
+	ELSEIF ::_lOptimize .AND. !::_lDesign
+		IF nMode == 0
 			iCnt := len( ::_aUsedFields)
 			// nur mit
-			for i := 1 to iCnt
+			FOR i := 1 TO iCnt
 				dbTable	:= NIL
-				if (nPos := rat(".", ::_aUsedFields[i])) > 0
+				IF (nPos := rat(".", ::_aUsedFields[i])) > 0
 					nPos2 	:= rat(".", ::_aUsedFields[i], nPos -1)
 					cTable	:= subs(::_aUsedFields[i], nPos2+1, nPos - nPos2 - 1)
 					dbTable	:= ::GetDbContainer(cTable, FALSE )
 					cField	:= subs(::_aUsedFields[i], nPos + 1)
-				else
+				ELSE
 					cTable	:= ""
 					cField	:= ::_aUsedFields[i]
-				endif
-				if IsObject( dbTable ) .and. dbTable:IsField(cField)
+				ENDIF
+				IF IsObject( dbTable ) .AND. dbTable:IsField(cField)
 					::SetValue( nMode, ::_aUsedFields[i], dbTable:fieldget(cField))
 
-				elseif IsNumber( dbTable ) .and. (dbTable)->(Fieldpos(cField)) > 0
+				ELSEIF IsNumber( dbTable ) .AND. (dbTable)->(Fieldpos(cField)) > 0
 					::SetValue( nMode, ::_aUsedFields[i], (dbTable)->(fieldget(Fieldpos(cField))))
 
-				elseif Fieldpos(cField) > 0
+				ELSEIF Fieldpos(cField) > 0
 					::SetValue( nMode, ::_aUsedFields[i], fieldget(Fieldpos(cField)))
-				endif
-			next
-		else
+				ENDIF
+			NEXT
+		ELSE
 			iCnt := len( ::_aUsedVariables)
-			for i := 1 to iCnt
+			FOR i := 1 TO iCnt
 				dbTable	:= NIL
 				// ::_aUsedVariables[i] => "AUFTRAG.ARTIKEL.ARTBEZ"
-				if (nPos := rat(".", ::_aUsedVariables[i])) > 0
+				IF (nPos := rat(".", ::_aUsedVariables[i])) > 0
 					nPos2 := rat(".", ::_aUsedVariables[i], nPos -1)
 					cTable  := subs(::_aUsedVariables[i], nPos2+1, nPos - nPos2 - 1)
 					dbTable := ::GetDbContainer(cTable, FALSE )
 					cField  := subs(::_aUsedVariables[i], nPos + 1)
-				else
+				ELSE
 					cTable	:= ""
 					cField	:= ::_aUsedFields[i]
-				endif
+				ENDIF
 
-				if IsObject( dbTable ) .and. dbTable:IsField(cField)
+				IF IsObject( dbTable ) .AND. dbTable:IsField(cField)
 					::SetValue( nMode, ::_aUsedFields[i], dbTable:fieldget(cField))
 
-				elseif IsNumber( dbTable ) .and. (dbTable)->(Fieldpos(cField)) > 0
+				ELSEIF IsNumber( dbTable ) .AND. (dbTable)->(Fieldpos(cField)) > 0
 					::SetValue( nMode, ::_aUsedFields[i], (dbTable)->(fieldget(Fieldpos(cField))))
 
-				elseif Fieldpos(cField) > 0
+				ELSEIF Fieldpos(cField) > 0
 					::SetValue( nMode, ::_aUsedFields[i], fieldget(Fieldpos(cField)))
-				endif
-			next
-		endif
-	else
-		if nMode == 0
+				ENDIF
+			NEXT
+		ENDIF
+	ELSE
+		IF nMode == 0
 			aDb   := ::_dbFields
-		else
+		ELSE
 			aDb   := ::_dbVariables
-		endif
+		ENDIF
 
 		iCnt   := len( aDb)
-		for i := 1 to iCnt
-			if aDb[i] == NIL
+		FOR i := 1 TO iCnt
+			IF aDb[i] == NIL
 				aremove(aDb, i)
 				iCnt--
 				loop
-			endif
+			ENDIF
 			::_datalink( nMode, aDb[i,__SELECT], aDb[i,__LLDESC], aDb[i,__STRUCT], nRecno)
-		next
-	endif
-	if nMode == 0
+		NEXT
+	ENDIF
+	IF nMode == 0
 		::_VarLink(nMode, ::_aField, nRecno )
-	else
+	ELSE
 		::_VarLink(nMode, ::_aVar, nRecno )
-	endif
+	ENDIF
 
 RETURN self
 
@@ -2148,29 +2188,29 @@ METHOD dsListLabel:DatalinkTable(nMode, xServer, nRec )
 	LOCAL aField, aList
 	LOCAL nPos	:= 0
 
-	if nMode == 0
+	IF nMode == 0
 		aList	:= ::_dbFields
-	else
+	ELSE
 		aList	:= ::_dbVariables
-	endif
+	ENDIF
 
-	if IsCharacter(xServer)                                                          // 1. Parameter von :datasetField
+	IF IsCharacter(xServer)                                                          // 1. Parameter von :datasetField
 		nPos := ascan(aList, {|a| a[__SYMBOL] == xServer })
-		if nPos > 0
+		IF nPos > 0
 			aField	:= aList[nPos,__STRUCT]
 			cDesigner:= aList[nPos,__LLDESC]
 			xServer	:= aList[nPos,__SELECT]
-		endif
-	else                                                                          // Server oder select bereich, 1. Parameter von :datasetField
+		ENDIF
+	ELSE                                                                          // Server oder select bereich, 1. Parameter von :datasetField
 		nPos := ascan(aList, {|a| a[__SELECT] == xServer })
-		if nPos > 0
+		IF nPos > 0
 			aField	:= aList[nPos,__STRUCT]
 			cDesigner:= aList[nPos,__LLDESC]
-		endif
-	endif
-	if nPos == 0
+		ENDIF
+	ENDIF
+	IF nPos == 0
 		RETURN self
-	endif
+	ENDIF
 RETURN ::_datalink(nMode, xServer, cDesigner, aField, nRec)
 
 /*============================================================================
@@ -2189,49 +2229,49 @@ METHOD dsListLabel:SetValue(nMode, cName, xValue, nLLType)
 	LOCAL cStr
 	LOCAL nLL	:= nLLType
 
-	if xValue == NIL
+	IF xValue == NIL
 		RETURN FALSE
-	endif
+	ENDIF
 
-	if valtype(xValue) = "N"
+	IF valtype(xValue) = "N"
 		// var2lchar setzt 2 decimalen [set(_SET_DECIMALS)] und ignoriert die Genauigkeit der Zahl
 		nLL   := coalesce(nLL, LL_NUMERIC)
 		cStr  := ntrim(xValue)
-		if xValue == int(xValue)
+		IF xValue == int(xValue)
 			nLL   := LL_NUMERIC_INTEGER
-		endif
+		ENDIF
 
-	elseif valtype(xValue) = "D"
+	ELSEIF valtype(xValue) = "D"
 		nLL   := coalesce(nLL, LL_DATE_YYYYMMDD)
-		if !empty( xValue)
+		IF !empty( xValue)
 			cStr	:= dtos(xValue)
-		else
+		ELSE
 			cStr	:= '(NULL)'
-		endif
+		ENDIF
 
-	elseif valtype(xValue) = "L"
+	ELSEIF valtype(xValue) = "L"
 		nLL	:= coalesce(nLL, LL_BOOLEAN)
 		cStr	:= if(xValue, "T","F")
 
-	else
+	ELSE
 		nLL   := coalesce(nLL, LL_TEXT)
-		if Set( _SET_CHARSET ) == CHARSET_OEM
+		IF Set( _SET_CHARSET ) == CHARSET_OEM
 			cStr  := alltrim(ConvtoAnsiCP(xValue))
-		else
+		ELSE
 			cStr  := alltrim(xValue)
-		endif
+		ENDIF
 
-		if empty( cStr)
+		IF empty( cStr)
 			cStr	:= " "
-		elseif left(cStr,5) = "{\rtf"
+		ELSEIF left(cStr,5) = "{\rtf"
 			nLL   := coalesce(nLL, LL_RTF)
-		endif
-	endif
-	if empty( nMode )
+		ENDIF
+	ENDIF
+	IF empty( nMode )
       DllExecuteCall( ::templateDefineFieldExt,::hJob, cName, cStr, nLL, 0 )
-	else
+	ELSE
       DllExecuteCall( ::templateDefineVariableExt,::hJob, cName, cStr, nLL, 0 )
-	endif
+	ENDIF
 RETURN TRUE
 
 //=========================================
@@ -2242,94 +2282,94 @@ METHOD dsListLabel:_datalink(nMode, nSelect, cDesigner, aField, nRecno )
 	LOCAL lStruct   	:= FALSE
 	LOCAL nSourceType	:= 0
 
-	if IsObject(nSelect)
-		if nSelect:IsDerivedfrom("dataobject")
+	IF IsObject(nSelect)
+		IF nSelect:IsDerivedfrom("dataobject")
 			nSourceType	+= 2
-		else
+		ELSE
 			nSourceType	+= 1
-		endif
-	elseif IsArray(nSelect)
+		ENDIF
+	ELSEIF IsArray(nSelect)
 		nSourceType		+= 4
-		if nRecno > len(nSelect)
+		IF nRecno > len(nSelect)
 			RETURN self
-		endif
-	endif
+		ENDIF
+	ENDIF
 
-	DEFAULT cDesigner to ""
+	DEFAULT cDesigner TO ""
 
-	if !IsArray( aField)
-		if IsObject(nSelect)
-			if IsMethod(nSelect,"dbstruct")
+	IF !IsArray( aField)
+		IF IsObject(nSelect)
+			IF IsMethod(nSelect,"dbstruct")
 				aField	:= nSelect:dbstruct()
-			endif
-		elseif !empty(nSelect)
+			ENDIF
+		ELSEIF !empty(nSelect)
 			aField	:= (nSelect)->(dbstruct())
-		endif
-	endif
+		ENDIF
+	ENDIF
 
 	iCnt	:= len( aField)
-	if iCnt = 0
+	IF iCnt = 0
 		RETURN self
-	endif
-	lStruct	:= IsArray(aField[1]) .and. len( aField[1]) >= 3                        // stimmt auch bei dataobject
+	ENDIF
+	lStruct	:= IsArray(aField[1]) .AND. len( aField[1]) >= 3                        // stimmt auch bei dataobject
 
-	if !empty(cDesigner) .and. !cDesigner[-1] $ ".:"
+	IF !empty(cDesigner) .AND. !cDesigner[-1] $ ".:"
 		cDesigner	+= "."
-	endif
+	ENDIF
 
-	for i := 1 to iCnt
-		if lStruct
+	FOR i := 1 TO iCnt
+		IF lStruct
 			cId   := aField[i,1]
-			if !empty(::_cIgnoreField) .and. like( ::_cIgnoreField ,aField[i,1])
+			IF !empty(::_cIgnoreField) .AND. like( ::_cIgnoreField ,aField[i,1])
 				loop
-			endif
-			if nSourceType == 0
+			ENDIF
+			IF nSourceType == 0
 				xRet	:= if(IsObject(nSelect), nSelect:fieldget(i),(nSelect)->(fieldget(i)))
-			elseif nSourceType == 1
+			ELSEIF nSourceType == 1
 
 				xRet	:= if(IsObject(nSelect), nSelect:fieldget(i),(nSelect)->(fieldget(i)))
-			else
+			ELSE
 				xRet	:= nSelect:&cId.
-			endif
-		else
-			if !IsArray(aField[i])
+			ENDIF
+		ELSE
+			IF !IsArray(aField[i])
 				cId	:= aField[i]
-				if nSourceType == 4                                                     // array mit dataobject
+				IF nSourceType == 4                                                     // array mit dataobject
 					xRet	:= nSelect[nRecno]:&cId.
-				else
-					if nSourceType == 0
+				ELSE
+					IF nSourceType == 0
 						nPos	:= (nSelect)->(fieldpos(aField[i]))
 						xRet	:= (nSelect)->(fieldget(nPos))
 
-					elseif nSourceType == 1
+					ELSEIF nSourceType == 1
 						xRet	:= nSelect:fieldget(aField[i])
 
-					elseif nSourceType == 2
+					ELSEIF nSourceType == 2
 						xRet	:= nSelect:&cId.
-					endif
-				endif
+					ENDIF
+				ENDIF
 
-			elseif IsBlock(aField[i,2])
+			ELSEIF IsBlock(aField[i,2])
 				cId	:= aField[i,1]
 				xRet	:= eval(aField[i,2], self, nSelect, nRecno )
 
-			else
+			ELSE
 				cId	:= aField[i,1]
-				if nSourceType == 0
+				IF nSourceType == 0
 					xRet	:= (nSelect)->(fieldget(fieldpos(aField[i,2])))
-				elseif nSourceType == 1
+				ELSEIF nSourceType == 1
 					xRet	:= nSelect:fieldget(aField[i,2])
-				endif
-			endif
-		endif
+				ENDIF
+			ENDIF
+		ENDIF
 
-		if xRet == NIL
+		IF xRet == NIL
 			loop
-		endif
+		ENDIF
 
 		::SetValue(nMode, cDesigner + cId, xRet)
 
-	next
+	NEXT
 RETURN self
 
 //=========================================
@@ -2339,19 +2379,19 @@ METHOD dsListLabel:_Varlink( nMode, aVar, nRecno )
 
 	iCnt	:= len( aVar)
 
-	for i := 1 to iCnt
-		if IsBlock(aVar[i,2])
+	FOR i := 1 TO iCnt
+		IF IsBlock(aVar[i,2])
 			xRet	:= eval( aVar[i,2], self, ::nSelect, nRecno  )
-		else
+		ELSE
 			xRet	:= aVar[i,2]
-		endif
+		ENDIF
 
-		if xRet == NIL
+		IF xRet == NIL
 			loop
-		endif
+		ENDIF
 
 		::SetValue(nMode, aVar[i,1], xRet)
-	next
+	NEXT
 RETURN self
 
 /*============================================================================
@@ -2368,15 +2408,15 @@ METHOD dsListLabel:DefineField(cVar, xValue, nLLType)
 	LOCAL nPos   := 0
 
 	cVar	:= alltrim(cVar)
-	if ::__toUpper
+	IF ::__toUpper
 		cVar	:= upper(cVar)
-	endif
-	if (nPos := ascan(::_aField, {|x| x[1] == cVar})) > 0
+	ENDIF
+	IF (nPos := ascan(::_aField, {|x| x[1] == cVar})) > 0
 		::_aField[nPos, 2]   := xValue
 		::_aField[nPos, 3]   := nLLType
-	else
+	ELSE
 		aadd( ::_aField, {cVar, xValue, nLLType})
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -2392,15 +2432,15 @@ RETURN self
 METHOD dsListLabel:DefineVariable(cVar, xValue, nLLType)
 	LOCAL nPos   := 0
 
-	if ::__toUpper
+	IF ::__toUpper
 		cVar	:= upper(cVar)
-	endif
-	if (nPos := ascan(::_aVar, {|x| x[1] == cVar})) > 0
+	ENDIF
+	IF (nPos := ascan(::_aVar, {|x| x[1] == cVar})) > 0
 		::_aVar[nPos, 2]   := xValue
 		::_aVar[nPos, 3]   := nLLType
-	else
+	ELSE
 		aadd( ::_aVar, {cVar, xValue, nLLType})
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -2419,93 +2459,96 @@ RETURN self
 METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 	LOCAL nPos
 
-	if IsArray(nSelect)
+	IF IsArray(nSelect)
 		cSymbol	:= coalesce( cSymbol,"")
 
-	elseif IsObject(nSelect)
-		if IsMembervar(nSelect, "Alias")
+	ELSEIF IsObject(nSelect)
+		IF IsMembervar(nSelect, "Alias")
 			cSymbol	:= coalesce( cSymbol, nSelect:Alias, "")
 
-		else
+		ELSE
 			cSymbol	:= coalesce( cSymbol, "")
-		endif
-	else
+		ENDIF
+	ELSEIF IsCharacter(nSelect)
+		cSymbol	:= coalesce( cSymbol,nSelect)
+		nSelect	:= select(nSelect)
+	ELSE
 		nSelect	:= coalesce( nSelect, Select())
 		cSymbol	:= coalesce( cSymbol,"")
-	endif
+	ENDIF
 	cSymbol	:= alltrim(cSymbol)
 	cDesigner  := coalesce( cDesigner, cSymbol )
-	if ::__toUpper
+	IF ::__toUpper
 		cSymbol	:= upper(cSymbol)
-	endif
+	ENDIF
 
 	nPos := ascan(::_dbVariables, {|a| a[2] == cSymbol })
-	if nPos == 0 .and. !empty(nSelect )
-		if IsArray(nSelect)
-			if len(nSelect) > 0 .and. nSelect[1]:IsDerivedfrom( "dataobject")
+	IF nPos == 0 .AND. !empty(nSelect )
+		IF IsArray(nSelect)
+			IF len(nSelect) > 0 .AND. nSelect[1]:IsDerivedfrom( "dataobject")
 				aField	:= nSelect[1]:classdescribe(CLASS_DESCR_MEMBERS)
 				aeval( aField, {|a| a := a[1]},,,TRUE)
 				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner, aField })
-			endif
+			ENDIF
 
-		elseif IsObject(nSelect)
-			if nSelect:IsDerivedfrom("dataobject")
+		ELSEIF IsObject(nSelect)
+			IF nSelect:IsDerivedfrom("dataobject")
 				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,;
 					coalesce(aField, nSelect:classdescribe(CLASS_DESCR_MEMBERS)), cSymbol})
-			else
-				if empty(aField)
-					if IsMethod(nSelect,"dbstruct")
+			ELSE
+				IF empty(aField)
+					IF IsMethod(nSelect,"dbstruct")
 						aField	:= nSelect:dbstruct()
-					endif
-				endif
-				if IsMemberVar(nSelect, "alias" )
+					ENDIF
+				ENDIF
+				IF IsMemberVar(nSelect, "alias" )
 					aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,aField, nSelect:alias })
-				else
+				ELSE
 					aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,aField, cSymbol})
-				endif
-			endif
-		else
+				ENDIF
+			ENDIF
+		ELSE
 			aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,;
 				coalesce(aField, (nSelect)->(dbstruct())), alias(nSelect)})
-		endif
+		ENDIF
 
-	elseif nPos > 0
-		if nSelect == NIL
+	ELSEIF nPos > 0
+		IF nSelect == NIL
 			aremove(::_dbVariables, nPos )
-		else
+		ELSE
 			::_dbVariables[nPos,__SELECT]	:= nSelect
 			::_dbVariables[nPos,__SYMBOL]	:= cSymbol
 			::_dbVariables[nPos,__LLDESC]	:= cDesigner
-			if IsArray(nSelect)
-				if len(nSelect) > 0 .and. nSelect[1]:IsDerivedfrom("dataobject")
+			IF IsArray(nSelect)
+				IF len(nSelect) > 0 .AND. nSelect[1]:IsDerivedfrom("dataobject")
 					aField	:= nSelect[1]:classdescribe(CLASS_DESCR_MEMBERS)
 					aeval( aField, {|a| a := a[1]},,,TRUE)
 					::_dbVariables[nPos,__STRUCT]	:= aField
-				endif
-			elseif IsObject(nSelect)
-				if nSelect:IsDerivedfrom("dataobject")
+				ENDIF
+			ELSEIF IsObject(nSelect)
+				IF nSelect:IsDerivedfrom("dataobject")
 					::_dbVariables[nPos,__STRUCT]	:= nSelect:classdescribe(CLASS_DESCR_MEMBERS)
 					::_dbVariables[nPos,__ALIAS ]	:= cSymbol
 
-				else
-					if empty(aField)
-						if IsMethod(nSelect,"dbstruct")
+				ELSE
+					IF empty(aField)
+						IF IsMethod(nSelect,"dbstruct")
 							aField	:= nSelect:dbstruct()
-						endif
-					endif
+						ENDIF
+					ENDIF
 					::_dbVariables[nPos,__STRUCT]	:= aField
-					if IsMemberVar(nSelect, "alias" )
+					IF IsMemberVar(nSelect, "alias" )
 						::_dbVariables[nPos,__ALIAS ]	:= nSelect:alias
-					else
+					ELSE
 						::_dbVariables[nPos,__ALIAS ]	:= ""
-					endif
-				endif
-			else
+					ENDIF
+				ENDIF
+			ELSE
 				::_dbVariables[nPos,__STRUCT]	:= coalesce(aField, (nSelect)->(dbstruct()))
 				::_dbVariables[nPos,__ALIAS ]	:= alias(nSelect)
-			endif
-		endif
-	endif
+			ENDIF
+		ENDIF
+	ENDIF
 	::AddDbContainer( cSymbol, nSelect )
 RETURN self
 
@@ -2526,88 +2569,91 @@ RETURN self
 METHOD dsListLabel:DataSetField(nSelect, cSymbol, cDesigner ,aField, nRekursiv )
 	LOCAL nPos
 
-	if nSelect == NIL	 .and. pCount() == 1                                           // für abmelden
+	IF nSelect == NIL	 .AND. pCount() == 1                                           // für abmelden
 		// NIL mit xbase ist aktuelle workarea !!!
 		cSymbol	:= alltrim(cSymbol)
-		if ::__toUpper
+		IF ::__toUpper
 			cSymbol	:= upper(cSymbol)
-		endif
+		ENDIF
 		nPos := ascan(::_dbFields, {|a| a[__SYMBOL] == cSymbol})
-		if nPos > 0
+		IF nPos > 0
 			aRemove(::_dbFields, nPos )
-		endif
+		ENDIF
 		RETURN self
-	endif
+	ENDIF
 
-	if IsArray(nSelect)
+	IF IsArray(nSelect)
 		cSymbol	:= coalesce( cSymbol,"")
 
-	elseif IsObject(nSelect)
+	ELSEIF IsObject(nSelect)
 		nSelect	:= nSelect
-		if IsMembervar(nSelect, "Alias")
+		IF IsMembervar(nSelect, "Alias")
 			cSymbol	:= coalesce( cSymbol, nSelect:Alias, "")
-		else
+		ELSE
 			cSymbol	:= coalesce( cSymbol, "")
-		endif
-	else
+		ENDIF
+	ELSEIF IsCharacter(nSelect)
+		cSymbol	:= coalesce( cSymbol,nSelect)
+		nSelect	:= select(nSelect)
+	ELSE
 		nSelect	:= coalesce( nSelect,  Select())
 		cSymbol	:= coalesce( cSymbol,  "")
-	endif
+	ENDIF
 	cSymbol	:= alltrim(cSymbol)
 	cDesigner	:= coalesce( cDesigner, cSymbol )
-	if ::__toUpper
+	IF ::__toUpper
 		cSymbol	:= upper(cSymbol)
-	endif
+	ENDIF
 	nRekursiv	:= coalesce( nRekursiv, -99)
 
 	nPos := ascan(::_dbFields, {|a| a[2] == cSymbol })
-	if nPos == 0 .and. !empty(nSelect )
-		if IsArray(nSelect)
-			if len(nSelect) > 0 .and. nSelect[1]:IsDerivedfrom( "dataobject")
+	IF nPos == 0 .AND. !empty(nSelect )
+		IF IsArray(nSelect)
+			IF len(nSelect) > 0 .AND. nSelect[1]:IsDerivedfrom( "dataobject")
 				aField	:= nSelect[1]:classdescribe(CLASS_DESCR_MEMBERS)
 				aeval( aField, {|a| a := a[1]},,,TRUE)
 				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,;
 					aField, -1, nRekursiv})
-			endif
-		elseif IsObject(nSelect)
-			if empty(aField)
-				if IsMethod(nSelect,"dbstruct")
+			ENDIF
+		ELSEIF IsObject(nSelect)
+			IF empty(aField)
+				IF IsMethod(nSelect,"dbstruct")
 					aField	:= nSelect:dbstruct()
-				endif
-			endif
-			if IsMembervar(nSelect, "Alias")
+				ENDIF
+			ENDIF
+			IF IsMembervar(nSelect, "Alias")
 				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,aField, nSelect:alias, nRekursiv})
-			else
+			ELSE
 				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,aField, cSymbol, nRekursiv})
-			endif
-		else
+			ENDIF
+		ELSE
 			aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,;
 				coalesce(aField, (nSelect)->(dbstruct())), alias(nSelect), nRekursiv})
-		endif
+		ENDIF
 
-	elseif nPos > 0
+	ELSEIF nPos > 0
 		::_dbFields[nPos,__SELECT]	:= nSelect
 		::_dbFields[nPos,__SYMBOL]	:= cSymbol
 		::_dbFields[nPos,__LLDESC]	:= cDesigner
-		if IsArray(nSelect)
-			if len(nSelect) > 0 .and. nSelect[1]:IsDerivedfrom("dataobject")
+		IF IsArray(nSelect)
+			IF len(nSelect) > 0 .AND. nSelect[1]:IsDerivedfrom("dataobject")
 				aField	:= nSelect[1]:classdescribe(CLASS_DESCR_MEMBERS)
 				aeval( aField, {|a| a := a[1]},,,TRUE)
 				::_dbFields[nPos,__STRUCT]	:= aField
-			endif
-		elseif IsObject(nSelect)
+			ENDIF
+		ELSEIF IsObject(nSelect)
 			::_dbFields[nPos,__STRUCT]	:= coalesce(aField, nSelect:dbstruct())
-			if IsMembervar(nSelect, "Alias")
+			IF IsMembervar(nSelect, "Alias")
 				::_dbFields[nPos,__ALIAS ]	:= nSelect:alias
-			else
+			ELSE
 				::_dbFields[nPos,__ALIAS ]	:= ""
-			endif
-		else
+			ENDIF
+		ELSE
 			::_dbFields[nPos,__STRUCT]	:= coalesce(aField, (nSelect)->(dbstruct()))
 			::_dbFields[nPos,__ALIAS ]	:= alias(nSelect)
-		endif
+		ENDIF
 		::_dbFields[nPos,__LEVEL ]	:= nRekursiv
-	endif
+	ENDIF
 
 	::AddDbContainer( cSymbol, nSelect )
 
@@ -2627,17 +2673,17 @@ RETURN self
 METHOD dsListLabel:DataSetStruct( cSymbol, aStruct)
 	LOCAL nPos
 	cSymbol	:= alltrim(cSymbol)
-	if ::__toUpper
+	IF ::__toUpper
 		cSymbol	:= upper(cSymbol)
-	endif
+	ENDIF
 	nPos := ascan(::_dbFields, {|a| a[__SYMBOL] == cSymbol })
-	if nPos > 0
+	IF nPos > 0
 		::_dbFields[nPos,__STRUCT]	:= aStruct
-	endif
+	ENDIF
 	nPos := ascan(::_dbVariables, {|a| a[__SYMBOL] == cSymbol })
-	if nPos > 0
+	IF nPos > 0
 		::_dbVariables[nPos,__STRUCT]	:= aStruct
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -2655,39 +2701,39 @@ METHOD dsListLabel:AddTable(cSymbol, lMaster)
 	LOCAL i, iCnt
 	::_lSubReport   := TRUE
 
-	if IsArray(cSymbol)                                                              // clone
+	IF IsArray(cSymbol)                                                              // clone
 		iCnt   := len(cSymbol )
-		for i := 1 to iCnt
+		FOR i := 1 TO iCnt
 			LlDbAddTable(::hJob, cSymbol[i,1])
-			if cSymbol[i,2]
+			IF cSymbol[i,2]
 				LlDbSetMasterTable(::hJob, cSymbol[i,1])
-			endif
-		next
-	else
-		if pcount() = 3                                                                  // abwärtskompatibel
+			ENDIF
+		NEXT
+	ELSE
+		IF pcount() = 3                                                                  // abwärtskompatibel
 			lMaster	:= pvalue(3)
-		elseif !IsLogic(lMaster)
+		ELSEIF !IsLogic(lMaster)
 			lMaster	:= FALSE
-		endif
-		if empty(cSymbol)
+		ENDIF
+		IF empty(cSymbol)
 			cSymbol	:= alias()
-		endif
+		ENDIF
 		cSymbol	:= alltrim(cSymbol)
-		if ::__toUpper
+		IF ::__toUpper
 			cSymbol	:= upper(cSymbol)
-		endif
+		ENDIF
 		LlDbAddTable(::hJob, cSymbol)
 		aadd( ::_aAddTable, {cSymbol, !empty(lMaster)})
 
-		if !empty(lMaster)
+		IF !empty(lMaster)
 			LlDbSetMasterTable(::hJob, cSymbol)
 			::_cMaster	:= cSymbol
-		endif
-		if len( ::_aAddTable) == 1
+		ENDIF
+		IF len( ::_aAddTable) == 1
 			LlDbAddTable(::hJob, "LLStaticTable")
 			aadd( ::_aAddTable, {"LLStaticTable", FALSE })
-		endif
-	endif
+		ENDIF
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -2706,28 +2752,28 @@ RETURN self
 METHOD dsListLabel:AddTableEx(cSymbol, cDescription, nOptions, lMaster)
 	::_lSubReport   := TRUE
 
-	if empty(cSymbol)
+	IF empty(cSymbol)
 		cSymbol	:= alias()
-	endif
-	if empty(cDescription)
+	ENDIF
+	IF empty(cDescription)
 		cDescription	:= cSymbol
-	endif
+	ENDIF
 	cSymbol	:= alltrim(cSymbol)
-	if ::__toUpper
+	IF ::__toUpper
 		cSymbol	:= upper(cSymbol)
-	endif
+	ENDIF
 
 	LlDbAddTableEx(::hJob, cSymbol, cDescription, nOptions)
 	aadd( ::_aAddTable, {cSymbol, cDescription, !empty(lMaster), nOptions})
 
-	if !empty(lMaster)
+	IF !empty(lMaster)
 		LlDbSetMasterTable(::hJob, cSymbol)
 		::_cMaster	:= cSymbol
-	endif
-	if len( ::_aAddTable) == 1
+	ENDIF
+	IF len( ::_aAddTable) == 1
 		LlDbAddTable(::hJob, "LLStaticTable", "")
 		aadd( ::_aAddTable, {"LLStaticTable", "", FALSE })
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -2745,25 +2791,25 @@ RETURN self
 ==============================================================================*/
 METHOD dsListLabel:AddTableRelation(cChild, cParent, cRelation, cDescription)
 	LOCAL i, iCnt
-	if IsArray(cChild)                                                               // clone
+	IF IsArray(cChild)                                                               // clone
 		iCnt   := len(cChild )
-		for i := 1 to iCnt
-			if len(cChild[i]) >= 6
-				LlDbAddTableRelation( ::hJob, cChild[i,1], cChild[i,2], cChild[i,3], cChild[i,4], cChild[i,5], cChild[i,6])
-			else
+		FOR i := 1 TO iCnt
+			IF len(cChild[i]) >= 6
+				LlDbAddTableRelationEx( ::hJob, cChild[i,1], cChild[i,2], cChild[i,3], cChild[i,4], cChild[i,5], cChild[i,6])
+			ELSE
 				LlDbAddTableRelation( ::hJob, cChild[i,1], cChild[i,2], cChild[i,3], cChild[i,4])
-			endif
-		next
-	else
-		if ::__toUpper
+			ENDIF
+		NEXT
+	ELSE
+		IF ::__toUpper
 			cChild	:= upper(cChild)
 			cParent	:= upper(cParent)
 			cRelation:= upper(cRelation)
-		endif
+		ENDIF
 
 		aadd( ::_aAddTableRelation, {cChild, cParent, cRelation, coalesce(cDescription,"")})
 		LlDbAddTableRelation( ::hJob, cChild, cParent, cRelation, coalesce(cDescription,""))
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -2780,11 +2826,11 @@ RETURN self
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:AddTableRelationEx(cChild, cParent, cRelation, cDescription, cChildKey, cParentKey)
-	if ::__toUpper
+	IF ::__toUpper
 		cChild	:= upper(cChild)
 		cParent	:= upper(cParent)
 		cRelation:= upper(cRelation)
-	endif
+	ENDIF
 	aadd( ::_aAddTableRelation, {cChild, cParent, cRelation, coalesce(cDescription,"", cChildKey, cParentKey)})
 	LlDbAddTableRelationEx( ::hJob, cChild, cParent, cRelation, coalesce(cDescription,""), cChildKey, cParentKey)
 RETURN self
@@ -2803,9 +2849,9 @@ RETURN self
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:AddTableSortOrderEx(cTable, cSortId, cSortBez, cSortField)
-	if ::__toUpper
+	IF ::__toUpper
 		cTable	:= upper(cTable)
-	endif
+	ENDIF
 	LlDbAddTableSortOrderEx( ::hJob, cTable, cSortId, cSortBez, cSortField)
 RETURN self
 
@@ -2820,11 +2866,11 @@ RETURN self
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:AddSync(xSet)
-	if IsBlock(xSet)
+	IF IsBlock(xSet)
 		aadd( ::_aSync, xSet )
-	elseif IsArray(xSet)
+	ELSEIF IsArray(xSet)
 		::_aSync   := xSet                                                            // clone
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -2841,7 +2887,7 @@ METHOD dsListLabel:ExportFile(cFile)
 	LOCAL nPos1	:= 0, nPos2
 	LOCAL cTmp1, cTmp2
 
-	if (nPos1 := at("%", cFile )) > 0
+	IF (nPos1 := at("%", cFile )) > 0
 		cTmp1	:= subs(cFile, nPos1)
 		nPos2 := at("%", cTmp1, 2 )
 		cTmp2	:= upper(left(cTmp1, nPos2))
@@ -2851,7 +2897,7 @@ METHOD dsListLabel:ExportFile(cFile)
 		cTmp2   := strtran( cTmp2, "%DOCUMENTS%", GetEnv("USERPROFILE") + "\Documents")
 		cTmp2   := strtran( cTmp2, "%USERPROFILE%", GetEnv("USERPROFILE") )
 		cFile   := left(cFile,nPos1-1) + cTmp2 + subs(cFile, nPos1 + nPos2 )
-	endif
+	ENDIF
 	cFile   := _fullpath(cFile)
 	::cOutFile   := cFile
 RETURN self
@@ -2876,13 +2922,13 @@ METHOD dsListLabel:SaveAsPreview( cFile, bPrint )
 	LOCAL cReport	:= ::cReport
 	LOCAL nPos
 
-	if empty( cFile)
+	IF empty( cFile)
 		RETURN FALSE
-	endif
+	ENDIF
 	nPos	:= rat("\", cReport)
-	if nPos > 0
+	IF nPos > 0
 		cReport	:= Subs(cReport, nPos +1)
-	endif
+	ENDIF
 	cReport	:= left(cReport, rat(".", cReport))
 
 	::_nBoxType	:= 0
@@ -2919,23 +2965,23 @@ METHOD dsListLabel:SaveAsPdf(cFile, lQuiet, bPrint)
 	LOCAL nBoxType  := ::_nBoxType
 	LOCAL cExport   := ::cExportFormat
 
-	if empty( cFile)
+	IF empty( cFile)
 		RETURN FALSE
-	endif
+	ENDIF
 
 	::_nBoxType	:= 0
 	::_nPrintOption  := LL_PRINT_EXPORT
 	::ExportFormat("PDF")
 	::ExportFile(cFile)
-	if IsLogical(lQuiet )
+	IF IsLogical(lQuiet )
 		::ShowExport(!lQuiet)
-	endif
-	if !empty( ::_cZUGFeRDXML) .and. File(::_cZUGFeRDXML)
+	ENDIF
+	IF !empty( ::_cZUGFeRDXML) .AND. File(::_cZUGFeRDXML)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.Conformance", "pdfa3b")
-		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDConformanceLevel", "EN 16931")
+		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDConformanceLevel", "EXTENDED")
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDVersion", "2.1")
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDXmlPath", ::_cZUGFeRDXML)
-	endif
+	ENDIF
 
 	::_nError := ::Print(bPrint)
 
@@ -2968,52 +3014,52 @@ METHOD dsListLabel:SendAsMail(lDialog, cTo, cCC, cBCC, cSubject, cBody, cFile, a
 	LOCAL cAttach   := ""
 	LOCAL lRet
 
-	if empty(cFile)
+	IF empty(cFile)
 		cFile   := _slashpath(getenv("TEMP")) + "PRT" + strzero(seconds(),8 )+ ".PDF"
-	endif
+	ENDIF
 
-	if empty(cTo) .or. empty(cSubject)
+	IF empty(cTo) .OR. empty(cSubject)
 		lDialog   := TRUE
-	endif
+	ENDIF
 	ferase(cFile)
 
 	LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.SendAsMail"	   , "1" )
 	LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.ShowDialog"   , if( empty(lDialog), "0", "1"))
 
-	if !empty(cTo)
+	IF !empty(cTo)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.To"	   , cTo)
-	endif
-	if !empty(cCC)
+	ENDIF
+	IF !empty(cCC)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.CC"	   , cCC)
-	endif
-	if !empty(cBCC)
+	ENDIF
+	IF !empty(cBCC)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.BCC"	, cBCC)
-	endif
-	if !empty(cSubject)
+	ENDIF
+	IF !empty(cSubject)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.Subject"   , cSubject )
-	endif
+	ENDIF
 	//LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.Provider"	, "XMAPI" )
 	// bei rtf text ist anlage teil des body und nicht als attachment ausgewiesen, leider
-	if !empty(cBody)
+	IF !empty(cBody)
 		//LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.Body:application/RTF"	, cBody )
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.Body"	, cBody )
-	endif
+	ENDIF
 
-	if IsArray( aAttach) .and. !empty(aAttach)
-		for i := len( aAttach) to 1 step -1
-			if file(aAttach[i])
+	IF IsArray( aAttach) .AND. !empty(aAttach)
+		FOR i := len( aAttach) TO 1 step -1
+			IF file(aAttach[i])
 				cAttach += _TAB + aAttach[i]
-			endif
-		next
-		if !empty(cAttach)
+			ENDIF
+		NEXT
+		IF !empty(cAttach)
 			cAttach := subs( cAttach, 2)                                               // 1. tab weg
 			LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.AttachmentList"	, cAttach )
-		endif
-	else
+		ENDIF
+	ELSE
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"Export.Mail.AttachmentList"	, "" )
-	endif
+	ENDIF
 
-	if !empty(::__cSmtpIPAddress)
+	IF !empty(::__cSmtpIPAddress)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"  ,"Export.Mail.Provider"	    		,::__cEmailProvider )
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"  ,"Export.Mail.SMTP.ServerAddress",::__cSmtpIPAddress)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"  ,"Export.Mail.SMTP.ServerPort"   ,::__nSmtpIPPort)
@@ -3021,7 +3067,7 @@ METHOD dsListLabel:SendAsMail(lDialog, cTo, cCC, cBCC, cSubject, cBody, cFile, a
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"  ,"Export.Mail.SMTP.Password"     ,::__cSmtpPassword)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"  ,"Export.Mail.SMTP.SenderAddress",::__cSmtpSenderAddress)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"  ,"Export.Mail.SMTP.SenderName"   ,::__cSmtpSenderName )
-	endif
+	ENDIF
 
 	lRet  := ::SaveAsPdf(cFile, TRUE, bPrint )
 
@@ -3043,7 +3089,7 @@ METHOD dsListLabel:Clear(nMode)
 	LOCAL cTmp
 	LOCAL nLen
 
-	DEFAULT nMode to 0
+	DEFAULT nMode TO 0
 
 	LlDefineFieldStart(::hJob)
 	LlDefineVariableStart(::hJob)
@@ -3071,7 +3117,7 @@ METHOD dsListLabel:Clear(nMode)
 	::_nPages				:= 0
 	::_nStatus				:= XBP_STAT_INIT
 
-	if 1 $ nMode
+	IF 1 $ nMode
 		::cOutFile				:= ""
 		::cOutPut				:= ""
 		::cShowExport			:= "1"                                                         // anzeigen
@@ -3091,12 +3137,12 @@ METHOD dsListLabel:Clear(nMode)
 		::_nPrintOption		:= LL_PRINT_NORMAL
 		::_nProject				:= LL_PROJECT_LIST                                             // default
 		::_nQuantity			:= 1
-	endif
+	ENDIF
 
 	// handsome options
 #ifndef DEBUG
 	LlSetOption(::hJob, LL_OPTION_NOPARAMETERCHECK		,1)                        // performance boost
-#endif
+#ENDIF
 	LlSetOption(::hJob, LL_OPTION_XLATVARNAMES		   ,0)
 	LlSetOption(::hJob, LL_OPTION_SETCREATIONINFO		,1)
 	LlSetOption(::hJob, LL_OPTION_SORTVARIABLES			,1)
@@ -3109,26 +3155,26 @@ METHOD dsListLabel:Clear(nMode)
 	LlSetOption(::hJob, LL_OPTION_PRVZOOM_PERC			,::__nZoom )
 	LlSetOption(::hJob, LL_OPTION_TABSTOPS					,LL_TABS_EXPAND )
 
-	if !empty(::__cExportFormat)
+	IF !empty(::__cExportFormat)
 		LlSetOptionString (::hJob, LL_OPTIONSTR_EXPORTS_ALLOWED_IN_PREVIEW, ::__cExportFormat)
-	endif
+	ENDIF
 
 	// interne defaults
-	if ascan(::_aVar, {|x| x[1] == "USER"}) = 0
+	IF ascan(::_aVar, {|x| x[1] == "USER"}) = 0
 		cTmp	:= space(255)
 		nLen	:= 255
 		GetUsername( @cTmp, @nLen )
 		cTmp	:= left(cTmp, --nLen)
 		aadd( ::_aVar, {"USER"   ,cTmp, LL_TEXT})
-	endif
+	ENDIF
 
-	if ascan(::_aVar, {|x| x[1] == "COMPUTER"}) = 0
+	IF ascan(::_aVar, {|x| x[1] == "COMPUTER"}) = 0
 		cTmp	:= space(255)
 		nLen	:= 255
 		GetComputername( @cTmp, @nLen)
 		cTmp	:= left(cTmp, nLen)
 		aadd( ::_aVar, {"COMPUTER"   ,cTmp, LL_TEXT})
-	endif
+	ENDIF
 
 RETURN self
 
@@ -3146,13 +3192,13 @@ RETURN self
 METHOD dsListLabel:SetMenuId(xSet, lSet)
 	LOCAL nPos
 	nPos   := ascan( ::_aRights, xSet)
-	if !empty(lSet)
-		if nPos > 0
+	IF !empty(lSet)
+		IF nPos > 0
 			aremove(::_aRights, nPos)
-		endif
-	elseif nPos == 0
+		ENDIF
+	ELSEIF nPos == 0
 		aadd( ::_aRights, xSet )
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -3195,12 +3241,12 @@ RETURN self
  $Example:
 ==============================================================================*/
 METHOD dsListLabel:SetFirstpage(nPage)
-	if !empty( nPage)
-		if ::_nStatus = XBP_STAT_CREATE
+	IF !empty( nPage)
+		IF ::_nStatus = XBP_STAT_CREATE
 			LlPrintSetOption(::hJob, LL_PRNOPT_PAGE , nPage )
-		endif
+		ENDIF
 		::_nFirstpage   := nPage
-	endif
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -3218,38 +3264,38 @@ RETURN self
 METHOD dsListLabel:AddPath( xSet, lFirst)
 	LOCAL aTmp
 	LOCAL i, iCnt
-	if IsCharacter( xSet) .and. !empty(xSet)
-		if ";" $ xSet
+	IF IsCharacter( xSet) .AND. !empty(xSet)
+		IF ";" $ xSet
 			aTmp	:= _aStrExtract(xSet, ";")
 			iCnt	:= len( aTmp)
-			for i := 1 to iCnt
+			FOR i := 1 TO iCnt
 				aTmp[i]	:= strtran( aTmp[i], "%APPDATA%", GetEnv("APPDATA"))
 				aTmp[i]	:= strtran( aTmp[i], "%USERPROFILE%", GetEnv("APPDATA"))
 				aadd(::_aPath, aTmp[i] )
-			next
-		elseif !empty(lFirst)
+			NEXT
+		ELSEIF !empty(lFirst)
 			xSet	:= strtran( xSet, "%APPDATA%", GetEnv("APPDATA"))
 			xSet	:= strtran( xSet, "%USERPROFILE%", GetEnv("APPDATA"))
 			iCnt	:= len(::_aPath)
 			aSize(::_aPath, ++iCnt)
 			aIns(::_aPath, 1, xSet )
-		else
+		ELSE
 			xSet	:= strtran( xSet, "%APPDATA%", GetEnv("APPDATA"))
 			xSet	:= strtran( xSet, "%USERPROFILE%", GetEnv("APPDATA"))
 			aadd(::_aPath, xSet )
-		endif
+		ENDIF
 
-	elseif IsArray( xSet)
+	ELSEIF IsArray( xSet)
 		::_aPath	:= aclone(xSet)
 		iCnt	:= len( ::_aPath)
-		for i := 1 to iCnt
+		FOR i := 1 TO iCnt
 			::_aPath[i]	:= strtran( ::_aPath[i], "%APPDATA%", GetEnv("APPDATA"))
 			::_aPath[i]	:= strtran( ::_aPath[i], "%USERPROFILE%", GetEnv("APPDATA"))
-		next
+		NEXT
 
-	elseif pcount() == 0
+	ELSEIF pcount() == 0
 		::_aPath	:= {}
-	endif
+	ENDIF
 RETURN self
 
 //=========================================
@@ -3291,10 +3337,10 @@ METHOD dsListLabel:Clone(nProjecthWnd, cReport )
 	oRet:SetTitle(::cTitle)
 	oRet:UseDbRequest(::_lUseDbRequest)
 
-	if ::_lSubReport
+	IF ::_lSubReport
 		oRet:AddTable(::_aAddTable )
 		oRet:AddTableRelation(::_aAddTableRelation )
-	endif
+	ENDIF
 RETURN oRet
 
 //=========================================
@@ -3304,37 +3350,37 @@ METHOD dsListLabel:DbReleaseAll()
 	LOCAL x
 	UNUSED (x)
 
-	if ::_lIsReleased .or. !::_lUseDbRequest
+	IF ::_lIsReleased .OR. !::_lUseDbRequest
 		RETURN self
-	endif
+	ENDIF
 
 	iCnt   := len( ::_dbFields)
-	for i := 1 to iCnt
-		if IsArray(::_dbFields[i,__SELECT])
-		elseif ascan(aSelect, ::_dbFields[i,__SELECT]) = 0
-			if IsNumber(::_dbFields[i,__SELECT])
+	FOR i := 1 TO iCnt
+		IF IsArray(::_dbFields[i,__SELECT])
+		ELSEIF ascan(aSelect, ::_dbFields[i,__SELECT]) = 0
+			IF IsNumber(::_dbFields[i,__SELECT])
 				x := dbRelease(::_dbFields[i,__SELECT])
 
-			elseif IsObject(::_dbFields[i,__SELECT]) .and. isMethod(::_dbFields[i,__SELECT], "select") .and. ::_dbFields[i,__SELECT]:select() > 0
+			ELSEIF IsObject(::_dbFields[i,__SELECT]) .AND. isMethod(::_dbFields[i,__SELECT], "select") .AND. ::_dbFields[i,__SELECT]:select() > 0
 				x := dbRelease(::_dbFields[i,__SELECT]:select())
-			endif
+			ENDIF
 			aadd( aSelect, ::_dbFields[i,__SELECT])
-		endif
-	next
+		ENDIF
+	NEXT
 
 	iCnt   := len( ::_dbVariables)
-	for i := 1 to iCnt
-		if IsArray(::_dbVariables[i,__SELECT])
-		elseif ascan(aSelect, ::_dbVariables[i,__SELECT]) = 0
-			if IsNumber(::_dbVariables[i,__SELECT])
+	FOR i := 1 TO iCnt
+		IF IsArray(::_dbVariables[i,__SELECT])
+		ELSEIF ascan(aSelect, ::_dbVariables[i,__SELECT]) = 0
+			IF IsNumber(::_dbVariables[i,__SELECT])
 				x := dbRelease(::_dbVariables[i,__SELECT])
 
-			elseif IsObject(::_dbVariables[i,__SELECT]) .and. isMethod(::_dbVariables[i,__SELECT], "select") .and. ::_dbVariables[i,__SELECT]:select() > 0
+			ELSEIF IsObject(::_dbVariables[i,__SELECT]) .AND. isMethod(::_dbVariables[i,__SELECT], "select") .AND. ::_dbVariables[i,__SELECT]:select() > 0
 				x := dbRelease(::_dbVariables[i,__SELECT]:select())
-			endif
-		endif
+			ENDIF
+		ENDIF
 		aadd( aSelect, ::_dbVariables[i,__SELECT])
-	next
+	NEXT
 	::_lIsReleased		:= TRUE
 RETURN self
 
@@ -3345,57 +3391,57 @@ METHOD dsListLabel:DbRequestAll()
 	LOCAL x
 	UNUSED (x)
 
-	if !::_lUseDbRequest
+	IF !::_lUseDbRequest
 		RETURN self
-	endif
+	ENDIF
 
 	iCnt   := len( ::_dbFields)
-	for i := 1 to iCnt
-		if IsArray(::_dbFields[i,__SELECT])
-		elseif ascan(aSelect, ::_dbFields[i,__SELECT]) = 0
-			if IsNumber(::_dbFields[i,__SELECT])
+	FOR i := 1 TO iCnt
+		IF IsArray(::_dbFields[i,__SELECT])
+		ELSEIF ascan(aSelect, ::_dbFields[i,__SELECT]) = 0
+			IF IsNumber(::_dbFields[i,__SELECT])
 				dbSelectArea(::_dbFields[i,__SELECT])
 				x := DbRequest(::_dbFields[i,__ALIAS])
 
-			elseif IsObject(::_dbFields[i,__SELECT]) .and. isMethod(::_dbFields[i,__SELECT], "select") .and. ::_dbFields[i,__SELECT]:select() > 0
+			ELSEIF IsObject(::_dbFields[i,__SELECT]) .AND. isMethod(::_dbFields[i,__SELECT], "select") .AND. ::_dbFields[i,__SELECT]:select() > 0
 				dbSelectArea(::_dbFields[i,__SELECT]:select())
 				x := DbRequest(::_dbFields[i,__SELECT]:alias)
-			endif
+			ENDIF
 			aadd( aSelect, ::_dbFields[i,__SELECT])
-		endif
-	next
+		ENDIF
+	NEXT
 
 	iCnt   := len( ::_dbVariables)
-	for i := 1 to iCnt
-		if IsArray(::_dbVariables[i,__SELECT])
-		elseif ascan(aSelect, ::_dbVariables[i,__SELECT]) = 0
-			if IsNumber(::_dbVariables[i,__SELECT])
+	FOR i := 1 TO iCnt
+		IF IsArray(::_dbVariables[i,__SELECT])
+		ELSEIF ascan(aSelect, ::_dbVariables[i,__SELECT]) = 0
+			IF IsNumber(::_dbVariables[i,__SELECT])
 				dbSelectArea(::_dbVariables[i,__SELECT])
 				x := DbRequest(::_dbVariables[i,__ALIAS] )
 
-			elseif IsObject(::_dbVariables[i,__SELECT]) .and. isMethod(::_dbVariables[i,__SELECT], "select") .and. ::_dbVariables[i,__SELECT]:select() > 0
+			ELSEIF IsObject(::_dbVariables[i,__SELECT]) .AND. isMethod(::_dbVariables[i,__SELECT], "select") .AND. ::_dbVariables[i,__SELECT]:select() > 0
 				dbSelectArea(::_dbVariables[i,__SELECT]:select())
 				x := DbRequest(::_dbVariables[i,__SELECT]:alias)
-			endif
+			ENDIF
 			aadd( aSelect, ::_dbVariables[i,__SELECT])
-		endif
-	next
+		ENDIF
+	NEXT
 	::_lIsReleased		:= FALSE
 RETURN self
 
 //=========================================
 METHOD dsListLabel:GetErrorText(nError)
-	if nError == NIL
+	IF nError == NIL
 		nError	:= ::_nError
-	endif
+	ENDIF
 
 	::_cErrorMessage := replicate(chr(0),255)
 	LlGetErrortext(nError, @::_cErrorMessage, 255)
 	::_cErrorMessage   	:= _trim0( ::_cErrorMessage )
 
-	if Set( _SET_CHARSET ) == CHARSET_OEM
+	IF Set( _SET_CHARSET ) == CHARSET_OEM
 		::_cErrorMessage  := alltrim(ConvtoOemCP(::_cErrorMessage))
-	endif
+	ENDIF
 RETURN ::_cErrorMessage
 
 /*============================================================================
@@ -3413,11 +3459,11 @@ RETURN ::_cErrorMessage
 METHOD dsListLabel:_RaiseError(nError, cArgs, cOperation)
 	LOCAL oError
 
-	if nError = 0
+	IF nError = 0
 		RETURN self
-	endif
+	ENDIF
 
-	if IsBlock(::__onError)
+	IF IsBlock(::__onError)
 		oError   := Error():New()
 		oError:args				:= coalesce(cArgs, "" )
 		oError:canDefault		:= FALSE
@@ -3432,21 +3478,21 @@ METHOD dsListLabel:_RaiseError(nError, cArgs, cOperation)
 		oError:thread			:= threadid()
 		oError:cargo	   	:= self
 		eval(::__onError, oError)
-	endif
+	ENDIF
 RETURN self
 
 //=========================================
 METHOD dsListLabel:Notify(nEvent, nId )
-	if IsBlock(::_bNotify)
+	IF IsBlock(::_bNotify)
 		::eval(::_bNotify, nEvent, nId, self )
-	endif
+	ENDIF
 RETURN self
 
 //=========================================
 METHOD dsListLabel:_InitDevMode(nIndex)
    local nSize, nError
 
-	DEFAULT nIndex to -1
+	DEFAULT nIndex TO -1
 	// erstinit
 	nSize	:= 0
 
@@ -3477,9 +3523,9 @@ RETURN nError
 
 //=========================================
 METHOD dsListLabel:ExportPath(cPath)
-	if IsCharacter(cPath)
+	IF IsCharacter(cPath)
 		::_cExportPath	:= _slashPath(cPath)
-	endif
+	ENDIF
 RETURN ::_cExportPath
 
 //=========================================
@@ -3512,12 +3558,12 @@ METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 	IF nNotification == LL_NTFY_DESIGNERPRINTJOB
 		oLlCallbackNotify	:setAddress(nStructurePtr)
 		DO CASE
-		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_START .or. ;
+		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_START .OR. ;
 				oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_EXPORT_START
-			// Init/retrieve values for the print thread
+			// Init/retrieve values FOR the print thread
 			nProjecthWnd	:= oLlCallbackNotify:Get_hWnd()
 			hEvent			:= oLlCallbackNotify:Get_hEvent()
-    		nPages			:= oLlCallbackNotify:Get_nPages() // number of pages to be printed
+    		nPages			:= oLlCallbackNotify:Get_nPages() // number of pages TO be printed
 			cProjectName	:= oLlCallbackNotify:_pszProjectNameFromVar()
 			cProjectOrgName:= oLlCallbackNotify:_pszOriginalProjectFileNameFromVar()
 			cExpFormat		:= oLlCallbackNotify:_pszExportFormatFromVar()
@@ -3528,17 +3574,17 @@ METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 			oThread   :start( {|| _ThreadPrint(oThread, oListLabel, hEvent, nProjecthWnd, cProjectName, cProjectOrgName, cExpFormat, nPages)})
 			lThreadRuns := TRUE
 
-		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_ABORT .or. ;
+		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_ABORT .OR. ;
 				oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_EXPORT_ABORT
 			_PrintRuns(FALSE, TRUE, snJobId)
 			lThreadRuns := FALSE
 
-		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_FINALIZE .or. ;
+		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_FINALIZE .OR. ;
 				oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_EXPORT_FINALIZE
 			lThreadRuns := FALSE
 			oListLabel:dbRequestAll()
 
-		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_QUEST_JOBSTATE .or. ;
+		CASE oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_PREVIEW_QUEST_JOBSTATE .OR. ;
 				oLlCallbackNotify:Get_nFunction() == LL_DESIGNERPRINTCALLBACK_EXPORT_QUEST_JOBSTATE
 			lThreadRuns := _PrintRuns(FALSE, TRUE, snJobId )
 			lThreadRuns := FALSE
@@ -3557,7 +3603,7 @@ METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 		nParam	:= snJobId
 
 		IF oLlDrillDownJobNotify:Get_nFunction() == LL_DRILLDOWN_START						// 1
-			// Init/retrieve values for the print thread
+			// Init/retrieve values FOR the print thread
 			nProjecthWnd	:= oLlDrillDownJobNotify:Get_hWnd()
 			cProjectName	:= oLlDrillDownJobNotify:_pszProjectFileNameFromVar()
 			cPreviewName	:= oLlDrillDownJobNotify:_pszPreviewFileNameFromVar()
@@ -3570,18 +3616,18 @@ METHOD LLCallBack:Execute(nNotification, nStructurePtr, xDummy)
 			xValue			:= oLlDrillDownJobNotify:_pszKeyValueFromVar()
 			hAttach			:= oLlDrillDownJobNotify:Get_hAttachInfo()
 
-			if snJobId = 0 .or. !_PrintRuns(, TRUE, snJobId)
+			IF snJobId = 0 .OR. !_PrintRuns(, TRUE, snJobId)
 				oListLabel:dbReleaseAll()
 				// Start print thread
 				oThread   := Thread():new()
 				nParam    := ++snJobId
 				oThread   :start( {|| _ThreadPrintDrillDown(oThread, oListLabel, nProjecthWnd, cProjectName, cPreviewName, hAttach, cParent, cKeyfield, cChild, cRefField, xValue )})
-			endif
+			ENDIF
 
 		ELSEIF oLlDrillDownJobNotify:Get_nFunction() == LL_DRILLDOWN_FINALIZE			// 2
-			if !_PrintRuns(, TRUE, nId )
+			IF !_PrintRuns(, TRUE, nId )
 				oListLabel:dbRequestAll()
-			endif
+			ENDIF
 
 		ENDIF
 		RETURN nParam
@@ -3607,11 +3653,11 @@ STATIC FUNC _ThreadPrint(oThread, oDesigner, hEvent, nProjecthWnd, cProjectName,
 	oThread		:cargo   := {oDesigner, oListLabel }
 	oListLabel	:Pages	:= nPages
 	oListLabel	:dbRequestAll()
-   if !empty(cProjectOrgName)
+   IF !empty(cProjectOrgName)
 		LlSetOptionString(oListLabel:hJob, LL_OPTIONSTR_ORIGINALPROJECTFILENAME, cProjectOrgName)
-   else
+   ELSE
 		LlSetOptionString(oListLabel:hJob, LL_OPTIONSTR_ORIGINALPROJECTFILENAME, cProjectName)
-   endif
+   ENDIF
 	LlAssociatePreviewControl(oListLabel:hJob, nProjecthWnd, LL_ASSOCIATEPREVIEWCONTROLFLAG_DELETE_ON_CLOSE)
 
 	oListLabel	:ExportFormat(cExpFormat)
@@ -3642,20 +3688,20 @@ STATIC FUNC _ThreadPrintDrillDown(oThread, oDesigner, nProjecthWnd, cProjectName
 	LlSetOptionString(oListLabel:hJob, LL_OPTIONSTR_PREVIEWFILENAME, cPreviewName)
 	LlAssociatePreviewControl(oListLabel:hJob, hAttach, LL_ASSOCIATEPREVIEWCONTROLFLAG_DELETE_ON_CLOSE + LL_ASSOCIATEPREVIEWCONTROLFLAG_HANDLE_IS_ATTACHINFO)
 
-	if !empty(xValue)
+	IF !empty(xValue)
   		dbChild	:= oListLabel:GetDbContainer(cChild)
 		dbParent	:= oListLabel:GetDbContainer(cParent)
-		if IsNumber(dbParent)
+		IF IsNumber(dbParent)
 			(dbParent)->(dbseek(xValue))
 			(dbParent)->(dbsetscope(SCOPE_BOTH, xValue))
 			(dbChild)->(dbsetscope(SCOPE_BOTH, xValue))
 
-		elseif IsObject(dbParent)
+		ELSEIF IsObject(dbParent)
 			dbParent:seek(xValue)
 			dbParent:setscope(SCOPE_BOTH, xValue)
 			dbChild:setscope(SCOPE_BOTH, xValue)
-		endif
-	endif
+		ENDIF
+	ENDIF
 
 	oListLabel	:print()
 	oListLabel	:dbReleaseAll()
@@ -3669,16 +3715,16 @@ STATIC FUNCTION _PrintRuns(lSet, lCheck, nJobId)
 	STATIC aPrintRuns := {}
 	LOCAL nFindThread := AScan(aPrintRuns,{|a|a[1] == nJobId })
 
-	if nFindThread = 0
-		if lCheck
+	IF nFindThread = 0
+		IF lCheck
 			RETURN TRUE
-		endif
+		ENDIF
 		aAdd(aPrintRuns,{nJobId,FALSE})
 		nFindThread := Len(aPrintRuns)
-	endif
-	if lSet != NIL
+	ENDIF
+	IF lSet != NIL
 		aPrintRuns[nFindThread,2] := lSet
-	endif
+	ENDIF
 RETURN aPrintRuns[nFindThread,2]
 
 //=========================================
@@ -3687,50 +3733,50 @@ RETURN aPrintRuns[nFindThread,2]
 STATIC FUNC _FullPath(cPath, cCurDir)
 	LOCAL nPos
 
-	if empty(cCurdir)
+	IF empty(cCurdir)
 		cCurdir   := strtran(AppName(TRUE), AppName(), "")
-	endif
+	ENDIF
 
 	cCurdir   := _SlashPath(cCurDir)
 
-	if left(cPath,2) = ".."									    // 1. hoch
+	IF left(cPath,2) = ".."									    // 1. hoch
 		// curdir auch 1 noch oben
 		nPos   := rat("\", cCurdir, len( cCurdir)-1)
-		if nPos == 0											// fehler
+		IF nPos == 0											// fehler
 			RETURN cPath
-		endif
+		ENDIF
 		RETURN _FullPath(subs(cPath,4), left(cCurDir, nPos ))
 
-	elseif left(cPath,2) = ".\"									// relativer pfad
+	ELSEIF left(cPath,2) = ".\"									// relativer pfad
 		cPath   := cCurDir + subs( cPath, 3 )
 
-	elseif left(cPath,1) = "\" .and. ! subs(cPath,2,1) = "\"				 // absolut, aber ohne LW
-		if subs(cCurDir,2,1) = ":"
+	ELSEIF left(cPath,1) = "\" .AND. ! subs(cPath,2,1) = "\"				 // absolut, aber ohne LW
+		IF subs(cCurDir,2,1) = ":"
 			cPath   := left(cCurDir,2) + cPath
 
-		elseif left(cCurDir,2) = "\\"
-			if (nPos := at(cCurDir,"\",  3)) > 0
+		ELSEIF left(cCurDir,2) = "\\"
+			IF (nPos := at(cCurDir,"\",  3)) > 0
 				cPath   := left(cCurDir,--nPos) + cPath
-			endif
-		endif
+			ENDIF
+		ENDIF
 
-	elseif !(left(cPath,2) = "\\" .or. subs(cPath,2,1) = ":" )			     // kein (UNC oder LW)
+	ELSEIF !(left(cPath,2) = "\\" .OR. subs(cPath,2,1) = ":" )			     // kein (UNC oder LW)
 		cPath   := cCurDir + cPath
 
-	endif
+	ENDIF
 RETURN cPath
 
 //=========================================
 // XClass++ copy
 //=========================================
 STATIC FUNC _SlashPath(cPath)
-	if empty( cPath)
+	IF empty( cPath)
 		RETURN ""
-	endif
+	ENDIF
 	cPath   := alltrim(cPath)
-	if subs( cPath, -1 ) != "\"
+	IF subs( cPath, -1 ) != "\"
 		cPath   += "\"
-	endif
+	ENDIF
 RETURN cPath
 
 //=========================================
@@ -3739,13 +3785,13 @@ STATIC FUNC _aStrExtract(cStr, cToken)
 	LOCAL aRet	:= {""}
 
 	iCnt	:= len( cStr)
-	for i := 1 to iCnt
-		if cStr[i] = cToken
+	FOR i := 1 TO iCnt
+		IF cStr[i] = cToken
 			aadd(aRet, "")
-		else
+		ELSE
 			aRet[-1] += cStr[i]
-		endif
-	next
+		ENDIF
+	NEXT
 RETURN aRet
 
 //=========================================
@@ -3762,23 +3808,24 @@ STATIC FUNC _GetExportName(cPath, cExt)		;RETURN cPath + "LLEXPORT"+dtos(date())
 //=========================================
 STATIC FUNC _SetExtension(cFile, cExt)
 	LOCAL nLen   := len( "."+ cExt )
-	if right(upper(cFile), nLen ) != "."+ cExt
+	IF right(upper(cFile), nLen ) != "."+ cExt
 		cFile   += "."+ cExt
-	endif
+	ENDIF
 RETURN cFile
 
 //=========================================
 // wegen API 0-Bytes
 STATIC FUNC _Trim0( cStr)
 	LOCAL nPos   := at(chr(0), cStr)
-	if nPos > 0
+	IF nPos > 0
 		cStr := left( cStr, nPos -1 )
-	endif
+	ENDIF
 RETURN alltrim( cStr )
 
 //=========================================
 // Xclass Uses xclass:dsDbContainer with extended methods
-// nice to have if you are used to it
+// nice TO have IF you are used TO it
+// class to handle table objects
 //=========================================
 #ifndef _XCLASS
 STATIC CLASS DbContainer
@@ -3805,25 +3852,25 @@ STATIC CLASS DbContainer
 			LOCAL i, iCnt
 			LOCAL aDbContainer := oDlg:GetDbAllContainer()
 
-			DEFAULT lClose to FALSE
+			DEFAULT lClose TO FALSE
 
 			iCnt	:= len(aDbContainer)
 			::_aDbContainer	:= array(iCnt)
-			for i := 1 to iCnt
-				if i == 1
+			FOR i := 1 TO iCnt
+				IF i == 1
 					::_aDbContainer[i]	:= dataobject():New()
-				else
+				ELSE
 					::_aDbContainer[i]	:= ::_aDbContainer[1]:copy()
-				endif
-				if IsArray(aDbContainer[i])                                             // XCLASS
+				ENDIF
+				IF IsArray(aDbContainer[i])                                             // XCLASS
 					::_aDbContainer[i]:Symbol	:= aDbContainer[i,1]
 					::_aDbContainer[i]:Select	:= aDbContainer[i,2]
-				else
+				ELSE
 					::_aDbContainer[i]:Symbol	:= aDbContainer[i]:symbol
 					::_aDbContainer[i]:Select	:= aDbContainer[i]:Select
-				endif
+				ENDIF
 				::_aDbContainer[i]:Close	:= lClose
-			next
+			NEXT
 			RETURN self
 
 ENDCLASS
@@ -3843,20 +3890,20 @@ ENDCLASS
 METHOD DbContainer:AddDbContainer(cNameID, uSelect, lDbClose )
 	LOCAL nPos
 
-	if (IsNumber(uSelect) .or. IsObject(uSelect) .or. IsArray(uSelect)) .and. IsCharacter(cNameID) .and. ! empty(cNameID)
-		if IsCharacter(cNameID)
+	IF (IsNumber(uSelect) .OR. IsObject(uSelect) .OR. IsArray(uSelect)) .AND. IsCharacter(cNameID) .AND. ! empty(cNameID)
+		IF IsCharacter(cNameID)
 			cNameID := upper(cNameID)
-		endif
-		if (nPos := ascan(::_aDbContainer, {|e| e:Symbol == cNameID})) > 0
+		ENDIF
+		IF (nPos := ascan(::_aDbContainer, {|e| e:Symbol == cNameID})) > 0
 			::_aDbContainer[nPos]:Select	:= uSelect
 			::_aDbContainer[nPos]:Close	:= !Empty(lDbClose)
-		else
+		ELSE
 			aadd( ::_aDbContainer, dataobject():New())
 			::_aDbContainer[-1]:Symbol	:= cNameID
 			::_aDbContainer[-1]:Select	:= uSelect
 			::_aDbContainer[-1]:Close	:= !Empty(lDbClose)
-		endif
-	endif
+		ENDIF
+	ENDIF
 RETURN self
 
 /*============================================================================
@@ -3873,16 +3920,16 @@ METHOD DbContainer:Destroy()
 	LOCAL i, iCnt
 
 	iCnt	:= len( ::_aDbContainer)
-	for i := 1 to iCnt
-      if ! IsNil(::_aDbContainer[i]) .and. ::_aDbContainer[i]:close
-			if IsObject(::_aDbContainer[i]:select)
+	FOR i := 1 TO iCnt
+      IF ! IsNil(::_aDbContainer[i]) .AND. ::_aDbContainer[i]:close
+			IF IsObject(::_aDbContainer[i]:select)
 				::_aDbContainer[i]:select:Close()
-			elseif IsNumber(::_aDbContainer[i]:select) .and. (::_aDbContainer[i]:select)->(Used())
+			ELSEIF IsNumber(::_aDbContainer[i]:select) .AND. (::_aDbContainer[i]:select)->(Used())
 				(::_aDbContainer[i]:select)->(DbCloseArea())
-			endif
-      endif
+			ENDIF
+      ENDIF
 		::_aDbContainer[i]	:= NIL
-  	next
+  	NEXT
 	::_aDbContainer	:= {}
 RETURN self
 
@@ -3901,19 +3948,19 @@ METHOD DbContainer:GetDbContainer(cNameID )
 	LOCAL nPos
 	LOCAL aRet
 
-	if pcount() = 0
+	IF pcount() = 0
 		aRet := array(len(::_aDbContainer))
 		aeval(::_aDbContainer, {|a,n| aRet[n] := a:select })
 		RETURN aRet
-	endif
+	ENDIF
 
-	if IsCharacter(cNameID)
+	IF IsCharacter(cNameID)
 		cNameID := upper(cNameID)
-	endif
+	ENDIF
 
-	if (nPos := ascan(::_aDbContainer, {|e| e:Symbol == cNameID})) > 0
+	IF (nPos := ascan(::_aDbContainer, {|e| e:Symbol == cNameID})) > 0
 		RETURN ::_aDbContainer[nPos]:select
-	endif
+	ENDIF
 
 RETURN NIL
 
@@ -3921,22 +3968,22 @@ RETURN NIL
 METHOD DbContainer:CloseDbContainer(cNameID)
 	LOCAL nPos
 
-	if IsCharacter(cNameID)
+	IF IsCharacter(cNameID)
 		cNameID := upper(cNameID)
-	endif
-  	if (nPos := ascan(::_aDbContainer, {|e| e:Symbol == cNameID})) > 0
-		if IsObject(::_aDbContainer[nPos]:Select)
+	ENDIF
+  	IF (nPos := ascan(::_aDbContainer, {|e| e:Symbol == cNameID})) > 0
+		IF IsObject(::_aDbContainer[nPos]:Select)
 			::_aDbContainer[nPos]:Select:Close()
 
-		elseif IsNumber(::_aDbContainer[nPos]:Select) .and. (::_aDbContainer[nPos]:Select)->(Used())
+		ELSEIF IsNumber(::_aDbContainer[nPos]:Select) .AND. (::_aDbContainer[nPos]:Select)->(Used())
 			(::_aDbContainer[nPos]:Select)->(DbCloseArea())
-		endif
+		ENDIF
      	aremove(::_aDbContainer, nPos)
-  	endif
+  	ENDIF
 RETURN self
-#else
+#ELSE
 CLASS DbContainer from dsDbContainer		;ENDCLASS
-#endif
+#ENDIF
 
 /*============================================================================
  $Procedure:	 DataSetField(hJob)
@@ -3954,46 +4001,46 @@ PROC DataSetField(hJob, nMode)
 	LOCAL xRet, cStr
 
 	iCnt	:= len( aStruct)
-	for i := 1 to iCnt
+	FOR i := 1 TO iCnt
 		xRet	:= fieldget(i)
 
-		if aStruct[i,2] = "N"
+		IF aStruct[i,2] = "N"
 			nLL   := LL_NUMERIC
 			cStr  := ltrim(str(xRet))
-			if aStruct[i,4] == 0
+			IF aStruct[i,4] == 0
 				nLL   := LL_NUMERIC_INTEGER
-			endif
+			ENDIF
 
-		elseif aStruct[i,2] = "D"
-			if !empty( xRet)
+		ELSEIF aStruct[i,2] = "D"
+			IF !empty( xRet)
 				cStr	:= dtos(xRet)
 				nLL   := LL_DATE_YYYYMMDD
-			else
+			ELSE
 				cStr	:= '1e100'
 				nLL   := LL_DATE_MS
-			endif
+			ENDIF
 
-		elseif aStruct[i,2] = "L"
+		ELSEIF aStruct[i,2] = "L"
 			nLL	:= LL_BOOLEAN
 			cStr	:= if(xRet, "T","F")
 
-		else
+		ELSE
 			nLL   := LL_TEXT
-			if Set( _SET_CHARSET ) == CHARSET_OEM
+			IF Set( _SET_CHARSET ) == CHARSET_OEM
 				cStr  := rtrim(ConvtoAnsiCP(xRet))
-			else
+			ELSE
 				cStr  := rtrim(xRet)
-			endif
-			if empty( cStr)
+			ENDIF
+			IF empty( cStr)
 				cStr	:= " "
-			endif
-		endif
-		if empty( nMode )
+			ENDIF
+		ENDIF
+		IF empty( nMode )
 			LlDefineFieldExt(hJob, aStruct[i,1], cStr, nLL, 0 )
-		else
+		ELSE
 			LlDefineVariableExt(hJob, aStruct[i,1], cStr, nLL, 0 )
-		endif
-	next
+		ENDIF
+	NEXT
 RETURN
 
 STRUCTURE DEVMODE

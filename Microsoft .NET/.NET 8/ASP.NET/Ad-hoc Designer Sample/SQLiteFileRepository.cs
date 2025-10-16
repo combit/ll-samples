@@ -179,10 +179,7 @@ namespace WebReporting
                  "SELECT FileContent FROM RepoItems WHERE ItemID = @ItemID")
                     .SetParameter("ItemID", itemID).ExecuteScalar();
 
-            destinationStream
-            .WriteAsync(content, 0, content.Length, cancelToken)
-            .GetAwaiter()
-            .GetResult();
+            destinationStream.Write(content, 0, content.Length);
         }
 
         // See Interface

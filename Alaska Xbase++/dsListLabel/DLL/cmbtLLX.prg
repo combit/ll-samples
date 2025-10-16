@@ -889,11 +889,11 @@ LL_EXTERN INTEGER LlExprGetUsedVarsEx(;                                         
 																																  //
 LL_EXTERN INTEGER LlDomGetProject(;                                                               //
 		hJob AS INTEGER,;                                                                           //
-		@phDOMObj AS INTEGER ) ORDINAL 206 IN CMBT_DLL                                               //
+		@phDOMObj AS INTEGER ) ORDINAL 206 IN CMBT_DLL                                              //
 																																  //
 LL_EXTERN INTEGER LlDomGetProperty(;                                                              //
 		hDOMObj AS INTEGER,;                                                                        //
-		@pszName AS STRING,;                                                                         //
+		@pszName AS STRING,;                                                                        //
 		@pszBuffer AS STRING,;                                                                      //
 		bOrgName AS INTEGER ) ORDINAL 207 IN CMBT_DLL                                               //
 																																  //
@@ -1240,7 +1240,7 @@ STRUCTURE LlDrillDownJobNotify
 	VAR _pszRelationID        AS @STRING                  //  LPCWSTR    _pszRelationID;      // [in]
 	VAR _pszSubreportTableID  AS @STRING                  //  LPCWSTR    _pszSubreportTableID;// [in]
 	VAR _pszKeyField          AS @STRING                  //  LPCWSTR    _pszKeyField;      	// [in]
-	VAR _pszSubreportKeyField AS @STRING                  //  LPCWSTR    _pszSubreportKeyField;    // [in]
+	VAR _pszSubreportKeyField AS @STRING                  //  LPCWSTR    _pszSubreportKeyField;  // [in]
 	VAR _pszKeyValue          AS @STRING                  //  LPCWSTR    _pszKeyValue;      	// [in]
 	VAR _pszProjectFileName   AS @STRING                  //  LPCWSTR    _pszProjectFileName; // [in]
 	VAR _pszPreviewFileName   AS @STRING                  //  LPCWSTR    _pszPreviewFileName; // [in] NULL for interactive mode

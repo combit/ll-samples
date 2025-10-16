@@ -86,7 +86,7 @@ object Form1: TForm1
     TabOrder = 3
     OnClick = DebugCheckBoxClick
   end
-  object LL: TDBL30_
+  object LL: TDBL31_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = No

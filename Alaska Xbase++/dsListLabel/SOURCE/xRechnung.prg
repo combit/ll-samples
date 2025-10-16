@@ -2,13 +2,15 @@
  File Name:	   XRechnung.PRG
  Author:       Marcus Herz
  Description:
- Created:		01.06.2021     14:32:29        Updated: þ12.12.2024      þ10:00:16
+ Created:		01.06.2021     14:32:29        Updated: þ18.08.2025      þ09:59:17
  Copyright:		 2021 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:
 ============================================================================*/
 
 #include "lldemo.ch"
+
+#translate ntrim(<n>,<d>) => alltrim(str(<n>,,<d>))
 
 //-------------------------------------------------------------------
 PROCEDURE XRechnung(nPrintingTarget, lDesignDocument, cFolder)
@@ -68,7 +70,9 @@ PROCEDURE XRechnung(nPrintingTarget, lDesignDocument, cFolder)
 	ZUGFeRD():New():create(cXRechnung)
 
 	// D:  setzen List & Label Optionen für ZUgFeRD
+	// D:  deklariert auch ZUGFeRD Einstellungen LL_LLX_EXTENSIONTYPE_EXPORT
 	// US: set List & Label options for ZUgFeRD
+	// US: declares ZUGFeRD settingd LL_LLX_EXTENSIONTYPE_EXPORT
 	oListLabel:ZugferdXml(cXRechnung)
 
 	// D: aktuelle Workarea anmelden, über dies Tabelle wird für die Liste geskippt
@@ -86,10 +90,6 @@ PROCEDURE XRechnung(nPrintingTarget, lDesignDocument, cFolder)
 	// D: Dateiauswahldialog oeffnen
 	// US: Call file open dialog
 	oListLabel:report	:= "INVOICE.LST"
-
-	// D: ZUGFeRD Version deklarieren
-	// US: declare ZUGFeRD version
-	oListLabel:prepareblock	:= {|oLL, hJob| LlXSetParameter(hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDConformanceLevel", "EXTENDED")}
 
 	if lDesignDocument
 		// D: Designer starten
@@ -115,7 +115,17 @@ PROCEDURE XRechnung(nPrintingTarget, lDesignDocument, cFolder)
 	dbCloseArea()
 RETURN
 
-//=========================================
+
+/////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// ZUGFeRD():New():create("factur-x.xml")
+/// oListLabel:ZugferdXml("factur-x.xml")
+/// </summary>
+/// <returns></returns>
+/// <remarks>
+/// Stand Factur-X Version 1.07.3 (ZUGFeRD v. 2.3.3) | 15.05.2025
+/// </remarks>
+/////////////////////////////////////////////////////////////////////////////////
 CLASS ZUGFeRD
 	HIDDEN:
 	PROTECTED:
@@ -132,7 +142,8 @@ CLASS ZUGFeRD
 		METHOD Init
 		METHOD Create
 
-		// only for this sample replace with your data
+		// D:  nur für dieses Beipiel, mit eigenen Daten ersetzen
+		// US: only for this sample replace with your data
 		VAR Seller
 		VAR Total
 		VAR nMwst
@@ -147,7 +158,6 @@ RETURN self
 METHOD ZUGFeRD:Create(cXmlFile)
 	LOCAL oLine, oItem
 	LOCAL hHandle
-	LOCAL cDate
 
 	::Seller	:= dataObject():New()
 	::Seller		:STRASSE		:= "Kudamm 4711"
@@ -161,7 +171,6 @@ METHOD ZUGFeRD:Create(cXmlFile)
 	::Seller		:EMAIL		:= "info@seller.com"
 	::Seller		:IBAN			:= "DE64200400600200400600"
 
-	cDate		:=  set (_SET_DATEFORMAT, "yyyy-mm-dd")
 	oLine 	:= NIL
 	oItem 	:= NIL
 	::Total	:= 0
@@ -207,14 +216,12 @@ METHOD ZUGFeRD:Create(cXmlFile)
 	fwrite(hHandle, '<?xml version="1.0" encoding="UTF-8"?>' +CRLF+ Char2UTF8(::_oRoot:toXml()))
 	fclose(hHandle)
 
-	set( _SET_DATEFORMAT	, cDate )
 
 RETURN NIL
 
 //=========================================
 METHOD ZUGFeRD:_CreateRoot()
 	::_oRoot	:= XmlNode():CreateDocument("rsm:CrossIndustryInvoice","1.0","UTF-8")
-	::_oRoot:addattribute("a"	,"urn:un:unece:uncefact:data:standard:QualifiedDataType:100", "xmlns" )
 	::_oRoot:addattribute("rsm","urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100", "xmlns" )
 	::_oRoot:addattribute("qdt","urn:un:unece:uncefact:data:standard:QualifiedDataType:100", "xmlns" )
 	::_oRoot:addattribute("ram","urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", "xmlns" )
@@ -225,12 +232,13 @@ RETURN ::_oRoot
 //=========================================
 METHOD ZUGFeRD:_ExchangedDocumentContext()
 	// ExchangedDocumentContext
-	::_oRoot:addchild(::_oRoot:CreateElement("rsm:ExchangedDocumentContext");        							// BG-2
-		:addchild(::_oRoot:CreateElement("ram:BusinessProcessSpecifiedDocumentContextParameter" );			// BT-23
+	::_oRoot:addchild(::_oRoot:CreateElement("rsm:ExchangedDocumentContext");        								// BG-2
+		:addchild(::_oRoot:CreateElement("ram:TestIndicator");
+			:addchild(::_oRoot:CreateElement("udt:Indicator", "true" )));
+		:addchild(::_oRoot:CreateElement("ram:BusinessProcessSpecifiedDocumentContextParameter" );				// BT-23
 		:addchild(::_oRoot:CreateElement("ram:ID", "urn:fdc:peppol.eu:2017:poacc:billing:01:1.0" )));
-		:addchild(::_oRoot:CreateElement("ram:GuidelineSpecifiedDocumentContextParameter" ); 					// BT-24
+			:addchild(::_oRoot:CreateElement("ram:GuidelineSpecifiedDocumentContextParameter" ); 					// BT-24
 		:addchild(::_oRoot:CreateElement("ram:ID", "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended" ))))
-
 RETURN ::_oRoot
 
 //=========================================
@@ -254,25 +262,27 @@ METHOD ZUGFeRD:_ExchangedDocument()
 	::Seller		:USTID		:= "DE123456789"
 	::Seller		:KONTAKT		:= "Theke"
 	::Seller		:TELNR		:= "+49 30 12345678"
-	::Seller		:EMAIL		:= "info@seller.com"
+	::Seller		:EMAIL		:= "info@Metropolitan-Caffee.com"
 	::Seller		:IBAN			:= "DE64200400600200400600"
+	::Seller		:INHABER		:= "Geschäftsführer: Herr Idefix"
+	::Seller		:HRB			:= "Handelsregister: HRB 4711"
 
 	// offizielle Firmierung
 	cReg	:= ::Seller:NAME	+ CRLF +;
 			::Seller:STRASSE + CRLF +;
 			::Seller:LAND +" "+ ::Seller:PLZ +" "+::Seller:ORT + CRLF +;
-			"Geschäftsführer: Herr Idefix" + CRLF +;
-			"HRB Berlin 2323"
+			::Seller:INHABER + CRLF +;
+			::Seller:HRB
 
 	// ExchangedDocument / Invoice
 	::_oRoot:addchild( oItem := ::_oRoot:CreateElement("rsm:ExchangedDocument"))
-	oItem:addchild(::_oRoot:CreateElement("ram:ID", alltrim(INVOICE->BILLNO) ))            			// BT 1
-	oItem:addchild(::_oRoot:CreateElement("ram:TypeCode", "380" ))                         			// BT 3
+	oItem:addchild(::_oRoot:CreateElement("ram:ID", alltrim(INVOICE->BILLNO) ))            						// BT 1
+	oItem:addchild(::_oRoot:CreateElement("ram:TypeCode", "380" ))                         						// BT 3
 	oItem:addchild(::_oRoot:CreateElement("ram:IssueDateTime" );
-		:addchild(::_oRoot:CreateElement("udt:DateTimeString", dtos(INVOICE->DATE), {{ "format", "102"}})))  // BT 2
-	oItem:addchild(::_oRoot:CreateElement("ram:IncludedNote" );                           				// BG 1
-		:addchild(::_oRoot:CreateElement("ram:Content", cReg));		      									// BT 22
-		:addchild(::_oRoot:CreateElement("ram:SubjectCode", "REG" )))               						// BT 21
+		:addchild(::_oRoot:CreateElement("udt:DateTimeString", "20251001", {{ "format", "102"}})))	// BT 2
+	oItem:addchild(::_oRoot:CreateElement("ram:IncludedNote" );                           							// BG 1
+		:addchild(::_oRoot:CreateElement("ram:Content"):setContent( cReg)); 												// BT 22
+		:addchild(::_oRoot:CreateElement("ram:SubjectCode", "REG" )))               									// BT 21
 RETURN oItem
 
 //=========================================
@@ -312,14 +322,14 @@ METHOD ZUGFeRD:_SupplyChainTradeTransaction(oParent)
 
 	oLine	:addchild(oSub := ::_oRoot:CreateElement("ram:SpecifiedTradeProduct" ))                         		// BG-31
 
-//	IF !empty(ITEMS->oArtikelc:ean_nr)
-//		oSub:addchild(::_oRoot:CreateElement("ram:GlobalID", alltrim(ITEMS->:EAN_NR), {{"schemeID", "0160"}})) 	// BT-157
+//	IF !empty(ITEMS->EAN_NR)
+//		oSub:addchild(::_oRoot:CreateElement("ram:GlobalID", alltrim(ITEMS->EAN_NR), {{"schemeID", "0160"}})) 	// BT-157
 //	ENDIF
 
 	oSub:addchild(::_oRoot:CreateElement("ram:SellerAssignedID", alltrim(ITEMS->ARTICLENO)))
 	oSub:addchild(::_oRoot:CreateElement("ram:BuyerAssignedID", ITEMS->ARTICLENO))
 	oSub:addchild(::_oRoot:CreateElement("ram:Name", alltrim(ITEMS->DESCRIPT1))) 											// BT-153
-	oSub:addchild(::_oRoot:CreateElement("ram:Description", alltrim(ITEMS->DESCRIPT1) +CRLF+ alltrim(ITEMS->DESCRIPT2)))	// BT 154
+	oSub:addchild(::_oRoot:CreateElement("ram:Description"):SetContent( alltrim(ITEMS->DESCRIPT1) +CRLF+ alltrim(ITEMS->DESCRIPT2)))	// BT 154
 
 	oLine	:addchild(oTrade := ::_oRoot:CreateElement("ram:SpecifiedLineTradeAgreement" ))      						// BG-29
 
@@ -329,15 +339,14 @@ METHOD ZUGFeRD:_SupplyChainTradeTransaction(oParent)
 	oSub:addchild(::_oRoot:CreateElement("ram:BasisQuantity", "1",; 															// BT-149-1
 		{{"unitCode", "H87"}}))     					                                                       			// BT-130
 
-/*	bei Rabatten den rabatt betrag übergeben, nucht den rabattierten Preis
-IF RABATT > 0
-		nRabatt1		:= ITEMS->PRICEPP * RABATT / 100
-		oSub:addchild(::_oRoot:CreateElement("ram:AppliedTradeAllowanceCharge");      									// BT-147
-			:addchild(::_oRoot:CreateElement("ram:ChargeIndicator");
-			:addchild(::_oRoot:CreateElement("udt:Indicator", "false")));
-			:addchild(::_oRoot:CreateElement("ram:ActualAmount", ntrim(round(nRabatt1,2),2))))
-	ENDIF
-*/
+//	 bei Rabatten den rabatt betrag übergeben, nicht den rabattierten Preis
+//	IF ITEMS->RABATT > 0
+//			nRabatt1		:= ITEMS->PRICEPP * ITEMS->RABATT / 100
+//			oSub:addchild(::_oRoot:CreateElement("ram:AppliedTradeAllowanceCharge");      								// BT-147
+//				:addchild(::_oRoot:CreateElement("ram:ChargeIndicator");
+//				:addchild(::_oRoot:CreateElement("udt:Indicator", "false")));
+//				:addchild(::_oRoot:CreateElement("ram:ActualAmount", ntrim(round(nRabatt1,2),2))))
+//	ENDIF
 
 	oTrade	:addchild(::_oRoot:CreateElement("ram:NetPriceProductTradePrice");
 			:addchild(::_oRoot:CreateElement("ram:ChargeAmount", ntrim(round(ITEMS->PRICEPP,2),2)));					// BT-146
@@ -350,9 +359,9 @@ IF RABATT > 0
 	oSub:addchild(::_oRoot:CreateElement("ram:BilledQuantity", ntrim(ITEMS->COUNT),;										// BT 129
 			{{"unitCode", "H87"}}))
 
-//	IF LIEFSCHNR > 0
+//	IF ITEMS->LIEFSCHNR > 0
 //		oSub:addchild(::_oRoot:CreateElement("ram:DeliveryNoteReferencedDocument");                              // BG-X-83
-//			:addchild(::_oRoot:CreateElement("ram:IssuerAssignedID", ntrim( LIEFSCHNR))))	 								// BT-X-92
+//			:addchild(::_oRoot:CreateElement("ram:IssuerAssignedID", ntrim( ITEMS->LIEFSCHNR))))						// BT-X-92
 //	ENDIF
 
 	oLine	:addchild(::_oRoot:CreateElement("ram:SpecifiedLineTradeSettlement" );
@@ -378,11 +387,11 @@ METHOD ZUGFeRD:_SellerTradeParty(oItem)
 
 	oSeller:addchild( oContact := ::_oRoot:CreateElement("ram:DefinedTradeContact"))								// BG 6
 
-	oContact:addchild(::_oRoot:CreateElement("ram:PersonName", "Hr Maier")) 										// BT 41
+	oContact:addchild(::_oRoot:CreateElement("ram:PersonName"):SetContent(::Seller:INHABER))					// BT 41
 	oContact:addchild(::_oRoot:CreateElement("ram:TelephoneUniversalCommunication");
-				:addchild(::_oRoot:CreateElement("ram:CompleteNumber", "+49 30 123 4321"))) 						// BT-42
+				:addchild(::_oRoot:CreateElement("ram:CompleteNumber", ::Seller:TELNR ))) 							// BT-42
 	oContact:addchild(::_oRoot:CreateElement("ram:EmailURIUniversalCommunication");
-				:addchild(::_oRoot:CreateElement("ram:URIID", "Maier@seller.de", {{ "schemeID", "EM"}})))		// BT-43
+				:addchild(::_oRoot:CreateElement("ram:URIID", ::Seller:EMAIL, {{ "schemeID", "EM"}})))			// BT-43
 
 	oSeller:addchild(oPostal := ::_oRoot:CreateElement("ram:PostalTradeAddress" ))     							// BG 5
 	oPostal:addchild(::_oRoot:CreateElement("ram:PostcodeCode", ::Seller:PLZ )) 									// BT 38
@@ -391,9 +400,9 @@ METHOD ZUGFeRD:_SellerTradeParty(oItem)
 	oPostal:addchild(::_oRoot:CreateElement("ram:CountryID", ::Seller:LAND ))	  									// BT 40
 
 	oSeller:addchild(::_oRoot:CreateElement("ram:URIUniversalCommunication" );
-				:addchild(::_oRoot:CreateElement("ram:URIID", "info@seller.de", {{ "schemeID", "EM"}}))) 		// BT 49
+				:addchild(::_oRoot:CreateElement("ram:URIID", ::Seller:EMAIL, {{ "schemeID", "EM"}}))) 		// BT 49
 	oSeller:addchild(::_oRoot:CreateElement("ram:SpecifiedTaxRegistration", ::Seller:NAME);
-				:addchild(::_oRoot:CreateElement("ram:ID", "DE1234567" , {{ "schemeID", "VA"}})))				// BT 48
+				:addchild(::_oRoot:CreateElement("ram:ID", ::Seller:USTID , {{ "schemeID", "VA"}})))			// BT 48
 RETURN oSeller
 
 //=========================================
@@ -413,7 +422,7 @@ METHOD ZUGFeRD:_BuyerTradeParty(oItem)
 
 	oBuyer:addchild(::_oRoot:CreateElement("ram:URIUniversalCommunication" );
 				:addchild(::_oRoot:CreateElement("ram:URIID", "info@buyer.de", {{ "schemeID", "EM"}})))		// BT 49
-	oBuyer:addchild(::_oRoot:CreateElement("ram:SpecifiedTaxRegistration", INVOICE->NAME);
+	oBuyer:addchild(::_oRoot:CreateElement("ram:SpecifiedTaxRegistration"):SetContent(INVOICE->NAME);
 				:addchild(::_oRoot:CreateElement("ram:ID", "DE1234567", {{ "schemeID", "VA"}})))					// BT 48
 RETURN oBuyer
 
@@ -426,7 +435,7 @@ METHOD ZUGFeRD:_ApplicableHeaderTradeDelivery(oLine)
 	// lieferdatum
 	oSub:addchild( ::_oRoot:CreateElement("ram:ActualDeliverySupplyChainEvent" );									// BT-72-000
 		:addchild(::_oRoot:CreateElement("ram:OccurrenceDateTime" );													// BT-72-00
-			:addchild(::_oRoot:CreateElement("udt:DateTimeString", dtos(date()-3), {{ "format", "102"}}))))	// BT-72
+			:addchild(::_oRoot:CreateElement("udt:DateTimeString", "20250921", {{ "format", "102"}}))))		// BT-72
 
 RETURN oLine
 
@@ -445,40 +454,40 @@ METHOD ZUGFeRD:_ApplicableHeaderTradeSettlement(oLine)
 	oSub:addchild(::_oRoot:CreateElement("ram:TypeCode", "58"))                      														// BT-81
 	oSub:addchild(::_oRoot:CreateElement("ram:Information", "Zahlung per SEPA Überweisung." ))											// BT-82
 	oSub:addchild(::_oRoot:CreateElement("ram:PayeePartyCreditorFinancialAccount" );  														// BG-17
-		:addchild(::_oRoot:CreateElement("ram:IBANID", "DE12500100200345"));				  	 													// BT-84
-		:addchild(::_oRoot:CreateElement("ram:AccountName", alltrim(::Seller:NAME))))		  											 		// BT-85
+		:addchild(::_oRoot:CreateElement("ram:IBANID", ::Seller:IBAN));					  	 													// BT-84
+		:addchild(::_oRoot:CreateElement("ram:AccountName"):SetContent( alltrim(::Seller:NAME))))									 		// BT-85
 
 	// mehrwersteuer
 	// je mwst satz ein Knoten
 	oItem:addchild(::_oRoot:CreateElement("ram:ApplicableTradeTax");
-			:addchild(::_oRoot:CreateElement("ram:CalculatedAmount", ntrim(::total * ::nMwst / 100,2) )); 								// BT 117
-			:addchild(::_oRoot:CreateElement("ram:TypeCode", "VAT" ));                   														// BT 118
-			:addchild(::_oRoot:CreateElement("ram:BasisAmount", ntrim(::total,2) ));  															// BT 116
-			:addchild(::_oRoot:CreateElement("ram:CategoryCode", "S"));                   													// BT 118
-			:addchild(::_oRoot:CreateElement("ram:RateApplicablePercent", ntrim(::nMwst,2) )))												// BT-119
+		:addchild(::_oRoot:CreateElement("ram:CalculatedAmount", ntrim(::total * ::nMwst / 100,2) )); 									// BT 117
+		:addchild(::_oRoot:CreateElement("ram:TypeCode", "VAT" ));                   															// BT 118
+		:addchild(::_oRoot:CreateElement("ram:BasisAmount", ntrim(::total,2) ));  																// BT 116
+		:addchild(::_oRoot:CreateElement("ram:CategoryCode", "S"));                   														// BT 118
+		:addchild(::_oRoot:CreateElement("ram:RateApplicablePercent", ntrim(::nMwst,2) )))													// BT-119
 
 	// fällig zum
 	oItem:addchild(oTrade := ::_oRoot:CreateElement("ram:SpecifiedTradePaymentTerms"))
-	oTrade:addchild(::_oRoot:CreateElement("ram:Description", "Zahlbar innerhalb 30 Tagen netto bis 30.12.2024, 3% Skonto innerhalb 10 Tagen bis 10.12.2024" ))  // BT 20
+	oTrade:addchild(::_oRoot:CreateElement("ram:Description", "Zahlbar innerhalb 30 Tagen netto bis 31.10.2025, 3% Skonto innerhalb 10 Tagen bis 10.10.2025" ))  // BT 20
 	oTrade:addchild(::_oRoot:CreateElement("ram:DueDateDateTime");		 																			// BT-9-00
-		:addchild(::_oRoot:CreateElement("udt:DateTimeString", dtos(date()+30), {{"format", "102"}})))									// BT-9
+		:addchild(::_oRoot:CreateElement("udt:DateTimeString", "20251031", {{"format", "102"}})))											// BT-9
 
 	//skonto, nur wenn tatsächlich gegeben
 	oTrade:addchild(oSub :=  ::_oRoot:CreateElement("ram:ApplicableTradePaymentDiscountTerms"))											// BG-X-44
-	oSub:addchild(::_oRoot:CreateElement("ram:BasisDateTime" );                                       									// BT-X-282-00
-		:addchild(::_oRoot:CreateElement("udt:DateTimeString", dtos(date()+10), {{"format", "102"}})))				  					// BT-X-282
 
+	oSub:addchild(::_oRoot:CreateElement("ram:BasisDateTime" );                                       									// BT-X-282-00
+		:addchild(::_oRoot:CreateElement("udt:DateTimeString", "20251001", {{"format", "102"}})))						  					// BT-X-282
 	oSub:addchild(::_oRoot:CreateElement("ram:BasisPeriodMeasure", "10", {{"unitCode", "DAY"}}))											// BT-X-283
 	oSub:addchild(::_oRoot:CreateElement("ram:BasisAmount", ntrim(::total,2)))																	// BT-X-285
-	oSub:addchild(::_oRoot:CreateElement("ram:CalculationPercent", ntrim(2,0)))																// BT-X-286
+	oSub:addchild(::_oRoot:CreateElement("ram:CalculationPercent", ntrim(3,0)))																// BT-X-286
 	oSub:addchild(::_oRoot:CreateElement("ram:ActualDiscountAmount", ntrim(::total * 3 / 100,2)))										// BT-X-287
 
 	oItem:addchild(::_oRoot:CreateElement("ram:SpecifiedTradeSettlementHeaderMonetarySummation");										// BG 22
-			:addchild(::_oRoot:CreateElement("ram:LineTotalAmount", ntrim(::total,2) ));  													// BT 106
-			:addchild(::_oRoot:CreateElement("ram:TaxBasisTotalAmount", ntrim(::total,2)));  												// BT 109
-			:addchild(::_oRoot:CreateElement("ram:TaxTotalAmount", ntrim(::total * ::nMwst / 100,2) , {{"currencyID", "EUR"}}));	// BT 110
-			:addchild(::_oRoot:CreateElement("ram:GrandTotalAmount", ntrim(::total * (::nMwst + 100) / 100,2)));						// BT-112
-			:addchild(::_oRoot:CreateElement("ram:DuePayableAmount", ntrim(::total * (::nMwst + 100) / 100,2))))						// BT-115
+		:addchild(::_oRoot:CreateElement("ram:LineTotalAmount", ntrim(::total,2) ));  														// BT 106
+		:addchild(::_oRoot:CreateElement("ram:TaxBasisTotalAmount", ntrim(::total,2)));  													// BT 109
+		:addchild(::_oRoot:CreateElement("ram:TaxTotalAmount", ntrim(::total * ::nMwst / 100,2) , {{"currencyID", "EUR"}}));		// BT 110
+		:addchild(::_oRoot:CreateElement("ram:GrandTotalAmount", ntrim(::total * (::nMwst + 100) / 100,2)));							// BT-112
+		:addchild(::_oRoot:CreateElement("ram:DuePayableAmount", ntrim(::total * (::nMwst + 100) / 100,2))))							// BT-115
 RETURN oItem
 
 

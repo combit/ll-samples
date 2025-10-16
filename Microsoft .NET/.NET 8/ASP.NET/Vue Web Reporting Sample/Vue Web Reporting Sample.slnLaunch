@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Vue Web Reporting Sample",
+    "Projects": [
+      {
+        "Path": "Server\\Server.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Client\\Client.esproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

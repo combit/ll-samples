@@ -199,7 +199,7 @@ object frmMain: TfrmMain
     Left = 234
     Top = 397
   end
-  object LL: TListLabel30
+  object LL: TListLabel31
     Debug = []
     DataController.DataSource = DataSource1
     DataController.DetailSources = <>

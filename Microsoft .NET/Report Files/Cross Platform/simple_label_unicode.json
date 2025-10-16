@@ -1,0 +1,1267 @@
+{
+  "$type": "label",
+  "Changed": null,
+  "CollectionVariables": [],
+  "EmbeddedFonts": [
+    {
+      "FaceName": "Tahoma",
+      "Data": "",
+      "Charset": 1,
+      "EmbedInProject": false,
+      "IsUsed": true,
+      "InternalId": "11475cde-84a7-4c14-8e67-5de4d4faa0de",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "EmbeddedFont"
+    }
+  ],
+  "Filter": "",
+  "IssueRanges": "",
+  "Layers": [
+    {
+      "Condition": "",
+      "Color": "6710886",
+      "FromTemplate": "False",
+      "Name": "Base",
+      "Visible": "1",
+      "LayerId": "0",
+      "InternalId": "6de48ca0-2464-4474-a0c7-4eb4acc3e0df",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "Layer"
+    },
+    {
+      "Condition": "Page() = 1",
+      "Color": "708549",
+      "FromTemplate": "False",
+      "Name": "First Page",
+      "Visible": "1",
+      "LayerId": "1",
+      "InternalId": "58ba9b35-c9b6-412b-9739-fe737ece50e1",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "Layer"
+    },
+    {
+      "Condition": "Page() \u003C\u003E 1",
+      "Color": "15977377",
+      "FromTemplate": "False",
+      "Name": "Following Pages",
+      "Visible": "1",
+      "LayerId": "2",
+      "InternalId": "69666eee-5831-4727-a8af-aa3df41374b5",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "Layer"
+    }
+  ],
+  "Layout": {
+    "Grid": {
+      "Show": "False",
+      "Snap": "False",
+      "Spacing": {
+        "Horizontal": "990",
+        "Vertical": "990",
+        "InternalId": "ad489322-c35d-432a-b03e-1261c7436914",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertySize"
+      },
+      "InternalId": "bcc05303-90da-44a9-9e7a-854c05f21572",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyGrid"
+    },
+    "RulerGuides": {
+      "Horizontal": [],
+      "Vertical": [],
+      "InternalId": "ad35d384-9214-4c44-ab42-172b3b34bf09",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyRulerGuides"
+    },
+    "InternalId": "9976e98b-1d3d-4625-b5f4-a96d5504a0d9",
+    "InternalObjectType": "",
+    "ObjectTypeForPropertyGrid": "PropertyLayoutBase"
+  },
+  "Objects": [
+    {
+      "$type": "text",
+      "AllowPageBreak": "False",
+      "BottomAligned": "0",
+      "Paragraphs": [
+        {
+          "Adjusted": "False",
+          "Alignment": "0",
+          "Condition": "True",
+          "Contents": "Persons.Name",
+          "ConditionalFormatter": [],
+          "LineSpacing": "0",
+          "Wrapping": {
+            "Page": "False",
+            "Line": "0",
+            "Force": "False",
+            "InternalId": "c852f847-0ac1-450a-b7de-ab8a9b1c8a66",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyParagraphWrapping"
+          },
+          "OutputFormatter": {
+            "FormatterType": "",
+            "SampleText": "Ohne",
+            "InternalId": "31e1bd80-c57d-4d3f-8287-36bcb8c8039b",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+          },
+          "Font": {
+            "Default": "True",
+            "Bold": "Null()",
+            "Color": "Null()",
+            "FaceName": "Null()",
+            "GdiCharSet": "Null()",
+            "Italic": "Null()",
+            "Size": "Null()",
+            "Strikeout": "Null()",
+            "Underline": "Null()",
+            "Width": "Null()",
+            "InternalId": "134f5a17-2767-467f-b7bb-8acca417825b",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFontExt"
+          },
+          "OptimizeSpaces": "True",
+          "ParagraphSpacing": "0",
+          "TabAlignment": "0",
+          "TabPosition": "0",
+          "Unerasable": "False",
+          "InternalId": "27650766-932b-4f58-aeb8-f579a7af9616",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "Paragraph"
+        }
+      ],
+      "Direction": "0",
+      "Filling": {
+        "Style": "0",
+        "Color": "LL.Color.LightGray",
+        "InternalId": "0c592467-896c-4e95-8c27-da3c86aa158f",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFilling"
+      },
+      "Frame": {
+        "Layout": "0",
+        "Left": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "23723d33-9ff0-472f-bc72-22b01fe3b7e5",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "fdb103d5-75f5-46a5-8f39-a0e66a23e109",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Top": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "2d0783c2-9fd5-420a-a458-f14f092216de",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "52ec24be-b4f2-41c5-9ed2-01dbbb0a5197",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Right": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "d617ab58-6328-474b-b54c-9787235699ac",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "15149955-53b4-4b9f-802d-887fe1f6a6e5",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Bottom": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "93c5dd88-05da-4209-9bf2-87b71d98e95d",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "761d99b7-3c23-4e3f-9e4c-13640f9e1ace",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "InternalId": "876626f8-7724-4eff-9f43-c8aa7bf9556d",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFrame"
+      },
+      "ExportAsPicture": "False",
+      "LinkUrl": "",
+      "BreakBefore": "False",
+      "Condition": "True",
+      "IssueCondition": "",
+      "Locked": "False",
+      "Bookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "fb11b3bf-09af-481f-92f3-324d80bffa81",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "IndexBookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "a715e15e-cec8-4671-aa47-f315416d17c9",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "ReadOnly": "False",
+      "UUID": "{997D3ADE-C1EA-41D3-AF4A-C6B5453BCEF9}",
+      "TemplateUUID": "",
+      "LinkUUID": "",
+      "LayerId": 0,
+      "GroupId": 0,
+      "LinkMode": 0,
+      "Name": "Name",
+      "Selected": "False",
+      "Position": {
+        "Left": "4190",
+        "Top": "2890",
+        "Width": "91210",
+        "Height": "5300",
+        "InternalId": "a873a91f-94b5-4233-86c4-2857017fc1db",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyRect"
+      },
+      "Animation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "Color": "LL.Color.White",
+        "PartialAreaOnly": "",
+        "Trigger": {
+          "Trigger": "0",
+          "TriggerDelay": "0.0",
+          "InternalId": "6e56e9dc-9d82-4151-8620-48f262d9c758",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+        },
+        "InternalId": "b560dc13-0296-4faf-be41-a34d775ca3bd",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyAnimation"
+      },
+      "XhtmlAnimation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "TriggerDelay": "0.0",
+        "InternalId": "9a268e8a-5b34-4ec5-8173-95240d6f21b4",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+      },
+      "InternalId": "fedededc-7ddd-4051-815c-f94e71d20d04",
+      "InternalObjectType": "Text",
+      "ObjectTypeForPropertyGrid": "ObjectText"
+    },
+    {
+      "$type": "text",
+      "AllowPageBreak": "False",
+      "BottomAligned": "0",
+      "Paragraphs": [
+        {
+          "Adjusted": "False",
+          "Alignment": "0",
+          "Condition": "True",
+          "Contents": "Persons.Street",
+          "ConditionalFormatter": [],
+          "LineSpacing": "0",
+          "Wrapping": {
+            "Page": "False",
+            "Line": "0",
+            "Force": "False",
+            "InternalId": "7f0a297a-6a2c-406a-a108-d5d7526a923f",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyParagraphWrapping"
+          },
+          "OutputFormatter": {
+            "FormatterType": "",
+            "SampleText": "Ohne",
+            "InternalId": "d21cf40a-36a8-415f-9553-f9385989504d",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+          },
+          "Font": {
+            "Default": "True",
+            "Bold": "Null()",
+            "Color": "Null()",
+            "FaceName": "Null()",
+            "GdiCharSet": "Null()",
+            "Italic": "Null()",
+            "Size": "Null()",
+            "Strikeout": "Null()",
+            "Underline": "Null()",
+            "Width": "Null()",
+            "InternalId": "562b04a4-1910-47ef-96f6-dbc2ce0b150d",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFontExt"
+          },
+          "OptimizeSpaces": "True",
+          "ParagraphSpacing": "0",
+          "TabAlignment": "0",
+          "TabPosition": "0",
+          "Unerasable": "False",
+          "InternalId": "10ca3ec0-e274-4a4f-95fc-f1e78896d448",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "Paragraph"
+        },
+        {
+          "Adjusted": "False",
+          "Alignment": "0",
+          "Condition": "True",
+          "Contents": "Persons.City",
+          "ConditionalFormatter": [],
+          "LineSpacing": "0",
+          "Wrapping": {
+            "Page": "False",
+            "Line": "1",
+            "Force": "False",
+            "InternalId": "7b39b429-f3e6-4571-babe-ac11be7b7325",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyParagraphWrapping"
+          },
+          "OutputFormatter": {
+            "FormatterType": "",
+            "SampleText": "Ohne",
+            "InternalId": "a0c737e2-7325-47a2-9819-8b1c7744c14b",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+          },
+          "Font": {
+            "Default": "True",
+            "Bold": "Null()",
+            "Color": "Null()",
+            "FaceName": "Null()",
+            "GdiCharSet": "Null()",
+            "Italic": "Null()",
+            "Size": "Null()",
+            "Strikeout": "Null()",
+            "Underline": "Null()",
+            "Width": "Null()",
+            "InternalId": "9354ec7a-a19d-4244-8eb6-b9e5b58e8215",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFontExt"
+          },
+          "OptimizeSpaces": "True",
+          "ParagraphSpacing": "0",
+          "TabAlignment": "0",
+          "TabPosition": "0",
+          "Unerasable": "False",
+          "InternalId": "a14d9be7-a054-4878-ae7b-cbd7d8791814",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "Paragraph"
+        },
+        {
+          "Adjusted": "False",
+          "Alignment": "0",
+          "Condition": "True",
+          "Contents": "Persons.Phone",
+          "ConditionalFormatter": [],
+          "LineSpacing": "0",
+          "Wrapping": {
+            "Page": "False",
+            "Line": "0",
+            "Force": "False",
+            "InternalId": "2fc1631a-058a-4147-8828-d09b987174f5",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyParagraphWrapping"
+          },
+          "OutputFormatter": {
+            "FormatterType": "",
+            "SampleText": "Ohne",
+            "InternalId": "a6b12e9b-6c9f-488b-a7d6-618a4c5f9871",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+          },
+          "Font": {
+            "Default": "True",
+            "Bold": "Null()",
+            "Color": "Null()",
+            "FaceName": "Null()",
+            "GdiCharSet": "Null()",
+            "Italic": "Null()",
+            "Size": "Null()",
+            "Strikeout": "Null()",
+            "Underline": "Null()",
+            "Width": "Null()",
+            "InternalId": "3257ce89-df25-4ce8-8d7e-b79305d657a3",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFontExt"
+          },
+          "OptimizeSpaces": "True",
+          "ParagraphSpacing": "0",
+          "TabAlignment": "0",
+          "TabPosition": "0",
+          "Unerasable": "False",
+          "InternalId": "31b0abc6-9757-4e6c-8341-7408d3557374",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "Paragraph"
+        }
+      ],
+      "Direction": "0",
+      "Filling": {
+        "Style": "0",
+        "Color": "LL.Color.LightGray",
+        "InternalId": "11c44043-426e-415a-baec-55a6b2393797",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFilling"
+      },
+      "Frame": {
+        "Layout": "0",
+        "Left": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "386284eb-452e-426e-85df-c3fa65abbb00",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "360982b1-78c4-421f-94d1-4c66dbb3dd9a",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Top": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "b9676472-17d6-42cc-bc28-06f87d68f7f7",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "8a896c07-4e62-41f5-ab90-d12968b69d36",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Right": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "ef00b7c3-3675-4959-bae3-dbbe94ab86bd",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "349a36d4-ccd9-48bc-b913-5bca65a56c26",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Bottom": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "f66c30c9-972f-4ac7-b362-fa8b90be1772",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "a1fa8188-c468-4484-ac56-aeb40e31837d",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "InternalId": "61d2ef42-ec7a-48bf-a71a-882de3ac5fe4",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFrame"
+      },
+      "ExportAsPicture": "False",
+      "LinkUrl": "",
+      "BreakBefore": "False",
+      "Condition": "True",
+      "IssueCondition": "",
+      "Locked": "False",
+      "Bookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "ea53d833-92ea-40da-9153-3f239eb2bcc5",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "IndexBookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "285d453b-0e30-44d7-a7ee-ed265763738a",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "ReadOnly": "False",
+      "UUID": "{DAA77B00-5E46-498C-BA5E-8525D44A4B09}",
+      "TemplateUUID": "",
+      "LinkUUID": "",
+      "LayerId": 0,
+      "GroupId": 0,
+      "LinkMode": 0,
+      "Name": "Address",
+      "Selected": "False",
+      "Position": {
+        "Left": "4290",
+        "Top": "10590",
+        "Width": "91210",
+        "Height": "26060",
+        "InternalId": "0e234c07-3926-4fd3-9d8a-1a5b98f6ff56",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyRect"
+      },
+      "Animation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "Color": "LL.Color.White",
+        "PartialAreaOnly": "",
+        "Trigger": {
+          "Trigger": "0",
+          "TriggerDelay": "0.0",
+          "InternalId": "06a37a6a-2f35-460f-ae5e-0b3465dab115",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+        },
+        "InternalId": "fa803459-5df2-462f-916d-21a6bd7abd40",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyAnimation"
+      },
+      "XhtmlAnimation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "TriggerDelay": "0.0",
+        "InternalId": "f5de3fdd-75e8-4c41-9eb7-e74f27ed888f",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+      },
+      "InternalId": "ba748a41-3985-4bcf-8333-72049e0c468f",
+      "InternalObjectType": "Text",
+      "ObjectTypeForPropertyGrid": "ObjectText"
+    },
+    {
+      "$type": "line",
+      "Color": "RGB(0,0,0)",
+      "LineDirection": "0",
+      "LineType": "0",
+      "Width": "100",
+      "Frame": {
+        "Layout": "0",
+        "Left": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "24a1775e-d024-437f-acc9-58a347a479da",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "91832752-f5c1-42ee-829a-1b7910889ad0",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Top": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "224c8796-17b9-429b-b726-797830715faf",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "5204c00d-3513-4f05-b294-f9a52118a1e7",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Right": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "0f106946-9055-46d5-a34e-36a3bf21ee60",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "1658b1d4-941c-429b-9e19-fe34dded0350",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Bottom": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "5b6c89b2-ac85-44c7-b661-df3686ca86d1",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "b3fd0a6c-8816-454d-80d1-4adc9ac3aedf",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "InternalId": "a31a2db1-7d44-4a8f-8b8b-d460a6b6c8ad",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFrame"
+      },
+      "ExportAsPicture": "False",
+      "LinkUrl": "",
+      "BreakBefore": "False",
+      "Condition": "True",
+      "IssueCondition": "",
+      "Locked": "False",
+      "Bookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "c0261d69-91e1-4fa3-a00d-e62f8d8095ee",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "IndexBookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "b2fc8e37-2098-4b09-9dc7-499e9ada6224",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "ReadOnly": "False",
+      "UUID": "{36621323-346F-4A6C-BF8B-44DC86B7AC78}",
+      "TemplateUUID": "",
+      "LinkUUID": "",
+      "LayerId": 0,
+      "GroupId": 0,
+      "LinkMode": 0,
+      "Name": "Separator",
+      "Selected": "False",
+      "Position": {
+        "Left": "97200",
+        "Top": "2990",
+        "Width": "0",
+        "Height": "34180",
+        "InternalId": "396301c9-3edc-4216-a242-6ea18b388f16",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyRect"
+      },
+      "Animation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "Color": "LL.Color.White",
+        "PartialAreaOnly": "",
+        "Trigger": {
+          "Trigger": "0",
+          "TriggerDelay": "0.0",
+          "InternalId": "1f7c7dc5-f3f5-41d9-8cca-83ed774e27b3",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+        },
+        "InternalId": "71fcf568-2c40-406e-a14f-0d391e3599d8",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyAnimation"
+      },
+      "XhtmlAnimation": null,
+      "InternalId": "54c9dd48-1945-4caa-93d4-cab8549ab87c",
+      "InternalObjectType": "Line",
+      "ObjectTypeForPropertyGrid": "ObjectLine"
+    },
+    {
+      "$type": "line",
+      "Color": "RGB(0,0,0)",
+      "LineDirection": "0",
+      "LineType": "0",
+      "Width": "100",
+      "Frame": {
+        "Layout": "0",
+        "Left": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "858d8a7f-0f0a-454a-a6ae-402a407e2829",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "817d637b-44af-440c-854f-e31d272694b7",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Top": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "ad57c88d-fcab-4031-8636-ae005c7079f4",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "c33969d6-ff37-48ca-a664-1e1411b31313",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Right": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "565157d7-a811-47f3-8c5d-fac22aef81e7",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "ab924e13-bbca-44e5-b086-7918c8fc9bdc",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Bottom": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "10cc7bce-bec9-4117-b487-84d94d3f44ad",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "27c5b7a8-55b8-4dc5-92e0-20f46bb7d22a",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "InternalId": "22d9d48d-91bc-46a8-8c7f-163dc8c1a9a1",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFrame"
+      },
+      "ExportAsPicture": "False",
+      "LinkUrl": "",
+      "BreakBefore": "False",
+      "Condition": "True",
+      "IssueCondition": "",
+      "Locked": "False",
+      "Bookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "3991eb63-3daa-4d7a-82ac-5433c4f572de",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "IndexBookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "8c576a89-8306-4ba4-a9d2-79d53fc73b09",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "ReadOnly": "False",
+      "UUID": "{98157E53-89A7-43EE-9917-8DCC9569F298}",
+      "TemplateUUID": "",
+      "LinkUUID": "",
+      "LayerId": 0,
+      "GroupId": 0,
+      "LinkMode": 0,
+      "Name": "Separator",
+      "Selected": "False",
+      "Position": {
+        "Left": "3500",
+        "Top": "8710",
+        "Width": "93700",
+        "Height": "0",
+        "InternalId": "1fe5f7c7-5929-4c56-8bd7-3ec2a7e87fba",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyRect"
+      },
+      "Animation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "Color": "LL.Color.White",
+        "PartialAreaOnly": "",
+        "Trigger": {
+          "Trigger": "0",
+          "TriggerDelay": "0.0",
+          "InternalId": "2d365a83-cbf2-42e8-88d2-e2634f7e5467",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+        },
+        "InternalId": "655abdcd-23aa-435f-a0d1-b21ca265d448",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyAnimation"
+      },
+      "XhtmlAnimation": null,
+      "InternalId": "b942e4bd-5a53-4471-a5b6-67062861a5dc",
+      "InternalObjectType": "Line",
+      "ObjectTypeForPropertyGrid": "ObjectLine"
+    }
+  ],
+  "PageRanges": "",
+  "ProjectParameters": [
+    {
+      "Name": "LL.ActiveLayout",
+      "ParameterType": 536870916,
+      "Contents": "Standard-Layout",
+      "LocalizedName": "1.Aktiver Design-Bereich",
+      "IsVisible": true,
+      "InternalId": "11b758c9-fc54-48a6-9c7e-5f5becb8092c",
+      "InternalObjectType": "LL.ActiveLayout",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.DesignScheme",
+      "ParameterType": 4,
+      "Contents": "\u0022COMBITCOLORWHEEL\u0022",
+      "LocalizedName": "Designschema",
+      "IsVisible": true,
+      "InternalId": "7fb271f5-221a-40d8-a8cf-43e0a2db255f",
+      "InternalObjectType": "LL.DesignScheme",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.EmbeddedFonts",
+      "ParameterType": 65540,
+      "Contents": "",
+      "LocalizedName": "Eingebettete Schriftarten",
+      "IsVisible": true,
+      "InternalId": "69fffdf8-e9ac-4535-8839-06a3e468bf8a",
+      "InternalObjectType": "LL.EmbeddedFonts",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.EmbedDrilldownReports",
+      "ParameterType": 4,
+      "Contents": "False",
+      "LocalizedName": "Drilldown-Berichte einbetten",
+      "IsVisible": true,
+      "InternalId": "8261ba1c-952f-4489-ab0b-d76b7ec25261",
+      "InternalObjectType": "LL.EmbedDrilldownReports",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.RecipName",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "1.Empf\u00E4ngername",
+      "IsVisible": true,
+      "InternalId": "1b948009-a23b-4c4a-87a0-6d138c4eb969",
+      "InternalObjectType": "LL.FAX.RecipName",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.RecipNumber",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "0.Empf\u00E4ngerfaxnummer",
+      "IsVisible": true,
+      "InternalId": "d42e47a2-c4e0-40bc-b355-49cc10cd816f",
+      "InternalObjectType": "LL.FAX.RecipNumber",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.SenderBillingCode",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "5.Absenderverrechnungscode",
+      "IsVisible": true,
+      "InternalId": "79db8321-fbbc-4ca2-82a3-04cd6a2924a2",
+      "InternalObjectType": "LL.FAX.SenderBillingCode",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.SenderCompany",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "3.Absenderfirma",
+      "IsVisible": true,
+      "InternalId": "e820c99b-4941-4508-b864-16a65c11dba7",
+      "InternalObjectType": "LL.FAX.SenderCompany",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.SenderDepartment",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "4.Absenderabteilung",
+      "IsVisible": true,
+      "InternalId": "42cb1583-641c-4f62-ace1-ab99d145ff9b",
+      "InternalObjectType": "LL.FAX.SenderDepartment",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.SenderName",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "2.Absendername",
+      "IsVisible": true,
+      "InternalId": "4cbc6985-1193-42dd-86df-8cd238193b96",
+      "InternalObjectType": "LL.FAX.SenderName",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.IssueCount",
+      "ParameterType": 4,
+      "Contents": "1",
+      "LocalizedName": "5.Ausfertigungsdruck: Anzahl der Ausfertigungen",
+      "IsVisible": true,
+      "InternalId": "18487c16-05db-4639-902c-7b33164b985c",
+      "InternalObjectType": "LL.IssueCount",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.LabelCopyCount",
+      "ParameterType": 4,
+      "Contents": "1",
+      "LocalizedName": "9.1.Etikettenkopien: Anzahl der Kopien",
+      "IsVisible": true,
+      "InternalId": "ad340c3c-602d-45a3-b7a2-69ec9c7061d4",
+      "InternalObjectType": "LL.LabelCopyCount",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.BCC",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "2.An (BCC)",
+      "IsVisible": true,
+      "InternalId": "da647904-caca-42e3-b10c-2212012ba8fd",
+      "InternalObjectType": "LL.MAIL.BCC",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.CC",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "1.An (CC)",
+      "IsVisible": true,
+      "InternalId": "e0b79104-5c74-4817-88e4-75e42b0ca722",
+      "InternalObjectType": "LL.MAIL.CC",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.From",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "3.Von (From)",
+      "IsVisible": true,
+      "InternalId": "47b41fa3-5180-486c-8b94-528a336391d9",
+      "InternalObjectType": "LL.MAIL.From",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.ReplyTo",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "4.Von (ReplyTo)",
+      "IsVisible": true,
+      "InternalId": "a0748768-631d-4093-8bb8-f660686ad8b4",
+      "InternalObjectType": "LL.MAIL.ReplyTo",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.Subject",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "5.Betreff",
+      "IsVisible": true,
+      "InternalId": "d44a6c27-0580-492b-b651-3c77aef2a2d0",
+      "InternalObjectType": "LL.MAIL.Subject",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.To",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "0.An (To)",
+      "IsVisible": true,
+      "InternalId": "46dce804-9acf-4e03-bed9-c7c1282fc395",
+      "InternalObjectType": "LL.MAIL.To",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MinPageCount",
+      "ParameterType": 4,
+      "Contents": "1",
+      "LocalizedName": "4.Mindestzahl der Druckseiten",
+      "IsVisible": true,
+      "InternalId": "06f9287e-24c7-4c44-8b35-a1ac5f51acec",
+      "InternalObjectType": "LL.MinPageCount",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MultiPassCondition",
+      "ParameterType": 65540,
+      "Contents": "",
+      "LocalizedName": "",
+      "IsVisible": false,
+      "InternalId": "2a8299d1-e4ba-49bd-9de0-32c18394731b",
+      "InternalObjectType": "LL.MultiPassCondition",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MultiPassCount",
+      "ParameterType": 65540,
+      "Contents": "1",
+      "LocalizedName": "8.1.Mehrpassverfahren: Anzahl der Durchl\u00E4ufe",
+      "IsVisible": true,
+      "InternalId": "ce15aa47-7fd8-42ae-a2fa-03b94dd5fdc2",
+      "InternalObjectType": "LL.MultiPassCount",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.PageCondition",
+      "ParameterType": 4,
+      "Contents": "",
+      "LocalizedName": "",
+      "IsVisible": false,
+      "InternalId": "ca8fba44-9e14-411b-9833-6dd5f6dddde6",
+      "InternalObjectType": "LL.PageCondition",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.PageWrapCondition",
+      "ParameterType": 4,
+      "Contents": "False",
+      "LocalizedName": "9.2.Seitenwechselbedingung",
+      "IsVisible": true,
+      "InternalId": "0633387e-8af2-4cf2-8620-a728f5d2adb1",
+      "InternalObjectType": "LL.PageWrapCondition",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.ProjectDescription",
+      "ParameterType": 536870916,
+      "Contents": "List \u0026 Label Unicode Sample",
+      "LocalizedName": "0.Projektbeschreibung",
+      "IsVisible": true,
+      "InternalId": "e99b9a22-c567-4fed-af89-df9b7eff1e9b",
+      "InternalObjectType": "LL.ProjectDescription",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.SlideShow.TransformationID",
+      "ParameterType": 4,
+      "Contents": "\u0022\u0022",
+      "LocalizedName": "Transformation f\u00FCr Pr\u00E4sentationsmodus",
+      "IsVisible": true,
+      "InternalId": "f08e0d1d-1e53-43d0-9e9b-ff226b106c84",
+      "InternalObjectType": "LL.SlideShow.TransformationID",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.SortOrderID",
+      "ParameterType": 65540,
+      "Contents": "",
+      "LocalizedName": "Sortierung",
+      "IsVisible": true,
+      "InternalId": "dc141321-e774-4ff3-b53c-dcb04fbb2ff0",
+      "InternalObjectType": "LL.SortOrderID",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    }
+  ],
+  "ProjectTemplates": [],
+  "Regions": [
+    {
+      "Collate": "0",
+      "IsStandardRegion": "True",
+      "UseForOutput": "True",
+      "Condition": "",
+      "Copies": "1",
+      "Device": {
+        "Name": "\u0022Microsoft XPS Document Writer\u0022",
+        "Devmode": "",
+        "ExtraData": "",
+        "InternalId": "d9620eed-3a12-4409-bf5c-5b3efc619046",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyDevice"
+      },
+      "Duplex": "0",
+      "FitPage": "False",
+      "ForcePaperFormat": "True",
+      "Layout": {
+        "PrintOrder": "0",
+        "XCount": "2",
+        "XDistance": "0",
+        "XOffset": "5000",
+        "XSize": "99000",
+        "YCount": "7",
+        "YDistance": "0",
+        "YOffset": "5000",
+        "YSize": "40100",
+        "InternalId": "226a0027-b8e8-4b33-98e3-a6d5d3e7cba5",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyLayout"
+      },
+      "Name": "Region",
+      "Paper": {
+        "Format": "9",
+        "Orientation": "1",
+        "Horizontal": "209980",
+        "Vertical": "296920",
+        "Extent": {
+          "Horizontal": "210016",
+          "Vertical": "297011",
+          "InternalId": "b8e9a74a-7a52-4254-a00a-53fdc255bea8",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertySize"
+        },
+        "PrintableArea": {
+          "Extent": {
+            "Horizontal": "210016",
+            "Vertical": "297011",
+            "InternalId": "65fde24a-e012-4abf-a189-8520b6948ebe",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyReadOnlySize"
+          },
+          "Offset": {
+            "Horizontal": "0",
+            "Vertical": "0",
+            "InternalId": "814730f5-df25-47fc-8c1b-aa86545340db",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyReadOnlySize"
+          },
+          "InternalId": "faa1e3e0-f995-443e-86a3-c30ca717d2f4",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyPrintableArea"
+        },
+        "InternalId": "305ccce4-54da-4443-a5c3-86238db4b85a",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyPaper"
+      },
+      "SourceTray": "0",
+      "UsePhysicalPaper": "True",
+      "ShowInPrintDialog": "True",
+      "InternalId": "81a817a8-89ec-4f22-802d-ff545d520c3a",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "Region"
+    }
+  ],
+  "ReportParameters": [],
+  "ReportParametersFromTemplates": [],
+  "ReportSections": {
+    "TableOfContents": {
+      "FileName": "",
+      "Condition": "True",
+      "InternalId": "e02cdc82-e5c2-4f17-9e62-0438ea5db94e",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyReportSection"
+    },
+    "Index": {
+      "FileName": "",
+      "Condition": "True",
+      "InternalId": "80297003-52ef-469f-8ac5-2c83ce27bdbb",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyReportSection"
+    },
+    "ReverseSide": {
+      "DuplexReverseSideMode": "3",
+      "IssueCondition": "True",
+      "SimplexReverseSideMode": "2",
+      "FileName": "",
+      "Condition": "True",
+      "InternalId": "e3bf1772-2885-4460-933a-7b78d0a91032",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyReportSectionReverseSide"
+    },
+    "InternalId": "e93f5f84-c107-4924-8ec7-a84b7909eb51",
+    "InternalObjectType": "",
+    "ObjectTypeForPropertyGrid": "PropertyReportSections"
+  },
+  "Settings": {
+    "Created": "\u003Cunknown\u003E",
+    "Decimals": "2",
+    "DefaultDestination": "PRV",
+    "FileVersion": "16",
+    "LocaleID": "1031",
+    "MaxPdfOutlineDepth": "2",
+    "MaxPdfIndexDepth": "3",
+    "Metrics": "3",
+    "DefaultFont": {
+      "Bold": "False",
+      "Color": "0",
+      "FaceName": "Tahoma",
+      "GdiCharSet": "0",
+      "Italic": "False",
+      "Size": "10.000000",
+      "Strikeout": "False",
+      "Underline": "False",
+      "Width": "0",
+      "InternalId": "871358b3-2d4d-4c56-a032-b55de5e9262b",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyFont"
+    },
+    "RepresentationCodes": {
+      "CondEnd": "187",
+      "CondSep": "166",
+      "CondStart": "171",
+      "ExprSep": "164",
+      "LockNextChar": "8288",
+      "PhantomSpace": "8203",
+      "Ret": "182",
+      "Tab": "247",
+      "InternalId": "4049f502-fad4-4753-87c1-02413405f461",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyRepresentationCodes"
+    },
+    "TextQuoteCodes": {
+      "End": "1",
+      "Start": "1",
+      "InternalId": "9e88e712-7e26-4d0a-a836-0c1b775bcdb9",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyTextQuoteCodes"
+    },
+    "InternalId": "20135b3f-fd89-4aa4-b2aa-0839dd336bf8",
+    "InternalObjectType": "",
+    "ObjectTypeForPropertyGrid": "PropertySettings"
+  },
+  "SumVariables": [],
+  "UserData": "",
+  "UserDefinedDesignScheme": {
+    "BackgroundColors": [
+      "13158600",
+      "14456320",
+      "11825920",
+      "9853440"
+    ],
+    "ForegroundColors": [
+      "9853440",
+      "11825920",
+      "14456320",
+      "15772160",
+      "16432640",
+      "16437770",
+      "16768110",
+      "16769405",
+      "16771990",
+      "6579300"
+    ],
+    "InternalId": "cd80fd38-8642-4002-99a1-f6f820f3f3ae",
+    "InternalObjectType": "",
+    "ObjectTypeForPropertyGrid": "PropertyUserDefinedDesignScheme"
+  },
+  "UserVariables": [],
+  "InternalId": "673a32f9-59ab-4eaa-9299-90308e8a9e8d",
+  "InternalObjectType": "",
+  "ObjectTypeForPropertyGrid": "ProjectLabel"
+}

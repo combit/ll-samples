@@ -18,7 +18,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, clipbrd, Graphics, Controls, Forms, Dialogs,
-  ExtCtrls, StdCtrls, OleCtrls, Menus, L30, cmbtll30, Registry;
+  ExtCtrls, StdCtrls, OleCtrls, Menus, L31, cmbtll31, Registry;
 
 type
   TPictureForm = class(TForm)
@@ -34,7 +34,7 @@ type
     BitmapButton: TButton;
     Label5: TLabel;
     Button1: TButton;
-    LL: TL30_;
+    LL: TL31_;
     procedure PrintLabel;
     procedure FormCreate(Sender: TObject);
     procedure DesignButtonClick(Sender: TObject);

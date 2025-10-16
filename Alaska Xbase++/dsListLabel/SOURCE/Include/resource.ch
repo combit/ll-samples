@@ -2,7 +2,7 @@
  Include File: resource.ch
  Author:       Marcus Herz
  Description:
- Created:      13.05.2020     12:47:27        Updated: þ13.05.2020      þ12:47:27
+ Created:      13.05.2020     12:47:27        Updated: þ18.08.2025      þ10:08:56
  Copyright:    2020 DS-Datasoft, 87671 Ronsberg
 ============================================================================*/
 

@@ -294,10 +294,7 @@ namespace WebReporting.Controllers
 
         public ActionResult Designer()
         {
-            //D:    Definition und weitergabe des ClientData Strings an WebReportDesigner.cshtml als model.
-            //US:   Defining the ClientData String and passing it to WebReportDesigner.cshtml as a model.
-            string clientData = "{\"testdata\":\"Im a test object\"}";
-            return View("WebReportDesigner", null, clientData);
+            return View("WebReportDesigner");
         }
 
         public ActionResult Viewer()

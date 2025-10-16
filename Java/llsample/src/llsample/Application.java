@@ -9,7 +9,7 @@ import javax.swing.*;
  * <p>Copyright: Copyright (C) combit GmbH</p>
  * <p>Company: combit GmbH</p>
  * @author combit GmbH
- * @version 30.0
+ * @version 31.0
  */
 
 public class Application {

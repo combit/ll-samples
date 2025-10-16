@@ -12,7 +12,7 @@
 #include "Xbp.ch"
 #include "dll.ch"
 #include "common.ch"
-#include "..\cmbtLL30.ch"
+#include "..\cmbtLL31.ch"
 
 //-------------------------------------------------------------------
 PROCEDURE PrintLabels(nPrintingTarget, lDesignDocument)
@@ -29,8 +29,8 @@ DEFAULT lDesignDocument  TO .f.
 
     // D: Fehler beim Laden der Library
     // US: Library loading error
-    If .not.LL30ModuleInit()
-    ConfirmBox(SetAppWindow(),"Error loading CMLL30.DLL !."+chr(13)+;
+    If .not.LL31ModuleInit()
+    ConfirmBox(SetAppWindow(),"Error loading CMLL31.DLL !."+chr(13)+;
                                 "OS error#"+Alltrim(Str(DosError()))+Chr(13)+; //
                                 DosErrorMessage(DosError())+chr(13)+;
                                 Chr(13)+;
@@ -151,7 +151,7 @@ DEFAULT lDesignDocument  TO .f.
     // D: List & Label-Job beenden
     // US: Close List & Label job
     LlJobClose(hJob)
-    LL30ModuleExit()
+    LL31ModuleExit()
 RETURN
 
 // D: Fuer Artikelnummer: EAN128-Barcode anlegen

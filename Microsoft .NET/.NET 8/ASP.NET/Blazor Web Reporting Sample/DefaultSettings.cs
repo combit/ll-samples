@@ -1,4 +1,6 @@
-﻿using combit.Reporting;
+﻿using BlazorWebReportingSample;
+
+using combit.Reporting;
 using combit.Reporting.DataProviders;
 using combit.Reporting.Repository;
 using combit.Reporting.Web.WebReportDesigner.Server;
@@ -117,14 +119,14 @@ namespace BlazorWebReportingSample
         {
             if (String.IsNullOrEmpty(repositoryIdOfProject))
             {
-                return null;
+                return string.Empty;
             }
 
             RepositoryItem project = GetBaseRepository().GetItem(repositoryIdOfProject);
 
             if (project.Type != RepositoryItemType.ProjectLabel.Value)
             {
-                return null;
+                return string.Empty;
             }
 
             return DataMember;

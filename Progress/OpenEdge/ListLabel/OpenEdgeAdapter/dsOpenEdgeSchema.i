@@ -35,7 +35,7 @@
     FIELD SupportsFiltering         AS LOGICAL 
     FIELD SupportsGetParentRow      AS LOGICAL
     FIELD SupportsAnyBaseTable      AS LOGICAL
-    FIELD SupportsCaching           AS LOGICAL  
+    FIELD SupportsCaching           AS LOGICAL
     INDEX pk IS PRIMARY UNIQUE ServiceId
     INDEX ak IS UNIQUE ServiceName.
     
@@ -52,6 +52,7 @@
     FIELD OEDbTableName       AS CHARACTER
     FIELD OECalculatedTable   AS LOGICAL
     FIELD OECachedTable       AS LOGICAL
+    FIELD OEExtentPrefix      AS CHARACTER INIT "_"
     FIELD TableName           AS CHARACTER 
     INDEX pk IS PRIMARY UNIQUE TableId
     INDEX ak IS UNIQUE ServiceId TableName.
@@ -74,15 +75,22 @@
     FIELD ColumnName         AS CHARACTER   
     FIELD DataType           AS CHARACTER
     FIELD LlFieldType        AS CHARACTER
+    FIELD OEColumnExtent     AS INTEGER   SERIALIZE-HIDDEN
+    FIELD OEPrimaryKeyColumn AS LOGICAL   SERIALIZE-HIDDEN 
+    FIELD OEPrimaryKeyOrder  AS INTEGER   SERIALIZE-HIDDEN
+    FIELD OERelationField    AS LOGICAL   SERIALIZE-HIDDEN 
     INDEX pk IS PRIMARY UNIQUE ColumnId
-    INDEX ak IS UNIQUE TableId OEColumnName OEColumnIndex.
+    INDEX ak  IS UNIQUE TableId OEColumnName OEColumnIndex
+    INDEX ak2 IS UNIQUE TableId ColumnName
+    .
       
   DEFINE TEMP-TABLE OpenEdgeDataRelation NO-UNDO
     FIELD RelationId                AS CHARACTER SERIALIZE-HIDDEN 
     FIELD ParentTableId             AS CHARACTER SERIALIZE-HIDDEN
     FIELD ChildTableId              AS CHARACTER SERIALIZE-HIDDEN
     FIELD ServiceId                 AS CHARACTER SERIALIZE-HIDDEN
-    FIELD OERelationFields          AS CHARACTER  
+    FIELD OERelationFields          AS CHARACTER
+    FIELD OERelationFieldsText      AS CHARACTER SERIALIZE-HIDDEN  
     FIELD OERelationName            AS CHARACTER
     FIELD ParentTableName           AS CHARACTER 
     FIELD ParentColumnName          AS CHARACTER 

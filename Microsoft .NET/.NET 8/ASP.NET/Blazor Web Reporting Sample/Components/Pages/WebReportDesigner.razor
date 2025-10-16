@@ -1,0 +1,32 @@
+﻿@page  "/WebReportDesigner"
+@inject IHttpContextAccessor HttpContextAccessor
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!--Blazor:{"type":"server","prerenderId":"bb8b87cb26044746b84317da779c87ec","key":{"locationHash":"77D12F14A8105320B1AAED6AE7E689DA0EC4483270A645E84079EAA0FFDF550D:0","formattedComponentKey":""},"sequence":0,"descriptor":"CfDJ8A2BIbltubpAromo/CrZWT8qF7vbtuj\u002Bv1YQK0oDv88S8rxe9oCqOMn\u002BZyn9dalafDAHtTN4Kw/OOCMRn0Q5e6yj1rJ1V5dZyxBCeH1hlcSf8rryBZMbEs0/LCUFy6O1WM1glMUum9gWQ8JnlKOwqD68kZrVbSSJN900NGt39pWzZc\u002B8WP6bLHTQfc1Dp9CT2O9iHXuAKzjjD/aD2/4hOo913lry4QRjCUcpKNSscnobC/CI/09xDJ5DcUVkT3oRyaGcIU3JmQPWuTl0kzsQnUrO5DkNjo7CpUcTnYBAj7tAxdEp4EpJ4apZzcY68fs9C2O3cNnmOsm7vsVDh0Gamud0t5fq2B/6V\u002ByMQd4pyVYMXxOLeYqWE6tMhdzqvwv640C3GMfhzzYN7uWGzEAv7ZRKrCtqyz1FcbRrk4IcXH5zFqSxGVf/XtAZmQLfL2lpLvL0JKRkJqU2EytVoJC0uvDCG7x7LAQEY0uXP0GCFywfAYiLSRWtHcr2uhsKaqU75Birdbgn5AAUo/dMd5kIL8zvOPJKLU9kopho2C3sUQ4c9\u002BaNmBdCH25ggCOM/8\u002BXjwKaqIa6ZOd6LKLwSdG0shk="}--><!--Blazor:{"prerenderId":"bb8b87cb26044746b84317da779c87ec"}-->
+</head>
+
+<script src="/webreportdesigner.js"></script>
+
+<div>
+    <ll-webreportdesigner backendurl="@baseUri/LLWebReportDesigner" defaultProject="@defaultProject" showTutorial />
+</div>
+
+@code {
+    string baseUri;
+    string defaultProject = null;
+
+    protected override void OnInitialized()
+    {
+        var request = HttpContextAccessor.HttpContext?.Request;
+        if (request != null)
+        {
+            baseUri = $"{request.Scheme}://{request.Host}{request.PathBase}"; 
+        }
+    }
+}

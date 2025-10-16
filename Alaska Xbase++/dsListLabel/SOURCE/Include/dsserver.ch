@@ -2,7 +2,7 @@
  Include File: dsserver.ch
  Author:       Marcus Herz
  Description:
- Created:      06.04.2016     08:18:30        Updated: þ06.04.2016      þ08:18:30
+ Created:      06.04.2016     08:18:30        Updated: þ18.08.2025      þ10:08:58
  Copyright:    2016 by DS-Datasoft, 87654 Friesenried
 ============================================================================*/
 
@@ -74,22 +74,6 @@
 	#define XPP_TYPE_VARBINARY			"Z"
 #endif
 
-// alte defines
-//#define ADS_TYPE_AUTOINC				"A"                	// A 4								XPP_TYPE_ARRAY
-//#define ADS_TYPE_SHORTINT			"S"                	// S 2
-//#define ADS_TYPE_MODTIME				"B"         			// B 									XPP_TYPE_BLOCK
-//#define ADS_TYPE_MONEY	   		"K"  						// K #typedef LONGLONG  SIGNED64 = 8
-//#define ADS_TYPE_SHORTINT			"S"
-//#define ADS_TYPE_ROWVERSION			"G"                  // G									XPP_TYPE_GUID
-//#define ADS_TYPE_NCHAR            "1"
-//#define ADS_TYPE_CISTRING			"J"
-//#define ADS_TYPE_CICHAR				"J"
-//#define ADS_TYPE_NVARCHAR         "2"                  //                     27    /* Unpadded Unicode Character data */
-//#define ADS_TYPE_NMEMO            "3"                  //                     28    /* Variable Length Unicode Data */
-//#define ADS_TYPE_VARBINARY_FOX		"Q"						// Q									XPP_TYPE_WIDEMEMO
-//#define ADS_TYPE_IMAGE   			XPP_TYPE_OBJECT      // O
-//#define ADS_TYPE_VARCHAR_FOX		"W"						// W									XPP_TYPE_WIDECHAR
-
 // nur noch aus kompatibilität definiert
 // KZ, Länge,..
 #define ADS_TYPE_AUTOINC				XPP_TYPE_SEQUENCE   	// S 4,8
@@ -120,23 +104,6 @@
 #define ADS_TYPE_NCHAR              XPP_TYPE_WIDECHAR
 #define ADS_TYPE_NMEMO              XPP_TYPE_WIDEMEMO
 #define ADS_TYPE_NVARCHAR           XPP_TYPE_VARWIDECHAR
-
-// gilt für alaska und ads
-// alle numerische data types
-#define DB_TYPES_NUMERIC				ADS_TYPE_AUTOINC+ADS_TYPE_DOUBLE+ADS_TYPE_ROWVERSION+ADS_TYPE_INTEGER+ADS_TYPE_MONEY+ADS_TYPE_NUMERIC+ADS_TYPE_SHORTINT+ADS_TYPE_CURDOUBLE
-
-// alle string data types, ohne blob, image, unicode
-#define DB_TYPES_STRING					ADS_TYPE_MODTIME+ADS_TYPE_CHARACTER+ADS_TYPE_TIME+ADS_TYPE_CISTRING+ADS_TYPE_MEMO+ADS_TYPE_VARCHAR+ADS_TYPE_TIMESTAMP+ADS_TYPE_VARCHAR_FOX
-
-// _SS_ _dsDataSources constants
-#define DSDSRC_ID      			1   // developer assigned unique ID (system assigns if not specified)
-#define DSDSRC_NAME    			2   // database name (server name for ADSDBE)
-#define DSDSRC_CSTRING 			3   // connection string
-#define DSDSRC_OBJECT  			4   // DAC session (for DBE) or custom object
-#define DSDSRC_THREAD  			5   // thread ID
-#define DSDSRC_DBE     			6   // DBE
-#define DSDSRC_CUSTOM  			7   // custom session class name
-#define DSDSRC_POS	  			8   // position in List
 
 
 #endif

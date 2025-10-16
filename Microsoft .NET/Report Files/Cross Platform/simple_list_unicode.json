@@ -1,0 +1,3908 @@
+{
+  "$type": "list",
+  "Changed": null,
+  "CollectionVariables": [],
+  "EmbeddedFonts": [
+    {
+      "FaceName": "Tahoma",
+      "Data": "",
+      "Charset": 1,
+      "EmbedInProject": false,
+      "IsUsed": true,
+      "InternalId": "38f2a729-4265-4d9c-aeef-5a5ea4af08f5",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "EmbeddedFont"
+    },
+    {
+      "FaceName": "Tahoma\tbold",
+      "Data": "",
+      "Charset": 1,
+      "EmbedInProject": false,
+      "IsUsed": true,
+      "InternalId": "e3c16a0d-e04b-40a7-a76a-898d2593a383",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "EmbeddedFont"
+    }
+  ],
+  "Filter": "",
+  "IssueRanges": "",
+  "Layers": [
+    {
+      "Condition": "",
+      "Color": "6710886",
+      "FromTemplate": "False",
+      "Name": "Base",
+      "Visible": "1",
+      "LayerId": "0",
+      "InternalId": "3f8dec42-1024-434c-8b1f-495fe0533ddc",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "Layer"
+    },
+    {
+      "Condition": "Page() = 1",
+      "Color": "708549",
+      "FromTemplate": "False",
+      "Name": "First Page",
+      "Visible": "1",
+      "LayerId": "1",
+      "InternalId": "d341bc58-a031-4611-967b-19f607868167",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "Layer"
+    },
+    {
+      "Condition": "Page() \u003C\u003E 1",
+      "Color": "15977377",
+      "FromTemplate": "False",
+      "Name": "Following Pages",
+      "Visible": "1",
+      "LayerId": "2",
+      "InternalId": "6d4979a0-ffa6-40f4-8777-76d18d4e74b7",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "Layer"
+    }
+  ],
+  "Layout": {
+    "Grid": {
+      "Show": "False",
+      "Snap": "False",
+      "Spacing": {
+        "Horizontal": "990",
+        "Vertical": "990",
+        "InternalId": "70bea785-634a-4c75-ba00-5b24ce13c1be",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertySize"
+      },
+      "InternalId": "36aa0211-5ac5-4367-a9cb-3550743aad6e",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyGrid"
+    },
+    "RulerGuides": {
+      "Horizontal": [],
+      "Vertical": [],
+      "InternalId": "54dbcfc4-f887-451e-a72f-e6009ef0cf0b",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyRulerGuides"
+    },
+    "InternalId": "4040dac2-24ec-4fb1-835d-5647aeedaa8d",
+    "InternalObjectType": "",
+    "ObjectTypeForPropertyGrid": "PropertyLayoutBase"
+  },
+  "Objects": [
+    {
+      "$type": "text",
+      "AllowPageBreak": "False",
+      "BottomAligned": "0",
+      "Paragraphs": [
+        {
+          "Adjusted": "False",
+          "Alignment": "0",
+          "Condition": "True",
+          "Contents": "\u0022Address List\u0022",
+          "ConditionalFormatter": [],
+          "LineSpacing": "0",
+          "Wrapping": {
+            "Page": "False",
+            "Line": "0",
+            "Force": "False",
+            "InternalId": "f312835d-80d3-461c-9d54-712b6c01ba71",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyParagraphWrapping"
+          },
+          "OutputFormatter": {
+            "FormatterType": "",
+            "SampleText": "Ohne",
+            "InternalId": "912b16e3-f692-4b76-a202-6ccf269bd5b3",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+          },
+          "Font": {
+            "Default": "True",
+            "Bold": "Null()",
+            "Color": "Null()",
+            "FaceName": "Null()",
+            "GdiCharSet": "Null()",
+            "Italic": "Null()",
+            "Size": "28",
+            "Strikeout": "Null()",
+            "Underline": "Null()",
+            "Width": "Null()",
+            "InternalId": "37d2ccb8-0a10-46bd-9098-7f3024b0e5fe",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFontExt"
+          },
+          "OptimizeSpaces": "True",
+          "ParagraphSpacing": "0",
+          "TabAlignment": "0",
+          "TabPosition": "0",
+          "Unerasable": "False",
+          "InternalId": "0904d109-7c4c-4484-b0b1-27754f243f9f",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "Paragraph"
+        }
+      ],
+      "Direction": "0",
+      "Filling": {
+        "Style": "0",
+        "Color": "LL.Color.LightGray",
+        "InternalId": "2c64446d-9dd5-410b-a4e0-ebd3ab7b622e",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFilling"
+      },
+      "Frame": {
+        "Layout": "0",
+        "Left": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "c16854f9-9091-442e-8a30-45bd4fee657e",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "cd9acd7e-47ef-4278-bbfe-a5a3decf348c",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Top": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "8c708bd4-f9e5-4a3c-b0a7-db6cc9a656bb",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "ca6b9a96-eda5-45a2-a70e-f66fcd35d1fe",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Right": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "0c53cbf7-1ee2-4637-aa0e-09b3404e3884",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "f9025236-708e-4ffd-80fa-8b8266360a3d",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Bottom": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "145aeedf-b9eb-4696-a251-89ac26d39ca2",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "c018773a-782b-4792-b6dc-9bfa5e9431fa",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "InternalId": "3f79e1b6-5e87-408b-8c9f-c5266e53ab91",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFrame"
+      },
+      "ExportAsPicture": "False",
+      "LinkUrl": "",
+      "BreakBefore": "False",
+      "Condition": "True",
+      "IssueCondition": "",
+      "Locked": "False",
+      "Bookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "08ba4351-66b4-4747-b9f9-2a39cedee277",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "IndexBookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "d7dbbe2a-507e-49fc-ba3f-1398d3378f69",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "ReadOnly": "False",
+      "UUID": "{B753D6DB-D6E5-4329-AE72-984A95BBB87E}",
+      "TemplateUUID": "",
+      "LinkUUID": "",
+      "LayerId": 0,
+      "GroupId": 0,
+      "LinkMode": 0,
+      "Name": "Header",
+      "Selected": "False",
+      "Position": {
+        "Left": "19990",
+        "Top": "24990",
+        "Width": "140000",
+        "Height": "11980",
+        "InternalId": "9e983ca0-b46a-41ee-96b9-d02ab1df07c7",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyRect"
+      },
+      "Animation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "Color": "LL.Color.White",
+        "PartialAreaOnly": "",
+        "Trigger": {
+          "Trigger": "0",
+          "TriggerDelay": "0.0",
+          "InternalId": "b649d1d9-3eae-4b64-ad42-d32fc46b6081",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+        },
+        "InternalId": "05f894ad-e4b6-483d-90dc-32f3cd5b43f9",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyAnimation"
+      },
+      "XhtmlAnimation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "TriggerDelay": "0.0",
+        "InternalId": "7d6c96ff-8f81-445d-98d2-304a28b6c34d",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+      },
+      "InternalId": "43c2e40a-55de-4980-88c7-29f5c1dfb91b",
+      "InternalObjectType": "Text",
+      "ObjectTypeForPropertyGrid": "ObjectText"
+    },
+    {
+      "$type": "reportContainer",
+      "DefaultFont": {
+        "Default": "True",
+        "Bold": "Null()",
+        "Color": "Null()",
+        "FaceName": "Null()",
+        "GdiCharSet": "Null()",
+        "Italic": "Null()",
+        "Size": "Null()",
+        "Strikeout": "Null()",
+        "Underline": "Null()",
+        "Width": "Null()",
+        "InternalId": "a27ba517-6cdd-42d3-b211-67753be1f8a0",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFontExt"
+      },
+      "Filling": {
+        "Pattern": "1",
+        "Color2": "LL.Color.White",
+        "Color3": "LL.Color.White",
+        "Alpha": "50",
+        "Style": "0",
+        "Color": "LL.Color.White",
+        "InternalId": "ebedf0bc-8fff-449f-aa36-3017eedb1eb2",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFillingExt"
+      },
+      "Frame": {
+        "Layout": "0",
+        "Left": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "d4977881-d179-4f4d-a2a3-ac9962209958",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "344ff648-baa7-49d7-aa59-11324527ef0d",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Top": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "68636bcc-29cb-44eb-8c43-fa8bf02af1f7",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "70525b3b-bf36-45ef-b9c5-74d851eb19bd",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Right": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "f3a23ca4-30d1-403a-b3b3-1564d1470ec2",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "8dfb22ea-0247-4161-a4dc-00971fb1e318",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Bottom": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "5c114150-6053-4c35-aa6b-c189f0e36054",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "8bd14e34-b12d-410b-a416-df939b79c832",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "InternalId": "314d35e5-12bd-4b32-b794-9168433868b1",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFrame"
+      },
+      "SubItems": [
+        {
+          "$type": "table",
+          "Lines": {
+            "Data": [
+              {
+                "$type": "data",
+                "DrillDownLinks": [],
+                "IndexedGroups": "0",
+                "Fields": [
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "1dd3e7dc-aa00-4e1b-801b-368f194ac614",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "Persons.ID",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "cc12c04a-2142-4271-a68c-1aafff9e9fa8",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "$type": "double",
+                      "ForceSign": "False",
+                      "Unit": "",
+                      "CountOfDecimals": "0",
+                      "DecimalSeparatorCharType": "-1",
+                      "EmptyStringIfZero": "False",
+                      "ForceZeroBeforeDecimalSeparator": "True",
+                      "NegativeFormatType": "-1",
+                      "ThousandsSeparatorCharType": "-1",
+                      "ExponentialFormat": "0",
+                      "RemoveTrailingZeroes": "False",
+                      "FormatterType": "DOUBLE",
+                      "SampleText": "123.456/-123.456",
+                      "InternalId": "337c84e5-f9b6-47a4-9f85-aef291d58295",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterDouble"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "Null()",
+                      "Color": "Null()",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "Null()",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "e25f34f0-fd67-4f92-abab-938b8f74804f",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "c3bc4fab-d772-42eb-858c-6f491adf9e6c",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "5c8b47cf-9482-46ad-86f8-75d28366beba",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "13837ad2-f0e3-44a2-bb2b-aeb7359dffa7",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": null,
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "43488115-d2a3-4075-957f-287f550afd69",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "516833e5-f064-4e7c-9881-4fbf76a629de",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "c7df98a6-b535-43f7-9d73-5bd6ee7b5a2a",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "0",
+                      "Color": "LL.Scheme.BackgroundColor0",
+                      "InternalId": "13fe1456-8aef-418c-b913-4dcbbd953f50",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "3916ce0e-bc0b-4294-aa12-06d57d938ace",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "9406bbb1-54e1-4c20-822e-5760b9a996a6",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "ee764c83-ee6b-4ec2-be02-b81c40d6c6f0",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "4b50657b-f4ba-4cdd-a7d9-8eb724ab5976",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "27268b9f-c984-45a5-b894-8f297bfb6fbd",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "a143534e-d317-44e4-a16e-734580f91b3e",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "df0a78cd-11a6-41ac-97b1-883bd720f646",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "3c45e825-5086-4928-abe6-1c2b31cf8a22",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "1516fd7b-b047-4e71-befe-264e79de7722",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "21000",
+                    "InternalId": "783bd44a-999c-46c5-8ebe-69db76c79e53",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "5207291f-b6b2-4bb0-8fae-548c4d88d4bb",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "Persons.Name",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "330634fa-0056-41eb-93e0-0b255c879434",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "b8f07849-609a-420f-8a4f-95e248992216",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "Null()",
+                      "Color": "Null()",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "Null()",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "f3fb9cc8-d2cf-475e-a545-52a082c1dcb1",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "a71529f1-4916-44bc-9488-4863c2067448",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "ce2c8bf6-846f-4a7f-b5e1-fea7e01790cb",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "752ec1fc-c3ce-48ae-aad2-9ed597a46877",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": null,
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "54ff8a6c-0d2e-4adf-9940-06c7d5ab7e79",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "09570629-3e10-4a24-b184-ed54a5050411",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "7fd7fa28-72d6-42e1-ba3a-7f23d6de8734",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "0",
+                      "Color": "LL.Scheme.BackgroundColor0",
+                      "InternalId": "4c20319b-d3b7-4598-94f3-d9954344770a",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "11a72317-fb63-4181-9fe3-7cac2363cd1c",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "6e9866ab-7016-4501-891c-7aa02e52cae6",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "35452f49-ac9b-4f65-bacd-efd0efa876b3",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "29715aca-c22c-44b2-b061-ca0464c049bc",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "898a15c8-da7e-4370-8ac4-73c0f2128a5a",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "3a1e1af3-2dbd-43d7-a8c1-518447f3c870",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "2325aafd-5ed9-4523-97b7-cca8bf9e81da",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "dae99183-9bcb-4fb8-b3c1-1c736088477a",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "e9ec069d-5204-4a33-bb24-32d2fd5de33e",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "35000",
+                    "InternalId": "c85bb279-01dc-4ee5-a774-1eb634cb6783",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "472233da-c26b-4219-948f-1753acb11922",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "Persons.City",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "d9dd14a1-df0f-4d30-acc0-ad756a00e1ea",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "43f69d35-520e-438b-9684-beeee5dea590",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "Null()",
+                      "Color": "Null()",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "Null()",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "1ff101f7-6aa6-4d47-84c1-58b759edd414",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "bedca393-94c1-46ad-a9b2-f7349281896e",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "5433cead-86a0-4858-882a-b91c3d47a690",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "dbed3960-e39c-4825-979f-71e095618284",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": null,
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "eb5d6f2d-4b18-47c4-9707-66ff84a48d01",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "6fb5b685-fc14-4f32-bf46-e305752a1fa0",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "b00e2b9e-87b1-4ea4-8fb9-82417825dd78",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "0",
+                      "Color": "LL.Scheme.BackgroundColor0",
+                      "InternalId": "2aa52d23-c168-478b-843a-4d3779e0a8b9",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "9fbfa6c0-6a6e-4ae4-8b2a-0686ba0cb3e4",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "af37d4ca-d991-48fa-bc83-64991387ffbc",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "09b32c35-777c-47f3-a749-db5ac0b52e05",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "8ad65744-84a4-462b-8d8c-d175df39599c",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "f2edf4be-7558-4765-a672-89f22a28b257",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "e97cca3a-aaf3-4c0e-b6c5-c36e8502406c",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "d2c417f0-9548-486a-ae0f-8a816138aee8",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "43b531de-3912-4a27-9914-ae3c119dc8eb",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "286a6724-b9d0-4d6d-83e1-bfc2293a07a0",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "29000",
+                    "InternalId": "fcbb6692-9f53-4c1e-8832-e6bc84733013",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "526c1049-97df-49b5-8270-bf5256ee410b",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "Persons.Street",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "84737af1-8320-4836-83b7-9e5c44a0d54a",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "37812a89-9f2d-4eea-9d9e-53e4a34061ae",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "Null()",
+                      "Color": "Null()",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "Null()",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "eb477774-4e4f-4ca3-808e-63d849b2a235",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "72ebf82e-81ed-4275-8e3d-9b19f509dc92",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "e380b521-36f9-4319-a595-6661aa3b615f",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "f98da3e5-2142-4d97-b405-38a38f92060f",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": null,
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "ed61603e-2b0e-4ccf-ba1d-e3f8a33fa29a",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "72143bf6-76bc-426d-be3d-bb8ffb0feef8",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "af879306-3278-473b-9990-91078a2f3c76",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "0",
+                      "Color": "LL.Scheme.BackgroundColor0",
+                      "InternalId": "374b586a-ae7b-48c1-8866-2c768ddef9ea",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "ba33c799-5922-43ad-a024-a8e2d756ce6e",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "3c822b21-fb22-45ff-8585-dd8229defac7",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "e4541c89-0360-40e3-8da6-98a17dbd4c3e",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "48a40dd6-c5b4-4462-9e0f-ef18bbad6268",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "a06f7f06-e588-4a16-98ff-26f679632840",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "aa8ea65c-402d-4d3b-9fb6-2bd376905e1d",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "14a21b1f-5399-4dbc-90e7-a54a96714be6",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "ec53c5df-d662-472b-8796-82adcc5a85ec",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "f4069536-ffbe-4f89-8259-3b5f458a4335",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "46990",
+                    "InternalId": "1f2769d2-69c8-40ab-8511-a30b745e9eeb",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "7afd3929-43a8-44ff-a252-8590a6f9756d",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "Persons.Phone",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "446db49a-751c-4532-aa46-f2ca2922d924",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "456a0cb0-3b47-4813-8c9d-41de09a389b9",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "Null()",
+                      "Color": "Null()",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "Null()",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "a97bcb82-091a-4843-a2ca-84a4666eca29",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "ae64840f-4dc5-4b90-b0ba-10c8ee0cf397",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "c13f51f4-826f-47a7-82e7-c36139ea336a",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "27e01d8a-5dd6-420e-a5f4-2c6af4768c2e",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": null,
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "c296ec5b-c76f-4185-9be5-bb7cc41e016a",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "6a65b847-6e3e-49b6-9cb8-4d1aeb95de7e",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "0efbebfa-1665-46fd-a28e-6575b869f5bc",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "0",
+                      "Color": "LL.Scheme.BackgroundColor0",
+                      "InternalId": "ab0fdb2b-7e0e-447d-888d-f6b99a0ed84f",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "27a3e881-a47c-44ef-9ec3-6c8afd237f01",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "9dbba82e-74b9-4e02-8e3b-ddea268e4a44",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "73823770-66a7-4081-8b6f-f0fbd717c44d",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "219d1689-33b0-4f10-93dc-30c9780ecf2a",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "f6d06d0a-9aa8-4020-be57-01c4d9567ab5",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "d102d891-6204-4c4c-8bff-4931a0113ed2",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "fd219d00-8b66-436e-a527-b993feb24c81",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "eb5827c8-2eca-4ed4-ac15-1db6d3855fa2",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "3867e3da-c8b8-49c8-a64d-9853d63e171e",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "50870",
+                    "InternalId": "3456c6b6-331a-493f-9028-b84474b20660",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  }
+                ],
+                "IndexBookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "88b1b702-a650-4b13-93ea-ed7821fa0143",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "Anchor": {
+                  "Contents": "0",
+                  "ToTop": "True",
+                  "InternalId": "cfd83046-6f6c-4735-82e7-0b9235a1d117",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyAnchor"
+                },
+                "Name": "Zeilendefinition  1",
+                "Condition": "True",
+                "DisplayInDesigner": "True",
+                "ReservedSpace": {
+                  "Left": "0",
+                  "Top": "990",
+                  "Right": "0",
+                  "Bottom": "0",
+                  "InternalId": "db044288-cda8-4fee-aefb-4f369021e1e5",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyReservedSpace"
+                },
+                "DefaultFont": {
+                  "Default": "True",
+                  "Bold": "Null()",
+                  "Color": "Null()",
+                  "FaceName": "Null()",
+                  "GdiCharSet": "Null()",
+                  "Italic": "Null()",
+                  "Size": "Null()",
+                  "Strikeout": "Null()",
+                  "Underline": "Null()",
+                  "Width": "Null()",
+                  "InternalId": "7f5fe70a-6478-4b07-8b83-726f61439d5d",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                },
+                "Bookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "cc56f791-e683-49ec-892a-0dc9a9cf6ffe",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "InternalId": "e160f2da-195a-4933-8f24-f97aa685dcc5",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "TableLineData"
+              }
+            ],
+            "Header": [
+              {
+                "$type": "header",
+                "Fields": [
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "a60c6db8-2f56-4605-8964-0b88bc889023",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "\u0022ID\u0022",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "1f705193-5f99-404a-9e25-7611360fa60b",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "c5b21d3c-a86a-42d5-ad4b-56e5310b1c60",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "True",
+                      "Color": "LL.Color.White",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "12",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "831b926c-ce42-4621-94a8-f74c97d2a5b5",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "510efa3c-1d8b-4c68-97b0-b41e79d40c06",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "83746939-1778-4a67-84b7-85d96cff8b7e",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "ec35f9b3-852e-4bbf-b2da-cf8f829f1018",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": {
+                      "Ascending": "\u0022\u0022",
+                      "Descending": "\u0022\u0022",
+                      "InternalId": "240d6a97-439d-4fe6-a81c-fa601ff2f6c0",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertySortOrders"
+                    },
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "cadb41a5-5386-4b9a-9a25-945f5bac10f7",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "31a5a8d0-5d94-43d3-ad23-9500c94e629d",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "123cca45-dcd7-4170-b949-2cb8263d369f",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "1",
+                      "Color": "LL.Scheme.BackgroundColor2",
+                      "InternalId": "1fa3db9c-9d80-4133-845d-04f8fa0d92d0",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "df9c01de-cff2-4565-b3ce-7913b54bd8da",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "2989b15e-d331-48c5-bb68-f7c7e290ffae",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "c7c98f86-b82c-4978-a6b8-4d58ec627c5b",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "7a21f753-fe7e-4656-97aa-9d038e4d8a07",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "c99dbcea-f5e4-4b38-8e0d-f3c4c6cb51e4",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "3b8a84e0-421a-4e92-b247-6a7e0d1465d2",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "c2603948-e7a5-4e26-96ed-d41d0dbd0d9c",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "4091b569-03bf-4166-bfff-b0ea83145745",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "eec1e187-351d-4970-8df9-7ddc5b5972fb",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "21000",
+                    "InternalId": "473fb448-83d0-4113-ae10-f852e7a00021",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "c49dd8c4-b3cd-487a-a3ab-434569ea9327",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "\u0022Name\u0022",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "89007cea-f134-4f4a-bbc8-5e109065e6e8",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "e03f12f6-fa4f-475f-9fe0-4c39a2848a44",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "True",
+                      "Color": "LL.Color.White",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "12",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "debc9047-c8af-470c-a92e-8a3dea48419f",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "9f314a38-6cd5-4426-af22-ef201b030a5f",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "a5ea2e18-402d-40b5-bb81-ad4122b5757e",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "83263934-4027-45b5-bac5-21a16a973be2",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": {
+                      "Ascending": "\u0022\u0022",
+                      "Descending": "\u0022\u0022",
+                      "InternalId": "9c9c90f0-74d6-417d-8e57-c572c0a3194d",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertySortOrders"
+                    },
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "4a8e88fe-1a14-400a-bcad-71dcb89b8ea0",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "ed44ed78-dc1e-4371-af7c-0ad3ca63c9f0",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "c26ebcf7-8ca7-4adf-94c3-9ae4501ab21a",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "1",
+                      "Color": "LL.Scheme.BackgroundColor2",
+                      "InternalId": "90be94bf-e22f-4659-a735-dfde0984b909",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "8ee80d9c-007a-4700-ac9f-58c23abaa788",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "a2f01d4b-48c4-4797-8874-2f048d91c7ad",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "c6c3d3d5-ce83-40e5-8dae-12ec2ed69d1a",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "26a90045-7a55-4bb0-beb3-3446b94ab10d",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "3ec0cf02-e7bf-4a3d-87ae-27ed8e0fa735",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "40893ec6-46e4-4303-b32e-6da6beb8e686",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "3eee659c-7763-4494-adec-fa2520134a91",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "55b81c2f-4a27-4610-a67b-14df415db286",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "20dedac8-2eeb-4781-bfd2-389bc683ddd0",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "35000",
+                    "InternalId": "85debbfc-2011-420e-992a-27297f791890",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "3e79f515-c268-41ab-9c32-ecadb40ce73b",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "\u0022City\u0022",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "51102559-5fa1-49be-9bee-be59e969f6f1",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "9eb75710-04ea-4f06-86f3-c4e013234a2a",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "True",
+                      "Color": "LL.Color.White",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "12",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "0bd93564-a8a7-4724-abd6-abef980c0163",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "e745d3d1-839f-4655-8857-ffe01ef22bff",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "89747774-4300-4422-9832-1dc357caf6ee",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "73db943d-b394-4665-aef2-58216b0d8b48",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": {
+                      "Ascending": "\u0022\u0022",
+                      "Descending": "\u0022\u0022",
+                      "InternalId": "f61272dd-2f50-49c2-a7d5-28ac4c7a6a5a",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertySortOrders"
+                    },
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "55838da0-7085-4e17-b5e5-33302b350d77",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "d81dd622-c32e-48c5-9f1f-1bdf633535ac",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "2bdcc6ab-becd-471c-9f16-bd8b749af5ab",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "1",
+                      "Color": "LL.Scheme.BackgroundColor2",
+                      "InternalId": "12510e57-1063-42f2-b3db-c6e5560a47d5",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "9f11aaa0-1213-4a9b-9e6e-155930b55d18",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "2faa571e-4e16-4c63-be5a-ad02bb90431c",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "61e2a30d-2ca7-4814-a907-6c89b8a16d38",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "82124b7b-8ab0-44f0-b6dc-0a518f7593e1",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "0853519a-e16a-4712-8f06-79cc95d4da7f",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "fcc54823-a622-43f6-a70d-73dcc8088e28",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "6ea95954-7cbd-48fd-a11e-f6baccccb572",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "a1f3efca-b4de-4949-adc0-cf7821f928e5",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "913799a3-63e4-41c8-846f-f07d7fe4cd92",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "29000",
+                    "InternalId": "046979a4-e582-4ba6-aa4a-adb8e8c398a4",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "f27fad6b-8a89-4b52-a793-e97759943254",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "\u0022Street\u0022",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "80187b57-ca48-4624-9901-041fe98c5c66",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "055010e2-0bad-4667-97ee-3064b2411b9a",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "True",
+                      "Color": "LL.Color.White",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "12",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "837963b4-902b-474c-a9ef-c4ea9cf3de63",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "d28224f1-f1ef-4056-9ca5-30f0bcbce6d6",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "23a69ed3-746d-4e7b-a247-b44c3f8ae93c",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "6cadf1b0-7674-441c-8f2c-d57b48edc997",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": {
+                      "Ascending": "\u0022\u0022",
+                      "Descending": "\u0022\u0022",
+                      "InternalId": "df14a100-da24-4d9d-b3f7-9bdb707e67c5",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertySortOrders"
+                    },
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "56ccb072-5c6e-456d-b7e1-4abc70c1a094",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "1a13a424-846f-41cf-941a-ac128d3f14f9",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "116281bd-38a8-43f9-90da-aa1646879e2e",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "1",
+                      "Color": "LL.Scheme.BackgroundColor2",
+                      "InternalId": "43374f02-b232-42d9-95f0-dd2a8b8d9913",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "89e3f1b3-7b21-4882-ae9d-3775e423c23e",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "0e062774-2245-4ba7-b074-29775b923951",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "496f627b-6a40-449e-903a-7777499a2421",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "2258c09d-9a02-4853-a573-1c8ffa6897aa",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "337827d0-a977-46f3-b720-b56fdb51f572",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "c1f4a142-0956-488a-9ac5-64cf36977c4f",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "2c83273d-2ddb-4c92-bd23-a5893cc3d04e",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "5185810f-82ac-45d5-9635-85b3af0f8b22",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "1f5efe2a-cfdc-4b43-b413-1e867a4fe92a",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "46990",
+                    "InternalId": "20bf2ee6-26d0-4d25-9a13-534ee9c27e06",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "1fdb421c-815b-4942-9f02-6ee8c2a99916",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "\u0022Phone\u0022",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "7a33c2ff-140e-43d0-9e34-d46383fb0bd7",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "c8b59467-22fa-4389-a13d-687991a7a5b4",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "True",
+                      "Color": "LL.Color.White",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "12",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "48473086-b56f-4554-82f9-91deed8b5684",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "7ffffd0b-d52f-4eb6-be9a-5b45967a8904",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "3f2fe4c6-e81c-488e-9557-69ec3aba3e14",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "24cb0f28-29e5-4558-9a47-2124361dbdfa",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": {
+                      "Ascending": "\u0022\u0022",
+                      "Descending": "\u0022\u0022",
+                      "InternalId": "56b57317-2302-47f8-b43c-51e4b1d3a133",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertySortOrders"
+                    },
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "a04244c5-fc34-41e9-b221-091c3bc4626d",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "e857e4f4-bcfe-4d92-9298-b6b7c1d97527",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "687e33fe-18d8-4c86-bc33-a4c7186c78ca",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "1",
+                      "Color": "LL.Scheme.BackgroundColor2",
+                      "InternalId": "88c21a3f-f1f7-4383-a0ae-bb787da1d482",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "c9b853a7-51eb-4603-b327-77fed00ed80f",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "180ffda1-c4a2-4229-a79d-283bc6d4b440",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "828e5182-7aba-42f5-9c47-ff5bee7de7e5",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "49a9cc0a-30dc-415d-83ec-f47df34136e7",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "04a15188-c8ab-4b68-be38-a0cec337a50a",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "73c101c1-0ea5-42b4-b457-eecab1ab8a0d",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "f2d20abb-94a0-48d1-b871-fd685da0e897",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "76adafe1-ad4f-4b9b-b1a9-5e0f6361d135",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "da01b1a8-5869-49db-8a04-39e950c6ff88",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "50870",
+                    "InternalId": "03bc6894-6bcd-44f0-b7b7-822144fd7cc7",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  }
+                ],
+                "IndexBookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "08975da8-1100-4e9a-baee-c87a86d88326",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "Anchor": {
+                  "Contents": "0",
+                  "ToTop": "True",
+                  "InternalId": "2fe22396-a935-4207-ae2c-d9c1f6a05391",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyAnchor"
+                },
+                "Name": "Line Definition  1",
+                "Condition": "True",
+                "DisplayInDesigner": "True",
+                "ReservedSpace": {
+                  "Left": "0",
+                  "Top": "0",
+                  "Right": "0",
+                  "Bottom": "7010",
+                  "InternalId": "d7e58473-37df-4ea4-8038-792f3b60e9d4",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyReservedSpace"
+                },
+                "DefaultFont": {
+                  "Default": "True",
+                  "Bold": "Null()",
+                  "Color": "Null()",
+                  "FaceName": "Null()",
+                  "GdiCharSet": "Null()",
+                  "Italic": "Null()",
+                  "Size": "Null()",
+                  "Strikeout": "Null()",
+                  "Underline": "Null()",
+                  "Width": "Null()",
+                  "InternalId": "44760b60-7a81-4330-a3ff-a4f39aaed8e6",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                },
+                "Bookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "b7a33fb6-491d-46c3-bf96-9d5bef821934",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "InternalId": "008ac192-2a78-4264-9b7d-f6b7a042e118",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "TableLineHeader"
+              }
+            ],
+            "GroupHeader": [
+              {
+                "$type": "groupHeader",
+                "KeepGroupTogether": "False",
+                "PageBreakOptions": {
+                  "ResetPageNumberOption": "0",
+                  "BreakBefore": "False",
+                  "InternalId": "2cd946e6-e247-498a-a861-2e473b6b0b82",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PageBreakOptions"
+                },
+                "RepeatAsHeader": "False",
+                "Expandable": "False",
+                "GroupBy": "",
+                "GroupSums": "",
+                "Fields": [],
+                "IndexBookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "5a838129-f31f-4c78-9ae0-1a630cf1d43a",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "Anchor": {
+                  "Contents": "0",
+                  "ToTop": "True",
+                  "InternalId": "64097d38-a8f3-4337-b638-08269a0e7f67",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyAnchor"
+                },
+                "Name": "",
+                "Condition": "True",
+                "DisplayInDesigner": "True",
+                "ReservedSpace": {
+                  "Left": "0",
+                  "Top": "1000",
+                  "Right": "0",
+                  "Bottom": "0",
+                  "InternalId": "e9f66454-97e1-445b-a56e-5d57546af290",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyReservedSpace"
+                },
+                "DefaultFont": {
+                  "Default": "True",
+                  "Bold": "Null()",
+                  "Color": "Null()",
+                  "FaceName": "Null()",
+                  "GdiCharSet": "Null()",
+                  "Italic": "Null()",
+                  "Size": "Null()",
+                  "Strikeout": "Null()",
+                  "Underline": "Null()",
+                  "Width": "Null()",
+                  "InternalId": "6b6684cd-c725-467f-8913-de440510e9a0",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                },
+                "Bookmark": {
+                  "Level": "1",
+                  "Text": "",
+                  "InternalId": "375d5205-0a2f-41ac-8975-738cd2c52ba0",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "InternalId": "72941919-c319-4f85-8502-ad1014ea7a5d",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "TableLineGroupHeader"
+              }
+            ],
+            "GroupFooter": [
+              {
+                "$type": "groupFooter",
+                "TriggerNewPage": "False",
+                "GroupBy": "",
+                "GroupSums": "",
+                "Fields": [],
+                "IndexBookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "43981914-89d9-4abe-b8da-d6df69684075",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "Anchor": {
+                  "Contents": "0",
+                  "ToTop": "True",
+                  "InternalId": "62a73aea-ba13-4741-8042-7b7d2bf16811",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyAnchor"
+                },
+                "Name": "",
+                "Condition": "True",
+                "DisplayInDesigner": "True",
+                "ReservedSpace": {
+                  "Left": "0",
+                  "Top": "0",
+                  "Right": "0",
+                  "Bottom": "1000",
+                  "InternalId": "f1dcfc7b-c60d-4ec3-81ed-31ecaca6ff80",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyReservedSpace"
+                },
+                "DefaultFont": {
+                  "Default": "True",
+                  "Bold": "Null()",
+                  "Color": "Null()",
+                  "FaceName": "Null()",
+                  "GdiCharSet": "Null()",
+                  "Italic": "Null()",
+                  "Size": "Null()",
+                  "Strikeout": "Null()",
+                  "Underline": "Null()",
+                  "Width": "Null()",
+                  "InternalId": "99365881-4726-4578-9530-f41a7d7403e1",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                },
+                "Bookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "cc6582d6-d558-427a-b6d9-c49f73ef0fa6",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "InternalId": "61dec954-f34a-4bf8-a0cb-a6530ce05604",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "TableLineGroupFooter"
+              }
+            ],
+            "Footer": [
+              {
+                "$type": "footer",
+                "IndexedGroups": "0",
+                "Fields": [
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "1",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "803198df-7a11-46b5-ab06-9558abb390ab",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "\u0022\u0022",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "44aa889b-d2a4-4faa-bd96-3ede00d385cc",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "2009123d-c9ad-4f47-baba-7ec80e0a0b02",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "Null()",
+                      "Color": "Null()",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "12",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "77ead99b-3e5b-4044-b867-943968dd7a97",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "61822c71-ba22-4c01-ae37-0460b38f3284",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "b1775879-9504-4dd7-be4e-7b5c3b34bc4e",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "0fa4f0fd-f899-4749-80bd-18227bde3c00",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": null,
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "ad5ed8d5-065c-4f24-81c4-2651d9a84c8e",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "03b42e06-037a-4a02-b06f-c29281cb332b",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "fea46fcb-978c-49d3-8fa4-8e609f493cf6",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "0",
+                      "Color": "LL.Scheme.BackgroundColor1",
+                      "InternalId": "1571272e-936a-4de1-9557-08097ca0b583",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "636f222d-8a39-41c5-83e9-70f501300174",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "12edb551-947a-4b4d-b2ac-61ffb5a83ea5",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "10064258-3098-4940-803a-ab6cbf4c593b",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "aa062f5a-db3a-458d-bfdb-3272c2fc0111",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "4ac908a4-dd78-4495-9738-43221194e3f0",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "cbf892d4-8dc8-4146-a01e-c377d27df281",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "ad6a7cb6-dc37-4b04-94a3-288fbb0111f3",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "b71250c9-38e3-44f6-bc8e-3cfe3abe0cac",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "78e92dcd-761d-4182-8f9e-5b8583aec21d",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "132000",
+                    "InternalId": "31251ab5-9ff2-4353-9201-da90a793d1ce",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  },
+                  {
+                    "$type": "text",
+                    "Adjusted": "False",
+                    "LineSpacing": "0",
+                    "AlignmentHorizontal": {
+                      "Alignment": "2",
+                      "DecimalPosition": "-10000",
+                      "InternalId": "40bb5afa-c6a6-4813-a7df-fe2941ade6ca",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAlignmentHorizontal"
+                    },
+                    "AlignmentVertical": "0",
+                    "Contents": "FStr$( LL.CountPrintedData,\u0022####\u0022) \u002B \u0022 addresses\u0022",
+                    "Direction": "0",
+                    "ExportAsPicture": "False",
+                    "FixedHeight": "0",
+                    "Wrapping": {
+                      "FlowControl": "False",
+                      "Line": "0",
+                      "Force": "False",
+                      "InternalId": "c90fca3a-5a9a-401e-a104-e098849e7eec",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFieldWrapping"
+                    },
+                    "OptimizeSpaces": "True",
+                    "OutputFormatter": {
+                      "FormatterType": "",
+                      "SampleText": "Ohne",
+                      "InternalId": "fc27e9fa-15fa-47a2-bef0-8b816548591a",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+                    },
+                    "Font": {
+                      "Default": "True",
+                      "Bold": "Null()",
+                      "Color": "Null()",
+                      "FaceName": "Null()",
+                      "GdiCharSet": "Null()",
+                      "Italic": "Null()",
+                      "Size": "12",
+                      "Strikeout": "Null()",
+                      "Underline": "Null()",
+                      "Width": "Null()",
+                      "InternalId": "ff615f84-bccb-4822-b075-d144a049dfbe",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                    },
+                    "ConditionalFormatter": [],
+                    "Animation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "Color": "LL.Color.White",
+                      "PartialAreaOnly": "",
+                      "Trigger": {
+                        "Trigger": "0",
+                        "TriggerDelay": "0.0",
+                        "InternalId": "d47a04fa-ed3a-4263-b969-55ff766dad0a",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+                      },
+                      "InternalId": "bcc838af-5e6d-4550-8a02-4367fe1e0ce7",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyAnimation"
+                    },
+                    "DrillDownLinks": [],
+                    "XhtmlAnimation": {
+                      "Animation": "\u0022\u0022",
+                      "AnimationTime": "1.0",
+                      "TriggerDelay": "0.0",
+                      "InternalId": "3a8c1c08-50e6-4391-b0c8-aede9d4b0a79",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+                    },
+                    "LinkUrl": "",
+                    "SortOrders": null,
+                    "Condition": "True",
+                    "Filling": {
+                      "Bitmap": {
+                        "EmbeddedContents": "",
+                        "Mode": "0",
+                        "Formula": "",
+                        "Variable": "",
+                        "FileInfo": {
+                          "FileNameIsRelative": "False",
+                          "FileName": "",
+                          "InternalId": "498563e9-44e4-4294-ad0f-2f54ee3dc043",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+                        },
+                        "Display": {
+                          "OriginalSize": "False",
+                          "Alignment": "0",
+                          "Isotropic": "True",
+                          "InternalId": "f72ae9ef-c9d6-447f-98cb-8f72a95fb6ba",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyDisplay"
+                        },
+                        "SaveAsImage": "",
+                        "Embedded": "False",
+                        "InternalId": "66f982ad-f3da-4a32-a572-b9879e6632ce",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+                      },
+                      "Pattern": "1",
+                      "Color2": "LL.Color.White",
+                      "Color3": "LL.Color.White",
+                      "Alpha": "50",
+                      "Style": "0",
+                      "Color": "LL.Scheme.BackgroundColor1",
+                      "InternalId": "94ed026d-694e-4283-a208-1c74f633d0d9",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+                    },
+                    "Name": "",
+                    "ObjectType": "Text",
+                    "Frame": {
+                      "Default": "False",
+                      "Layout": "1",
+                      "Left": {
+                        "Space": "990",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "95064422-9b80-4499-aa5a-3d9c0d48f79b",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "15c6487b-6db7-4a6d-98a2-2d309d74b21f",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Top": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "84a03333-3eb0-47cd-bf17-6205364756ca",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "63a0d49c-a476-41ce-be01-705fdc03da2c",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Right": {
+                        "Space": "5000",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "9e900e8c-e0d9-41f8-a232-e03fa2f5f890",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "3dd12392-f3b4-484f-bdae-e7fb50b00f2f",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "Bottom": {
+                        "Space": "500",
+                        "Line": {
+                          "Visible": "False",
+                          "Color": "LL.Color.Black",
+                          "LineType": "0",
+                          "Width": "0",
+                          "InternalId": "bacb109c-38e2-4ad9-8d61-e5302e419067",
+                          "InternalObjectType": "",
+                          "ObjectTypeForPropertyGrid": "PropertyLine"
+                        },
+                        "InternalId": "db44eed8-1704-4b22-9c45-40545f6def57",
+                        "InternalObjectType": "",
+                        "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+                      },
+                      "InternalId": "1dd838cd-2a1c-4236-96f4-b7d35cd2c7d4",
+                      "InternalObjectType": "",
+                      "ObjectTypeForPropertyGrid": "PropertyFrameExt"
+                    },
+                    "Width": "50870",
+                    "InternalId": "330e0f3d-966b-46e3-8cc5-24adf39138d7",
+                    "InternalObjectType": "Text",
+                    "ObjectTypeForPropertyGrid": "TableFieldText"
+                  }
+                ],
+                "IndexBookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "9d70e895-0e43-45e8-904e-d21ecef77afd",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "Anchor": {
+                  "Contents": "0",
+                  "ToTop": "True",
+                  "InternalId": "0ad23642-94ad-4b42-bdcc-95154789c9a5",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyAnchor"
+                },
+                "Name": "Line Definition  1",
+                "Condition": "True",
+                "DisplayInDesigner": "True",
+                "ReservedSpace": {
+                  "Left": "0",
+                  "Top": "5000",
+                  "Right": "0",
+                  "Bottom": "0",
+                  "InternalId": "fd576b77-b8a0-4326-9b6f-931f18dd4fa7",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyReservedSpace"
+                },
+                "DefaultFont": {
+                  "Default": "True",
+                  "Bold": "Null()",
+                  "Color": "Null()",
+                  "FaceName": "Null()",
+                  "GdiCharSet": "Null()",
+                  "Italic": "Null()",
+                  "Size": "Null()",
+                  "Strikeout": "Null()",
+                  "Underline": "Null()",
+                  "Width": "Null()",
+                  "InternalId": "12776948-e034-48fd-961f-d909d95e94a6",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyFontExt"
+                },
+                "Bookmark": {
+                  "Level": "0",
+                  "Text": "",
+                  "InternalId": "a6d6ae53-0e2b-4403-bcf4-4d39ece0e0e6",
+                  "InternalObjectType": "",
+                  "ObjectTypeForPropertyGrid": "PropertyBookmark"
+                },
+                "InternalId": "6b96ec5b-5770-4b03-849d-ea563abf2b3a",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "TableLineFooter"
+              }
+            ],
+            "InternalId": "513aedf6-0b2e-40be-86d1-3d9acf036e02",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyTableLines"
+          },
+          "LineOptions": {
+            "Footer": {
+              "KeepTogether": {
+                "DataLineDefinitions": false,
+                "IndexedGroups": false,
+                "InternalId": "ed32f6df-2556-4ad8-8c4b-0c08b1c4de34",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyKeepTogether"
+              },
+              "InternalId": "0cc97b1b-a1a2-4b53-bf8f-db8b95f1d86d",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFooterLinesOptions"
+            },
+            "GroupFooter": {
+              "AlsoOnEmptyGroup": "False",
+              "KeepTogether": "False",
+              "InternalId": "bdccdcb1-ac79-4f97-97f3-76c1bf704b02",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyGroupFooterLinesOptions"
+            },
+            "GroupHeader": {
+              "ConcatNextDataLine": "True",
+              "KeepTogether": "False",
+              "InternalId": "e0143d10-92e1-474d-bbba-56813989b043",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyGroupHeaderLinesOptions"
+            },
+            "Data": {
+              "KeepTogether": {
+                "DataLineDefinitions": true,
+                "IndexedGroups": false,
+                "InternalId": "f2a3ca98-b798-4b63-9ff4-71db71042391",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyKeepTogether"
+              },
+              "KeepTogetherDataLine": "",
+              "Suppress": "False",
+              "ForceSumCalculation": "False",
+              "ZebraPattern": {
+                "Pattern": "1",
+                "Color2": "LL.Color.White",
+                "Color3": "LL.Color.White",
+                "Alpha": "50",
+                "Style": "0",
+                "Color": "LL.Color.WhiteSmoke",
+                "InternalId": "7c22cfbe-b246-41e5-ac38-6d2e9aefe8f8",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyFillingExt"
+              },
+              "InternalId": "c71a975f-d94e-4fe4-a72e-b89c78ecf81b",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyDataLinesOptions"
+            },
+            "InternalId": "f5ae6ec4-803a-498e-a136-6bc992bb56a8",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLineOptions"
+          },
+          "Expandable": false,
+          "PageBreakCondition": "False",
+          "DefaultFrame": {
+            "Layout": "1",
+            "Left": {
+              "Space": "990",
+              "Line": {
+                "Visible": "True",
+                "Color": "RGB(0,0,0)",
+                "LineType": "0",
+                "Width": "0",
+                "InternalId": "84b623e5-daf7-4139-aa66-10df011ba815",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyLine"
+              },
+              "InternalId": "f4ee1a09-2301-423d-a6f3-0c2bbea0c2b4",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+            },
+            "Top": {
+              "Space": "500",
+              "Line": {
+                "Visible": "True",
+                "Color": "RGB(0,0,0)",
+                "LineType": "0",
+                "Width": "0",
+                "InternalId": "7cce5c49-bf97-484d-8f8e-932332bfb08a",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyLine"
+              },
+              "InternalId": "68d8136a-f2ba-47cc-89e4-0262f7652964",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+            },
+            "Right": {
+              "Space": "990",
+              "Line": {
+                "Visible": "True",
+                "Color": "RGB(0,0,0)",
+                "LineType": "0",
+                "Width": "0",
+                "InternalId": "6bacf72e-93d3-4619-bebe-7be7d01d4c0a",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyLine"
+              },
+              "InternalId": "fb8aed18-7b6c-495c-b477-148c6527f8d8",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+            },
+            "Bottom": {
+              "Space": "500",
+              "Line": {
+                "Visible": "True",
+                "Color": "RGB(0,0,0)",
+                "LineType": "0",
+                "Width": "0",
+                "InternalId": "ac138a32-c52d-4957-ae57-a4f2b96aaa81",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyLine"
+              },
+              "InternalId": "e2051a0e-e7ff-47ad-8c78-42137df45e95",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+            },
+            "InternalId": "207ef806-37b9-4793-9e34-105fbff009ea",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFrame"
+          },
+          "Frame": {
+            "Layout": "0",
+            "Left": {
+              "Line": {
+                "Visible": "False",
+                "Color": "LL.Color.Black",
+                "LineType": "0",
+                "Width": "0",
+                "InternalId": "514f1bfb-c6cc-42ca-89e1-70737cec5b80",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyLine"
+              },
+              "InternalId": "4750a5bf-9f22-443a-be4e-6b3a0cf26a58",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFrameLineBase"
+            },
+            "Top": {
+              "Line": {
+                "Visible": "False",
+                "Color": "LL.Color.Black",
+                "LineType": "0",
+                "Width": "0",
+                "InternalId": "f7da12f9-bda7-4b17-8c0a-1c496beb9383",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyLine"
+              },
+              "InternalId": "8af0fc90-514d-4c49-a399-e61bf94fa8cb",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFrameLineBase"
+            },
+            "Right": {
+              "Line": {
+                "Visible": "False",
+                "Color": "LL.Color.Black",
+                "LineType": "0",
+                "Width": "0",
+                "InternalId": "aede16bd-68b3-4943-90f5-76d60e15459a",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyLine"
+              },
+              "InternalId": "20d288c0-7f31-45f3-aadd-7b541cf3862c",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFrameLineBase"
+            },
+            "Bottom": {
+              "Line": {
+                "Visible": "False",
+                "Color": "LL.Color.Black",
+                "LineType": "0",
+                "Width": "0",
+                "InternalId": "0493e798-8ab1-4d2e-9f3a-43a44ff9223e",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyLine"
+              },
+              "InternalId": "ea6ce0d7-dc6d-4e65-95c0-6f748ca4339a",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyFrameLineBase"
+            },
+            "InternalId": "007f4a7f-6203-468e-a247-4253a3e0a742",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFrameWithoutSpacing"
+          },
+          "Filling": {
+            "Bitmap": {
+              "EmbeddedContents": "",
+              "Mode": "0",
+              "Formula": "",
+              "Variable": "",
+              "FileInfo": {
+                "FileNameIsRelative": "False",
+                "FileName": "",
+                "InternalId": "a06941cc-a579-4c19-a2d6-b6cf9e30b298",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyDrawingFileInfo"
+              },
+              "Display": {
+                "OriginalSize": "False",
+                "Alignment": "0",
+                "Isotropic": "True",
+                "InternalId": "04157e6e-dd81-4237-945a-23ab9cdf44d8",
+                "InternalObjectType": "",
+                "ObjectTypeForPropertyGrid": "PropertyDisplay"
+              },
+              "SaveAsImage": "",
+              "Embedded": "False",
+              "InternalId": "78bce75b-9f76-4b1a-bf20-65cf66b7fdbd",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyDrawingContents"
+            },
+            "Pattern": "1",
+            "Color2": "LL.Color.White",
+            "Color3": "LL.Color.White",
+            "Alpha": "50",
+            "Style": "0",
+            "Color": "LL.Color.LightGray",
+            "InternalId": "104dd7f5-8935-4fdc-8405-b339c8cca8fe",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFillingWithBitmap"
+          },
+          "FixedSize": {
+            "Enabled": "False",
+            "FillGap": "False",
+            "InternalId": "758f793a-f389-469f-9d0b-486827661489",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFixedSize"
+          },
+          "ShowSeparatorTickmarks": "True",
+          "SortOrderId": "\u0022\u0022",
+          "DesignScheme": "\u0022PROJECT\u0022",
+          "SubItems": [],
+          "TableId": "Persons",
+          "RelationId": "",
+          "Columns": {
+            "Count": "0",
+            "Distance": "990",
+            "ColumnBreakCondition": "False",
+            "ColumnBreakBefore": "False",
+            "InternalId": "3e95cd5b-52b3-4216-a1d2-d8c7d5b42887",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyColumns"
+          },
+          "Animation": {
+            "Animation": "\u0022\u0022",
+            "AnimationTime": "1.0",
+            "Color": "LL.Color.White",
+            "PartialAreaOnly": "",
+            "Trigger": {
+              "Trigger": "0",
+              "TriggerDelay": "0.0",
+              "InternalId": "0d3a0d51-06cf-40c9-a550-641f1ad797b8",
+              "InternalObjectType": "",
+              "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+            },
+            "InternalId": "ad0c27ac-317e-42d2-895e-2a681964b40e",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyAnimation"
+          },
+          "XhtmlAnimation": null,
+          "PageBreakOptions": {
+            "ResetPageNumberOption": "0",
+            "BreakBefore": "False",
+            "InternalId": "6aa0f4d5-93e7-4645-9ac9-b9dcbff2c5c5",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PageBreakOptions"
+          },
+          "Bookmark": {
+            "Level": "0",
+            "Text": "",
+            "InternalId": "e802988d-c4d8-4d9f-aabf-03812b1c5795",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyBookmark"
+          },
+          "DistanceBottom": "0",
+          "IndexBookmark": {
+            "Level": "0",
+            "Text": "",
+            "InternalId": "ecd101d7-f006-4cb1-8492-7d581ee46576",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyBookmark"
+          },
+          "Filter": "True",
+          "DistanceTop": "0",
+          "Condition": "True",
+          "Name": "",
+          "DisplayNameForUI": "Tabelle: [Persons]",
+          "InternalId": "460ed915-9ba5-46ea-9401-0ac06d182cac",
+          "InternalObjectType": "Table",
+          "ObjectTypeForPropertyGrid": "SubItemTable"
+        }
+      ],
+      "DefaultColumns": {
+        "Count": "0",
+        "Distance": "0",
+        "InternalId": "ea8e37a1-2e80-4141-a791-2644ae1829a6",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyDefaultColumns"
+      },
+      "LinkUrl": "",
+      "BreakBefore": "False",
+      "Condition": "True",
+      "IssueCondition": "",
+      "Locked": "False",
+      "Bookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "f97dc924-f08b-402c-b12c-c65dce9efe9a",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "IndexBookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "2e9faca8-8858-49f9-8297-c1f08ba0d480",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "ReadOnly": "False",
+      "UUID": "{895CA5F6-4BDD-49DC-B0E1-B07FAF496313}",
+      "TemplateUUID": "",
+      "LinkUUID": "",
+      "LayerId": 0,
+      "GroupId": 0,
+      "LinkMode": 0,
+      "Name": "Report Container",
+      "Selected": "False",
+      "Position": {
+        "Left": "15010",
+        "Top": "52980",
+        "Width": "182880",
+        "Height": "220420",
+        "InternalId": "ad77bbce-0493-4680-a09d-af79d879ac27",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyRect"
+      },
+      "Animation": null,
+      "XhtmlAnimation": null,
+      "InternalId": "a8ed73e2-5381-473a-bdaa-0827dace4097",
+      "InternalObjectType": "ReportContainer",
+      "ObjectTypeForPropertyGrid": "ObjectReportContainer"
+    },
+    {
+      "$type": "text",
+      "AllowPageBreak": "False",
+      "BottomAligned": "0",
+      "Paragraphs": [
+        {
+          "Adjusted": "False",
+          "Alignment": "0",
+          "Condition": "True",
+          "Contents": "\u0022Page \u0022 \u002B FStr$ (Page (),\u0022###\u0022,1) \u002B \u0022 of \u0022 \u002B TotalPages$ () \u002B \u0022\u00B6\u0022 \u002B \u0022Effective: \u0022 \u002B LocDate$ (Today ()) \u002B \u0022 \u0022 \u002B LocTime$ (Now (),\u0022\u0022,10)",
+          "ConditionalFormatter": [],
+          "LineSpacing": "0",
+          "Wrapping": {
+            "Page": "True",
+            "Line": "1",
+            "Force": "False",
+            "InternalId": "6cd6180e-f73a-4c25-b625-2f92f9e85ff3",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyParagraphWrapping"
+          },
+          "OutputFormatter": {
+            "FormatterType": "",
+            "SampleText": "Ohne",
+            "InternalId": "54fff02f-7461-4021-86be-60632338c6dd",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyOutputFormatterBase"
+          },
+          "Font": {
+            "Default": "True",
+            "Bold": "Null()",
+            "Color": "LL.Scheme.Color9",
+            "FaceName": "Null()",
+            "GdiCharSet": "Null()",
+            "Italic": "Null()",
+            "Size": "Null()",
+            "Strikeout": "Null()",
+            "Underline": "Null()",
+            "Width": "Null()",
+            "InternalId": "a334c562-114e-4e93-acf1-b50052e007f7",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyFontExt"
+          },
+          "OptimizeSpaces": "True",
+          "ParagraphSpacing": "0",
+          "TabAlignment": "0",
+          "TabPosition": "0",
+          "Unerasable": "False",
+          "InternalId": "7895efb2-9aa7-4f24-99f9-0d73f2fd0d0f",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "Paragraph"
+        }
+      ],
+      "Direction": "0",
+      "Filling": {
+        "Style": "0",
+        "Color": "LL.Color.LightGray",
+        "InternalId": "fa60b232-b2e5-4432-ba42-f28b49f6c304",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFilling"
+      },
+      "Frame": {
+        "Layout": "0",
+        "Left": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "7b17112b-5e06-4518-ac93-14d8e9b08ccc",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "2e558226-8f4d-4ff0-92ff-6bc45257d02a",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Top": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "a4885d6d-3efa-44cf-8b18-255d9100ede1",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "43d3b969-fc37-4de0-80d3-0fcf56054d12",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Right": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "1ecb6f14-e302-4426-bef5-37512b3292d9",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "a532df9f-702d-4cc6-bf56-f41296a2f5e1",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "Bottom": {
+          "Space": "0",
+          "Line": {
+            "Visible": "False",
+            "Color": "LL.Color.Black",
+            "LineType": "0",
+            "Width": "0",
+            "InternalId": "b98740fc-a23f-4200-9fc5-adc111c5bf83",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyLine"
+          },
+          "InternalId": "f9d97e72-4de0-4379-9a82-20a7611a7be7",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyFrameLine"
+        },
+        "InternalId": "c4ab2a38-154e-49f7-ae0c-e212ced3efac",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyFrame"
+      },
+      "ExportAsPicture": "False",
+      "LinkUrl": "",
+      "BreakBefore": "False",
+      "Condition": "True",
+      "IssueCondition": "",
+      "Locked": "False",
+      "Bookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "f9ebd3cd-245f-4050-b9d2-83ddbda392bb",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "IndexBookmark": {
+        "Level": "0",
+        "Text": "",
+        "InternalId": "06f7fb76-635a-429d-9b2f-b6527c82e737",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyBookmark"
+      },
+      "ReadOnly": "False",
+      "UUID": "{D8A2E6A0-0CF2-441A-A658-6114CD038972}",
+      "TemplateUUID": "",
+      "LinkUUID": "",
+      "LayerId": 0,
+      "GroupId": 0,
+      "LinkMode": 32,
+      "Name": "Print info",
+      "Selected": "False",
+      "Position": {
+        "Left": "15010",
+        "Top": "274950",
+        "Width": "182880",
+        "Height": "8730",
+        "InternalId": "eccc5e93-665a-46d4-bc02-5d798f42a96a",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyRect"
+      },
+      "Animation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "Color": "LL.Color.White",
+        "PartialAreaOnly": "",
+        "Trigger": {
+          "Trigger": "0",
+          "TriggerDelay": "0.0",
+          "InternalId": "70c8d0c2-e963-4c59-bdc7-4d1a1d68d173",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyAnimationTrigger"
+        },
+        "InternalId": "1d67c6f2-3d7c-4c92-8554-f834f6f07ca6",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyAnimation"
+      },
+      "XhtmlAnimation": {
+        "Animation": "\u0022\u0022",
+        "AnimationTime": "1.0",
+        "TriggerDelay": "0.0",
+        "InternalId": "f83a564d-979c-4516-a550-5901f640ae66",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyXhtmlAnimation"
+      },
+      "InternalId": "f8f29f76-0f0d-459f-8e2e-69aa02037d79",
+      "InternalObjectType": "Text",
+      "ObjectTypeForPropertyGrid": "ObjectText"
+    }
+  ],
+  "PageRanges": "",
+  "ProjectParameters": [
+    {
+      "Name": "LL.ActiveLayout",
+      "ParameterType": 536870916,
+      "Contents": "Standard-Layout",
+      "LocalizedName": "1.Aktiver Design-Bereich",
+      "IsVisible": true,
+      "InternalId": "f785901f-7149-43a1-a7e4-097380cb5a89",
+      "InternalObjectType": "LL.ActiveLayout",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.DesignScheme",
+      "ParameterType": 4,
+      "Contents": "\u0022COMBITCOLORWHEEL\u0022",
+      "LocalizedName": "Designschema",
+      "IsVisible": true,
+      "InternalId": "dc90587a-fd99-422f-b355-f3e38e873b48",
+      "InternalObjectType": "LL.DesignScheme",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.EmbeddedFonts",
+      "ParameterType": 65540,
+      "Contents": "",
+      "LocalizedName": "Eingebettete Schriftarten",
+      "IsVisible": true,
+      "InternalId": "26e203fd-f86e-48e7-b831-3cb691a6031f",
+      "InternalObjectType": "LL.EmbeddedFonts",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.RecipName",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "1.Empf\u00E4ngername",
+      "IsVisible": true,
+      "InternalId": "f562ac2a-907f-4f0f-90da-bcc0fba5c281",
+      "InternalObjectType": "LL.FAX.RecipName",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.RecipNumber",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "0.Empf\u00E4ngerfaxnummer",
+      "IsVisible": true,
+      "InternalId": "dba6fb51-a411-4557-8bc4-b1b7a0489ce1",
+      "InternalObjectType": "LL.FAX.RecipNumber",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.SenderBillingCode",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "5.Absenderverrechnungscode",
+      "IsVisible": true,
+      "InternalId": "f928d856-2732-4412-8f48-6c8d1c3a579f",
+      "InternalObjectType": "LL.FAX.SenderBillingCode",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.SenderCompany",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "3.Absenderfirma",
+      "IsVisible": true,
+      "InternalId": "6a86bf25-f3e3-4e41-8af5-8071c8923028",
+      "InternalObjectType": "LL.FAX.SenderCompany",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.SenderDepartment",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "4.Absenderabteilung",
+      "IsVisible": true,
+      "InternalId": "c37b11c9-8f1b-491c-9778-b70a3202487f",
+      "InternalObjectType": "LL.FAX.SenderDepartment",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.FAX.SenderName",
+      "ParameterType": 1,
+      "Contents": "",
+      "LocalizedName": "2.Absendername",
+      "IsVisible": true,
+      "InternalId": "be571ce9-ef21-401c-8a40-154587eba4af",
+      "InternalObjectType": "LL.FAX.SenderName",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.IssueCount",
+      "ParameterType": 4,
+      "Contents": "1",
+      "LocalizedName": "5.Ausfertigungsdruck: Anzahl der Ausfertigungen",
+      "IsVisible": true,
+      "InternalId": "5cbbc153-7c98-4a8d-8757-f96fba70b83f",
+      "InternalObjectType": "LL.IssueCount",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.BCC",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "2.An (BCC)",
+      "IsVisible": true,
+      "InternalId": "9f6fb4b6-e856-49af-81f4-ab42f3f7a53a",
+      "InternalObjectType": "LL.MAIL.BCC",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.CC",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "1.An (CC)",
+      "IsVisible": true,
+      "InternalId": "8f87e10e-fc00-46ba-9bb8-0b83547783ea",
+      "InternalObjectType": "LL.MAIL.CC",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.From",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "3.Von (From)",
+      "IsVisible": true,
+      "InternalId": "0c9a3dd8-53c1-4d1a-a489-44ad28ca6634",
+      "InternalObjectType": "LL.MAIL.From",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.ReplyTo",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "4.Von (ReplyTo)",
+      "IsVisible": true,
+      "InternalId": "b9c4232f-8539-4d84-9f40-6e2bb40d275a",
+      "InternalObjectType": "LL.MAIL.ReplyTo",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.Subject",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "5.Betreff",
+      "IsVisible": true,
+      "InternalId": "6b3f8caf-b82a-483e-b29d-2b168727e303",
+      "InternalObjectType": "LL.MAIL.Subject",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MAIL.To",
+      "ParameterType": 2,
+      "Contents": "",
+      "LocalizedName": "0.An (To)",
+      "IsVisible": true,
+      "InternalId": "3758e561-e0c4-4040-94b4-313d29d9a0ce",
+      "InternalObjectType": "LL.MAIL.To",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MinPageCount",
+      "ParameterType": 4,
+      "Contents": "1",
+      "LocalizedName": "4.Mindestzahl der Druckseiten",
+      "IsVisible": true,
+      "InternalId": "17095704-23f5-4264-9326-6b5a5bf96e4e",
+      "InternalObjectType": "LL.MinPageCount",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MultiPassCondition",
+      "ParameterType": 65540,
+      "Contents": "",
+      "LocalizedName": "",
+      "IsVisible": false,
+      "InternalId": "ee453119-0fee-403d-94d0-d5bb9ad3e1e6",
+      "InternalObjectType": "LL.MultiPassCondition",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.MultiPassCount",
+      "ParameterType": 65540,
+      "Contents": "1",
+      "LocalizedName": "8.1.Mehrpassverfahren: Anzahl der Durchl\u00E4ufe",
+      "IsVisible": true,
+      "InternalId": "0418b1a5-deeb-4831-b6b0-aa4463247847",
+      "InternalObjectType": "LL.MultiPassCount",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.PageCondition",
+      "ParameterType": 4,
+      "Contents": "",
+      "LocalizedName": "",
+      "IsVisible": false,
+      "InternalId": "bc9f6c2f-279c-421f-b0a3-351aa402bf8c",
+      "InternalObjectType": "LL.PageCondition",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.ProjectDescription",
+      "ParameterType": 536870916,
+      "Contents": "List \u0026 Label Unicode Sample",
+      "LocalizedName": "0.Projektbeschreibung",
+      "IsVisible": true,
+      "InternalId": "afff1223-6f71-48f0-a04e-007316a25812",
+      "InternalObjectType": "LL.ProjectDescription",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    },
+    {
+      "Name": "LL.SlideShow.TransformationID",
+      "ParameterType": 4,
+      "Contents": "\u0022\u0022",
+      "LocalizedName": "Transformation f\u00FCr Pr\u00E4sentationsmodus",
+      "IsVisible": true,
+      "InternalId": "f13d9e33-0ce0-4241-9353-9ae34a50308d",
+      "InternalObjectType": "LL.SlideShow.TransformationID",
+      "ObjectTypeForPropertyGrid": "ProjectParameter"
+    }
+  ],
+  "ProjectTemplates": [],
+  "Regions": [
+    {
+      "Collate": "0",
+      "IsStandardRegion": "True",
+      "UseForOutput": "True",
+      "Condition": "",
+      "Copies": "1",
+      "Device": {
+        "Name": "\u0022Microsoft XPS Document Writer\u0022",
+        "Devmode": "",
+        "ExtraData": "",
+        "InternalId": "4afda689-5126-42c7-82c2-35a31e3d78cc",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyDevice"
+      },
+      "Duplex": "0",
+      "FitPage": "False",
+      "ForcePaperFormat": "True",
+      "Layout": null,
+      "Name": "Region",
+      "Paper": {
+        "Format": "9",
+        "Orientation": "1",
+        "Horizontal": "209980",
+        "Vertical": "296920",
+        "Extent": {
+          "Horizontal": "210016",
+          "Vertical": "297011",
+          "InternalId": "ba209e7b-e541-4375-b6d8-2be98a236046",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertySize"
+        },
+        "PrintableArea": {
+          "Extent": {
+            "Horizontal": "210016",
+            "Vertical": "297011",
+            "InternalId": "b1d5496b-0d58-427f-b053-28aa5deb51bd",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyReadOnlySize"
+          },
+          "Offset": {
+            "Horizontal": "0",
+            "Vertical": "0",
+            "InternalId": "57f40cb4-963e-4aca-809f-d702a2b3cf4f",
+            "InternalObjectType": "",
+            "ObjectTypeForPropertyGrid": "PropertyReadOnlySize"
+          },
+          "InternalId": "a198cc7b-1c3d-4324-a6d0-74b47670b1b2",
+          "InternalObjectType": "",
+          "ObjectTypeForPropertyGrid": "PropertyPrintableArea"
+        },
+        "InternalId": "8679c748-e181-4d1d-9cfc-dc071c11ad25",
+        "InternalObjectType": "",
+        "ObjectTypeForPropertyGrid": "PropertyPaper"
+      },
+      "SourceTray": "0",
+      "UsePhysicalPaper": "True",
+      "ShowInPrintDialog": "True",
+      "InternalId": "32800813-1734-4030-94b6-3b2c2561b218",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "Region"
+    }
+  ],
+  "ReportParameters": [],
+  "ReportParametersFromTemplates": [],
+  "ReportSections": {
+    "TableOfContents": {
+      "FileName": "",
+      "Condition": "True",
+      "InternalId": "dc116f05-cbee-471f-81af-df96cb115a63",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyReportSection"
+    },
+    "Index": {
+      "FileName": "",
+      "Condition": "True",
+      "InternalId": "5ab78322-c2a9-47c0-8864-37a2cb6f5da2",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyReportSection"
+    },
+    "ReverseSide": {
+      "DuplexReverseSideMode": "3",
+      "IssueCondition": "True",
+      "SimplexReverseSideMode": "2",
+      "FileName": "",
+      "Condition": "True",
+      "InternalId": "2298d916-56fa-4b60-896b-b199dafbc477",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyReportSectionReverseSide"
+    },
+    "InternalId": "069590c5-a18e-4d79-92fb-c44647345e61",
+    "InternalObjectType": "",
+    "ObjectTypeForPropertyGrid": "PropertyReportSections"
+  },
+  "Settings": {
+    "Created": "\u003Cunknown\u003E",
+    "Decimals": "2",
+    "DefaultDestination": "PRV",
+    "FileVersion": "16",
+    "LocaleID": "1031",
+    "MaxPdfOutlineDepth": "2",
+    "MaxPdfIndexDepth": "3",
+    "Metrics": "3",
+    "DefaultFont": {
+      "Bold": "False",
+      "Color": "0",
+      "FaceName": "Tahoma",
+      "GdiCharSet": "0",
+      "Italic": "False",
+      "Size": "10.000000",
+      "Strikeout": "False",
+      "Underline": "False",
+      "Width": "0",
+      "InternalId": "27ab4e22-766a-4725-a81a-e3749e1bdbd8",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyFont"
+    },
+    "RepresentationCodes": {
+      "CondEnd": "187",
+      "CondSep": "166",
+      "CondStart": "171",
+      "ExprSep": "164",
+      "LockNextChar": "8288",
+      "PhantomSpace": "8203",
+      "Ret": "182",
+      "Tab": "247",
+      "InternalId": "32d59466-0677-4cff-b394-dc06277a312c",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyRepresentationCodes"
+    },
+    "TextQuoteCodes": {
+      "End": "1",
+      "Start": "1",
+      "InternalId": "b356a1c0-a96a-4799-bca7-bd6da766a240",
+      "InternalObjectType": "",
+      "ObjectTypeForPropertyGrid": "PropertyTextQuoteCodes"
+    },
+    "InternalId": "024a0130-558d-44f1-8308-617d275cdc31",
+    "InternalObjectType": "",
+    "ObjectTypeForPropertyGrid": "PropertySettings"
+  },
+  "SumVariables": [],
+  "UserData": "",
+  "UserDefinedDesignScheme": {
+    "BackgroundColors": [
+      "13158600",
+      "14456320",
+      "11825920",
+      "9853440"
+    ],
+    "ForegroundColors": [
+      "9853440",
+      "11825920",
+      "14456320",
+      "15772160",
+      "16432640",
+      "16437770",
+      "16768110",
+      "16769405",
+      "16771990",
+      "6579300"
+    ],
+    "InternalId": "e6022cec-f444-4873-ac6b-3cc2d833dd5c",
+    "InternalObjectType": "",
+    "ObjectTypeForPropertyGrid": "PropertyUserDefinedDesignScheme"
+  },
+  "UserVariables": [],
+  "InternalId": "6d520f21-6a26-4d20-aff0-785c2c2e6318",
+  "InternalObjectType": "",
+  "ObjectTypeForPropertyGrid": "ProjectList"
+}

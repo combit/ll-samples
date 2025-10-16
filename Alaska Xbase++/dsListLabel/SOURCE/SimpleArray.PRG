@@ -2,7 +2,7 @@
  File Name:	   SimpleArray.PRG
  Author:       Marcus Herz
  Description:
- Created:			 03.06.2020     15:06:23        Updated: þ03.06.2020      þ15:06:23
+ Created:			 03.06.2020     15:06:23        Updated: þ18.08.2025      þ09:59:56
  Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
  Revision:
  $Group:

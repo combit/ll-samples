@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2024-03-29T10:06:04</VDFLibraryTimeStamp>
-	<DFLibraryVersion>1</DFLibraryVersion>
+	<VDFLibraryTimeStamp>2025-06-06T16:09:48</VDFLibraryTimeStamp>
+	<DFLibraryVersion>2</DFLibraryVersion>
 	<libraries>
 		<library>
-			<libraryPath>..\LLLibrary30.0\LL30-VDF24.0.sws</libraryPath>
+			<libraryPath>..\LLLibrary31.0\LL31-VDF25.0.sws</libraryPath>
 			<libraryTimeStamp>2018-10-01T20:28:33</libraryTimeStamp>
 			<libraryID>Lib1</libraryID>
 		</library>
@@ -1135,6 +1135,20 @@
 			<image>cWebDrawing.ico</image>
 			<package>cWebDrawing.pkg</package>
 			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebWidgetPalette</className>
+			<image>cWebWidgetPalette.ico</image>
+			<package>cWebWidgetPalette.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebWidgetContainer</className>
+			<image>cWebWidgetContainer.ico</image>
+			<package>cWebWidgetContainer.pkg</package>
+			<groupName>Web Containers</groupName>
 			<libraryID>0</libraryID>
 		</class>
 	</classes>
