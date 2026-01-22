@@ -2,11 +2,15 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
+
 using combit.Reporting;
 using combit.Reporting.DataProviders;
+
 using Microsoft.Data.Sqlite;
 using Microsoft.Win32;
+
 using ReactiveUI;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -60,22 +64,12 @@ namespace Export
             formatComboBox.SelectedIndex = 0;
 
             // Run this to initialize _fileFilter
-            formatCB_SelectedValueChanged(this, new RoutedEventArgs());
-
-            var createButton = this.FindControl<Button>("createButton");
-            if (createButton != null)
-            {   
-                createButton.Click += createButton_Click;
-            }
-
-            var selectButton = this.FindControl<Button>("selectButton");
-            if (selectButton != null)
-            {
-                selectButton.Click += selectButton_Click;
-            }
+            //FormatComboBox_SelectionChanged(this, SelectionChangedEventArgs());
 
             _showFileCheck = this.FindControl<CheckBox>("showFileCheck");
         }
+
+       
 
         // Init Data Reader to access northwind.sqlite
         private SqliteCommand CreateSqliteCommand()
@@ -100,6 +94,8 @@ namespace Export
 
                 LL.ExportOptions.Clear();
 
+                LL.ExportOptions.Add("LlExportOptions.PdfConformance", "pdfa1a");
+
                 ExportConfiguration exportConfiguration = new ExportConfiguration(_exporterTarget, fileNameTB.Text, Path.Combine(GetReportFilesDirectory(), "simple.json"));
                 exportConfiguration.ShowResult = _showFileCheck != null && _showFileCheck.IsChecked == true;
 
@@ -118,7 +114,34 @@ namespace Export
                 System.Diagnostics.Debug.WriteLine("Error: " + ex.Message);
             }
         }
-        private void formatCB_SelectedValueChanged(object? sender, RoutedEventArgs e)
+
+        private async void selectButton_Click(object? sender, RoutedEventArgs e)
+        {
+            if (_fileFilter == null) return;
+
+            var fileTypes = new List<FilePickerFileType>
+            {
+                new FilePickerFileType("Export")
+                {
+                    Patterns = new [] {_fileFilter ?? "*.pdf" }
+                }
+            };
+
+            var options = new FilePickerSaveOptions
+            {
+                SuggestedFileName = Path.GetFileName(FileName),
+                FileTypeChoices = fileTypes
+            };
+
+            var result = await this.StorageProvider.SaveFilePickerAsync(options);
+
+            if (result != null)
+            {
+                FileName = result.Path.LocalPath;
+            }
+        }
+
+        private void FormatComboBox_SelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             if (fileNameTB == null) return;
 
@@ -149,32 +172,6 @@ namespace Export
                     break;
             }
             FileName = Path.Combine(directory, _exportBase);
-        }
-
-        private async void selectButton_Click(object? sender, RoutedEventArgs e)
-        {
-            if (_fileFilter == null) return;
-
-            var fileTypes = new List<FilePickerFileType>
-            {
-                new FilePickerFileType("Export")
-                {
-                    Patterns = new [] {_fileFilter ?? "*.pdf" }
-                }
-            };
-
-            var options = new FilePickerSaveOptions
-            {
-                SuggestedFileName = Path.GetFileName(FileName),
-                FileTypeChoices = fileTypes
-            };
-
-            var result = await this.StorageProvider.SaveFilePickerAsync(options);
-
-            if (result != null)
-            {
-                FileName = result.Path.LocalPath;
-            }
         }
     }
 }

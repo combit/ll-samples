@@ -9,7 +9,6 @@ Copy source files
 - Unzip the ‘Development package’ and copy the file under include/main/config.w32.h to php_src/main.
 - Copy the file ‘php8ts.lib’ from your web server installation (‘dev’) to the ‘dev’ folder.
 
-Translated with DeepL.com (free version)
 You're now able to compile the DLL (Visual C++/Visual Studio 2019 and newer).
 
 -------------------------------------------------

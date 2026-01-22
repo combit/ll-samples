@@ -1,0 +1,98 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		x:Class="DataBinding.MainWindow"
+		Title="List &amp; Label Cross Platform DataBinding Sample"
+		Width="900" Height="200"
+		CanMaximize="false" CanResize="false">
+
+	<TabControl Margin="1" >
+		<TabItem Header="DataSet" FontSize="14">
+			<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,10,0,0">
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 10, 10, 0">D:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 10, 10, 0">Bindet die Komponente an ein dynamisch erstelltes DataSet-Objekt mit DataRelations.</TextBlock>
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 40, 10, 0">US:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 40, 10, 0">Binds the component to a dynamically created DataSet object containing DataRelations.</TextBlock>
+				<Button x:Name="BtnDataSetPrint" Click="BtnDataSetPrint_Click" Grid.Column="2" Content="Print..." HorizontalContentAlignment="Center" Width="85" Margin="730, 75, 100, 0"/>
+			</Grid>
+		</TabItem>
+		<TabItem Header="XML" FontSize="14">
+			<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,10,0,0">
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 10, 10, 0">D:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 10, 10, 0">Bindet die Komponente an die Beispiel XML-Datei.</TextBlock>
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 40, 10, 0">US:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 40, 10, 0">Binds the component to the sample XML file.</TextBlock>
+				<Button x:Name="BtnXmlPrint" Click="BtnXmlPrint_Click" Grid.Column="2" Content="Print..." HorizontalContentAlignment="Center" Width="85" Margin="730, 75, 100, 0"/>
+			</Grid>
+
+		</TabItem>
+		<TabItem Header="DataViewManager" FontSize="14">
+			<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,10,0,0">
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 10, 10, 0">D:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 10, 10, 0">Bindet die Komponente an ein DataViewManager-Objekt. Sie k&#xF6;nnen einen Filter f&#xFC;r den Firmennamen w&#xE4;hlen.</TextBlock>
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 40, 10, 0">US:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 40, 10, 0">Binds the component to a DataViewManager object. Choose a filter for the company name.</TextBlock>
+				<Button x:Name="BtnDataViewManagerPrint" Click="BtnDataViewManagerPrint_Click" Grid.Column="2" Content="Print..." HorizontalContentAlignment="Center" Width="85" Margin="730, 70, 100, 0"/>
+				<ComboBox x:Name="ComboBoxCustomerNames" Grid.Column="1" SelectedIndex="0" Width="450" Margin="0, 80, 15, 0"/>
+			</Grid>
+
+		</TabItem>
+		<TabItem Header="DataView" FontSize="14">
+			<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,10,0,0">
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 10, 10, 0">D:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 10, 10, 0">Bindet die Komponente an ein DataView-Objekt.</TextBlock>
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 40, 10, 0">US:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 40, 10, 0">Binds the component to a DataView object.</TextBlock>
+				<Button x:Name="BtnDataViewPrint" Click="BtnDataViewPrint_Click" Grid.Column="2" Content="Print..." HorizontalContentAlignment="Center" Width="85" Margin="730, 75, 100, 0"/>
+			</Grid>
+
+		</TabItem>
+		<TabItem Header="DataTable" FontSize="14">
+			<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,10,0,0">
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 10, 10, 0">D:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 10, 10, 0">Bindet die Komponente an ein DataTable-Objekt.</TextBlock>
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 40, 10, 0">US:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 40, 10, 0">Binds the component to a DataTable object.</TextBlock>
+				<Button x:Name="BtnDataTablePrint" Click="BtnDataTablePrint_Click" Grid.Column="2" Content="Print..." HorizontalContentAlignment="Center" Width="85" Margin="730, 75, 100, 0"/>
+			</Grid>
+
+		</TabItem>
+		<TabItem Header="Generic List" FontSize="14">
+			<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,10,0,0">
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 10, 10, 0">D:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 10, 10, 0">Bindet die Komponente an eine generische Liste.</TextBlock>
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 40, 10, 0">US:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 40, 10, 0">Binds the component to a generic list.</TextBlock>
+				<Button x:Name="BtnGenericListPrint" Click="BtnGenericListPrint_Click" Grid.Column="2" Content="Print..." HorizontalContentAlignment="Center" Width="85" Margin="730, 75, 100, 0"/>
+			</Grid>
+
+		</TabItem>
+		<TabItem Header="SQL Server" FontSize="14">
+			<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,10,0,0">
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 10, 10, 0">D:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 10, 10, 0">Bindet die Komponente an einen SqlConnectionDataProvider.</TextBlock>
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 40, 10, 0">US:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 40, 10, 0">Binds the component to a SqlConnectionDataProvider.</TextBlock>				
+				<TextBlock Grid.Column="2" VerticalAlignment="Top" Margin="0, 80, 10, 0">Connection-String:</TextBlock>
+				<TextBox x:Name="TextBoxSqlConnectionstring" Grid.Column="2" VerticalAlignment="Top" Width="570" Margin="0, 75">Server=&#x3C;ComputerName&#x3E;\SQLEXPRESS;Database=&#x3C;DatabaseName&#x3E;;Integrated Security=True;Encrypt=False;</TextBox>
+				<Button x:Name="BtnSqlServerPrint" Click="BtnSqlServerPrint_Click" Grid.Column="2" Content="Print..." HorizontalContentAlignment="Center" Width="85" Margin="730, 0, 50, 0"/>
+
+			</Grid>
+
+		</TabItem>
+		<TabItem Header="OData" FontSize="14">
+			<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,10,0,0">
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 10, 10, 0">D:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 10, 10, 0">Bindet die Komponente an einen ODataProvider.</TextBlock>
+				<TextBlock Grid.Column="0" VerticalAlignment="Top" Margin="0, 40, 10, 0">US:</TextBlock>
+				<TextBlock Grid.Column="1" VerticalAlignment="Top" Margin="0, 40, 10, 0">Binds the component to a ODataProvider.</TextBlock>
+				<TextBlock Grid.Column="2" VerticalAlignment="Top" Margin="0, 80, 10, 0">Url:</TextBlock>
+				<TextBox x:Name="TextBoxODataUrl" Grid.Column="2" VerticalAlignment="Top" Width="550" Margin="0, 75, 280, 50">http://services.odata.org/V3/Northwind/Northwind.svc/</TextBox>
+				<Button x:Name="BtnODataPrint" Click="BtnODataPrint_Click" Grid.Column="2" Content="Print..." HorizontalContentAlignment="Center" Width="85" Margin="730, 75, 100, 50"/>
+			</Grid>
+
+		</TabItem>
+	</TabControl>
+</Window>
+

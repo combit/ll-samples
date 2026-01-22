@@ -8,14 +8,14 @@ namespace DataBind.GenericList
     {
         public static List<Customer> GetGenericList()
         {
-            List<Customer> customerList = new List<Customer>();
+            List<Customer> customerList = [];
 
             //D: Mehrere Kunden erstellen
             //US: Create some customers
-            Customer customer1 = new Customer(1, "Joe's Tatoo", "Joe Smith", "Kingstreet 2a", "Queens");
-            Customer customer2 = new Customer(2, "Tec n Toc", "Peter Bush", "Park Avenue", "NewYork");
-            Customer customer3 = new Customer(3, "Sunshine Agency", "Brian Holiday", "Island Road 1", "Zurich");
-            Customer customer4 = new Customer(4, "Hiking Store", "Sandra Mountain", "Hillstreet 6", "Garmisch");
+            Customer customer1 = new(1, "Joe's Tatoo", "Joe Smith", "Kingstreet 2a", "Queens");
+            Customer customer2 = new(2, "Tec n Toc", "Peter Bush", "Park Avenue", "NewYork");
+            Customer customer3 = new(3, "Sunshine Agency", "Brian Holiday", "Island Road 1", "Zurich");
+            Customer customer4 = new(4, "Hiking Store", "Sandra Mountain", "Hillstreet 6", "Garmisch");
 
             //D: Die Bestellungen fuer den ersten Kunden definieren
             //US: Define orders for the first customer
@@ -39,7 +39,7 @@ namespace DataBind.GenericList
 
             //D: Die einzelnen Kunden in die Kundenliste aufnehmen
             //US: Add the single customers to the customer list
-            customerList.AddRange(new Customer[] { customer1, customer2, customer3, customer4 });
+            customerList.AddRange([customer1, customer2, customer3, customer4]);
 
             return (customerList);
         }
@@ -61,7 +61,7 @@ namespace DataBind.GenericList
         }
 
         #region customer fields
-        private List<Order> orderList = new List<Order>();
+        private List<Order> orderList = [];
         public List<Order> OrderList
         {
             get { return orderList; }
@@ -75,28 +75,28 @@ namespace DataBind.GenericList
             set { customerID = value; }
         }
 
-        private string companyName;
+        private string companyName = null!;
         public string CompanyName
         {
             get { return companyName; }
             set { companyName = value; }
         }
 
-        private string contactName;
+        private string contactName = null!; 
         public string ContactName
         {
             get { return contactName; }
             set { contactName = value; }
         }
 
-        private string address;
+        private string address = null!;
         public string Address
         {
             get { return address; }
             set { address = value; }
         }
 
-        private string city;
+        private string city = null!;
         public string City
         {
             get { return city; }
@@ -134,14 +134,14 @@ namespace DataBind.GenericList
             set { orderDate = value; }
         }
 
-        private string shipName;
+        private string shipName = null!;
         public string ShipName
         {
             get { return shipName; }
             set { shipName = value; }
         }
 
-        private string shipCountry;
+        private string shipCountry = null!;
         public string ShipCountry
         {
             get { return shipCountry; }

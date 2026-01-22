@@ -23,24 +23,24 @@
 
 				<!-- Format label and ComboBox -->
 				<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Format:" Margin="0, 0, 10, 0"/>
-				<ComboBox x:Name="formatComboBox" SelectionChanged="formatCB_SelectedValueChanged" Grid.Row="0" Grid.Column="1" SelectedIndex="0" Width="450">
+				<ComboBox x:Name="formatComboBox" SelectionChanged="FormatComboBox_SelectionChanged" Grid.Row="0" Grid.Column="1" SelectedIndex="0" Width="450">
 					<ComboBoxItem Name="PDF">PDF</ComboBoxItem>
 					<ComboBoxItem Name="PNG">PNG</ComboBoxItem>
 					<ComboBoxItem Name="SVG">SVG</ComboBoxItem>
-          <ComboBoxItem Name="JPEG">JPEG</ComboBoxItem>
+					<ComboBoxItem Name="JPEG">JPEG</ComboBoxItem>
 				</ComboBox>
 
 				<!-- Filename label and TextBox + Button -->
 				<TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Text="Filename:" Margin="0, 10, 10, 0"/>
 				<StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Spacing="10">
 					<TextBox x:Name="fileNameTB" Width="450" Text="" Margin="0, 10, 10, 0"/>
-					<Button x:Name="selectButton" Content="Select..." Width="85" Margin="0, 10, 30, 0"/>
+					<Button x:Name="selectButton" Click="selectButton_Click" Content="Select..." Width="85" Margin="0, 10, 30, 0"/>
 				</StackPanel>
 
 				<!-- Checkbox and Create button -->
 				<Grid Grid.Row="2" Grid.Column="1" Margin="0,15,0,0" >
 					<CheckBox x:Name="showFileCheck" Content="Show file after creation" Grid.Column="0" VerticalAlignment="Center" Margin="250,0,20,0"/>
-					<Button x:Name="createButton" Content="Create..." Grid.Column="1" Width="85" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+					<Button x:Name="createButton" Click="createButton_Click" Content="Create..." Grid.Column="1" Width="85" HorizontalAlignment="Right" Margin="0,0,20,0"/>
 				</Grid>
 			</Grid>
 		</Border>
