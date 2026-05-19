@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -103,10 +103,10 @@ namespace DataBinding
             // D: CustomerCombobox für DataViewManager befüllen
             // US: Fill CustomerCombobox for DataViewManager
 
-            var conn = new SQLiteConnection($"Data Source={_databasePath}");
+            var conn = new SqliteConnection($"Data Source={_databasePath}");
             conn.Open();
 
-            var cmd = new SQLiteCommand("SELECT DISTINCT Customers.CompanyName, Orders.CustomerID FROM Customers JOIN Orders ON Orders.CustomerID = Customers.CustomerID WHERE Orders.OrderID > 11040", conn);
+            var cmd = new SqliteCommand("SELECT DISTINCT Customers.CompanyName, Orders.CustomerID FROM Customers JOIN Orders ON Orders.CustomerID = Customers.CustomerID WHERE Orders.OrderID > 11040", conn);
 
             var dr = cmd.ExecuteReader();
 
@@ -142,18 +142,16 @@ namespace DataBinding
         {
             DataTable dt = new DataTable("Products");
 
-            using (var conn = new SQLiteConnection($"Data Source={_databasePath};"))
-            {
-                conn.Open();
+            using var conn = new SqliteConnection($"Data Source={_databasePath};");
+            conn.Open();
 
-                string sqlitequery = @"SELECT * FROM Products INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID";
+            string sqlitequery = @"SELECT * FROM Products INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID";
 
-                using (var cmd = new SQLiteCommand(sqlitequery, conn))
-                using (var adapter = new SQLiteDataAdapter(cmd))
-                {
-                    adapter.Fill(dt);
-                }
-            }
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = sqlitequery;
+
+            using var reader = cmd.ExecuteReader();
+            dt.Load(reader);   
 
             return dt;
         }
@@ -163,72 +161,108 @@ namespace DataBinding
             return CreateDataTable().DefaultView;
         }
 
+        private static void FillTable(SqliteConnection conn, DataSet ds, string tableName, string sql)
+        {
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = sql;
+
+            using var reader = cmd.ExecuteReader(CommandBehavior.SchemaOnly);
+
+            DataTable table = new(tableName);
+            DataTable schemaTable = reader.GetSchemaTable()!;
+
+            foreach (DataRow row in schemaTable.Rows)
+            {
+                string columnName = row["ColumnName"]!.ToString()!;
+                Type dataType = (Type)row["DataType"]!;
+                bool allowDBNull = (bool)row["AllowDBNull"]!;
+
+                DataColumn column = new(columnName, dataType)
+                {
+                    AllowDBNull = allowDBNull
+                };
+
+                table.Columns.Add(column);
+            }
+
+            reader.Close();
+
+            using var dataReader = cmd.ExecuteReader();
+            table.Load(dataReader);
+
+            if (ds.Tables.Contains(tableName))
+                ds.Tables.Remove(tableName);
+
+            ds.Tables.Add(table);
+        }
+
         private DataSet CreateDataSet()
         {
-            //D: DataSet Objekt erstellen
-            //US: Create the DataSet object
             DataSet ds = new();
 
-            using (var conn = new SQLiteConnection($"Data Source={_databasePath};"))
+            using var conn = new SqliteConnection($"Data Source={_databasePath};");
+            conn.Open();
+
+            using var schemaCmd = conn.CreateCommand();
+            schemaCmd.CommandText =
+                "SELECT name FROM sqlite_master " +
+                "WHERE type = 'table' " +
+                "AND name NOT LIKE 'sqlite_%' " +
+                "ORDER BY name;";
+
+            using var schemaReader = schemaCmd.ExecuteReader();
+
+            while (schemaReader.Read())
             {
-                conn.Open();
+                string tableName = schemaReader.GetString(0);
 
-                DataTable schema = conn.GetSchema("Tables");
+                string sql;
 
-                //D: Durch alle Tabellen iterieren und in das DataSet aufnehmen
-                //US: Iterate all tabels and add them to the DataSet
-                foreach (DataRow row in schema.Rows)
+                if (tableName == "Orders" || tableName == "Order Details")
                 {
-                    string tableType = row["TABLE_TYPE"].ToString()!;
-                    if (tableType != "table" && tableType != "TABLE")
-                        continue;
-
-                    string tableName = row["TABLE_NAME"].ToString()!;
-
-                    SQLiteDataAdapter dataAdapter;
-
-                    //D: Die "Customers", "Orders" und "Order Details" Tabelle einschränken.
-                    //US: Limit the "Customers", "Orders" and "Order Details" table. 
-
-                    if (tableName == "Orders" || tableName == "Order Details")
-                        dataAdapter = new SQLiteDataAdapter($"SELECT * FROM \"{tableName}\" " +
-                            "WHERE OrderID > 11040 " +
-                            "AND OrderID < 11077",
-                            conn);
-
-                    else if (tableName == "Customers")
-                    {
-                        dataAdapter = new SQLiteDataAdapter(
-                            "SELECT c.* FROM Customers c " +
-                            "WHERE EXISTS (" +
-                                "SELECT 1 FROM Orders o " +
-                                "WHERE o.CustomerID = c.CustomerID " +
-                                "AND o.OrderID > 11040 " +
-                                "AND o.OrderID < 11077" +
-                            ")",
-                            conn);
-                    }
-                    else
-                        dataAdapter = new SQLiteDataAdapter($"SELECT * FROM \"{tableName}\" LIMIT 1000", conn);
-
-                    dataAdapter.FillSchema(ds, SchemaType.Source, tableName);
-                    dataAdapter.Fill(ds, tableName);
+                    sql =
+                        $"SELECT * FROM \"{tableName}\" " +
+                        "WHERE OrderID > 11040 " +
+                        "AND OrderID < 11077";
+                }
+                else if (tableName == "Customers")
+                {
+                    sql =
+                        "SELECT c.* FROM Customers c " +
+                        "WHERE EXISTS (" +
+                            "SELECT 1 FROM Orders o " +
+                            "WHERE o.CustomerID = c.CustomerID " +
+                            "AND o.OrderID > 11040 " +
+                            "AND o.OrderID < 11077" +
+                        ")";
+                }
+                else
+                {
+                    sql = $"SELECT * FROM \"{tableName}\" LIMIT 1000";
                 }
 
-                List<string> childTables = new List<string>() { "Products", "Orders", "Orders", "Order Details", "Order Details", "Orders", "Products" };
-                List<string> childCols = new List<string>() { "CategoryID", "CustomerID", "EmployeeID", "OrderID", "ProductID", "ShipVia", "SupplierID" };
-                List<string> parentTables = new List<string>() { "Categories", "Customers", "Employees", "Orders", "Products", "Shippers", "Suppliers" };
-                List<string> parentCols = new List<string>() { "CategoryID", "CustomerID", "EmployeeID", "OrderID", "ProductID", "ShipperID", "SupplierID" };
-                List<string> relationNames = new List<string>() { "Categories2Products", "Customers2Orders", "Employees2Orders", "Orders2Order Details", "Products2Order Details", "Shippers2Orders", "Suppliers2Products" };
-
-                //D: Relationen auslesen
-                //US: Get relations
-                for (int i = 0; i < relationNames.Count; i++)
-                {
-                    ds.Relations.Add(new DataRelation(relationNames[i], ds.Tables[parentTables[i]]!.Columns[parentCols[i]]!, ds.Tables[childTables[i]]!.Columns[childCols[i]]!));
-                }
+                FillTable(conn, ds, tableName, sql);
             }
-           
+
+
+            // Relationen definieren
+            string[] childTables = { "Products", "Orders", "Orders", "Order Details", "Order Details", "Orders", "Products" };
+            string[] childCols = { "CategoryID", "CustomerID", "EmployeeID", "OrderID", "ProductID", "ShipVia", "SupplierID" };
+            string[] parentTables = { "Categories", "Customers", "Employees", "Orders", "Products", "Shippers", "Suppliers" };
+            string[] parentCols = { "CategoryID", "CustomerID", "EmployeeID", "OrderID", "ProductID", "ShipperID", "SupplierID" };
+            string[] relationNames = { "Categories2Products", "Customers2Orders", "Employees2Orders", "Orders2Order Details", "Products2Order Details", "Shippers2Orders", "Suppliers2Products" };
+
+            for (int i = 0; i < relationNames.Length; i++)
+            {
+                ds.Relations.Add(
+                    new DataRelation(
+                        relationNames[i],
+                        ds.Tables[parentTables[i]]!.Columns[parentCols[i]]!,
+                        ds.Tables[childTables[i]]!.Columns[childCols[i]]!
+                    )
+                );
+            }
+
             return ds;
         }
 
@@ -236,34 +270,37 @@ namespace DataBinding
         {
             DataSet ds = new DataSet();
 
-            using (var conn = new SQLiteConnection($"Data Source={Path.Combine(GetSamplesDirectory(), "gantt.db")};"))
+            string dbPath = Path.Combine(GetSamplesDirectory(), "gantt.db");
+
+            using var conn = new SqliteConnection($"Data Source={dbPath};");
+            conn.Open();
+
+            var tables = new List<string>();
+            using (var cmd = conn.CreateCommand())
             {
-                conn.Open();
-                                
-                DataTable schema = conn.GetSchema("Tables");
+                cmd.CommandText = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
 
-                //D: Durch alle Tabellen iterieren und in das DataSet aufnehmen
-                //US: Iterate all tables and add them to the DataSet
-                foreach (DataRow row in schema.Rows)
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    string tableType = row["TABLE_TYPE"].ToString()!;
-                    if (tableType != "table" && tableType != "TABLE")
-                        continue;
-
-                    string tableName = row["TABLE_NAME"].ToString()!;
-
-                    // SELECT * FROM table
-                    string sql = $"SELECT * FROM \"{tableName}\"";
-
-                    using (var da = new SQLiteDataAdapter(sql, conn))
-                    {
-                        da.FillSchema(ds, SchemaType.Source, tableName);
-                        da.Fill(ds, tableName);
-                    }
-                }                      
-
-                return ds;
+                    tables.Add(reader.GetString(0)!);
+                }
             }
+
+            foreach (var tableName in tables)
+            {
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = $"SELECT * FROM \"{tableName}\"";
+
+                using var reader = cmd.ExecuteReader();
+
+                DataTable dt = new DataTable(tableName);
+                dt.Load(reader);
+
+                ds.Tables.Add(dt);
+            }
+
+            return ds;
         }
 
         private DataProviderCollection CreateProviderCollection(bool useDataViewManager)

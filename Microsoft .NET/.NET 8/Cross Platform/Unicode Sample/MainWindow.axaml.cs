@@ -7,7 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
@@ -48,38 +48,36 @@ namespace Unicode
 
         private DataSet InitDataSet()
         {
-            //D: DataSet Objekt erstellen
-            //US: Create the DataSet object
             DataSet ds = new();
 
-            using (var conn = new SQLiteConnection($"Data Source={_databasePath};"))
+            using var conn = new SqliteConnection($"Data Source={_databasePath};");
+            conn.Open();
+
+                        string getTablesSql = @"SELECT name 
+                            FROM sqlite_master 
+                            WHERE type='table' 
+                              AND name NOT LIKE 'sqlite_%';";
+
+            using (var cmdTables = new SqliteCommand(getTablesSql, conn))
+            using (var readerTables = cmdTables.ExecuteReader())
             {
-                conn.Open();
-
-                DataTable schema = conn.GetSchema("Tables");
-
-                //D: Durch alle Tabellen iterieren und in das DataSet aufnehmen
-                //US: Iterate all tabels and add them to the DataSet
-                foreach (DataRow row in schema.Rows)
+                while (readerTables.Read())
                 {
-                    string tableType = row["TABLE_TYPE"].ToString()!;
-                    if (tableType != "table" && tableType != "TABLE")
-                        continue;
+                    string tableName = readerTables.GetString(0);
 
-                    string tableName = row["TABLE_NAME"].ToString()!;
+                    string sql = $"SELECT * FROM \"{tableName}\";";
 
-                    SQLiteDataAdapter dataAdapter;
+                    using var cmd = new SqliteCommand(sql, conn);
+                    using var reader = cmd.ExecuteReader();
 
-                    dataAdapter = new SQLiteDataAdapter("SELECT * FROM Persons", conn);
-
-                    dataAdapter.FillSchema(ds, SchemaType.Source, tableName);
-                    dataAdapter.Fill(ds, tableName);
+                    DataTable dt = new DataTable(tableName);
+                    dt.Load(reader);
+                    ds.Tables.Add(dt);
                 }
             }
 
             return ds;
         }
-
         public static string GetSamplesDirectory()
         {
             // D: Beispielpfad 

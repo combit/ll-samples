@@ -12,7 +12,7 @@ using Irony.Parsing.Construction;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace DOMSimple
         internal ListLabel LL;
         private string? _databasePath = Path.Combine(GetSamplesDirectory(), "northwind.db");
         private string _startPath;
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -58,7 +58,8 @@ namespace DOMSimple
             //US: Select first entry
             ComboboxTables.SelectedIndex = 0;
             ListboxAvailable.SelectedIndex = 0;
-                                 
+
+            TextboxTitle.Text = "List & Label Cross Platform";
             TextboxSelectLogo.Text = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "..", "Report Files", "logo.bmp"));
         }
 
@@ -119,70 +120,106 @@ namespace DOMSimple
             }
         }
 
+
+        private static void FillTable(SqliteConnection conn, DataSet ds, string tableName, string sql)
+        {
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = sql;
+
+            using var reader = cmd.ExecuteReader(CommandBehavior.SchemaOnly);
+
+            DataTable table = new(tableName);
+            DataTable schemaTable = reader.GetSchemaTable()!;
+
+            foreach (DataRow row in schemaTable.Rows)
+            {
+                string columnName = row["ColumnName"]!.ToString()!;
+                Type dataType = (Type)row["DataType"]!;
+                bool allowDBNull = (bool)row["AllowDBNull"]!;
+
+                DataColumn column = new(columnName, dataType)
+                {
+                    AllowDBNull = allowDBNull
+                };
+
+                table.Columns.Add(column);
+            }
+
+            reader.Close();
+
+            using var dataReader = cmd.ExecuteReader();
+            table.Load(dataReader);
+
+            if (ds.Tables.Contains(tableName))
+                ds.Tables.Remove(tableName);
+
+            ds.Tables.Add(table);
+        }
         private DataSet InitDataSet()
         {
-            //D: DataSet Objekt erstellen
-            //US: Create the DataSet object
             DataSet ds = new();
 
-            using (var conn = new SQLiteConnection($"Data Source={_databasePath};"))
+            using var conn = new SqliteConnection($"Data Source={_databasePath};");
+            conn.Open();
+
+            using var schemaCmd = conn.CreateCommand();
+            schemaCmd.CommandText =
+                "SELECT name FROM sqlite_master " +
+                "WHERE type = 'table' " +
+                "AND name NOT LIKE 'sqlite_%' " +
+                "ORDER BY name;";
+
+            using var schemaReader = schemaCmd.ExecuteReader();
+
+            while (schemaReader.Read())
             {
-                conn.Open();
+                string tableName = schemaReader.GetString(0);
 
-                DataTable schema = conn.GetSchema("Tables");
+                string sql;
 
-                //D: Durch alle Tabellen iterieren und in das DataSet aufnehmen
-                //US: Iterate all tabels and add them to the DataSet
-                foreach (DataRow row in schema.Rows)
+                if (tableName == "Orders" || tableName == "Order Details")
                 {
-                    string tableType = row["TABLE_TYPE"].ToString()!;
-                    if (tableType != "table" && tableType != "TABLE")
-                        continue;
-
-                    string tableName = row["TABLE_NAME"].ToString()!;
-
-                    SQLiteDataAdapter dataAdapter;
-
-                    //D: Die "Customers", "Orders" und "Order Details" Tabelle einschränken.
-                    //US: Limit the "Customers", "Orders" and "Order Details" table. 
-
-                    if (tableName == "Orders" || tableName == "Order Details")
-                        dataAdapter = new SQLiteDataAdapter($"SELECT * FROM \"{tableName}\" " +
-                            "WHERE OrderID > 11040 " +
-                            "AND OrderID < 11077",
-                            conn);
-
-                    else if (tableName == "Customers")
-                    {
-                        dataAdapter = new SQLiteDataAdapter(
-                            "SELECT c.* FROM Customers c " +
-                            "WHERE EXISTS (" +
-                                "SELECT 1 FROM Orders o " +
-                                "WHERE o.CustomerID = c.CustomerID " +
-                                "AND o.OrderID > 11040 " +
-                                "AND o.OrderID < 11077" +
-                            ")",
-                            conn);
-                    }
-                    else
-                        dataAdapter = new SQLiteDataAdapter($"SELECT * FROM \"{tableName}\" LIMIT 1000", conn);
-
-                    dataAdapter.FillSchema(ds, SchemaType.Source, tableName);
-                    dataAdapter.Fill(ds, tableName);
+                    sql =
+                        $"SELECT * FROM \"{tableName}\" " +
+                        "WHERE OrderID > 11040 " +
+                        "AND OrderID < 11077";
+                }
+                else if (tableName == "Customers")
+                {
+                    sql =
+                        "SELECT c.* FROM Customers c " +
+                        "WHERE EXISTS (" +
+                            "SELECT 1 FROM Orders o " +
+                            "WHERE o.CustomerID = c.CustomerID " +
+                            "AND o.OrderID > 11040 " +
+                            "AND o.OrderID < 11077" +
+                        ")";
+                }
+                else
+                {
+                    sql = $"SELECT * FROM \"{tableName}\" LIMIT 1000";
                 }
 
-                List<string> childTables = new List<string>() { "Products", "Orders", "Orders", "Order Details", "Order Details", "Orders", "Products" };
-                List<string> childCols = new List<string>() { "CategoryID", "CustomerID", "EmployeeID", "OrderID", "ProductID", "ShipVia", "SupplierID" };
-                List<string> parentTables = new List<string>() { "Categories", "Customers", "Employees", "Orders", "Products", "Shippers", "Suppliers" };
-                List<string> parentCols = new List<string>() { "CategoryID", "CustomerID", "EmployeeID", "OrderID", "ProductID", "ShipperID", "SupplierID" };
-                List<string> relationNames = new List<string>() { "Categories2Products", "Customers2Orders", "Employees2Orders", "Orders2Order Details", "Products2Order Details", "Shippers2Orders", "Suppliers2Products" };
+                FillTable(conn, ds, tableName, sql);
+            }
 
-                //D: Relationen auslesen
-                //US: Get relations
-                for (int i = 0; i < relationNames.Count; i++)
-                {
-                    ds.Relations.Add(new DataRelation(relationNames[i], ds.Tables[parentTables[i]]!.Columns[parentCols[i]]!, ds.Tables[childTables[i]]!.Columns[childCols[i]]!));
-                }
+
+            // Relationen definieren
+            string[] childTables = { "Products", "Orders", "Orders", "Order Details", "Order Details", "Orders", "Products" };
+            string[] childCols = { "CategoryID", "CustomerID", "EmployeeID", "OrderID", "ProductID", "ShipVia", "SupplierID" };
+            string[] parentTables = { "Categories", "Customers", "Employees", "Orders", "Products", "Shippers", "Suppliers" };
+            string[] parentCols = { "CategoryID", "CustomerID", "EmployeeID", "OrderID", "ProductID", "ShipperID", "SupplierID" };
+            string[] relationNames = { "Categories2Products", "Customers2Orders", "Employees2Orders", "Orders2Order Details", "Products2Order Details", "Shippers2Orders", "Suppliers2Products" };
+
+            for (int i = 0; i < relationNames.Length; i++)
+            {
+                ds.Relations.Add(
+                    new DataRelation(
+                        relationNames[i],
+                        ds.Tables[parentTables[i]]!.Columns[parentCols[i]]!,
+                        ds.Tables[childTables[i]]!.Columns[childCols[i]]!
+                    )
+                );
             }
 
             return ds;
@@ -257,16 +294,16 @@ namespace DOMSimple
                 // D: Projektdatei setzen  
                 // US: Get project file  
                 string defaultFile = Path.Combine(GetReportFilesDirectory(), "dynamic.json");
-                LL.AutoProjectFile =defaultFile;
+                LL.AutoProjectFile = defaultFile;
 
                 // D: Export
                 // US: Export  
                 ExportConfiguration exportConfiguration = new ExportConfiguration(LlExportTarget.Pdf, Path.Combine(GetReportFilesDirectory(), Path.GetFileNameWithoutExtension(LL.AutoProjectFile) + ".pdf"), LL.AutoProjectFile)
                 {
-                        ShowResult = true
+                    ShowResult = true
                 };
                 LL.Export(exportConfiguration);
-                
+
             }
             catch (ListLabelException LlException)
             {

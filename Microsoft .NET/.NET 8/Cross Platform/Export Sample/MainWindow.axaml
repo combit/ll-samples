@@ -24,10 +24,13 @@
 				<!-- Format label and ComboBox -->
 				<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Format:" Margin="0, 0, 10, 0"/>
 				<ComboBox x:Name="formatComboBox" SelectionChanged="FormatComboBox_SelectionChanged" Grid.Row="0" Grid.Column="1" SelectedIndex="0" Width="450">
+					<ComboBoxItem Name="CSV">CSV</ComboBoxItem>
+					<ComboBoxItem Name="JPEG">JPEG</ComboBoxItem>
+					<ComboBoxItem Name="JSON">JSON</ComboBoxItem>
 					<ComboBoxItem Name="PDF">PDF</ComboBoxItem>
 					<ComboBoxItem Name="PNG">PNG</ComboBoxItem>
 					<ComboBoxItem Name="SVG">SVG</ComboBoxItem>
-					<ComboBoxItem Name="JPEG">JPEG</ComboBoxItem>
+					<ComboBoxItem Name="XLSX">XLSX</ComboBoxItem>
 				</ComboBox>
 
 				<!-- Filename label and TextBox + Button -->

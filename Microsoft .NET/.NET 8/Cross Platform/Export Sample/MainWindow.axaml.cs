@@ -61,7 +61,7 @@ namespace Export
             _startPath = GetReportFilesDirectory();
 
             FileName = Path.Combine(_startPath, _exportBase);
-            formatComboBox.SelectedIndex = 0;
+            formatComboBox.SelectedIndex = 3;
 
             // Run this to initialize _fileFilter
             //FormatComboBox_SelectionChanged(this, SelectionChangedEventArgs());
@@ -150,10 +150,20 @@ namespace Export
 
             switch ((formatComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString())
             {
+                case "CSV":
+                    _fileFilter = "CSV files|*.csv";
+                    _exporterTarget = LlExportTarget.Csv;
+                    _exportBase = baseName + ".csv";
+                    break;
                 case "JPEG":
                     _fileFilter = "JPEG files|*.jpg";
                     _exporterTarget = LlExportTarget.Jpeg;
                     _exportBase = baseName + ".jpg";
+                    break;
+                case "JSON":
+                    _fileFilter = "JSON files|*.json";
+                    _exporterTarget = LlExportTarget.Json;
+                    _exportBase = baseName + ".json";
                     break;
                 case "PDF":
                     _fileFilter = "PDF files|*.pdf";
@@ -169,6 +179,11 @@ namespace Export
                     _fileFilter = "SVG files|*.svg";
                     _exporterTarget = LlExportTarget.Svg;
                     _exportBase = baseName + ".svg";
+                    break;
+                case "XLSX":
+                    _fileFilter = "XLSX files|*.xlsx";
+                    _exporterTarget = LlExportTarget.Xlsx;
+                    _exportBase = baseName + ".xlsx";
                     break;
             }
             FileName = Path.Combine(directory, _exportBase);

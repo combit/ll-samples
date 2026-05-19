@@ -7,7 +7,7 @@ using combit.Reporting;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -98,48 +98,64 @@ namespace DataBinding2
 
         private DataSet InitDataSet()
         {
-            //D: DataSet Objekt erstellen
-            //US: Create the DataSet object
             DataSet ds = new();
 
-            using (var conn = new SQLiteConnection($"Data Source={_databasePath};"))
+            using var conn = new SqliteConnection($"Data Source={_databasePath};");
+            conn.Open();
+
+            string sqlOrders = @"SELECT * FROM ""Orders"" WHERE OrderID > 11040 AND OrderID < 11077";
+
+            using (var cmdOrders = new SqliteCommand(sqlOrders, conn))
+            using (var reader = cmdOrders.ExecuteReader())
             {
-                conn.Open();
+                DataTable dtOrders = new DataTable("Orders");
 
-                //D: Die "Orders" und "Order Details" Tabelle einschränken.
-                //US: Limit the "Orders" and "Order Details" table. 
-                using var adapterOrders = new SQLiteDataAdapter("SELECT * FROM \"Orders\" WHERE OrderID > 11040 AND OrderID < 11077", conn);
-                adapterOrders.FillSchema(ds, SchemaType.Source, "Orders");
-                adapterOrders.Fill(ds, "Orders");
+                // Create columns based on reader schema, but force the date column to DateTime
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    var name = reader.GetName(i);
+                    var type = name.Contains("Date", StringComparison.OrdinalIgnoreCase)
+                        ? typeof(DateTime)
+                        : reader.GetFieldType(i);
 
-                string sqlOrderDetails = @"SELECT od.OrderID,
-                    od.Quantity,
-                    od.UnitPrice,
-                    od.ProductID,
-                    p.ProductID AS ProductsProductID,
-                    p.CategoryID,
-                    p.Discontinued,
-                    p.ProductName,
-                    p.QuantityPerUnit,
-                    p.ReorderLevel,
-                    p.SupplierID,
-                    p.UnitPrice AS ProductsUnitPrice,
-                    p.UnitsInStock,
-                    p.UnitsOnOrder
-                    FROM ""Order Details"" od
-                    INNER JOIN Products p ON od.ProductID = p.ProductID
-                    WHERE od.OrderID > 11040";
-                using var adapterOrderDetails = new SQLiteDataAdapter(sqlOrderDetails, conn);
-                adapterOrderDetails.FillSchema(ds, SchemaType.Source, "Order Details");
-                adapterOrderDetails.Fill(ds, "Order Details");
+                    dtOrders.Columns.Add(name, type);
+                }
 
-                var relation = new DataRelation("Orders2Order Details", ds.Tables["Orders"]!.Columns["OrderID"]!, ds.Tables["Order Details"]!.Columns["OrderID"]!, false);
-                ds.Relations.Add(relation);
-
+                dtOrders.Load(reader);
+                ds.Tables.Add(dtOrders);
             }
 
-            return ds;
+            string sqlOrderDetails = @"
+        SELECT od.OrderID,
+               od.Quantity,
+               od.UnitPrice,
+               od.ProductID,
+               p.ProductID AS ProductsProductID,
+               p.CategoryID,
+               p.Discontinued,
+               p.ProductName,
+               p.QuantityPerUnit,
+               p.ReorderLevel,
+               p.SupplierID,
+               p.UnitPrice AS ProductsUnitPrice,
+               p.UnitsInStock,
+               p.UnitsOnOrder
+        FROM ""Order Details"" od
+        INNER JOIN Products p ON od.ProductID = p.ProductID
+        WHERE od.OrderID > 11040";
 
+            using (var cmdOrderDetails = new SqliteCommand(sqlOrderDetails, conn))
+            using (var reader = cmdOrderDetails.ExecuteReader())
+            {
+                DataTable dtOrderDetails = new DataTable("Order Details");
+                dtOrderDetails.Load(reader);
+                ds.Tables.Add(dtOrderDetails);
+            }
+
+            DataRelation relation = new DataRelation("Orders2Order Details", ds.Tables["Orders"]!.Columns["OrderID"]!, ds.Tables["Order Details"]!.Columns["OrderID"]!, false);
+            ds.Relations.Add(relation);
+
+            return ds;
         }
 
         private async void BtnInvoiceListPrint_Click(object? sender, RoutedEventArgs e)
