@@ -114,7 +114,7 @@
     <PackageReference Include="lz4net" Version="1.0.15.93" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.2" />
-    <PackageReference Include="MongoDB.Driver" Version="3.4.2" />
+    <PackageReference Include="MongoDB.Driver" Version="3.9.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.2" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="9.0.15" />
