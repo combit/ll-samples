@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#define _NO_CMLL31APIDEFINES
-#include "..\..\Visual C++\cmbtll31.h"
+#define _NO_CMLL32APIDEFINES
+#include "..\..\Visual C++\cmbtll32.h"
 #define PHP_MAXSTRLEN 	128000
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_void, 0, 0, 0)
@@ -892,7 +892,6 @@ ZEND_MINIT_FUNCTION(ListLabelPHPModule)
     REGISTER_LONG_CONSTANT("LL_GETCHARTOBJECTCOUNT_CHARTCOLUMNS",                    LL_GETCHARTOBJECTCOUNT_CHARTCOLUMNS,                    CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_GETCHARTOBJECTCOUNT_CHARTCOLUMNS_FOOTERS",            LL_GETCHARTOBJECTCOUNT_CHARTCOLUMNS_FOOTERS,            CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_VARIANTFLAG_NEUTRAL",                                 LL_VARIANTFLAG_NEUTRAL,                                 CONST_CS | CONST_PERSISTENT);
-    REGISTER_LONG_CONSTANT("LL_VARIANTFLAG_USE_JULIAN_DATE",                         LL_VARIANTFLAG_USE_JULIAN_DATE,                         CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_GRIPT_DIM_SCM",                                       LL_GRIPT_DIM_SCM,                                       CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_GRIPT_DIM_PERC",                                      LL_GRIPT_DIM_PERC,                                      CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("LL_PARAMETERFLAG_PUBLIC",                                LL_PARAMETERFLAG_PUBLIC,                                CONST_CS | CONST_PERSISTENT);

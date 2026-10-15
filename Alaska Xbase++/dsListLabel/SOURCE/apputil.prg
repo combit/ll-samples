@@ -3,7 +3,7 @@
  Author:       Marcus Herz
  Description:
  Created:			 08.02.2010     09:32:29        Updated: þ18.08.2025	þ09:59:51
- Copyright:		 2010 by DS-Datasoft, 87654 Friesenried
+ Copyright:		 2026 DS-Datasoft
  Revision:
  $Group:
 ============================================================================*/

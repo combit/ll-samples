@@ -3,7 +3,7 @@
  Author:       Marcus Herz
  Description:
  Created:		28.05.2020     12:49:25        Updated: þ18.08.2025      þ10:00:23
- Copyright:		2020 DS-Datasoft, 87671 Ronsberg
+ Copyright:		 2026 DS-Datasoft
  Revision:
  $Group:
 ============================================================================*/
@@ -143,7 +143,8 @@ RETURN
 //=========================================
 PROC dbeSys()	;dsDbeSys("FOXCDX")	;RETURN
 PROC AppSys() 								;RETURN
-FUNC RegisterXClass			;RETURN if(file("XDEMO.DLL"), DllCall( "XDEMO.DLL", DLL_XPPCALL, "_Register", 1), NIL )
+FUNC RegisterXClass
+RETURN if(file("XDEMO.DLL"), DllCall( "XDEMO.DLL", DLL_XPPCALL, "_Register", 1), NIL )
 
 //=========================================
 STATIC PROCEDURE _CheckDataIndex(cPath)

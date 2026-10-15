@@ -33,7 +33,7 @@
 #endif
 
 #include "resource.h"		// main symbols
-#include "..\cmbtll31.h"
+#include "..\cmbtll32.h"
 /////////////////////////////////////////////////////////////////////////////
 // CDesignerPreviewApp:
 // See DesignerPreview.cpp for the implementation of this class

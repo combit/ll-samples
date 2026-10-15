@@ -46,13 +46,13 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel31, Version=31.0.0.0, Culture=neutral, PublicKeyToken=a7a30592cb4a94be, processorArchitecture=MSIL">
+    <Reference Include="combit.ListLabel32, Version=31.0.0.0, Culture=neutral, PublicKeyToken=a7a30592cb4a94be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Assemblies\combit.ListLabel31.dll</HintPath>
+      <HintPath>..\..\Assemblies\combit.ListLabel32.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel31.Web, Version=31.0.0.0, Culture=neutral, PublicKeyToken=a7a30592cb4a94be, processorArchitecture=MSIL">
+    <Reference Include="combit.ListLabel32.Web, Version=31.0.0.0, Culture=neutral, PublicKeyToken=a7a30592cb4a94be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Assemblies\combit.ListLabel31.Web.dll</HintPath>
+      <HintPath>..\..\Assemblies\combit.ListLabel32.Web.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -390,7 +390,7 @@
       <Version>2.8.3</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.3</Version>
+      <Version>13.0.4</Version>
     </PackageReference>
     <PackageReference Include="System.Buffers">
       <Version>4.6.1</Version>

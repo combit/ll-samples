@@ -1,0 +1,17 @@
+{
+    "dependencies": [
+        "../LLLibrary32.0/LL32-VDF26.0.sws"
+    ],
+    "df": 26.0,
+    "paths": {
+        "appSrc": [
+            "AppSrc20.0",
+            "AppSrcShared"
+        ],
+        "configFile": "Programs/Config26.0.ws",
+        "ddSrc": "DDSrc20.0"
+    },
+    "projects": [
+        "Order.src"
+    ]
+}

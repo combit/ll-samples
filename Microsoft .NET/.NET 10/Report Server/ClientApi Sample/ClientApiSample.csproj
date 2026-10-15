@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="combit.ListLabel32">
+      <HintPath>..\..\Assemblies\combit.ListLabel32.dll</HintPath>
+    </Reference>
+    <Reference Include="combit.ListLabel32.ReportServerIntegration">
+      <HintPath>..\..\Assemblies\combit.ListLabel32.ReportServerIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="combit.ReportServer32.ClientApi">
+      <HintPath>..\..\Assemblies\combit.ReportServer32.ClientApi.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

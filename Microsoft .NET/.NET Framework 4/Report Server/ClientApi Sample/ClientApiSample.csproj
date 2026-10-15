@@ -42,14 +42,14 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel31">
-      <HintPath>..\..\Assemblies\combit.ListLabel31.dll</HintPath>
+    <Reference Include="combit.ListLabel32">
+      <HintPath>..\..\Assemblies\combit.ListLabel32.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ListLabel31.ReportServerIntegration">
-      <HintPath>..\..\Assemblies\combit.ListLabel31.ReportServerIntegration.dll</HintPath>
+    <Reference Include="combit.ListLabel32.ReportServerIntegration">
+      <HintPath>..\..\Assemblies\combit.ListLabel32.ReportServerIntegration.dll</HintPath>
     </Reference>
-    <Reference Include="combit.ReportServer31.ClientApi">
-      <HintPath>..\..\Assemblies\combit.ReportServer31.ClientApi.dll</HintPath>
+    <Reference Include="combit.ReportServer32.ClientApi">
+      <HintPath>..\..\Assemblies\combit.ReportServer32.ClientApi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext" />
@@ -336,7 +336,7 @@
       <Version>2.0.3</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.3</Version>
+      <Version>13.0.4</Version>
     </PackageReference>
     <PackageReference Include="System.AppContext">
       <Version>4.3.0</Version>

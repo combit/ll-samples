@@ -3,7 +3,7 @@
  Author:       Marcus Herz
  Description:
  Created:			 03.06.2020     15:01:45        Updated: þ18.08.2025      þ09:59:53
- Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
+ Copyright:		 2026 DS-Datasoft
  Revision:
  $Group:
 ============================================================================*/

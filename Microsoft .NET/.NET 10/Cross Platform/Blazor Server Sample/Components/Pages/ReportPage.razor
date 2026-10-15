@@ -1,0 +1,91 @@
+@page "/report"
+@* @rendermode InteractiveServer activates server-side interactivity via SignalR.
+   LLCP and SkiaSharp run on the ASP.NET Core server — no WASM compatibility issues. *@
+@rendermode InteractiveServer
+
+@inject CustomerDataService CustomerData
+@inject NavigationManager   Navigation
+
+<PageTitle>Customer Report – LLCP Blazor Server Sample</PageTitle>
+
+<h1>Customer Report</h1>
+
+<p>
+    The table below shows the in-memory data that will be included in the report.
+    Click <strong>Download Report</strong> to generate the PDF on the server and
+    save it to your computer.
+</p>
+
+<!-- ── Data preview table ─────────────────────────────────────────────────── -->
+<h2>Data Source</h2>
+<table class="table table-striped table-sm">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Revenue</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in _customers)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Name</td>
+                <td>@c.City</td>
+                <td>@c.Revenue.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- ── Download button ───────────────────────────────────────────────────── -->
+<div class="mt-3">
+    <!--
+        Navigating to the API endpoint with forceLoad causes the browser to
+        make a regular HTTP GET request to /api/report/customer.pdf.
+        The ASP.NET Core pipeline generates the PDF entirely on the server
+        and returns it with Content-Disposition: attachment, triggering the
+        browser's save-file dialog without leaving the current page.
+    -->
+    <button class="btn btn-primary" @onclick="DownloadReport">
+        📄 Download Report
+    </button>
+</div>
+
+@if (_errorMessage is not null)
+{
+    <div class="alert alert-danger mt-3" role="alert">
+        <strong>Error:</strong> @_errorMessage
+    </div>
+}
+
+@code {
+    private IReadOnlyList<Customer> _customers = Array.Empty<Customer>();
+    private string? _errorMessage;
+
+    protected override void OnInitialized()
+    {
+        _customers = CustomerData.GetCustomers();
+    }
+
+    /// <summary>
+    /// Navigates to the minimal-API download endpoint.
+    /// The server generates the PDF and streams it back as a file attachment.
+    /// </summary>
+    private void DownloadReport()
+    {
+        try
+        {
+            // forceLoad = true performs a standard HTTP GET outside of Blazor's
+            // client-side router, so the browser receives the file response and
+            // shows the save dialog instead of trying to render the page.
+            Navigation.NavigateTo("/api/report/customer.pdf", forceLoad: true);
+        }
+        catch (Exception ex)
+        {
+            _errorMessage = ex.Message;
+        }
+    }
+}

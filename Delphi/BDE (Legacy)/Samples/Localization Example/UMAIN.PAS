@@ -4,15 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Registry, Dialogs, L31, DB, ADODB, StdCtrls, cmbtll31, Grids, DBGrids, 
-  L31db;
+  Registry, Dialogs, L32, DB, ADODB, StdCtrls, cmbtll32, Grids, DBGrids, 
+  L32db;
 
 type
   TfrmMain = class(TForm)
     btnDesign: TButton;
     dsOrders: TDataSource;
     ADOConnection1: TADOConnection;
-    LL: TDBL31_;
+    LL: TDBL32_;
     btnPrint: TButton;
     Label2: TLabel;
     Label3: TLabel;

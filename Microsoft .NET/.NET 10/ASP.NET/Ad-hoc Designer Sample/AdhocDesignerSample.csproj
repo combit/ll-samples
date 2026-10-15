@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="Current">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+	<Use64BitIISExpress>false</Use64BitIISExpress>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Content\**" />
+    <Compile Remove="Scripts\**" />
+    <Content Remove="Content\**" />
+    <Content Remove="Scripts\**" />
+    <EmbeddedResource Remove="Content\**" />
+    <EmbeddedResource Remove="Scripts\**" />
+    <None Remove="Content\**" />
+    <None Remove="Scripts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\repository.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="5.3.8" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5" />
+	<PackageReference Include="System.CodeDom" Version="10.0.10" />
+	<PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.12" />
+    <PackageReference Include="System.Drawing.Common" Version="10.0.10" />
+    <PackageReference Include="System.Runtime.Caching" Version="10.0.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="combit.ListLabel32">
+      <HintPath>..\..\Assemblies\combit.ListLabel32.dll</HintPath>
+    </Reference>
+    <Reference Include="combit.ListLabel32.AdhocDesign">
+      <HintPath>..\..\Assemblies\combit.ListLabel32.AdhocDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="combit.ListLabel32.AdhocDesign.Web">
+      <HintPath>..\..\Assemblies\combit.ListLabel32.AdhocDesign.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="combit.ListLabel32.Web">
+      <HintPath>..\..\Assemblies\combit.ListLabel32.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

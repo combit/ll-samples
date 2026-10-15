@@ -15,7 +15,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, DB,
-  Registry, DBTables, ADODB, L31, StdCtrls, cmbtll31,  L31db;
+  Registry, DBTables, ADODB, L32, StdCtrls, cmbtll32,  L32db;
 
 type
   TForm1 = class(TForm)
@@ -23,7 +23,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    LL: TDBL31_;
+    LL: TDBL32_;
     dsOrders: TDataSource;
     dsCustomers: TDataSource;
     dsOrderDetails: TDataSource;

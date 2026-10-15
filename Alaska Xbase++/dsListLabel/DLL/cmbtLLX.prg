@@ -1212,6 +1212,16 @@ LL_EXTERN INTEGER LlGetIdentifierHelpText(;                                   		
 		@pszBuffer AS STRING,;                                                                      // 	LPWSTR               pszBuffer,
 		nBufSize AS INTEGER;                                                                        // 	UINT                 nBufSize
 		) ORDINAL 400 IN CMBT_DLL                                                  					  //
+
+
+
+LL_EXTERN INTEGER LsMailConfigurationDialog(;                                                	// CMBT_LS_WINAPI INT      DLLPROC  LsMailConfigurationDialogA
+		hWndParent AS INTEGER,;                                                                   // 	HWND                 hWndParent,
+		pszSubkey AS STRING,;                                                                     // 	LPCSTR               pszSubkey,
+		nFlags AS INTEGER,;                                                                       // 	UINT                 nFlags,
+		nLanguage AS INTEGER) ORDINAL 61 IN CMBS_DLL                                                // 	INT                  nLanguage
+
+
 																																  //
 //=========================================
 // Create a function for structure

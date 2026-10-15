@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- D:   Beide Skripte werden vom Backend ausgeliefert. Sie werden dort beim Start aus den
+             Assemblies nach wwwroot extrahiert (siehe Program.cs) und muessen daher weder
+             mitgeliefert noch installiert werden.
+         US: Both scripts are served by the backend. They are extracted from the assemblies into
+             wwwroot on startup (see Program.cs) and therefore need not be shipped or installed. -->
+    <script src="https://localhost:7147/WebReportDesigner.js"></script>
+    <script src="https://localhost:7147/WebReportViewer.js"></script>
+    <meta charset="utf-8" />
+    <title>List &amp; Label - Angular Web Reporting</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

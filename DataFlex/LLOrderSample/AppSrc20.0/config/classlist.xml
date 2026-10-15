@@ -1,343 +1,22 @@
 <?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2025-06-06T16:09:48</VDFLibraryTimeStamp>
+	<VDFLibraryTimeStamp>2026-04-20T21:24:26</VDFLibraryTimeStamp>
 	<DFLibraryVersion>2</DFLibraryVersion>
 	<libraries>
 		<library>
-			<libraryPath>..\LLLibrary31.0\LL31-VDF25.0.sws</libraryPath>
-			<libraryTimeStamp>2018-10-01T20:28:33</libraryTimeStamp>
-			<libraryID>Lib1</libraryID>
+			<libraryPath>..\LLLibrary32.0\LL32-VDF26.0.sws</libraryPath>
+			<libraryTimeStamp>2026-09-03T08:37:54</libraryTimeStamp>
+			<libraryID>local/LL32-VDF26.0</libraryID>
 		</library>
 	</libraries>
 	<classes>
-		<class>
-			<className>cWebButton</className>
-			<image>cWebButton.ico</image>
-			<package>cWebButton.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebCheckbox</className>
-			<image>cWebCheckbox.ico</image>
-			<package>cWebCheckBox.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColumn</className>
-			<image>cWebColumn.ico</image>
-			<package>cWebColumn.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColumnButton</className>
-			<image>cWebColumnButton.ico</image>
-			<package>cWebColumnButton.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColumnCheckbox</className>
-			<image>cWebColumnCheckbox.ico</image>
-			<package>cWebColumnCheckBox.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColumnCombo</className>
-			<image>cWebColumnCombo.ico</image>
-			<package>cWebColumnCombo.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColumnDate</className>
-			<image>cWebColumnDate.ico</image>
-			<package>cWebColumnDate.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColumnImage</className>
-			<image>cWebColumnImage.ico</image>
-			<package>cWebColumnImage.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColumnLink</className>
-			<image>cWebColumnLink.ico</image>
-			<package>cWebColumnLink.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColumnSuggestion</className>
-			<image>cWebColumnSuggestion.ico</image>
-			<package>cWebColumnSuggestion.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebCombo</className>
-			<image>cWebCombo.ico</image>
-			<package>cWebCombo.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebCommandBar</className>
-			<image>cWebCommandBar.ico</image>
-			<package>cWebCommandbar.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebDateForm</className>
-			<image>cWebDateForm.ico</image>
-			<package>cWebDateForm.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebDatePicker</className>
-			<image>cWebDatePicker.ico</image>
-			<package>cWebDatePicker.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebEdit</className>
-			<image>cWebEdit.ico</image>
-			<package>cWebEdit.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebFileUploadForm</className>
-			<image>cWebFileUploadForm.ico</image>
-			<package>cWebFileUploadForm.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebFileUploadButton</className>
-			<image>cWebFileUploadButton.ico</image>
-			<package>cWebFileUploadButton.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebForm</className>
-			<image>cWebForm.ico</image>
-			<package>cWebForm.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebGrid</className>
-			<image>cWebGrid.ico</image>
-			<package>cWebGrid.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebHtmlBox</className>
-			<image>cWebHtmlBox.ico</image>
-			<package>cWebHtmlBox.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebHorizontalLine</className>
-			<image>cWebHorizontalLine.ico</image>
-			<package>cWebHorizontalLine.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebIFrame</className>
-			<image>cWebIFrame.ico</image>
-			<package>cWebIFrame.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebImage</className>
-			<image>cWebImage.ico</image>
-			<package>cWebImage.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebLabel</className>
-			<image>cWebLabel.ico</image>
-			<package>cWebLabel.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebList</className>
-			<image>cWebList.ico</image>
-			<package>cWebList.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebMenuBar</className>
-			<image>cWebMenuBar.ico</image>
-			<package>cWebMenuBar.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebMenuItem</className>
-			<image>cWebMenuItem.ico</image>
-			<package>cWebMenuItem.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebMenuItemLoadView</className>
-			<image>cWebMenuItem.ico</image>
-			<package>cWebMenuItemLoadView.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebObject</className>
-			<image>cWebObject.ico</image>
-			<package>cWebObject.pkg</package>
-			<groupName>Others</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebProgressBar</className>
-			<image>cWebProgressBar.ico</image>
-			<package>cWebProgressBar.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebPromptList</className>
-			<image>cWebList.ico</image>
-			<package>cWebPromptList.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebRadio</className>
-			<image>cWebRadio.ico</image>
-			<package>cWebRadio.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebSlider</className>
-			<image>cWebSlider.ico</image>
-			<package>cWebSlider.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebSpacer</className>
-			<image>cWebSpacer.ico</image>
-			<package>cWebSpacer.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebSuggestionForm</className>
-			<image>cWebSuggestionForm.ico</image>
-			<package>cWebSuggestionForm.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebTimer</className>
-			<image>cWebTimer.ico</image>
-			<package>cWebTimer.pkg</package>
-			<groupName>Others</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebToolbar</className>
-			<image>cWebToolbar.ico</image>
-			<package>cWebToolbar.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebTreeView</className>
-			<image>cWebTreeView.ico</image>
-			<package>cWebTreeView.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebCard</className>
-			<image>cWebCard.ico</image>
-			<package>cWebCard.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebCardContainer</className>
-			<image>cWebCardContainer.ico</image>
-			<package>cWebCardContainer.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebGroup</className>
-			<image>cWebGroup.ico</image>
-			<package>cWebGroup.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebModalDialog</className>
-			<image>cWebModalDialog.ico</image>
-			<package>cWebModalDialog.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebPanel</className>
-			<image>cWebPanel.ico</image>
-			<package>cWebPanel.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebTabContainer</className>
-			<image>cWebTabContainer.ico</image>
-			<package>cWebTabContainer.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebTabPage</className>
-			<image>cWebTabPage.ico</image>
-			<package>cWebTabPage.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebView</className>
-			<image>cWebView.ico</image>
-			<package>cWebView.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
 		<class>
 			<className>BitmapContainer</className>
 			<image>ControlBitmapContainer.ico</image>
 			<package>dfBitmap.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>Button</className>
@@ -345,6 +24,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cSplitButton</className>
@@ -352,6 +32,7 @@
 			<package>cSplitButton.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCommandLinkButton</className>
@@ -359,6 +40,7 @@
 			<package>cCommandLinkButton.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cAnimation</className>
@@ -366,6 +48,7 @@
 			<package>cAnimation.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCJGrid</className>
@@ -373,6 +56,7 @@
 			<package>cCJGrid.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCJGridColumn</className>
@@ -380,6 +64,7 @@
 			<package>cCJGridColumn.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCJGridColumnRowIndicator</className>
@@ -387,6 +72,7 @@
 			<package>cCJGridColumnRowIndicator.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCJGridPromptList</className>
@@ -394,6 +80,7 @@
 			<package>cCJGridPromptList.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>Checkbox</className>
@@ -401,6 +88,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cLinkLabel</className>
@@ -408,6 +96,7 @@
 			<package>cLinkLabel.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>ComboForm</className>
@@ -415,6 +104,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cProgressBar</className>
@@ -422,6 +112,7 @@
 			<package>cProgressBar.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cRichEdit</className>
@@ -429,6 +120,7 @@
 			<package>cRichEdit.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cTextEdit</className>
@@ -436,6 +128,7 @@
 			<package>cTextEdit.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>Form</className>
@@ -443,6 +136,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>LineControl</className>
@@ -450,6 +144,7 @@
 			<package>dfLine.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>Radio</className>
@@ -457,6 +152,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>SpinForm</className>
@@ -464,6 +160,7 @@
 			<package>dfSpnFrm.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>TextBox</className>
@@ -471,6 +168,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>Trackbar</className>
@@ -478,6 +176,7 @@
 			<package>TrckBr.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>TreeView</className>
@@ -485,6 +184,7 @@
 			<package>dfTreeVw.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>Container3D</className>
@@ -492,6 +192,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cScrollingContainer</className>
@@ -499,6 +200,7 @@
 			<package>cScrollingContainer.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cSplitterContainer</className>
@@ -506,6 +208,7 @@
 			<package>cSplitterContainer.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>Group</className>
@@ -513,6 +216,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>ModalPanel</className>
@@ -520,6 +224,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>RadioGroup</className>
@@ -527,6 +232,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>TabDialog</className>
@@ -534,6 +240,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>ToolPanel</className>
@@ -541,6 +248,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>View</className>
@@ -548,6 +256,7 @@
 			<package>Dfadlg.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>ReportView</className>
@@ -555,6 +264,7 @@
 			<package>DFRptVw.pkg</package>
 			<groupName>Base Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDbCJGrid</className>
@@ -562,6 +272,7 @@
 			<package>cDbCJGrid.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDbCJGridColumn</className>
@@ -569,6 +280,7 @@
 			<package>cDbCJGridColumn.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDbCJGridColumnSuggestion</className>
@@ -576,6 +288,7 @@
 			<package>cDbCJGridColumnSuggestion.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDbCJGridPromptList</className>
@@ -583,6 +296,7 @@
 			<package>cDbCJGridPromptList.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDbRichEdit</className>
@@ -590,6 +304,7 @@
 			<package>cDbRichEdit.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDbTextEdit</className>
@@ -597,6 +312,7 @@
 			<package>cDbTextEdit.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbBitmap</className>
@@ -604,6 +320,7 @@
 			<package>dbBitmap.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbCheckbox</className>
@@ -611,6 +328,7 @@
 			<package>dfEnChk.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbComboForm</className>
@@ -618,6 +336,7 @@
 			<package>dfcentry.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbForm</className>
@@ -625,6 +344,7 @@
 			<package>dfEntry.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbSuggestionForm</className>
@@ -632,6 +352,7 @@
 			<package>dbSuggestionForm.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbSpinForm</className>
@@ -639,6 +360,7 @@
 			<package>dfSpnEnt.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbTrackbar</className>
@@ -646,6 +368,7 @@
 			<package>dbTrckBr.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDbScrollingContainer</className>
@@ -653,6 +376,7 @@
 			<package>cDbScrollingContainer.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDbSplitterContainer</className>
@@ -660,6 +384,7 @@
 			<package>cDbSplitterContainer.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbContainer3D</className>
@@ -667,6 +392,7 @@
 			<package>dfClient.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbGroup</className>
@@ -674,6 +400,7 @@
 			<package>dfclient.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbModalPanel</className>
@@ -681,6 +408,7 @@
 			<package>dfClient.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbRadioGroup</className>
@@ -688,6 +416,7 @@
 			<package>dfEnRad.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbTabDialog</className>
@@ -695,6 +424,7 @@
 			<package>dfTabDlg.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbTabDialogView</className>
@@ -702,6 +432,7 @@
 			<package>dfTabDlg.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbView</className>
@@ -709,6 +440,7 @@
 			<package>DfClient.pkg</package>
 			<groupName>Data Containers</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>ColorDialog</className>
@@ -716,6 +448,7 @@
 			<package>Colr_dlg.pkg</package>
 			<groupName>Dialogs</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>FontDialog</className>
@@ -723,6 +456,7 @@
 			<package>Font_dlg.pkg</package>
 			<groupName>Dialogs</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>OpenDialog</className>
@@ -730,6 +464,7 @@
 			<package>File_dlg.pkg</package>
 			<groupName>Dialogs</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>SaveAsDialog</className>
@@ -737,6 +472,7 @@
 			<package>File_dlg.pkg</package>
 			<groupName>Dialogs</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cFtpTransfer</className>
@@ -744,6 +480,7 @@
 			<package>VdfBase.pkg</package>
 			<groupName>Internet</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cHttpTransfer</className>
@@ -751,6 +488,7 @@
 			<package>cHttpTransfer.pkg</package>
 			<groupName>Internet</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cXmlHttpTransfer</className>
@@ -758,6 +496,7 @@
 			<package>cXmlHttpTransfer.pkg</package>
 			<groupName>Internet</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>Array</className>
@@ -765,6 +504,7 @@
 			<package>VdfBase.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>BusinessProcess</className>
@@ -772,6 +512,7 @@
 			<package>BatchDD.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cApplication</className>
@@ -779,6 +520,7 @@
 			<package>cApplication.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cCharTranslate</className>
@@ -786,6 +528,7 @@
 			<package>cCharTranslate.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cCJSkinFramework</className>
@@ -793,6 +536,7 @@
 			<package>cCJSkinFramework.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cHtmlHelp</className>
@@ -800,6 +544,7 @@
 			<package>cHtmlHelp.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cIdleHandler</className>
@@ -807,6 +552,7 @@
 			<package>Windows.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cImageList32</className>
@@ -814,6 +560,7 @@
 			<package>cImageList32.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cIniFile</className>
@@ -821,6 +568,7 @@
 			<package>cIniFile.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cObject</className>
@@ -828,6 +576,7 @@
 			<package>VdfBase.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cSeqFileHelper</className>
@@ -835,6 +584,7 @@
 			<package>cSeqFileHelper.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cTimer</className>
@@ -842,6 +592,7 @@
 			<package>cTimer.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cToolTipController</className>
@@ -849,6 +600,7 @@
 			<package>cToolTipController.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cWinReport2</className>
@@ -856,6 +608,7 @@
 			<package>cWinReport2.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>Set</className>
@@ -863,6 +616,7 @@
 			<package>Set.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cCJContextMenu</className>
@@ -870,6 +624,7 @@
 			<package>cCJCommandBarSystem.pkg</package>
 			<groupName>Menus and Toolbars</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCJMenuBar</className>
@@ -877,6 +632,7 @@
 			<package>cCJCommandBarSystem.pkg</package>
 			<groupName>Menus and Toolbars</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCJStatusbar</className>
@@ -884,6 +640,7 @@
 			<package>cCJCommandBarSystem.pkg</package>
 			<groupName>Menus and Toolbars</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCJStatusbarPane</className>
@@ -891,6 +648,7 @@
 			<package>cCJCommandBarSystem.pkg</package>
 			<groupName>Menus and Toolbars</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cCJToolbar</className>
@@ -898,20 +656,7 @@
 			<package>cCJCommandBarSystem.pkg</package>
 			<groupName>Menus and Toolbars</groupName>
 			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebMenuButton</className>
-			<image>cWebMenuButton.ico</image>
-			<package>cWebMenuButton.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebParentCombo</className>
-			<image>cWebParentCombo.ico</image>
-			<package>cWebParentCombo.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>dbParentCombo</className>
@@ -919,55 +664,7 @@
 			<package>dbParentCombo.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColorForm</className>
-			<image>cWebColorForm.ico</image>
-			<package>cWebColorForm.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebColorPicker</className>
-			<image>cWebColorPicker.ico</image>
-			<package>cWebColorPicker.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebListSwipeButton</className>
-			<image>cWebListSwipeButton.ico</image>
-			<package>cWebListSwipeButton.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebMenuList</className>
-			<image>cWebMenuList.ico</image>
-			<package>cWebMenuList.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebAccordionContainer</className>
-			<image>cWebAccordionContainer.ico</image>
-			<package>cWebAccordionContainer.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebAccordionCard</className>
-			<image>cWebAccordionCard.ico</image>
-			<package>cWebAccordionCard.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebFloatingPanel</className>
-			<image>cWebFloatingPanel.ico</image>
-			<package>cWebFloatingPanel.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cJsonHttpTransfer</className>
@@ -975,6 +672,7 @@
 			<package>cJsonHttpTransfer.pkg</package>
 			<groupName>Internet</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cConnection</className>
@@ -982,55 +680,7 @@
 			<package>cConnection.pkg</package>
 			<groupName>Others</groupName>
 			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebListExpandPanel</className>
-			<image>cWebListExpandPanel.ico</image>
-			<package>cWebListExpandPanel.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cListLabelReport</className>
-			<image>ll.ico</image>
-			<package>cListLabel.pkg</package>
-			<groupName>List &amp;&amp; Label</groupName>
-			<libraryID>Lib1</libraryID>
-		</class>
-		<class>
-			<className>cListLabelViewer</className>
-			<image>ControlCrystalViewer.ico</image>
-			<package>cListLabel.pkg</package>
-			<groupName>List &amp;&amp; Label</groupName>
-			<libraryID>Lib1</libraryID>
-		</class>
-		<class>
-			<className>cWebGeoLocation</className>
-			<image>cWebGeoLocation.ico</image>
-			<package>cWebGeoLocation.pkg</package>
-			<groupName>Others</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebHtmlList</className>
-			<image>cWebHtmlList.ico</image>
-			<package>cWebHtmlList.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebDynamicObjectContainer</className>
-			<image>cWebGroup.ico</image>
-			<package>cWebDynamicObjectContainer.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebTagsForm</className>
-			<image>cWebTagsForm.ico</image>
-			<package>cWebTagsForm.pkg</package>
-			<groupName>Web Data Entry</groupName>
-			<libraryID>0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
 			<className>cSelectFolderDialog</className>
@@ -1038,34 +688,7 @@
 			<package>cSelectFolderDialog.pkg</package>
 			<groupName>Dialogs</groupName>
 			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebContextMenu</className>
-			<image>cWebContextMenu.ico</image>
-			<package>cWebContextMenu.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebDragDropHelper</className>
-			<image>cWebDragDropHelper.ico</image>
-			<package>cWebDragDropHelper.pkg</package>
-			<groupName>Others</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebDragDropFileHelper</className>
-			<image>cWebDragDropFileHelper.ico</image>
-			<package>cWebDragDropFileHelper.pkg</package>
-			<groupName>Others</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebMenuItemCheckbox</className>
-			<image>cWebMenuItemCheckbox.ico</image>
-			<package>cWebMenuItemCheckbox.pkg</package>
-			<groupName>Web Menu System</groupName>
-			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cWebView2Browser</className>
@@ -1073,6 +696,7 @@
 			<package>cWebView2Browser.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cDBTagsForm</className>
@@ -1080,6 +704,7 @@
 			<package>cDBTagsForm.pkg</package>
 			<groupName>Data Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
 			<className>cTagsForm</className>
@@ -1087,69 +712,23 @@
 			<package>cTagsForm.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 		<class>
-			<className>cWebColumnTags</className>
-			<image>cWebColumnTags.ico</image>
-			<package>cWebColumnTags.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
+			<className>cListLabelReport</className>
+			<image>ll.ico</image>
+			<package>cListLabel.pkg</package>
+			<groupName>List &amp;&amp; Label</groupName>
+			<libraryID>local/LL32-VDF26.0</libraryID>
+			<classLibrary>Common</classLibrary>
 		</class>
 		<class>
-			<className>cWebColumnSelectionIndicator</className>
-			<image>cWebColumnSelectionIndicator.ico</image>
-			<package>cWebColumnSelectionIndicator.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebMultiSelectList</className>
-			<image>cWebMultiSelectList.ico</image>
-			<package>cWebMultiSelectList.pkg</package>
-			<groupName>Web Lists &amp;&amp; Grids</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cLocalWebAppHost</className>
-			<image>cLocalWebAppHost.ico</image>
-			<package>cLocalWebAppHost.pkg</package>
-			<groupName>Base Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cLocalWebControlHost</className>
-			<image>cLocalWebControlHost.ico</image>
-			<package>cLocalWebControlHost.pkg</package>
-			<groupName>Base Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cDbLocalWebControlHost</className>
-			<image>cDbLocalWebControlHost.ico</image>
-			<package>cDbLocalWebControlHost.pkg</package>
-			<groupName>Data Containers</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebDrawing</className>
-			<image>cWebDrawing.ico</image>
-			<package>cWebDrawing.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebWidgetPalette</className>
-			<image>cWebWidgetPalette.ico</image>
-			<package>cWebWidgetPalette.pkg</package>
-			<groupName>Web Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>cWebWidgetContainer</className>
-			<image>cWebWidgetContainer.ico</image>
-			<package>cWebWidgetContainer.pkg</package>
-			<groupName>Web Containers</groupName>
-			<libraryID>0</libraryID>
+			<className>cListLabelViewer</className>
+			<image>ControlCrystalViewer.ico</image>
+			<package>cListLabel.pkg</package>
+			<groupName>List &amp;&amp; Label</groupName>
+			<libraryID>local/LL32-VDF26.0</libraryID>
+			<classLibrary>Windows</classLibrary>
 		</class>
 	</classes>
 </classList>

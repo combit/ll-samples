@@ -1,0 +1,40 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37314.3 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactWebReportingSample", "Server\ReactWebReportingSample.csproj", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{C2D3E4F5-A6B7-8901-CDEF-234567890ABC}"
+	ProjectSection(SolutionItems) = preProject
+		Client\src\App.css = Client\src\App.css
+		Client\src\App.tsx = Client\src\App.tsx
+		Client\src\custom-elements.d.ts = Client\src\custom-elements.d.ts
+		Client\index.html = Client\index.html
+		Client\src\config\index.ts = Client\src\config\index.ts
+		Client\src\main.tsx = Client\src\main.tsx
+		Client\package.json = Client\package.json
+		Client\tsconfig.json = Client\tsconfig.json
+		Client\src\hooks\useExternalScript.ts = Client\src\hooks\useExternalScript.ts
+		Client\vite.config.ts = Client\vite.config.ts
+		Client\src\components\WebReportDesigner.tsx = Client\src\components\WebReportDesigner.tsx
+		Client\src\components\WebReportViewer.tsx = Client\src\components\WebReportViewer.tsx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2C3D4E5-F6A7-8901-BCDE-F12345678901}
+	EndGlobalSection
+EndGlobal

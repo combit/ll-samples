@@ -3,7 +3,7 @@
  Author:       Marcus Herz
  Description:
  Created:		01.06.2021     14:32:29        Updated: þ18.08.2025      þ09:59:17
- Copyright:		 2021 DS-Datasoft, 87671 Ronsberg
+ Copyright:		 2026 DS-Datasoft
  Revision:
  $Group:
 ============================================================================*/
@@ -69,10 +69,10 @@ PROCEDURE XRechnung(nPrintingTarget, lDesignDocument, cFolder)
 	// US: crtZugferd() => factur-x.xml
 	ZUGFeRD():New():create(cXRechnung)
 
-	// D:  setzen List & Label Optionen für ZUgFeRD
+	// D:  setzen List & Label Optionen für ZUGFeRD
 	// D:  deklariert auch ZUGFeRD Einstellungen LL_LLX_EXTENSIONTYPE_EXPORT
-	// US: set List & Label options for ZUgFeRD
-	// US: declares ZUGFeRD settingd LL_LLX_EXTENSIONTYPE_EXPORT
+	// US: set List & Label options for ZUGFeRD
+	// US: declare ZUGFeRD setting LL_LLX_EXTENSIONTYPE_EXPORT
 	oListLabel:ZugferdXml(cXRechnung)
 
 	// D: aktuelle Workarea anmelden, über dies Tabelle wird für die Liste geskippt
@@ -160,9 +160,9 @@ METHOD ZUGFeRD:Create(cXmlFile)
 	LOCAL hHandle
 
 	::Seller	:= dataObject():New()
-	::Seller		:STRASSE		:= "Kudamm 4711"
+	::Seller		:STRASSE		:= "Babylon"
 	::Seller		:ORT			:= "Berlin"
-	::Seller		:PLZ			:= "14109"
+	::Seller		:PLZ			:= "01928"
 	::Seller		:LAND			:= "DE"
 	::Seller		:NAME			:= "Metropolitan Caffee"
 	::Seller		:USTID		:= "DE123456789"
@@ -170,6 +170,8 @@ METHOD ZUGFeRD:Create(cXmlFile)
 	::Seller		:TELNR		:= "+49 30 12345678"
 	::Seller		:EMAIL		:= "info@seller.com"
 	::Seller		:IBAN			:= "DE64200400600200400600"
+	::Seller		:INHABER		:= "Geschäftsführer: Herr Idefix"
+	::Seller		:HRB			:= "Handelsregister: HRB 4711"
 
 	oLine 	:= NIL
 	oItem 	:= NIL
@@ -239,10 +241,11 @@ METHOD ZUGFeRD:_ExchangedDocumentContext()
 		:addchild(::_oRoot:CreateElement("ram:ID", "urn:fdc:peppol.eu:2017:poacc:billing:01:1.0" )));
 			:addchild(::_oRoot:CreateElement("ram:GuidelineSpecifiedDocumentContextParameter" ); 					// BT-24
 		:addchild(::_oRoot:CreateElement("ram:ID", "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended" ))))
+
 RETURN ::_oRoot
 
 //=========================================
-// TypeCode:
+// TypeCode: (Auszug)
 //  71 : Mahnung
 // 380 : Handelsrechnung
 // 384 : korrigierte rechnung
@@ -254,24 +257,11 @@ METHOD ZUGFeRD:_ExchangedDocument()
 	LOCAL oItem	:= NIL
 	LOCAL cReg	:= ""
 
-	::Seller		:STRASSE		:= "Kudamm 4711"
-	::Seller		:ORT			:= "Berlin"
-	::Seller		:PLZ			:= "14109"
-	::Seller		:LAND			:= "DE"
-	::Seller		:NAME			:= "Metropolitan Caffee"
-	::Seller		:USTID		:= "DE123456789"
-	::Seller		:KONTAKT		:= "Theke"
-	::Seller		:TELNR		:= "+49 30 12345678"
-	::Seller		:EMAIL		:= "info@Metropolitan-Caffee.com"
-	::Seller		:IBAN			:= "DE64200400600200400600"
-	::Seller		:INHABER		:= "Geschäftsführer: Herr Idefix"
-	::Seller		:HRB			:= "Handelsregister: HRB 4711"
-
 	// offizielle Firmierung
-	cReg	:= ::Seller:NAME	+ CRLF +;
-			::Seller:STRASSE + CRLF +;
-			::Seller:LAND +" "+ ::Seller:PLZ +" "+::Seller:ORT + CRLF +;
-			::Seller:INHABER + CRLF +;
+	cReg	:= ::Seller:NAME +", "+;
+			::Seller:STRASSE +", "+;
+			::Seller:LAND    +" "+ ::Seller:PLZ +" "+::Seller:ORT +", "+;
+			::Seller:INHABER +", "+;
 			::Seller:HRB
 
 	// ExchangedDocument / Invoice
@@ -279,7 +269,7 @@ METHOD ZUGFeRD:_ExchangedDocument()
 	oItem:addchild(::_oRoot:CreateElement("ram:ID", alltrim(INVOICE->BILLNO) ))            						// BT 1
 	oItem:addchild(::_oRoot:CreateElement("ram:TypeCode", "380" ))                         						// BT 3
 	oItem:addchild(::_oRoot:CreateElement("ram:IssueDateTime" );
-		:addchild(::_oRoot:CreateElement("udt:DateTimeString", "20251001", {{ "format", "102"}})))	// BT 2
+		:addchild(::_oRoot:CreateElement("udt:DateTimeString", "20251001", {{ "format", "102"}})))				// BT 2
 	oItem:addchild(::_oRoot:CreateElement("ram:IncludedNote" );                           							// BG 1
 		:addchild(::_oRoot:CreateElement("ram:Content"):setContent( cReg)); 												// BT 22
 		:addchild(::_oRoot:CreateElement("ram:SubjectCode", "REG" )))               									// BT 21
@@ -332,6 +322,9 @@ METHOD ZUGFeRD:_SupplyChainTradeTransaction(oParent)
 	oSub:addchild(::_oRoot:CreateElement("ram:Description"):SetContent( alltrim(ITEMS->DESCRIPT1) +CRLF+ alltrim(ITEMS->DESCRIPT2)))	// BT 154
 
 	oLine	:addchild(oTrade := ::_oRoot:CreateElement("ram:SpecifiedLineTradeAgreement" ))      						// BG-29
+
+	oTrade :addchild(::_oRoot:CreateElement("ram:BuyerOrderReferencedDocument");
+		:addchild(::_oRoot:CreateElement("ram:IssuerAssignedID", alltrim(::dbAuftrag:BST))))							// BT 13
 
 	oTrade :addchild(oSub := ::_oRoot:CreateElement("ram:GrossPriceProductTradePrice"))
 

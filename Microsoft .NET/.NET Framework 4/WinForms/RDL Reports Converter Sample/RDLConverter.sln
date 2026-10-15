@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RdlConverter", "RdlConverter\RdlConverter.csproj", "{8B06A9EC-8182-4FAE-9F66-8AC735B4BE78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "combit.ListLabel.RdlConverter", "combit.ListLabel.RdlConverter\combit.ListLabel.RdlConverter.csproj", "{98DAA2BD-0B51-4FF7-A7FB-8BB4DC97597C}"

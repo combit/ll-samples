@@ -1,5 +1,6 @@
 [PROJECT]
-    DEBUG                = yes
+    DEBUG         = yes
+    LIB           = ..\lib;..\dll
     Version = 2.3
     PROJECT.XPJ
 
@@ -12,22 +13,25 @@
     DEBUG_SAVE           = yes
     GUI                  = yes
     LINKER               = alink
-    LINK_FLAGS           = /defaultlib:..\lib\xclass.lib /defaultlib:..\lib\adsclass.lib /defaultlib:..\dll\dsListLabel31.LIB  // /defaultlib:[<path>]SQLXPP.LIB
+    LINK_FLAGS           = /defaultlib:xclass.lib /defaultlib:adsclass.lib /defaultlib:dsListLabel32.LIB  // /defaultlib:[<path>]SQLXPP.LIB
     RC_COMPILE           = arc
     RC_FLAGS             = /v
     INCLUDE              = include;..\dll
     TARGET_DIR           = ..\
     INTERMEDIATE_DEBUG   = ..\.debug
     INTERMEDIATE_RELEASE = ..\.release
+    DEPENDS_ON           = $(ASSETS_PATH)\xbphtmlviewer2
 // $START-AUTODEPEND
     _panRight.obj
     adsSimple2.obj
     AppSplitter.obj
     AppUtil.obj
+    ArrayReportContainer.obj
     dboInvoice.obj
     dboReportContainer.obj
     dboSimple1.obj
     dboSimple2.obj
+    dboSimple2Opt.obj
     DrillDown.obj
     Expandable.obj
     Invoice.obj
@@ -35,15 +39,18 @@
     Main.obj
     panRight.obj
     PDF.obj
-    pgOCX.obj
+    pgHtmlViewer2.obj
+    PrintRestAPI.obj
     qrrechnung.obj
     reportcontainer.obj
     Simple1.obj
     Simple2.obj
+    Simple2Opt.obj
     Simple2Stream.obj
     SimpleArray.obj
     SimpleDataObject.obj
     SimpleDataObjectLBL.obj
+    SimpleInvoice.obj
     sqlADS.obj
     xRechnung.obj
 // $STOP-AUTODEPEND
@@ -60,12 +67,12 @@
     DrillDown.PRG
     Expandable.PRG
     Invoice.prg
-    SimpleInvoice.prg
     Mail.prg
     Main.prg
     panRight.prg
     PDF.prg
-    pgOCX.prg
+    pgHtmlViewer2.prg
+    PrintRestAPI.prg
     qrrechnung.prg
     reportcontainer.PRG
     resource\resource.arc
@@ -76,6 +83,7 @@
     SimpleArray.PRG
     SimpleDataObject.PRG
     SimpleDataObjectLBL.PRG
+    SimpleInvoice.prg
     sqlADS.prg
     xRechnung.prg
 

@@ -14,7 +14,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, L31, L31dom, Menus, DB, ADODB, Registry, L31db
+  Dialogs, StdCtrls, L32, L32dom, Menus, DB, ADODB, Registry, L32db
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   {$ENDIF}
@@ -22,15 +22,11 @@ uses
 
 type
   TDesExtForm = class(TForm)
-    GradientFillObject: TLL31XObject;
     DesignButton: TButton;
     Label1: TLabel;
     Label2: TLabel;
-    PopupMenu1: TPopupMenu;
     ColorDialog1: TColorDialog;
-    EditColor11: TMenuItem;
-    EditColor21: TMenuItem;
-    RomanNumber: TLL31XFunction;
+    RomanNumber: TLL32XFunction;
     Label3: TLabel;
     Label4: TLabel;
     chckBxDebug: TCheckBox;
@@ -39,14 +35,15 @@ type
     OrderDetails: TADOTable;
     dsCustomers: TDataSource;
     dsOrders: TDataSource;
-    LL: TDBL31_;
+    LL: TDBL32_;
     Customers: TADOTable;
     CustomersCustomerID: TWideStringField;
     CustomersContactName: TWideStringField;
     CustomersAddress: TWideStringField;
     CustomersCity: TWideStringField;
     CustomersPhone: TWideStringField;
-    LL31XAction4: TLL31XAction;
+    LL32XAction4: TLL32XAction;
+    GradientFillObject: TLl32XObject;
     procedure DesignButtonClick(Sender: TObject);
     procedure LLDefineVariables(Sender: TObject; UserData: Integer;
       IsDesignMode: Boolean; var Percentage: Integer;
@@ -57,20 +54,18 @@ type
       ParentHandle: Cardinal; var HasChanged: Boolean);
     procedure GradientFillObjectInitialCreation(Sender: TObject;
       ParentHandle: Cardinal);
-    procedure EditColor1Click(Sender: TObject);
-    procedure EditColor2Click(Sender: TObject);
-    procedure LL31XAction1ExecuteAction;
+    procedure LL32XAction1ExecuteAction;
     procedure chckBxDebugClick(Sender: TObject);
     procedure RomanNumberEvaluateFunction(Sender: TObject;
-      var ResultType: TLL31XFunctionParameterType;
+      var ResultType: TLL32XFunctionParameterType;
       var ResultValue: OleVariant; var DecimalPositions: Integer;
       const ParameterCount: Integer; const Parameter1, Parameter2,
       Parameter3, Parameter4: OleVariant);
     procedure RomanNumberParameterAutoComplete(Sender: TObject;
       ParameterIndex: Integer; var Values: TStringList);
     procedure FormCreate(Sender: TObject);
-    procedure LL31XAction3ExecuteAction;
-    procedure LL31XAction4ExecuteAction;
+    procedure LL32XAction3ExecuteAction;
+    procedure LL32XAction4ExecuteAction;
   private
     workingPath: String;
     procedure DeleteAllObjects();
@@ -88,7 +83,7 @@ var
 implementation
 
 uses
- cmbtll31, gdi, clrSel, uquest, roman;
+ cmbtll32, gdi, clrSel, uquest, roman;
 
 {$R *.dfm}
 
@@ -117,7 +112,7 @@ var
   color1Str, color2Str: string;
   code: integer;
 begin
-    with Sender as TLL31XObject do
+    with Sender as TLL32XObject do
     begin
         Properties.GetValue('Color1',color1Str);
         Properties.GetValue('Color2',color2Str);
@@ -141,7 +136,7 @@ begin
     // US: Edit object
 
     HasChanged:=False;
-    with Sender as TLL31XObject do
+    with Sender as TLL32XObject do
     begin
         // D:  Dialog initialisieren
         // US: Initialize dialog
@@ -149,22 +144,17 @@ begin
         Properties.GetValue('Color2',color2Str);
         val(color1Str,color1,code);
         val(color2Str,color2,code);
-        with ColorSelectForm do
-        begin
-            SelColor1:=Color1;
-            SelColor2:=Color2;
-
-            // D:  Dialog anzeigen
+           // D:  Dialog anzeigen
             // US: Display dialog
-            if ShowModal = mrOK then
+            if TColorSelectForm.Execute(ParentHandle, color1, color2) = mrOK then
             begin
                 // D:  Neue Werte an Objekt übergeben
                 // US: Pass new values to object
-                Properties.AddProperty('Color1', Format('%d', [SelColor1]));
-                Properties.AddProperty('Color2', Format('%d', [SelColor2]));
+                Properties.AddProperty('Color1', Format('%d', [color1]));
+                Properties.AddProperty('Color2', Format('%d', [color2]));
                 HasChanged:=True;
             end;
-        end;
+
 
     end;
 end;
@@ -172,7 +162,7 @@ end;
 procedure TDesExtForm.GradientFillObjectInitialCreation(Sender: TObject;
   ParentHandle: Cardinal);
 begin
-    with Sender as TLL31XObject do
+    with Sender as TLL32XObject do
     begin
         // D:  Objekt initialisieren
         // US: Initialize object
@@ -181,55 +171,8 @@ begin
     end;
 end;
 
-procedure TDesExtForm.EditColor1Click(Sender: TObject);
-var
-  colorStr: string;
-  code: integer;
-  CurrentColor: TColorref;
-begin
-    // D:  Kontextmenuehandler für Farbe 1
-    // US: Handler for "Color 1" context menu
-    with (Sender as TLL31XObject) do
-    begin
-      Properties.GetValue('Color1',colorStr);
-      val(colorStr,CurrentColor,code);
-      with ColorDialog1 do
-      begin
-        Color:=CurrentColor;
-        if Execute then
-        begin
-          CurrentColor:=Color;
-          Properties.AddProperty('Color1', Format('%d', [CurrentColor]));
-        end;
-      end;
-    end;
-end;
 
-procedure TDesExtForm.EditColor2Click(Sender: TObject);
-var
-  colorStr: string;
-  code: integer;
-  CurrentColor: TColorref;
-begin
-    // D:  Kontextmenuehandler für Farbe 2
-    // US: Handler for "Color 2" context menu
-    with (Sender as TLL31XObject) do
-    begin
-      Properties.GetValue('Color2',colorStr);
-      val(colorStr,CurrentColor,code);
-      with ColorDialog1 do
-      begin
-        Color:=CurrentColor;
-        if Execute then
-        begin
-          CurrentColor:=Color;
-          Properties.AddProperty('Color2', Format('%d', [CurrentColor]));
-        end;
-      end;
-    end;
-end;
-
-procedure TDesExtForm.LL31XAction1ExecuteAction;
+procedure TDesExtForm.LL32XAction1ExecuteAction;
 var
   proj: TLlDOMProjectList;
   found: boolean;
@@ -278,7 +221,7 @@ begin
 end;
 
 procedure TDesExtForm.RomanNumberEvaluateFunction(Sender: TObject;
-  var ResultType: TLL31XFunctionParameterType; var ResultValue: OleVariant;
+  var ResultType: TLL32XFunctionParameterType; var ResultValue: OleVariant;
   var DecimalPositions: Integer; const ParameterCount: Integer;
   const Parameter1, Parameter2, Parameter3, Parameter4: OleVariant);
 begin
@@ -484,7 +427,7 @@ begin
       lldomproj.Free;	
 end;
 
-procedure TDesExtForm.LL31XAction3ExecuteAction;
+procedure TDesExtForm.LL32XAction3ExecuteAction;
 
 var proj: TLlDomProjectList;
 
@@ -632,7 +575,7 @@ begin
   curr.CountOfDecimals := '2';
 end;
 
-procedure TDesExtForm.LL31XAction4ExecuteAction;
+procedure TDesExtForm.LL32XAction4ExecuteAction;
 
 var proj: TLlDomProjectList;
 

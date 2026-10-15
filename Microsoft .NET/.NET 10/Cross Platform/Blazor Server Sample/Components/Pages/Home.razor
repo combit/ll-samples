@@ -1,0 +1,62 @@
+@page "/"
+
+<PageTitle>Home – LLCP Blazor Server Sample</PageTitle>
+
+<h1>List &amp; Label Cross Platform – Blazor Server Sample</h1>
+
+<p>
+    This sample demonstrates how to use
+    <strong>List &amp; Label Cross Platform (LLCP)</strong> in a
+    <strong>Blazor Web App with interactive server rendering</strong>.
+</p>
+
+<h2>Architecture</h2>
+<ul>
+    <li>
+        <strong>Server-side rendering</strong> — LLCP and SkiaSharp run on the
+        ASP.NET Core server.
+    </li>
+    <li>
+        The report layout is built <strong>programmatically via the DOM API</strong>
+        (no <code>.lst</code> or <code>.json</code> design file needed).
+        See <code>Services/ReportService.cs</code> for details.
+    </li>
+    <li>
+        Customer data lives in an <strong>in-memory list</strong> provided by
+        <code>Services/CustomerDataService.cs</code>.
+    </li>
+    <li>
+        The generated PDF is streamed from the server via a dedicated
+        <strong>minimal API endpoint</strong> (<code>GET /api/report/customer.pdf</code>)
+        and downloaded by the browser.
+    </li>
+    <li>
+        Blazor components that need interactivity (button clicks, state updates)
+        carry the <code>@@rendermode InteractiveServer</code> directive.  These
+        components are rendered on the server and kept in sync with the browser
+        via a <strong>SignalR</strong> connection.
+    </li>
+</ul>
+
+<h2>How the PDF Download Works</h2>
+<ol>
+    <li>The user clicks <strong>Download Report</strong> on the Report page.</li>
+    <li>
+        The Blazor component (running server-side) calls
+        <code>ReportService.GenerateCustomerReport()</code>, which:
+        <ul>
+            <li>Builds the project layout in a <code>MemoryStream</code> using the LLCP DOM API.</li>
+            <li>Exports the report to PDF using a second <code>MemoryStream</code>.</li>
+        </ul>
+    </li>
+    <li>
+        The PDF bytes are returned as a <code>byte[]</code>.
+        The minimal API endpoint at <code>/api/report/customer.pdf</code>
+        streams them to the browser with a <code>Content-Disposition: attachment</code>
+        header, triggering a file download.
+    </li>
+</ol>
+
+<p>
+    Head to the <a href="report">Report</a> page to generate a sample PDF.
+</p>

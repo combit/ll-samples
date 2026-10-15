@@ -17,11 +17,13 @@ type
     Button4: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-  private
-    { Private declarations }
+    private
+    FOwnerWnd: HWND;
+  protected
+    procedure CreateParams(var Params: TCreateParams); override;
   public
-    { Public declarations }
     SelColor1, SelColor2: TColor;
+    class function Execute(AOwnerWnd: HWND; var AColor1, AColor2: TColor): TModalResult;
   end;
 
 var
@@ -30,6 +32,43 @@ var
 implementation
 
 {$R *.DFM}
+procedure TColorSelectForm.CreateParams(var Params: TCreateParams);
+begin
+  inherited CreateParams(Params);
+  if FOwnerWnd <> 0 then
+  begin
+    Params.WndParent := FOwnerWnd;                        // owner, not parent
+    Params.ExStyle := Params.ExStyle and not WS_EX_APPWINDOW; // no extra taskbar button
+  end;
+end;
+ class function TColorSelectForm.Execute(AOwnerWnd: HWND;
+  var AColor1, AColor2: TColor): TModalResult;
+var
+  Dlg: TColorSelectForm;
+  R: TRect;
+begin
+  Dlg := TColorSelectForm.Create(nil);
+  try
+    Dlg.FOwnerWnd := AOwnerWnd;
+    Dlg.SelColor1 := AColor1;
+    Dlg.SelColor2 := AColor2;
+    Dlg.PopupMode := pmExplicit;   // stop the VCL re-pointing WndParent at Application/MainForm
+    Dlg.Position  := poDesigned;
+    if (AOwnerWnd <> 0) and GetWindowRect(AOwnerWnd, R) then
+    begin
+      Dlg.Left := R.Left + (R.Right - R.Left - Dlg.Width) div 2;
+      Dlg.Top  := R.Top + (R.Bottom - R.Top - Dlg.Height) div 2;
+    end;
+    Result := Dlg.ShowModal;
+    if Result = mrOK then
+    begin
+      AColor1 := Dlg.SelColor1;
+      AColor2 := Dlg.SelColor2;
+    end;
+  finally
+    Dlg.Free;
+  end;
+end;
 
 procedure TColorSelectForm.Button1Click(Sender: TObject);
 begin

@@ -1,17 +1,15 @@
 object ColorSelectForm: TColorSelectForm
   Left = 270
   Top = 254
-  Width = 192
-  Height = 138
   Caption = 'Select Colors'
+  ClientHeight = 108
+  ClientWidth = 187
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 8
@@ -58,10 +56,8 @@ object ColorSelectForm: TColorSelectForm
     TabOrder = 2
   end
   object ColorDialog1: TColorDialog
-    Ctl3D = True
   end
   object ColorDialog2: TColorDialog
-    Ctl3D = True
     Left = 24
   end
 end

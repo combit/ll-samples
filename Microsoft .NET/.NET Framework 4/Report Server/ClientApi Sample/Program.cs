@@ -43,7 +43,7 @@ namespace ClientApiExample
 
             // Search for a control on the form that has a "Tag" property which equals the name of the invalid model value from the exception.
             // That way we can show the validation error message at the control which contains the invalid input.
-            // Of course that requires that all mappable 
+            // Of course that requires that all mappable controls have their "Tag" property set to the corresponding model field name.
             foreach (var modelError in validationErrors.ErrorDetails)
             {
                 errProvider.SetError(container.Controls.OfType<Control>().First(c => c.Tag as string == modelError.FieldName), modelError.ErrorText);

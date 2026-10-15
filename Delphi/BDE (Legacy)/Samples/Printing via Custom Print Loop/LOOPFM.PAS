@@ -16,7 +16,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, Menus, DB, DBTables, L31, cmbtll31, Registry, ADODB
+  StdCtrls, Menus, DB, DBTables, L32, cmbtll32, Registry, ADODB
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   {$ENDIF}
@@ -24,7 +24,7 @@ uses
 
 type
   TForm1 = class(TForm)
-    LL: TL31_;
+    LL: TL32_;
     MainMenu1: TMainMenu;
     File1: TMenuItem;
     Exit1: TMenuItem;

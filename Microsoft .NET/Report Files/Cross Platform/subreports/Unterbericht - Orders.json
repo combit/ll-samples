@@ -3244,7 +3244,7 @@
             "ObjectTypeForPropertyGrid": "PropertyLineOptions"
           },
           "Expandable": false,
-          "PageBreakCondition": "RemainingTableSpace () \u003C UnitFromSCM (30000)",
+          "PageBreakCondition": "RemainingTableSpace(False) \u003C 30",
           "DefaultFrame": {
             "Layout": "1",
             "Left": {

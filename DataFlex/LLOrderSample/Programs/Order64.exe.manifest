@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
+	<assemblyIdentity version="1.0.0.0" processorArchitecture="amd64" name="DAW.DataFlex.Order.src" type="win32"></assemblyIdentity>
+	<description>Order.src</description>
+	<dependency>
+		<dependentAssembly>
+			<assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="amd64" publicKeyToken="6595b64144ccf1df" language="*"></assemblyIdentity>
+		</dependentAssembly>
+	</dependency>
+	<v3:trustInfo xmlns:v3="urn:schemas-microsoft-com:asm.v3">
+		<v3:security>
+			<v3:requestedPrivileges>
+				<v3:requestedExecutionLevel level="asInvoker"></v3:requestedExecutionLevel>
+			</v3:requestedPrivileges>
+		</v3:security>
+	</v3:trustInfo>
+	<v3:application xmlns:v3="urn:schemas-microsoft-com:asm.v3">
+		<v3:windowsSettings xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">
+			<dpiAware>True</dpiAware>
+		</v3:windowsSettings>
+	</v3:application>
+</assembly>

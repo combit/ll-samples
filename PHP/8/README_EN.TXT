@@ -1,15 +1,15 @@
 -------------------------------------------------
-List & Label Sample for PHP (Version 8.4.3)
+List & Label Sample for PHP (Version 8.5.0)
 Copyright (C) combit GmbH
 -------------------------------------------------
 
 Copy source files
-- Download the current PHP8 source files and the corresponding ‘Development package’ that match your web server PHP version (PHP version, non-thread-safe/thread-safe, Visual Studio version) from ‘https://www.php.net/downloads.php’.
-- Unpack the source code archive directly into the ‘php_src’ folder.
-- Unzip the ‘Development package’ and copy the file under include/main/config.w32.h to php_src/main.
-- Copy the file ‘php8ts.lib’ from your web server installation (‘dev’) to the ‘dev’ folder.
+- Download the current PHP8 source files and the corresponding "Development package" that match your web server PHP version (PHP version, non-thread-safe/thread-safe, Visual Studio version) from "https://www.php.net/downloads.php".
+- Unpack the source code archive directly into the "php_src" folder.
+- Unzip the "Development package" and copy the file "include/main/config.w32.h" to "php_src/main".
+- Copy the file "php8ts.lib" from your web server installation ("dev") to the "dev" folder.
 
-You're now able to compile the DLL (Visual C++/Visual Studio 2019 and newer).
+You're now able to compile the DLL (Visual C++/Visual Studio 2022 and newer).
 
 -------------------------------------------------
 
@@ -42,13 +42,12 @@ Replace them with the following lines:
 Configure PHP
 - IMPORTANT: The PHP version of your web server needs to match the version used for compiling the DLL.
 - Move the generated DLL to the "ext" folder of your PHP8 directory.
-- Locate the "php.ini" used by your PHP configuration.
-- Add the following command: "extension=ListLabelPHP.dll;" or the name you've chosen for the DLL.
+- Locate the file "php.ini" used by your PHP configuration.
+- Add the command "extension=ListLabelPHP.dll;" or the name you've chosen for the DLL to the file "php.ini".
 
-Now locate line 45 in "frame.php" in your "websample" folder and add your personal license key. You can find it in the file "PersonalLicense.txt" in the List & Label installation directory.
+Now locate line 45 in "frame.php" in your "websample" folder and add your personal List & Label license key. You can find it in the file "PersonalLicense.txt" in the List & Label installation directory.
 
-To run the sample, simply copy the contents of the "websample" folder to your Windows web server and assign the CHMOD 777 to the file "frame.php" and the "tmp" folder.
-To apply the changes you have to restart your web server.
+To run the sample, simply copy the contents of the "websample" folder to your Windows web server and assign the CHMOD 777 to the file "frame.php" and the "tmp" folder. To apply the changes you have to restart your web server.
 
 Please note that you need an addendum to the license agreement in order to use List & Label in this way.
 -------------------------------------------------

@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTF Sample", "RTF Sample.csproj", "{5F17B6AC-DEBD-492A-BBF2-D224C3233042}"
 EndProject
 Global

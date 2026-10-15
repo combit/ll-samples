@@ -1,0 +1,31 @@
+[PROJECT]
+    DEBUG                = yes
+    LIB                  = ..\lib;..\dll
+    TARGET_DIR           = ..\
+    INTERMEDIATE_DEBUG   = ..\.debug
+    INTERMEDIATE_RELEASE = ..\.release
+    TARGET_DIR           = ..\
+    Version = 2.3
+    PROJECT.XPJ
+
+[PROJECT.XPJ]
+    RestLLServer.exe
+
+[RestLLServer.exe]
+    COMPILE              = xpp
+    COMPILE_FLAGS        = /es /wu /q /w
+    DEBUG		          = yes
+    DEBUG_SAVE           = yes
+    GUI                  = yes
+    LINKER               = ALINK
+    LINK_FLAGS           = /defaultlib:dsListLabel32.lib
+    RC_COMPILE           = ARC
+    RC_FLAGS             = /v
+    RunParameter         = 1
+// $START-AUTODEPEND
+    _PrintEndpoint.obj
+    RestLLServer.obj
+// $STOP-AUTODEPEND
+    _PrintEndpoint.prg
+    RestLLServer.prg
+

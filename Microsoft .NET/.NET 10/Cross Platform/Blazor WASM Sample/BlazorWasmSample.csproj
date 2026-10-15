@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>BlazorWasmSample</RootNamespace>
+    <!--
+      OverrideHtmlAssetPlaceholders: required in .NET 10 to use
+      the legacy script placeholder pattern in index.html.
+    -->
+    <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
+
+    <!-- Disable Hot Reload/browser refresh injection for this project.
+         This prevents loading Microsoft.DotNet.HotReload.WebAssembly.Browser initializer,
+         which is currently crashing the WASM runtime at startup. -->
+    <BlazorEnableBrowserRefresh>false</BlazorEnableBrowserRefresh>
+
+    <!-- Ensure native WebAssembly assets (e.g. SkiaSharp/HarfBuzz) are linked in. -->
+    <WasmBuildNative>true</WasmBuildNative>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="combit.ListLabel32.CrossPlatform" Version="32.*" />  
+    <!-- Blazor WebAssembly framework packages -->
+    <PackageReference Include="HarfBuzzSharp.NativeAssets.WebAssembly" Version="14.2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.10" PrivateAssets="all" />
+
+    <!--
+      SkiaSharp WebAssembly native assets.
+      This package ships the SkiaSharp native library compiled for WASM so
+      that List & Label's rendering pipeline works directly inside the browser.
+      Version is kept in sync with the SkiaSharp version used by LLCP.
+    -->
+    <PackageReference Include="SkiaSharp.NativeAssets.WebAssembly" Version="4.151.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

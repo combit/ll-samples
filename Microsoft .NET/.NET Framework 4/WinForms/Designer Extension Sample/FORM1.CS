@@ -35,7 +35,7 @@ namespace C_
                 _resourcePath = Path.Combine(_resourcePath, @"Microsoft .NET\Report Files");
 
                 _pictureFileName = Path.Combine(_resourcePath, "logo.bmp");
-                _projectFileName = Path.Combine(_resourcePath, "desext.lst");
+                _projectFileName = Path.Combine(_resourcePath, "desext_net48.lst");
             }
             else
                 MessageBox.Show("Unable to read correct information from registry.");

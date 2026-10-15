@@ -146,7 +146,7 @@ object PictureForm: TPictureForm
     TabOrder = 2
     OnClick = DesignButtonClick
   end
-  object LL: TL31_
+  object LL: TL32_
     EMFResolution = 100
     PhantomspaceRepresentationCode = #11
     LocknextcharRepresentationCode = '`'

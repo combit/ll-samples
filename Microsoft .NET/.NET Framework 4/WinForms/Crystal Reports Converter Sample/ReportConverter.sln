@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportConverter", "ReportConverter\ReportConverter.csproj", "{5EF4891D-9B0C-42C0-91AE-50E29DDE7E49}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "combit.ListLabel.RptConverter", "combit.ListLabel.RptConverter\combit.ListLabel.RptConverter.csproj", "{FA5EB4DF-1D88-4ECC-BF66-5A1C1DFBC8B9}"

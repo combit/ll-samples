@@ -18,7 +18,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, Menus, L31, cmbtll31, ADODB, DB, Registry
+  StdCtrls, Menus, L32, cmbtll32, ADODB, DB, Registry
   {$If CompilerVersion >=28} // >=XE7
   , System.UITypes
   {$ENDIF}
@@ -41,7 +41,7 @@ type
     Label4: TLabel;
     Label3: TLabel;
     DataSource: TADOTable;
-    LL: TL31_;
+    LL: TL32_;
     procedure Exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DefineCurrentRecord(AsField: boolean);

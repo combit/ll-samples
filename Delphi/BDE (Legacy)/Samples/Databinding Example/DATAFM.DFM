@@ -126,7 +126,7 @@ object Form1: TForm1
       OnClick = PrintIILClick
     end
   end
-  object DBL31_1: TDBL31_
+  object DBL32_1: TDBL32_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = Yes
@@ -143,7 +143,7 @@ object Form1: TForm1
     Left = 184
     Top = 16
   end
-  object DBL31_2: TDBL31_
+  object DBL32_2: TDBL32_
     SortVariables = Yes
     CompressStorage = Yes
     Buttons3D = Yes

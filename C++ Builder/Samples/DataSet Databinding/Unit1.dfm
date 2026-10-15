@@ -161,7 +161,7 @@ object Form1: TForm1
     Left = 416
     Top = 176
   end
-  object ListLabelInvoiceList: TListLabel31
+  object ListLabelInvoiceList: TListLabel32
     Debug = []
     DataController.DataSource = DataSourceOrders
     DataController.DetailSources = <
@@ -181,7 +181,7 @@ object Form1: TForm1
     Left = 40
     Top = 160
   end
-  object ListLabelInvoiceMerge: TListLabel31
+  object ListLabelInvoiceMerge: TListLabel32
     Debug = []
     DataController.DataSource = DataSourceOrders
     DataController.DetailSources = <

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="8859-1" standalone="yes"?>
+<asset title="XbpHTMLViewer2 Control" version="1.12" locale="*" release="20251211" requires="2.00.2600" product="xbphtmlviewer2.found.Uq56uFBJosZtfiH2MZ5EdCrRcQLGRtPcVa9ehuiCaPo=" size="182812">
+  <description>The XbpHTMLViewer2 control class implemented in this asset provides a replacement for
+      the original XbpHTMLViewer class for displaying HTML/CSS-based content in Xbase++ 
+      applications. The old class uses Internet Explorer technology which is being phased 
+      out by many API and service vendors, including Google with its Maps platform. The new 
+      XbpHTMLViewer2 class provided in this asset instead utilizes the same technology used 
+      in Microsoft&apos;s Edge browser and is intended as a swap-in replacement for the original 
+      class. 
+      </description>
+  <author name="Alaska Software"/>
+  <copyright>Alaska Software, (c) 2025. All rights reserved</copyright>
+  <filterdata>
+    <category>Windows UI</category>
+    <keyword>desktop-ui</keyword>
+    <keyword>win32-gui</keyword>
+    <keyword>html</keyword>
+    <keyword>webview2</keyword>
+    <keyword>Edge</keyword>
+    <keyword>webbrowser</keyword>
+  </filterdata>
+  <dependencies/>
+  <install>
+    <copy src="*"/>
+    <copy src="readme.md"/>
+    <copy src="alaska-software.xbphtmlviewer2.dll"/>
+    <copy src="alaska-software.xbphtmlviewer2.lib"/>
+    <copy src="alaska-software.webview2core.dll"/>
+    <copy src="example\xbphtmlviewer2-example.prg"/>
+    <copy src="example\xbphtmlviewer2-example.xpj"/>
+  </install>
+  <deinstall>
+    <delete src="*"/>
+    <delete src="readme.md"/>
+    <delete src="alaska-software.xbphtmlviewer2.dll"/>
+    <delete src="alaska-software.xbphtmlviewer2.lib"/>
+    <delete src="alaska-software.webview2core.dll"/>
+    <delete src="example\xbphtmlviewer2-example.prg"/>
+    <delete src="example\xbphtmlviewer2-example.xpj"/>
+  </deinstall>
+  <add>
+    <dependsOn/>
+  </add>
+  <remove>
+    <dependsOn/>
+  </remove>
+  <image>data:image/png;base64,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</image>
+</asset>

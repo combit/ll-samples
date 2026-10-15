@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>BlazorServerSample</RootNamespace>
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      SkiaSharp native assets for the server OS.
+      On Linux servers (including Docker / CI) the Linux native library is required.
+      Swap for SkiaSharp.NativeAssets.macOS or SkiaSharp.NativeAssets.Win32
+      when deploying to those platforms.
+      Version matches the SkiaSharp dependency used by LLCP.
+    -->
+    <PackageReference Include="combit.ListLabel32.CrossPlatform" Version="32.*" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="4.151.1" />
+  </ItemGroup>
+
+</Project>

@@ -28,7 +28,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "..\cmbtll31.h"
+#include "..\cmbtll32.h"
 #include <afxtempl.h>
 
 

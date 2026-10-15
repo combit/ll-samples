@@ -2,7 +2,7 @@
  File Name:    dlgsplitterVT.prg
  Description:
  Created:      06.02.2006     20:53:18        Updated: þ18.08.2025    þ09:59:46
- Copyright:    2006 by DS-Datasoft GmbH&Co.KG, 87654 Friesenried
+ Copyright:		 2026 DS-Datasoft
  Revision:
 ============================================================================*/
 
@@ -18,6 +18,7 @@ CLASS AppSplitter FROM dsApp
 		VAR oBrowse
 		VAR cLang
 		VAR oSplitCtrl
+		VAR panRight
 		METHOD Create
 		METHOD EditDescription()
 		METHOD Init
@@ -40,7 +41,7 @@ RETURN self
 //=========================================
 METHOD AppSplitter:Create()
 	LOCAL dbSamples
-	LOCAL panLeft, panRight
+	LOCAL panLeft
 	LOCAL nWidth
 
 	::dsApp:create()
@@ -59,13 +60,13 @@ METHOD AppSplitter:Create()
 	panLeft  := dsSplitPanel():new(::oSplitCtrl)
 	panLeft:enableCollapse := FALSE
 
-	panRight := panRight():new(::oSplitCtrl) //,,,, {{ XBP_PP_BGCLR, XBPSYSCLR_DIALOGBACKGROUND}})
+	::panRight := panRight():new(::oSplitCtrl) //,,,, {{ XBP_PP_BGCLR, XBPSYSCLR_DIALOGBACKGROUND}})
 
 	::oBrowse := dsXBrowse():new( panLeft, , {5,5}, {396,416} )
 	::oBrowse:connect(dbSamples)
 	::oBrowse:AddFont(1, SetDefaultBrowseFont())
 	::oBrowse:AddFont(10, "10.Arial italic bold")
-	::oBrowse:stableBlock	:= {|| panRight:readData()}
+	::oBrowse:stableBlock	:= {|| ::panRight:readData()}
 	::oBrowse:colorBlock		:= {|oB| if(oB:Server:MODUS = "G", {GRA_CLR_DARKBLUE, GraMakeRGBColor({255,255,196}), GRA_CLR_BLUE, GRA_CLR_YELLOW},)}
 	::oBrowse:fontBlock		:= {|oB| if(oB:Server:MODUS = "G", 10, 1)}
 
@@ -74,12 +75,12 @@ METHOD AppSplitter:Create()
 	panLeft:create()
 	::oBrowse:create()
 
-	panRight:enableCollapse := FALSE
-	panRight:enableResize	:= TRUE
-	panRight:connect(dbSamples)
-	panRight:create()
+	::panRight:enableCollapse	:= FALSE
+	::panRight:enableResize		:= TRUE
+	::panRight:connect(dbSamples)
+	::panRight:create()
 
-	::oSplitCtrl:SetPanel(panLeft, panRight)
+	::oSplitCtrl:SetPanel(panLeft, ::panRight)
 
 	nWidth	:= ReadRegistry(,, "SPLIT", "N", 497 )
 	::oSplitCtrl:setpanelsize(nWidth)

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="8859-1" standalone="yes"?>
+<targets>
+  <target name="lldemo.exe">
+    <asset name="xbphtmlviewer2" Version="1.12"/>
+  </target>
+</targets>

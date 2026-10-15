@@ -3,7 +3,7 @@
  Author:       Marcus Herz
  Description:
  Created:			 28.05.2020     15:15:52        Updated: þ18.08.2025      þ10:00:24
- Copyright:		 2020 DS-Datasoft, 87671 Ronsberg
+ Copyright:		 2026 DS-Datasoft
  Revision:
  $Group:
 ============================================================================*/
@@ -12,10 +12,8 @@
 #include "fileio.ch"
 #include "appevent.ch"
 
-
 #pragma library("XppUi2")
 
-#define TLBS_PRV_HIDE	-1
 
 ******************************************************************************
 * Von der Darstellungsklasse abgeleitete Klasse zur Implementierung der
@@ -25,7 +23,6 @@
 CLASS panRight FROM _panRight
    EXPORTED:
       METHOD create
-		METHOD OpenLL()
 		METHOD ReadData
 		METHOD StartPrint(lExport,lDesign)
 
@@ -62,10 +59,9 @@ METHOD panRight:create()
 	oPage:connect(::SplitControl:server)
 	::oTabCtrl:AddPage(oPage)
 
-	oPage := pgOCX():new(::oTabCtrl)
-	oPage:Caption	:= "LL OCX"
-	oPage:PageId   := 300
-	oPage:connect(::SplitControl:server)
+	oPage := pgHtmlViewer2():new(::oTabCtrl)
+	oPage:Caption	:= "PDF Viewer"
+	oPage:PageId   := 400
 	::oTabCtrl:AddPage(oPage)
 
    ::_panRight:create()
@@ -79,15 +75,13 @@ METHOD panRight:ReadData()
 		::pbDesign	:disable()
 		::pbPreview	:disable()
 		::pbExport	:disable()
-		::oTabCtrl	:Disable(300)
+		::oTabCtrl	:Disable(400)
 
-	elseif ::Server:MODUS = "S"
-		::pbDesign	:disable()
-		::pbPreview	:disable()
-		::pbExport	:enable()
-		::pbExport	:setcaption("Open")
-		::pbExport	:activate	:= {|| ::OpenLL()}
-		::oTabCtrl	:enable(300)
+	elseif ::Server:MODUS = "H"
+  		::pbDesign	:enable()
+		::pbPreview	:enable()
+		::pbExport	:disable()
+		::oTabCtrl	:enable(400)
 
 	else
 		::pbDesign	:enable()
@@ -95,7 +89,7 @@ METHOD panRight:ReadData()
 		::pbExport	:enable()
 		::pbExport	:Setcaption( "Export" )
 		::pbExport	:activate	:= {|| ::StartPrint(LL_PRINT_EXPORT,, ::SplitControl:server:folder)}
-		::oTabCtrl	:Disable(300)
+		::oTabCtrl	:Disable(400)
 	endif
 RETURN self
 
@@ -111,23 +105,6 @@ METHOD panRight:StartPrint(nExport,lDesign, cFolder)
 		InfoBox("Modul not implemented")
 	endif
 
-RETURN self
-
-//=========================================
-METHOD panRight:OpenLL()
-	LOCAL cFile
-	LOCAL oFileDlg
-
-	oFileDlg   := XbpFileDialog():new()
-	oFileDlg:create( AppDesktop() )
-	oFileDlg:FileFilters	:= {{"LL Preview", "*.LL" }}
-
-	cFile	:= oFileDlg:open(,,,FALSE)
-
-	if File(cFile)
-		::oTabCtrl:activate(300)
-		::oTabCtrl:GetPage(300):open(cFile)
-	endif
 RETURN self
 
 //=========================================

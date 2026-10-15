@@ -1,0 +1,62 @@
+@page "/"
+
+<PageTitle>Home – LLCP Blazor WASM Sample</PageTitle>
+
+<h1>List &amp; Label Cross Platform – Blazor WASM Sample</h1>
+
+<p>
+    This sample demonstrates how to use
+    <strong>List &amp; Label Cross Platform (LLCP)</strong> inside a
+    <strong>standalone Blazor WebAssembly</strong> application.
+</p>
+
+<h2>Architecture</h2>
+<ul>
+    <li>
+        <strong>Pure client-side</strong> — no ASP.NET Core backend is required.
+        LLCP runs entirely inside the browser via WebAssembly.
+    </li>
+    <li>
+        The <strong>SkiaSharp</strong> rendering engine is loaded as a
+        <code>SkiaSharp.NativeAssets.WebAssembly</code> package, which provides
+        a native WASM binary that LLCP uses to render PDF pages.
+    </li>
+    <li>
+        The report layout is built <strong>programmatically via the DOM API</strong>
+        (no <code>.lst</code> or <code>.json</code> design file needed).
+        See <code>Services/ReportService.cs</code> for details.
+    </li>
+    <li>
+        Customer data lives in an <strong>in-memory list</strong> provided by
+        <code>Services/CustomerDataService.cs</code>.
+    </li>
+    <li>
+        The generated PDF is returned as a byte array and
+        <strong>downloaded directly from the browser</strong> using JS interop —
+        no file system access is needed.
+    </li>
+</ul>
+
+<h2>WASM Limitations</h2>
+<ul>
+    <li>
+        <strong>Single-threaded by default.</strong>
+        Report generation runs on the main thread. A loading spinner is shown
+        while the export is in progress. Very large reports may briefly freeze
+        the UI; for production use, consider offloading to a Web Worker.
+    </li>
+    <li>
+        <strong>No host file system access.</strong>
+        All I/O uses <code>MemoryStream</code>; the PDF is streamed directly
+        to a browser download.
+    </li>
+    <li>
+        <strong>Initial load time.</strong>
+        The SkiaSharp WASM binary adds several MB to the download. Enable
+        Brotli compression on your web server to reduce the payload size.
+    </li>
+</ul>
+
+<p>
+    Head to the <a href="report">Report</a> page to generate a sample PDF.
+</p>

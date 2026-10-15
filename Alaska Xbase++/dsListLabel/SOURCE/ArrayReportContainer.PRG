@@ -2,8 +2,8 @@
  File Name:           arrayReportcontainer.PRG
  Author:       Marcus Herz
  Description:
- Created:                         29.05.2020     14:52:49        Updated: þ18.08.2025      þ09:59:54
- Copyright:                 2020 DS-Datasoft, 87671 Ronsberg
+ Created:		29.05.2020     14:52:49        Updated: þ18.08.2025      þ09:59:54
+ Copyright:		 2026 DS-Datasoft
  Revision:
  $Group:
 ============================================================================*/

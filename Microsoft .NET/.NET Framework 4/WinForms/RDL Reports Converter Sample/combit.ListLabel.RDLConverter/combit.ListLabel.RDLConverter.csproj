@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="combit.ListLabel31">
-      <HintPath>..\..\..\Assemblies\combit.ListLabel31.dll</HintPath>
+    <Reference Include="combit.ListLabel32">
+      <HintPath>..\..\..\Assemblies\combit.ListLabel32.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

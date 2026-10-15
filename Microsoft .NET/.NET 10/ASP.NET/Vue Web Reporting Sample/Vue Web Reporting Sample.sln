@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37314.3 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueWebReportingSample", "Server\VueWebReportingSample.csproj", "{F1A2B3C4-D5E6-7890-ABCD-EF1234567892}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{A2B3C4D5-E6F7-8901-BCDE-F23456789ABC}"
+	ProjectSection(SolutionItems) = preProject
+		Client\index.html = Client\index.html
+		Client\package.json = Client\package.json
+		Client\tsconfig.json = Client\tsconfig.json
+		Client\vite.config.ts = Client\vite.config.ts
+		Client\src\main.ts = Client\src\main.ts
+		Client\src\App.vue = Client\src\App.vue
+		Client\src\config\index.ts = Client\src\config\index.ts
+		Client\src\composables\useExternalScript.ts = Client\src\composables\useExternalScript.ts
+		Client\src\components\WebReportDesigner.vue = Client\src\components\WebReportDesigner.vue
+		Client\src\components\WebReportViewer.vue = Client\src\components\WebReportViewer.vue
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1A2B3C4-D5E6-7890-ABCD-EF1234567892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A2B3C4-D5E6-7890-ABCD-EF1234567892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A2B3C4-D5E6-7890-ABCD-EF1234567892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A2B3C4-D5E6-7890-ABCD-EF1234567892}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4D5E6F7-A8B9-0123-CDEF-456789012345}
+	EndGlobalSection
+EndGlobal

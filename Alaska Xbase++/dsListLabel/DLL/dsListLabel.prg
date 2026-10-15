@@ -2,8 +2,8 @@
  File Name:	   dsListLabel.prg
  Author:	 		Marcus Herz
  Description:
- Created:		19.08.2016     13:33:08	  Updated: þ18.08.2025	þ10:18:58
- Copyright:		2016 by DS-Datasoft
+ Created:		19.08.2016     13:33:08	  Updated: þ27.07.2026	þ10:21:56
+ Copyright:		 2026 DS-Datasoft
  Revision:
 
  Remark: Set TAB to 3 blanks
@@ -28,6 +28,10 @@
 #ENDIF	// XPPVER < 2001392
 
 STATIC snJobId	:= 0
+
+#ifdef _XCLASS
+	#pragma library("xclass.lib")
+#endif
 
 
 EXTERN LONG GetComputerName(@cBuffer as STRING, @nBin AS LONG) 			IN KERNEL32.DLL
@@ -90,7 +94,7 @@ RETURN
 ==============================================================================*/
 CLASS dsListLabel FROM DbContainer
 HIDDEN:
-   VAR _DataObject                                             // zur freine Verfügung, for free use
+   VAR _DataObject                  NODEBUG 			            // zur freine Verfügung, for free use
 
 
 PROTECTED:
@@ -140,7 +144,7 @@ PROTECTED:
 	VAR _aUsedChartFields            NODEBUG                    // returns array with names of used chart fields
 	VAR _aUsedFields						NODEBUG							// returns array with names of used fields
 	VAR _aUsedVariables					NODEBUG							// returns array with names of used variables
-   VAR _aVar                                                   // array with {name, block} for LLDefineVariable
+   VAR _aVar                        NODEBUG                    // array with {name, block} for LLDefineVariable
    VAR _bConfig                                                // callback before LLPrint[withBox]Start
    VAR _bCopyblock                                             // wird bei mehrfach druck ausgewertet
    VAR _bEOF		                                             // eof
@@ -254,6 +258,7 @@ EXPORTED:
 	METHOD SetDefaultPrinter												//
 	METHOD SetDevMode															//
 	METHOD SetMenuId															//
+	METHOD SetPaperBin
 	METHOD SetProperty														//
 	METHOD SetValue
 	METHOD Stream2Report
@@ -273,10 +278,6 @@ EXPORTED:
 	INLINE ACCESS METHOD GetParent		   					;RETURN ::_oParent
 	INLINE ACCESS METHOD Connected		   					;RETURN ::nSelect
 	INLINE ACCESS METHOD Server			   					;RETURN ::nSelect
-
-	INLINE ACCESS ASSIGN METHOD SetDesign(xSet)				;::_lDesign			:= !empty(xSet)			;RETURN self
-	INLINE ACCESS ASSIGN METHOD PrintAtEof(xSet)	 			;::_lPrintAtEof	:= xSet						;RETURN self
-	INLINE ACCESS ASSIGN METHOD ShowExport(xSet)	 			;::cShowExport   	:= if( xSet, "1", "0")	;RETURN self
 
 	INLINE METHOD DatalinkVariable(cId, xValue, cLLtype )	;RETURN ::_varlink(1, {{cId, xValue, cLLtype}})
 	INLINE METHOD GetLastError										;RETURN ::_nError
@@ -301,14 +302,18 @@ EXPORTED:
 		LlSetOption(::hJob, LL_OPTION_PRVZOOM_PERC, nZoom )
 		RETURN self
 
-	INLINE METHOD ClearSync()						;::_aSync			:= {}							;RETURN self
-	INLINE METHOD CloneDataSetField(aList)		;::_dbFields		:= aclone(aList)			;RETURN self
-	INLINE METHOD CloneDataSetVariable(aTable);::_dbVariables	:= aclone(aTable)			;RETURN self
-	INLINE METHOD CloneDefineField(aField)		;::_aField			:= aclone(aField)			;RETURN self
-	INLINE METHOD CloneDefineVariable(aVar)	;::_aVar				:= aclone(aVar)			;RETURN self
-	INLINE METHOD ResetRights()					;::_aRights			:= aclone(::__aRights)	;RETURN self
-	INLINE METHOD UseDbRequest(xSet)				;::_lUseDbRequest := xSet 						;RETURN self
-	INLINE METHOD ZugferdXML(xSet)				;::_cZUGFeRDXML	:= xSet						;RETURN self
+	INLINE ACCESS ASSIGN METHOD SetDesign(xSet)	;::_lDesign			:= !empty(xSet)			;RETURN self
+	INLINE ACCESS ASSIGN METHOD PrintAtEof(xSet)	;::_lPrintAtEof	:= xSet						;RETURN self
+	INLINE ACCESS ASSIGN METHOD ShowExport(xSet)	;::cShowExport   	:= if( xSet, "1", "0")	;RETURN self
+
+	INLINE METHOD ClearSync()							;::_aSync			:= {}							;RETURN self
+	INLINE METHOD CloneDataSetField(aList)			;::_dbFields		:= aclone(aList)			;RETURN self
+	INLINE METHOD CloneDataSetVariable(aTable)	;::_dbVariables	:= aclone(aTable)			;RETURN self
+	INLINE METHOD CloneDefineField(aField)			;::_aField			:= aclone(aField)			;RETURN self
+	INLINE METHOD CloneDefineVariable(aVar)		;::_aVar				:= aclone(aVar)			;RETURN self
+	INLINE METHOD ResetRights()						;::_aRights			:= aclone(::__aRights)	;RETURN self
+	INLINE METHOD UseDbRequest(xSet)					;::_lUseDbRequest := xSet 						;RETURN self
+	INLINE METHOD ZugferdXML(xSet)					;::_cZUGFeRDXML	:= xSet						;RETURN self
 
 	//=========================================
 	// for free use
@@ -1241,7 +1246,6 @@ METHOD dsListLabel:Design()
 
 	::_RaiseError(::_nError, ::cReport, "LlDefineLayout()")
 
-
 	oCallback:destroy()
 RETURN 0
 
@@ -1253,7 +1257,7 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 	LOCAL oSelf		:= self:&(self:classname())
 	LOCAL cRelation, cSubChild
 	LOCAL nError , nPrint, nPage, nRecNo, nLastRec
-	LOCAL dbChild, dbParent
+	LOCAL dbChild
 
 	IF cChild == "LLStaticTable"
 		nError := LlPrintFields(::hJob)
@@ -1273,21 +1277,19 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 	nError		:= LlPrintDbGetCurrentTableRelation(::hJob, @cRelation, 200 )
 	cRelation	:= _Trim0( cRelation )
 	dbChild		:= nSelect
-	IF !empty(cParent)
-		dbParent	:= ::getSelect(cParent)
-	ENDIF
 
 	eval(::_bTop, self, nSelect )
 	::nSelect   := nSelect
+
+	IF !empty(cRelation)
+		// kann in Subclass überschrieben werden
+		oSelf:SetChildRelation(cRelation, cParent, cChild, @nScope)
+	ENDIF
+
 	::_Synchronize( -1, cParent)
 	::datalink(0, 1 )
 
 	IF IsArray( nSelect)
-		IF !empty(cRelation)
-			// kann in Subclass überschrieben werden
-			oSelf:SetChildRelation(cRelation, cParent, cChild, @nScope)
-		ENDIF
-
 		nLastRec	:= len( nSelect)
 		nRecNo	   := 0
 
@@ -1317,11 +1319,6 @@ METHOD dsListLabel:_PrintTable(cChild, cParent, nRek )
 		ENDDO
 
 	ELSE
-		IF !empty(cRelation)
-			// kann in Subclass überschrieben werden
-			oSelf:SetChildRelation(cRelation, coalesce(dbParent, ::getSelect(::_cMaster), ::_nRootSelect), nSelect, @nScope)
-		ENDIF
-
 		DO WHILE nError == 0 .AND. !eval(::_bEof, self, nSelect) .AND. (::_nPages == 0 .OR. nPage <= ::_nPages)
 			nRecNo	:= eval(::_bRecno,self,nSelect)
 			::_Synchronize( nRecNo, nSelect )
@@ -1487,11 +1484,13 @@ METHOD dsListLabel:SetChildRelation( cRelation, dbParent, dbChild, pnScope)
 			aKey	:= eval( bKey, self, dbParent, dbChild )
 			IF aKey != NIL
 				dbChild:setscope(SCOPE_BOTH, aKey )
+				dbChild:gotop()
 			ENDIF
 		ELSE
 			aKey	:= (dbParent)->(eval( bKey, self, dbParent, dbChild ))
 			IF aKey != NIL
 				(dbChild)->(dbSetScope(SCOPE_BOTH, aKey))
+				(dbChild)->(dbgotop())
 			ENDIF
 		ENDIF
 		pnScope	:= 1
@@ -1505,6 +1504,7 @@ METHOD dsListLabel:SetChildRelation( cRelation, dbParent, dbChild, pnScope)
 		ENDIF
 		IF IsObject(dbChild)
 			dbChild:setscope(SCOPE_BOTH, aKey )
+			dbChild:gotop()
 		ENDIF
 		pnScope	:= 1
 
@@ -1553,8 +1553,10 @@ METHOD dsListLabel:SetChildRelation( cRelation, dbParent, dbChild, pnScope)
 		ENDIF
 		IF IsObject(dbChild)
 			dbChild:setscope(SCOPE_BOTH, aKey )
+			dbChild:gotop()
 		ELSE
 			(dbChild)->(dbSetScope(SCOPE_BOTH, aKey))
+			(dbChild)->(dbgotop())
 		ENDIF
 		pnScope	:= 1
 
@@ -1565,6 +1567,7 @@ METHOD dsListLabel:SetChildRelation( cRelation, dbParent, dbChild, pnScope)
 		aKey	:= eval( bKey, self, dbParent, dbChild )
 		IF aKey != NIL
 			dbChild:setscope(, aKey )
+			dbChild:gotop()
 			pnScope	:= 1
 		ENDIF
 
@@ -1575,6 +1578,7 @@ METHOD dsListLabel:SetChildRelation( cRelation, dbParent, dbChild, pnScope)
 			aKey	:= aKey[1]
 		ENDIF
 		dbChild:setscope(, aKey )
+		dbChild:gotop()
 		pnScope	:= 1
 
 	ELSEIF (nPos := at("$", cRelation)) > 0
@@ -1600,6 +1604,7 @@ METHOD dsListLabel:SetChildRelation( cRelation, dbParent, dbChild, pnScope)
 			aKey	:= aKey[1]
 		ENDIF
 		dbChild:setscope(, aKey )
+		dbChild:gotop()
 		pnScope	:= 1
 
 #ENDIF
@@ -1834,9 +1839,31 @@ METHOD dsListLabel:_SetPrinter(cPrinter)
 		cPrinter   := ::_cPrinter
 	ENDIF
 	IF !empty( cPrinter) .AND. !empty(::hJob)
-		LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, -1, cPrinter, 0)
+		if !empty(::_hDevmode)
+			LlSetPrinterInPrinterFile(::hJob, ::_nProject + LL_PRJTYPE_OPTION_FORCEDEFAULTSETTINGS, ::cReport, -1, cPrinter, ::_hDevmode)
+		else
+			LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, -1, cPrinter, 0)
+		endif
 	ENDIF
 RETURN self
+
+/////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// definiert den Schacht für Druck. Muss vor :Print gesetzt werden
+/// siehe LlSetPrinterInPrinterFile()
+/// </summary>
+/// <param name="nBin">nBin</param>
+/// <param name="nIndex">nIndex</param>
+/// <returns>nError</returns>
+/// <remarks>
+/// </remarks>
+/////////////////////////////////////////////////////////////////////////////////
+METHOD dsListLabel:SetPaperBin(nBin, nIndex )
+	if !IsNumber(nBin)
+		RETURN self
+	endif
+	DEFAULT nIndex to 1
+RETURN ::SetDevMode("dmDefaultSource", nBin, nIndex )
 
 //=========================================
 METHOD dsListLabel:SetDevMode(cProperty, xValue, nIndex )
@@ -1846,7 +1873,7 @@ METHOD dsListLabel:SetDevMode(cProperty, xValue, nIndex )
 	ENDIF
    IF ascan( ::oDevmode:classdescribe(3), lower(cProperty)) > 0
 		::oDevMode:&(cProperty)	:= xValue
-		nError	:= LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, nIndex, , ::_hDevmode)
+		nError	:= LlSetPrinterInPrinterFile(::hJob, ::_nProject + LL_PRJTYPE_OPTION_FORCEDEFAULTSETTINGS, ::cReport, nIndex, , ::_hDevmode)
    ELSE
    	nError	:= -1
    ENDIF
@@ -2071,7 +2098,11 @@ METHOD dsListLabel:Printer(xSet)
 		::_lOptions := TRUE
 	ENDIF
 	IF !empty( ::_cPrinter) .AND. !empty(::hJob)
-		LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, -1, ::_cPrinter, 0)
+		if !empty(::_hDevmode)
+			LlSetPrinterInPrinterFile(::hJob, ::_nProject + LL_PRJTYPE_OPTION_FORCEDEFAULTSETTINGS, ::cReport, -1, ::_cPrinter, ::_hDevmode)
+		else
+			LlSetPrinterInPrinterFile(::hJob, ::_nProject, ::cReport, -1, ::_cPrinter, 0)
+		endif
 	ENDIF
 RETURN xRet
 
@@ -2256,9 +2287,9 @@ METHOD dsListLabel:SetValue(nMode, cName, xValue, nLLType)
 	ELSE
 		nLL   := coalesce(nLL, LL_TEXT)
 		IF Set( _SET_CHARSET ) == CHARSET_OEM
-			cStr  := alltrim(ConvtoAnsiCP(xValue))
+			cStr  := rtrim(ConvtoAnsiCP(xValue))
 		ELSE
-			cStr  := alltrim(xValue)
+			cStr  := rtrim(xValue)
 		ENDIF
 
 		IF empty( cStr)
@@ -2476,8 +2507,8 @@ METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 		nSelect	:= coalesce( nSelect, Select())
 		cSymbol	:= coalesce( cSymbol,"")
 	ENDIF
-	cSymbol	:= alltrim(cSymbol)
-	cDesigner  := coalesce( cDesigner, cSymbol )
+	cSymbol		:= alltrim(cSymbol)
+	cDesigner	:= coalesce( cDesigner, cSymbol )
 	IF ::__toUpper
 		cSymbol	:= upper(cSymbol)
 	ENDIF
@@ -2488,13 +2519,12 @@ METHOD dsListLabel:DataSetVariable(nSelect, cSymbol, cDesigner ,aField )
 			IF len(nSelect) > 0 .AND. nSelect[1]:IsDerivedfrom( "dataobject")
 				aField	:= nSelect[1]:classdescribe(CLASS_DESCR_MEMBERS)
 				aeval( aField, {|a| a := a[1]},,,TRUE)
-				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner, aField })
+				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner, aField, -1 })
 			ENDIF
 
 		ELSEIF IsObject(nSelect)
 			IF nSelect:IsDerivedfrom("dataobject")
-				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner ,;
-					coalesce(aField, nSelect:classdescribe(CLASS_DESCR_MEMBERS)), cSymbol})
+				aadd( ::_dbVariables, {nSelect, cSymbol, cDesigner , coalesce(aField, nSelect:classdescribe(CLASS_DESCR_MEMBERS)), cSymbol})
 			ELSE
 				IF empty(aField)
 					IF IsMethod(nSelect,"dbstruct")
@@ -2612,19 +2642,23 @@ METHOD dsListLabel:DataSetField(nSelect, cSymbol, cDesigner ,aField, nRekursiv )
 			IF len(nSelect) > 0 .AND. nSelect[1]:IsDerivedfrom( "dataobject")
 				aField	:= nSelect[1]:classdescribe(CLASS_DESCR_MEMBERS)
 				aeval( aField, {|a| a := a[1]},,,TRUE)
-				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,;
-					aField, -1, nRekursiv})
+				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner, aField, -1, nRekursiv})
 			ENDIF
+
 		ELSEIF IsObject(nSelect)
-			IF empty(aField)
+			IF nSelect:IsDerivedfrom("dataobject")
+				aField	:= nSelect:classdescribe(CLASS_DESCR_MEMBERS)
+				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner, aField, -1, nRekursiv})
+
+			ELSEIF empty(aField)
 				IF IsMethod(nSelect,"dbstruct")
 					aField	:= nSelect:dbstruct()
 				ENDIF
-			ENDIF
-			IF IsMembervar(nSelect, "Alias")
-				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,aField, nSelect:alias, nRekursiv})
-			ELSE
-				aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,aField, cSymbol, nRekursiv})
+				IF IsMembervar(nSelect, "Alias")
+					aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,aField, nSelect:alias, nRekursiv})
+				ELSE
+					aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,aField, cSymbol, nRekursiv})
+				ENDIF
 			ENDIF
 		ELSE
 			aadd( ::_dbFields, {nSelect, cSymbol, cDesigner,;
@@ -2641,8 +2675,20 @@ METHOD dsListLabel:DataSetField(nSelect, cSymbol, cDesigner ,aField, nRekursiv )
 				aeval( aField, {|a| a := a[1]},,,TRUE)
 				::_dbFields[nPos,__STRUCT]	:= aField
 			ENDIF
+
 		ELSEIF IsObject(nSelect)
-			::_dbFields[nPos,__STRUCT]	:= coalesce(aField, nSelect:dbstruct())
+			IF nSelect:IsDerivedfrom("dataobject")
+				::_dbFields[nPos,__STRUCT]	:= nSelect:classdescribe(CLASS_DESCR_MEMBERS)
+				::_dbFields[nPos,__ALIAS ]	:= cSymbol
+
+			ELSE
+				IF empty(aField)
+					IF IsMethod(nSelect,"dbstruct")
+						aField	:= nSelect:dbstruct()
+					ENDIF
+				ENDIF
+				::_dbFields[nPos,__STRUCT]	:= aField
+			ENDIF
 			IF IsMembervar(nSelect, "Alias")
 				::_dbFields[nPos,__ALIAS ]	:= nSelect:alias
 			ELSE
@@ -2978,8 +3024,10 @@ METHOD dsListLabel:SaveAsPdf(cFile, lQuiet, bPrint)
 	ENDIF
 	IF !empty( ::_cZUGFeRDXML) .AND. File(::_cZUGFeRDXML)
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.Conformance", "pdfa3b")
-		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDConformanceLevel", "EXTENDED")
-		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDVersion", "2.1")
+//		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDConformanceLevel", "EXTENDED")
+//		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDVersion", "2.1")
+		// automatische Ermittlung der ZUGFeRD Version
+		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDVersion", "0")
 		LlXSetParameter(::hJob, LL_LLX_EXTENSIONTYPE_EXPORT, "PDF"   ,"PDF.ZUGFeRDXmlPath", ::_cZUGFeRDXML)
 	ENDIF
 

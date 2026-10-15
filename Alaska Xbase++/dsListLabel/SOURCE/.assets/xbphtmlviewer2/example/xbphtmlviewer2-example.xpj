@@ -1,0 +1,40 @@
+//////////////////////////////////////////////////////////////////////
+///
+/// <summary>
+/// Project file of XbpHTMLViewer2 example program
+/// </summary>
+///
+/// <remarks>
+/// This file is used by the example import mechanism. It is not to
+/// be used for building and debugging. Use the project.xpj file in 
+/// parent folder instead.
+/// </remarks>
+///
+/// <copyright>
+/// Alaska Software (C) 2022. All rights reserved.
+/// </copyright>
+///
+//////////////////////////////////////////////////////////////////////
+[PROJECT]
+    VERSION       = 2.3
+    TARGET_DIR    = .\run
+    Project.xpj
+
+[Project.xpj]
+    xbphtmlviewer2-example.exe
+
+[xbphtmlviewer2-example.exe]
+    COMPILE              = xpp
+    COMPILE_FLAGS        = /wi /wl /wu /q /w
+    DEBUG                = yes
+    GUI                  = yes
+    LINKER               = alink
+    LINK_FLAGS           = 
+    RC_COMPILE           = arc
+    RC_FLAGS             = 
+    INTERMEDIATE_DEBUG   = .debug
+    INTERMEDIATE_RELEASE = .release
+// $START-AUTODEPEND
+    xbphtmlviewer2-example.obj
+// $STOP-AUTODEPEND
+    xbphtmlviewer2-example.prg
